@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.29 1996/07/25 05:49:16 wessels Exp $
+ * $Id: ftpget.c,v 1.30 1996/07/26 21:09:33 wessels Exp $
  *
  * DEBUG: section 0     FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2185,7 +2185,7 @@ static int process_request(r)
 #endif
 	    break;
 	case CWD_OK:
-	    if (!r->flags & F_ISDIR)
+	    if (!(r->flags & F_ISDIR))
 		r->flags |= F_USEBASE;
 	    r->flags |= F_ISDIR;
 	    if (!(r->flags & F_BASEDIR)) {

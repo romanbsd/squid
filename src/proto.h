@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.10 1996/07/23 04:16:57 wessels Exp $
+ * $Id: proto.h,v 1.11 1996/07/26 21:09:39 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -143,7 +143,7 @@ typedef enum {
     ICP_OP_UNUSED6,		/* 18 */
     ICP_OP_UNUSED7,		/* 19 */
     ICP_OP_UNUSED8,		/* 20 */
-    ICP_OP_UNUSED9,		/* 21 */
+    ICP_OP_RELOADING,		/* 21 access denied while reloading */
     ICP_OP_DENIED,		/* 22 access denied (cl<-sv) */
     ICP_OP_HIT_OBJ,		/* 23 hit with object data (cl<-sv) */
     ICP_OP_END			/* 24 marks end of opcodes */

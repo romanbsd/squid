@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.37 1996/07/25 07:10:39 wessels Exp $
+ * $Id: proto.c,v 1.38 1996/07/26 21:09:38 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -148,7 +148,7 @@ char *IcpOpcodeStr[] =
     "ICP_OP_UNUSED6",
     "ICP_OP_UNUSED7",
     "ICP_OP_UNUSED8",
-    "ICP_OP_UNUSED9",
+    "ICP_RELOADING",		/* access denied while store is reloading */
     "ICP_DENIED",
     "ICP_HIT_OBJ",
     "ICP_END"
