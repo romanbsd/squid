@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.29 1997/01/31 22:30:35 wessels Exp $
+ * $Id: proto.h,v 1.30 1997/02/23 09:06:56 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -283,7 +283,7 @@ typedef struct _protodispatch_data {
     int inside_firewall;
     int direct_fetch;
     int source_ping;
-    int query_neighbors;
+    int hierarchical;
     int n_peers;
     struct _peer *single_parent;
     struct _peer *default_parent;
