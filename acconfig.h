@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.62 2001/12/24 15:33:40 adrian Exp $ */
+/* $Id: acconfig.h,v 1.63 2002/01/01 09:47:46 adrian Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -354,6 +354,7 @@
 /* Support for poll/select/etc stuff */
 #undef USE_POLL
 #undef USE_SELECT
+#undef USE_KQUEUE
 
 @BOTTOM@
 
