@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh.h,v 1.1 1996/10/27 08:40:24 wessels Exp $
+ * $Id: refresh.h,v 1.2 1996/10/28 07:44:25 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -31,5 +31,5 @@
 #define REFRESH_ICASE 0x01
 
 extern void refreshFreeMemory _PARAMS((void));
-extern void refreshAddToList _PARAMS((char *, int , time_t , int , time_t));
+extern void refreshAddToList _PARAMS((char *, int, time_t, int, time_t));
 extern int refreshCheck _PARAMS((StoreEntry *, request_t *));

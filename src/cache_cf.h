@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.64 1996/10/27 07:11:52 wessels Exp $
+ * $Id: cache_cf.h,v 1.65 1996/10/28 07:44:19 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -141,14 +141,8 @@ struct SquidConfig {
 	int maxSize;
 	int highWaterMark;
 	int lowWaterMark;
-    } Mem, Swap;
+    } Mem , Swap;
     struct {
-	int maxObjSize;
-	int defaultTtl;
-    } Gopher, Http, Ftp;
-    struct {
-	int maxObjSize;
-	int defaultTtl;
 	char *relayHost;
 	u_short relayPort;
     } Wais;
@@ -254,7 +248,8 @@ struct SquidConfig {
     struct {
 	int objectsPerBucket;
 	int avgObjectSize;
-    } storeHash;
+	int maxObjectSize;
+    } Store;
 };
 
 extern struct SquidConfig Config;
