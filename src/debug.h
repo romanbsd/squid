@@ -1,5 +1,5 @@
 /*
- * $Id: debug.h,v 1.21 1996/09/20 06:28:34 wessels Exp $
+ * $Id: debug.h,v 1.22 1996/09/20 23:26:55 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -112,6 +112,7 @@ extern FILE *debug_log;
 
 extern void _db_init _PARAMS((char *logfile, char *options));
 extern void _db_rotate_log _PARAMS((void));
+extern char *accessLogTime _PARAMS((time_t));
 
 #if __STDC__
 extern void _db_print _PARAMS((int, int, char *,...));

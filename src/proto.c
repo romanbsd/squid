@@ -1,5 +1,6 @@
+
 /*
- * $Id: proto.c,v 1.61 1996/09/20 06:29:02 wessels Exp $
+ * $Id: proto.c,v 1.62 1996/09/20 23:26:59 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
