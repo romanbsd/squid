@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.34 1996/07/11 17:42:37 wessels Exp $
+ * $Id: cache_cf.h,v 1.35 1996/07/11 22:44:12 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -147,6 +147,7 @@ extern char w_space[];
 extern int DnsPositiveTtl;
 extern int config_lineno;
 extern int emulate_httpd_log;
+extern int identLookup;
 extern int httpd_accel_mode;
 extern int unbuffered_logs;
 extern int zap_disk_store;

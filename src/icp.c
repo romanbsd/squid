@@ -1,5 +1,5 @@
 /*
- * $Id: icp.c,v 1.69 1996/07/11 17:42:41 wessels Exp $
+ * $Id: icp.c,v 1.70 1996/07/11 22:44:13 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1838,7 +1838,8 @@ int asciiHandleConn(sock, notused)
 	COMM_SELECT_READ,
 	asciiHandleConn,
 	0);
-    identStart(-1, icpState);
+    if (identLookup)
+	identStart(-1, icpState);
     return 0;
 }
 
