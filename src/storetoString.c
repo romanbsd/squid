@@ -1,4 +1,4 @@
-/* $Id: storetoString.c,v 1.3 1996/03/27 01:46:24 wessels Exp $ */
+/* $Id: storetoString.c,v 1.4 1996/03/27 04:42:10 wessels Exp $ */
 
 #include "squid.h"
 
@@ -31,7 +31,7 @@ char *storeToString(e)
     sprintf(tmpbuf, "Next: 0x%p\n", e->next);
     strcat(stsbuf, tmpbuf);
 
-    sprintf(tmpbuf, "Flags: %#lx ==> ", e->flag);
+    sprintf(tmpbuf, "Flags: %#x ==> ", e->flag);
 #ifdef CACHED1_5
     if (BIT_TEST(e->flag, SAVED))
 	strncat(tmpbuf, " SAVED", sizeof(tmpbuf) - 1);
@@ -204,7 +204,7 @@ char *storeToString(e)
     }
     strcat(stsbuf, tmpbuf);
 
-    sprintf(tmpbuf, "RefCount: %ld\n", e->refcount);
+    sprintf(tmpbuf, "RefCount: %u\n", e->refcount);
     strcat(stsbuf, tmpbuf);
 
     sprintf(tmpbuf, "LockCount: %d\n", e->lock_count);
@@ -296,7 +296,7 @@ char *storeToString(e)
 	}
     }
 
-    sprintf(tmpbuf, "SwapOffset: %lu\n", e->mem_obj->swap_offset);
+    sprintf(tmpbuf, "SwapOffset: %u\n", e->mem_obj->swap_offset);
     strcat(stsbuf, tmpbuf);
 
     sprintf(tmpbuf, "SwapFd: %d\n", e->mem_obj->swap_fd);
