@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.82 1996/11/25 18:47:16 wessels Exp $
+ * $Id: cache_cf.h,v 1.83 1996/11/30 23:09:50 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -252,7 +252,12 @@ struct SquidConfig {
 	int avgObjectSize;
 	int maxObjectSize;
     } Store;
-    struct sockaddr_in vizHackAddr;
+    struct {
+	struct in_addr addr;
+	u_short port;
+	int mcast_ttl;
+	struct sockaddr_in S;
+    } vizHack;
     int levelOneDirs;
     int levelTwoDirs;
     struct {

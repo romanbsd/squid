@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.19 1996/11/30 22:01:48 wessels Exp $
+ * $Id: pass.c,v 1.20 1996/11/30 23:09:55 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -498,7 +498,7 @@ passConnectDone(int fd, int status, void *data)
     if (opt_no_ipcache)
 	ipcacheInvalidate(passState->host);
     passConnected(passState->server.fd, passState);
-    if (Config.vizHackAddr.sin_port)
+    if (vizSock > -1)
 	vizHackSendPkt(&passState->connectState.S, 2);
 }
 
