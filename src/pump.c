@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.25 1998/03/30 22:55:02 wessels Exp $
+ * $Id: pump.c,v 1.26 1998/03/31 07:46:45 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -313,7 +313,7 @@ pumpClose(void *data)
 	storeAbort(req, 1);
     }
     if (rep != NULL && rep->store_status == STORE_PENDING) {
-	storeAbort(rep, 1);
+	storeAbort(rep, 0);
     }
     if (p->s_fd > -1) {
 	comm_remove_close_handler(p->s_fd, pumpServerClosed, p);
