@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.75 1997/11/15 06:36:34 wessels Exp $
+ * $Id: objcache.c,v 1.76 1997/11/18 01:02:39 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -305,9 +305,9 @@ objcacheStart(int fd, StoreEntry * entry)
 	}
     }
     assert(handler != NULL);
-    EBIT_SET(entry->flag, DELAY_SENDING);
+    storeBuffer(entry);
     handler(entry);
-    EBIT_CLR(entry->flag, DELAY_SENDING);
+    storeBufferFlush(entry);
     storeComplete(entry);
     safe_free(data);
 }
