@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.13 1996/09/17 02:29:58 wessels Exp $
+ * $Id: hash.c,v 1.14 1996/09/20 06:28:47 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -122,7 +122,7 @@ struct master_table {
 static int default_hash_size = -1;
 struct master_table htbl[MAX_HTABLE];
 
-extern void *xcalloc __P((int, size_t));
+extern void *xcalloc _PARAMS((int, size_t));
 
 /*
  *  hash_url() - Returns a well-distributed hash function for URLs.

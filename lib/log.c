@@ -1,5 +1,5 @@
 /*
- * $Id: log.c,v 1.11 1996/09/18 22:44:41 wessels Exp $
+ * $Id: log.c,v 1.12 1996/09/20 06:28:20 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -143,12 +143,12 @@
 
 #ifdef _SQUID_NEXT_
 typedef int pid_t;
-extern pid_t getpid __P((void));
+extern pid_t getpid _PARAMS((void));
 #endif
 
 
 /* Local functions */
-static char *standard_msg __P((void));
+static char *standard_msg _PARAMS((void));
 
 /* Local variables */
 static FILE *fp_log = NULL;

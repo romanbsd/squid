@@ -1,5 +1,5 @@
 /*
- * $Id: debug.c,v 1.10 1996/09/17 16:53:55 wessels Exp $
+ * $Id: debug.c,v 1.11 1996/09/20 06:28:20 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -115,8 +115,8 @@
 #include "ansiproto.h"
 #include "util.h"
 
-static void debug_enable __P((int, int));
-static void debug_disable __P((int));
+static void debug_enable _PARAMS((int, int));
+static void debug_disable _PARAMS((int));
 
 int Harvest_debug_levels[MAX_DEBUG_LEVELS];
 int Harvest_do_debug = 0;

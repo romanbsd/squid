@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.35 1996/09/18 20:12:24 wessels Exp $
+ * $Id: stat.h,v 1.36 1996/09/20 06:29:10 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -260,8 +260,8 @@ extern volatile unsigned long nudpconn;
 extern char *open_bracket;
 extern char *close_bracket;
 
-extern void stat_init __P((cacheinfo **, char *));
-extern void stat_rotate_log __P((void));
-extern void statCloseLog __P((void));
+extern void stat_init _PARAMS((cacheinfo **, char *));
+extern void stat_rotate_log _PARAMS((void));
+extern void statCloseLog _PARAMS((void));
 
 #endif /*STAT_H */

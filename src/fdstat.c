@@ -1,5 +1,5 @@
 /*
- * $Id: fdstat.c,v 1.21 1996/09/17 02:29:55 wessels Exp $
+ * $Id: fdstat.c,v 1.22 1996/09/20 06:28:39 wessels Exp $
  *
  * DEBUG: section 7     File Descriptor Status
  * AUTHOR: Harvest Derived
@@ -119,7 +119,7 @@ typedef struct _FDENTRY {
 
 static FDENTRY *fd_stat_tab = NULL;
 
-static void fdstat_update __P((int fd, File_Desc_Status status));
+static void fdstat_update _PARAMS((int fd, File_Desc_Status status));
 
 File_Desc_Type
 fdstatGetType(int fd)

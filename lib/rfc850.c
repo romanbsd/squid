@@ -1,5 +1,5 @@
 /*
- * $Id: rfc850.c,v 1.11 1996/09/17 16:53:59 wessels Exp $
+ * $Id: rfc850.c,v 1.12 1996/09/20 06:28:21 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -132,8 +132,8 @@
 #include "ansiproto.h"
 #include "util.h"
 
-static int make_month __P((char *s));
-static int make_num __P((char *s));
+static int make_month _PARAMS((char *s));
+static int make_num _PARAMS((char *s));
 
 static char *month_names[12] =
 {
