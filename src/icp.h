@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.74 1997/05/08 07:22:04 wessels Exp $
+ * $Id: icp.h,v 1.75 1997/05/08 23:23:17 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -209,10 +209,6 @@ struct _ConnStateData {
     CommWriteStateData *commWriteState;
     int nrequests;
     int persistent;
-#ifdef UNUSED
-    icp_common_t header;	/* for UDP_HIT_OBJ's */
-    method_t method;		/* GET, POST, ... */
-#endif
 };
 
 extern void *icpCreateMessage _PARAMS((icp_opcode opcode,
