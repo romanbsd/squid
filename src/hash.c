@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.28 1997/06/26 22:35:47 wessels Exp $
+ * $Id: hash.c,v 1.29 1997/07/14 03:33:37 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -104,8 +104,6 @@
  */
 
 #include "squid.h"
-
-int hash_links_allocated;
 
 static int default_hash_size = -1;
 static int hash_unlink _PARAMS((hash_table *, hash_link *, int));

@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.283 1997/07/07 05:29:46 wessels Exp $
+ * $Id: icp.c,v 1.284 1997/07/14 03:33:39 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -105,8 +105,6 @@
  */
 
 #include "squid.h"
-
-int neighbors_do_private_keys = 1;
 
 char *log_tags[] =
 {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.57 1997/07/07 05:29:50 wessels Exp $
+ * $Id: objcache.c,v 1.58 1997/07/14 03:33:40 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -110,9 +110,6 @@
 #define STAT_TTL 2
 #define OBJCACHE_MAX_REQUEST_SZ 128
 #define OBJCACHE_MAX_PASSWD_SZ 128
-
-cacheinfo *HTTPCacheInfo = NULL;
-cacheinfo *ICPCacheInfo = NULL;
 
 typedef struct objcache_ds {
     StoreEntry *entry;
