@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.19 1996/04/10 20:45:25 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.20 1996/04/11 04:47:20 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -14,18 +14,20 @@ typedef struct _intlist {
     struct _intlist *next;
 } intlist;
 
+typedef struct _relist {
+    char *pattern;
+    regex_t regex;
+    struct _relist *next;
+} relist;
+
 typedef enum {
     IP_ALLOW,
     IP_DENY
 } ip_access_type;
 
 typedef struct _ip_acl {
-#ifndef IPACL_INTS
     struct in_addr addr;
     struct in_addr mask;
-#else
-    int a1, a2, a3, a4;
-#endif
     ip_access_type access;
     struct _ip_acl *next;
 } ip_acl;
@@ -90,11 +92,7 @@ extern int getSourcePing _PARAMS((void));
 extern int getStallDelay _PARAMS((void));
 extern int getUdpPortNum _PARAMS((void));
 extern int getWaisRelayPort _PARAMS((void));
-#ifndef IPACL_INTS
 extern int ip_acl_match _PARAMS((struct in_addr, ip_acl *));
-#else
-extern int ip_acl_match _PARAMS((int, int, int, int, int, int, int, int));
-#endif
 
 extern int parseConfigFile _PARAMS((char *file_name));
 extern int setAsciiPortNum _PARAMS((int));
