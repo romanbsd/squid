@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.86 1996/12/18 00:02:19 wessels Exp $
+ * $Id: cache_cf.h,v 1.87 1997/01/10 23:14:22 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -229,6 +229,7 @@ struct SquidConfig {
 	struct in_addr client_netmask;
     } Addrs;
     int tcpRcvBufsz;
+    int udpMaxHitObjsz;
     wordlist *cache_dirs;
     wordlist *cache_stoplist;
     wordlist *hierarchy_stoplist;

@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.85 1996/12/18 00:02:19 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.86 1997/01/10 23:14:26 wessels Exp $
 #
 
 #  TAG: http_port
@@ -973,6 +973,14 @@ dns_testnames internic.net usc.edu cs.colorado.edu mit.edu yale.edu
 #	affect the reply.
 #
 #udp_hit_obj off
+
+#  TAG: udp_hit_obj_size
+#
+#     If set, Squid will limit UDP_HIT_OBJ size to be less than
+#     this value.  Setting this value to more than SQUID_UDP_SO_SNDBUF
+#     will not work as expected.  Set to zero to select the size
+#     permited by the socket.
+#udp_hit_obj_size     0
 
 #  TAG: memory_pools on|off
 #	If set, Squid will keep pools of allocated (but unused) memory
