@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.86 1997/01/10 23:14:26 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.87 1997/01/22 18:34:24 wessels Exp $
 #
 
 #  TAG: http_port
@@ -584,8 +584,9 @@ debug_options ALL,1
 #	If set, objects which have not been referenced for this amount
 #	of time will be purged from the cache.  This is the only
 #	parameter for removing cache objects except when the disk space
-#	reaches the high water mark.  By default reference_age is 
-#	disabled.
+#	reaches the high water mark.  By default reference_age is
+#	computed dynamically so that the store swap size stays within
+#	the low and high water mark limits.
 #reference_age 0
 
 #  TAG: quick_abort
