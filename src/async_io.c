@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.18 1997/05/15 23:30:34 wessels Exp $
+ * $Id: async_io.c,v 1.19 1997/07/16 20:31:56 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -252,7 +252,6 @@ aioRead(int fd, char *bufp, int len, AIOCB * callback, void *callback_data)
     return;
 }				/* aioRead */
 
-
 void
 aioStat(char *path, struct stat *sb, AIOCB * callback, void *callback_data)
 {
@@ -283,7 +282,6 @@ aioStat(char *path, struct stat *sb, AIOCB * callback, void *callback_data)
     used_list = ctrlp;
     return;
 }				/* aioStat */
-
 
 void
 aioUnlink(const char *path, AIOCB * callback, void *callback_data)

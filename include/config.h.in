@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.27 1997/06/04 04:14:11 wessels Exp $
+ * $Id: config.h.in,v 1.28 1997/07/16 20:31:52 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -150,6 +150,17 @@
 #if defined(_SQUID_HPUX_)
 #undef HAVE_POLL
 #define HAVE_POLL 0
+#endif
+
+#if HAVE_RANDOM
+#define squid_random random
+#define squid_srandom srandom
+#elif HAVE_LRAND48
+#define squid_random lrand48
+#define squid_srandom srand48
+#else
+#define squid_random rand
+#define squid_srandom srand
 #endif
 
 #endif /* _CONFIG_H_ */
