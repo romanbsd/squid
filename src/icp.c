@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.317 1997/10/25 17:22:46 wessels Exp $
+ * $Id: icp.c,v 1.318 1997/10/26 02:35:34 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -818,7 +818,8 @@ icpHandleIMSComplete(int fd, char *buf_unused, int size, int errflag, void *data
     http->entry = NULL;
     http->out.size += size;
     http->al.http.code = 304;
-    comm_close(fd);
+    if (errflag != COMM_ERR_CLOSING)
+	comm_close(fd);
 }
 
 /*
