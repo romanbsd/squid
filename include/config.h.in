@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.40 1999/01/11 20:01:58 wessels Exp $
+ * $Id: config.h.in,v 1.41 1999/01/12 23:22:29 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -93,6 +93,9 @@
 
 #elif defined(__CYGWIN32__) || defined(WIN32) || defined(WINNT) || defined(__WIN32__) || defined(__WIN32)
 #define _SQUID_MSWIN_
+
+#elif defined(sony_news) && defined(__svr4)
+#define _SQUID_NEWSOS6_
 
 #endif
 
