@@ -1,8 +1,8 @@
 
 /*
- * $Id: async_io.c,v 1.7 1996/07/19 17:41:27 wessels Exp $
+ * $Id: async_io.c,v 1.8 1996/08/17 05:07:40 wessels Exp $
  *
- * DEBUG: section 5     Asynchronous Disk I/O
+ * DEBUG: section 32	Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
  *
  * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
