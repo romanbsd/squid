@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.75 1996/11/08 00:02:17 wessels Exp $
+ * $Id: cache_cf.h,v 1.76 1996/11/12 22:37:02 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -173,7 +173,7 @@ struct SquidConfig {
 	char *swap;
 #if USE_USERAGENT_LOG
 	char *useragent;
-#endif	/* USE_USERAGENT_LOG */
+#endif				/* USE_USERAGENT_LOG */
 	int rotateNumber;
 	int log_fqdn;
     } Log;

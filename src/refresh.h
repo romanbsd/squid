@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh.h,v 1.4 1996/11/06 23:14:54 wessels Exp $
+ * $Id: refresh.h,v 1.5 1996/11/12 22:37:15 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -36,5 +36,6 @@
 extern void refreshFreeMemory _PARAMS((void));
 extern void refreshAddToList _PARAMS((const char *, int, time_t, int, time_t));
 extern int refreshCheck _PARAMS((const StoreEntry *, const request_t *));
+extern time_t getMaxAge _PARAMS((const char *url));
 
 #endif /* REFRESH_H */

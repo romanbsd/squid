@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.18 1996/11/06 23:15:03 wessels Exp $
+ * $Id: store_clean.c,v 1.19 1996/11/12 22:37:19 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -57,7 +57,7 @@ rev_int_sort(const int *i1, const int *i2)
 }
 
 void
-storeDirClean(void)
+storeDirClean(void *unused)
 {
     static int swap_index = 0;
     DIR *dp = NULL;
@@ -68,6 +68,9 @@ storeDirClean(void)
     int swapfileno;
     int n = 0;
     int k = 0;
+    eventAdd("storeDirClean", storeDirClean, NULL, 15);
+    if (store_rebuilding == STORE_REBUILDING_FAST)
+	return;
     sprintf(p1, "%s/%02X/%02X",
 	swappath(swap_index),
 	(swap_index / ncache_dirs) % SWAP_DIRECTORIES_L1,

@@ -1,6 +1,7 @@
 
+
 /*
- * $Id: store.h,v 1.71 1996/11/07 20:56:19 wessels Exp $
+ * $Id: store.h,v 1.72 1996/11/12 22:37:18 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -275,7 +276,7 @@ extern StoreEntry *storeGetFirst _PARAMS((void));
 extern StoreEntry *storeGetNext _PARAMS((void));
 extern StoreEntry *storeLRU _PARAMS((void));
 extern int storeWalkThrough _PARAMS((int (*proc) _PARAMS((void)), void *data));
-extern int storePurgeOld _PARAMS((void));
+extern void storePurgeOld _PARAMS((void *unused));
 extern void storeComplete _PARAMS((StoreEntry *));
 extern void storeInit _PARAMS((void));
 extern int storeReleaseEntry _PARAMS((StoreEntry *));
@@ -299,7 +300,7 @@ extern int storePendingNClients _PARAMS((const StoreEntry *));
 extern int storeWriteCleanLog _PARAMS((void));
 extern int storeRegister _PARAMS((StoreEntry *, int, PIF, void *));
 extern int urlcmp _PARAMS((const char *, const char *));
-extern int storeMaintainSwapSpace _PARAMS((void));
+extern void storeMaintainSwapSpace _PARAMS((void *unused));
 extern void storeExpireNow _PARAMS((StoreEntry *));
 extern void storeReleaseRequest _PARAMS((StoreEntry *));
 extern void storeRotateLog _PARAMS((void));

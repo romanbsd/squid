@@ -1,6 +1,6 @@
 
 /*
- * $Id: useragent.h,v 1.1 1996/11/08 00:02:26 wessels Exp $
+ * $Id: useragent.h,v 1.2 1996/11/12 22:37:20 wessels Exp $
  *
  * AUTHOR: Joe Ramey <ramey@csc.ti.com>
  *
@@ -35,4 +35,4 @@ extern void useragentOpenLog _PARAMS((void));
 extern void useragentRotateLog _PARAMS((void));
 extern void logUserAgent _PARAMS((const char *, const char *));
 
-#endif	/* USERAGENT_H */
+#endif /* USERAGENT_H */
