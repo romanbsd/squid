@@ -1,6 +1,5 @@
-
 /*
- * $Id: snmp.c,v 1.20 1998/01/02 22:38:40 kostas Exp $
+ * $Id: snmp.c,v 1.21 1998/01/06 00:27:59 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -29,9 +28,8 @@
  *  
  */
 
-#ifdef SQUID_SNMP
-
 #include "squid.h"
+
 #include "mib_module.h"
 #include "cache_snmp.h"
 
@@ -1434,5 +1432,3 @@ snmpConnectionClose(void)
     if (theOutSnmpConnection > -1)
         commSetSelect(theOutSnmpConnection, COMM_SELECT_READ, NULL, NULL, 0);
 }
-
-#endif
