@@ -1,3 +1,7 @@
+/*
+ * $Id: squid_mib.h,v 1.2 1998/09/23 17:20:06 wessels Exp $
+ */
+
 struct MIBListEntry squidMIBList[] =
 {
     {

@@ -1,3 +1,7 @@
+/*
+ * $Id: snmp_oidlist.h,v 1.5 1998/09/23 17:20:03 wessels Exp $
+ */
+
 #ifndef _SQUID_SNMP_OID_LIST_H_
 #define _SQUID_SNMP_OID_LIST_H_
 
