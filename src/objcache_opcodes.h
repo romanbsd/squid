@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache_opcodes.h,v 1.8 1997/08/09 05:42:35 wessels Exp $
+ * $Id: objcache_opcodes.h,v 1.9 1997/08/25 03:51:51 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -33,7 +33,6 @@ static char *objcacheOpcodeStr[] =
     "NONE",
     "client_list",
     "config",
-    "config_file",
     "dnsservers",
     "filedescriptors",
     "fqdncache",
