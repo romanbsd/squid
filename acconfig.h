@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.7 1996/09/20 07:31:21 wessels Exp $ */
+/* $Id: acconfig.h,v 1.8 1996/11/15 07:50:24 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -35,3 +35,6 @@
 
 /* Define if struct ip has ip_hl member */
 #undef HAVE_IP_HL
+
+/* Define if your compiler supports prototyping */
+#undef HAVE_ANSI_PROTOTYPES
