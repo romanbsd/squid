@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.16 1996/04/08 18:28:54 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.17 1996/04/08 18:39:28 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -9,10 +9,10 @@ typedef struct _stoplist {
     struct _stoplist *next;
 } stoplist;
 
- typedef struct _intlist {
-     int i;
-     struct _intlist *next;
- } intlist;
+typedef struct _intlist {
+    int i;
+    struct _intlist *next;
+} intlist;
 
 typedef enum {
     IP_ALLOW,

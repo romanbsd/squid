@@ -1,4 +1,4 @@
-/* $Id: proto.c,v 1.15 1996/04/08 18:28:58 wessels Exp $ */
+/* $Id: proto.c,v 1.16 1996/04/08 18:39:30 wessels Exp $ */
 
 /*
  * DEBUG: Section 17          proto:
@@ -472,7 +472,7 @@ int getFromCache(fd, entry, e)
     } else if (strncasecmp(url, "wais://", 7) == 0) {
 	return waisStart(fd, url, type, request_hdr, entry);
     } else if (strncasecmp(url, "conne://", 8) == 0) {
-      return connectStart(fd, url, type, request_hdr, entry);
+	return connectStart(fd, url, type, request_hdr, entry);
     } else if (strncasecmp(url, "dht://", 6) == 0) {
 	return protoNotImplemented(fd, url, entry);
     } else {
