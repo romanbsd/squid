@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.54 1996/09/20 06:28:28 wessels Exp $
+ * $Id: cache_cf.h,v 1.55 1996/09/20 20:55:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -168,7 +168,6 @@ struct SquidConfig {
     int ageMaxDefault;
     int cleanRate;
     int maxRequestSize;
-    double hotVmFactor;
     struct {
 	u_short http;
 	u_short icp;
@@ -248,6 +247,7 @@ struct SquidConfig {
 	int low;
 	int high;
     } ipcache;
+    int maxHotvmObjSize;
 };
 
 extern struct SquidConfig Config;
