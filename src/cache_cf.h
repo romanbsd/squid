@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.78 1996/11/15 07:51:05 wessels Exp $
+ * $Id: cache_cf.h,v 1.79 1996/11/16 07:07:08 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -258,6 +258,11 @@ struct SquidConfig {
     struct sockaddr_in vizHackAddr;
     int levelOneDirs;
     int levelTwoDirs;
+    struct {
+	int high;
+	int low;
+	int ttl;
+    } Netdb;
 };
 
 extern struct SquidConfig Config;
