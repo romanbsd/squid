@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.24 1997/04/29 22:13:11 wessels Exp $
+ * $Id: store_clean.c,v 1.25 1997/05/23 19:48:08 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -69,7 +69,7 @@ storeDirClean(void *unused)
     int n = 0;
     int k = 0;
     eventAdd("storeDirClean", storeDirClean, NULL, 15);
-    if (store_rebuilding == STORE_REBUILDING_CLEAN)
+    if (store_rebuilding)
 	return;
     storeSwapSubSubDir(swap_index, p1);
     debug(36, 3, "storeDirClean: Cleaning directory %s\n", p1);
