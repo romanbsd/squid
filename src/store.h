@@ -1,5 +1,5 @@
 
-/*  $Id: store.h,v 1.23 1996/04/14 03:03:47 wessels Exp $ */
+/*  $Id: store.h,v 1.24 1996/04/15 19:20:26 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -53,6 +53,8 @@ typedef struct _MemObject {
 /* These items are mutually exclusive */
     char *e_swap_buf;
     edge *e_pings_first_miss;
+    int  w_rtt; 	/* weighted RTT in msec */
+    struct timeval start_ping;
 
 /* These items are also mutually exclusive */
     int e_swap_buf_len;

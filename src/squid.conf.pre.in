@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.14 1996/04/12 04:35:34 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.15 1996/04/15 19:20:24 wessels Exp $
 #
 
 #  TAG: ascii_port
@@ -87,6 +87,10 @@
 #
 #	    options: use 'proxy-only' to specify that objects fetched
 #		     from this cache should not be saved locally.
+#
+#		     use 'weight=n' to specify a weighted neighbor.
+#		     The weight must be an integer.  The default weight
+#		     is 1, larger weights are favored more.
 #
 #	NOTE: when using a non-Harvest neighbor/parent, there is no
 #	      difference between a neighbor and a parent.
