@@ -1,5 +1,5 @@
 /*
- * $Id: redirect.h,v 1.1 1996/07/12 17:52:42 wessels Exp $
+ * $Id: redirect.h,v 1.2 1996/08/14 21:38:30 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -31,7 +31,7 @@
 
 typedef void (*RH) _PARAMS((void *data, char *result));
 
-extern void redirectStart _PARAMS((char *url, int fd, RH, void *data));
+extern void redirectStart _PARAMS((int cfd, icpStateData *, RH, void *));
 extern void redirectOpenServers _PARAMS((void));
 extern void redirectShutdownServers _PARAMS((void));
 extern void redirectStats _PARAMS((StoreEntry *));
