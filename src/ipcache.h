@@ -1,5 +1,5 @@
 /*
- * $Id: ipcache.h,v 1.25 1996/09/20 06:28:55 wessels Exp $
+ * $Id: ipcache.h,v 1.26 1996/09/24 20:16:41 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -148,6 +148,7 @@ extern void ipcacheShutdownServers _PARAMS((void));
 extern void ipcache_init _PARAMS((void));
 extern void stat_ipcache_get _PARAMS((StoreEntry *));
 extern int ipcacheQueueDrain _PARAMS((void));
+extern void ipcacheOpenServers _PARAMS((void));
 
 extern char *dns_error_message;
 
