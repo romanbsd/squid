@@ -1,5 +1,5 @@
 /*
- * $Id: gopher.h,v 1.9 1997/02/27 02:57:08 wessels Exp $
+ * $Id: gopher.h,v 1.10 1997/05/15 23:38:00 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -105,7 +105,7 @@
 #ifndef GOPHER_H
 #define GOPHER_H
 
-extern int gopherStart _PARAMS((StoreEntry *));
+extern void gopherStart _PARAMS((StoreEntry *));
 extern int gopherCachable _PARAMS((const char *));
 
 #endif /* GOPHER_H */
