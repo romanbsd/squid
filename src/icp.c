@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.179 1996/11/18 18:22:03 wessels Exp $
+ * $Id: icp.c,v 1.180 1996/11/18 18:24:57 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1679,18 +1679,7 @@ parseHttpRequest(icpStateData * icpState)
 }
 
 #define ASCII_INBUF_BLOCKSIZE 4096
-/*
- * asciiProcessInput()
- * 
- * Handler set by
- *   asciiHandleConn()
- * Called by
- *   comm_select() when data has been read
- * Calls
- *   parseAsciiUrl()
- *   icpProcessRequest()
- *   icpSendERROR()
- */
+
 static void
 asciiProcessInput(int fd, char *buf, int size, int flag, void *data)
 {
