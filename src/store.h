@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.41 1996/09/04 23:42:03 wessels Exp $
+ * $Id: store.h,v 1.42 1996/09/05 19:03:01 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -119,6 +119,7 @@
  * KEY_CHANGE           If the key for this URL has been changed
  */
 
+#define ENTRY_NEGCACHED		(1<<14)
 #define HIERARCHICAL 		(1<<13)		/* can we query neighbors? */
 #define KEY_PRIVATE 		(1<<12)		/* is the key currently private? */
 #define ENTRY_DISPATCHED 	(1<<11)
@@ -314,6 +315,7 @@ extern unsigned int getKeyCounter _PARAMS((void));
 extern int storeGetLowestReaderOffset _PARAMS((StoreEntry *));
 extern void storeCloseLog _PARAMS((void));
 extern void storeConfigure _PARAMS((void));
+extern void storeNegativeCache _PARAMS((StoreEntry *));
 
 #if defined(__STRICT_ANSI__)
 extern void storeAppendPrintf _PARAMS((StoreEntry *, char *,...));

@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.45 1996/08/29 16:55:47 wessels Exp $
+ * $Id: cache_cf.h,v 1.46 1996/09/05 19:02:53 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -157,6 +157,7 @@ struct SquidConfig {
 	int pct;
 	int max;
     } quickAbort;
+    int expireAge;
     int negativeTtl;
     int negativeDnsTtl;
     int positiveDnsTtl;
