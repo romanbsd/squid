@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.29 1999/01/21 21:12:59 wessels Exp $
+ * $Id: async_io.c,v 1.30 1999/01/28 23:57:44 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -367,7 +367,6 @@ aioStats(StoreEntry * sentry)
     storeAppendPrintf(sentry, "stat\t%d\n", aio_counts.stat);
     storeAppendPrintf(sentry, "unlink\t%d\n", aio_counts.unlink);
     storeAppendPrintf(sentry, "check_callback\t%d\n", aio_counts.check_callback);
-    storeAppendPrintf(sentry, "\noutunlink\t%d\n", outunlink);
 }
 
 /* Flush all pending I/O */
