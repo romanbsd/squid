@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.26 1997/04/30 18:32:22 wessels Exp $
+ * $Id: config.h.in,v 1.27 1997/06/04 04:14:11 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -144,6 +144,12 @@
 #define SQUID_NONBLOCK O_NONBLOCK
 #else
 #define SQUID_NONBLOCK O_NDELAY
+#endif
+
+/* DW's experience is that poll(2) doesn't work well on HP-UX */
+#if defined(_SQUID_HPUX_)
+#undef HAVE_POLL
+#define HAVE_POLL 0
 #endif
 
 #endif /* _CONFIG_H_ */
