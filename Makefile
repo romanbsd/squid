@@ -1,6 +1,6 @@
 # Makefile for SQUID Cache
 #
-# $Id: Makefile,v 1.1 1996/02/22 07:38:06 wessels Exp $
+# $Id: Makefile,v 1.2 1996/03/25 19:43:40 wessels Exp $
 #
 
 prefix=/usr/local/squid
@@ -23,4 +23,4 @@ dosquid:
 makefile: makefile.in Makefile
 	@echo Running configure script to generate makefile
 	@echo
-	@sh configure --prefix=${prefix} --exec_prefix=${exec_prefix}
+	./configure --prefix=${prefix} --exec_prefix=${exec_prefix}
