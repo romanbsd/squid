@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.25 1997/03/04 05:16:22 wessels Exp $
+ * $Id: config.h.in,v 1.26 1997/04/30 18:32:22 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -138,6 +138,12 @@
 #define xmemcpy(d,s,n) bcopy((s),(d),(n))
 #else
 #define xmemcpy(d,s,n) memmove((d),(s),(n))
+#endif
+
+#if defined(O_NONBLOCK) && !defined(_SQUID_SUNOS_) && !defined(_SQUID_SOLARIS_)
+#define SQUID_NONBLOCK O_NONBLOCK
+#else
+#define SQUID_NONBLOCK O_NDELAY
 #endif
 
 #endif /* _CONFIG_H_ */
