@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.23 1996/04/11 23:51:58 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.24 1996/04/12 04:34:16 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -45,6 +45,7 @@ extern ip_acl *accel_ip_acl;
 extern ip_acl *manager_ip_acl;
 extern char config_input_line[];
 extern int config_lineno;
+extern int DnsPositiveTtl;
 
 
 /* cache_cf.c */

@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.13 1996/04/11 23:51:59 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.14 1996/04/12 04:35:34 wessels Exp $
 #
 
 #  TAG: ascii_port
@@ -453,6 +453,13 @@ cache_dns_program @prefix@/bin/dnsserver
 #	for details.
 #
 #negative_ttl 5
+
+#
+#  TAG: positive_dns_ttl (in minutes)         
+#	Time-to-Live (TTL) for positive caching of successful DNS lookups.
+#	Default is 6 hours (360 minutes).
+#
+#positive_dns_ttl 360
 
 #
 #  TAG: negative_dns_ttl (in minutes)         
