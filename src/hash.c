@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.42 1998/03/24 17:01:34 wessels Exp $
+ * $Id: hash.c,v 1.43 1998/03/24 17:29:46 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -393,6 +393,41 @@ hashFreeMemory(hash_table * hid)
 {
     safe_free(hid->buckets);
     safe_free(hid);
+}
+
+static int hash_primes[] =
+{
+    103,
+    229,
+    467,
+    977,
+    1979,
+    4019,
+    6037,
+    7951,
+    12149,
+    16231,
+    33493,
+    65357
+};
+
+int
+hashPrime(int n)
+{
+    int I = sizeof(hash_primes) / sizeof(int);
+    int i;
+    int best_prime = hash_primes[0];
+    double min = fabs(log(n) - log(hash_primes[0]));
+    double d;
+    for (i = 0; i < I; i++) {
+	d = fabs(log(n) - log(hash_primes[i]));
+	if (d > min)
+	    continue;
+	min = d;
+	best_prime = hash_primes[i];
+    }
+    debug(0, 5) ("hashPrime: returning %d for %d\n", best_prime, n);
+    return best_prime;
 }
 
 
