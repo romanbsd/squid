@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.h,v 1.14 1997/02/26 19:46:09 wessels Exp $
+ * $Id: async_io.h,v 1.15 1997/05/15 23:30:34 wessels Exp $
  *
  * AUTHOR: Pete Bentley <pete@demon.net>
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -29,11 +29,13 @@
  *  
  */
 
+typedef void AIOCB _PARAMS((void *, int aio_return, int aio_errno));
+
 extern void aioCancel _PARAMS((int));
-extern void aioOpen _PARAMS((const char *, int, mode_t, void (*)(), void *));
+extern void aioOpen _PARAMS((const char *, int, mode_t, AIOCB *, void *));
 extern void aioClose _PARAMS((int));
-extern void aioWrite _PARAMS((int, char *, int, void (*)(), void *));
-extern void aioRead _PARAMS((int, char *, int, void (*)(), void *));
-extern void aioStat _PARAMS((char *, struct stat *, void (*)(), void *));
-extern void aioUnlink _PARAMS((const char *, void (*)(), void *));
+extern void aioWrite _PARAMS((int, char *, int, AIOCB *, void *));
+extern void aioRead _PARAMS((int, char *, int, AIOCB *, void *));
+extern void aioStat _PARAMS((char *, struct stat *, AIOCB *, void *));
+extern void aioUnlink _PARAMS((const char *, AIOCB *, void *));
 extern void aioCheckCallbacks _PARAMS((void));
