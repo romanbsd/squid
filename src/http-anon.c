@@ -1,6 +1,6 @@
 
 /*
- * $Id: http-anon.c,v 1.8 1997/12/02 00:17:36 wessels Exp $
+ * $Id: http-anon.c,v 1.9 1997/12/30 02:40:53 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Lutz Donnerhacke <lutz@iks-jena.de>
@@ -77,6 +77,7 @@ static struct http_anon_struct_header http_anon_allowed_header[] =
     {"GET ", 4},
     {"POST ", 5},
     {"HEAD ", 5},
+    {"TRACE ", 6},
     {"Allow:", 6},
     {"Authorization:", 14},
     {"Cache-control:", 14},
