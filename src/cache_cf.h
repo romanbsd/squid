@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.27 1996/04/16 05:48:58 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.28 1996/04/16 20:59:42 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -125,5 +125,6 @@ extern char w_space[];
 extern intlist *connect_port_list;
 extern char *config_file;	/* the whole thing */
 extern char *cfg_filename;	/* Only the tail component of the path */
+extern char *DefaultSwapDir;	/* argh */
 
 #endif /* ndef  _CACHE_CONFIG_H_ */
