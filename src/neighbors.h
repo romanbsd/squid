@@ -1,5 +1,6 @@
+
 /*
- * $Id: neighbors.h,v 1.37 1997/02/07 04:56:18 wessels Exp $
+ * $Id: neighbors.h,v 1.38 1997/02/07 04:57:16 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
