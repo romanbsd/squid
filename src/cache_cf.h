@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.13 1996/04/05 21:51:45 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.14 1996/04/06 00:53:04 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -69,6 +69,7 @@ extern int getCacheSwapMax _PARAMS((void));
 extern int getCleanRate _PARAMS((void));
 extern int getClientLifetime _PARAMS((void));
 extern int getDnSChildren _PARAMS((void));
+extern int getMaxRequestSize _PARAMS((void));
 extern int getFtpMax _PARAMS((void));
 extern int getFtpTTL _PARAMS((void));
 extern int getGopherMax _PARAMS((void));
