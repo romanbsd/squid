@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.23 1996/08/30 22:44:13 wessels Exp $
+ * $Id: stat.h,v 1.24 1996/09/05 22:16:01 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -133,7 +133,8 @@ typedef struct _proto_stat {
 typedef struct _meta_data_stat {
     int hot_vm;
     int store_entries;
-    int store_in_mem_objects;
+    int mem_obj_count;
+    int mem_data_count;
     int ipcache_count;
     int fqdncache_count;
     int hash_links;
