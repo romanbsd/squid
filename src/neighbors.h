@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.h,v 1.40 1997/02/25 19:18:21 wessels Exp $
+ * $Id: neighbors.h,v 1.41 1997/02/26 20:49:11 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -119,8 +119,6 @@ typedef enum {
     HIER_FIRSTUP_PARENT,
     HIER_NO_PARENT_DIRECT,
     HIER_FIRST_PARENT_MISS,
-    HIER_LOCAL_IP_DIRECT,
-    HIER_FIREWALL_IP_DIRECT,
     HIER_NO_DIRECT_FAIL,
     HIER_SOURCE_FASTEST,
     HIER_SIBLING_UDP_HIT_OBJ,

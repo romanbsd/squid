@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.31 1997/02/26 19:46:18 wessels Exp $
+ * $Id: pass.c,v 1.32 1997/02/26 20:49:12 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -490,18 +490,10 @@ passStart(int fd,
 	COMM_SELECT_READ,
 	NULL,
 	NULL, 0);
-    if (Config.firewall_ip_list) {
-	/* must look up IP address */
-	ipcache_nbgethostbyname(passState->host,
-	    passState->server.fd,
-	    passSelectNeighbor,
-	    passState);
-    } else {
-	/* can decide now */
-	passSelectNeighbor(passState->server.fd,
-	    NULL,
-	    (void *) passState);
-    }
+    ipcache_nbgethostbyname(passState->host,
+        passState->server.fd,
+        passSelectNeighbor,
+        passState);
     return COMM_OK;
 }
 

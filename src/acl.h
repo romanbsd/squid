@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.35 1997/02/20 21:03:10 wessels Exp $
+ * $Id: acl.h,v 1.36 1997/02/26 20:49:06 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -150,6 +150,3 @@ extern struct _acl_access *ICPAccessList;
 extern struct _acl_deny_info_list *DenyInfoList;
 extern const char *AclMatchedName;
 
-#if DELAY_HACK
-extern struct _acl_access *DelayAccessList;
-#endif
