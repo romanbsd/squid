@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.134 1997/11/20 06:25:29 wessels Exp $
+ * $Id: proto.c,v 1.135 1997/11/20 08:19:54 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -146,7 +146,6 @@ protoDispatchFail(peer * peernotused, void *data)
 static void
 protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
 {
-    ErrorState *err;
     debug(17, 5) ("protoStart: FD %d: Fetching '%s %s' from %s\n",
 	fd,
 	RequestMethodStr[request->method],
