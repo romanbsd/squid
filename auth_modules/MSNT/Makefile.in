@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.3 2000/07/12 17:42:17 wessels Exp $
+#  $Id: Makefile.in,v 1.4 2000/11/03 18:08:02 wessels Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -50,8 +50,9 @@ CFLAGS 		= $(AC_CFLAGS) $(INCLUDE) $(DEFINES)
 AUTH_LIBS	= $(XTRA_LIBS)
 
 LIBPROGS        = $(AUTH_EXE)
-OBJS	 	= md4.o rfcnb-io.o rfcnb-util.o session.o smbauth.o smbdes.o \
-		  smbencrypt.o smblib-util.o smblib.o valid.o denyusers.o
+OBJS            = md4.o rfcnb-io.o rfcnb-util.o session.o msntauth.o \
+		  smbdes.o smbencrypt.o smblib-util.o smblib.o \
+		  valid.o denyusers.o allowusers.o confload.o
 
 all:    $(AUTH_EXE)
 
