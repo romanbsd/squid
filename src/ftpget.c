@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.71 1996/12/20 23:45:41 wessels Exp $
+ * $Id: ftpget.c,v 1.72 1997/01/02 07:20:29 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2569,7 +2569,7 @@ main(int argc, char *argv[])
     const struct hostent *hp = NULL;
     int c;
 
-    inaddr_none = inet_addr("X");
+    inaddr_none = inet_addr("255.255.255.255");
     fullprogname = xstrdup(argv[0]);
     if ((t = strrchr(argv[0], '/'))) {
 	progname = xstrdup(t + 1);
