@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.4 1996/07/09 03:41:03 wessels Exp $ */
+/* $Id: acconfig.h,v 1.5 1996/07/16 01:47:18 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -26,3 +26,6 @@
 
 /* If we need to declare sys_errlist[] as external */
 #undef NEED_SYS_ERRLIST
+
+/* If gettimeofday is known to take only one argument */
+#undef GETTIMEOFDAY_NO_TZP
