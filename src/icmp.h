@@ -1,6 +1,6 @@
 
 /*
- * $Id: icmp.h,v 1.6 1996/10/15 04:57:53 wessels Exp $
+ * $Id: icmp.h,v 1.7 1996/11/04 18:12:45 wessels Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -37,7 +37,7 @@ extern int icmp_sock;
 extern void icmpOpen _PARAMS((void));
 extern void icmpClose _PARAMS((void));
 extern void icmpPing _PARAMS((struct in_addr to));
-extern void icmpSourcePing _PARAMS((struct in_addr to, icp_common_t *, char *url));
-extern void icmpDomainPing _PARAMS((struct in_addr to, char *domain));
+extern void icmpSourcePing _PARAMS((struct in_addr to, const icp_common_t *, const char *url));
+extern void icmpDomainPing _PARAMS((struct in_addr to, const char *domain));
 
 #endif /* _ICMP_H_ */

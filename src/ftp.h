@@ -1,5 +1,5 @@
 /*
- * $Id: ftp.h,v 1.12 1996/09/20 06:28:44 wessels Exp $
+ * $Id: ftp.h,v 1.13 1996/11/04 18:12:36 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -102,6 +102,11 @@
  *   re-implementations of code complying to this set of standards.  
  */
 
-extern int ftpStart _PARAMS((int unusedfd, char *url, request_t * req, StoreEntry * entry));
+#ifndef FTP_H
+#define FTP_H
+
+extern int ftpStart _PARAMS((int unusedfd, const char *url, request_t *req, StoreEntry *entry));
 extern int ftpInitialize _PARAMS((void));
 extern void ftpServerClose _PARAMS((void));
+
+#endif /* FTP_H */

@@ -1,5 +1,5 @@
 /*
- * $Id: fdstat.c,v 1.24 1996/09/26 19:19:44 wessels Exp $
+ * $Id: fdstat.c,v 1.25 1996/11/04 18:12:30 wessels Exp $
  *
  * DEBUG: section 7     File Descriptor Status
  * AUTHOR: Harvest Derived
@@ -127,7 +127,7 @@ fdstatGetType(int fd)
     return fd_stat_tab[fd].type;
 }
 
-char *fdstatTypeStr[] =
+const char *fdstatTypeStr[] =
 {
     "None",
     "Log",

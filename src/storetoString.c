@@ -1,5 +1,5 @@
 /*
- * $Id: storetoString.c,v 1.18 1996/10/17 11:14:51 wessels Exp $
+ * $Id: storetoString.c,v 1.19 1996/11/04 18:13:11 wessels Exp $
  *
  * DEBUG: section 0     Store Entry Debugging
  * AUTHOR: Harvest Derived
@@ -107,8 +107,8 @@
 
 /* convert store entry content to string. Use for debugging */
 /* return pointer to static buffer containing string */
-char *
-storeToString(StoreEntry * e)
+const char *
+storeToString(const StoreEntry *e)
 {
     LOCAL_ARRAY(char, stsbuf, 16 << 10);	/* have to make this really big */
     LOCAL_ARRAY(char, tmpbuf, 8 << 10);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.16 1996/10/13 09:32:41 wessels Exp $
+ * $Id: store_clean.c,v 1.17 1996/11/04 18:13:10 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -48,10 +48,10 @@
 #endif /* HAVE_NDIR_H */
 #endif /* HAVE_DIRENT_H */
 
-static int rev_int_sort _PARAMS((int *, int *));
+static int rev_int_sort _PARAMS((const int *, const int *));
 
 static int
-rev_int_sort(int *i1, int *i2)
+rev_int_sort(const int *i1, const int *i2)
 {
     return *i2 - *i1;
 }

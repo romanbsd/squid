@@ -1,6 +1,6 @@
 
 /*
- * $Id: stack.c,v 1.11 1996/09/26 19:54:46 wessels Exp $
+ * $Id: stack.c,v 1.12 1996/11/04 18:13:03 wessels Exp $
  *
  * DEBUG: section 0     Stack Primitives
  * AUTHOR: Harvest Derived
@@ -161,7 +161,7 @@ push(Stack * stack, void *data)
 --
 --------------------------------------------------------------------------*/
 int
-empty_stack(Stack * stack)
+empty_stack(const Stack *stack)
 {
     return stack->top == stack->base;
 }
@@ -177,7 +177,7 @@ empty_stack(Stack * stack)
 --
 --------------------------------------------------------------------------*/
 int
-full_stack(Stack * stack)
+full_stack(const Stack *stack)
 {
     int full = (current_stacksize(stack) == stack->stack_size);
     return (full);

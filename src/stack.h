@@ -1,6 +1,6 @@
 
 /*
- * $Id: stack.h,v 1.8 1996/09/26 19:54:46 wessels Exp $
+ * $Id: stack.h,v 1.9 1996/11/04 18:13:04 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -115,8 +115,8 @@ typedef struct {
 } Stack;
 
 extern void *pop _PARAMS((Stack *));
-extern int empty_stack _PARAMS((Stack *));
-extern int full_stack _PARAMS((Stack *));
+extern int empty_stack _PARAMS((const Stack *));
+extern int full_stack _PARAMS((const Stack *));
 extern void push _PARAMS((Stack *, void *));
 extern void init_stack _PARAMS((Stack *, int));
 extern void stackFreeMemory _PARAMS((Stack *));
