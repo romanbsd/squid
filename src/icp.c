@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.89 1996/08/19 22:46:35 wessels Exp $
+ * $Id: icp.c,v 1.90 1996/08/21 20:11:35 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1155,6 +1155,8 @@ static void icpHandleIcpV2(fd, from, buf, len)
 	    debug(12, 3, "icpHandleIcpV2: Ignoring %s for Entry without locks.\n",
 		IcpOpcodeStr[header.opcode]);
 	} else {
+	    if (entry->swap_status != NO_SWAP)
+		fatal_dump("icpHandleIcpV2: bad swap_status");
 	    neighborsUdpAck(fd,
 		url,
 		&header,
