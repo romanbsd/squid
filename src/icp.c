@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.307 1997/10/17 20:20:53 wessels Exp $
+ * $Id: icp.c,v 1.308 1997/10/17 23:31:11 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -160,8 +160,6 @@ static void icpProcessMISS _PARAMS((int, clientHttpRequest *));
 static void clientAppendReplyHeader _PARAMS((char *, const char *, size_t *, size_t));
 size_t clientBuildReplyHeader _PARAMS((clientHttpRequest *, char *, size_t *, char *, size_t));
 static clientHttpRequest *parseHttpRequest _PARAMS((ConnStateData *, method_t *, int *, char **, size_t *));
-
-static void clientCacheHit(void *data, char *buf, ssize_t size);
 
 /*
  * This function is designed to serve a fairly specific purpose.
@@ -546,7 +544,7 @@ clientBuildReplyHeader(clientHttpRequest * http,
     return len;
 }
 
-static void
+void
 clientCacheHit(void *data, char *buf, ssize_t size)
 {
     clientHttpRequest *http = data;
