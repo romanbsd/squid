@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.61 1996/11/28 07:26:27 wessels Exp $
+ * $Id: icp.h,v 1.62 1997/01/18 06:03:27 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -177,7 +177,8 @@ typedef struct iwd {
 #endif				/* LOG_FULL_HEADERS */
     StoreEntry *entry;
     StoreEntry *old_entry;
-    long offset;
+    int in_offset;
+    int out_offset;
     log_type log_type;
     int http_code;
     struct sockaddr_in peer;
