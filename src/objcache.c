@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.82 1998/02/12 23:52:14 wessels Exp $
+ * $Id: objcache.c,v 1.83 1998/02/19 21:04:55 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -112,7 +112,6 @@
 typedef struct objcache_ds {
     StoreEntry *entry;
     char passwd[OBJCACHE_MAX_PASSWD_SZ + 1];
-    int reply_fd;
     objcache_op op;
 } ObjectCacheData;
 
@@ -289,7 +288,6 @@ objcacheStart(int fd, StoreEntry * entry)
 	entry->expires = squid_curtime;
 	return;
     }
-    data->reply_fd = fd;
     data->entry = entry;
     entry->expires = squid_curtime;
     debug(16, 1) ("CACHEMGR: %s requesting '%s'\n",
