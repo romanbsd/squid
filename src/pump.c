@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.66 1999/01/19 02:37:51 wessels Exp $
+ * $Id: pump.c,v 1.67 1999/01/19 18:08:35 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -372,7 +372,7 @@ pumpFree(int fd, void *data)
 	p->request_entry = NULL;
     }
     if (rep != NULL) {
-	debug(0, 0) ("XXX did the server-side FD (%d) get closed?\n", p->s_fd);
+	debug(61, 3) ("pumpFree: did the server-side FD (%d) get closed?\n", p->s_fd);
 	storeUnlockObject(rep);
 	p->reply_entry = NULL;
     }
