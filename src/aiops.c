@@ -1,6 +1,6 @@
 
 /*
- * $Id: aiops.c,v 1.7 1998/02/02 21:16:16 wessels Exp $
+ * $Id: aiops.c,v 1.8 1998/02/17 23:05:38 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -735,7 +735,7 @@ aio_poll_done()
 	    threadp->thread,
 	    threadp->donereq->request_type,
 	    threadp->status);
-	if (threadp->status == _THREAD_WAITING)
+	if (!threadp->req)
 	    break;
 	prev = threadp;
 	threadp = threadp->next;
