@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.13 1997/07/19 04:59:25 wessels Exp $
+# $Id: makefile.in,v 1.14 1997/07/28 06:42:33 wessels Exp $
 #
 
 srcdir		= @srcdir@
@@ -14,7 +14,7 @@ SHELL		= /bin/sh
 prefix		= @prefix@
 exec_prefix	= @exec_prefix@
 
-SUBDIRS		= lib scripts src icons
+SUBDIRS		= lib scripts src icons errors
 
 noargs: all
 
