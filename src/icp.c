@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.46 1996/04/15 03:59:26 wessels Exp $ */
+/* $Id: icp.c,v 1.47 1996/04/15 14:50:59 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -1302,7 +1302,7 @@ static int check_valid_url(fd, astm)
 	port = atoi(t + 1);
     }
     portbuf[0] = '\0';
-    if (port != urlDefaultPort(protocol))
+    if (port > 0 && port != urlDefaultPort(protocol))
 	sprintf(portbuf, ":%d", port);
 
     if (!aclCheck(HTTPAccessList,
