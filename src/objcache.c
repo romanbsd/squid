@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.67 1997/10/25 17:22:52 wessels Exp $
+ * $Id: objcache.c,v 1.68 1997/10/27 20:05:12 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -271,6 +271,7 @@ objcacheStart(int fd, StoreEntry * entry)
     debug(16, 3) ("objectcacheStart: '%s'\n", entry->url);
     if ((data = objcache_url_parser(entry->url)) == NULL) {
 	err = xcalloc(1, sizeof(ErrorState));
+	err->url = xstrdup(entry->url);
 	err->type = ERR_INVALID_REQ;
 	err->http_status = HTTP_NOT_FOUND;
 	errorAppendEntry(entry, err);
