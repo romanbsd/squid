@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.10 1998/03/20 18:06:40 rousskov Exp $
+ * $Id: MemPool.c,v 1.11 1998/03/25 06:14:23 wessels Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -251,7 +251,7 @@ void
 memPoolDescribe(const MemPool * pool)
 {
     assert(pool);
-    debug(63, 0) ("%-20s: %6d x %4d bytes = %5d KB\n",
+    debug(63, 1) ("%-20s: %6d x %4d bytes = %5d KB\n",
 	pool->label, memPoolInUseCount(pool), pool->obj_size,
 	toKB(memPoolInUseSize(pool)));
 }
