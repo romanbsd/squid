@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.58 1996/10/08 19:37:34 wessels Exp $
+ * $Id: cache_cf.h,v 1.59 1996/10/09 15:34:20 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -266,7 +266,6 @@ extern volatile int unbuffered_logs;
 extern char ForwardedBy[];
 extern int httpd_accel_mode;
 
-extern int ip_acl_match _PARAMS((struct in_addr, ip_acl *));
 extern int parseConfigFile _PARAMS((char *file_name));
 extern int setCacheSwapMax _PARAMS((int size));
 extern ip_access_type ip_access_check _PARAMS((struct in_addr, ip_acl *));

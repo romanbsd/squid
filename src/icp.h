@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.43 1996/10/08 14:48:36 wessels Exp $
+ * $Id: icp.h,v 1.44 1996/10/09 15:34:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -157,7 +157,7 @@ typedef enum {
 typedef struct wwd {
     struct sockaddr_in address;
     char *msg;
-    long len;
+    size_t len;
     struct wwd *next;
     struct timeval start;
     log_type logcode;
@@ -216,7 +216,6 @@ extern void AppendUdp _PARAMS((icpUdpData *));
 extern void icpParseRequestHeaders _PARAMS((icpStateData *));
 extern void icpDetectClientClose _PARAMS((int fd, icpStateData *));
 extern void icpProcessRequest _PARAMS((int fd, icpStateData *));
-extern void icpHandleStore _PARAMS((int, StoreEntry *, icpStateData *));
 extern int icpSendMoreData _PARAMS((int fd, icpStateData *));
 
 extern int neighbors_do_private_keys;
