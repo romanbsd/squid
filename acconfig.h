@@ -22,8 +22,8 @@
 
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
-@ TOP @
-/* $Id: acconfig.h,v 1.54 2001/04/14 00:09:55 hno Exp $ */
+@TOP@
+/* $Id: acconfig.h,v 1.55 2001/04/14 00:22:30 hno Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -327,6 +327,6 @@
 
 
 
-@BOTTOM @
+@BOTTOM@
 
 #endif /* __CONFIGURE_H__ */
