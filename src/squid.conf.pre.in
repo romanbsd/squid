@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.41 1996/09/05 19:02:58 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.42 1996/09/11 22:31:09 wessels Exp $
 #
 
 #  TAG: http_port
@@ -834,3 +834,6 @@ dns_testnames internic.net usc.edu cs.colorado.edu mit.edu yale.edu
 #	URL to your admin address, or maybe just a link to your 
 #	organizations Web page.
 #err_html_text
+
+#  TAG: deny_info
+#	deny_info URL acl1 acl2 ...

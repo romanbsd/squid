@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.h,v 1.14 1996/09/04 22:03:22 wessels Exp $
+ * $Id: errorpage.h,v 1.15 1996/09/11 22:31:06 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -33,6 +33,7 @@ extern char *squid_error_url _PARAMS((char *, int, int, char *, int, char *));
 extern char *squid_error_request _PARAMS((char *, int, char *, int));
 extern void errorInitialize _PARAMS((void));
 extern char *access_denied_msg _PARAMS((int, int, char *, char *));
+extern char *access_denied_redirect _PARAMS((int, int, char *, char *, char *));
 #if USE_PROXY_AUTH
 extern char *proxy_denied_msg _PARAMS((int, int, char *, char *));
 #endif /* USE_PROXY_AUTH */
