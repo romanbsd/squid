@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.30 1996/07/09 03:41:35 wessels Exp $
+ * $Id: proto.c,v 1.31 1996/07/09 23:00:11 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -419,7 +419,7 @@ void protoCancelTimeout(fd, entry)
 	return;
     }
     debug(17, 2, "protoCancelTimeout: FD %d <URL:%s>\n", fd, entry->url);
-    if (fdstat_type(fd) != FD_SOCKET) {
+    if (fdstatGetType(fd) != FD_SOCKET) {
 	debug(17, 0, "FD %d: Someone called protoCancelTimeout() on a non-socket\n",
 	    fd);
 	fatal_dump(NULL);
