@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.3 1996/02/29 07:23:12 wessels Exp $ */
+/* $Id: ftpget.c,v 1.4 1996/02/29 07:59:28 wessels Exp $ */
 
 /*
  *    NOTES
@@ -405,7 +405,8 @@ void timeout_handler()
     static char buf[SMALLBUFSIZ];
 
     now = time(NULL);
-    sprintf(buf, "Timeout after %d seconds.\n", now - last_alarm_set);
+    sprintf(buf, "Timeout after %d seconds.\n",
+	(int) (now - last_alarm_set));
     errorlog(buf);
     if (MainRequest == NULL)
 	exit(1);
