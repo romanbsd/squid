@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.137 1996/10/19 07:25:15 wessels Exp $
+ * $Id: icp.c,v 1.138 1996/10/19 07:56:51 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1414,7 +1414,12 @@ icpHandleUdp(int sock, void *not_used)
     commSetSelect(sock, COMM_SELECT_READ, icpHandleUdp, NULL, 0);
     from_len = sizeof(from);
     memset(&from, 0, from_len);
-    len = recvfrom(sock, buf, SQUID_UDP_SO_RCVBUF - 1, 0, &from, &from_len);
+    len = recvfrom(sock,
+	buf,
+	SQUID_UDP_SO_RCVBUF - 1,
+	0,
+	(struct sockaddr *) &from,
+	&from_len);
     if (len < 0) {
 #ifdef _SQUID_LINUX_
 	/* Some Linux systems seem to set the FD for reading and then
