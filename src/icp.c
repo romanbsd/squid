@@ -1,4 +1,4 @@
-/* $Id: icp.c,v 1.5 1996/03/23 00:03:03 wessels Exp $ */
+/* $Id: icp.c,v 1.6 1996/03/25 19:05:51 wessels Exp $ */
 
 #include "config.h"
 #include <stdlib.h>
@@ -1424,7 +1424,7 @@ void asciiProcessInput(fd, buf, size, flag, astm)
     if (parser_return_code == 1) {
 	if (check_valid_url(fd, astm) == 0) {
 	    debug(5, "Invalid URL: %s\n", astm->url);
-	    astm->buf = xstrdup(cached_error_url(astm->url, ERR_INVALID_URL));
+	    astm->buf = xstrdup(cached_error_url(astm->url, ERR_INVALID_URL, NULL));
 	    astm->ptr_to_4k_page = NULL;
 	    icpWrite(fd,
 		astm->buf,
