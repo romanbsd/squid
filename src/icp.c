@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.313 1997/10/23 16:38:12 wessels Exp $
+ * $Id: icp.c,v 1.314 1997/10/24 02:50:48 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -118,7 +118,7 @@ const char *log_tags[] =
     "TCP_IMS_HIT",
     "TCP_IMS_MISS",
     "TCP_SWAPFAIL_MISS",
-    "TCP_DENIED",
+    "TCP_NEGATIVE_HIT",
     "UDP_HIT",
     "UDP_HIT_OBJ",
     "UDP_MISS",
