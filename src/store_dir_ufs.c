@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.4 1999/05/22 07:42:12 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.5 1999/05/23 07:34:31 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -177,12 +177,24 @@ storeUfsCreateSwapDirectories(void)
 {
     int i;
     const char *path = NULL;
+    pid_t pid;
+    int status;
     for (i = 0; i < Config.cacheSwap.n_configured; i++) {
+	if (fork())
+	    continue;
 	path = Config.cacheSwap.swapDirs[i].path;
 	debug(47, 3) ("Creating swap space in %s\n", path);
 	storeUfsCreateDirectory(path, 0);
 	storeUfsCreateSwapSubDirs(i);
+	exit(0);
     }
+    do {
+#ifdef _SQUID_NEXT_
+	pid = wait3(&status, WNOHANG, NULL);
+#else
+	pid = waitpid(-1, &status, 0);
+#endif
+    } while (pid > 0 || (pid < 0 && errno == EINTR));
 }
 
 void
