@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.279 1997/06/21 02:38:07 wessels Exp $
+ * $Id: icp.c,v 1.280 1997/06/21 04:55:14 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -2006,6 +2006,8 @@ requestTimeout(int fd, void *data)
 	    "Request Timeout.\n",
 	    NULL,
 	    504);
+	/* if we don't close() here, we still need a timeout handler! */
+        commSetTimeout(fd, 30, requestTimeout, conn);
     }
 }
 
