@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.20 1996/11/14 18:38:50 wessels Exp $
+ * $Id: store_clean.c,v 1.21 1997/01/07 03:37:44 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -73,8 +73,8 @@ storeDirClean(void *unused)
 	return;
     sprintf(p1, "%s/%02X/%02X",
 	swappath(swap_index),
-	(swap_index / ncache_dirs) % SWAP_DIRECTORIES_L1,
-	(swap_index / ncache_dirs) / SWAP_DIRECTORIES_L1 % SWAP_DIRECTORIES_L2);
+	(swap_index / ncache_dirs) % Config.levelOneDirs,
+	(swap_index / ncache_dirs) / Config.levelOneDirs % Config.levelTwoDirs);
     debug(36, 3, "storeDirClean: Cleaning directory %s\n", p1);
     dp = opendir(p1);
     if (dp == NULL) {
