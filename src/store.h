@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.89 1997/04/29 22:13:10 wessels Exp $
+ * $Id: store.h,v 1.90 1997/05/02 21:34:16 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -187,10 +187,10 @@ enum {
 };
 
 enum {
+    PING_NONE,
     PING_WAITING,
     PING_TIMEOUT,
-    PING_DONE,
-    PING_NONE
+    PING_DONE
 };
 
 enum {
