@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.36 1999/01/13 22:24:38 wessels Exp $ */
+/* $Id: acconfig.h,v 1.37 1999/01/24 04:07:14 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -217,3 +217,8 @@
  * If _res structure has ns_list member
  */
 #undef HAVE_RES_NS_LIST
+
+/*
+ * Compile in support for Ident (RFC 931) lookups?  Enabled by default.
+ */
+#define USE_IDENT 1
