@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.14 1996/11/24 04:19:08 wessels Exp $
+ * $Id: async_io.c,v 1.15 1996/12/02 05:55:05 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -239,7 +239,7 @@ aioExamine(void)
     void *data;
     struct aiocb *aio;
 
-    for (fd = 0; fd < FD_SETSIZE; fd++) {	/* XXX: only go up to max used fd */
+    for (fd = 0; fd < SQUID_MAXFD; fd++) {	/* XXX: only go up to max used fd */
 	if (fdstatGetType(fd) != FD_FILE)
 	    continue;
 	/* Not in progress */
