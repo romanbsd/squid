@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.16 1998/07/20 17:19:17 wessels Exp $
+ * $Id: aiops.c,v 1.17 1998/07/20 18:54:21 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -39,7 +39,9 @@
 #include	<dirent.h>
 #include	<signal.h>
 
+#ifndef NUMTHREADS
 #define	NUMTHREADS		16
+#endif
 #define RIDICULOUS_LENGTH	4096
 
 enum _aio_thread_status {
