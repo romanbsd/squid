@@ -1,4 +1,4 @@
-/* $Id: stat.h,v 1.7 1996/04/11 22:53:41 wessels Exp $ */
+/* $Id: stat.h,v 1.8 1996/04/12 21:21:17 wessels Exp $ */
 
 #ifndef STAT_H
 #define STAT_H
@@ -127,6 +127,7 @@ struct _cacheinfo {
 };
 
 extern cacheinfo *CacheInfo;
+extern int nconn;
 
 extern void stat_init _PARAMS((cacheinfo **, char *));
 extern void stat_rotate_log _PARAMS((void));
