@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.19 1998/02/21 00:56:30 rousskov Exp $ */
+/* $Id: acconfig.h,v 1.20 1998/02/27 05:51:12 kostas Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -45,6 +45,9 @@
 
 /* Define to do simple malloc debugging */
 #undef XMALLOC_DEBUG
+
+/* Define for log file trace of mem alloc/free */
+#undef MEM_GEN_TRACE
 
 /* Define to have malloc statistics */
 #undef XMALLOC_STATISTICS
