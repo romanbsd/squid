@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.61 1996/10/28 07:44:29 wessels Exp $
+ * $Id: store.h,v 1.62 1996/11/01 21:25:10 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -106,7 +106,6 @@
 #ifndef _STORE_H_
 #define _STORE_H_
 
-#define MAX_FILE_NAME_LEN 	256
 #define MIN_PENDING 		1
 #define MIN_CLIENT 		1
 

@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.63 1996/10/30 06:00:09 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.64 1996/11/01 21:25:05 wessels Exp $
 #
 
 #  TAG: http_port
@@ -367,6 +367,15 @@ cache_stoplist cgi-bin ?
 #	objects are ejected from the cache, and which objects are
 #	saved and for how long.  To disable, enter "none".
 #cache_store_log @DEFAULT_STORE_LOG@
+
+#  TAG:	cache_swap_log
+#	Location for the cache "swap log."  This log file holds the
+#	metadata of objects saved on disk.  It is used to rebuild the
+#	cache during startup.  Normally this file resides in the first
+#	'cache_dir' directory, but you may specify an alternate
+#	pathname here.  Note you must give a full filename, not just
+#	a directory.
+#cache_swap_log
 
 #  TAG: emulate_httpd_log
 #	The Cache can emulate the log file format which many 'httpd'
