@@ -1,5 +1,5 @@
 /*
- * $Id: host_cache.c,v 1.6 1996/07/09 03:41:11 wessels Exp $
+ * $Id: host_cache.c,v 1.7 1996/07/22 16:40:58 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -159,7 +159,6 @@ static int hash_index(buf)
 Host *get_host _PARAMS((char *hostname));
 static void host_cache_init _PARAMS((void));
 static Host *new_host _PARAMS((char *hostname));
-static void Tolower _PARAMS((char *));
 void dump_host_cache _PARAMS((int, int));
 static int cache_inited = 0;
 
@@ -294,15 +293,3 @@ void dump_host_cache(d_sec, d_lvl)
 }
 #endif /* UNUSED_CODE */
 
-
-/* ========== MISC UTIL FUNCS ============================================== */
-
-static void Tolower(q)
-     char *q;
-{
-    char *s = q;
-    while (*s) {
-	*s = tolower((unsigned char) *s);
-	s++;
-    }
-}
