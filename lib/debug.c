@@ -1,5 +1,5 @@
 /*
- * $Id: debug.c,v 1.4 1996/07/09 03:41:10 wessels Exp $
+ * $Id: debug.c,v 1.5 1996/09/12 03:24:00 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -153,7 +153,7 @@ static void debug_enable(s, l)
 /*
  *  debug_disable() - Disables debugging output for section s, level l.
  */
-void debug_disable(s)
+static void debug_disable(s)
      int s;
 {
     if (s > MAX_DEBUG_LEVELS || s < 0)

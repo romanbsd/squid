@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.13 1996/08/19 23:09:45 wessels Exp $
+ * $Id: config.h.in,v 1.14 1996/09/12 03:23:58 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -74,6 +74,9 @@
 #elif defined(__hpux)                           /* HP-UX - SysV-like? */
 #define _SQUID_HPUX_
 #define _SQUID_SYSV_
+#ifdef __STDC__
+#define __STRICT_ANSI__
+#endif
 #elif defined(__osf__)                          /* OSF/1 */
 #define _SQUID_OSF_
 #elif defined(__ultrix)				/* Ultrix */
