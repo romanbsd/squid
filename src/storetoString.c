@@ -1,5 +1,5 @@
 /*
- * $Id: storetoString.c,v 1.23 1996/11/23 07:07:55 wessels Exp $
+ * $Id: storetoString.c,v 1.24 1997/02/05 04:53:33 wessels Exp $
  *
  * DEBUG: section 0     Store Entry Debugging
  * AUTHOR: Harvest Derived
@@ -234,9 +234,6 @@ storeToString(const StoreEntry * e)
     strcat(stsbuf, tmpbuf);
     sprintf(tmpbuf, "[pings]: npings = %d  nacks = %d\n",
 	mem->e_pings_n_pings, mem->e_pings_n_acks);
-    strcat(stsbuf, tmpbuf);
-
-    sprintf(tmpbuf, "SwapAccess: %d\n", mem->e_swap_access);
     strcat(stsbuf, tmpbuf);
 
     if (!mem->e_abort_msg) {

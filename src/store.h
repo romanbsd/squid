@@ -2,7 +2,7 @@
 
 
 /*
- * $Id: store.h,v 1.79 1997/01/31 22:30:38 wessels Exp $
+ * $Id: store.h,v 1.80 1997/02/05 04:54:33 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -177,7 +177,6 @@ struct _MemObject {
     /* move here for alignment of memory */
     unsigned char pending_list_size;
 
-    int e_swap_access;
     char *e_abort_msg;
     log_type abort_code;
 

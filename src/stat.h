@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.44 1996/12/03 20:27:00 wessels Exp $
+ * $Id: stat.h,v 1.45 1997/02/05 04:53:32 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -223,7 +223,6 @@ struct _cacheinfo {
     /* stat table and data */
     char logfilename[SQUID_MAXPATHLEN];		/* logfile name */
     int logfile_fd;		/* logfile fd */
-    int logfile_access;		/* logfile access code */
     /* logfile status {enable, disable} */
     int logfile_status;
 
