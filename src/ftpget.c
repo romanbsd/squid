@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.54 1996/10/18 20:36:23 wessels Exp $
+ * $Id: ftpget.c,v 1.55 1996/10/19 00:13:49 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2593,7 +2593,7 @@ main(int argc, char *argv[])
 	if (!strcmp(*argv, "-"))
 	    break;
 	if (!strncmp(*argv, "-D", 2)) {
-	    _db_init(NULL, (*argv)+2);
+	    _db_init(NULL, (*argv) + 2);
 	    continue;
 	} else if (!strcmp(*argv, "-htmlify") || !strcmp(*argv, "-httpify") ||
 	    !strcmp(*argv, "-h")) {
