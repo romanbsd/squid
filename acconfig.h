@@ -23,7 +23,12 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.59 2001/09/25 23:45:12 robertc Exp $ */
+/* $Id: acconfig.h,v 1.60 2001/10/23 12:14:46 hno Exp $ */
+
+/*
+ * configure command line used to configure Squid
+ */
+#undef SQUID_CONFIGURE_OPTIONS
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
