@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.38 1998/04/08 06:28:33 wessels Exp $
+ * $Id: pump.c,v 1.39 1998/04/24 07:00:59 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -157,9 +157,13 @@ pumpStart(int s_fd, StoreEntry * reply_entry, request_t * r, CWCB * callback, vo
 	commSetDefer(p->c_fd, pumpReadDefer, p);
     }
     p->sent = 0;
-    storeClientCopy(p->request_entry, p->sent, p->sent, 4096,
-	memAllocate(MEM_4K_BUF),
-	pumpServerCopy, p);
+    if (p->sent == p->cont_len) {
+	pumpServerCopyComplete(p->s_fd, NULL, 0, DISK_OK, p);
+    } else {
+        storeClientCopy(p->request_entry, p->sent, p->sent, 4096,
+	    memAllocate(MEM_4K_BUF),
+	    pumpServerCopy, p);
+    }
 }
 
 static void
@@ -200,9 +204,6 @@ pumpServerCopyComplete(int fd, char *bufnotused, size_t size, int errflag, void 
 	pumpClose(p);
 	return;
     }
-    /* if this shows up a lot, its probably wrong; make it an assertion */
-    if (size == 0)
-	debug(61, 1) ("pumpServerCopyComplete: unexpected size == 0\n");
     p->sent += size;
     assert(p->sent <= p->cont_len);
     if (p->sent < p->cont_len) {
