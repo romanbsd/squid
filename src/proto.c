@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.135 1997/11/20 08:19:54 wessels Exp $
+ * $Id: proto.c,v 1.136 1997/11/21 01:59:17 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -184,7 +184,7 @@ protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
 	    if (request->method == METHOD_CONNECT) {
 		ErrorState *err;
 		debug(17, 1) ("protoStart: Cannot retrieve '%s'\n",
-			storeUrl(entry));
+		    storeUrl(entry));
 		err = errorCon(ERR_UNSUP_REQ, HTTP_BAD_REQUEST);
 		err->request = requestLink(request);
 		errorAppendEntry(entry, err);
