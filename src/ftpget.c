@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.58 1996/10/27 07:11:54 wessels Exp $
+ * $Id: ftpget.c,v 1.59 1996/10/29 02:41:12 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -785,16 +785,15 @@ connect_with_timeout(int fd, struct sockaddr_in *S, int len)
 {
     int orig_flags;
     int rc;
-
+    struct sockaddr_in L;
     if (outgoingTcpAddr.s_addr) {
-	struct sockaddr_in sock;
-
-	memset(&sock, '\0', sizeof(struct sockaddr_in));
-	sock.sin_family = AF_INET;
-	sock.sin_addr = outgoingTcpAddr;
-	sock.sin_port = 0;
-	if (bind(fd, (struct sockaddr *) &sock, sizeof(struct sockaddr_in)) < 0)
-	                debug(38, 0, "bind: %s\n", xstrerror());
+	memset(&L, '\0', sizeof(struct sockaddr_in));
+	L.sin_family = AF_INET;
+	L.sin_addr = outgoingTcpAddr;
+	L.sin_port = 0;
+	if (bind(fd, (struct sockaddr *) &L, sizeof(struct sockaddr_in)) < 0) {
+	    debug(38, 0, "bind: %s\n", xstrerror());
+	}
     }
     orig_flags = fcntl(fd, F_GETFL, 0);
     debug(38, 7, "orig_flags = %x\n", orig_flags);
