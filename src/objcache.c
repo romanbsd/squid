@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.46 1996/11/28 07:28:25 wessels Exp $
+ * $Id: objcache.c,v 1.47 1996/12/16 20:13:01 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -212,16 +212,18 @@ objcache_url_parser(const char *url)
     return obj;
 }
 
+/* return 0 if obj->password is good */
 static int
 objcache_CheckPassword(ObjectCacheData * obj)
 {
     char *pwd = objcachePasswdGet(&Config.passwd_list, obj->op);
-    if (pwd)
-	return strcmp(pwd, obj->passwd) && strcmp(pwd, "none");
-    else if ((1 << obj->op) & PASSWD_REQUIRED)
+    if (pwd == NULL)
+	return ((1 << obj->op) & PASSWD_REQUIRED);
+    if (strcmp(pwd, "disable") == 0)
 	return 1;
-    else
+    if (strcmp(pwd, "none") == 0)
 	return 0;
+    return strcmp(pwd, obj->passwd);
 }
 
 int
