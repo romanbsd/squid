@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.84 1996/12/17 21:31:11 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.85 1996/12/18 00:02:19 wessels Exp $
 #
 
 #  TAG: http_port
@@ -990,6 +990,12 @@ dns_testnames internic.net usc.edu cs.colorado.edu mit.edu yale.edu
 #		Forwarded: by http://foo.org:3128/
 #
 #forwarded_for on
+
+#  TAG:	log_icp_queries on|off
+#	If set, ICP queries are logged to access.log.  ICP logging
+#	is enabled by default, so uncomment and change the line
+#	below to disable it.
+#log_icp_queries on
 
 
 #  TAG: minimum_direct_hops

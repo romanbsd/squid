@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.206 1996/12/17 07:16:55 wessels Exp $
+ * $Id: icp.c,v 1.207 1996/12/18 00:02:17 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -941,7 +941,7 @@ icpUdpReply(int fd, icpUdpData * queue)
 		result = COMM_ERROR;
 	}
 	UdpQueueHead = queue->next;
-	if (queue->logcode)
+	if (queue->logcode && Config.Options.log_udp)
 	    icpLogIcp(queue);
 	safe_free(queue->msg);
 	safe_free(queue);
