@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.312 1997/10/23 05:13:41 wessels Exp $
+ * $Id: icp.c,v 1.313 1997/10/23 16:38:12 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1973,7 +1973,7 @@ httpAccept(int sock, void *notused)
 	fqdncache_gethostbyaddr(peer.sin_addr, FQDN_LOOKUP_IF_MISS);
     commSetTimeout(fd, Config.Timeout.request, requestTimeout, connState);
     commSetSelect(fd, COMM_SELECT_READ, clientReadRequest, connState, 0);
-    commSetDefer(fd, clientReadDefer);
+    commSetDefer(fd, clientReadDefer, connState);
 }
 
 void

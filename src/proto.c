@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.125 1997/10/23 05:13:43 wessels Exp $
+ * $Id: proto.c,v 1.126 1997/10/23 16:38:14 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -303,8 +303,10 @@ int
 protoCheckDeferRead(int fd, void *data)
 {
     StoreEntry *e = data;
-    size_t gap = e->mem_obj->inmem_hi - storeLowestMemReaderOffset(e);
-    if (gap < READ_AHEAD_GAP)
+    MemObject *mem = e->mem_obj;
+    if (mem == NULL)
+	return 0;
+    if (mem->inmem_hi - storeLowestMemReaderOffset(e) < READ_AHEAD_GAP)
 	return 0;
     return 1;
 }
