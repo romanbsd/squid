@@ -1,4 +1,4 @@
-/* $Id: icp.h,v 1.8 1996/04/04 01:30:47 wessels Exp $ */
+/* $Id: icp.h,v 1.9 1996/04/05 17:47:44 wessels Exp $ */
 
 #ifndef ICP_H
 #define ICP_H
@@ -51,11 +51,11 @@ typedef struct wwd {
     struct wwd *next;
 } icpUdpData;
 
-extern char *icpWrite _PARAMS((int, char *, int, int, void (*handler) (), caddr_t));
+extern char *icpWrite _PARAMS((int, char *, int, int, void (*handler) (), void *));
 extern int icpUdpSend _PARAMS((int, char *, icp_common_t *, struct sockaddr_in *, icp_opcode));
 
-extern int icpHandleUdp _PARAMS((int sock, caddr_t data));
-extern int asciiHandleConn _PARAMS((int sock, caddr_t data));
+extern int icpHandleUdp _PARAMS((int sock, void * data));
+extern int asciiHandleConn _PARAMS((int sock, void * data));
 
 extern int neighbors_do_private_keys;
 extern char *IcpOpcodeStr[];
