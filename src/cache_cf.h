@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.26 1996/04/16 05:13:04 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.27 1996/04/16 05:48:58 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -123,6 +123,7 @@ extern void intlistDestroy _PARAMS((intlist **));
 
 extern char w_space[];
 extern intlist *connect_port_list;
+extern char *config_file;	/* the whole thing */
 extern char *cfg_filename;	/* Only the tail component of the path */
 
 #endif /* ndef  _CACHE_CONFIG_H_ */
