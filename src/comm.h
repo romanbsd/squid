@@ -1,5 +1,5 @@
 
-/* $Id: comm.h,v 1.5 1996/03/28 22:37:54 wessels Exp $ */
+/* $Id: comm.h,v 1.6 1996/04/01 18:22:19 wessels Exp $ */
 
 #ifndef COMM_H
 #define COMM_H
@@ -88,7 +88,6 @@ extern struct in_addr *getAddress _PARAMS((char *name));
 extern void comm_set_stall _PARAMS((int, int));
 extern int comm_get_fd_timeout _PARAMS((int fd));
 
-extern time_t cached_curtime;
 extern int RESERVED_FD;
 
 #endif /* COMM_H */
