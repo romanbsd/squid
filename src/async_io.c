@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.19 1997/07/16 20:31:56 wessels Exp $
+ * $Id: async_io.c,v 1.20 1997/10/24 17:50:37 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -30,10 +30,9 @@
  *  
  */
 
-#if USE_ASYNC_IO
-
 #include "squid.h"
-#include "aiops.h"
+
+#if USE_ASYNC_IO
 
 #define _AIO_OPEN	0
 #define _AIO_READ	1

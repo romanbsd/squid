@@ -1,6 +1,6 @@
 
 /*
- * $Id: aiops.c,v 1.3 1997/06/04 06:15:45 wessels Exp $
+ * $Id: aiops.c,v 1.4 1997/10/24 17:50:36 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -29,6 +29,8 @@
  *  
  */
 
+#include "squid.h"
+
 #if USE_ASYNC_IO
 
 #include	<stdio.h>
@@ -38,7 +40,6 @@
 #include	<pthread.h>
 #include	<errno.h>
 #include	<dirent.h>
-#include	"aiops.h"
 
 #define	MAXTHREADS	1024
 
@@ -115,7 +116,7 @@ int aio_read(int, char *, int, off_t, int, aio_result_t *);
 int aio_write(int, char *, int, off_t, int, aio_result_t *);
 int aio_close(int, aio_result_t *);
 int aio_unlink(const char *, aio_result_t *);
-int aio_opendir();
+int aio_opendir(const char *, aio_result_t *);
 aio_result_t *aio_poll_done();
 
 static int aio_init();
