@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.69 1996/11/07 18:53:18 wessels Exp $
+ * $Id: store.h,v 1.70 1996/11/07 20:52:53 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -271,7 +271,6 @@ struct sentry {
 extern StoreEntry *storeGet _PARAMS((const char *));
 extern StoreEntry *storeCreateEntry _PARAMS((const char *, const char *, int, int, method_t));
 extern void storeSetPublicKey _PARAMS((StoreEntry *));
-extern void storeSetPrivateKey _PARAMS((StoreEntry *));
 extern StoreEntry *storeGetFirst _PARAMS((void));
 extern StoreEntry *storeGetNext _PARAMS((void));
 extern StoreEntry *storeLRU _PARAMS((void));
