@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.23 1998/01/31 05:32:05 wessels Exp $
+ * $Id: snmp.c,v 1.24 1998/01/31 17:27:24 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -1116,7 +1116,7 @@ var_perfsys_entry(struct variable * vp, oid * name, int *length, int exact, int 
 	return (u_char *) & long_return;
 
     case PERF_SYS_NUMOBJCNT:
-	long_return = (long) meta_data.mem_obj_count;
+	long_return = (long) memInUse(MEM_STOREENTRY);
 	return (u_char *) & long_return;
 
 
