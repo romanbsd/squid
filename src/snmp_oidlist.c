@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: snmp_oidlist.c,v 1.23 1998/09/29 16:33:52 wessels Exp $
+ * $Id: snmp_oidlist.c,v 1.24 1998/10/12 21:54:17 wessels Exp $
  *
  * DEBUG: section 49    SNMP
  * AUTHOR: Kostas Anagnostakis
@@ -185,7 +185,7 @@ sysGetFn(oid * Src, snint SrcLen)
     debug(49, 5) ("sysGetFn: here! with Src[8]=%d\n", Src[8]);
     if (SrcLen != LEN_SQ_SYS + 1)
 	return NULL;
-    if (Src[LEN_SQ_SYS] > 0 && Src[LEN_SQ_SYS] < 3)
+    if (Src[LEN_SQ_SYS] > 0 && Src[LEN_SQ_SYS] < 4)
 	return snmp_sysFn;
 
     return NULL;
