@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.356 2002/11/10 14:18:13 hno Exp $
+ * $Id: main.c,v 1.357 2003/01/10 17:53:03 wessels Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -563,6 +563,10 @@ main(int argc, char **argv)
     mode_t oldmask;
 #if defined(_SQUID_MSWIN_) || defined(_SQUID_CYGWIN_)
     int WIN32_init_err;
+#endif
+
+#if HAVE_SBRK
+    sbrk_start = sbrk(0);
 #endif
 
     debug_log = stderr;

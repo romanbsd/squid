@@ -1,6 +1,6 @@
 
 /*
- * $Id: globals.h,v 1.111 2002/07/14 17:19:06 hno Exp $
+ * $Id: globals.h,v 1.112 2003/01/10 17:53:03 wessels Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -162,6 +162,9 @@ extern int incoming_sockets_accepted;
 #if defined(_SQUID_MSWIN_) || defined(_SQUID_CYGWIN_)
 extern unsigned int WIN32_OS_version;	/* 0 */
 extern char *WIN32_OS_string;	/* NULL */
+#endif
+#if HAVE_SBRK
+extern void *sbrk_start;	/* 0 */
 #endif
 
 #endif /* SQUID_GLOBALS_H */
