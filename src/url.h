@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.16 1996/07/27 07:07:47 wessels Exp $
+ * $Id: url.h,v 1.17 1996/08/23 21:19:59 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -34,12 +34,12 @@
 #define MAX_LOGIN_SZ  128
 
 typedef enum {
-    METHOD_NONE,
-    METHOD_GET,
-    METHOD_POST,
-    METHOD_PUT,
-    METHOD_HEAD,
-    METHOD_CONNECT
+    METHOD_NONE,		/* 000 */
+    METHOD_GET,			/* 001 */
+    METHOD_POST,		/* 010 */
+    METHOD_PUT,			/* 011 */
+    METHOD_HEAD,		/* 100 */
+    METHOD_CONNECT,		/* 101 */
 } method_t;
 
 extern char *RequestMethodStr[];
