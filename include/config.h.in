@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.32 1997/12/06 01:25:53 wessels Exp $
+ * $Id: config.h.in,v 1.33 1997/12/31 06:00:29 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -32,18 +32,6 @@
 
 #include "autoconf.h"	/* For GNU autoconf variables */
 #include "version.h"
-
-/*
- *  XFER_TIMEOUT is the number of seconds that liburl will wait on a read()
- *  before giving up.
- */
-#ifndef XFER_TIMEOUT
-#define XFER_TIMEOUT    120     /* 2 minutes */
-#endif
-
-#ifndef USE_ASYNC_IO
-#define USE_ASYNC_IO 0
-#endif
 
 /****************************************************************************
  *--------------------------------------------------------------------------*
