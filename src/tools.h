@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.h,v 1.22 1996/09/16 17:21:44 wessels Exp $
+ * $Id: tools.h,v 1.23 1996/09/16 21:11:16 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -124,6 +124,8 @@ extern void squid_signal __P((int sig, void (*func) __P((int)), int flags));
 extern char *accessLogTime __P((time_t));
 extern int readPidFile __P((void));
 extern void _debug_trap __P((char *message));
+extern struct in_addr inaddrFromHostent __P((struct hostent *hp));
+
 
 extern int do_mallinfo;
 extern time_t squid_curtime;
