@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.32 1996/11/26 23:22:18 wessels Exp $
+ * $Id: neighbors.h,v 1.33 1996/12/16 16:23:43 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -125,6 +125,7 @@ typedef enum {
     HIER_SIBLING_UDP_HIT_OBJ,
     HIER_PARENT_UDP_HIT_OBJ,
     HIER_PASS_PARENT,
+    HIER_SSL_PARENT,
     HIER_MAX
 } hier_code;
 
