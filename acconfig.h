@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.6 1996/08/27 20:10:45 wessels Exp $ */
+/* $Id: acconfig.h,v 1.7 1996/09/20 07:31:21 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -32,3 +32,6 @@
 
 /* If libresolv.a has been hacked to export _dns_ttl_ */
 #undef LIBRESOLV_DNS_TTL_HACK
+
+/* Define if struct ip has ip_hl member */
+#undef HAVE_IP_HL
