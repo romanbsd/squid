@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.72 1997/01/02 07:20:29 wessels Exp $
+ * $Id: ftpget.c,v 1.73 1997/01/03 18:15:46 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -310,7 +310,7 @@ static const char *socket_pathname = NULL;
 static int o_max_bps = 0;	/* max bytes/sec */
 static struct timeval starttime;
 static struct timeval currenttime;
-static unsigned int inaddr_none;
+unsigned int inaddr_none;
 
 char *rfc1738_escape _PARAMS((const char *));
 void rfc1738_unescape _PARAMS((char *));
