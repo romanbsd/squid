@@ -19,8 +19,8 @@
  * in the Makefiles, wich is done automatically by configure.
  *
  */
-@TOP@
-/* $Id: acconfig.h,v 1.35 1998/12/11 21:01:06 wessels Exp $ */
+@ TOP @
+/* $Id: acconfig.h,v 1.36 1999/01/13 22:24:38 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
