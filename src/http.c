@@ -1,4 +1,4 @@
-/* $Id */
+/* $Id: http.c,v 1.5 1996/03/22 06:38:28 wessels Exp $ */
 
 #include "config.h"
 #include <sys/errno.h>
