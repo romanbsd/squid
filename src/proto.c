@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.137 1997/11/29 08:03:20 wessels Exp $
+ * $Id: proto.c,v 1.138 1997/12/03 09:00:20 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -138,7 +138,6 @@ protoDispatchFail(peer * peernotused, void *data)
     err = errorCon(ERR_CANNOT_FORWARD, HTTP_SERVICE_UNAVAILABLE);
     err->request = requestLink(pctrl->request);
     errorAppendEntry(pctrl->entry, err);
-    storeAbort(pctrl->entry, 0);
     requestUnlink(pctrl->request);
     cbdataFree(pctrl);
 }
@@ -188,7 +187,6 @@ protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
 		err = errorCon(ERR_UNSUP_REQ, HTTP_BAD_REQUEST);
 		err->request = requestLink(request);
 		errorAppendEntry(entry, err);
-		storeAbort(entry, 0);
 	    }
 	}
     }
@@ -216,7 +214,6 @@ protoUnregister(StoreEntry * entry, request_t * request)
     err = errorCon(ERR_CLIENT_ABORT, HTTP_INTERNAL_SERVER_ERROR);
     err->request = request;
     errorAppendEntry(entry, err);
-    storeAbort(entry, 1);
     return 1;
 }
 
