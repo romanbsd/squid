@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.132 1996/10/15 07:43:33 wessels Exp $
+ * $Id: icp.c,v 1.133 1996/10/15 16:40:07 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -143,6 +143,7 @@ char *log_tags[] =
     "ERR_NO_RELAY",
     "ERR_DISK_IO",
     "ERR_ZERO_SIZE_OBJECT",
+    "ERR_FTP_DISABLED",
     "ERR_PROXY_DENIED"
 };
 
