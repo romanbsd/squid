@@ -1,5 +1,5 @@
 /*
- * $Id: comm.h,v 1.15 1996/07/20 03:16:49 wessels Exp $
+ * $Id: comm.h,v 1.16 1996/07/20 03:37:43 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -161,8 +161,7 @@ typedef struct fde {
     char ascii_note[FD_ASCII_NOTE_SZ];
     unsigned int comm_type;
     time_t stall_until;		/* don't select for read until this time reached */
-    RWStateData *rstate;	/* State data for comm_read */
-    RWStateData *wstate;	/* State data for comm_write */
+    RWStateData *rwstate;	/* State data for comm_read/comm_write */
 } FD_ENTRY;
 
 extern FD_ENTRY *fd_table;
