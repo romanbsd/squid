@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.41 1999/10/04 05:04:01 wessels Exp $ */
+/* $Id: acconfig.h,v 1.42 1999/12/10 18:13:46 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -256,3 +256,8 @@
  * Allow underscores in host names
  */
 #undef ALLOW_HOSTNAME_UNDERSCORES
+
+/*
+ * Use DISKD
+ */
+#undef USE_DISKD
