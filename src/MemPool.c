@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.2 1998/03/03 22:17:51 rousskov Exp $
+ * $Id: MemPool.c,v 1.3 1998/03/03 23:27:18 rousskov Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -98,7 +98,7 @@ memConfigure()
 	    toMB(TheMeter.idle.level), toMB(new_pool_limit), toMB(mem_idle_limit));
 	new_pool_limit = TheMeter.idle.level;
     }
-    assert(mem_idle_limit <= new_pool_limit);
+    assert(TheMeter.idle.level <= new_pool_limit);
     mem_idle_limit = new_pool_limit;
 }
 
