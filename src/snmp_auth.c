@@ -1,5 +1,5 @@
 /*
- * $Id: snmp_auth.c,v 1.4 1998/07/22 20:37:47 wessels Exp $
+ * $Id: snmp_auth.c,v 1.5 1998/09/23 21:25:29 glenn Exp $
  *
  * DEBUG: section 49     SNMP Interface
  * AUTHOR: Kostas Anagnostakis
@@ -102,6 +102,9 @@ snmpAclCheckDone(int answer, void *data)
 	VarPtr = *VarPtrP;
 
 	/* access check for each variable */
+
+	debug(49, 3) ("snmpAclCheckDone: Length=%d \n",VarPtr->name_length);
+	snmpDebugOid(3, VarPtr->name, VarPtr->name_length);
 
 	if (!snmpCommunityCheck((char *) Community, VarPtr->name, VarPtr->name_length)) {
 	    debug(49, 3) ("snmpAclCheckDone: ACCESS DENIED (requested oid).\n");
