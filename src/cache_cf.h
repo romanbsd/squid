@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.88 1997/01/31 22:30:30 wessels Exp $
+ * $Id: cache_cf.h,v 1.89 1997/02/03 23:03:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -268,6 +268,7 @@ struct SquidConfig {
     } Netdb;
     struct {
 	int log_udp;
+	int enable_purge;
     } Options;
 };
 

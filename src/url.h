@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.38 1996/12/17 07:17:00 wessels Exp $
+ * $Id: url.h,v 1.39 1997/02/03 23:03:09 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -40,7 +40,8 @@ enum {
     METHOD_PUT,			/* 011 */
     METHOD_HEAD,		/* 100 */
     METHOD_CONNECT,		/* 101 */
-    METHOD_TRACE		/* 110 */
+    METHOD_TRACE,		/* 110 */
+    METHOD_PURGE		/* 111 */
 };
 typedef unsigned int method_t;
 
