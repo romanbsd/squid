@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.29 1997/01/31 22:30:32 wessels Exp $
+ * $Id: http.h,v 1.30 1997/02/20 22:23:04 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -155,5 +155,9 @@ extern size_t httpBuildRequestHeader _PARAMS((request_t * request,
 	char *hdr_out,
 	size_t out_sz,
 	int cfd));
+
+#define ANONYMIZER_NONE		0
+#define ANONYMIZER_STANDARD	1
+#define ANONYMIZER_PARANOID	2
 
 #endif /* HTTP_H */
