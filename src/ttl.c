@@ -1,5 +1,5 @@
 
-/* $Id: ttl.c,v 1.8 1996/04/09 23:28:00 wessels Exp $ */
+/* $Id: ttl.c,v 1.9 1996/04/16 05:05:34 wessels Exp $ */
 
 /*
  * DEBUG: Section 22          ttl
@@ -102,7 +102,7 @@ time_t ttlSet(entry)
 	    flags |= TTL_SERVERDATE;
 	}
     }
-    now = their_date > 0 ? their_date : cached_curtime;
+    now = their_date > 0 ? their_date : squid_curtime;
 
     if (reply->expires[0]) {
 	/*

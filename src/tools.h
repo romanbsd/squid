@@ -1,5 +1,5 @@
 
-/* $Id: tools.h,v 1.11 1996/04/15 19:20:28 wessels Exp $ */
+/* $Id: tools.h,v 1.12 1996/04/16 05:05:33 wessels Exp $ */
 
 extern char *getMyHostname _PARAMS((void));
 extern int getMaxFD _PARAMS((void));
@@ -20,5 +20,5 @@ extern void reconfigure _PARAMS((int sig));
 extern int tvSubMsec _PARAMS((struct timeval, struct timeval));
 
 extern int do_mallinfo;
-extern time_t cached_curtime;
+extern time_t squid_curtime;
 extern struct timeval current_time;

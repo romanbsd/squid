@@ -1,4 +1,4 @@
-/* $Id: stat.h,v 1.9 1996/04/12 21:41:40 wessels Exp $ */
+/* $Id: stat.h,v 1.10 1996/04/16 05:05:31 wessels Exp $ */
 
 #ifndef STAT_H
 #define STAT_H
@@ -66,8 +66,8 @@ struct _cacheinfo {
     /* get a processed logfile status */
     void (*log_status_get) _PARAMS((struct _cacheinfo * c, StoreEntry * sentry));
 
-    /* get a processed cached.conf object */
-    void (*cached_get_start) _PARAMS((struct _cacheinfo * c, StoreEntry * sentry));
+    /* get a processed squid.conf object */
+    void (*squid_get_start) _PARAMS((struct _cacheinfo * c, StoreEntry * sentry));
 
     /* get a parameter object */
     void (*parameter_get) _PARAMS((struct _cacheinfo * c, StoreEntry * sentry));

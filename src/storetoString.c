@@ -1,4 +1,4 @@
-/* $Id: storetoString.c,v 1.7 1996/04/12 04:53:52 wessels Exp $ */
+/* $Id: storetoString.c,v 1.8 1996/04/16 05:05:32 wessels Exp $ */
 
 #include "squid.h"
 
@@ -18,8 +18,8 @@ char *storeToString(e)
     sprintf(stsbuf, "\nStoreEntry @: 0x%p\n****************\n", e);
     strcat(stsbuf, tmpbuf);
 
-    sprintf(stsbuf, "Current Time: %d [%s]\n", (int) cached_curtime,
-	mkhttpdlogtime(&cached_curtime));
+    sprintf(stsbuf, "Current Time: %d [%s]\n", (int) squid_curtime,
+	mkhttpdlogtime(&squid_curtime));
     strcat(stsbuf, tmpbuf);
 
     sprintf(tmpbuf, "Key: %s\n", e->key);
