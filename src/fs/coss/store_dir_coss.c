@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.38 2002/08/09 10:57:45 robertc Exp $
+ * $Id: store_dir_coss.c,v 1.39 2003/01/09 03:43:28 hno Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -233,7 +233,8 @@ storeCossRebuildFromSwapLog(void *data)
 	if (s.op == SWAP_LOG_ADD) {
 	    (void) 0;
 	} else if (s.op == SWAP_LOG_DEL) {
-	    if ((e = storeGet(s.key)) != NULL) {
+	    /* Delete unless we already have a newer copy */
+	    if ((e = storeGet(s.key)) != NULL && s.lastref > e->lastref) {
 		/*
 		 * Make sure we don't unlink the file, it might be
 		 * in use by a subsequent entry.  Also note that
