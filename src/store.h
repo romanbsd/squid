@@ -1,4 +1,5 @@
-/*  $Id: store.h,v 1.20 1996/04/12 21:22:33 wessels Exp $ */
+
+/*  $Id: store.h,v 1.21 1996/04/12 21:22:59 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_

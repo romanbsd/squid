@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.42 1996/04/12 21:19:43 wessels Exp $ */
+/* $Id: icp.c,v 1.43 1996/04/12 21:22:56 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -902,7 +902,7 @@ int icpUdpSend(fd, url, reqheaderp, to, opcode)
     headerp->reqnum = htonl(reqheaderp->reqnum);
 /*  memcpy(headerp->auth, , ICP_AUTH_SIZE); */
     headerp->shostid = htonl(our_socket_name.sin_addr.s_addr);
-    debug(12,5,"icpUdpSend: headerp->reqnum = %d\n", headerp->reqnum);
+    debug(12, 5, "icpUdpSend: headerp->reqnum = %d\n", headerp->reqnum);
 
     urloffset = buf + sizeof(icp_common_t);
 
@@ -969,7 +969,7 @@ int icpHandleUdp(sock, not_used)
     header.reqnum = ntohl(headerp->reqnum);
     /*  memcpy(headerp->auth, , ICP_AUTH_SIZE); */
     header.shostid = ntohl(headerp->shostid);
-    debug(12,5,"icpHandleUdp: header.reqnum = %d\n", header.reqnum);
+    debug(12, 5, "icpHandleUdp: header.reqnum = %d\n", header.reqnum);
 
     switch (header.opcode) {
     case ICP_OP_QUERY:
