@@ -1,5 +1,5 @@
 /*
- * $Id: stmem.h,v 1.9 1996/07/12 17:41:52 wessels Exp $
+ * $Id: stmem.h,v 1.10 1996/07/17 17:03:46 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -152,8 +152,8 @@ extern char *get_free_8k_page _PARAMS(());
 extern void *get_free_request_t _PARAMS(());
 extern void *get_free_mem_obj _PARAMS(());
 extern mem_ptr memInit _PARAMS((void));
-extern void put_free_4k_page _PARAMS((char *));
-extern void put_free_8k_page _PARAMS((char *));
+extern void put_free_4k_page _PARAMS((void *));
+extern void put_free_8k_page _PARAMS((void *));
 extern void put_free_request_t _PARAMS((void *));
 extern void put_free_mem_obj _PARAMS((void *));
 extern void stmemInit _PARAMS((void));
