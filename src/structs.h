@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.432 2002/09/26 13:33:08 robertc Exp $
+ * $Id: structs.h,v 1.433 2002/11/10 14:34:13 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -593,6 +593,7 @@ struct _SquidConfig {
 	int ie_refresh;
 	int vary_ignore_expire;
 	int pipeline_prefetch;
+	int request_entities;
 	int check_hostnames;
 	int via;
 	int emailErrData;

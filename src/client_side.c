@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.599 2002/10/13 14:55:08 hno Exp $
+ * $Id: client_side.c,v 1.600 2002/11/10 14:34:13 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -523,7 +523,7 @@ clientIsContentLengthValid(request_t * r)
     case METHOD_GET:
     case METHOD_HEAD:
 	/* We do not want to see a request entity on GET/HEAD requests */
-	return (r->content_length <= 0);
+	return (r->content_length <= 0 || Config.onoff.request_entities);
     default:
 	/* For other types of requests we don't care */
 	return 1;
