@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.35 1996/11/24 02:37:38 wessels Exp $
+ * $Id: url.h,v 1.36 1996/11/28 07:27:24 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -82,15 +82,16 @@ extern int matchDomainName _PARAMS((const char *d, const char *h));
 extern int urlCheckRequest _PARAMS((const request_t *));
 
 /* bitfields for the flags member */
-#define		REQ_UNUSED1	0x01
-#define		REQ_NOCACHE	0x02
-#define		REQ_IMS		0x04
-#define		REQ_AUTH	0x08
-#define		REQ_CACHABLE	0x10
-#define 	REQ_UNUSED2	0x20
-#define 	REQ_HIERARCHICAL 0x40
-#define 	REQ_LOOPDETECT  0x80
-#define		REQ_PROXY_KEEPALIVE 0x100
-#define		REQ_PROXYING	0x200
+#define REQ_UNUSED1		0x01
+#define REQ_NOCACHE		0x02
+#define REQ_IMS			0x04
+#define REQ_AUTH		0x08
+#define REQ_CACHABLE		0x10
+#define REQ_UNUSED2		0x20
+#define REQ_HIERARCHICAL	0x40
+#define REQ_LOOPDETECT		0x80
+#define REQ_PROXY_KEEPALIVE	0x100
+#define REQ_PROXYING		0x200
+#define REQ_REFRESH		0x400
 
 #endif /* _URL_HEADER_ */
