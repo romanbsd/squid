@@ -1,5 +1,6 @@
+
 /*
- * $Id: acl.h,v 1.32 1997/01/14 19:50:06 wessels Exp $
+ * $Id: acl.h,v 1.33 1997/02/01 00:28:08 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -61,7 +62,7 @@ struct _acl_ip_data {
     struct in_addr addr1;	/* if addr2 non-zero then its a range */
     struct in_addr addr2;
     struct in_addr mask;
-    struct _acl_ip_data *next;
+    struct _acl_ip_data *left, *right;
 };
 
 struct _acl_time_data {
