@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.31 1996/11/15 00:36:13 wessels Exp $
+ * $Id: acl.h,v 1.32 1997/01/14 19:50:06 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -137,9 +137,10 @@ extern struct _acl *aclFindByName _PARAMS((const char *name));
 extern char *aclGetDenyInfoUrl _PARAMS((struct _acl_deny_info_list **, const char *name));
 extern void aclParseDenyInfoLine _PARAMS((struct _acl_deny_info_list **));
 extern void aclDestroyDenyInfoList _PARAMS((struct _acl_deny_info_list **));
-extern struct _relist *aclParseRegexList _PARAMS((int icase));
 extern void aclDestroyRegexList _PARAMS((struct _relist * data));
 extern int aclMatchRegex _PARAMS((relist * data, const char *word));
+
+extern void aclParseRegexList _PARAMS((void *curlist, int icase));
 
 extern struct _acl_access *HTTPAccessList;
 extern struct _acl_access *MISSAccessList;
