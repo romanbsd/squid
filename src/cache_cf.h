@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.9 1996/03/29 21:14:37 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.10 1996/04/04 04:33:10 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -50,6 +50,7 @@ extern char *getHierarchyLogFile _PARAMS((void));
 extern char *getWaisRelayHost _PARAMS((void));
 extern char *getPidFilename _PARAMS((void));
 extern char *getVisibleHostname _PARAMS((void));
+extern char *getFtpUser _PARAMS((void));
 extern double getCacheHotVmFactor _PARAMS((void));
 extern int getAccelWithProxy _PARAMS((void));
 extern int getAsciiPortNum _PARAMS((void));
