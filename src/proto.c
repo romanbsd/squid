@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.32 1996/07/11 17:42:49 wessels Exp $
+ * $Id: proto.c,v 1.33 1996/07/11 18:31:01 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -384,7 +384,7 @@ int protoUndispatch(fd, url, entry, request)
     if (request->protocol == PROTO_CACHEOBJ)
 	return 0;
 
-    (void) redirectUnregister(fd, url);
+    (void) redirectUnregister(url, fd);
     /* clean up DNS pending list for this name/fd look up here */
     if (!ipcache_unregister(request->host, fd)) {
 	debug(17, 5, "protoUndispatch: ipcache failed to unregister '%s'\n",
