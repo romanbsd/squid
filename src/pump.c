@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.61 1999/01/08 21:12:15 wessels Exp $
+ * $Id: pump.c,v 1.62 1999/01/11 16:50:38 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -205,8 +205,8 @@ pumpServerCopyComplete(int fd, char *bufnotused, size_t size, int errflag, void 
 	pumpClose(p);
 	return;
     }
-    if (p->request_entry->store_status == STORE_ABORTED) {
-	debug(61, 5) ("pumpServerCopyComplete: STORE_ABORTED\n");
+    if (EBIT_TEST(p->request_entry->flags, ENTRY_ABORTED)) {
+	debug(61, 5) ("pumpServerCopyComplete: ENTRY_ABORTED\n");
 	pumpClose(p);
 	return;
     }
