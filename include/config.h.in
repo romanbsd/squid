@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.21 1996/09/18 22:44:38 wessels Exp $
+ * $Id: config.h.in,v 1.22 1996/10/15 23:32:46 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -132,6 +132,16 @@
 #if SQUID_UDP_SO_RCVBUF > 16384
 #undef SQUID_UDP_SO_RCVBUF
 #define SQUID_UDP_SO_RCVBUF 16384
+#endif
+
+#ifndef HAVE_MEMCPY
+#define xmemcpy(d,s,n) memcpy((d),(s),(n))
+#elif HAVE_BCOPY
+#define xmemcpy(d,s,n) bcopy((s),(d),(n))
+#elif HAVE_MEMMOVE
+#define xmemcpy(d,s,n) memcpy((d),(s),(n))
+#else
+#define xmemcpy(d,s,n) memcpy((d),(s),(n))
 #endif
 
 #endif /* _CONFIG_H_ */
