@@ -1,5 +1,5 @@
 /*
- * $Id: stmem.h,v 1.10 1996/07/17 17:03:46 wessels Exp $
+ * $Id: stmem.h,v 1.11 1996/08/21 20:11:19 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -137,7 +137,6 @@ typedef struct _stmem_stats {
     int max_pages;
     int total_pages_allocated;
     int page_size;
-    int n_pages_free;
     int n_pages_in_use;
     Stack free_page_stack;
 } stmem_stats;
