@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.71 1999/01/29 23:39:22 wessels Exp $
+ * $Id: pump.c,v 1.72 1999/04/15 06:16:07 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -294,6 +294,7 @@ pumpReadFromClient(int fd, void *data)
     debug(61, 2) ("pumpReadFromClient: finished!\n");
     storeComplete(req);
     commSetDefer(p->c_fd, NULL, NULL);
+    commSetTimeout(p->c_fd, -1, NULL, NULL);
 }
 
 static int

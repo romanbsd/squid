@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.43 1999/01/13 23:24:27 wessels Exp $
+ * $Id: config.h.in,v 1.44 1999/04/15 06:15:35 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -153,6 +153,14 @@
 #elif HAVE_BCOPY
 #define xmemmove(d,s,n) bcopy((s),(d),(n))
 #endif
+
+#define xisspace(x) isspace((unsigned char)x)
+#define xtoupper(x) toupper((unsigned char)x)
+#define xtolower(x) tolower((unsigned char)x)
+#define xisdigit(x) isdigit((unsigned char)x)
+#define xisascii(x) isascii((unsigned char)x)
+#define xislower(x) islower((unsigned char)x)
+#define xisalpha(x) isalpha((unsigned char)x)
 
 #if defined(O_NONBLOCK) && !defined(_SQUID_SUNOS_) && !defined(_SQUID_SOLARIS_)
 #define SQUID_NONBLOCK O_NONBLOCK

@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.37 1999/01/24 04:07:14 wessels Exp $ */
+/* $Id: acconfig.h,v 1.38 1999/04/15 06:14:52 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -222,3 +222,9 @@
  * Compile in support for Ident (RFC 931) lookups?  Enabled by default.
  */
 #define USE_IDENT 1
+
+/*
+ * If your system has statvfs(), and if it actually works!
+ */
+#undef HAVE_STATVFS
+
