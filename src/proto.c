@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.81 1996/11/14 03:00:55 wessels Exp $
+ * $Id: proto.c,v 1.82 1996/11/14 19:02:21 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -251,11 +251,11 @@ protoDispatchDNSHandle(int unused1, const ipcache_addrs * ia, void *data)
 	    (PF) getFromDefaultSource,
 	    (void *) entry,
 	    Config.neighborTimeout);
-	return;
 #ifdef DELAY_HACK
 	if (protoData->delay_fetch && entry->mem_obj)
 	    entry->mem_obj->e_pings_n_pings++;
 #endif
+	return;
     }
     if (protoData->direct_fetch == DIRECT_NO) {
 	hierarchyNote(req, HIER_NO_DIRECT_FAIL, 0, req->host);
