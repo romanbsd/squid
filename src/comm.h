@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.h,v 1.49 1997/06/01 23:22:19 wessels Exp $
+ * $Id: comm.h,v 1.50 1997/06/02 19:56:00 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -132,16 +132,6 @@ struct close_handler {
     void *data;
     struct close_handler *next;
 };
-
-typedef struct {
-    char *host;
-    u_short port;
-    struct sockaddr_in S;
-    CNCB *callback;
-    void *data;
-    int tries;
-    struct in_addr in_addr;
-} ConnectStateData;
 
 extern int commSetNonBlocking _PARAMS((int fd));
 extern void commSetCloseOnExec _PARAMS((int fd));
