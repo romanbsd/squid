@@ -1,4 +1,4 @@
-/*  $Id: url.h,v 1.9 1996/04/16 05:13:38 wessels Exp $ */
+/*  $Id: url.h,v 1.10 1996/04/16 16:35:32 wessels Exp $ */
 
 #ifndef _URL_HEADER_
 #define _URL_HEADER_
@@ -45,5 +45,6 @@ extern method_t urlParseMethod _PARAMS((char *));
 extern int urlDefaultPort _PARAMS((protocol_t));
 extern void urlInitialize _PARAMS((void));
 extern request_t *urlParse _PARAMS((method_t, char *));
+extern char *urlCanonical _PARAMS((request_t, char *));
 
 #endif /* _URL_HEADER_ */
