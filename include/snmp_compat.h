@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
-#ifndef _SNMP_COMPAT_H_
-#define _SNMP_COMPAT_H_
+#ifndef SQUID_SNMP_COMPAT_H
+#define SQUID_SNMP_COMPAT_H
 
 /***************************************************************************
  *
@@ -26,7 +26,7 @@
  * 
  * Author: Ryan Troll <ryan+@andrew.cmu.edu>
  * 
- * $Id: snmp_compat.h,v 1.3 1998/04/04 01:43:45 kostas Exp $
+ * $Id: snmp_compat.h,v 1.4 2001/10/08 16:18:31 hno Exp $
  * 
  ***************************************************************************/
 
@@ -47,4 +47,4 @@
 
 #define INFORM_REQ_MSG      (ASN_CONTEXT | ASN_CONSTRUCTOR | 0x6)
 
-#endif /* _SNMP_COMPAT_H_ */
+#endif /* SQUID_SNMP_COMPAT_H */
