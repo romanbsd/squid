@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.90 1997/02/06 18:02:09 wessels Exp $
+ * $Id: cache_cf.h,v 1.91 1997/02/19 17:05:22 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -209,6 +209,7 @@ struct SquidConfig {
 	int withProxy;
     } Accel;
     char *appendDomain;
+    size_t appendDomainLen;
     char *volatile debugOptions;
     char *pidFilename;
     char *visibleHostname;
