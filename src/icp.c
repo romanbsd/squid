@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.197 1996/12/04 16:16:21 wessels Exp $
+ * $Id: icp.c,v 1.198 1996/12/04 17:51:42 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -331,7 +331,7 @@ icpParseRequestHeaders(icpStateData * icpState)
 	    BIT_SET(request->flags, REQ_PROXY_KEEPALIVE);
 #endif
     if ((t = mime_get_header(request_hdr, "Via")))
-	if (strstr(t, getMyHostname())) {
+	if (strstr(t, ThisCache)) {
 	    if (!icpState->accel) {
 		debug(12, 1, "WARNING: Forwarding loop detected for '%s'\n",
 		    icpState->url);
