@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.17 1998/02/02 19:49:54 wessels Exp $
+# $Id: makefile.in,v 1.18 1998/02/06 00:57:37 wessels Exp $
 #
 
 srcdir		= @srcdir@
@@ -27,7 +27,7 @@ all install: makefile
 clean:
 	@for dir in $(SUBDIRS); do \
 		echo "Making $@ in $$dir..."; \
-		(cd $$dir ; $(MAKE) $(MFLAGS) prefix="$(prefix)" $@) \
+		(cd $$dir ; $(MAKE) $(MFLAGS) prefix="$(prefix)" $@); \
 	done
 
 
