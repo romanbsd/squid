@@ -26,7 +26,7 @@
  * 
  * Author: Ryan Troll <ryan+@andrew.cmu.edu>
  * 
- * $Id: snmp_compat.h,v 1.2 1998/03/17 06:14:29 kostas Exp $
+ * $Id: snmp_compat.h,v 1.3 1998/04/04 01:43:45 kostas Exp $
  * 
  ***************************************************************************/
 
@@ -43,7 +43,7 @@
 #define GETNEXT_REQ_MSG     (ASN_CONTEXT | ASN_CONSTRUCTOR | 0x1)
 #define GET_RSP_MSG         (ASN_CONTEXT | ASN_CONSTRUCTOR | 0x2)
 #define SET_REQ_MSG         (ASN_CONTEXT | ASN_CONSTRUCTOR | 0x3)
-#define TRP_REQ_MSG	    (ASN_CONTEXT | ASN_CONSTRUCTOR | 0x4) /*Obsolete*/
+#define TRP_REQ_MSG	    (ASN_CONTEXT | ASN_CONSTRUCTOR | 0x4)	/*Obsolete */
 
 #define INFORM_REQ_MSG      (ASN_CONTEXT | ASN_CONSTRUCTOR | 0x6)
 
