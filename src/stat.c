@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.362 2003/01/20 19:08:23 hno Exp $
+ * $Id: stat.c,v 1.363 2003/01/27 05:00:06 wessels Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -1057,6 +1057,8 @@ statCountersHistograms(StoreEntry * sentry)
     statHistDump(&f->icp.reply_svc_time, sentry, NULL);
     storeAppendPrintf(sentry, "dns.svc_time histogram:\n");
     statHistDump(&f->dns.svc_time, sentry, NULL);
+    storeAppendPrintf(sentry, "select_fds_hist histogram:\n");
+    statHistDump(&f->select_fds_hist, sentry, NULL);
 }
 
 static void
