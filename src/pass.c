@@ -2,7 +2,7 @@
 
 
 /*
- * $Id: pass.c,v 1.70 1998/03/17 04:00:14 wessels Exp $
+ * $Id: pass.c,v 1.71 1998/03/27 22:44:24 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -357,7 +357,10 @@ passConnectDone(int fdnotused, int status, void *data)
 	passState->request->body, passState->request->body_sz);
     passState->client.len += passState->request->body_sz;
     passState->client.offset = 0;
-    commSetTimeout(passState->server.fd, Config.Timeout.read, NULL, NULL);
+    commSetTimeout(passState->server.fd,
+	Config.Timeout.read,
+	passTimeout,
+	passState);
     commSetSelect(passState->server.fd,
 	COMM_SELECT_WRITE,
 	passWriteServer,
