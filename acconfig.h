@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.68 2002/04/13 23:07:47 hno Exp $ */
+/* $Id: acconfig.h,v 1.69 2002/07/01 08:54:53 hno Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -348,7 +348,7 @@
 #undef HAVE_UNIXSOCKET
 
 /*
- * Known-size intgers
+ * Known-size integers
  */
 
 #undef int16_t
