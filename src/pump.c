@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.3 1998/03/06 17:47:59 kostas Exp $
+ * $Id: pump.c,v 1.4 1998/03/06 22:52:26 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -328,7 +328,7 @@ pumpFree(int fd, void *data)
 
     requestUnlink(pumpState->req);
     s_fd=pumpState->s_fd;
-    pumpState->s_fd=NULL;
+    pumpState->s_fd = -1;
     hdl = pumpState->callback;
     pumpState->callback=NULL;
     cbdata = pumpState->cbdata;
