@@ -1,5 +1,5 @@
 /*
- * $Id: hash.h,v 1.13 1996/10/24 23:18:20 wessels Exp $
+ * $Id: hash.h,v 1.14 1996/10/25 00:23:07 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -143,7 +143,7 @@ typedef int HashID;
 extern void hash_init _PARAMS((int));
 extern HashID hash_create _PARAMS((int (*)_PARAMS((char *, char *)),
 	int,
-	int         (*)_PARAMS((char *, HashID))));
+	unsigned int (*)_PARAMS((char *, HashID))));
 
 /* insert/delete */
 extern int hash_insert _PARAMS((HashID, char *, void *));
@@ -157,9 +157,9 @@ extern hash_link *hash_lookup _PARAMS((HashID, char *));
 extern hash_link *hash_first _PARAMS((HashID));
 extern hash_link *hash_next _PARAMS((HashID));
 extern hash_link *hash_get_bucket _PARAMS((HashID, unsigned int));
-extern int hash_url _PARAMS((char *, HashID));
-extern int hash_string _PARAMS((char *, HashID));
 extern void hashFreeMemory _PARAMS((HashID));
+extern unsigned int hash_string _PARAMS((char *, HashID));
+extern unsigned int hash_url _PARAMS((char *, HashID));
 extern unsigned int hash4 _PARAMS((char *, HashID));
 
 extern int hash_links_allocated;
