@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.84 1996/12/04 18:22:46 wessels Exp $
+ * $Id: cache_cf.h,v 1.85 1996/12/05 22:47:13 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -160,7 +160,6 @@ struct SquidConfig {
     int lifetimeDefault;
     int lifetimeShutdown;
     int connectTimeout;
-    int ageMaxDefault;
     int cleanRate;
     int maxRequestSize;
     struct {
