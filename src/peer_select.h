@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.h,v 1.7 1997/04/29 22:13:05 wessels Exp $
+ * $Id: peer_select.h,v 1.8 1997/05/02 04:28:37 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -76,6 +76,7 @@ typedef struct {
     peer *first_parent_miss;
     peer *closest_parent_miss;
     icp_ping_data icp;
+    aclCheck_t *acl_checklist;
 } ps_state;
 
 

@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.70 1997/04/30 20:06:30 wessels Exp $
+ * $Id: icp.h,v 1.71 1997/05/02 04:28:36 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -198,6 +198,7 @@ typedef struct iwd {
 	int state;
     } ident;
     int redirect_state;
+    aclCheck_t *acl_checklist;	/* need ptr back so we can unreg if needed */
 } icpStateData;
 
 extern void *icpCreateMessage _PARAMS((icp_opcode opcode,
