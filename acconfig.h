@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.27 1998/07/17 00:45:39 wessels Exp $ */
+/* $Id: acconfig.h,v 1.28 1998/07/31 00:15:21 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -61,9 +61,9 @@
 #undef USE_ICMP
 
 /*
- * David Luyer's Delay hack
+ * Traffic management via "delay pools".
  */
-#undef DELAY_HACK
+#undef DELAY_POOLS
 
 /*
  * If you want to log User-Agent request header values, define this.
