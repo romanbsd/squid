@@ -1,4 +1,4 @@
-$Id: Release-Notes-1.1.txt,v 1.15 1996/12/17 05:03:00 wessels Exp $
+$Id: Release-Notes-1.1.txt,v 1.16 1996/12/21 07:03:36 wessels Exp $
 
 Release Notes for version 1.1 of the Squid cache.
 
@@ -320,9 +320,9 @@ object is fresh or stale:
     }
     if (AGE > MAX_AGE)
         return STALE
-    if (LM_FACTOR > PERCENT)
-        return STALE
-    return FRESH
+    if (LM_FACTOR < PERCENT)
+        return FRESH
+    return STALE
 
 Note that the Max-Age in a client request takes the highest precedence.
 The 'MIN' value should normally be set to zero since it has higher
