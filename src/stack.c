@@ -1,6 +1,6 @@
 
 /*
- * $Id: stack.c,v 1.10 1996/09/14 08:46:25 wessels Exp $
+ * $Id: stack.c,v 1.11 1996/09/26 19:54:46 wessels Exp $
  *
  * DEBUG: section 0     Stack Primitives
  * AUTHOR: Harvest Derived
@@ -204,4 +204,10 @@ pop(Stack * stack)
     p = *stack->top;
     *stack->top = NULL;
     return p;
+}
+
+void
+stackFreeMemory(Stack * stack)
+{
+    safe_free(stack->base);
 }
