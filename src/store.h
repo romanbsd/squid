@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.58 1996/10/19 07:08:37 wessels Exp $
+ * $Id: store.h,v 1.59 1996/10/24 05:11:17 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -239,8 +239,8 @@ struct sentry {
     /* to stru which can be freed while object is purged out from memory */
     MemObject *mem_obj;
 
-    u_short flag;
-    u_short refcount;
+    u_num32 flag;
+    u_num32 refcount;
     time_t timestamp;
     time_t lastref;
     time_t expires;
