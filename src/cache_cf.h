@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.39 1996/07/26 19:28:49 wessels Exp $
+ * $Id: cache_cf.h,v 1.40 1996/08/19 22:44:50 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -204,6 +204,7 @@ struct SquidConfig {
     char *pidFilename;
     char *visibleHostname;
     char *ftpUser;
+    char *errHtmlText;
     struct {
 	char *host;
 	u_short port;
@@ -248,7 +249,6 @@ extern int unbuffered_logs;
 extern char ForwardedBy[];
 extern int httpd_accel_mode;
 
-/* Global Functions */
 extern int ip_acl_match _PARAMS((struct in_addr, ip_acl *));
 extern int parseConfigFile _PARAMS((char *file_name));
 extern int setCacheSwapMax _PARAMS((int size));

@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.13 1996/07/23 04:18:01 wessels Exp $
+ * $Id: acl.h,v 1.14 1996/08/19 22:44:49 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -36,6 +36,7 @@ typedef enum {
     ACL_SRC_DOMAIN,
     ACL_DST_DOMAIN,
     ACL_TIME,
+    ACL_URLPATH_REGEX,
     ACL_URL_REGEX,
     ACL_URL_PORT,
     ACL_USER,
