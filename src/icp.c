@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.298 1997/08/14 06:27:27 wessels Exp $
+ * $Id: icp.c,v 1.299 1997/08/25 15:55:24 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -2021,6 +2021,7 @@ httpAccept(int sock, void *notused)
 	    sock, xstrerror());
 	return;
     }
+    ntcpconn++;
     debug(12, 4) ("httpAccept: FD %d: accepted\n", fd);
     connState = xcalloc(1, sizeof(ConnStateData));
     connState->peer = peer;
