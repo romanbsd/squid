@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.87 1996/12/20 23:45:43 wessels Exp $
+ * $Id: proto.c,v 1.88 1997/01/02 07:17:39 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -582,8 +582,8 @@ matchInsideFirewall(const char *host)
     const char *key = NULL;
     int result = NO_FIREWALL;
     struct in_addr addr;
-    if (!s)
-	/* no domains, all hosts are "inside" the firewall */
+    if (!s && !Config.firewall_ip_list)
+	/* no firewall goop, all hosts are "inside" the firewall */
 	return NO_FIREWALL;
     for (; s; s = s->next) {
 	key = s->key;
