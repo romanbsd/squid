@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.28 1999/05/26 20:41:16 wessels Exp $
+ * $Id: aiops.c,v 1.29 1999/05/27 03:21:35 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -116,7 +116,7 @@ static void aio_init(void);
 static void aio_queue_request(aio_request_t *);
 static void aio_process_request_queue(void);
 static void aio_cleanup_request(aio_request_t *);
-static void* aio_thread_loop(void *);
+static void *aio_thread_loop(void *);
 static void aio_do_open(aio_request_t *);
 static void aio_do_read(aio_request_t *);
 static void aio_do_write(aio_request_t *);
@@ -203,7 +203,7 @@ aio_init(void)
 }
 
 
-static void*
+static void *
 aio_thread_loop(void *ptr)
 {
     aio_thread_t *threadp = (aio_thread_t *) ptr;
