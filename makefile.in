@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.8 1996/07/09 03:41:04 wessels Exp $
+# $Id: makefile.in,v 1.9 1996/08/19 23:09:44 wessels Exp $
 #
 
 srcdir		= @srcdir@
@@ -33,3 +33,4 @@ realclean: clean
 		(cd $$dir; $(MAKE) $(MFLAGS) prefix="$(prefix)" $@); \
 	done
 
+depend:

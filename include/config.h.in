@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.12 1996/08/14 22:57:02 wessels Exp $
+ * $Id: config.h.in,v 1.13 1996/08/19 23:09:45 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -94,6 +94,8 @@
 #define _SQUID_NEXT_
 #elif defined(__bsdi__)
 #define _SQUID_BSDI_                          /* BSD/OS */
+#undef  SQUID_FD_SETSIZE
+#define SQUID_FD_SETSIZE 4096
 #endif
 
 #if !defined(CACHE_HTTP_PORT)
