@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.7 1997/11/21 05:55:55 wessels Exp $
+ * $Id: snmp.c,v 1.8 1997/11/23 06:51:37 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -28,11 +28,12 @@
  *  
  */
 
+#ifdef SQUID_SNMP
 
 #include "squid.h"
 #include "mib_module.h"
 
-#ifdef SQUID_SNMP
+
 #define SNMP_REQUEST_SIZE 4096
 #define MAX_PROTOSTAT 5
 int snmp_intoobigs, snmp_inbadcommunitynames;
@@ -1328,4 +1329,14 @@ var_netdb_entry(struct variable * vp, oid * name, int *length, int exact, int *v
 	return NULL;
     }
 }
+
+void
+snmpConnectionClose(void)
+{
+    if (theInSnmpConnection < 0)
+	return;
+    comm_close(theInSnmpConnection);
+    theInSnmpConnection = -1;
+}
+
 #endif
