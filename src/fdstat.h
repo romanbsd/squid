@@ -1,5 +1,6 @@
+
 /*
- * $Id: fdstat.h,v 1.11 1996/09/26 19:19:17 wessels Exp $
+ * $Id: fdstat.h,v 1.12 1996/09/26 19:19:45 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *

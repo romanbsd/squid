@@ -1,5 +1,6 @@
+
 /*
- * $Id: comm.h,v 1.29 1996/09/26 19:19:13 wessels Exp $
+ * $Id: comm.h,v 1.30 1996/09/26 19:19:41 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *

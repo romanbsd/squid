@@ -1,5 +1,5 @@
 /*
- * $Id: fdstat.c,v 1.23 1996/09/26 19:19:16 wessels Exp $
+ * $Id: fdstat.c,v 1.24 1996/09/26 19:19:44 wessels Exp $
  *
  * DEBUG: section 7     File Descriptor Status
  * AUTHOR: Harvest Derived
@@ -261,5 +261,5 @@ fdstat_are_n_free_fd(int n)
 void
 fdstatFreeMemory(void)
 {
-	safe_free(fd_stat_tab);
+    safe_free(fd_stat_tab);
 }

@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.15 1996/09/26 19:19:19 wessels Exp $
+ * $Id: hash.c,v 1.16 1996/09/26 19:19:46 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -413,10 +413,10 @@ hash_get_bucket(HashID hid, unsigned int bucket)
 
 
 void
-hashFreeMemory (HashID hid)
+hashFreeMemory(HashID hid)
 {
-	safe_free(htbl[hid].buckets);
-        htbl[hid].valid = 0;
+    safe_free(htbl[hid].buckets);
+    htbl[hid].valid = 0;
 }
 
 

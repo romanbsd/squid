@@ -1,5 +1,6 @@
+
 /*
- * $Id: stmem.h,v 1.16 1996/09/26 19:19:22 wessels Exp $
+ * $Id: stmem.h,v 1.17 1996/09/26 19:19:47 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *

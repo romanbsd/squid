@@ -1,5 +1,6 @@
+
 /*
- * $Id: disk.h,v 1.19 1996/09/26 19:19:14 wessels Exp $
+ * $Id: disk.h,v 1.20 1996/09/26 19:19:43 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
