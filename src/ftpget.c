@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.75 1997/01/16 22:49:04 wessels Exp $
+ * $Id: ftpget.c,v 1.76 1997/01/28 00:06:55 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -1051,7 +1051,10 @@ read_reply(int fd)
 	    quit = (buf[2] >= '0' && buf[2] <= '9' && buf[3] == ' ');
 	if (!quit) {
 	    l = xmalloc(sizeof(list_t));
-	    l->ptr = xstrdup(&buf[4]);
+	    if (sscanf(buf, "%3d-", &n) == 1)
+		l->ptr = xstrdup(&buf[4]);
+	    else
+		l->ptr = xstrdup(&buf[strspn(buf, w_space)]);
 	    l->next = NULL;
 	    *Tail = l;
 	    Tail = &(l->next);
