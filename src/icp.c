@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.211 1997/01/03 17:38:14 wessels Exp $
+ * $Id: icp.c,v 1.212 1997/01/07 03:37:21 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -460,8 +460,10 @@ icpSendERROR(int fd,
 	    return;
 	}
     }
-    if (text == NULL)
+    if (text == NULL) {
+	comm_close(fd);
 	return;
+    }
     buf_len = strlen(text);
     buf_len = buf_len > 4095 ? 4095 : buf_len;
     buf = get_free_4k_page();
