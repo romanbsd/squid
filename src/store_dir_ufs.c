@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.32 2000/05/02 19:22:01 hno Exp $
+ * $Id: store_dir_ufs.c,v 1.33 2000/05/02 19:43:30 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -202,12 +202,22 @@ static char *
 storeUfsDirSwapLogFile(SwapDir * sd, const char *ext)
 {
     LOCAL_ARRAY(char, path, SQUID_MAXPATHLEN);
+    LOCAL_ARRAY(char, pathtmp, SQUID_MAXPATHLEN);
     LOCAL_ARRAY(char, digit, 32);
+    char *pathtmp2;
     if (Config.Log.swap) {
-	xstrncpy(path, Config.Log.swap, SQUID_MAXPATHLEN - 64);
-	strcat(path, ".");
-	snprintf(digit, 32, "%02d", sd->index);
-	strncat(path, digit, 3);
+	xstrncpy(pathtmp, sd->path, SQUID_MAXPATHLEN - 64);
+	while (index(pathtmp,'/'))
+	    *index(pathtmp,'/')='.';
+	while (strlen(pathtmp) && pathtmp[strlen(pathtmp)-1]=='.')
+	    pathtmp[strlen(pathtmp)-1]= '\0';
+	for(pathtmp2 = pathtmp; *pathtmp2 == '.'; pathtmp2++);
+	snprintf(path, SQUID_MAXPATHLEN-64, Config.Log.swap, pathtmp2);
+	if (strncmp(path, Config.Log.swap, SQUID_MAXPATHLEN - 64) == 0) {
+	    strcat(path, ".");
+	    snprintf(digit, 32, "%02d", sd->index);
+	    strncat(path, digit, 3);
+	}
     } else {
 	xstrncpy(path, sd->path, SQUID_MAXPATHLEN - 64);
 	strcat(path, "/swap.state");
