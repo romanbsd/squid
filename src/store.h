@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.82 1997/02/27 06:29:19 wessels Exp $
+ * $Id: store.h,v 1.83 1997/02/28 21:33:44 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -141,7 +141,6 @@
 
 
 typedef void (*PIF) (int, StoreEntry *, void *);
-typedef void (*IRCB) _PARAMS((peer *, icp_opcode, void *data));
 
 /* keep track each client receiving data from that particular StoreEntry */
 struct _store_client {
@@ -172,6 +171,7 @@ struct _MemObject {
     struct _http_reply *reply;
     request_t *request;
     int mime_hdr_sz;
+    struct timeval start_ping;
     IRCB icp_reply_callback;
     void *ircb_data;
 };

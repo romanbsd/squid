@@ -1,5 +1,5 @@
 /*
- * $Id: storetoString.c,v 1.24 1997/02/05 04:53:33 wessels Exp $
+ * $Id: storetoString.c,v 1.25 1997/02/28 21:33:44 wessels Exp $
  *
  * DEBUG: section 0     Store Entry Debugging
  * AUTHOR: Harvest Derived
@@ -227,13 +227,9 @@ storeToString(const StoreEntry * e)
     else
 	sprintf(tmpbuf, "E_swap_buf: %s\n", mem->e_swap_buf);
     strcat(stsbuf, tmpbuf);
-    sprintf(tmpbuf, "First_miss: %p\n", mem->e_pings_first_miss);
-    strcat(stsbuf, tmpbuf);
 
     sprintf(tmpbuf, "E_swap_buf_len: %d\n", mem->e_swap_buf_len);
     strcat(stsbuf, tmpbuf);
-    sprintf(tmpbuf, "[pings]: npings = %d  nacks = %d\n",
-	mem->e_pings_n_pings, mem->e_pings_n_acks);
     strcat(stsbuf, tmpbuf);
 
     if (!mem->e_abort_msg) {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.233 1997/02/27 06:29:13 wessels Exp $
+ * $Id: icp.c,v 1.234 1997/02/28 21:33:38 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1825,7 +1825,6 @@ clientReadRequest(int fd, void *data)
 	debug(12, 1, "clientReadRequest: FD %d Invalid Request\n", fd);
 	wbuf = squid_error_request(icpState->inbuf,
 	    ERR_INVALID_REQ,
-	    fd_table[fd].ipaddr,
 	    400);
 	icpSendERROR(fd, ERR_INVALID_REQ, wbuf, icpState, 400);
     }
