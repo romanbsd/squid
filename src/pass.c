@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.48 1997/06/18 01:43:45 wessels Exp $
+ * $Id: pass.c,v 1.49 1997/07/14 23:45:03 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -328,8 +328,6 @@ passConnectDone(int fd, int status, void *data)
 	    xfree);
 	return;
     }
-    if (opt_no_ipcache)
-	ipcacheInvalidate(passState->host);
     if (passState->proxying) {
 	request = get_free_request_t();
 	passState->proxy_request = requestLink(request);
