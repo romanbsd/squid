@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.28 1997/07/16 20:31:52 wessels Exp $
+ * $Id: config.h.in,v 1.29 1997/11/15 06:02:03 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -161,6 +161,26 @@
 #else
 #define squid_random rand
 #define squid_srandom srand
+#endif
+
+/* Needed for poll() Linux at least */
+#ifdef HAVE_POLL
+#ifndef POLLRDNORM
+#define POLLRDNORM POLLIN
+#endif
+#ifndef POLLWRNORM
+#define POLLWRNORM POLLOUT
+#endif
+#endif
+
+/* if getrusage() doesn't exist, we fake it, but these fields won't
+   be filled in */
+#if !HAVE_GETRUSAGE
+typedef void struct {
+        struct timeval ru_stime;
+        int ru_maxrss;
+        int ru_majflt;
+} rusage;
 #endif
 
 #endif /* _CONFIG_H_ */
