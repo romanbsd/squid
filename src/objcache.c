@@ -1,5 +1,5 @@
 /*
- * $Id: objcache.c,v 1.9 1996/07/09 03:41:34 wessels Exp $
+ * $Id: objcache.c,v 1.10 1996/07/09 22:59:59 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -253,6 +253,12 @@ int objcacheStart(fd, url, entry)
     } else if (strcmp(data->request, "stats/reply_headers") == 0) {
 	BIT_SET(data->entry->flag, DELAY_SENDING);
 	CacheInfo->stat_get(CacheInfo, "reply_headers", data->entry);
+	BIT_RESET(data->entry->flag, DELAY_SENDING);
+	storeComplete(data->entry);
+
+    } else if (strcmp(data->request, "stats/filedescriptors") == 0) {
+	BIT_SET(data->entry->flag, DELAY_SENDING);
+	CacheInfo->stat_get(CacheInfo, "filedescriptors", data->entry);
 	BIT_RESET(data->entry->flag, DELAY_SENDING);
 	storeComplete(data->entry);
 
