@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.42 1997/05/02 04:28:33 wessels Exp $
+ * $Id: acl.h,v 1.43 1997/06/17 03:03:20 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -129,6 +129,7 @@ struct _aclCheck_t {
     acl_lookup_state state[ACL_ENUM_MAX];
     PF *callback;
     void *callback_data;
+    callback_meta *cbm_list;
 };
 
 extern aclCheck_t *aclChecklistCreate _PARAMS((const struct _acl_access *,
