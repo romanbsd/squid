@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.17 1996/04/10 20:45:33 wessels Exp $ */
+/*  $Id: store.h,v 1.18 1996/04/11 23:52:00 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -182,5 +182,6 @@ extern int storeCopy _PARAMS((StoreEntry *, int, int, char *, int *));
 extern int storeMaintainSwapSpace _PARAMS((void));
 extern void storeExpireNow _PARAMS((StoreEntry *));
 extern void storeReleaseRequest _PARAMS((StoreEntry *, char *file, int line));
+extern void storeRotateLog _PARAMS((void));
 
 #endif
