@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.18 1996/04/11 23:52:00 wessels Exp $ */
+/*  $Id: store.h,v 1.19 1996/04/12 04:53:51 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -114,7 +114,7 @@ struct sentry {
     enum {
 	NO_SWAP, SWAPPING_OUT, SWAP_OK
     } swap_status:3;
-    int type_id:3;
+    int method:3;
 
     /* WARNING: Explicit assummption that fewer than 256
      * WARNING:  clients all hop onto the same object.  The code
