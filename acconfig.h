@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.25 1998/04/24 06:08:14 wessels Exp $ */
+/* $Id: acconfig.h,v 1.26 1998/06/03 16:35:31 rousskov Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -47,9 +47,6 @@
 
 /* Define to use async disk I/O operations */
 #undef USE_ASYNC_IO
-
-/* Define to use alex's code */
-#undef USE_ALEX_CODE
 
 /*
  * If you want to use Squid's ICMP features (highly recommended!) then
