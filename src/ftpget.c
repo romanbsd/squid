@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.53 1996/10/14 21:37:04 wessels Exp $
+ * $Id: ftpget.c,v 1.54 1996/10/18 20:36:23 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -1422,9 +1422,9 @@ do_port(ftp_request_t * r)
     }
     for (;;) {
 #if HAVE_LRAND48
-	port = (lrand48() % (o_conn_max - o_conn_min)) + o_conn_min;
+	port = (u_short) (lrand48() % (o_conn_max - o_conn_min)) + o_conn_min;
 #else
-	port = (rand() % (o_conn_max - o_conn_min)) + o_conn_min;
+	port = (u_short) (rand() % (o_conn_max - o_conn_min)) + o_conn_min;
 #endif
 	S.sin_port = htons(port);
 	if (bind(sock, (struct sockaddr *) &S, sizeof(S)) >= 0)
@@ -2593,7 +2593,7 @@ main(int argc, char *argv[])
 	if (!strcmp(*argv, "-"))
 	    break;
 	if (!strncmp(*argv, "-D", 2)) {
-	    _db_init(NULL, *argv);
+	    _db_init(NULL, (*argv)+2);
 	    continue;
 	} else if (!strcmp(*argv, "-htmlify") || !strcmp(*argv, "-httpify") ||
 	    !strcmp(*argv, "-h")) {
