@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.35 1996/09/12 03:24:04 wessels Exp $
+ * $Id: ftpget.c,v 1.36 1996/09/12 03:47:56 wessels Exp $
  *
  * DEBUG: section 0     FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -1126,9 +1126,9 @@ time_t parse_iso3307_time(buf)
     tms.tm_min = (ASCII_DIGIT(buf[10]) * 10) + ASCII_DIGIT(buf[11]);
     tms.tm_sec = (ASCII_DIGIT(buf[12]) * 10) + ASCII_DIGIT(buf[13]);
 
-#ifdef HAVE_TIMEGM
+#if HAVE_TIMEGM
     t = timegm(&tms);
-#elif defined(_SQUID_SYSV_) || defined(_SQUID_LINUX_) || defined(_SQUID_HPUX_) || defined(_SQUID_AIX_)
+#elif HAVE_MKTIME
     t = mktime(&tms);
 #else
     t = (time_t) 0;
