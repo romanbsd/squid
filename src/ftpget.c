@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.7 1996/03/22 21:13:16 wessels Exp $ */
+/* $Id: ftpget.c,v 1.8 1996/03/25 19:01:21 wessels Exp $ */
 
 /*
  *    NOTES
@@ -1871,6 +1871,7 @@ int ftpget_srv_mode(port)
 	}
 	buf[0] = '\0';
 	/* XXX Assume we get the whole request in one read! */
+	/* Probably okay since it should be coming on the loopback */
 	if ((n = read(c, buf, BUFSIZ)) <= 0) {
 	    log_errno2(__FILE__, __LINE__, "read");
 	    close(c);
