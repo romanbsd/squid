@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.15 1996/07/26 16:58:34 wessels Exp $
+ * $Id: url.h,v 1.16 1996/07/27 07:07:47 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -64,8 +64,7 @@ struct _request {
     int port;
     char urlpath[MAX_URL + 1];
     int link_count;		/* free when zero */
-    hier_code hierarchy_code;
-    char *hierarchy_host;
+    struct _hierarchyLogData hierarchy;
 };
 
 extern char *url_convert_hex _PARAMS((char *org_url, int allocate));

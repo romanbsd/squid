@@ -1,5 +1,5 @@
 /*
- * $Id: stat.h,v 1.20 1996/07/22 17:20:59 wessels Exp $
+ * $Id: stat.h,v 1.21 1996/07/27 07:07:46 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -180,8 +180,7 @@ struct _cacheinfo {
 	    int http_code,
 	    int msec,
 	    char *ident,
-	    hier_code,
-	    char *hierarchy_host));
+	    struct _hierarchyLogData *hierData));
 
     /* clear logfile */
     void (*log_clear) _PARAMS((struct _cacheinfo * obj, StoreEntry * sentry));
