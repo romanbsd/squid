@@ -2,7 +2,7 @@
 
 
 /*
- * $Id: pass.c,v 1.69 1998/03/07 23:43:09 rousskov Exp $
+ * $Id: pass.c,v 1.70 1998/03/17 04:00:14 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -341,11 +341,7 @@ passConnectDone(int fdnotused, int status, void *data)
 	request = memAllocate(MEM_REQUEST_T);
 	passState->proxy_request = requestLink(request);
 	request->method = passState->request->method;
-#if 0
-	xstrncpy(request->urlpath, passState->url, MAX_URL);
-#else
 	stringReset(&request->urlpath, passState->url);
-#endif
     }
     passState->client.len = httpBuildRequestHeader(request,
 	passState->request,	/* orig_request */
