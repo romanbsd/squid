@@ -1,4 +1,4 @@
-/* $Id: stat.h,v 1.11 1996/05/01 22:36:38 wessels Exp $ */
+/* $Id: stat.h,v 1.12 1996/05/01 22:38:57 wessels Exp $ */
 
 #ifndef STAT_H
 #define STAT_H
@@ -81,7 +81,7 @@ struct _cacheinfo {
 
     /* add a transaction to system log */
     void (*log_append) _PARAMS((struct _cacheinfo * obj, char *url, char *id,
-	    int size, char *action, char *method, int http_code, int msec));
+	    int size, char *action, char *method, int http_code, int msec, char *ident));
 
     /* clear logfile */
     void (*log_clear) _PARAMS((struct _cacheinfo * obj, StoreEntry * sentry));
