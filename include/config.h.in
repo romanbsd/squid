@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.35 1998/02/02 19:50:08 wessels Exp $
+ * $Id: config.h.in,v 1.36 1998/05/11 20:33:48 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -43,12 +43,6 @@
 #ifndef USE_RE_SYNTAX
 #define USE_RE_SYNTAX	REG_EXTENDED	/* default Syntax */
 #endif
-#endif
-
-#if defined(SYSTYPE_SYSV) || defined(__svr4__) || defined(SYSTYPE_SVR4) || defined(__SYSTYPE_SVR4__)
-#define _SQUID_SYSV_
-#else
-#define _SQUID_BSD_
 #endif
 
 /* define the _SQUID_TYPE_ based on a guess of the OS */
@@ -96,6 +90,10 @@
 
 #elif defined(__NetBSD__)
 #define _SQUID_NETBSD_
+
+#elif defined(__CYGWIN32__) || defined(WIN32) || defined(WINNT)
+#define _SQUID_MSWIN_
+
 #endif
 
 #if !defined(CACHE_HTTP_PORT)
