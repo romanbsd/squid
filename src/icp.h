@@ -1,4 +1,4 @@
-/* $Id: icp.h,v 1.15 1996/05/01 22:38:56 wessels Exp $ */
+/* $Id: icp.h,v 1.16 1996/05/03 23:24:25 wessels Exp $ */
 
 #ifndef ICP_H
 #define ICP_H
@@ -87,4 +87,5 @@ typedef struct {
     int flags;
     char ident[ICP_IDENT_SZ + 1];
     int ident_fd;
+    int size;
 } icpStateData;
