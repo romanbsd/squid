@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.24 1996/09/05 22:16:01 wessels Exp $
+ * $Id: stat.h,v 1.25 1996/09/12 16:39:56 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -234,7 +234,7 @@ struct _iostats {
 	int read_hist[16];
 	int writes;
 	int write_hist[16];
-    } Http, Ftp;
+    } Http, Ftp, Gopher, Wais;
 };
 
 extern struct _iostats IOStats;

@@ -1,5 +1,5 @@
 /*
- * $Id: objcache.c,v 1.17 1996/08/28 20:12:56 wessels Exp $
+ * $Id: objcache.c,v 1.18 1996/09/12 16:39:55 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -191,7 +191,7 @@ int objcacheStart(fd, url, entry)
     /* before we generate new object */
     data->entry->expires = squid_curtime + STAT_TTL;
 
-    debug(16, 3, "objectcacheStart - url: %s\n", url);
+    debug(16, 3, "objectcacheStart: '%s'\n", url);
 
     /* Parse url. */
     password[0] = '\0';
