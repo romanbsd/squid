@@ -1,4 +1,4 @@
-/* $Id: objcache.c,v 1.6 1996/04/16 05:05:26 wessels Exp $ */
+/* $Id: objcache.c,v 1.7 1996/04/16 05:13:06 wessels Exp $ */
 
 /*
  * DEBUG: Section 16          objcache
@@ -200,7 +200,7 @@ int objcacheStart(fd, url, entry)
 	storeComplete(data->entry);
 
     } else if (strncmp(data->request, "squid.conf", strlen("squid.conf")) == 0) {
-	CacheInfo->cached_get_start(CacheInfo, data->entry);
+	CacheInfo->squid_get_start(CacheInfo, data->entry);
 
     } else {
 	debug(16, 5, "Bad Object Cache URL %s ... negative cached.\n", url);
