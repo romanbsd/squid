@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.70 1996/11/19 07:21:14 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.71 1996/11/23 07:10:49 wessels Exp $
 #
 
 #  TAG: http_port
@@ -949,6 +949,8 @@ minimum_direct_hops 4
 #
 #	* Indicates actions which will not be performed without a
 #	  valid password, others can be performed if not listed here.
+#
+#	To disable an action, set the password to "none".
 #
 #Examples:
 #
