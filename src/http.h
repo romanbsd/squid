@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.24 1996/11/28 07:16:12 wessels Exp $
+ * $Id: http.h,v 1.25 1996/11/28 07:31:50 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -125,9 +125,9 @@ struct _http_reply {
 #define BUF_TYPE_MALLOC 2
 
 typedef enum {
-	HDR_IMS,
-	HDR_HOST,
-	HDR_MAXAGE
+    HDR_IMS,
+    HDR_HOST,
+    HDR_MAXAGE
 } http_hdr_flag_t;
 
 typedef struct {

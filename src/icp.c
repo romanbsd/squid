@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.189 1996/11/28 07:31:01 wessels Exp $
+ * $Id: icp.c,v 1.190 1996/11/28 07:31:51 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1932,7 +1932,7 @@ CheckQuickAbort(icpStateData * icpState)
 }
 
 static int
-icpCheckTransferDone(icpStateData *icpState)
+icpCheckTransferDone(icpStateData * icpState)
 {
     StoreEntry *entry = icpState->entry;
     MemObject *mem = NULL;
