@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.3 1996/05/01 22:36:18 wessels Exp $ */
+/* $Id: acconfig.h,v 1.4 1996/07/09 03:41:03 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -6,8 +6,23 @@
 /* Define if struct mallinfo has mxfast member */
 #undef HAVE_EXT_MALLINFO
 
-/* Define if signal handlers must be reset after invocation */
-#undef RESET_SIGNAL_HANDLER
-
 /* Maximum number of open filedescriptors */
 #undef SQUID_FD_SETSIZE
+
+/* UDP send buffer size */
+#undef SQUID_UDP_SO_SNDBUF
+
+/* UDP receive buffer size */
+#undef SQUID_UDP_SO_RCVBUF
+
+/* TCP send buffer size */
+#undef SQUID_TCP_SO_SNDBUF
+
+/* TCP receive buffer size */
+#undef SQUID_TCP_SO_RCVBUF
+
+/* Host type from configure */
+#undef CONFIG_HOST_TYPE
+
+/* If we need to declare sys_errlist[] as external */
+#undef NEED_SYS_ERRLIST

@@ -1,5 +1,5 @@
 /*
- * $Id: debug.h,v 1.12 1996/07/08 22:42:46 wessels Exp $
+ * $Id: debug.h,v 1.13 1996/07/09 03:41:21 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -126,5 +126,7 @@ extern void _db_print();
         _db_print
 
 #define safe_free(x)	if (x) { xxfree(x); x = NULL; }
+
+extern void _db_rotate_log _PARAMS((void));
 
 #endif /* _DEBUG_H_ */
