@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.8 1996/11/15 07:50:24 wessels Exp $ */
+/* $Id: acconfig.h,v 1.9 1996/11/22 05:07:08 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -7,7 +7,7 @@
 #undef HAVE_EXT_MALLINFO
 
 /* Maximum number of open filedescriptors */
-#undef SQUID_FD_SETSIZE
+#undef SQUID_MAXFD
 
 /* UDP send buffer size */
 #undef SQUID_UDP_SO_SNDBUF
