@@ -1,5 +1,6 @@
+
 /*
- * $Id: fdstat.c,v 1.33 1997/04/30 03:12:04 wessels Exp $
+ * $Id: fdstat.c,v 1.34 1997/04/30 18:30:49 wessels Exp $
  *
  * DEBUG: section 7     File Descriptor Status
  * AUTHOR: Harvest Derived
