@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.13 1998/04/06 22:32:09 wessels Exp $
+ * $Id: MemPool.c,v 1.14 1998/05/28 04:58:23 wessels Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -70,7 +70,7 @@ toKB(size_t size)
 /* Initialization */
 
 void
-memConfigure()
+memConfigure(void)
 {
     size_t new_pool_limit = mem_idle_limit;
     /* set to configured value first */
@@ -92,7 +92,7 @@ memConfigure()
 }
 
 void
-memInitModule()
+memInitModule(void)
 {
     memset(&TheMeter, 0, sizeof(TheMeter));
     stackInit(&Pools);
@@ -101,7 +101,7 @@ memInitModule()
 }
 
 void
-memCleanModule()
+memCleanModule(void)
 {
     int i;
     int dirty_count = 0;
@@ -263,7 +263,7 @@ memPoolDescribe(const MemPool * pool)
 }
 
 size_t
-memTotalAllocated()
+memTotalAllocated(void)
 {
     return TheMeter.alloc.level;
 }
