@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.85 1997/04/02 04:40:00 wessels Exp $
+ * $Id: store.h,v 1.86 1997/04/25 06:38:23 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -262,7 +262,7 @@ extern const char *storeGeneratePrivateKey _PARAMS((const char *, method_t, int)
 extern void storeStartDeleteBehind _PARAMS((StoreEntry *));
 extern int storeClientCopy _PARAMS((StoreEntry *, int, int, char *, int *, int));
 extern int storePendingNClients _PARAMS((const StoreEntry *));
-extern int storeWriteCleanLog _PARAMS((void));
+extern int storeWriteCleanLogs _PARAMS((void));
 extern int storeRegister _PARAMS((StoreEntry *, int, PIF, void *));
 extern int urlcmp _PARAMS((const char *, const char *));
 extern void storeMaintainSwapSpace _PARAMS((void *unused));
