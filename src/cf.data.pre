@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.291 2002/12/18 01:07:03 hno Exp $
+# $Id: cf.data.pre,v 1.292 2003/01/16 04:36:38 wessels Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2840,6 +2840,7 @@ DOC_START
 		netdb
 		non_peers
 		objects
+		offline_toggle *
 		pconn
 		peer_select
 		redirector
