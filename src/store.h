@@ -1,5 +1,5 @@
 /* 
- *  $Id: store.h,v 1.1 1996/02/22 06:23:56 wessels Exp $
+ *  $Id: store.h,v 1.2 1996/02/23 06:56:36 wessels Exp $
  *
  *  File:         store.h
  *  Description:  Interface to cache storage manager.
@@ -213,8 +213,6 @@ typedef struct sentry {
     unsigned char lock_count;
 
 } StoreEntry;
-
-#define store_mem_obj(a,b)     ((a)->mem_obj->b)
 
 /* ----------------------------------------------------------------- */
 

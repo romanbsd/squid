@@ -1,6 +1,6 @@
 
 /*
- *  $Id: cache_cf.h,v 1.1 1996/02/22 06:23:53 wessels Exp $
+ *  $Id: cache_cf.h,v 1.2 1996/02/23 06:56:29 wessels Exp $
  *
  *  File:         config.h
  *  Description:  Declarations of parsing and config functions
@@ -162,6 +162,7 @@ int getAsciiPortNum();
 int getBinaryPortNum();
 int getUdpPortNum();
 char *getFtpProgram();
+char *getFtpOptions();
 char *getDnsProgram();
 char *getAdminEmail();
 int getDebugLevel();
