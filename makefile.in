@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.6 1996/03/28 02:32:49 wessels Exp $
+# $Id: makefile.in,v 1.7 1996/04/18 03:29:01 wessels Exp $
 #
 
 srcdir		= @srcdir@
@@ -25,7 +25,7 @@ all install clean:
 
 realclean: clean
 	rm -f config.status config.cache config.log makefile
-	rm -f include/paths.h include/autoconf.h
+	rm -f include/paths.h include/autoconf.h include/config.h
 	@for dir in $(SUBDIRS); do \
 		echo Making $@ in $$dir; \
 		(cd $$dir; $(MAKE) $(MFLAGS) prefix="$(prefix)" $@); \
