@@ -1,5 +1,5 @@
 /*
- * $Id: rfc850.c,v 1.9 1996/09/15 05:04:10 wessels Exp $
+ * $Id: rfc850.c,v 1.10 1996/09/17 16:39:02 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -130,6 +130,7 @@
 #endif
 
 #include "util.h"
+#include "ansiproto.h"
 
 static int make_month __P((char *s));
 static int make_num __P((char *s));

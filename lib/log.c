@@ -1,5 +1,5 @@
 /*
- * $Id: log.c,v 1.8 1996/09/17 02:29:46 wessels Exp $
+ * $Id: log.c,v 1.9 1996/09/17 16:39:02 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -139,6 +139,7 @@
 #endif
 
 #include "util.h"
+#include "ansiproto.h"
 
 #ifdef _SQUID_NEXT_
 typedef int pid_t;
