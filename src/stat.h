@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.43 1996/11/06 23:14:58 wessels Exp $
+ * $Id: stat.h,v 1.44 1996/12/03 20:27:00 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -174,7 +174,6 @@ struct _cacheinfo {
 
     /* statistic update method */
 
-#if LOG_FULL_HEADERS
     /* add a transaction to system log */
     void (*log_append) (const struct _cacheinfo * obj,
 	const char *url,
@@ -186,21 +185,11 @@ struct _cacheinfo {
 	int msec,
 	const char *ident,
 	const struct _hierarchyLogData * hierData,
+#if LOG_FULL_HEADERS
 	const char *request_hdrs,
-	const char *reply_hdrs);
-#else
-    /* add a transaction to system log */
-    void (*log_append) (const struct _cacheinfo * obj,
-	const char *url,
-	struct in_addr,
-	int size,
-	const char *action,
-	const char *method,
-	int http_code,
-	int msec,
-	const char *ident,
-	const struct _hierarchyLogData * hierData);
+	const char *reply_hdrs,
 #endif				/* LOG_FULL_HEADERS */
+	const char *content_type);
 
     /* clear logfile */
     void (*log_clear) (struct _cacheinfo * obj, StoreEntry * sentry);
