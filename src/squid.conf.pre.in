@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.43 1996/09/12 03:24:07 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.44 1996/09/13 20:23:02 wessels Exp $
 #
 
 #  TAG: http_port
@@ -314,6 +314,19 @@
 #	is to use the native log format.
 #
 #emulate_httpd_log off
+
+#  TAG: log_mime_hdrs
+#	The Cache can record both the request and the response
+#	MIME headers for each HTTP transaction.  The headers are
+#	encoded safely and will appear as two bracketed fields
+#	at the end of the access log (for either the native
+#	or httpd-emulated log formats).  To enable this logging
+#	set log_mime_hdrs to 'on'.
+#
+#	NOTE: support for this may require you to define
+#	LOG_FULL_HEADERS before compiling.
+#
+#log_mime_hdrs off
 
 #  TAG: pid_filename
 #	A pathname to write the process-id to.  There is no default.

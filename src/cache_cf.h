@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.46 1996/09/05 19:02:53 wessels Exp $
+ * $Id: cache_cf.h,v 1.47 1996/09/13 20:23:00 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -198,6 +198,9 @@ struct SquidConfig {
     int redirectChildren;
     int sourcePing;
     int commonLogFormat;
+#ifdef LOG_FULL_HEADERS
+    int logMimeHdrs;
+#endif /* LOG_FULL_HEADERS */
     int identLookup;
     int neighborTimeout;
     int stallDelay;
