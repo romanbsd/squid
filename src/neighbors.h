@@ -1,5 +1,5 @@
 
-/*  $Id: neighbors.h,v 1.3 1996/03/27 18:50:24 wessels Exp $ */
+/*  $Id: neighbors.h,v 1.4 1996/04/08 19:32:41 wessels Exp $ */
 
 #ifndef NEIGHBORS_H
 #define NEIGHBORS_H
@@ -99,5 +99,6 @@ extern void neighbors_cf_add _PARAMS((char *, char *, int, int, int));
 extern void neighbors_init _PARAMS((void));
 extern void neighbors_open _PARAMS((int));
 extern void neighbors_rotate_log _PARAMS((void));
+extern void neighborsDestroy _PARAMS((void));
 
 #endif
