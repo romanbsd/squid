@@ -1,5 +1,5 @@
 /*
- * $Id: options.h,v 1.1 1997/12/05 22:01:14 wessels Exp $
+ * $Id: options.h,v 1.2 1997/12/06 01:30:34 wessels Exp $
  */
 
 /*
@@ -78,4 +78,4 @@
  * elements based on ethernet hardware addresses.  This code uses
  * functions found in 4.4 BSD derviations (e.g. FreeBSD, ?).
  */
-#define USE_ARP_ACL 1
+#undef USE_ARP_ACL 1
