@@ -1,5 +1,5 @@
 /*
- * $Id: HttpReply.h,v 1.4 1998/02/26 06:30:01 rousskov Exp $
+ * $Id: HttpReply.h,v 1.5 1998/02/26 07:06:14 rousskov Exp $
  *
  * AUTHOR: Alex Rousskov
  *
@@ -30,6 +30,7 @@
 #ifndef _HTTP_REPLY_H_
 #define _HTTP_REPLY_H_
 
+#include "Packer.h"
 #include "HttpStatusLine.h"
 #include "HttpBody.h"
 
