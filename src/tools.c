@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.225 2002/10/06 02:05:23 robertc Exp $
+ * $Id: tools.c,v 1.226 2002/10/22 09:46:43 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1056,6 +1056,7 @@ strwordtok(char *buf, char **t)
 	case '"':
 	    quoted = !quoted;
 	    p++;
+	    break;
 	default:
 	    if (!quoted && isspace(*p)) {
 		p++;
