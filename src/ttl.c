@@ -1,6 +1,6 @@
 
 /*
- * $Id: ttl.c,v 1.10 1996/07/09 03:41:45 wessels Exp $
+ * $Id: ttl.c,v 1.11 1996/07/19 17:38:39 wessels Exp $
  *
  * DEBUG: section 22    TTL Calculation
  * AUTHOR: Harvest Derived
@@ -167,7 +167,7 @@ void ttlAddToList(pattern, abs_ttl, pct_age, age_max)
 
 
 
-time_t ttlSet(entry)
+void ttlSet(entry)
      StoreEntry *entry;
 {
     time_t last_modified = -1;
@@ -233,11 +233,11 @@ time_t ttlSet(entry)
 	    flags & TTL_ABSOLUTE ? 'A' : '.',
 	    flags & TTL_DEFAULT ? 'D' : '.',
 	    (double) ttl / 86400, entry->url);
-	return ttl;
+        entry->expires = squid_curtime + ttl;
+        entry->lastmod = last_modified > 0 ? last_modified : squid_curtime;
+	return;
     }
-    /*
-     * ** Calculate default TTL for later use
-     */
+    /*  Calculate default TTL for later use */
     if (request->protocol == PROTO_HTTP)
 	default_ttl = getHttpTTL();
     else if (request->protocol == PROTO_FTP)
@@ -296,5 +296,6 @@ time_t ttlSet(entry)
 	flags & TTL_DEFAULT ? 'D' : '.',
 	(double) ttl / 86400, entry->url);
 
-    return ttl;
+    entry->expires = squid_curtime + ttl;
+    entry->lastmod = last_modified > 0 ? last_modified : squid_curtime;
 }
