@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.81 1997/05/26 04:04:59 wessels Exp $
+ * $Id: icp.h,v 1.82 1997/06/01 18:19:55 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -180,7 +180,8 @@ typedef struct _clientHttpRequest {
     } out;
     char *request_hdr;
     size_t req_sz;
-    size_t req_hdr_sz;
+    size_t header_sz;
+    size_t body_sz;
     StoreEntry *entry;
     StoreEntry *old_entry;
     log_type log_type;

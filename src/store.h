@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.98 1997/05/23 19:48:07 wessels Exp $
+ * $Id: store.h,v 1.99 1997/06/01 18:19:57 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -155,7 +155,6 @@ struct _store_client {
 
 /* This structure can be freed while object is purged out from memory */
 struct _MemObject {
-    char *request_hdr;
     mem_ptr data;
     char *e_swap_buf;
     int w_rtt;			/* weighted RTT in msec */
@@ -174,7 +173,6 @@ struct _MemObject {
     short swapout_fd;
     struct _http_reply *reply;
     request_t *request;
-    int request_hdr_sz;
     struct timeval start_ping;
     IRCB *icp_reply_callback;
     void *ircb_data;
@@ -242,7 +240,7 @@ struct sentry {
 /* ----------------------------------------------------------------- */
 
 extern StoreEntry *storeGet _PARAMS((const char *));
-extern StoreEntry *storeCreateEntry _PARAMS((const char *, const char *, int, int, method_t));
+extern StoreEntry *storeCreateEntry _PARAMS((const char *, int, method_t));
 extern void storeSetPublicKey _PARAMS((StoreEntry *));
 extern StoreEntry *storeGetFirst _PARAMS((void));
 extern StoreEntry *storeGetNext _PARAMS((void));

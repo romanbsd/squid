@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.35 1997/05/23 05:20:58 wessels Exp $
+ * $Id: http.h,v 1.36 1997/06/01 18:19:53 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -128,9 +128,7 @@ struct _http_reply {
 typedef struct {
     StoreEntry *entry;
     request_t *request;
-    char *req_hdr;
     char *reply_hdr;
-    int req_hdr_sz;
     int reply_hdr_state;
     peer *neighbor;		/* neighbor request made to */
     int eof;			/* reached end-of-object? */
