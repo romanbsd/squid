@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.72 1996/11/24 02:42:04 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.73 1996/11/25 17:34:35 wessels Exp $
 #
 
 #  TAG: http_port
@@ -274,6 +274,13 @@ hierarchy_stoplist cgi-bin ?
 #
 cache_stoplist cgi-bin ?
 
+#  TAG: cache_stoplist_pattern		# case sensitive
+#  TAG: cache_stoplist_pattern/i	# case insensitive
+#
+#	Just like 'cache_stoplist' but you can use regular expressions
+#	instead of simple string matching.  There is no default.
+#
+#cache_stoplist_pattern
 
 # OPTIONS WHICH AFFECT THE CACHE SIZE
 #-----------------------------------------------------------------------------
