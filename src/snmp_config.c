@@ -1,5 +1,6 @@
+
 /*
- * $Id: snmp_config.c,v 1.18 1998/04/04 01:44:03 kostas Exp $
+ * $Id: snmp_config.c,v 1.19 1998/04/06 22:32:17 wessels Exp $
  *
  * DEBUG: section 49     SNMP Interface
  * AUTHOR: Kostas Anagnostakis
