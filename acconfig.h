@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.17 1998/01/06 00:27:43 wessels Exp $ */
+/* $Id: acconfig.h,v 1.18 1998/02/06 00:56:25 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -50,7 +50,7 @@
 #undef XMALLOC_STATISTICS
 
 /* Define to have a detailed trace of memory allocations */
-#undef XMALLOC_COUNT
+#undef XMALLOC_TRACE
 
 /* Define to use async disk I/O operations */
 #undef USE_ASYNC_IO
