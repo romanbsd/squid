@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.47 1997/06/04 06:16:05 wessels Exp $
+ * $Id: pass.c,v 1.48 1997/06/18 01:43:45 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -110,7 +110,9 @@ passStateFree(int fd, void *data)
     xfree(passState->url);
     requestUnlink(passState->request);
     requestUnlink(passState->proxy_request);
-    safe_free(passState);
+    passState->request = NULL;
+    passState->proxy_request = NULL;
+    cbdataFree(passState);
 }
 
 /* This will be called when the server lifetime is expired. */
@@ -396,6 +398,7 @@ passStart(int fd,
 	return;
     }
     passState = xcalloc(1, sizeof(PassStateData));
+    cbdataAdd(passState);
     passState->url = xstrdup(url);
     passState->request = requestLink(request);
     passState->timeout = Config.Timeout.read;
