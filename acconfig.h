@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.9 1996/11/22 05:07:08 wessels Exp $ */
+/* $Id: acconfig.h,v 1.10 1997/01/07 20:05:31 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -38,3 +38,6 @@
 
 /* Define if your compiler supports prototyping */
 #undef HAVE_ANSI_PROTOTYPES
+
+/* Define if we should use GNU regex */
+#undef USE_GNUREGEX
