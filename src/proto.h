@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.26 1996/11/12 22:37:14 wessels Exp $
+ * $Id: proto.h,v 1.27 1996/11/16 07:08:15 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -118,7 +118,7 @@ struct icp_common_s {
 };
 
 #define ICP_FLAG_HIT_OBJ     0x80000000ul
-#define ICP_FLAG_MISS_GUNK   0x40000000ul
+#define ICP_FLAG_NETDB_GUNK   0x40000000ul
 
 #define ICP_COMMON_SZ (sizeof(icp_common_t))
 #define ICP_HDR_SZ (sizeof(icp_common_t)+sizeof(u_num32))
