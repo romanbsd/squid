@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.65 2002/04/13 14:11:43 hno Exp $ */
+/* $Id: acconfig.h,v 1.66 2002/04/13 15:30:10 hno Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -240,6 +240,12 @@
  *  Linux system.
  */
 #undef IPF_TRANSPARENT
+
+/*
+ * Enable support for Transparent Proxy on systems using PF address
+ * redirection. This provides "masquerading" support for OpenBSD.
+ */
+#undef PF_TRANSPARENT
 
 /*
  * Enable code for assiting in finding memory leaks.  Hacker stuff only.
