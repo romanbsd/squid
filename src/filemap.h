@@ -1,5 +1,5 @@
 /*
- * $Id: filemap.h,v 1.9 1997/03/29 04:45:15 wessels Exp $
+ * $Id: filemap.h,v 1.10 1997/04/02 04:39:56 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -105,14 +105,14 @@
 #ifndef _FILEMAP_H_
 #define _FILEMAP_H_
 
-typedef struct _fileMap {
+struct _fileMap {
     int max_n_files;
     int n_files_in_map;
     int last_file_number_allocated;
     int toggle;
     int nwords;
     unsigned long *file_map;
-} fileMap;
+};
 
 extern fileMap *file_map_create _PARAMS((int));
 extern int file_map_allocate _PARAMS((fileMap *, int));

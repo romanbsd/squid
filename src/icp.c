@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.235 1997/03/04 05:16:33 wessels Exp $
+ * $Id: icp.c,v 1.236 1997/04/02 04:39:57 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1244,7 +1244,7 @@ icpHandleIcpV2(int fd, struct sockaddr_in from, char *buf, int len)
 	    }
 	}
 	/* if store is rebuilding, return a UDP_HIT, but not a MISS */
-	if (store_rebuilding == STORE_REBUILDING_FAST && opt_reload_hit_only) {
+	if (store_rebuilding == STORE_REBUILDING_CLEAN && opt_reload_hit_only) {
 	    reply = icpCreateMessage(ICP_OP_MISSNOFETCH, flags, url, header.reqnum, netdb_gunk);
 	    icpUdpSend(fd, &from, reply, LOG_UDP_MISSNOFETCH, icp_request->protocol);
 	} else if (hit_only_mode_until > squid_curtime) {
@@ -1373,7 +1373,7 @@ icpHandleIcpV3(int fd, struct sockaddr_in from, char *buf, int len)
 	    break;
 	}
 	/* if store is rebuilding, return a UDP_HIT, but not a MISS */
-	if (opt_reload_hit_only && store_rebuilding == STORE_REBUILDING_FAST) {
+	if (opt_reload_hit_only && store_rebuilding == STORE_REBUILDING_CLEAN) {
 	    reply = icpCreateMessage(ICP_OP_MISSNOFETCH, 0, url, header.reqnum, 0);
 	    icpUdpSend(fd, &from, reply, LOG_UDP_MISSNOFETCH, icp_request->protocol);
 	} else if (hit_only_mode_until > squid_curtime) {
