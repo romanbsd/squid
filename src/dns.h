@@ -1,5 +1,6 @@
+
 /*
- * $Id: dns.h,v 1.9 1997/04/28 04:23:05 wessels Exp $
+ * $Id: dns.h,v 1.10 1997/05/05 03:43:40 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *

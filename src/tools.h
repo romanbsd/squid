@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.h,v 1.32 1997/02/26 19:46:26 wessels Exp $
+ * $Id: tools.h,v 1.33 1997/05/05 03:43:51 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -126,6 +126,8 @@ extern void squid_signal _PARAMS((int sig, void (*func) _PARAMS((int)), int flag
 extern pid_t readPidFile _PARAMS((void));
 extern void _debug_trap _PARAMS((const char *message));
 extern struct in_addr inaddrFromHostent _PARAMS((const struct hostent * hp));
+extern int intAverage _PARAMS((int, int, int, int));
+extern double doubleAverage _PARAMS((double, double, int, int));
 
 extern int do_mallinfo;
 extern time_t squid_curtime;
