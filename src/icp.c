@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.110 1996/09/14 08:46:07 wessels Exp $
+ * $Id: icp.c,v 1.111 1996/09/14 16:05:45 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -170,13 +170,13 @@ static void icpLogIcp(icpUdpData *);
 static void icpHandleIcpV2(int fd, struct sockaddr_in, char *, int len);
 static void icpHandleIcpV3(int fd, struct sockaddr_in, char *, int len);
 static char *icpConstruct304reply(struct _http_reply *);
-static void icpUdpSendEntry _PARAMS((int fd,
+static void icpUdpSendEntry (int fd,
 	char *url,
 	icp_common_t * reqheaderp,
 	struct sockaddr_in * to,
 	icp_opcode opcode,
 	StoreEntry * entry,
-	struct timeval start_time));
+	struct timeval start_time);
 
 
 /* This is a handler normally called by comm_close() */

@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.9 1996/09/14 08:46:04 wessels Exp $
+ * $Id: hash.c,v 1.10 1996/09/14 16:05:44 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -174,7 +174,9 @@ hash_init(int hash_sz)
  *  otherwise returns a negative number on error.
  */
 HashID
-hash_create(int (*cmp_func) _PARAMS((char *, char *)), int hash_sz, int (*hash_func) _PARAMS((char *, HashID)))
+hash_create(int (*cmp_func) (char *, char *),
+	int hash_sz,
+	int (*hash_func) (char *, HashID))
 {
     int hid;
 

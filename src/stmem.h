@@ -1,5 +1,5 @@
 /*
- * $Id: stmem.h,v 1.12 1996/09/14 08:46:29 wessels Exp $
+ * $Id: stmem.h,v 1.13 1996/09/14 16:05:49 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -121,7 +121,6 @@ typedef struct mem_hdr {
     int (*mem_free_data_upto) (mem_ptr mem, int target_offset);
     int (*mem_append) (mem_ptr mem, char *data, int len);
     int (*mem_copy) (mem_ptr mem, int offset, char *buf, int size);
-    int (*mem_grep) (mem_ptr mem, char *string, int nbytes);
 } Mem_Hdr;
 
 /* To reduce memory fragmentation, we now store the memory version of an
