@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.14 1996/03/28 16:59:17 wessels Exp $ */
+/* $Id: ftpget.c,v 1.15 1996/04/04 19:02:58 wessels Exp $ */
 
 /*
  *    NOTES
@@ -1843,6 +1843,10 @@ int ftpget_srv_mode(port)
     if ((sock = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
 	log_errno2(__FILE__, __LINE__, "socket");
 	exit(1);
+    }
+    if (fcntl(sock, F_SETFD, 1) < 0) {
+	Debug(26, 0, ("ftpget_srv_mode: FD %d: failed to set close-on-exec flag: %s\n",
+	    sock, xstrerror()));
     }
     i = 1;
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (char *) &i, sizeof(int));
