@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.70 1999/01/21 23:58:46 wessels Exp $
+ * $Id: pump.c,v 1.71 1999/01/29 23:39:22 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -94,7 +94,7 @@ pumpInit(int fd, request_t * r, char *uri)
     p->request_entry = storeCreateEntry(new_key, new_key, flags, r->method);
     storeClientListAdd(p->request_entry, p);
 #if DELAY_POOLS
-    delaySetStoreClient(p->request_entry, p, r->delay_id);
+    delaySetStoreClient(p->request_entry, p, delayClient(r));
 #endif
     /*
      * initialize data structure
