@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.33 1998/04/05 20:31:10 wessels Exp $
+ * $Id: pump.c,v 1.34 1998/04/05 22:51:39 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -367,8 +367,13 @@ pumpFree(int fd, void *data)
 	p->request_entry = NULL;
     }
     if (rep != NULL) {
+	/*
+	 * Set the storeAbort() 'cbflag' so that the server-side
+	 * abort handler (httpAbort) gets called and the server-side
+	 * FD gets closed.
+	 */
 	if (rep->store_status == STORE_PENDING)
-	    storeAbort(rep, 0);
+	    storeAbort(rep, 1);
 	storeUnlockObject(rep);
 	p->reply_entry = NULL;
     }
