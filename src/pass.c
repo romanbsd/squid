@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.60 1997/11/05 05:29:33 wessels Exp $
+ * $Id: pass.c,v 1.61 1997/11/12 00:09:00 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -288,7 +288,7 @@ passWriteClient(int fd, void *data)
 }
 
 static void
-passErrorComplete(int fdnotused, void *passState, int sizenotused)
+passErrorComplete(int fdnotused, void *passState, size_t sizenotused)
 {
     assert(passState != NULL);
     passClose(passState);
