@@ -1,5 +1,5 @@
 /*
- * $Id: check_group-1.0.c,v 1.2 2002/06/26 17:25:57 hno Exp $
+ * $Id: check_group-1.0.c,v 1.3 2002/07/06 12:33:09 hno Exp $
  *
  * This is a helper for the external ACL interface for Squid Cache
  * Copyright (C) 2002 Rodrigo Albani de Campos (rodrigo@geekbunker.org)
@@ -51,6 +51,7 @@
 #include <grp.h>
 #include <unistd.h>
 #include <pwd.h>
+#include <ctype.h>
 
 
 #define BUFSIZE 8192		/* the stdin buffer size */
