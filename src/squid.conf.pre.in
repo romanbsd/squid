@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.87 1997/01/22 18:34:24 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.88 1997/01/24 22:18:24 wessels Exp $
 #
 
 #  TAG: http_port
@@ -947,6 +947,10 @@ dns_testnames internic.net usc.edu cs.colorado.edu mit.edu yale.edu
 #
 #	'ignore-domain' is a domain name for which authorization will
 #	*not* be required.
+#
+#	NOTE, proxy_auth support is not compiled into Squid by default.
+#	To use this feature you must enable the USE_PROXY_AUTH option
+#	near the top of src/Makefile.
 #
 #proxy_auth /dev/null
 
