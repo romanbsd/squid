@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.152 1996/10/31 18:30:18 wessels Exp $
+ * $Id: icp.c,v 1.153 1996/11/01 06:51:44 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -421,7 +421,7 @@ icpSendERROR(int fd,
     icpState->log_type = errorCode;
     icpState->http_code = httpCode;
     if (icpState->entry && icpState->entry->mem_obj) {
-	if (icpState->entry->mem_obj->e_current_len > 0) {
+	if (icpState->size > 0) {
 	    comm_close(fd);
 	    return;
 	}
