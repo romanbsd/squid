@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.96 1996/08/28 05:29:01 wessels Exp $
+ * $Id: icp.c,v 1.97 1996/08/28 20:12:54 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -582,7 +582,7 @@ static void icpHandleStoreIMS(fd, entry, icpState)
 
 static void icpHandleIMSComplete(fd, buf_unused, size, errflag, data)
      int fd;
-     char *buf_unused;	/* should be NULL */
+     char *buf_unused;		/* should be NULL */
      int size;
      int errflag;
      void *data;
