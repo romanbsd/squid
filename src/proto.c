@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.136 1997/11/21 01:59:17 wessels Exp $
+ * $Id: proto.c,v 1.137 1997/11/29 08:03:20 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -266,7 +266,7 @@ protoAbortFetch(StoreEntry * entry)
 	return 0;
     mem = entry->mem_obj;
     reply = mem->reply;
-    if (reply->content_length == 0)
+    if (reply->content_length < 0)
 	return 1;
     if (mem->inmem_hi < reply->content_length + reply->hdr_sz)
 	return 1;
