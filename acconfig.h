@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.51 2001/02/25 21:49:07 hno Exp $ */
+/* $Id: acconfig.h,v 1.52 2001/03/10 00:55:35 hno Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -131,6 +131,9 @@
  * Cache Array Routing Protocol
  */
 #undef USE_CARP
+
+/* Define if NTLM is allowed to fail gracefully when a helper has problems */
+#undef NTLM_FAIL_OPEN
 
 /********************************
  *  END OF CONFIGURABLE OPTIONS *
