@@ -1,6 +1,6 @@
 
 /*
- * $Id: icmp.h,v 1.3 1996/09/20 06:28:51 wessels Exp $
+ * $Id: icmp.h,v 1.4 1996/09/24 20:37:31 wessels Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -33,7 +33,7 @@
 #define _ICMP_H_
 
 #if USE_ICMP
-
+ 
 extern int icmp_sock;
 
 extern void icmpOpen _PARAMS((void));
