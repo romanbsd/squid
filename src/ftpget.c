@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.74 1997/01/16 18:29:59 wessels Exp $
+ * $Id: ftpget.c,v 1.75 1997/01/16 22:49:04 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -189,7 +189,8 @@ time_t squid_curtime;
 struct SquidConfig Config;
 
 #define FTP_PORT 21
-#define DEFAULT_MIME_TYPE "text/plain"
+/* #define DEFAULT_MIME_TYPE "text/plain" */
+#define DEFAULT_MIME_TYPE "application/octet-stream"
 #define READ_TIMEOUT -2
 
 #define MAGIC_MARKER	"\004\004\004"
