@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.41 1996/09/20 06:28:53 wessels Exp $
+ * $Id: icp.h,v 1.42 1996/10/08 02:13:56 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -198,7 +198,7 @@ typedef struct iwd {
 
 extern int icpUdpSend _PARAMS((int,
 	char *,
-	icp_common_t *,
+	int reqnum,
 	struct sockaddr_in *,
 	int flags,
 	icp_opcode,

@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.18 1996/10/07 16:47:41 wessels Exp $
+ * $Id: neighbors.h,v 1.19 1996/10/08 02:13:57 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -164,7 +164,7 @@ struct _edge {
 
     u_short icp_port;
     u_short http_port;
-    icp_common_t header;
+    int icp_version;
     dom_list *domains;
     struct _acl_list *acls;
     int options;
