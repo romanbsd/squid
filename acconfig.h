@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.26 1998/06/03 16:35:31 rousskov Exp $ */
+/* $Id: acconfig.h,v 1.27 1998/07/17 00:45:39 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -116,6 +116,11 @@
  * code is still semi-experimental. 
  */
 #undef USE_CACHE_DIGESTS
+
+/*
+ * Cache Array Routing Protocol
+ */
+#undef USE_CARP
 
 /********************************
  *  END OF CONFIGURABLE OPTIONS *
