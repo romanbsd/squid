@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.37 1997/06/01 23:22:21 wessels Exp $
+ * $Id: http.h,v 1.38 1997/06/03 20:08:24 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -145,7 +145,6 @@ extern void httpReplyHeaderStats _PARAMS((StoreEntry *));
 extern size_t httpBuildRequestHeader _PARAMS((request_t * request,
 	request_t * orig_request,
 	StoreEntry * entry,
-	char *hdr_in,
 	size_t * in_len,
 	char *hdr_out,
 	size_t out_sz,
