@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.36 1997/06/01 18:19:53 wessels Exp $
+ * $Id: http.h,v 1.37 1997/06/01 23:22:21 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -134,7 +134,6 @@ typedef struct {
     int eof;			/* reached end-of-object? */
     request_t *orig_request;
     int fd;			/* needed as identifier for ipcache */
-    int ip_lookup_pending;
 } HttpStateData;
 
 extern int httpCachable _PARAMS((method_t));

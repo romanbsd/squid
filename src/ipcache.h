@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipcache.h,v 1.35 1997/04/30 20:06:31 wessels Exp $
+ * $Id: ipcache.h,v 1.36 1997/06/01 23:22:24 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -118,11 +118,11 @@ typedef unsigned int ipcache_status_t;
 #define IP_LOOKUP_IF_MISS	0x02
 #define IP_LOCK_ENTRY		0x04
 
-typedef struct {
+struct _ipcache_addrs {
     unsigned char count;
     unsigned char cur;
     struct in_addr *in_addrs;
-} ipcache_addrs;
+};
 
 typedef struct _ipcache_entry {
     /* first two items must be equivalent to hash_link in hash.h */
