@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.251 1997/05/15 06:55:45 wessels Exp $
+ * $Id: icp.c,v 1.252 1997/05/15 07:08:03 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -339,12 +339,14 @@ httpRequestFree(void *data)
 static void
 connStateFree(int fd, void *data)
 {
+    int loopdetect = 0;
     ConnStateData *connState = data;
     clientHttpRequest *http;
     debug(12, 3, "connStateFree: FD %d\n", fd);
     if (connState == NULL)
 	fatal_dump("connStateFree: connState == NULL");
     while ((http = connState->chr)) {
+	assert(loopdetect++ < 50);
 	connState->chr = http->next;
 	httpRequestFree(http);
     }
