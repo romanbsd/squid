@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.60 2001/10/23 12:14:46 hno Exp $ */
+/* $Id: acconfig.h,v 1.61 2001/11/28 08:01:41 robertc Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -324,6 +324,11 @@
  * Enable support for Transparent Proxy on Linux 2.4 systems
  */
 #undef LINUX_NETFILTER
+
+/*
+ * Do we have unix sockets? (required for the winbind ntlm helper
+ */
+#undef HAVE_UNIXSOCKET
 
 /*
  * Known-size intgers
