@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.70 1996/11/04 22:07:25 wessels Exp $
+ * $Id: cache_cf.h,v 1.71 1996/11/05 17:08:00 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -233,7 +233,7 @@ struct SquidConfig {
     wordlist *mcast_group_list;
     wordlist *inside_firewall_list;
     wordlist *dns_testname_list;
-    relist   *cache_stop_relist;
+    relist *cache_stop_relist;
     ip_acl *local_ip_list;
     ip_acl *firewall_ip_list;
     struct {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.157 1996/11/05 16:59:05 wessels Exp $
+ * $Id: icp.c,v 1.158 1996/11/05 17:08:15 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -181,7 +181,7 @@ static void icpHandleIcpV3 _PARAMS((int, struct sockaddr_in, char *, int));
 static void icpSendERRORComplete _PARAMS((int, char *, int, int, void *));
 static void icpUdpSendEntry _PARAMS((int, char *, int,
 	struct sockaddr_in *, icp_opcode, StoreEntry *, struct timeval));
-static void icpFinishAbort _PARAMS((int fd, icpStateData *icpState));
+static void icpFinishAbort _PARAMS((int fd, icpStateData * icpState));
 
 /*
  * This function is designed to serve a fairly specific purpose.
@@ -345,7 +345,7 @@ icpCachable(icpStateData * icpState)
     }
     if (Config.cache_stop_relist)
 	if (aclMatchRegex(Config.cache_stop_relist, request))
-	     return 0;
+	    return 0;
     if (req->protocol == PROTO_HTTP)
 	return httpCachable(request, method);
     /* FTP is always cachable */
@@ -1891,7 +1891,7 @@ AppendUdp(icpUdpData * item)
 
 /* return 1 if the request should be aborted */
 static int
-CheckQuickAbort2(const icpStateData *icpState)
+CheckQuickAbort2(const icpStateData * icpState)
 {
     long curlen;
     long minlen;
@@ -1925,7 +1925,7 @@ CheckQuickAbort2(const icpStateData *icpState)
 
 
 static void
-CheckQuickAbort(icpStateData *icpState)
+CheckQuickAbort(icpStateData * icpState)
 {
     if (icpState->entry == NULL)
 	return;

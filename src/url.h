@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.27 1996/11/04 18:13:14 wessels Exp $
+ * $Id: url.h,v 1.28 1996/11/05 17:08:33 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -73,7 +73,7 @@ extern protocol_t urlParseProtocol _PARAMS((const char *));
 extern method_t urlParseMethod _PARAMS((const char *));
 extern void urlInitialize _PARAMS((void));
 extern request_t *urlParse _PARAMS((method_t, char *));
-extern char *urlCanonical _PARAMS((const request_t*, char *));
+extern char *urlCanonical _PARAMS((const request_t *, char *));
 extern request_t *requestLink _PARAMS((request_t *));
 extern void requestUnlink _PARAMS((request_t *));
 extern int matchDomainName _PARAMS((const char *d, const char *h));

@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.64 1996/11/04 18:12:37 wessels Exp $
+ * $Id: ftpget.c,v 1.65 1996/11/05 17:08:09 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -1909,7 +1909,7 @@ dots_fill(size_t len)
 }
 
 static char *
-htmlize_list_entry(const char *line, ftp_request_t *r)
+htmlize_list_entry(const char *line, ftp_request_t * r)
 {
     char *link = NULL;
     char *icon = NULL;
