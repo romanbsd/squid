@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.60 1996/11/27 22:19:19 wessels Exp $
+ * $Id: icp.h,v 1.61 1996/11/28 07:26:27 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -146,17 +146,6 @@ typedef enum {
 
 #define ERR_MIN ERR_READ_TIMEOUT
 #define ERR_MAX ERR_PROXY_DENIED
-
-/* bitfields for the icpStateData 'flags' element */
-#define		REQ_HTML	0x01
-#define		REQ_NOCACHE	0x02
-#define		REQ_IMS		0x04
-#define		REQ_AUTH	0x08
-#define		REQ_CACHABLE	0x10
-#define 	REQ_UNUSED	0x20
-#define 	REQ_HIERARCHICAL 0x40
-#define 	REQ_LOOPDETECT  0x80
-#define		REQ_REFRESH	0x100
 
 typedef struct wwd {
     struct sockaddr_in address;
