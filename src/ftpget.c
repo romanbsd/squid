@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.77 1997/01/31 20:13:21 wessels Exp $
+ * $Id: ftpget.c,v 1.78 1997/02/04 18:10:24 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -1548,7 +1548,8 @@ do_pasv(ftp_request_t * r)
 	return PASV_FAIL;
     }
     /*  227 Entering Passive Mode (h1,h2,h3,h4,p1,p2).  */
-    n = sscanf(server_reply_msg, "%[^0-9]%d,%d,%d,%d,%d,%d",
+    /*  ANSI sez [^0-9] is undefined, it breaks on Watcom cc */
+    n = sscanf(server_reply_msg, "%[^0123456789]%d,%d,%d,%d,%d,%d",
 	junk, &h1, &h2, &h3, &h4, &p1, &p2);
     if (n != 7 || p1 < 0 || p2 < 0) {
 	/* note RISC/os sends negative numbers in PASV reply */
