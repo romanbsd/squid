@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.78 1997/12/03 09:00:19 wessels Exp $
+ * $Id: objcache.c,v 1.79 1997/12/30 02:47:43 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -306,11 +306,11 @@ objcacheStart(int fd, StoreEntry * entry)
     assert(handler != NULL);
     storeBuffer(entry);
     hdr = httpReplyHeader((double) 1.0,
-        HTTP_OK,
-        "text/plain",
-        -1,			/* Content-Length */
-        squid_curtime,		/* LMT */
-        squid_curtime);
+	HTTP_OK,
+	"text/plain",
+	-1,			/* Content-Length */
+	squid_curtime,		/* LMT */
+	squid_curtime);
     storeAppend(entry, hdr, strlen(hdr));
     storeAppend(entry, "\r\n", 2);
     handler(entry);
