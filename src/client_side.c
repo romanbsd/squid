@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.603 2003/01/21 03:28:54 wessels Exp $
+ * $Id: client_side.c,v 1.604 2003/01/27 03:29:37 wessels Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -303,6 +303,7 @@ clientUpdateHierCounters(HierarchyLogEntry * someEntry)
     switch (someEntry->code) {
 #if USE_CACHE_DIGESTS
     case CD_PARENT_HIT:
+    case CD_SIBLING_HIT:
 	statCounter.cd.times_used++;
 	break;
 #endif
