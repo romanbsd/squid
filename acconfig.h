@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.55 2001/04/14 00:22:30 hno Exp $ */
+/* $Id: acconfig.h,v 1.56 2001/04/14 12:59:30 hno Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -325,7 +325,10 @@
 
 #undef u_int64_t
 
-
+/*
+ * Enable support for the X-Accelerator-Vary HTTP header
+ */
+#undef X_ACCELERATOR_VARY
 
 @BOTTOM@
 
