@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.130 1996/10/15 04:58:26 wessels Exp $
+ * $Id: icp.c,v 1.131 1996/10/15 05:37:23 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -114,6 +114,7 @@ char *log_tags[] =
     "TCP_HIT",
     "TCP_MISS",
     "TCP_EXPIRED_HIT",
+    "TCP_EXP_FAIL_HIT",
     "TCP_EXPIRED_MISS",
     "TCP_REFRESH",
     "TCP_IMS_HIT",
