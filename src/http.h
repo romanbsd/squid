@@ -1,5 +1,6 @@
+
 /*
- * $Id: http.h,v 1.9 1996/07/08 22:42:50 wessels Exp $
+ * $Id: http.h,v 1.10 1996/07/09 04:47:19 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *

@@ -1,5 +1,5 @@
 /*
- * $Id: icp.c,v 1.66 1996/07/09 03:41:28 wessels Exp $
+ * $Id: icp.c,v 1.67 1996/07/09 04:47:20 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -808,7 +808,7 @@ static void icpLogIcp(queue)
 	IcpOpcodeStr[ICP_OP_QUERY],
 	0,
 	tvSubMsec(queue->start, current_time),
-	NULL,	/* ident */
+	NULL,			/* ident */
 	HIER_NONE);
 }
 

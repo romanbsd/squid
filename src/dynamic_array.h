@@ -1,5 +1,6 @@
+
 /*
- * $Id: dynamic_array.h,v 1.3 1996/07/08 22:42:47 wessels Exp $
+ * $Id: dynamic_array.h,v 1.4 1996/07/09 04:47:18 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived

@@ -1,5 +1,5 @@
 /*
- * $Id: disk.h,v 1.7 1996/07/09 04:46:51 wessels Exp $
+ * $Id: disk.h,v 1.8 1996/07/09 04:47:17 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -187,13 +187,12 @@ typedef struct _FileEntry {
     void *wrt_handle_data;
     dwrite_q *write_q;
     dwrite_q *write_q_tail;
-#if USE_ASYNC_IO                       /* Data for asynchronous reads */
-    struct aiocb aio_cb;       /* Control block */
-    int (*aio_handler)(int fd, void *data);
+#if USE_ASYNC_IO		/* Data for asynchronous reads */
+    struct aiocb aio_cb;	/* Control block */
+    int (*aio_handler) (int fd, void *data);
 #endif
 } FileEntry;
 
 extern FileEntry *file_table;
 
 #endif /* DISK_H */
-

@@ -1,5 +1,5 @@
 /*
- * $Id: stat.h,v 1.14 1996/07/09 03:41:42 wessels Exp $
+ * $Id: stat.h,v 1.15 1996/07/09 04:47:24 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -26,7 +26,7 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *  
  */
- 
+
 /*
  * Copyright (c) 1994, 1995.  All rights reserved.
  *  

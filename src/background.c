@@ -1,5 +1,6 @@
+
 /*
- * $Id: background.c,v 1.2 1996/07/09 03:41:18 wessels Exp $
+ * $Id: background.c,v 1.3 1996/07/09 04:47:15 wessels Exp $
  *
  * DEBUG: Section 0     Background Processing
  * AUTHOR: Henrik Nordstrom

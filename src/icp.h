@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.18 1996/07/09 03:41:29 wessels Exp $
+ * $Id: icp.h,v 1.19 1996/07/09 04:47:21 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -190,7 +190,7 @@ typedef struct iwd {
     struct timeval start;
     int flags;
     int size;			/* hack for CONNECT which doesnt use sentry */
-    char ident[ICP_IDENT_SZ+1];
+    char ident[ICP_IDENT_SZ + 1];
     int ident_fd;
 } icpStateData;
 

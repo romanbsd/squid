@@ -1,5 +1,5 @@
 /*
- * $Id: stmem.h,v 1.7 1996/07/08 22:42:54 wessels Exp $
+ * $Id: stmem.h,v 1.8 1996/07/09 04:47:25 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -26,7 +26,7 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *  
  */
- 
+
 /*
  * Copyright (c) 1994, 1995.  All rights reserved.
  *  
