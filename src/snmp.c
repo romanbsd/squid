@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.31 1998/02/12 04:32:21 kostas Exp $
+ * $Id: snmp.c,v 1.32 1998/02/12 04:32:52 kostas Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -1216,7 +1216,7 @@ var_system(struct variable * vp, oid * name, int *length, int exact,
 	return (u_char *) Config.adminEmail;
     case SYSYSNAME:
 	if (( pp= Config.visibleHostname) == NULL) 
-		pp=getMyHostname();
+		pp=(char *)getMyHostname();
 	*var_len = strlen(pp);
 	return (u_char *) pp;
     case SYSLOCATION:
