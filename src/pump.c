@@ -1,6 +1,5 @@
 /*
- * $Id: pump.c,v 1.73 1999/04/23 02:57:30 wessels Exp $
- * $Id: pump.c,v 1.73 1999/04/23 02:57:30 wessels Exp $
+ * $Id: pump.c,v 1.74 1999/05/04 21:58:32 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis

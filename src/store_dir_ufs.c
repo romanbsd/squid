@@ -1,7 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.2 1999/05/03 23:00:00 wessels Exp $
- * $Id: store_dir_ufs.c,v 1.2 1999/05/03 23:00:00 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.3 1999/05/04 21:58:43 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
