@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side_reply.c,v 1.15 2002/10/12 13:08:09 robertc Exp $
+ * $Id: client_side_reply.c,v 1.16 2002/11/11 20:35:52 hno Exp $
  *
  * DEBUG: section 88    Client-side Reply Routines
  * AUTHOR: Robert Collins (Originally Duane Wessels in client_side.c)
@@ -1156,6 +1156,22 @@ clientBuildReplyHeader(clientReplyContext * context, HttpReply * rep)
 	else if (http->entry->timestamp < squid_curtime)
 	    httpHeaderPutInt(hdr, HDR_AGE,
 		squid_curtime - http->entry->timestamp);
+    }
+    /* Filter unproxyable authentication types */
+    if (httpHeaderHas(hdr, HDR_WWW_AUTHENTICATE) || httpHeaderHas(hdr, HDR_PROXY_AUTHENTICATE)) {
+	HttpHeaderPos pos = HttpHeaderInitPos;
+	HttpHeaderEntry *e;
+	while ((e = httpHeaderGetEntry(hdr, &pos))) {
+	    if (e->id == HDR_WWW_AUTHENTICATE || e->id == HDR_PROXY_AUTHENTICATE) {
+		const char *value = strBuf(e->value);
+		if ((strncasecmp(value, "NTLM", 4) == 0 &&
+			(value[4] == '\0' || value[4] == ' '))
+		    ||
+		    (strncasecmp(value, "Negotiate", 9) == 0 &&
+			(value[9] == '\0' || value[9] == ' ')))
+		    httpHeaderDelAt(hdr, pos);
+	    }
+	}
     }
     /* Handle authentication headers */
     if (request->auth_user_request)
