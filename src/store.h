@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.50 1996/09/17 05:17:12 wessels Exp $
+ * $Id: store.h,v 1.51 1996/09/18 22:44:55 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -321,7 +321,7 @@ extern void storeCloseLog __P((void));
 extern void storeConfigure __P((void));
 extern void storeNegativeCache __P((StoreEntry *));
 
-#if defined(__STRICT_ANSI__)
+#if __STDC__ 
 extern void storeAppendPrintf __P((StoreEntry *, char *,...));
 #else
 extern void storeAppendPrintf __P(());

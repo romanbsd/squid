@@ -1,5 +1,5 @@
 /*
- * $Id: log.c,v 1.10 1996/09/17 16:53:57 wessels Exp $
+ * $Id: log.c,v 1.11 1996/09/18 22:44:41 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -132,7 +132,7 @@
 #if HAVE_SYS_FILE_H
 #include <sys/file.h>
 #endif
-#if defined(__STRICT_ANSI__) && HAVE_STDARG_H
+#if __STDC__ && HAVE_STDARG_H
 #include <stdarg.h>
 #elif HAVE_VARARGS_H
 #include <varargs.h>
@@ -175,7 +175,7 @@ init_log3(char *pn, FILE * a, FILE * b)
 /*
  *  Log() - used like printf(3).  Prints message to stdout.
  */
-#if defined(__STRICT_ANSI__)
+#if __STDC__ 
 void
 Log(char *fmt,...)
 {
@@ -198,7 +198,7 @@ Log(va_alist)
 
     va_start(ap);
     fmt = va_arg(ap, char *);
-#endif /* __STRICT_ANSI__ */
+#endif /* __STDC__ */
     if (fp_log == NULL)
 	return;
 
@@ -211,7 +211,7 @@ Log(va_alist)
 /*
  *  errorlog() - used like printf(3).  Prints error message to stderr.
  */
-#if defined(__STRICT_ANSI__)
+#if __STDC__ 
 void
 errorlog(char *fmt,...)
 {
@@ -234,7 +234,7 @@ errorlog(va_alist)
 
     va_start(ap);
     fmt = va_arg(ap, char *);
-#endif /* __STRICT_ANSI__ */
+#endif /* __STDC__ */
 
     if (fp_errs == NULL)
 	return;
@@ -248,7 +248,7 @@ errorlog(va_alist)
 /*
  *  fatal() - used like printf(3).  Prints error message to stderr and exits
  */
-#if defined(__STRICT_ANSI__)
+#if __STDC__ 
 void
 fatal(char *fmt,...)
 {
@@ -271,7 +271,7 @@ fatal(va_alist)
 
     va_start(ap);
     fmt = va_arg(ap, char *);
-#endif /* __STRICT_ANSI__ */
+#endif /* __STDC__ */
 
     if (fp_errs == NULL)
 	exit(1);

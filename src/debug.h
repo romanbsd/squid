@@ -1,5 +1,5 @@
 /*
- * $Id: debug.h,v 1.19 1996/09/17 16:32:36 wessels Exp $
+ * $Id: debug.h,v 1.20 1996/09/18 22:44:50 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -113,7 +113,7 @@ extern FILE *debug_log;
 extern void _db_init __P((char *logfile, char *options));
 extern void _db_rotate_log __P((void));
 
-#if defined(__STRICT_ANSI__)
+#if __STDC__ 
 extern void _db_print __P((int, int, char *,...));
 #else
 extern void _db_print __P(());
