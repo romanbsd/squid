@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.102 1997/04/28 04:23:23 wessels Exp $
+ * $Id: proto.c,v 1.103 1997/04/29 23:34:51 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -209,7 +209,7 @@ protoCancelTimeout(int fd, StoreEntry * entry)
 	return;
     }
     debug(17, 2, "protoCancelTimeout: FD %d '%s'\n", fd, entry->url);
-    if (fdstatGetType(fd) != FD_SOCKET) {
+    if (fd_table[fd].type != FD_SOCKET) {
 	debug_trap("protoCancelTimeout: called on non-socket");
 	return;
     }
