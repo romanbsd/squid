@@ -1,4 +1,4 @@
-/* $Id: proto.c,v 1.13 1996/04/05 17:47:47 wessels Exp $ */
+/* $Id: proto.c,v 1.14 1996/04/05 17:48:32 wessels Exp $ */
 
 /*
  * DEBUG: Section 17          proto:
@@ -75,7 +75,7 @@ int proto_cachable(url, method, request_hdr)
 
 /* called when DNS lookup is done by ipcache. */
 int protoDispatchDNSHandle(unused1, unused2, data)
-     int unused1;	/* filedescriptor */
+     int unused1;		/* filedescriptor */
      struct hostent *unused2;
      void *data;
 {
