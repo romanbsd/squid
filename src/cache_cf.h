@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.12 1996/04/04 17:46:02 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.13 1996/04/05 21:51:45 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -77,6 +77,7 @@ extern int getHttpMax _PARAMS((void));
 extern int getHttpTTL _PARAMS((void));
 extern int getLogfileRotateNumber _PARAMS((void));
 extern int getNegativeTTL _PARAMS((void));
+extern int getNegativeDNSTTL _PARAMS((void));
 extern int getQuickAbort _PARAMS((void));
 extern int getReadTimeout _PARAMS((void));
 extern int getSourcePing _PARAMS((void));

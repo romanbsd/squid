@@ -1,4 +1,4 @@
-# $Id: squid.conf.pre.in,v 1.5 1996/04/04 05:06:37 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.6 1996/04/05 21:51:46 wessels Exp $
 #
 #  NOTE: Upon installation, cached.conf is a symbolic link to this file,
 #	 cached.conf.default.  If you want to change this file, please
@@ -530,6 +530,12 @@ manager_allow    all
 #	for details.
 #
 #negative_ttl 5
+
+#
+#  TAG: negative_dns_ttl (in minutes)         
+#	Time-to-Live (TTL) for negative caching of failed DNS lookups.
+#
+#negative_dns_ttl 5
 
 #
 #  TAG: cache_mem_high (in percent)
