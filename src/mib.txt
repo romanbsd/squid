@@ -1,8 +1,9 @@
-SQUID-MIB  { iso org(3) dod(6) internet(1) private(4) enterprises(1) 3495 }
+SQUID-MIB DEFINITIONS ::= BEGIN
 
-DEFINITIONS ::= BEGIN
+enterprises OBJECT IDENTIFIER ::= { iso org(3) dod(6) internet(1) private(4) 1 }
+
 --
--- $Id: mib.txt,v 1.25 2000/05/16 07:06:05 wessels Exp $
+-- $Id: mib.txt,v 1.26 2003/02/11 05:00:31 wessels Exp $
 --
 
 IMPORTS
