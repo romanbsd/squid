@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.44 1996/09/12 17:33:01 wessels Exp $
+ * $Id: store.h,v 1.45 1996/09/14 07:22:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -307,7 +307,6 @@ extern int storeWriteCleanLog _PARAMS((void));
 extern int storeRegister(StoreEntry *, int, PIF, void *);
 extern int urlcmp _PARAMS((char *, char *));
 extern int swapInError _PARAMS((int fd, StoreEntry *));
-extern int storeCopy _PARAMS((StoreEntry *, int, int, char *, int *));
 extern int storeMaintainSwapSpace _PARAMS((void));
 extern void storeExpireNow _PARAMS((StoreEntry *));
 extern void storeReleaseRequest _PARAMS((StoreEntry *));
