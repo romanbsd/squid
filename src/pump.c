@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.43 1998/05/13 22:17:48 wessels Exp $
+ * $Id: pump.c,v 1.44 1998/05/20 17:14:43 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -315,7 +315,6 @@ pumpClose(void *data)
     PumpStateData *p = data;
     StoreEntry *req = p->request_entry;
     StoreEntry *rep = p->reply_entry;
-    sigusr2_handle(0);
     cbdataLock(p);
     debug(61, 3) ("pumpClose: %p Server FD %d, Client FD %d\n",
 	p, p->s_fd, p->c_fd);
@@ -344,7 +343,6 @@ pumpClose(void *data)
     /* This tests that pumpFree() got called somewhere */
     assert(0 == cbdataValid(p));
     cbdataUnlock(p);
-    sigusr2_handle(0);
 }
 
 static void
