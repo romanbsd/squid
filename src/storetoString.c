@@ -1,5 +1,5 @@
 /*
- * $Id: storetoString.c,v 1.15 1996/08/26 22:00:08 wessels Exp $
+ * $Id: storetoString.c,v 1.16 1996/09/03 19:24:07 wessels Exp $
  *
  * DEBUG: section 0     Store Entry Debugging
  * AUTHOR: Harvest Derived
@@ -137,7 +137,7 @@ char *storeToString(e)
     sprintf(tmpbuf, "Flags: %#x ==> ", e->flag);
     if (BIT_TEST(e->flag, KEY_CHANGE))
 	strncat(tmpbuf, " KEYCHANGE", sizeof(tmpbuf) - 1);
-    if (BIT_TEST(e->flag, CACHABLE))
+    if (BIT_TEST(e->flag, ENTRY_CACHABLE))
 	strncat(tmpbuf, " CACHABLE", sizeof(tmpbuf) - 1);
     if (BIT_TEST(e->flag, REFRESH_REQUEST))
 	strncat(tmpbuf, " REFRESH_REQ", sizeof(tmpbuf) - 1);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.39 1996/08/31 06:40:21 wessels Exp $
+ * $Id: store.h,v 1.40 1996/09/03 19:24:06 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -125,7 +125,7 @@
 #define ENTRY_HTML 		(1<<10)
 #define KEY_CHANGE 		(1<<9)
 #define KEY_URL    		(1<<8)
-#define CACHABLE   		(1<<7)
+#define ENTRY_CACHABLE   	(1<<7)
 #define REFRESH_REQUEST   	(1<<6)
 #define RELEASE_REQUEST 	(1<<5)
 #define ABORT_MSG_PENDING 	(1<<4)
