@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.128 1997/10/26 02:35:37 wessels Exp $
+ * $Id: proto.c,v 1.129 1997/10/27 22:54:38 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -214,7 +214,7 @@ protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
     assert(entry->ping_status != PING_WAITING);
     BIT_SET(entry->flag, ENTRY_DISPATCHED);
     netdbPingSite(request->host);
-#if defined(LOG_ICP_NUMBERS) || defined(HIER_EXPERIMENT)
+#if defined(LOG_ICP_NUMBERS)
     request->hierarchy.n_recv = entry->mem_obj->e_pings_n_acks;
     if (entry->mem_obj->start_ping.tv_sec)
 	request->hierarchy.delay = tvSubUsec(entry->mem_obj->start_ping, current_time);
