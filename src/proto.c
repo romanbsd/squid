@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.62 1996/09/20 23:26:59 wessels Exp $
+ * $Id: proto.c,v 1.63 1996/09/24 19:50:09 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -564,7 +564,7 @@ matchInsideFirewall(char *host)
 {
     wordlist *s = Config.inside_firewall_list;
     char *key = NULL;
-    int result;
+    int result = NO_FIREWALL;
     if (!s)
 	/* no domains, all hosts are "inside" the firewall */
 	return NO_FIREWALL;

@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.43 1996/09/20 06:28:45 wessels Exp $
+ * $Id: ftpget.c,v 1.44 1996/09/24 19:50:08 wessels Exp $
  *
  * DEBUG: section 0     FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2747,7 +2747,7 @@ main(int argc, char *argv[])
 	    if ((ip = inet_addr(*argv)) != INADDR_NONE)
 		outgoingTcpAddr.s_addr = ip;
 	    else if ((hp = gethostbyname(*argv)) != NULL)
-		outgoingTcpAddr = *(struct in_addr *) (hp->h_addr_list[0]);
+		outgoingTcpAddr = *(struct in_addr *) (void*) (hp->h_addr_list[0]);
 	    else {
 		fprintf(stderr, "%s: bad outbound tcp address %s\n",
 		    progname, *argv);
