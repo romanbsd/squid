@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.65 1997/08/25 03:51:51 wessels Exp $
+ * $Id: objcache.c,v 1.66 1997/08/25 22:35:59 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -149,6 +149,7 @@ static struct op_table OpTable[] =
     {MGR_REMOVE, objcacheUnimplemented},
     {MGR_REPLY_HDRS, httpReplyHeaderStats},
     {MGR_SERVER_LIST, server_list},
+    {MGR_NON_PEERS, neighborDumpNonPeers},
     {MGR_SHUTDOWN, cachemgrShutdown},
     {MGR_UTILIZATION, stat_utilization_get},
     {MGR_VM_OBJECTS, stat_vmobjects_get},
@@ -213,6 +214,8 @@ objcacheParseRequest(const char *buf)
 	op = MGR_LOG_VIEW;
     else if (!strcmp(buf, "server_list"))
 	op = MGR_SERVER_LIST;
+    else if (!strcmp(buf, "non_peers"))
+	op = MGR_NON_PEERS;
     else if (!strcmp(buf, "client_list"))
 	op = MGR_CLIENT_LIST;
     else if (!strcmp(buf, "config"))

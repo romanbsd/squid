@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache_opcodes.h,v 1.9 1997/08/25 03:51:51 wessels Exp $
+ * $Id: objcache_opcodes.h,v 1.10 1997/08/25 22:35:59 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -51,6 +51,7 @@ static char *objcacheOpcodeStr[] =
     "remove",
     "reply_headers",
     "server_list",
+    "non_peers",
     "shutdown",
     "utilization",
     "vm_objects",
