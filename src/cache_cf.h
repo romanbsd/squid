@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.30 1996/04/16 23:08:46 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.31 1996/04/17 23:46:32 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -123,5 +123,8 @@ wordlist *getGopherStoplist _PARAMS((void));
 wordlist *getHttpStoplist _PARAMS((void));
 wordlist *getInsideFirewallList _PARAMS((void));
 wordlist *getLocalDomainList _PARAMS((void));
+wordlist *getDnsTestnameList _PARAMS((void));
+extern int getShutdownLifetime _PARAMS((void));
+
 
 #endif /* ndef  _CACHE_CONFIG_H_ */
