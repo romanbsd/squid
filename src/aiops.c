@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.31 1999/07/13 14:51:06 wessels Exp $
+ * $Id: aiops.c,v 1.32 1999/08/02 06:18:29 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -46,10 +46,14 @@
 #include	<sched.h>
 #endif
 
-#ifndef NUMTHREADS
-#define	NUMTHREADS		16
-#endif
 #define RIDICULOUS_LENGTH	4096
+
+#if defined(_SQUID_LINUX_)
+/* Linux requires proper use of mutexes or it will segfault deep in the
+ * thread libraries. Observed on Alpha SMP Linux 2.2.10-ac12.
+ */
+#define USE_PROPER_MUTEX 1
+#endif
 
 enum _aio_thread_status {
     _THREAD_STARTING = 0,
@@ -869,6 +873,12 @@ aio_sync(void)
 	assert(++loop_count < 10);
     } while (request_queue_len > 0);
     return aio_operations_pending();
+}
+
+int
+aio_get_queue_len(void)
+{
+    return request_queue_len;
 }
 
 static void
