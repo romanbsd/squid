@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.44 1996/08/28 17:44:29 wessels Exp $
+ * $Id: cache_cf.h,v 1.45 1996/08/29 16:55:47 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -181,7 +181,6 @@ struct SquidConfig {
 	int log_fqdn;
     } Log;
 #if USE_PROXY_AUTH
-    int proxyAuthOn;
     char *proxyAuthFile;
     char *proxyAuthIgnoreDomain;
 #endif				/* USE_PROXY_AUTH */
