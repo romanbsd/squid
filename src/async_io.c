@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.6 1996/07/19 17:33:51 wessels Exp $
+ * $Id: async_io.c,v 1.7 1996/07/19 17:41:27 wessels Exp $
  *
  * DEBUG: section 5     Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -199,7 +199,7 @@ int aioFileQueueWrite(fd, handler, entry)
     aio->aio_sigevent.sigev_signo = SIGIO;
 
     entry->aio_data = entry;
-    entry->aio_handler = (int (*) (int, void *)) handler;
+    entry->aio_handler = (int (*)(int, void *)) handler;
     debug(32, 4, "Queue AIO write, fd: %d, off: %ld, sz: %d\n", fd,
 	aio->aio_offset, aio->aio_nbytes);
     if (aio_write(&entry->aio_cb) < 0)
@@ -229,7 +229,7 @@ int aioFileQueueRead(fd, handler, ctrl_dat)
     aio->aio_sigevent.sigev_signo = SIGIO;
 
     file_table[fd].aio_data = ctrl_dat;
-    file_table[fd].aio_handler = (int (*) (int, void *)) handler;
+    file_table[fd].aio_handler = (int (*)(int, void *)) handler;
     debug(32, 4, "Queue AIO read, fd: %d, off: %ld, sz: %d\n", fd,
 	aio->aio_offset, aio->aio_nbytes);
     if (aio_read(aio) < 0)
