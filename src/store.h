@@ -1,5 +1,5 @@
 
-/*  $Id: store.h,v 1.25 1996/04/15 22:54:47 wessels Exp $ */
+/*  $Id: store.h,v 1.26 1996/04/16 04:23:17 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -83,7 +83,7 @@ typedef struct _MemObject {
     short swap_fd;
     int fd_of_first_client;
     struct _http_reply *reply;
-
+    request_t *request;
 } MemObject;
 
 /* A cut down structure for store manager */

@@ -1,7 +1,9 @@
-/*  $Id: url.h,v 1.7 1996/04/16 01:51:20 wessels Exp $ */
+/*  $Id: url.h,v 1.8 1996/04/16 04:23:18 wessels Exp $ */
 
 #ifndef _URL_HEADER_
 #define _URL_HEADER_
+
+#define MAX_URL  4096
 
 typedef enum {
     METHOD_NONE,
@@ -28,12 +30,20 @@ typedef enum {
 
 extern char *ProtocolStr[];
 
-#define MAX_URL  (ICP_MAX_URL)
+typedef struct _request {
+    method_t method;
+    protocol_t protocol;
+    char host[SQUIDHOSTNAMELEN+1];
+    int port;
+    char urlpath[MAX_URL+1];
+} request_t;
 
 extern char *url_convert_hex _PARAMS((char *org_url, int allocate));
 extern char *url_escape _PARAMS((char *url));
 extern protocol_t urlParseProtocol _PARAMS((char *));
 extern method_t urlParseMethod _PARAMS((char *));
 extern int urlDefaultPort _PARAMS((protocol_t));
+extern void urlInitialize _PARAMS((void));
+extern request_t *urlParse _PARAMS((method_t, char *));
 
 #endif /* _URL_HEADER_ */
