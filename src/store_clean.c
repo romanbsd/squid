@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.38 1998/02/12 23:56:03 wessels Exp $
+ * $Id: store_clean.c,v 1.39 1998/02/26 18:00:56 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -52,7 +52,7 @@ storeDirClean(void *datanotused)
     LOCAL_ARRAY(char, p2, MAXPATHLEN + 1);
     int files[20];
     int swapfileno;
-    int fn;	/* same as swapfileno, but with dirn bits set */
+    int fn;			/* same as swapfileno, but with dirn bits set */
     int n = 0;
     int k = 0;
     int N0, N1, N2;
