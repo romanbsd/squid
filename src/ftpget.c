@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.76 1997/01/28 00:06:55 wessels Exp $
+ * $Id: ftpget.c,v 1.77 1997/01/31 20:13:21 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -1229,6 +1229,7 @@ do_connect(ftp_request_t * r)
 	r->rc = 2;
 	return FAIL_CONNECT;
     }
+    memset(&S, '\0', sizeof(struct sockaddr_in));
     S.sin_addr = r->host_addr;
     S.sin_family = AF_INET;
     S.sin_port = htons(r->port);
