@@ -1,6 +1,6 @@
 
 /*
- * $Id: fqdncache.h,v 1.7 1996/09/14 08:45:58 wessels Exp $
+ * $Id: fqdncache.h,v 1.8 1996/09/14 16:51:57 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -108,12 +108,13 @@
 
 typedef void (*FQDNH) (int, char *, void *);
 
-typedef enum {
+enum {
     FQDN_CACHED,
     FQDN_NEGATIVE_CACHED,
     FQDN_PENDING,		/* waiting to be dispatched */
     FQDN_DISPATCHED		/* waiting for reply from dnsserver */
-} fqdncache_status_t;
+};
+typedef unsigned int fqdncache_status_t;
 
 #define FQDN_BLOCKING_LOOKUP	0x01
 #define FQDN_LOOKUP_IF_MISS	0x02

@@ -1,5 +1,5 @@
 /*
- * $Id: rfc850.c,v 1.7 1996/09/14 08:50:50 wessels Exp $
+ * $Id: rfc850.c,v 1.8 1996/09/14 16:51:56 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -236,7 +236,8 @@ parse_rfc850(char *str)
     /* some systems do not have tm_gmtoff so we fake it */
     t = mktime(&tm);
     {
-	int dst = 0;
+	time_t dst = 0;
+	extern time_t timezone;
 	/*
 	 * The following assumes a fixed DST offset of 1 hour,
 	 * which is probably wrong.
