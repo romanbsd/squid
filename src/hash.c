@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.54 1998/05/24 04:12:01 wessels Exp $
+ * $Id: hash.c,v 1.55 1998/05/24 05:05:52 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -253,7 +253,9 @@ hash_first(hash_table * hid)
 {
     assert(NULL == hid->next);
     hid->current_slot = 0;
-    hash_next_bucket(hid);
+    hid->next = hid->buckets[hid->current_slot];
+    if (NULL == hid->next)
+        hash_next_bucket(hid);
 }
 
 /*
