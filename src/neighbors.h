@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.30 1996/11/25 18:50:30 wessels Exp $
+ * $Id: neighbors.h,v 1.31 1996/11/26 19:07:10 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -193,7 +193,8 @@ struct _hierarchyLogData {
 extern edge *getFirstEdge _PARAMS((void));
 extern edge *getFirstUpParent _PARAMS((request_t *));
 extern edge *getNextEdge _PARAMS((edge *));
-extern edge *getSingleParent _PARAMS((request_t *, int *n));
+extern edge *getSingleParent _PARAMS((request_t *));
+extern int neighborsCount _PARAMS((request_t *));
 extern int neighborsUdpPing _PARAMS((protodispatch_data *));
 extern void neighborAddDomainPing _PARAMS((const char *, const char *));
 extern void neighborAddDomainType _PARAMS((const char *, const char *, const char *));
