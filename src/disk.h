@@ -1,6 +1,6 @@
 
 /*
- * $Id: disk.h,v 1.33 1997/05/02 21:34:07 wessels Exp $
+ * $Id: disk.h,v 1.34 1997/05/15 23:36:03 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -117,7 +117,6 @@ typedef struct _dread_ctrl {
     off_t offset;
     int req_len;
     char *buf;
-    int cur_len;
     int end_of_file;
     FILE_READ_HD *handler;
     void *client_data;
