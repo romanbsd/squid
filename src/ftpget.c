@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.11 1996/03/27 01:46:05 wessels Exp $ */
+/* $Id: ftpget.c,v 1.12 1996/03/28 06:23:29 wessels Exp $ */
 
 /*
  *    NOTES
@@ -70,16 +70,18 @@
 
 #include "config.h"
 
+#include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <string.h>
 #include <signal.h>
+#include <time.h>
+#include <sys/time.h>		/* for select(2) */
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
-#include <unistd.h>
-#include <time.h>
 
 #if HAVE_BSTRING_H
 #include <bstring.h>
