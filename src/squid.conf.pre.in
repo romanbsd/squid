@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.22 1996/07/09 05:06:17 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.23 1996/07/11 17:42:51 wessels Exp $
 #
 
 #  TAG: http_port
@@ -372,6 +372,16 @@ debug_options ALL,1
 #	is 32.  The default is 5.
 #
 #dns_children 5
+
+#  TAG: redirect_program 
+#	Specify the location of the executable for the URL redirector.
+#
+#redirect_program /bin/false
+
+#  TAG: redirect_children
+#	The number of redirector processes to spawn.
+#
+#redirect_children 5
 
 
 # OPTIONS FOR TUNING THE CACHE

@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.19 1996/07/09 04:47:21 wessels Exp $
+ * $Id: icp.h,v 1.20 1996/07/11 17:42:43 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -173,6 +173,7 @@ extern int icpUdpReply _PARAMS((int fd, icpUdpData * queue));
 #define ICP_IDENT_SZ 63
 typedef struct iwd {
     icp_common_t header;	/* Allows access to previous header */
+    int fd;
     char *url;
     char *inbuf;
     int inbufsize;

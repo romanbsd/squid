@@ -1,5 +1,5 @@
 /*
- * $Id: fdstat.c,v 1.17 1996/07/09 22:58:51 wessels Exp $
+ * $Id: fdstat.c,v 1.18 1996/07/11 17:42:40 wessels Exp $
  *
  * DEBUG: section 7     File Descriptor Status
  * AUTHOR: Harvest Derived
@@ -127,13 +127,14 @@ File_Desc_Type fdstatGetType(fd)
     return fd_stat_tab[fd].type;
 }
 
-char *fdstatTypeStr[] = {
-	"None",
-	"Log",
-	"File",
-	"Socket",
-	"Pipe",
-	"Unknown"
+char *fdstatTypeStr[] =
+{
+    "None",
+    "Log",
+    "File",
+    "Socket",
+    "Pipe",
+    "Unknown"
 };
 
 /* init fd stat module */
