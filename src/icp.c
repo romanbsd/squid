@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.166 1996/11/07 20:56:17 wessels Exp $
+ * $Id: icp.c,v 1.167 1996/11/07 21:19:20 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -524,8 +524,8 @@ icpHandleStore(int fd, StoreEntry * entry, void *data)
     debug(12, 5, "icpHandleStore: FD %d: off %d: '%s'\n",
 	fd, icpState->offset, entry->url);
     if (entry->store_status == STORE_ABORTED) {
-	debug(12, 3, "icpHandleStore: abort_code=%d\n",
-	    entry->mem_obj->abort_code);
+	debug(44, 3, "icpHandleStore: abort_code=%d url='%s'\n",
+	    entry->mem_obj->abort_code, entry->url);
 	icpSendERROR(fd,
 	    entry->mem_obj->abort_code,
 	    entry->mem_obj->e_abort_msg,
