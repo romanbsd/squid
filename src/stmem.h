@@ -1,6 +1,6 @@
 
 /*
- * $Id: stmem.h,v 1.20 1997/05/22 15:52:00 wessels Exp $
+ * $Id: stmem.h,v 1.21 1997/05/23 05:21:01 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -154,7 +154,7 @@ extern void stmemInit _PARAMS((void));
 extern void stmemFreeMemory _PARAMS((void));
 
 extern int memFreeDataUpto _PARAMS((mem_ptr, int));
-extern int memAppend _PARAMS((mem_ptr, const char *, int));
+extern void memAppend _PARAMS((mem_ptr, const char *, int));
 extern size_t memCopy _PARAMS((const mem_ptr, off_t, char *, size_t));
 extern void memFree _PARAMS((mem_ptr));
 extern void memFreeData _PARAMS((mem_ptr));

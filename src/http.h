@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.34 1997/05/15 23:38:01 wessels Exp $
+ * $Id: http.h,v 1.35 1997/05/23 05:20:58 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -141,7 +141,7 @@ typedef struct {
 
 extern int httpCachable _PARAMS((method_t));
 extern void proxyhttpStart _PARAMS((request_t *, StoreEntry *, peer *));
-extern void httpStart _PARAMS((request_t *, char *, int, StoreEntry *));
+extern void httpStart _PARAMS((request_t *, StoreEntry *));
 extern void httpParseReplyHeaders _PARAMS((const char *, struct _http_reply *));
 extern void httpProcessReplyHeader _PARAMS((HttpStateData *, const char *, int));
 extern void httpReplyHeaderStats _PARAMS((StoreEntry *));

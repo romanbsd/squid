@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.109 1997/05/22 15:51:58 wessels Exp $
+ * $Id: proto.c,v 1.110 1997/05/23 05:21:00 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -192,8 +192,6 @@ protoUnregister(StoreEntry * entry, request_t * request, struct in_addr src_addr
 void
 protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
 {
-    char *request_hdr = entry->mem_obj->mime_hdr;
-    int request_hdr_sz = entry->mem_obj->mime_hdr_sz;
     debug(17, 5, "protoStart: FD %d: Fetching '%s %s' from %s\n",
 	fd,
 	RequestMethodStr[request->method],
@@ -214,13 +212,13 @@ protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
 	e->stats.fetches++;
 	proxyhttpStart(request, entry, e);
     } else if (request->protocol == PROTO_HTTP) {
-	httpStart(request, request_hdr, request_hdr_sz, entry);
+	httpStart(request, entry);
     } else if (request->protocol == PROTO_GOPHER) {
 	gopherStart(entry);
     } else if (request->protocol == PROTO_FTP) {
 	ftpStart(request, entry);
     } else if (request->protocol == PROTO_WAIS) {
-	waisStart(request->method, request_hdr, entry);
+	waisStart(request->method, entry);
     } else if (request->protocol == PROTO_CACHEOBJ) {
 	objcacheStart(fd, entry);
     } else if (request->method == METHOD_CONNECT) {

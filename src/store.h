@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.96 1997/05/22 22:54:02 wessels Exp $
+ * $Id: store.h,v 1.97 1997/05/23 05:21:03 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -155,7 +155,7 @@ struct _store_client {
 
 /* This structure can be freed while object is purged out from memory */
 struct _MemObject {
-    char *mime_hdr;		/* Mime header info */
+    char *request_hdr;
     mem_ptr data;
     char *e_swap_buf;
     int w_rtt;			/* weighted RTT in msec */
@@ -174,7 +174,7 @@ struct _MemObject {
     short swapout_fd;
     struct _http_reply *reply;
     request_t *request;
-    int mime_hdr_sz;
+    int request_hdr_sz;
     struct timeval start_ping;
     IRCB *icp_reply_callback;
     void *ircb_data;
