@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.18 1998/02/06 00:57:37 wessels Exp $
+# $Id: makefile.in,v 1.19 1998/02/23 21:05:15 kostas Exp $
 #
 
 srcdir		= @srcdir@
@@ -44,6 +44,9 @@ almostclean: clean
 
 distclean: almostclean
 	rm -f config.status config.cache
+
+targz: distclean
+	tar cvf current.tar . ; gzip current.tar
 
 makefile: configure config.status makefile.in lib/Makefile.in include/config.h.in src/Makefile.in include/version.h
 	@echo "Package configuration updated. Cleaning and reconfiguring" ;\
