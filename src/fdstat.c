@@ -1,5 +1,5 @@
 
-/* $Id: fdstat.c,v 1.12 1996/04/16 20:29:50 wessels Exp $ */
+/* $Id: fdstat.c,v 1.13 1996/04/17 15:07:28 wessels Exp $ */
 
 /* DEBUG: Section 7             fdstat: */
 
@@ -20,7 +20,7 @@ static FDENTRY *fd_stat_tab = NULL;
 
 File_Desc_Type fdstatGetType(fd)
 {
-	return fd_stat_tab[fd].type;
+    return fd_stat_tab[fd].type;
 }
 
 char *fdfiletype(type)

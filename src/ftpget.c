@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.20 1996/04/16 23:09:51 wessels Exp $ */
+/* $Id: ftpget.c,v 1.21 1996/04/17 15:07:29 wessels Exp $ */
 
 /*
  *    NOTES
@@ -451,19 +451,19 @@ void sigchld_handler(sig)
 
 int check_other_side()
 {
-	fd_set R;
-	struct timeval tv;
-	tv.tv_sec = 0;
-	tv.tv_usec = 0;
-	FD_ZERO(&R);
-	FD_SET(0, &R);
-	if (select(1, &R, NULL, NULL, &tv) < 0)
-		return 0;
-	if (FD_ISSET(0, &R))
-		return 0;
-	return 1;
+    fd_set R;
+    struct timeval tv;
+    tv.tv_sec = 0;
+    tv.tv_usec = 0;
+    FD_ZERO(&R);
+    FD_SET(0, &R);
+    if (select(1, &R, NULL, NULL, &tv) < 0)
+	return 0;
+    if (FD_ISSET(0, &R))
+	return 0;
+    return 1;
 }
-	
+
 
 
 void reset_timeout(r)
