@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.h,v 1.30 1996/09/26 19:19:41 wessels Exp $
+ * $Id: comm.h,v 1.31 1996/10/09 15:43:51 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -185,6 +185,8 @@ extern void comm_set_select_handler _PARAMS((int fd, unsigned int type, PF, void
 extern void comm_set_select_handler_plus_timeout _PARAMS((int, unsigned int, PF, void *, time_t));
 extern void comm_add_close_handler _PARAMS((int fd, PF, void *));
 extern void comm_remove_close_handler _PARAMS((int fd, PF, void *));
+extern int comm_set_mcast_ttl _PARAMS((int, int));
+extern int comm_join_mcast_groups _PARAMS((int));
 extern int comm_udp_recv _PARAMS((int, char *, int, struct sockaddr_in *, int *));
 extern int comm_udp_send _PARAMS((int fd, char *host, u_short port, char *buf, int len));
 extern int comm_udp_sendto _PARAMS((int fd, struct sockaddr_in *, int size, char *buf, int len));
