@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.57 1996/04/16 20:30:34 wessels Exp $ */
+/* $Id: icp.c,v 1.58 1996/04/17 15:01:26 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -66,10 +66,6 @@ static icpUdpData *UdpQueueHead = NULL;
 static icpUdpData *UdpQueueTail = NULL;
 #define ICP_MAX_UDP_SIZE 4096
 #define ICP_SENDMOREDATA_BUF SM_PAGE_SIZE
-
-#if !defined(UDP_HIT_THRESH)
-#define UDP_HIT_THRESH 300
-#endif
 
 typedef void (*complete_handler) _PARAMS((int fd, char *buf, int size, int errflag, void *data));
 typedef struct ireadd {
@@ -938,7 +934,7 @@ int icpHandleUdp(sock, not_used)
 	debug(12, 5, "icpHandleUdp: OPCODE %s\n", IcpOpcodeStr[header.opcode]);
 	if (entry &&
 	    (entry->status == STORE_OK) &&
-	    ((entry->expires - UDP_HIT_THRESH) > squid_curtime)) {
+	    (entry->expires > (squid_curtime + getNegativeTTL()))) {
 	    /* Send "HIT" message. */
 	    CacheInfo->log_append(CacheInfo,	/* UDP_HIT */
 		entry->url,
