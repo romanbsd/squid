@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.294 1997/08/09 04:48:07 wessels Exp $
+ * $Id: icp.c,v 1.295 1997/08/09 05:42:33 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -319,6 +319,7 @@ connStateFree(int fd, void *data)
 	comm_close(connState->ident.fd);
     safe_free(connState->in.buf);
     meta_data.misc -= connState->in.size;
+    pconnHistCount(0, connState->nrequests);
     safe_free(connState);
 }
 

@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache_opcodes.h,v 1.7 1997/06/21 02:38:12 wessels Exp $
+ * $Id: objcache_opcodes.h,v 1.8 1997/08/09 05:42:35 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -40,11 +40,11 @@ static char *objcacheOpcodeStr[] =
     "info",
     "io",
     "ipcache",
-    "log/clear",
-    "log/disable",
-    "log/enable",
-    "log/status",
-    "log/view",
+    "log_clear",
+    "log_disable",
+    "log_enable",
+    "log_status",
+    "log_view",
     "netdb",
     "objects",
     "redirectors",
@@ -57,5 +57,6 @@ static char *objcacheOpcodeStr[] =
     "vm_objects",
     "storedir",
     "cbdata",
+    "pconn",
     "MAX"
 };
