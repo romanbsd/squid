@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.319 1997/10/27 22:53:12 wessels Exp $
+ * $Id: icp.c,v 1.320 1997/10/28 18:16:55 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1937,6 +1937,7 @@ requestTimeout(int fd, void *data)
 	err->type = ERR_LIFETIME_EXP;
 	err->http_status = HTTP_REQUEST_TIMEOUT;
 	err->callback = icpErrorComplete;
+	err->url = xstrdup("N/A");
 	errorSend(fd, err);
 	/* if we don't close() here, we still need a timeout handler! */
 	commSetTimeout(fd, 30, requestTimeout, conn);
