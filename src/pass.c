@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.8 1996/11/14 18:38:46 wessels Exp $
+ * $Id: pass.c,v 1.9 1996/11/22 08:12:29 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -467,7 +467,7 @@ passStart(int fd,
 	/* must look up IP address */
 	ipcache_nbgethostbyname(passState->host,
 	    passState->server.fd,
-	    passConnect,
+	    passSelectNeighbor,
 	    passState);
     } else {
 	/* can decide now */
