@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.103 1996/09/11 22:31:08 wessels Exp $
+ * $Id: icp.c,v 1.104 1996/09/11 22:41:13 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1671,9 +1671,9 @@ static void asciiProcessInput(fd, buf, size, flag, data)
 	/* parser returned -1 */
 	debug(12, 1, "asciiProcessInput: FD %d Invalid Request\n", fd);
 	wbuf = squid_error_request(icpState->inbuf,
-		ERR_INVALID_REQ,
-		fd_table[fd].ipaddr,
-		icpState->http_code);
+	    ERR_INVALID_REQ,
+	    fd_table[fd].ipaddr,
+	    icpState->http_code);
 	icpSendERROR(fd, ERR_INVALID_REQ, wbuf, icpState, 400);
     }
 }

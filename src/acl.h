@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.15 1996/09/11 22:31:05 wessels Exp $
+ * $Id: acl.h,v 1.16 1996/09/11 22:41:11 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -72,10 +72,10 @@ struct _acl_time_data {
 struct _acl_name_list {
     char name[ACL_NAME_SZ + 1];
     struct _acl_name_list *next;
-};   
-    
+};
+
 struct _acl_deny_info_list {
-    char url[MAX_URL+1];
+    char url[MAX_URL + 1];
     struct _acl_name_list *acl_list;
     struct _acl_deny_info_list *next;
 };
