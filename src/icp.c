@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.204 1996/12/16 23:01:03 wessels Exp $
+ * $Id: icp.c,v 1.205 1996/12/17 04:14:58 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1089,6 +1089,10 @@ icpCheckUdpHitObj(StoreEntry * e, request_t * r, icp_common_t * h, int len)
 	return 0;
     if (refreshCheck(e, r, 0))	/* stale */
 	return 0;
+#ifdef MEM_UDP_HIT_OBJ
+    if (e->mem_status != IN_MEMORY)
+	return 0;
+#endif
     return 1;
 }
 
