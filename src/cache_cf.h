@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.35 1996/07/11 22:44:12 wessels Exp $
+ * $Id: cache_cf.h,v 1.36 1996/07/18 20:25:53 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -227,6 +227,7 @@ extern struct in_addr getTcpIncomingAddr _PARAMS((void));
 extern struct in_addr getTcpOutgoingAddr _PARAMS((void));
 extern struct in_addr getUdpIncomingAddr _PARAMS((void));
 extern struct in_addr getUdpOutgoingAddr _PARAMS((void));
+extern struct in_addr getClientNetmask _PARAMS((void));
 extern wordlist *getCacheDirs _PARAMS((void));
 extern wordlist *getDnsTestnameList _PARAMS((void));
 extern wordlist *getFtpStoplist _PARAMS((void));
