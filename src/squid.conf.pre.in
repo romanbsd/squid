@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.83 1996/12/17 19:52:47 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.84 1996/12/17 21:31:11 wessels Exp $
 #
 
 #  TAG: http_port
@@ -706,7 +706,7 @@ debug_options ALL,1
 # when using "file", the file should contain one item per line
 #
 # acltype is one of src dst srcdomain dstdomain url_pattern urlpath_pattern
-#	            time port proto method browser
+#	            time port proto method browser user
 # 
 # acl aclname src      ip-address/netmask ... (clients IP address)
 # acl aclname src      addr1-addr2/netmask ... (range of addresses)
@@ -729,6 +729,9 @@ debug_options ALL,1
 # acl aclname proto    HTTP FTP ...
 # acl aclname method   GET POST ...
 # acl aclname browser  regexp
+# acl aclname user     username ...	# string match on ident output.
+#					# use REQUIRED to accept any
+#					# non-null ident.
 
 acl manager proto cache_object
 acl localhost src 127.0.0.1/255.255.255.255
