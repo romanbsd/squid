@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.44 1996/11/14 19:02:21 wessels Exp $
+ * $Id: objcache.c,v 1.45 1996/11/23 07:09:47 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -217,7 +217,7 @@ objcache_CheckPassword(ObjectCacheData * obj)
 {
     char *pwd = objcachePasswdGet(&Config.passwd_list, obj->op);
     if (pwd)
-	return strcmp(pwd, obj->passwd);
+	return strcmp(pwd, obj->passwd) && strcmp(pwd, "none");
     else if ((1 << obj->op) & PASSWD_REQUIRED)
 	return 1;
     else
