@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.71 1997/10/30 02:41:05 wessels Exp $
+ * $Id: objcache.c,v 1.72 1997/11/03 22:43:17 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -268,10 +268,10 @@ objcacheStart(int fd, StoreEntry * entry)
     int i;
     OBJH *handler = NULL;
     ErrorState *err = NULL;
-    debug(16, 3) ("objectcacheStart: '%s'\n", entry->url);
-    if ((data = objcache_url_parser(entry->url)) == NULL) {
+    debug(16, 3) ("objectcacheStart: '%s'\n", storeUrl(entry));
+    if ((data = objcache_url_parser(storeUrl(entry))) == NULL) {
 	err = errorCon(ERR_INVALID_REQ, HTTP_NOT_FOUND);
-	err->url = xstrdup(entry->url);
+	err->url = xstrdup(storeUrl(entry));
 	errorAppendEntry(entry, err);
 	entry->expires = squid_curtime;
 	storeAbort(entry, 0);
