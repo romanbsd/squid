@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.39 1998/02/20 23:22:31 wessels Exp $
+ * $Id: hash.c,v 1.40 1998/03/18 00:15:06 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -174,30 +174,38 @@ hash4(const void *data, unsigned int size)
     loop = (len + 8 - 1) >> 3;
     switch (len & (8 - 1)) {
     case 0:
-	do {
-	    HASH4;
-	    /* FALLTHROUGH */
+	HASH4;
+	/* FALLTHROUGH */
     case 7:
-	    HASH4;
-	    /* FALLTHROUGH */
+	HASH4;
+	/* FALLTHROUGH */
     case 6:
-	    HASH4;
-	    /* FALLTHROUGH */
+	HASH4;
+	/* FALLTHROUGH */
     case 5:
-	    HASH4;
-	    /* FALLTHROUGH */
+	HASH4;
+	/* FALLTHROUGH */
     case 4:
-	    HASH4;
-	    /* FALLTHROUGH */
+	HASH4;
+	/* FALLTHROUGH */
     case 3:
-	    HASH4;
-	    /* FALLTHROUGH */
+	HASH4;
+	/* FALLTHROUGH */
     case 2:
-	    HASH4;
-	    /* FALLTHROUGH */
+	HASH4;
+	/* FALLTHROUGH */
     case 1:
-	    HASH4;
-	} while (--loop);
+	HASH4;
+    }
+    while (--loop) {
+	HASH4;
+	HASH4;
+	HASH4;
+	HASH4;
+	HASH4;
+	HASH4;
+	HASH4;
+	HASH4;
     }
     return h % size;
 }
