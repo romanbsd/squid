@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.118 1997/07/28 06:41:01 wessels Exp $
+ * $Id: proto.c,v 1.119 1997/08/10 04:42:45 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -212,9 +212,9 @@ protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
 #endif
     if (e) {
 	e->stats.fetches++;
-	proxyhttpStart(request, entry, e);
+	httpStart(request, entry, e);
     } else if (request->protocol == PROTO_HTTP) {
-	httpStart(request, entry);
+	httpStart(request, entry, NULL);
     } else if (request->protocol == PROTO_GOPHER) {
 	gopherStart(entry);
     } else if (request->protocol == PROTO_FTP) {

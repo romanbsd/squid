@@ -1,5 +1,5 @@
 /*
- * $Id: http-anon.c,v 1.6 1997/03/04 05:16:30 wessels Exp $
+ * $Id: http-anon.c,v 1.7 1997/08/10 04:42:37 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Lutz Donnerhacke <lutz@iks-jena.de>
@@ -98,6 +98,8 @@ static struct http_anon_struct_header http_anon_allowed_header[] =
     {"Retry-After:", 12},
     {"Title:", 6},
     {"URI:", 4},
+    {"Connection:", 11},
+    {"Proxy-Connection:", 17},
     {NULL, 0}
 };
 
