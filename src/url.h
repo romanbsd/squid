@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.29 1996/11/06 23:15:07 wessels Exp $
+ * $Id: url.h,v 1.30 1996/11/08 16:13:53 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -89,5 +89,6 @@ extern int urlCheckRequest _PARAMS((const request_t *));
 #define 	REQ_HIERARCHICAL 0x40
 #define 	REQ_LOOPDETECT  0x80
 #define		REQ_PROXY_KEEPALIVE 0x100
+#define		REQ_PROXYING	0x200
 
 #endif /* _URL_HEADER_ */
