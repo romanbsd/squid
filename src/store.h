@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.15 1996/04/05 17:48:33 wessels Exp $ */
+/*  $Id: store.h,v 1.16 1996/04/09 23:27:59 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -64,7 +64,6 @@ typedef struct _MemObject {
     int e_swap_access;
     char *e_abort_msg;
     int abort_code;
-    int http_code;
 
     int e_current_len;
     /* The lowest offset that store keep VM copy around
@@ -80,8 +79,7 @@ typedef struct _MemObject {
 
     unsigned short swap_fd;
     int fd_of_first_client;
-    int content_length;
-    int hdr_sz;
+    struct _http_reply *reply;
 
 } MemObject;
 
@@ -183,5 +181,6 @@ extern int swapInError _PARAMS((int fd, StoreEntry *));
 extern int storeCopy _PARAMS((StoreEntry *, int, int, char *, int *));
 extern int storeMaintainSwapSpace _PARAMS((void));
 extern void storeExpireNow _PARAMS((StoreEntry *));
+extern void storeReleaseRequest _PARAMS((StoreEntry *, char *file, int line));
 
 #endif

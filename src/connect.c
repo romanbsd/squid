@@ -1,5 +1,5 @@
 /*
- *  $Id: connect.c,v 1.1 1996/04/08 18:28:55 wessels Exp $ 
+ *  $Id: connect.c,v 1.2 1996/04/09 23:27:54 wessels Exp $ 
  *
  * DEBUG: Section 26                    connect
  */
@@ -133,7 +133,7 @@ static void connectReadRemote(fd, data)
 		getReadTimeout());
 	} else {
 	    BIT_RESET(entry->flag, CACHABLE);
-	    BIT_SET(entry->flag, RELEASE_REQUEST);
+	    storeReleaseRequest(entry, __FILE__,__LINE__);
 	    cached_error_entry(entry, ERR_READ_ERROR, xstrerror());
 	    connectCloseAndFree(fd, data);
 	}
