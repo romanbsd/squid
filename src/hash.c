@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.32 1997/08/25 23:45:27 wessels Exp $
+ * $Id: hash.c,v 1.33 1997/10/25 17:22:44 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -106,7 +106,7 @@
 
 #include "squid.h"
 
-static int hash_unlink _PARAMS((hash_table *, hash_link *, int));
+static int hash_unlink(hash_table *, hash_link *, int);
 
 /*
  *  hash_url() - Returns a well-distributed hash function for URLs.

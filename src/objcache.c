@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.66 1997/08/25 22:35:59 wessels Exp $
+ * $Id: objcache.c,v 1.67 1997/10/25 17:22:52 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -121,9 +121,9 @@ struct op_table {
     OBJH *handler;
 };
 
-static ObjectCacheData *objcache_url_parser _PARAMS((const char *url));
-static int objcache_CheckPassword _PARAMS((ObjectCacheData *));
-static char *objcachePasswdGet _PARAMS((cachemgr_passwd ** a, objcache_op op));
+static ObjectCacheData *objcache_url_parser(const char *url);
+static int objcache_CheckPassword(ObjectCacheData *);
+static char *objcachePasswdGet(cachemgr_passwd ** a, objcache_op op);
 static OBJH objcacheUnimplemented;
 static OBJH cachemgrShutdown;
 

@@ -1,5 +1,5 @@
 /*
- * $Id: log.c,v 1.16 1996/11/06 23:14:14 wessels Exp $
+ * $Id: log.c,v 1.17 1997/10/25 17:22:29 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -138,17 +138,16 @@
 #include <varargs.h>
 #endif
 
-#include "ansiproto.h"
 #include "util.h"
 
 #ifdef _SQUID_NEXT_
 typedef int pid_t;
-extern pid_t getpid _PARAMS((void));
+extern pid_t getpid(void);
 #endif
 
 
 /* Local functions */
-static char *standard_msg _PARAMS((void));
+static char *standard_msg(void);
 
 /* Local variables */
 static FILE *fp_log = NULL;

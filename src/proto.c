@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.126 1997/10/23 16:38:14 wessels Exp $
+ * $Id: proto.c,v 1.127 1997/10/25 17:22:55 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -113,8 +113,8 @@ typedef struct {
     request_t *request;
 } pctrl_t;
 
-static void protoDispatchComplete _PARAMS((peer * p, void *data));
-static void protoDispatchFail _PARAMS((peer * p, void *data));
+static void protoDispatchComplete(peer * p, void *data);
+static void protoDispatchFail(peer * p, void *data);
 
 char *IcpOpcodeStr[] =
 {

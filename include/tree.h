@@ -3,7 +3,7 @@
  * vix 22jan93 [revisited; uses RCS, ANSI, POSIX; has bug fixes]
  * vix 27jun86 [broken out of tree.c]
  *
- * $Id: tree.h,v 1.2 1997/02/25 16:09:09 wessels Exp $
+ * $Id: tree.h,v 1.3 1997/10/25 17:22:26 wessels Exp $
  */
 
 
@@ -16,11 +16,11 @@ typedef struct tree_s {
     struct tree_s *left, *right;
 } tree;
 
-void tree_init _PARAMS((tree **));
-void *tree_srch _PARAMS((tree **, int (*)(), void *));
-void *tree_add _PARAMS((tree **, int (*)(), void *, void (*)()));
-int tree_delete _PARAMS((tree **, int (*)(), void *, void (*)()));
-int tree_trav _PARAMS((tree **, int (*)()));
-void tree_mung _PARAMS((tree **, void (*)()));
+void tree_init(tree **);
+void *tree_srch(tree **, int (*)(), void *);
+void *tree_add(tree **, int (*)(), void *, void (*)());
+int tree_delete(tree **, int (*)(), void *, void (*)());
+int tree_trav(tree **, int (*)());
+void tree_mung(tree **, void (*)());
 
 #endif /* _TREE_H_INCLUDED */
