@@ -1,5 +1,5 @@
 /*
- * $Id: stat.h,v 1.15 1996/07/09 04:47:24 wessels Exp $
+ * $Id: stat.h,v 1.16 1996/07/12 17:41:13 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -236,6 +236,8 @@ extern char *close_bracket;
 
 extern void stat_init _PARAMS((cacheinfo **, char *));
 extern void stat_rotate_log _PARAMS((void));
+extern int memoryAccounted _PARAMS((void));
+extern int mallinfoTotal _PARAMS((void));
 
 
 #endif /*STAT_H */
