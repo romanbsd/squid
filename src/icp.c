@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.309 1997/10/20 22:49:03 wessels Exp $
+ * $Id: icp.c,v 1.310 1997/10/20 22:59:46 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -226,7 +226,7 @@ httpRequestFree(void *data)
 	CheckQuickAbort(http);
 	entry = http->entry;	/* reset, IMS might have changed it */
 	if (entry && entry->ping_status == PING_WAITING)
-		storeReleaseRequest(entry);
+	    storeReleaseRequest(entry);
 	protoUnregister(entry, request, conn->peer.sin_addr);
     }
     assert(http->log_type < LOG_TYPE_MAX);
