@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.23 1997/01/31 21:34:52 wessels Exp $
+ * $Id: pass.c,v 1.24 1997/01/31 22:06:30 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -605,6 +605,8 @@ passSelectNeighbor(int u1, const ipcache_addrs * ia, void *data)
 	hierarchyNote(request, HIER_DEFAULT_PARENT, 0, e->host);
     } else if ((e = getSingleParent(request))) {
 	hierarchyNote(request, HIER_SINGLE_PARENT, 0, e->host);
+    } else if ((e = getRoundRobinParent(request))) {
+	hierarchyNote(request, HIER_ROUNDROBIN_PARENT, 0, e->host);
     } else if ((e = getFirstUpParent(request))) {
 	hierarchyNote(request, HIER_FIRSTUP_PARENT, 0, e->host);
     }
