@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.71 1996/10/15 04:57:56 wessels Exp $
+ * $Id: proto.c,v 1.72 1996/10/25 17:34:05 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -388,11 +388,11 @@ protoUnregister(int fd, StoreEntry * entry, request_t * request, struct in_addr 
     if (proto == PROTO_CACHEOBJ)
 	return;
     if (url)
-	(void) redirectUnregister(url, fd);
+	redirectUnregister(url, fd);
     if (src_addr.s_addr != INADDR_NONE)
-	(void) fqdncacheUnregister(src_addr, fd);
+	fqdncacheUnregister(src_addr, fd);
     if (host)
-	(void) ipcache_unregister(host, fd);
+	ipcache_unregister(host, fd);
     if (entry == NULL)
 	return;
     if (BIT_TEST(entry->flag, ENTRY_DISPATCHED))
