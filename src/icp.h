@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.30 1996/09/13 20:23:01 wessels Exp $
+ * $Id: icp.h,v 1.31 1996/09/13 20:23:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -176,7 +176,7 @@ typedef struct iwd {
 #else
     char *request_hdr;		/* Mime request header */
     char *reply_hdr;		/* Mime reply header */
-#endif /* LOG_FULL_HEADERS */
+#endif				/* LOG_FULL_HEADERS */
     StoreEntry *entry;
     StoreEntry *old_entry;
     long offset;

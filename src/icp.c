@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.106 1996/09/13 20:23:01 wessels Exp $
+ * $Id: icp.c,v 1.107 1996/09/13 20:23:30 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -377,11 +377,11 @@ void icp_maybe_remember_reply_hdr(icpState)
     char *end;
 
     if (icpState && icpState->entry && icpState->entry->mem_obj
-      && icpState->entry->mem_obj->data && icpState->entry->mem_obj->data->head
-      && (mime = icpState->entry->mem_obj->data->head->data) != NULL
-      && (end = mime_headers_end(mime)) != NULL) {
+	&& icpState->entry->mem_obj->data && icpState->entry->mem_obj->data->head
+	&& (mime = icpState->entry->mem_obj->data->head->data) != NULL
+	&& (end = mime_headers_end(mime)) != NULL) {
 	int mime_len = end - mime;
-	char *buf = xcalloc(mime_len+1, 1);
+	char *buf = xcalloc(mime_len + 1, 1);
 
 	strncpy(buf, mime, mime_len);
 	buf[mime_len] = 0;

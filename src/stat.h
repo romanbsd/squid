@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.26 1996/09/13 20:23:03 wessels Exp $
+ * $Id: stat.h,v 1.27 1996/09/13 20:23:32 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -185,10 +185,10 @@ struct _cacheinfo {
 #ifndef LOG_FULL_HEADERS
 	    struct _hierarchyLogData * hierData));
 #else
-	    struct _hierarchyLogData *hierData,
+	    struct _hierarchyLogData * hierData,
 	    char *request_hdrs,
 	    char *reply_hdrs));
-#endif /* LOG_FULL_HEADERS */
+#endif				/* LOG_FULL_HEADERS */
 
     /* clear logfile */
     void (*log_clear) _PARAMS((struct _cacheinfo * obj, StoreEntry * sentry));
