@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.h,v 1.39 1997/02/23 08:35:53 wessels Exp $
+ * $Id: neighbors.h,v 1.40 1997/02/25 19:18:21 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -202,7 +202,7 @@ extern peer *getFirstUpParent _PARAMS((request_t *));
 extern peer *getNextPeer _PARAMS((peer *));
 extern peer *getSingleParent _PARAMS((request_t *));
 extern int neighborsCount _PARAMS((request_t *));
-extern int neighborsUdpPing _PARAMS((protodispatch_data *));
+extern int neighborsUdpPing _PARAMS((request_t *, StoreEntry *));
 extern void neighborAddDomainPing _PARAMS((const char *, const char *));
 extern void neighborAddDomainType _PARAMS((const char *, const char *, const char *));
 extern void neighborAddAcl _PARAMS((const char *, const char *));
