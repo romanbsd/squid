@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.37 1998/04/06 22:46:52 wessels Exp $
+ * $Id: pump.c,v 1.38 1998/04/08 06:28:33 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -266,7 +266,7 @@ pumpReadFromClient(int fd, void *data)
     }
     if (len > 0) {
 	int delta = p->rcvd + len - p->cont_len;
-	if (0 != delta) {
+	if (delta > 0) {
 	    debug(61, delta == 2 ? 3 : 1) ("pumpReadFromClient: Warning: read %d bytes past content-length, truncating\n", delta);
 	    len = p->cont_len - p->rcvd;
 	}
