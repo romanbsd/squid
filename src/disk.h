@@ -1,6 +1,6 @@
 
 /*
- * $Id: disk.h,v 1.27 1997/02/19 17:10:32 wessels Exp $
+ * $Id: disk.h,v 1.28 1997/02/26 19:46:11 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -162,7 +162,8 @@ typedef struct _FileEntry {
 
 extern FileEntry *file_table;
 
-extern int file_open _PARAMS((const char *path, int (*handler) _PARAMS((void)), int mode));
+extern int file_open _PARAMS((const char *path, int (*handler) _PARAMS((void)), int mode, void (*callback) (), void *callback_data));
+extern int file_must_close _PARAMS((int fd));
 extern int file_close _PARAMS((int fd));
 extern int file_write _PARAMS((int fd,
 	char *buf,

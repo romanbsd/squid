@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.h,v 1.31 1996/11/06 23:15:05 wessels Exp $
+ * $Id: tools.h,v 1.32 1997/02/26 19:46:26 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -107,7 +107,7 @@
 #define TOOLS_H
 
 extern const char *getMyHostname _PARAMS((void));
-extern int safeunlink _PARAMS((const char *path, int quiet));
+extern void safeunlink _PARAMS((const char *path, int quiet));
 extern void death _PARAMS((int sig));
 extern void fatal _PARAMS((const char *message));
 extern void fatal_dump _PARAMS((const char *message));
