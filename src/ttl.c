@@ -1,6 +1,6 @@
 
 /*
- * $Id: ttl.c,v 1.21 1996/09/17 02:30:07 wessels Exp $
+ * $Id: ttl.c,v 1.22 1996/10/17 11:14:52 wessels Exp $
  *
  * DEBUG: section 22    TTL Calculation
  * AUTHOR: Harvest Derived
@@ -329,4 +329,5 @@ ttlSet(StoreEntry * entry)
 
     entry->expires = squid_curtime + ttl;
     entry->lastmod = last_modified > -1 ? last_modified : served_date;
+    entry->timestamp = served_date;
 }
