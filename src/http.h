@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.17 1996/10/09 22:49:33 wessels Exp $
+ * $Id: http.h,v 1.18 1996/10/24 20:58:09 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -137,6 +137,7 @@ typedef struct {
     int reply_hdr_state;
     edge *neighbor;		/* neighbor request made to */
     ConnectStateData connectState;
+    int eof;			/* reached end-of-object? */
 } HttpStateData;
 
 extern int httpCachable _PARAMS((char *, int));
