@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.275 1997/06/18 16:00:10 wessels Exp $
+ * $Id: icp.c,v 1.276 1997/06/18 16:16:12 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -258,6 +258,7 @@ httpRequestFree(void *data)
     icpProcessRequestControl(http, ICP_OP_DEL);
     if (!icpCheckTransferDone(http)) {
 	CheckQuickAbort(http);
+	entry = http->entry;	/* reset, IMS might have changed it */
 	if (entry) {
 	    if (entry->ping_status == PING_WAITING)
 		storeReleaseRequest(entry);
