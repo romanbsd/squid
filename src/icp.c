@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.191 1996/11/30 23:09:53 wessels Exp $
+ * $Id: icp.c,v 1.192 1996/12/01 07:40:10 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1967,9 +1967,12 @@ icpDetectClientClose(int fd, void *data)
 	    HTTPCacheInfo->proto_id(entry->url),
 	    icpState->offset);
 	comm_close(fd);
-    } else if ((n = read(fd, buf, 256)) > 0) {
+    } else if ((n = read(fd, buf, 255)) > 0) {
+	buf[n] = '\0';
 	debug(12, 0, "icpDetectClientClose: FD %d, %d unexpected bytes\n",
 	    fd, n);
+	debug(12, 1, "--> from: %s\n", fd_table[fd].ipaddr);
+	debug(12, 1, "--> data: %s\n", rfc1738_escape(buf));
 	commSetSelect(fd,
 	    COMM_SELECT_READ,
 	    icpDetectClientClose,
