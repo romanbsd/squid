@@ -14,7 +14,7 @@
 @SET_MAKE@
 
 #
-# $Id: Makefile.in,v 1.28 2002/09/30 00:18:53 hno Exp $
+# $Id: Makefile.in,v 1.29 2002/10/18 21:30:32 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -296,7 +296,7 @@ uninstall-local:
 #
 addlang: all
 	-@if test -d $(srcdir)/$(ADDLANG); then \
-	if test -d $(DEFAULT_ERROR_DIR)/$(DESTLANG); then
+	if test -d $(DEFAULT_ERROR_DIR)/$(DESTLANG); then \
 	cd $(srcdir)/$(ADDLANG)/ ; \
 	for f in ERR_*; do \
 		if test -f $(DEFAULT_ERROR_DIR)/$(DESTLANG)/$$f ; then \
