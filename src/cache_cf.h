@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.63 1996/10/24 23:18:18 wessels Exp $
+ * $Id: cache_cf.h,v 1.64 1996/10/27 07:11:52 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -141,7 +141,7 @@ struct SquidConfig {
 	int maxSize;
 	int highWaterMark;
 	int lowWaterMark;
-    } Mem , Swap;
+    } Mem, Swap;
     struct {
 	int maxObjSize;
 	int defaultTtl;
@@ -157,7 +157,6 @@ struct SquidConfig {
 	int pct;
 	int max;
     } quickAbort;
-    int expireAge;
     int referenceAge;
     int negativeTtl;
     int negativeDnsTtl;
@@ -252,6 +251,10 @@ struct SquidConfig {
 	int high;
     } ipcache;
     int minDirectHops;
+    struct {
+	int objectsPerBucket;
+	int avgObjectSize;
+    } storeHash;
 };
 
 extern struct SquidConfig Config;

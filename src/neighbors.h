@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.22 1996/10/19 07:10:09 wessels Exp $
+ * $Id: neighbors.h,v 1.23 1996/10/27 07:11:58 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -160,6 +160,7 @@ struct _edge {
 	int fetches;
 	int rtt;
 	int counts[ICP_OP_END];
+	int ignored_replies;
     } stats;
 
     u_short icp_port;
