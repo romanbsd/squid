@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.11 1997/03/04 05:16:19 wessels Exp $ */
+/* $Id: acconfig.h,v 1.12 1997/06/20 00:03:23 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -44,3 +44,6 @@
 
 /* Define if we should use GNU regex */
 #undef USE_GNUREGEX
+
+/* signed size_t, grr */
+#undef ssize_t
