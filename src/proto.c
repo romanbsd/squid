@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.68 1996/10/09 22:49:40 wessels Exp $
+ * $Id: proto.c,v 1.69 1996/10/11 23:11:16 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -248,7 +248,7 @@ protoDispatchDNSHandle(int unused1, ipcache_addrs * ia, void *data)
 	if (entry->swap_status != NO_SWAP)
 	    fatal_dump("protoDispatchDNSHandle: bad swap_status");
 	entry->ping_status = PING_WAITING;
-	comm_set_select_handler_plus_timeout(protoData->fd,
+	commSetSelect(protoData->fd,
 	    COMM_SELECT_TIMEOUT,
 	    (PF) getFromDefaultSource,
 	    (void *) entry,
@@ -424,7 +424,7 @@ protoCancelTimeout(int fd, StoreEntry * entry)
 	fatal_dump(NULL);
     }
     /* cancel the timeout handler */
-    comm_set_select_handler_plus_timeout(fd,
+    commSetSelect(fd,
 	COMM_SELECT_TIMEOUT,
 	NULL,
 	NULL,
