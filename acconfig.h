@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.61 2001/11/28 08:01:41 robertc Exp $ */
+/* $Id: acconfig.h,v 1.62 2001/12/24 15:33:40 adrian Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -350,6 +350,10 @@
  * Enable support for the X-Accelerator-Vary HTTP header
  */
 #undef X_ACCELERATOR_VARY
+
+/* Support for poll/select/etc stuff */
+#undef USE_POLL
+#undef USE_SELECT
 
 @BOTTOM@
 
