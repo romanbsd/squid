@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.77 1996/11/15 00:36:14 wessels Exp $
+ * $Id: cache_cf.h,v 1.78 1996/11/15 07:51:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -268,7 +268,6 @@ extern const char *DefaultConfigFile;
 extern const char *DefaultSwapDir;	/* argh */
 extern const char *cfg_filename;	/* Only the tail component of the path */
 extern char config_input_line[];
-extern const char *const w_space;
 extern int config_lineno;
 extern volatile int unbuffered_logs;
 extern char ForwardedBy[];

@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.66 1996/11/06 23:14:35 wessels Exp $
+ * $Id: ftpget.c,v 1.67 1996/11/15 07:51:09 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2390,7 +2390,6 @@ ftpget_srv_mode(char *arg)
     char *t = NULL;
     int i;
     int n;
-    const char *const w_space = " \t\n\r";
     static char buf[BUFSIZ];
     int buflen;
     int flags;
