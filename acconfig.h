@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.5 1996/07/16 01:47:18 wessels Exp $ */
+/* $Id: acconfig.h,v 1.6 1996/08/27 20:10:45 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -29,3 +29,6 @@
 
 /* If gettimeofday is known to take only one argument */
 #undef GETTIMEOFDAY_NO_TZP
+
+/* If libresolv.a has been hacked to export _dns_ttl_ */
+#undef LIBRESOLV_DNS_TTL_HACK
