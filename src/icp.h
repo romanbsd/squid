@@ -1,4 +1,4 @@
-/* $Id: icp.h,v 1.12 1996/04/09 18:20:27 wessels Exp $ */
+/* $Id: icp.h,v 1.13 1996/04/12 21:20:15 wessels Exp $ */
 
 #ifndef ICP_H
 #define ICP_H
@@ -43,6 +43,7 @@ typedef enum {
 #define		REQ_IMS		0x04
 #define		REQ_AUTH	0x08
 #define		REQ_PUBLIC	0x10
+#define 	REQ_ACCEL	0x20
 
 typedef struct wwd {
     struct sockaddr_in address;
