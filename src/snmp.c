@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.29 1998/02/11 03:14:38 wessels Exp $
+ * $Id: snmp.c,v 1.30 1998/02/12 04:27:58 kostas Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -1215,8 +1215,11 @@ var_system(struct variable * vp, oid * name, int *length, int exact,
 	*var_len = strlen(Config.adminEmail);
 	return (u_char *) Config.adminEmail;
     case SYSYSNAME:
-	*var_len = strlen(Config.visibleHostname);
-	return (u_char *) Config.visibleHostname;
+	char *pp;
+	if (( pp= Config.visibleHostname) == NULL) 
+		pp=getMyHostname();
+	*var_len = strlen(pp);
+	return (u_char *) pp;
     case SYSLOCATION:
 	pp = "Cyberspace";
 	*var_len = strlen(pp);
