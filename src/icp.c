@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.172 1996/11/14 03:00:54 wessels Exp $
+ * $Id: icp.c,v 1.173 1996/11/14 18:15:54 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1976,11 +1976,7 @@ icpDetectClientClose(int fd, void *data)
 	    COMM_SELECT_READ,
 	    (PF) icpDetectClientClose,
 	    (void *) icpState, 0);
-#if PURIFY
-    } else if (n <= 0) {
-#else
     } else if (n < 0) {
-#endif
 	debug(12, 5, "icpDetectClientClose: FD %d\n", fd);
 	debug(12, 5, "--> URL '%s'\n", icpState->url);
 	if (errno == ECONNRESET)
