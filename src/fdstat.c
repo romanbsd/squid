@@ -1,4 +1,5 @@
-/* $Id: fdstat.c,v 1.2 1996/02/29 07:23:10 wessels Exp $ */
+
+/* $Id: fdstat.c,v 1.3 1996/03/22 17:48:16 wessels Exp $ */
 
 #include "config.h"
 #include <string.h>

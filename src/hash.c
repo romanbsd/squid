@@ -1,4 +1,5 @@
-/* $Id: hash.c,v 1.2 1996/02/29 07:23:13 wessels Exp $ */
+
+/* $Id: hash.c,v 1.3 1996/03/22 17:48:17 wessels Exp $ */
 
 #include "config.h"
 #include <stdio.h>
