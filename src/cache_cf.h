@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.60 1996/10/09 15:43:50 wessels Exp $
+ * $Id: cache_cf.h,v 1.61 1996/10/10 18:48:48 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -249,7 +249,6 @@ struct SquidConfig {
 	int low;
 	int high;
     } ipcache;
-    int maxHotvmObjSize;
     int minDirectHops;
 };
 
