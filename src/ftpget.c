@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.67 1996/11/15 07:51:09 wessels Exp $
+ * $Id: ftpget.c,v 1.68 1996/11/15 21:58:28 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2462,7 +2462,7 @@ ftpget_srv_mode(char *arg)
 	    if (strcmp(t, "\"\"") == 0)
 		t = "";
 	    args[i] = xstrdup(t);
-	    rfc1738_unescape(args[i]);
+	    /* we used to call rfc1738_escape(args[i]) here */
 	    debug(38, 5, "args[%d] = %s\n", i, args[i]);
 	    t = strtok(NULL, w_space);
 	    i++;
@@ -2729,6 +2729,10 @@ main(int argc, char *argv[])
 	usage(argc);
     }
     cleanup_path(r);
+    rfc1738_unescape(r->host);
+    rfc1738_unescape(r->path);
+    rfc1738_unescape(r->user);
+    rfc1738_unescape(r->pass);
 
     len = 15 + strlen(r->user) + strlen(r->pass) + strlen(r->host)
 	+ strlen(r->path);
