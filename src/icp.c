@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.200 1996/12/05 17:35:25 wessels Exp $
+ * $Id: icp.c,v 1.201 1996/12/05 21:28:31 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -2086,7 +2086,7 @@ icpConstruct304reply(struct _http_reply *source)
     }
     if (source->last_modified > -1) {
 	sprintf(line, "Last-modified: %s\r\n",
-		mkrfc1123(source->last_modified));
+	    mkrfc1123(source->last_modified));
 	strcat(reply, line);
     }
     sprintf(line, "\r\n");
