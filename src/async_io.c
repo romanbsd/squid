@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.3 1996/07/15 23:48:28 wessels Exp $
+ * $Id: async_io.c,v 1.4 1996/07/16 01:52:01 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -144,7 +144,7 @@ int aioFileReadComplete(fd, data)
      int fd;
      void *data;
 {
-     dread_ctrl *ctrl_dat = data;
+    dread_ctrl *ctrl_dat = data;
     int rc;
     struct aiocb *aio = &file_table[fd].aio_cb;
 
