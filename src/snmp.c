@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.45 1998/03/06 23:22:32 wessels Exp $
+ * $Id: snmp.c,v 1.46 1998/03/16 20:20:59 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -186,7 +186,7 @@ snmpHandleUdp(int sock, void *not_used)
 	inet_ntoa(from.sin_addr));
 
     snmp_rq = xcalloc(1, sizeof(snmp_request_t));
-    snmp_rq->buf = buf;
+    snmp_rq->buf = (u_char *) buf;
     snmp_rq->len = len;
     snmp_rq->sock = sock;
     snmp_rq->outbuf = xmalloc(snmp_rq->outlen = SNMP_REQUEST_SIZE);
