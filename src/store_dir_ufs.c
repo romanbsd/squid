@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.13 1999/05/27 03:10:50 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.14 1999/06/14 22:11:46 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -586,6 +586,7 @@ storeGetNextFile(RebuildState * rb, int *sfileno, int *size)
 		rb->curlvl1, rb->curlvl2);
 	    if (rb->flags.init && rb->td != NULL)
 		closedir(rb->td);
+	    rb->td = NULL;
 	    if (dirs_opened)
 		return -1;
 	    rb->td = opendir(rb->fullpath);
