@@ -3,7 +3,7 @@
  * 
  *  Darren Hardy, hardy@cs.colorado.edu, July 1994
  *
- *  $Id: config.h.in,v 1.1 1996/02/22 06:23:56 wessels Exp $
+ *  $Id: config.h.in,v 1.2 1996/03/28 02:33:34 wessels Exp $
  *
  *  ----------------------------------------------------------------------
  *  Copyright (c) 1994, 1995.  All rights reserved.
@@ -148,14 +148,6 @@
 #define _SQUID_FREEBSD_
 #elif defined(__sgi__)				/* SGI */
 #define _SQUID_SGI_
-#endif
-
-#if !defined(USE_MALLINFO) && !defined(__linux__) && !defined(__FreeBSD__) && !defined(__NetBSD__) && !defined(__ultrix)
-#define USE_MALLINFO 1
-#endif
-
-#if !defined(USE_MALLOPT) && defined(sun)
-#define USE_MALLOPT 1
 #endif
 
 #if !defined(CACHE_HTTP_PORT)
