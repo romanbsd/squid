@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.32 1996/07/17 17:10:05 wessels Exp $
+ * $Id: store.h,v 1.33 1996/07/19 17:36:20 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -227,9 +227,10 @@ struct sentry {
 
     u_num32 flag;
     u_num32 timestamp;
-    u_num32 lastref;
     u_num32 refcount;
-    u_num32 expires;
+    time_t lastref;
+    time_t expires;
+    time_t lastmod;
 
     int object_len;
     int swap_file_number;
