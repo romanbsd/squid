@@ -1,5 +1,6 @@
+
 /*
- * $Id: stack.c,v 1.7 1996/07/17 17:02:09 wessels Exp $
+ * $Id: stack.c,v 1.8 1996/08/12 23:22:36 wessels Exp $
  *
  * DEBUG: section 0     Stack Primitives
  * AUTHOR: Harvest Derived

@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.12 1996/07/27 07:07:44 wessels Exp $
+ * $Id: neighbors.h,v 1.13 1996/08/12 23:22:35 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -196,9 +196,9 @@ struct neighbor_cf {
 };
 
 struct _hierarchyLogData {
-	hier_code code;
-	char *host;
-	int timeout;
+    hier_code code;
+    char *host;
+    int timeout;
 };
 
 extern edge *getFirstEdge _PARAMS((void));
