@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.22 1998/03/31 18:57:49 wessels Exp $ */
+/* $Id: acconfig.h,v 1.23 1998/04/08 05:33:25 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -104,7 +104,6 @@
  * such as splay trees and binary trees.  Define only one of these.
  */
 #undef USE_SPLAY_TREE
-#undef USE_BIN_TREE
 
 /*
  * Squid frequently calls gettimeofday() for accurate timestamping.
