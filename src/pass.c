@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.11 1996/11/26 17:03:36 wessels Exp $
+ * $Id: pass.c,v 1.12 1996/11/26 18:02:52 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -295,7 +295,7 @@ passConnected(int fd, void *data)
     char *t = NULL;
     char *s = NULL;
     int l;
-    int hdr_len;
+    int hdr_len = 0;
     int saw_host = 0;
     int content_length = 0;
     int buflen = SQUID_TCP_SO_RCVBUF >> 1;
