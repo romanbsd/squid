@@ -1,5 +1,6 @@
+
 /*
- * $Id: http-anon.c,v 1.7 1997/08/10 04:42:37 wessels Exp $
+ * $Id: http-anon.c,v 1.8 1997/12/02 00:17:36 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Lutz Donnerhacke <lutz@iks-jena.de>

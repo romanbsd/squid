@@ -1,5 +1,6 @@
+
 /*
- * $Id: snmp.c,v 1.10 1997/12/02 00:13:55 wessels Exp $
+ * $Id: snmp.c,v 1.11 1997/12/02 00:17:40 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
