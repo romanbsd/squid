@@ -1,5 +1,5 @@
 /*
- * $Id: log.c,v 1.12 1996/09/20 06:28:20 wessels Exp $
+ * $Id: log.c,v 1.13 1996/09/24 20:17:26 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -175,7 +175,7 @@ init_log3(char *pn, FILE * a, FILE * b)
 /*
  *  Log() - used like printf(3).  Prints message to stdout.
  */
-#if __STDC__ 
+#if __STDC__
 void
 Log(char *fmt,...)
 {
@@ -211,7 +211,7 @@ Log(va_alist)
 /*
  *  errorlog() - used like printf(3).  Prints error message to stderr.
  */
-#if __STDC__ 
+#if __STDC__
 void
 errorlog(char *fmt,...)
 {
@@ -248,7 +248,7 @@ errorlog(va_alist)
 /*
  *  fatal() - used like printf(3).  Prints error message to stderr and exits
  */
-#if __STDC__ 
+#if __STDC__
 void
 fatal(char *fmt,...)
 {
