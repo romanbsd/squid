@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.30 1999/01/28 23:57:44 wessels Exp $
+ * $Id: async_io.c,v 1.31 1999/02/01 05:57:05 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -133,10 +133,10 @@ aioClose(int fd)
     ctrlp->operation = _AIO_CLOSE;
     if (aio_close(fd, &(ctrlp->result)) < 0) {
 	close(fd);		/* Can't create thread - do a normal close */
+	memPoolFree(aio_ctrl_pool, ctrlp);
+	fd_was_closed(fd);
 	return;
     }
-    memPoolFree(aio_ctrl_pool, ctrlp);
-    fd_was_closed(fd);
     ctrlp->next = used_list;
     used_list = ctrlp;
     return;
@@ -288,9 +288,9 @@ aioStat(char *path, struct stat *sb, AIOCB * callback, void *callback_data, void
 	    errno = EWOULDBLOCK;
 	if (callback)
 	    (callback) (ctrlp->fd, callback_data, -1, errno);
+	memPoolFree(aio_ctrl_pool, ctrlp);
 	return;
     }
-    memPoolFree(aio_ctrl_pool, ctrlp);
     ctrlp->next = used_list;
     used_list = ctrlp;
     return;
