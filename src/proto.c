@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.145 1998/02/21 00:57:00 rousskov Exp $
+ * $Id: proto.c,v 1.146 1998/02/22 07:45:21 rousskov Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -177,7 +177,7 @@ protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
 	    waisStart(request, entry);
 	    break;
 	case PROTO_CACHEOBJ:
-	    cachemgrStart(fd, entry);
+	    cachemgrStart(fd, request, entry);
 	    break;
 	case PROTO_URN:
 	    urnStart(request, entry);
