@@ -1,5 +1,5 @@
 
-$Id: Release-Notes-1.1.txt,v 1.3 1996/08/14 21:43:42 wessels Exp $
+$Id: Release-Notes-1.1.txt,v 1.4 1996/08/17 05:11:42 wessels Exp $
 
 Release Notes for version 1.1 of the Squid cache.
 
@@ -22,14 +22,16 @@ access control purposes.
 Asynchronous Disk I/O
 ==============================================================================
 Pete Bentley <pete@demon.net> has contributed a module for asynchronous
-disk I/O.  To enable, you must define USE_ASYNC_IO (e.g. in the Makefile,
-or include/config.h).  It should compile for both IRIX 5.3 and Solaris 2.x.
+disk I/O.  To enable, you must define USE_ASYNC_IO (e.g. in the
+Makefile, or include/config.h).  It should compile for both IRIX 5.3
+and Solaris 2.x.
 
 However, due to some of the underlying routines and structures in
 disk.[ch], asynchronous I/O is not be efficiently implemented yet.
 There can only be one outstanding aio_write() call per return from 
 the select loop.  The standard disk I/O routines write all pending
-blocks per return from select().
+blocks per return from select().  I do NOT recommend using these aio
+with Squid just yet.
 
 URL Redirector
 ==============================================================================
