@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.178 1996/11/16 07:12:50 wessels Exp $
+ * $Id: icp.c,v 1.179 1996/11/18 18:22:03 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -325,7 +325,7 @@ icpParseRequestHeaders(icpStateData * icpState)
 	if (!strcasecmp(t, "Keep-Alive"))
 	    BIT_SET(request->flags, REQ_PROXY_KEEPALIVE);
 #endif
-    if (strstr(request_hdr, ForwardedBy))
+    if (strstr(request_hdr, ViaString))
 	BIT_SET(request->flags, REQ_LOOPDETECT);
 #if USE_USERAGENT_LOG
     if ((t = mime_get_header(request_hdr, "User-Agent")))
