@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.47 1996/10/09 15:34:27 wessels Exp $
+ * $Id: ftpget.c,v 1.48 1996/10/09 17:37:09 wessels Exp $
  *
  * DEBUG: section 0     FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -860,6 +860,7 @@ connect_with_timeout(int fd, struct sockaddr_in *S, int len)
     if (outgoingTcpAddr.s_addr) {
 	struct sockaddr_in sock;
 
+        memset(&sock, '\0', sizeof(struct sockaddr_in));
 	sock.sin_family = AF_INET;
 	sock.sin_addr = outgoingTcpAddr;
 	sock.sin_port = 0;
