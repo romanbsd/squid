@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.16 1999/06/24 22:05:24 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.17 1999/06/30 05:23:56 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1222,6 +1222,7 @@ storeUfsDirParse(cacheSwap * swap)
     }
     allocate_new_swapdir(swap);
     sd = swap->swapDirs + swap->n_configured;
+    sd->type = SWAPDIR_UFS;
     sd->index = swap->n_configured;
     sd->path = xstrdup(path);
     sd->max_size = size;
@@ -1292,6 +1293,7 @@ storeAufsDirParse(cacheSwap * swap)
     }
     allocate_new_swapdir(swap);
     sd = swap->swapDirs + swap->n_configured;
+    sd->type = SWAPDIR_ASYNCUFS;
     sd->index = swap->n_configured;
     sd->path = xstrdup(path);
     sd->max_size = size;
