@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.45 1996/08/23 21:26:54 wessels Exp $
+ * $Id: proto.c,v 1.46 1996/08/23 21:29:58 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -377,7 +377,7 @@ void protoUnregister(fd, entry, request, src_addr)
     (void) fqdncacheUnregister(src_addr, fd);
     if (host)
 	(void) ipcache_unregister(host, fd);
-#ifdef DONT_DO_THIS 
+#ifdef DONT_DO_THIS
     if (entry && BIT_SET(entry->flag, CLIENT_ABORT_REQUEST))
 	squid_error_entry(entry, ERR_CLIENT_ABORT, NULL);
 #endif
