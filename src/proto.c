@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.86 1996/12/19 21:24:16 wessels Exp $
+ * $Id: proto.c,v 1.87 1996/12/20 23:45:43 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -397,7 +397,7 @@ protoUnregister(int fd, StoreEntry * entry, request_t * request, struct in_addr 
 	return 0;
     if (url)
 	redirectUnregister(url, fd);
-    if (src_addr.s_addr != INADDR_NONE)
+    if (src_addr.s_addr != inaddr_none)
 	fqdncacheUnregister(src_addr, fd);
     if (host)
 	ipcache_unregister(host, fd);
@@ -601,7 +601,7 @@ matchInsideFirewall(const char *host)
     }
     /* Check for dotted-quads */
     if (Config.firewall_ip_list) {
-	if ((addr.s_addr = inet_addr(host)) != INADDR_NONE) {
+	if ((addr.s_addr = inet_addr(host)) != inaddr_none) {
 	    if (ip_access_check(addr, Config.firewall_ip_list) == IP_DENY)
 		return INSIDE_FIREWALL;
 	}
