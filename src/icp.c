@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.215 1997/01/15 05:49:58 wessels Exp $
+ * $Id: icp.c,v 1.216 1997/01/15 22:59:35 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1708,7 +1708,7 @@ clientReadRequest(int fd, void *data)
 		icpState->method,
 		ERR_INVALID_URL,
 		fd_table[fd].ipaddr,
-		icpState->http_code,
+		400,
 		NULL);
 	    icpSendERROR(fd, ERR_INVALID_URL, wbuf, icpState, 400);
 	    return;
