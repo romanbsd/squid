@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.74 1999/05/04 21:58:32 wessels Exp $
+ * $Id: pump.c,v 1.75 1999/06/18 04:25:00 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -417,6 +417,15 @@ pumpMethod(method_t method)
     switch (method) {
     case METHOD_POST:
     case METHOD_PUT:
+#ifndef RFC_2518
+    case METHOD_PROPFIND:
+    case METHOD_PROPPATCH:
+    case METHOD_MKCOL:
+    case METHOD_COPY:
+    case METHOD_MOVE:
+    case METHOD_LOCK:
+    case METHOD_UNLOCK:
+#endif
 	return 1;
 	break;
     default:
