@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.25 1996/08/23 21:18:35 wessels Exp $
+ * $Id: icp.h,v 1.26 1996/08/26 22:47:53 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -134,11 +134,12 @@ typedef enum {
     ERR_CANNOT_FETCH,		/* 25 */
     ERR_NO_RELAY,		/* 26 */
     ERR_DISK_IO,		/* 27 */
-    ERR_ZERO_SIZE_OBJECT	/* 28 */
+    ERR_ZERO_SIZE_OBJECT,	/* 28 */
+    ERR_PROXY_DENIED		/* 29 */
 } log_type;
 
 #define ERR_MIN ERR_READ_TIMEOUT
-#define ERR_MAX ERR_ZERO_SIZE_OBJECT
+#define ERR_MAX ERR_PROXY_DENIED
 
 /* bitfields for the icpStateData 'flags' element */
 #define		REQ_HTML	0x01
