@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.13 1996/08/12 23:22:35 wessels Exp $
+ * $Id: neighbors.h,v 1.14 1996/08/26 19:57:09 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -180,7 +180,6 @@ typedef struct {
     edge *edges_head;
     edge *edges_tail;
     edge *first_ping;
-    int fd;
 } neighbors;
 
 struct neighbor_cf {

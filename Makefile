@@ -1,6 +1,6 @@
 # Makefile for SQUID Cache
 #
-# $Id: Makefile,v 1.6 1996/07/09 03:41:01 wessels Exp $
+# $Id: Makefile,v 1.7 1996/08/26 19:56:56 wessels Exp $
 #
 
 prefix		= /usr/local/squid
@@ -19,6 +19,8 @@ dosquid:
 .DEFAULT:
 	@if test \! -f makefile; then ${MAKE} makefile; fi
 	@${MAKE} -f makefile $@
+
+install: all
 
 makefile: makefile.in Makefile
 	@echo Running configure script to generate makefile
