@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.27 1998/02/06 06:44:33 wessels Exp $
+ * $Id: snmp.c,v 1.28 1998/02/06 23:58:05 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -1231,12 +1231,14 @@ var_system(struct variable * vp, oid * name, int *length, int exact,
 }
 
 void
-snmpConnectionClose(void)
+snmpConnectionShutdown(void)
 {
     if (theInSnmpConnection < 0)
 	return;
-    if (theInSnmpConnection != theOutSnmpConnection)
+    if (theInSnmpConnection != theOutSnmpConnection) {
+	debug(49,1)("FD %d Closing SNMP socket\n", theInSnmpConnection);
 	comm_close(theInSnmpConnection);
+    }
     /*
      * Here we set 'theInSnmpConnection' to -1 even though the SNMP 'in'
      * and 'out' sockets might be just one FD.  This prevents this
@@ -1252,4 +1254,14 @@ snmpConnectionClose(void)
      */
     assert(theOutSnmpConnection > -1);
     commSetSelect(theOutSnmpConnection, COMM_SELECT_READ, NULL, NULL, 0);
+}
+
+void
+snmpConnectionClose(void)
+{
+    snmpConnectionShutdown();
+    if (theOutSnmpConnection > -1) {
+        debug(49,1)("FD %d Closing SNMP socket\n", theOutSnmpConnection);
+        comm_close(theOutSnmpConnection);
+    }   
 }
