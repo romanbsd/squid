@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.49 1996/10/09 17:37:21 wessels Exp $
+ * $Id: ftpget.c,v 1.50 1996/10/13 06:19:46 wessels Exp $
  *
  * DEBUG: section 0     FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -1136,7 +1136,7 @@ static int
 send_cmd(int fd, char *buf)
 {
     char *xbuf = NULL;
-    int len;
+    size_t len;
     int x;
 
     len = strlen(buf) + 2;

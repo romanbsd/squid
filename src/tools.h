@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.h,v 1.27 1996/09/24 19:50:11 wessels Exp $
+ * $Id: tools.h,v 1.28 1996/10/13 06:19:52 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -120,7 +120,7 @@ extern time_t getCurrentTime _PARAMS((void));
 extern void normal_shutdown _PARAMS((void));
 extern int percent _PARAMS((int, int));
 extern void squid_signal _PARAMS((int sig, void (*func) _PARAMS((int)), int flags));
-extern int readPidFile _PARAMS((void));
+extern pid_t readPidFile _PARAMS((void));
 extern void _debug_trap _PARAMS((char *message));
 extern struct in_addr inaddrFromHostent _PARAMS((struct hostent * hp));
 
