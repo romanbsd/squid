@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.290 2002/11/10 14:34:13 hno Exp $
+# $Id: cf.data.pre,v 1.291 2002/12/18 01:07:03 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1653,9 +1653,7 @@ DOC_START
 		this feature could make you liable for problems which
 		it causes.
 		
-	Please see the file doc/Release-Notes-1.1.txt for a full
-	description of Squid's refresh algorithm.  Basically a
-	cached object is: (the order is changed from 1.1.X)
+	Basically a cached object is:
 
 		FRESH if expires < now, else STALE
 		STALE if age > max
