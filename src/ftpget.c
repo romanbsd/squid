@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.52 1996/10/14 21:28:41 wessels Exp $
+ * $Id: ftpget.c,v 1.53 1996/10/14 21:37:04 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2079,9 +2079,10 @@ htmlify_listing(ftp_request_t * r)
     fprintf(wfp, "<!-- %s -->\n", http_time(stamp));
     fprintf(wfp, "<HTML><HEAD><TITLE>\n");
     fprintf(wfp, "FTP Directory: %s\n", r->title_url);
-    fprintf(wfp, "</TITLE></HEAD><BODY>\n");
+    fprintf(wfp, "</TITLE>\n");
     if (r->flags & F_USEBASE)
 	fprintf(wfp, "<BASE HREF=\"%s\">\n", r->url_escaped);
+    fprintf(wfp, "</HEAD><BODY>\n");
 
     if (r->cmd_msg) {		/* There was a message sent with the CWD cmd */
 	list_t *l;
