@@ -1,5 +1,5 @@
 /*
- * $Id: stmem.h,v 1.8 1996/07/09 04:47:25 wessels Exp $
+ * $Id: stmem.h,v 1.9 1996/07/12 17:41:52 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -134,6 +134,7 @@ typedef struct mem_hdr {
 
 /* Memory allocator routines for fixed size blocks */
 typedef struct _stmem_stats {
+    int max_pages;
     int total_pages_allocated;
     int page_size;
     int n_pages_free;
