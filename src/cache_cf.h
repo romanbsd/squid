@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.94 1997/03/04 05:16:25 wessels Exp $
+ * $Id: cache_cf.h,v 1.95 1997/03/29 04:45:13 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -226,7 +226,6 @@ struct SquidConfig {
     } Addrs;
     int tcpRcvBufsz;
     int udpMaxHitObjsz;
-    wordlist *cache_dirs;
     wordlist *cache_stoplist;
     wordlist *hierarchy_stoplist;
     wordlist *mcast_group_list;
@@ -251,8 +250,6 @@ struct SquidConfig {
 	int mcast_ttl;
 	struct sockaddr_in S;
     } vizHack;
-    int levelOneDirs;
-    int levelTwoDirs;
     struct {
 	int high;
 	int low;

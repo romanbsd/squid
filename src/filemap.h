@@ -1,5 +1,5 @@
 /*
- * $Id: filemap.h,v 1.8 1996/11/06 23:14:32 wessels Exp $
+ * $Id: filemap.h,v 1.9 1997/03/29 04:45:15 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -115,10 +115,10 @@ typedef struct _fileMap {
 } fileMap;
 
 extern fileMap *file_map_create _PARAMS((int));
-extern int file_map_allocate _PARAMS((int));
-extern int file_map_bit_set _PARAMS((int));
-extern int file_map_bit_test _PARAMS((int));
-extern void file_map_bit_reset _PARAMS((int));
-extern void filemapFreeMemory _PARAMS((void));
+extern int file_map_allocate _PARAMS((fileMap *, int));
+extern int file_map_bit_set _PARAMS((fileMap *, int));
+extern int file_map_bit_test _PARAMS((fileMap *, int));
+extern void file_map_bit_reset _PARAMS((fileMap *, int));
+extern void filemapFreeMemory _PARAMS((fileMap *));
 
 #endif /* _FILEMAP_H_ */

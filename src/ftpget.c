@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.82 1997/03/04 05:16:29 wessels Exp $
+ * $Id: ftpget.c,v 1.83 1997/03/29 04:45:16 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2643,7 +2643,7 @@ main(int argc, char *argv[])
 	    break;
 	case 'H':
 	    strncpy(visible_hostname, optarg, BUFSIZ);
-	    visible_hostname[BUFSIZ]='\0';
+	    visible_hostname[BUFSIZ] = '\0';
 	    break;
 	case 'P':
 	    port = atoi(optarg);

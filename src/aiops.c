@@ -1,5 +1,6 @@
+
 /*
- * $Id: aiops.c,v 1.1 1997/02/26 19:46:07 wessels Exp $
+ * $Id: aiops.c,v 1.2 1997/03/29 04:45:12 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
