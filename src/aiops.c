@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.34 2000/03/06 16:23:28 wessels Exp $
+ * $Id: aiops.c,v 1.35 2000/05/02 19:40:13 hno Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -52,7 +52,7 @@
 /* Linux requires proper use of mutexes or it will segfault deep in the
  * thread libraries. Observed on Alpha SMP Linux 2.2.10-ac12.
  */
-#define USE_PROPER_MUTEX 1
+#define AIO_PROPER_MUTEX 1
 #endif
 
 enum _aio_thread_status {
