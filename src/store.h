@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.48 1996/09/15 05:04:46 wessels Exp $
+ * $Id: store.h,v 1.49 1996/09/15 08:06:32 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -266,7 +266,7 @@ struct sentry {
 typedef int (*PIF) (int, StoreEntry *, void *);
 
 typedef struct pentry {
-    short fd;
+    int fd;
     PIF handler;
     void *data;
 } PendingEntry;
@@ -288,7 +288,6 @@ extern int storeClientWaiting __P((StoreEntry *));
 extern void storeAbort __P((StoreEntry *, char *));
 extern void storeAppend __P((StoreEntry *, char *, int));
 extern int storeGetMemSize __P((void));
-extern int storeGetMemSpace __P((int, int));
 extern int storeGetSwapSize __P((void));
 extern int storeGetSwapSpace __P((int));
 extern int storeEntryValidToSend __P((StoreEntry *));

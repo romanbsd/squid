@@ -1,5 +1,5 @@
 /*
- * $Id: disk.h,v 1.15 1996/09/15 05:04:19 wessels Exp $
+ * $Id: disk.h,v 1.16 1996/09/15 08:06:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -184,7 +184,7 @@ extern int file_write __P((int fd,
     char *buf,
     int len,
     int access_code,
-    void (*handle) __P((void)),
+    void (*handle) __P((int, int, StoreEntry *)),
     void *handle_data,
     void (*free) __P((void *))));
 extern int file_write_unlock __P((int fd, int access_code));
