@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.56 2001/04/14 12:59:30 hno Exp $ */
+/* $Id: acconfig.h,v 1.57 2001/08/15 23:49:43 robertc Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -200,7 +200,7 @@
 /*
  * This makes warnings go away.  If you have socklen_t defined in your
  * /usr/include files, then this should remain undef'd.  Otherwise it
- * should be defined to int.
+ * should be defined to int. 
  */
 #undef socklen_t
 
