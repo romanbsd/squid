@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.9 1996/03/25 21:25:32 wessels Exp $ */
+/* $Id: ftpget.c,v 1.10 1996/03/26 05:17:43 wessels Exp $ */
 
 /*
  *    NOTES
@@ -1736,8 +1736,8 @@ static int process_request(r)
 	    break;
 	case DONE:
 	    if (r->flags & F_HTTPIFY) {
-    		Debug(26,9,("Writing Marker to FD %d\n", r->cfd));
-    		write(r->cfd, MAGIC_MARKER, MAGIC_MARKER_SZ);
+		Debug(26, 9, ("Writing Marker to FD %d\n", r->cfd));
+		write(r->cfd, MAGIC_MARKER, MAGIC_MARKER_SZ);
 	    }
 	    return 0;
 	    /* NOTREACHED */
