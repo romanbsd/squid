@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.21 1999/08/02 06:18:44 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.22 1999/09/28 23:53:57 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -784,6 +784,7 @@ storeUfsDirOpenTmpSwapLog(SwapDir * sd, int *clean_flag, int *zero_flag)
 	debug(50, 0) ("%s: %s\n", swaplog_path, xstrerror());
 	fatal("Failed to open swap log for reading");
     }
+    commSetCloseOnExec(fileno(fp));
     memset(&clean_sb, '\0', sizeof(struct stat));
     if (stat(clean_path, &clean_sb) < 0)
 	*clean_flag = 0;
