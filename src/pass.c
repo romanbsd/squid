@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.4 1996/11/06 08:17:32 wessels Exp $
+ * $Id: pass.c,v 1.5 1996/11/06 22:14:57 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -456,6 +456,11 @@ passStart(int fd,
     comm_add_close_handler(passState->client.fd,
 	passClientClosed,
 	(void *) passState);
+    /* disable icpDetectClientClose */
+    commSetSelect(passState->client.fd,
+	COMM_SELECT_READ,
+	NULL,
+	NULL, 0);
     if (Config.firewall_ip_list) {
 	/* must look up IP address */
 	ipcache_nbgethostbyname(passState->host,
