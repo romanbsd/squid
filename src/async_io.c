@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.27 1998/11/16 20:27:53 wessels Exp $
+ * $Id: async_io.c,v 1.28 1998/11/17 01:31:51 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -77,6 +77,7 @@ static aio_ctrl_t *used_list = NULL;
 static aio_ctrl_t pool[SQUID_MAXFD];
 static int initialised = 0;
 static int outunlink = 0;
+static int uq_len = 0;
 static OBJH aioStats;
 
 static void
@@ -355,6 +356,7 @@ aioUnlink(const char *path, AIOCB * callback, void *callback_data)
 	this->path = xstrdup(path);
 	this->next = uq;
 	uq = this;
+	uq_len++;
     }
     while (uq != NULL) {
 	this = uq;
@@ -379,6 +381,7 @@ aioUnlink(const char *path, AIOCB * callback, void *callback_data)
 	uq = this->next;
 	xfree(this->path);
 	xfree(this);
+	uq_len--;
     }
 }				/* aioUnlink */
 
@@ -433,6 +436,8 @@ aioStats(StoreEntry * sentry)
     storeAppendPrintf(sentry, "stat\t%d\n", aio_counts.stat);
     storeAppendPrintf(sentry, "unlink\t%d\n", aio_counts.unlink);
     storeAppendPrintf(sentry, "check_callback\t%d\n", aio_counts.check_callback);
+    storeAppendPrintf(sentry, "\noutunlink\t%d\n", outunlink);
+    storeAppendPrintf(sentry, "unlink queue length\t%d\n", uq_len);
 }
 
 #endif /* USE_ASYNC_IO */
