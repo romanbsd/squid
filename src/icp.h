@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.75 1997/05/08 23:23:17 wessels Exp $
+ * $Id: icp.h,v 1.76 1997/05/15 01:06:57 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -222,7 +222,7 @@ extern void icpUdpSend _PARAMS((int fd,
 	log_type,
 	protocol_t));
 extern PF icpHandleUdp;
-extern PF asciiHandleConn;
+extern PF httpAccept;
 extern void icpSendERROR _PARAMS((int fd,
 	log_type errorCode,
 	const char *text,

@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.h,v 1.47 1997/05/02 21:34:05 wessels Exp $
+ * $Id: comm.h,v 1.48 1997/05/15 01:06:53 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -149,7 +149,11 @@ extern int comm_init _PARAMS((void));
 extern int comm_listen _PARAMS((int sock));
 extern int comm_open _PARAMS((int, int, struct in_addr, u_short port, int, const char *note));
 extern u_short comm_local_port _PARAMS((int fd));
+#if HAVE_POLL
+extern int comm_poll _PARAMS((time_t));
+#else
 extern int comm_select _PARAMS((time_t));
+#endif
 extern void commSetSelect _PARAMS((int, unsigned int, PF *, void *, time_t));
 extern void comm_add_close_handler _PARAMS((int fd, PF *, void *));
 extern void comm_remove_close_handler _PARAMS((int fd, PF *, void *));

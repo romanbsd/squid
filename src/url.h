@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.40 1997/02/24 20:21:39 wessels Exp $
+ * $Id: url.h,v 1.41 1997/05/15 01:07:05 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -54,6 +54,7 @@ typedef enum {
     PROTO_GOPHER,
     PROTO_WAIS,
     PROTO_CACHEOBJ,
+    PROTO_ICP,
     PROTO_MAX
 } protocol_t;
 

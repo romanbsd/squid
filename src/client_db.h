@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_db.h,v 1.3 1996/12/13 22:26:36 wessels Exp $
+ * $Id: client_db.h,v 1.4 1997/05/15 01:06:52 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -32,7 +32,7 @@
 #define CLIENT_DB_H
 
 void clientdbInit _PARAMS((void));
-void clientdbUpdate _PARAMS((struct in_addr, log_type, u_short port));
+void clientdbUpdate _PARAMS((struct in_addr, log_type, protocol_t));
 int clientdbDeniedPercent _PARAMS((struct in_addr));
 void clientdbDump _PARAMS((StoreEntry *));
 extern int client_info_sz;
