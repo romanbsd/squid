@@ -1,5 +1,5 @@
 /*
- * $Id: dns.h,v 1.6 1996/09/26 19:19:15 wessels Exp $
+ * $Id: dns.h,v 1.7 1996/10/15 18:05:57 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -142,6 +142,7 @@ extern void dnsFreeMemory _PARAMS((void));
 
 extern char *dns_error_message;
 extern struct _dnsStats DnsStats;
+extern int NDnsServersAlloc;
 
 #define IPCACHE_AV_FACTOR 1000
 
