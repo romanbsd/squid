@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache_opcodes.h,v 1.4 1996/12/13 22:26:38 wessels Exp $
+ * $Id: objcache_opcodes.h,v 1.5 1997/04/25 21:43:57 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -54,6 +54,7 @@ typedef enum {
     MGR_SHUTDOWN,
     MGR_UTILIZATION,
     MGR_VM_OBJECTS,
+    MGR_STOREDIR,
     MGR_MAX
 } objcache_op;
 
@@ -84,5 +85,6 @@ static char *objcacheOpcodeStr[] =
     "shutdown",
     "utilization",
     "vm_objects",
+    "storedir",
     "MAX"
 };
