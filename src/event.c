@@ -1,6 +1,6 @@
 
 /*
- * $Id: event.c,v 1.32 2002/04/13 23:07:50 hno Exp $
+ * $Id: event.c,v 1.33 2002/11/10 14:18:13 hno Exp $
  *
  * DEBUG: section 41    Event Processing
  * AUTHOR: Henrik Nordstrom
@@ -140,12 +140,12 @@ eventRun(void)
     }
 }
 
-time_t
+int
 eventNextTime(void)
 {
     if (!tasks)
-	return (time_t) 10;
-    return (time_t) ((tasks->when - current_dtime) * 1000);
+	return (int) 10;
+    return (int) ((tasks->when - current_dtime) * 1000);
 }
 
 void
