@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.51 1997/07/16 20:32:13 wessels Exp $
+ * $Id: pass.c,v 1.52 1997/07/19 04:01:24 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -342,17 +342,17 @@ passConnectDone(int fd, int status, void *data)
 	xstrncpy(request->urlpath, passState->url, MAX_URL);
     }
     passState->client.len = httpBuildRequestHeader(request,
-	request,		/* orig_request */
+	passState->request,	/* orig_request */
 	NULL,			/* entry */
 	&hdr_len,
 	passState->client.buf,
 	SQUID_TCP_SO_RCVBUF >> 1,
 	opt_forwarded_for ? passState->client.fd : -1);
     debug(39, 3) ("passConnectDone: Appending %d bytes of content\n",
-	request->body_sz);
+	passState->request->body_sz);
     xmemcpy(passState->client.buf + passState->client.len,
-	request->body, request->body_sz);
-    passState->client.len += request->body_sz;
+	passState->request->body, passState->request->body_sz);
+    passState->client.len += passState->request->body_sz;
     passState->client.offset = 0;
     commSetTimeout(passState->server.fd, Config.Timeout.read, NULL, NULL);
     commSetSelect(passState->server.fd,
