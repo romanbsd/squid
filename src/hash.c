@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.10 1996/09/14 16:05:44 wessels Exp $
+ * $Id: hash.c,v 1.11 1996/09/14 16:54:54 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -175,8 +175,8 @@ hash_init(int hash_sz)
  */
 HashID
 hash_create(int (*cmp_func) (char *, char *),
-	int hash_sz,
-	int (*hash_func) (char *, HashID))
+    int hash_sz,
+    int (*hash_func) (char *, HashID))
 {
     int hid;
 

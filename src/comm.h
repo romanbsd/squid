@@ -1,5 +1,5 @@
 /*
- * $Id: comm.h,v 1.22 1996/09/14 16:05:42 wessels Exp $
+ * $Id: comm.h,v 1.23 1996/09/14 16:54:51 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -192,20 +192,20 @@ extern int fd_of_first_client(StoreEntry *);
 extern struct in_addr *getAddress(char *name);
 extern void comm_set_stall(int, int);
 extern int comm_get_fd_timeout(int fd);
-extern void comm_read (int fd,
-	char *buf,
-	int size,
-	int timeout,
-	int immed,
-	rw_complete_handler * handler,
-	void *handler_data);
-extern void comm_write (int fd,
-	char *buf,
-	int size,
-	int timeout,
-	rw_complete_handler * handler,
-	void *handler_data,
-	void       (*)(void *));
+extern void comm_read(int fd,
+    char *buf,
+    int size,
+    int timeout,
+    int immed,
+    rw_complete_handler * handler,
+    void *handler_data);
+extern void comm_write(int fd,
+    char *buf,
+    int size,
+    int timeout,
+    rw_complete_handler * handler,
+    void *handler_data,
+    void (*)(void *));
 
 extern int RESERVED_FD;
 

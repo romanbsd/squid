@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.55 1996/09/14 08:46:18 wessels Exp $
+ * $Id: proto.c,v 1.56 1996/09/14 16:54:57 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -162,7 +162,7 @@ protoDataFree(int fdunused, protodispatch_data * protoData)
 }
 
 /* called when DNS lookup is done by ipcache. */
-int 
+int
 protoDispatchDNSHandle(int unused1
     ,struct hostent *hp, void *data)
 {
