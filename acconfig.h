@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.47 2000/05/30 09:30:10 hno Exp $ */
+/* $Id: acconfig.h,v 1.48 2000/05/31 01:04:43 hno Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -272,3 +272,10 @@
 
 /* Print stacktraces on fatal errors */
 #undef PRINT_STACK_TRACE
+
+/*
+ * Define this if unlinkd is required
+ * (strongly recommended for ufs storage type)
+ */
+#undef USE_UNLINKD
+
