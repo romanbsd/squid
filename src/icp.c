@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.293 1997/08/09 00:01:31 wessels Exp $
+ * $Id: icp.c,v 1.294 1997/08/09 04:48:07 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -585,7 +585,7 @@ icpSendMoreData(void *data, char *buf, ssize_t size)
     }
     assert(size >= 0);
     writelen = size;
-    if (http->out.offset == 0) {
+    if (http->out.offset == 0 && http->request->protocol != PROTO_CACHEOBJ) {
 	if (Config.onoff.log_mime_hdrs) {
 	    if ((p = mime_headers_end(buf))) {
 		safe_free(http->al.headers.reply);
