@@ -1,4 +1,4 @@
-/*  $Id: proto.h,v 1.7 1996/04/16 18:29:20 wessels Exp $ */
+/*  $Id: proto.h,v 1.8 1996/05/01 22:36:36 wessels Exp $ */
 
 #ifndef PROTO_H
 #define PROTO_H
@@ -163,7 +163,7 @@ typedef struct _protodispatch_data {
     int inside_firewall;
     int direct_fetch;
     int source_ping;
-    int cachable;
+    int query_neighbors;
     int n_edges;
     struct _edge *single_parent;
 } protodispatch_data;

@@ -1,4 +1,4 @@
-/* $Id: storetoString.c,v 1.8 1996/04/16 05:05:32 wessels Exp $ */
+/* $Id: storetoString.c,v 1.9 1996/05/01 22:36:40 wessels Exp $ */
 
 #include "squid.h"
 
@@ -75,7 +75,7 @@ char *storeToString(e)
     strcat(stsbuf, tmpbuf);
 
     sprintf(tmpbuf, "Status: ");
-    switch (e->status) {
+    switch (e->store_status) {
 
     case STORE_OK:
 	strcat(tmpbuf, "STORE_OK\n");

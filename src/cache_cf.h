@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.31 1996/04/17 23:46:32 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.32 1996/05/01 22:36:24 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -46,7 +46,6 @@ extern int emulate_httpd_log;
 extern int httpd_accel_mode;
 extern int unbuffered_logs;
 extern int zap_disk_store;
-extern intlist *connect_port_list;
 extern wordlist *bind_addr_list;
 extern wordlist *ftp_stoplist;
 extern wordlist *gopher_stoplist;

@@ -1,4 +1,4 @@
-/* $Id: fdstat.h,v 1.3 1996/04/16 20:30:00 wessels Exp $ */
+/* $Id: fdstat.h,v 1.4 1996/05/01 22:36:29 wessels Exp $ */
 
 #ifndef FDSTAT_H
 #define FDSTAT_H
@@ -6,7 +6,11 @@
 #define PREOPEN_FD 3		/* number of preopened fd when process start */
 
 typedef enum {
-    LOG, File, Socket, Pipe, Unknown
+    LOG,
+    File,
+    Socket,
+    Pipe,
+    Unknown
 } File_Desc_Type;
 
 extern File_Desc_Type fdstat_type _PARAMS((int fd));

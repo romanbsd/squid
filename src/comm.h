@@ -1,5 +1,5 @@
 
-/* $Id: comm.h,v 1.11 1996/04/17 17:40:17 wessels Exp $ */
+/* $Id: comm.h,v 1.12 1996/05/01 22:36:26 wessels Exp $ */
 
 #ifndef COMM_H
 #define COMM_H
@@ -50,7 +50,7 @@ typedef struct fde {
     void *timeout_data;		/* App. data to associate w/ handled conn. */
     int (*lifetime_handler) ();	/* Lifetime expire handler. */
     void *lifetime_data;	/* App. data to associate w/ handled conn. */
-    int (*close_handler)();
+    int (*close_handler) ();
     void *close_data;
     char ascii_note[FD_ASCII_NOTE_SZ];
     unsigned int comm_type;

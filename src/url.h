@@ -1,4 +1,4 @@
-/*  $Id: url.h,v 1.11 1996/04/16 16:43:12 wessels Exp $ */
+/*  $Id: url.h,v 1.12 1996/05/01 22:36:42 wessels Exp $ */
 
 #ifndef _URL_HEADER_
 #define _URL_HEADER_
@@ -22,9 +22,6 @@ typedef enum {
     PROTO_GOPHER,
     PROTO_WAIS,
     PROTO_CACHEOBJ,
-#ifdef NEED_PROTO_CONNECT
-    PROTO_CONNECT
-#endif
     PROTO_MAX
 } protocol_t;
 

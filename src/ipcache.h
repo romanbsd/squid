@@ -1,9 +1,15 @@
-/*  $Id: ipcache.h,v 1.7 1996/04/10 20:45:29 wessels Exp $ */
+/*  $Id: ipcache.h,v 1.8 1996/05/01 22:36:34 wessels Exp $ */
 
 #ifndef _IPCACHE_H_
 #define _IPCACHE_H_
 
 typedef int (*IPH) _PARAMS((int, struct hostent *, void *));
+
+typedef enum {
+    CACHED,
+    PENDING,
+    NEGATIVE_CACHED
+} ipcache_status_t;
 
 
 typedef struct _ipcache_entry {
@@ -15,12 +21,10 @@ typedef struct _ipcache_entry {
     long ttl;
     unsigned char addr_count;
     unsigned char alias_count;
-    enum {
-	CACHED, PENDING, NEGATIVE_CACHED
-    } status:3;
     struct hostent entry;
     struct _ip_pending *pending_head;
     struct _ip_pending *pending_tail;
+    ipcache_status_t status:3;
 } ipcache_entry;
 
 extern int ipcache_nbgethostbyname _PARAMS((char *, int, IPH, void *));
