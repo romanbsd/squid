@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.24 1999/12/30 17:35:51 wessels Exp $
+# $Id: makefile.in,v 1.25 2000/03/27 21:55:19 wessels Exp $
 #
 
 srcdir		= @srcdir@
@@ -16,7 +16,7 @@ exec_prefix	= @exec_prefix@
 
 SUBDIRS		= lib @makesnmplib@ scripts src icons errors 
 AUTHDIRS	= auth_modules/NCSA \
-		= auth_modules/getpwnam \
+		  auth_modules/getpwnam \
 		  auth_modules/PAM \
 		  auth_modules/SMB \
 		  auth_modules/LDAP
