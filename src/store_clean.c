@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.6 1996/08/19 23:09:26 wessels Exp $
+ * $Id: store_clean.c,v 1.7 1996/08/20 15:42:50 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -79,7 +79,7 @@ void storeDirClean()
 	fatal_dump(NULL);
     }
     while ((de = readdir(dp)) && k < 20) {
-	if (sscanf(de->d_name, "%d", &fileno) != 1)
+	if (sscanf(de->d_name, "%X", &fileno) != 1)
 	    continue;
 	if (file_map_bit_test(fileno))
 	    continue;
