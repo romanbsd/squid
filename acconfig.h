@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.31 1998/08/21 03:49:13 wessels Exp $ */
+/* $Id: acconfig.h,v 1.32 1998/09/22 21:16:23 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -190,3 +190,11 @@
  * such code.
  */
 #define HTTP_VIOLATIONS 1
+
+/*
+ * Enable support for Transparent Proxy on systems using IP-Filter
+ * address redirection. This provides "masquerading" support for non
+ *  Linux system.
+ */
+#undef IPF_TRANSPARENT
+
