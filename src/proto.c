@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.47 1996/08/26 19:57:09 wessels Exp $
+ * $Id: proto.c,v 1.48 1996/08/28 05:29:53 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -378,10 +378,13 @@ void protoUnregister(fd, entry, request, src_addr)
 	(void) fqdncacheUnregister(src_addr, fd);
     if (host)
 	(void) ipcache_unregister(host, fd);
-#ifdef DONT_DO_THIS
-    if (entry && BIT_SET(entry->flag, CLIENT_ABORT_REQUEST))
-	squid_error_entry(entry, ERR_CLIENT_ABORT, NULL);
-#endif
+    if (entry == NULL)
+	return;
+    if (BIT_TEST(entry->flag, ENTRY_DISPATCHED))
+	return;
+    if (entry->ping_status == PING_DONE)
+	fatal_dump("PING_DONE but not ENTRY_DISPATCHED?");
+    squid_error_entry(entry, ERR_CLIENT_ABORT, NULL);
 }
 
 void protoCancelTimeout(fd, entry)
