@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.49 2000/07/13 08:35:47 wessels Exp $ */
+/* $Id: acconfig.h,v 1.50 2000/12/16 16:52:29 adrian Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -286,3 +286,7 @@
  */
 #undef USE_UNLINKD
 
+/* 
+ * Enable support for Transparent Proxy on Linux 2.4 systems
+ */
+#undef LINUX_NETFILTER
