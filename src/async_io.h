@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.h,v 1.5 1996/07/17 17:23:48 wessels Exp $
+ * $Id: async_io.h,v 1.6 1996/07/18 20:27:52 wessels Exp $
  *
  * AUTHOR: Pete Bentley <pete@demon.net>
  *
@@ -33,8 +33,8 @@ extern void aioSigHandler _PARAMS((int sig));
 extern int aioFileWriteComplete _PARAMS((int ed, FileEntry * entry));
 extern int aioFileReadComplete _PARAMS((int fd, dread_ctrl * ctrl_dat));
 extern int aioFileQueueWrite _PARAMS((int,
-	int (*) _PARAMS((int, FileEntry *)),
+	int               (*)_PARAMS((int, FileEntry *)),
 	FileEntry *));
 extern int aioFileQueueRead _PARAMS((int,
-	int (*) _PARAMS((int, dread_ctrl *)),
+	int              (*)_PARAMS((int, dread_ctrl *)),
 	dread_ctrl *));
