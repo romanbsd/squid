@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.20 1998/09/18 22:37:52 wessels Exp $
+# $Id: makefile.in,v 1.21 1999/01/29 23:47:41 wessels Exp $
 #
 
 srcdir		= @srcdir@
@@ -37,7 +37,7 @@ install-pinger:
 almostclean: clean
 	rm -f config.log makefile
 	rm -f include/paths.h include/autoconf.h include/config.h
-	rm -f auth_modules/NCSA/Makefile
+	rm -f auth_modules/NCSA/Makefile auth_modules/dummy
 	@for dir in $(SUBDIRS) contrib; do \
 		echo Making distclean in $$dir; \
 		(cd $$dir; $(MAKE) $(MFLAGS) prefix="$(prefix)" distclean); \
