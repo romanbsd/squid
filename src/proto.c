@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.80 1996/11/12 22:37:13 wessels Exp $
+ * $Id: proto.c,v 1.81 1996/11/14 03:00:55 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -412,7 +412,7 @@ protoCancelTimeout(int fd, StoreEntry * entry)
     /* If fd = 0 then this thread was called from neighborsUdpAck and
      * we must look up the FD in the pending list. */
     if (!fd)
-	fd = entry->mem_obj->fd_of_first_client;
+	fd = storeFirstClientFD(entry->mem_obj);
     if (fd < 1) {
 	debug(17, 1, "protoCancelTimeout: No client for '%s'\n", entry->url);
 	return;

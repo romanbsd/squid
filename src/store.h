@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store.h,v 1.72 1996/11/12 22:37:18 wessels Exp $
+ * $Id: store.h,v 1.73 1996/11/14 03:00:56 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -191,7 +191,6 @@ struct _MemObject {
 
     short swapin_fd;
     short swapout_fd;
-    int fd_of_first_client;
     struct _http_reply *reply;
     request_t *request;
     SIH swapin_complete_handler;
@@ -314,6 +313,8 @@ extern int expiresMoreThan _PARAMS((time_t, time_t));
 extern int storeClientListAdd _PARAMS((StoreEntry *, int, int));
 extern void InvokeHandlers _PARAMS((StoreEntry *));
 extern int storeEntryValidToSend _PARAMS((StoreEntry *));
+extern int storeFirstClientFD _PARAMS((MemObject *mem));
+
 
 #ifdef __STDC__
 extern void storeAppendPrintf _PARAMS((StoreEntry *, const char *,...));
