@@ -1,5 +1,5 @@
 /*
- * $Id: objcache.c,v 1.13 1996/07/22 16:40:28 wessels Exp $
+ * $Id: objcache.c,v 1.14 1996/07/25 05:48:39 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -247,6 +247,12 @@ int objcacheStart(fd, url, entry)
     } else if (strcmp(data->request, "stats/fqdncache") == 0) {
 	BIT_SET(data->entry->flag, DELAY_SENDING);
 	CacheInfo->stat_get(CacheInfo, "fqdncache", data->entry);
+	BIT_RESET(data->entry->flag, DELAY_SENDING);
+	storeComplete(data->entry);
+
+    } else if (strcmp(data->request, "stats/dns") == 0) {
+	BIT_SET(data->entry->flag, DELAY_SENDING);
+	CacheInfo->stat_get(CacheInfo, "dns", data->entry);
 	BIT_RESET(data->entry->flag, DELAY_SENDING);
 	storeComplete(data->entry);
 
