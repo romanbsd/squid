@@ -26,16 +26,17 @@
  * 
  * Author: Ryan Troll <ryan+@andrew.cmu.edu>
  * 
- * $Id: snmp_compat.h,v 1.1 1998/02/22 11:48:45 kostas Exp $
+ * $Id: snmp_compat.h,v 1.2 1998/03/17 06:14:29 kostas Exp $
  * 
  ***************************************************************************/
 
 /* SMI Types */
+#ifndef INTEGER
 #define INTEGER     ASN_INTEGER
 #define STRING      ASN_OCTET_STR
 #define OBJID       ASN_OBJECT_ID
 #define NULLOBJ     ASN_NULL
-
+#endif
 /* PDU Types */
 
 #define GET_REQ_MSG	    (ASN_CONTEXT | ASN_CONSTRUCTOR | 0x0)
