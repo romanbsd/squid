@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.27 1998/03/31 20:04:06 wessels Exp $
+ * $Id: pump.c,v 1.28 1998/03/31 22:37:02 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -251,10 +251,8 @@ pumpReadFromClient(int fd, void *data)
 		p,
 		Config.Timeout.read);
 	} else {
-	    sigusr2_handle(0);
 	    debug(61, 2) ("pumpReadFromClient: aborted.\n");
 	    pumpClose(p);
-	    sigusr2_handle(0);
 	}
 	return;
     } else if (req->mem_obj->inmem_hi == 0) {
@@ -305,6 +303,7 @@ pumpClose(void *data)
     PumpStateData *p = data;
     StoreEntry *req = p->request_entry;
     StoreEntry *rep = p->reply_entry;
+    sigusr2_handle(0);
     debug(61, 3) ("pumpClose: %p Server FD %d, Client FD %d\n",
 	p, p->s_fd, p->c_fd);
     /* double-call detection */
@@ -325,6 +324,7 @@ pumpClose(void *data)
     if (p->c_fd > -1) {
 	comm_close(p->c_fd);
     }
+    sigusr2_handle(0);
 }
 
 static void
