@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.35 1996/04/09 23:27:57 wessels Exp $ */
+/* $Id: icp.c,v 1.36 1996/04/09 23:28:35 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -1756,6 +1756,6 @@ static void CheckQuickAbort(astm)
     if (astm->entry->status == STORE_OK)
 	return;
     BIT_SET(astm->entry->flag, CLIENT_ABORT_REQUEST);
-    storeReleaseRequest(astm->entry, __FILE__,__LINE__);
+    storeReleaseRequest(astm->entry, __FILE__, __LINE__);
     astm->log_type = ERR_CLIENT_ABORT;
 }
