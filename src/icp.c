@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.170 1996/11/12 22:37:07 wessels Exp $
+ * $Id: icp.c,v 1.171 1996/11/13 06:52:22 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -964,11 +964,11 @@ void *
 icpCreateMessage(
     icp_opcode opcode,
     int flags,
-    char *url,
+    const char *url,
     int reqnum,
     int pad)
 {
-    void *buf = NULL;
+    char *buf = NULL;
     icp_common_t *headerp = NULL;
     char *urloffset = NULL;
     int buf_len;
@@ -993,7 +993,7 @@ icpCreateMessage(
 
 void
 icpUdpSend(int fd,
-    struct sockaddr_in *to,
+    const struct sockaddr_in *to,
     icp_common_t * msg,
     log_type logcode,
     protocol_t proto)
