@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.58 1997/07/14 03:33:40 wessels Exp $
+ * $Id: objcache.c,v 1.59 1997/07/15 03:29:04 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -248,6 +248,7 @@ objcacheStart(int fd, StoreEntry * entry)
 	debug(16, 1) ("WARNING: Incorrect Cachemgr Password!\n");
 	storeAbort(entry, ERR_INVALID_REQ, BADPassword, 0);
 	entry->expires = squid_curtime + STAT_TTL;
+	storeComplete(entry);
 	InvokeHandlers(entry);
 	return;
     }
