@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.56 1997/06/21 02:38:12 wessels Exp $
+ * $Id: objcache.c,v 1.57 1997/07/07 05:29:50 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -120,12 +120,6 @@ typedef struct objcache_ds {
     int reply_fd;
     objcache_op op;
 } ObjectCacheData;
-
-struct _cachemgr_passwd {
-    char *passwd;
-    long actions;
-    struct _cachemgr_passwd *next;
-};
 
 static ObjectCacheData *objcache_url_parser _PARAMS((const char *url));
 static int objcache_CheckPassword _PARAMS((ObjectCacheData *));
