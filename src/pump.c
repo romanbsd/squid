@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.63 1999/01/12 15:47:55 wessels Exp $
+ * $Id: pump.c,v 1.64 1999/01/12 16:42:19 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -113,7 +113,7 @@ pumpInit(int fd, request_t * r, char *uri)
 }
 
 void
-pumpStart(int s_fd, FwdState *fwd, CWCB * callback, void *cbdata)
+pumpStart(int s_fd, FwdState * fwd, CWCB * callback, void *cbdata)
 {
     PumpStateData *p = NULL;
     request_t *r = fwd->request;
@@ -375,7 +375,7 @@ pumpFree(int fd, void *data)
     }
     requestUnlink(p->req);
     if (p->s_fd > -1) {
-	assert(0 == fd_table[p->s_fd].open);
+	assert(!fd_table[p->s_fd].flags.open);
 	p->s_fd = -1;
     }
     cbdataFree(p);
