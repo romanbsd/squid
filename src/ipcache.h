@@ -1,5 +1,5 @@
 /*
- * $Id: ipcache.h,v 1.23 1996/09/16 17:21:42 wessels Exp $
+ * $Id: ipcache.h,v 1.24 1996/09/18 20:12:20 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -105,7 +105,7 @@
 #ifndef _IPCACHE_H_
 #define _IPCACHE_H_
 
-typedef int (*IPH) (int, struct hostent *, void *);
+typedef void (*IPH) (int, struct hostent *, void *);
 
 enum {
     IP_CACHED,
