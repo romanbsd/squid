@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.93 1997/02/21 16:24:26 wessels Exp $
+ * $Id: proto.c,v 1.94 1997/02/23 08:35:53 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -231,7 +231,7 @@ protoDispatchDNSHandle(int unused1, const ipcache_addrs * ia, void *data)
 	    protoStart(protoData->fd, entry, e, req);
 	} else {
 	    hierarchyNote(req, HIER_NO_DIRECT_FAIL, 0, req->host);
-	    protoCantFetchObject(protoData->fd, entry, "No neighbors or parents to query and the host is beyond your firewall.");
+	    protoCantFetchObject(protoData->fd, entry, "No peers to query and the host is beyond your firewall.");
 	}
 	return;
     }

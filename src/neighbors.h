@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.h,v 1.38 1997/02/07 04:57:16 wessels Exp $
+ * $Id: neighbors.h,v 1.39 1997/02/23 08:35:53 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -215,10 +215,10 @@ extern peer *neighborFindByName _PARAMS((const char *));
 extern void neighbors_init _PARAMS((void));
 extern peer *getDefaultParent _PARAMS((request_t * request));
 extern peer *getRoundRobinParent _PARAMS((request_t * request));
-extern int neighborUp _PARAMS((peer * e));
+extern int neighborUp _PARAMS((const peer * e));
 extern void peerDestroy _PARAMS((peer * e));
 extern void peerUpdateFudge _PARAMS((void *));
-extern char *neighborTypeStr _PARAMS((peer * e));
+extern char *neighborTypeStr _PARAMS((const peer * e));
 
 extern const char *hier_strings[];
 
