@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.111 1997/06/01 23:20:34 wessels Exp $
+ * $Id: proto.c,v 1.112 1997/06/02 01:06:15 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -218,7 +218,7 @@ protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
     } else if (request->protocol == PROTO_FTP) {
 	ftpStart(request, entry);
     } else if (request->protocol == PROTO_WAIS) {
-	waisStart(request->method, entry);
+	waisStart(request, entry);
     } else if (request->protocol == PROTO_CACHEOBJ) {
 	objcacheStart(fd, entry);
     } else if (request->method == METHOD_CONNECT) {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.43 1997/06/01 23:22:26 wessels Exp $
+ * $Id: pass.c,v 1.44 1997/06/02 01:06:14 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -366,11 +366,11 @@ void
 passStart(int fd,
     const char *url,
     request_t * request,
-    char *buf,
-    int buflen,
     int *size_ptr)
 {
     /* Create state structure. */
+    char *buf = request->headers;
+    size_t buflen = request->headers_sz;
     PassStateData *passState = NULL;
     int sock;
     char *msg = NULL;
