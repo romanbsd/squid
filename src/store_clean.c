@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.36 1998/02/11 18:48:51 wessels Exp $
+ * $Id: store_clean.c,v 1.37 1998/02/12 23:36:02 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -83,6 +83,7 @@ storeDirClean(void *datanotused)
     while ((de = readdir(dp)) != NULL && k < 20) {
 	if (sscanf(de->d_name, "%X", &swapfileno) != 1)
 	    continue;
+	swapfileno = storeDirProperFileno(D0, swapfileno);
 	if (storeDirValidFileno(swapfileno))
 	    if (storeDirMapBitTest(swapfileno))
 		if (storeFilenoBelongsHere(swapfileno, D0, D1, D2))
