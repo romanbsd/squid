@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipcache.c,v 1.240 2003/02/11 05:03:53 wessels Exp $
+ * $Id: ipcache.c,v 1.241 2003/02/11 05:11:08 wessels Exp $
  *
  * DEBUG: section 14    IP Cache
  * AUTHOR: Harvest Derived
@@ -60,7 +60,6 @@ static struct {
     int hits;
     int misses;
     int negative_hits;
-    int errors;
 } IpcacheStats;
 
 static dlink_list lru_list;
