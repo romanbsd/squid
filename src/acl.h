@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.12 1996/07/23 04:07:49 wessels Exp $
+ * $Id: acl.h,v 1.13 1996/07/23 04:18:01 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -97,10 +97,10 @@ struct _acl_access {
 };
 
 typedef enum {
-	ACL_LOOKUP_NONE,
-	ACL_LOOKUP_NEED,
-	ACL_LOOKUP_PENDING,
-	ACL_LOOKUP_DONE
+    ACL_LOOKUP_NONE,
+    ACL_LOOKUP_NEED,
+    ACL_LOOKUP_PENDING,
+    ACL_LOOKUP_DONE
 } acl_lookup_state;
 
 struct _aclCheck_t {
