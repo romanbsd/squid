@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.24 1998/01/31 17:27:24 wessels Exp $
+ * $Id: snmp.c,v 1.25 1998/02/02 21:16:29 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -922,7 +922,7 @@ snmpAppendUdp(snmpUdpData * item)
 }
 
 u_char *
-var_perfsys_entry(struct variable * vp, oid * name, int *length, int exact, int *var_len,
+var_perfsys_entry(struct variable *vp, oid * name, int *length, int exact, int *var_len,
     SNMPWM ** write_method)
 {
     oid newname[MAX_NAME_LEN];
@@ -1345,7 +1345,7 @@ snmpConnectionClose(void)
     if (theInSnmpConnection < 0)
 	return;
     if (theInSnmpConnection != theOutSnmpConnection)
-    	comm_close(theInSnmpConnection);
+	comm_close(theInSnmpConnection);
     /*
      * Here we set 'theInSnmpConnection' to -1 even though the SNMP 'in'
      * and 'out' sockets might be just one FD.  This prevents this

@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.21 1998/02/02 21:14:56 wessels Exp $
+ * $Id: async_io.c,v 1.22 1998/02/02 21:16:17 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -153,16 +153,16 @@ aioCancel(int fd, void *tag)
 	aioInit();
     prev = NULL;
     curr = used_list;
-    for(;;) {
-        while(curr != NULL) {
-	    if(curr->fd == fd)
+    for (;;) {
+	while (curr != NULL) {
+	    if (curr->fd == fd)
 		break;
-	    if(tag != NULL && curr->tag == tag)
+	    if (tag != NULL && curr->tag == tag)
 		break;
 	    prev = curr;
 	    curr = curr->next;
 	}
-	if(curr == NULL)
+	if (curr == NULL)
 	    break;
 
 	aio_cancel(&(curr->result));
