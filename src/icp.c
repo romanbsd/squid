@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.287 1997/07/16 20:32:09 wessels Exp $
+ * $Id: icp.c,v 1.288 1997/07/17 05:25:10 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -129,6 +129,7 @@ char *log_tags[] =
     "ERR_LIFETIME_EXP",
     "ERR_NO_CLIENTS",
     "ERR_READ_ERROR",
+    "ERR_WRITE_ERROR",
     "ERR_CLIENT_ABORT",
     "ERR_CONNECT_FAIL",
     "ERR_INVALID_REQ",
@@ -141,7 +142,6 @@ char *log_tags[] =
     "ERR_NO_RELAY",
     "ERR_DISK_IO",
     "ERR_ZERO_SIZE_OBJECT",
-    "ERR_FTP_DISABLED",
     "ERR_PROXY_DENIED"
 };
 
