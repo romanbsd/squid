@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.26 1999/12/30 17:36:57 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.27 2000/01/03 19:34:35 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -881,8 +881,9 @@ storeUfsDirWriteCleanEntry(const StoreEntry * e, SwapDir * sd)
 	    safe_free(state);
 	    sd->log.clean.state = NULL;
 	    sd->log.clean.write = NULL;
+	} else {
+	    state->outbuf_offset = 0;
 	}
-	state->outbuf_offset = 0;
     }
 }
 
