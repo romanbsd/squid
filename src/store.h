@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.86 1997/04/25 06:38:23 wessels Exp $
+ * $Id: store.h,v 1.87 1997/04/25 20:15:35 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -290,6 +290,7 @@ extern void storeAppendPrintf _PARAMS(());
 #endif
 
 extern int store_rebuilding;
+extern int store_swap_size;
 #define STORE_NOT_REBUILDING 0
 #define STORE_REBUILDING_CLEAN 1
 #define STORE_REBUILDING_DIRTY 2

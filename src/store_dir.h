@@ -1,5 +1,5 @@
 /*
- * $Id: store_dir.h,v 1.4 1997/04/25 06:38:24 wessels Exp $
+ * $Id: store_dir.h,v 1.5 1997/04/25 20:15:36 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -141,6 +141,7 @@ extern void storeDirCloseSwapLogs _PARAMS((void));
 extern char *storeDirSwapLogFile _PARAMS((int, const char *));
 extern void storeDirSwapLog _PARAMS((const StoreEntry *));
 extern int storeDirNumber _PARAMS((int fileno));
+extern void storeDirUpdateSwapSize _PARAMS((int fn, size_t size));
 
 extern int ncache_dirs;
 
