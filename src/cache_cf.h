@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.55 1996/09/20 20:55:30 wessels Exp $
+ * $Id: cache_cf.h,v 1.56 1996/09/24 18:50:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -192,6 +192,7 @@ struct SquidConfig {
 	char *ftpget_opts;
 	char *dnsserver;
 	char *redirect;
+	char *pinger;
     } Program;
     int dnsChildren;
     int redirectChildren;
