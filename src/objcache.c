@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.28 1996/10/11 19:34:37 wessels Exp $
+ * $Id: objcache.c,v 1.29 1996/10/14 23:45:29 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -357,6 +357,12 @@ objcacheStart(int fd, char *url, StoreEntry * entry)
     } else if (strcmp(data->request, "server_list") == 0) {
 	BIT_SET(data->entry->flag, DELAY_SENDING);
 	HTTPCacheInfo->server_list(HTTPCacheInfo, data->entry);
+	BIT_RESET(data->entry->flag, DELAY_SENDING);
+	storeComplete(data->entry);
+
+    } else if (strcmp(data->request, "client_list") == 0) {
+	BIT_SET(data->entry->flag, DELAY_SENDING);
+	clientdbDump(data->entry);
 	BIT_RESET(data->entry->flag, DELAY_SENDING);
 	storeComplete(data->entry);
 

@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.45 1996/10/09 22:49:36 wessels Exp $
+ * $Id: icp.h,v 1.46 1996/10/14 23:45:28 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -223,5 +223,6 @@ extern int icpSendMoreData _PARAMS((int fd, icpStateData *));
 extern int neighbors_do_private_keys;
 extern char *IcpOpcodeStr[];
 extern int icpUdpReply _PARAMS((int fd, icpUdpData * queue));
+extern char *log_tags[];
 
 #endif /* ICP_H */

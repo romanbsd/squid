@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.17 1996/10/09 15:34:28 wessels Exp $
+ * $Id: hash.c,v 1.18 1996/10/14 23:45:26 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -105,7 +105,7 @@
 
 #include "squid.h"
 
-#define MAX_HTABLE 10
+#define MAX_HTABLE 20
 
 int hash_links_allocated;
 
