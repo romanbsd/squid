@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.35 1997/01/31 22:30:33 wessels Exp $
+ * $Id: neighbors.h,v 1.36 1997/02/06 18:44:25 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -133,7 +133,8 @@ typedef enum {
 typedef enum {
     PEER_NONE,
     PEER_SIBLING,
-    PEER_PARENT
+    PEER_PARENT,
+    PEER_MULTICAST
 } neighbor_t;
 
 /* Mark a neighbor cache as dead if it doesn't answer this many pings */
@@ -156,6 +157,7 @@ struct _domain_type {
 #define NEIGHBOR_NO_QUERY   0x02
 #define NEIGHBOR_DEFAULT_PARENT   0x04
 #define NEIGHBOR_ROUNDROBIN   0x08
+#define NEIGHBOR_MCAST_RESPONDER 0x10
 
 #define PEER_MAX_ADDRESSES 10
 #define RTT_AV_FACTOR      1000
