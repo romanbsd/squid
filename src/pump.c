@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.42 1998/05/12 04:11:17 wessels Exp $
+ * $Id: pump.c,v 1.43 1998/05/13 22:17:48 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -322,8 +322,6 @@ pumpClose(void *data)
     /* double-call detection */
     assert(!EBIT_TEST(p->flags, PUMP_FLAG_CLOSING));
     EBIT_SET(p->flags, PUMP_FLAG_CLOSING);
-    if (p->s_fd > -1)
-	comm_remove_close_handler(p->s_fd, pumpServerClosed, p);
     if (req != NULL && req->store_status == STORE_PENDING) {
 	storeUnregister(req, p);
 	storeAbort(req, 0);
@@ -418,6 +416,8 @@ pumpServerClosed(int fd, void *data)
      */
     assert(p->s_fd == fd);
     p->s_fd = -1;
+    if (EBIT_TEST(p->flags, PUMP_FLAG_CLOSING))
+	return;
     comm_close(p->c_fd);
 }
 
