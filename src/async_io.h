@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.h,v 1.4 1996/07/17 16:54:50 wessels Exp $
+ * $Id: async_io.h,v 1.5 1996/07/17 17:23:48 wessels Exp $
  *
  * AUTHOR: Pete Bentley <pete@demon.net>
  *
@@ -36,5 +36,5 @@ extern int aioFileQueueWrite _PARAMS((int,
 	int (*) _PARAMS((int, FileEntry *)),
 	FileEntry *));
 extern int aioFileQueueRead _PARAMS((int,
-	int (*) _PARAMS((int, dread_ctrl *)),q
+	int (*) _PARAMS((int, dread_ctrl *)),
 	dread_ctrl *));
