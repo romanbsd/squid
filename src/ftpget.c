@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.27 1996/07/15 23:57:53 wessels Exp $
+ * $Id: ftpget.c,v 1.28 1996/07/19 17:34:23 wessels Exp $
  *
  * DEBUG: section 0     FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -823,7 +823,7 @@ int connect_with_timeout(fd, S, len)
 
 int accept_with_timeout(fd, S, len)
      int fd;
-     struct sockaddr_in *S;
+     struct sockaddr *S;
      int *len;
 {
     int x;
@@ -850,7 +850,7 @@ int accept_with_timeout(fd, S, len)
 	}
 	if (FD_ISSET(0, &R))
 	    exit(1);
-	return accept(fd, (struct sockaddr *) S, len);
+	return accept(fd, S, len);
     }
     /* NOTREACHED */
 }
