@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.44 1998/03/25 09:21:45 kostas Exp $
+ * $Id: hash.c,v 1.45 1998/03/27 05:36:55 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -269,13 +269,9 @@ hash_lookup(hash_table * hid, const void *k)
     int b;
     assert(k != NULL);
     b = hid->hash(k, hid->size);
-    hid->current_slot =b;
-    hid->current_ptr = NULL;
     for (walker = hid->buckets[b]; walker != NULL; walker = walker->next) {
-	if ((hid->cmp) (k, walker->key) == 0) {
-	    hid->current_ptr = walker;
+	if ((hid->cmp) (k, walker->key) == 0)
 	    return (walker);
-	}
 	assert(walker != walker->next);
     }
     return NULL;
