@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.146 1998/02/22 07:45:21 rousskov Exp $
+ * $Id: proto.c,v 1.147 1998/03/20 18:06:45 rousskov Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -263,16 +263,14 @@ int
 protoAbortFetch(StoreEntry * entry)
 {
     MemObject *mem;
-    HttpReply *reply;
-    int clen;
+    const HttpReply *reply;
     if (storeClientWaiting(entry))
 	return 0;
     mem = entry->mem_obj;
     reply = mem->reply;
-    clen = httpReplyContentLen(reply);
-    if (clen < 0)
+    if (reply->content_length < 0)
 	return 1;
-    if (mem->inmem_hi < clen + reply->hdr_sz)
+    if (mem->inmem_hi < reply->content_length + reply->hdr_sz)
 	return 1;
     return 0;
 }
