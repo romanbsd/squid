@@ -1,5 +1,5 @@
 /*
- * $Id: comm.h,v 1.19 1996/08/30 22:36:22 wessels Exp $
+ * $Id: comm.h,v 1.20 1996/09/04 22:03:21 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -142,7 +142,6 @@ typedef struct fde {
     u_short local_port;		/* Our TCP port # */
     u_short remote_port;	/* Remote TCP port # */
     char ipaddr[16];		/* dotted decimal address of peer */
-    StoreEntry *store_entry;
 
     /* Select handlers. */
     PF read_handler;		/* Read  select handler. */

@@ -1,5 +1,5 @@
 /*
- * $Id: ipcache.h,v 1.15 1996/08/30 22:39:29 wessels Exp $
+ * $Id: ipcache.h,v 1.16 1996/09/04 22:03:27 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -129,6 +129,7 @@ typedef struct _ipcache_entry {
     struct hostent entry;
     struct _ip_pending *pending_head;
     char *error_message;
+    unsigned char locks;
     ipcache_status_t status:3;
 } ipcache_entry;
 
