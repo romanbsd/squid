@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.75 1996/11/05 17:08:21 wessels Exp $
+ * $Id: proto.c,v 1.76 1996/11/06 08:16:18 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -107,7 +107,6 @@
 
 #include "squid.h"
 
-static int matchInsideFirewall _PARAMS((const char *));
 static int matchLocalDomain _PARAMS((const char *));
 static int protoCantFetchObject _PARAMS((int, StoreEntry *, char *));
 static int protoNotImplemented _PARAMS((int, const char *, StoreEntry *));
@@ -564,7 +563,7 @@ protoDNSError(int fd, StoreEntry * entry)
  * return 0 if the host is outside the firewall (no domains matched), and
  * return 1 if the host is inside the firewall or no domains at all.
  */
-static int
+int
 matchInsideFirewall(const char *host)
 {
     const wordlist *s = Config.inside_firewall_list;

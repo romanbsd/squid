@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.22 1996/11/04 18:12:58 wessels Exp $
+ * $Id: proto.h,v 1.23 1996/11/06 08:16:18 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -298,6 +298,7 @@ extern void protoUnregister _PARAMS((int fd,
 extern int getFromDefaultSource _PARAMS((int, StoreEntry *));
 extern int protoStart _PARAMS((int, StoreEntry *, edge *, request_t *));
 extern void protoCancelTimeout _PARAMS((int fd, StoreEntry *));
+extern int matchInsideFirewall _PARAMS((const char *));
 
 #define DIRECT_NO    0
 #define DIRECT_MAYBE 1
