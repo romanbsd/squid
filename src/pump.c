@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.21 1998/03/16 03:01:21 wessels Exp $
+ * $Id: pump.c,v 1.22 1998/03/16 04:17:02 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -192,6 +192,7 @@ pumpServerCopyComplete(int fd, char *bufnotused, size_t size, int errflag, void 
     if (errflag != 0) {
 	debug(61, 5) ("pumpServerCopyComplete: aborted, errflag %d\n", errflag);
 	pumpClose(p);
+	return;
     }
     if (p->request_entry->store_status == STORE_ABORTED) {
 	debug(61, 5) ("pumpServerCopyComplete: STORE_ABORTED\n");
