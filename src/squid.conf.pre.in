@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.55 1996/10/09 15:43:54 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.56 1996/10/09 16:17:45 wessels Exp $
 #
 
 #  TAG: http_port
@@ -667,7 +667,7 @@ request_size 100
 #	            time port proto method browser
 # 
 # acl aclname src      ip-address/netmask ... (clients IP address)
-# acl aclname src      addr1/mask1-addr2/mask2 ... (range of addresses)
+# acl aclname src      addr1-addr2/netmask ... (range of addresses)
 # acl aclname dst      ip-address/netmask ... (URL host's IP address)
 # acl aclname srcdomain   foo.com ... (taken from reverse DNS lookup)
 # acl aclname dstdomain   foo.com ... (taken from the URL)
