@@ -1,5 +1,6 @@
+
 /*
- * $Id: objcache.c,v 1.23 1996/09/17 16:32:43 wessels Exp $
+ * $Id: objcache.c,v 1.24 1996/09/18 20:13:04 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -137,7 +138,7 @@ objcache_url_parser(char *url, char *host, char *request, char *password)
     host[0] = request[0] = password[0] = '\0';
     t = sscanf(url, "cache_object://%[^/]/%[^@]@%s", host, request, password);
     if (t < 2) {
-	debug(16,0,"Invalid Syntax: '%s', sscanf returns %d\n", url, t);
+	debug(16, 0, "Invalid Syntax: '%s', sscanf returns %d\n", url, t);
 	return -1;
     } else if (t == 2) {
 	strcpy(password, "nopassword");
