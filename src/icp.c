@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.330 1997/11/03 23:18:15 wessels Exp $
+ * $Id: icp.c,v 1.331 1997/11/03 23:19:07 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -734,7 +734,6 @@ icpGetHeadersForIMS(void *data, char *buf, ssize_t size)
 	debug(12, 1) ("icpGetHeadersForIMS: storeClientCopy failed for '%s'\n",
 	    storeKeyText(entry->key));
 	put_free_4k_page(buf);
-	comm_close(fd);
 	icpProcessMISS(fd, http);
 	return;
     }
