@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.2 1998/03/06 16:02:51 kostas Exp $
+ * $Id: pump.c,v 1.3 1998/03/06 17:47:59 kostas Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -299,7 +299,6 @@ pumpFree(int fd, void *data)
 
     for (p=pump_head ; p && p!=pumpState ; q=p, p=p->next);
 
-    assert(p);
     if (!p) {
            debug(61,4)("pumpFree: already cleaned.\n");
            return;
