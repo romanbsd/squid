@@ -1,5 +1,5 @@
 /*
- * $Id: background.h,v 1.4 1996/09/15 05:04:12 wessels Exp $
+ * $Id: background.h,v 1.5 1996/09/16 17:21:38 wessels Exp $
  *
  * AUTHOR: Henrik Nordstrom
  *
@@ -113,7 +113,7 @@
  *
  * Add func to the list of background processes
  */
-extern void runInBackground(char *name, int (*func) (void *), void *arg, void (*done)  __P((void *)));
+extern void runInBackground(char *name, int (*func) (void *), void *arg, void (*done) __P((void *)));
 
 /* int doBackgroundProcessing()
  * Call one background processing function

@@ -1,5 +1,5 @@
 /*
- * $Id: hash.h,v 1.9 1996/09/15 05:41:45 wessels Exp $
+ * $Id: hash.h,v 1.10 1996/09/16 17:21:40 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -141,9 +141,9 @@ typedef int HashID;
 
 /* init */
 extern void hash_init __P((int));
-extern HashID hash_create __P((int (*) __P((char *, char *)),
-    int,
-    int (*) __P((char *, HashID))));
+extern HashID hash_create __P((int (*)__P((char *, char *)),
+	int,
+	int         (*)__P((char *, HashID))));
 
 /* insert/delete */
 extern int hash_insert __P((HashID, char *, void *));

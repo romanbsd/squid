@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.h,v 1.10 1996/09/15 05:04:12 wessels Exp $
+ * $Id: async_io.h,v 1.11 1996/09/16 17:21:37 wessels Exp $
  *
  * AUTHOR: Pete Bentley <pete@demon.net>
  *
@@ -33,8 +33,8 @@ extern void aioSigHandler __P((int sig));
 extern int aioFileWriteComplete __P((int ed, FileEntry * entry));
 extern int aioFileReadComplete __P((int fd, dread_ctrl * ctrl_dat));
 extern int aioFileQueueWrite __P((int,
-	int (*) __P((int, FileEntry *)),
+	int               (*)__P((int, FileEntry *)),
 	FileEntry *));
 extern int aioFileQueueRead __P((int,
-	int (*) __P((int, dread_ctrl *)),
+	int              (*)__P((int, dread_ctrl *)),
 	dread_ctrl *));
