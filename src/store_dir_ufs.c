@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.18 1999/06/30 05:49:43 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.19 1999/06/30 06:29:00 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1321,7 +1321,7 @@ storeAufsDirParse(cacheSwap * swap)
 
 #if USE_DISKD
 void
-storeMqufsDirParse(cacheSwap * swap)
+storeDiskdDirParse(cacheSwap * swap)
 {
     char *token;
     char *path;
@@ -1376,13 +1376,13 @@ storeMqufsDirParse(cacheSwap * swap)
     sd->u.ufs.l2 = l2;
     sd->u.ufs.swaplog_fd = -1;
     sd->flags.read_only = read_only;
-    sd->init = storeMqufsInit;
+    sd->init = storeDiskdInit;
     sd->newfs = storeUfsDirNewfs;
-    sd->obj.open = storeMqufsOpen;
-    sd->obj.close = storeMqufsClose;
-    sd->obj.read = storeMqufsRead;
-    sd->obj.write = storeMqufsWrite;
-    sd->obj.unlink = storeMqufsUnlink;
+    sd->obj.open = storeDiskdOpen;
+    sd->obj.close = storeDiskdClose;
+    sd->obj.read = storeDiskdRead;
+    sd->obj.write = storeDiskdWrite;
+    sd->obj.unlink = storeDiskdUnlink;
     sd->log.open = storeUfsDirOpenSwapLog;
     sd->log.close = storeUfsDirCloseSwapLog;
     sd->log.write = storeUfsDirSwapLog;
