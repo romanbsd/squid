@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.141 1996/10/25 02:15:19 wessels Exp $
+ * $Id: icp.c,v 1.142 1996/10/25 15:42:56 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -110,7 +110,7 @@ int neighbors_do_private_keys = 1;
 
 char *log_tags[] =
 {
-    "LOG_NONE",
+    "NONE",
     "TCP_HIT",
     "TCP_MISS",
     "TCP_EXPIRED_HIT",
