@@ -1,5 +1,5 @@
 /*
- * $Id: fqdncache.h,v 1.2 1996/07/23 04:11:54 wessels Exp $
+ * $Id: fqdncache.h,v 1.3 1996/07/26 19:29:55 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -141,6 +141,7 @@ extern void fqdnStats _PARAMS((StoreEntry *));
 extern void fqdncacheShutdownServers _PARAMS((void));
 extern void fqdncacheOpenServers _PARAMS((void));
 extern void fqdncacheReleaseInvalid _PARAMS((char *));
+extern char *fqdnFromAddr _PARAMS((struct in_addr));
 
 extern char *dns_error_message;
 
