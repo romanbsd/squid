@@ -1,6 +1,6 @@
 #  Makefile for storage modules in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.5 2000/06/26 06:03:01 wessels Exp $
+#  $Id: Makefile.in,v 1.6 2000/06/26 06:13:50 wessels Exp $
 #
 
 # The 'nop' is in the SUBDIRS list because some Unixes that can't
@@ -13,7 +13,7 @@ all:
 	    if [ -f $$dir/Makefile ]; then \
 	        sh -c "cd $$dir && $(MAKE) all" || exit 1; \
 	    fi; \
-	done; \
+	done;
 
 clean:
 	-for dir in *; do \
