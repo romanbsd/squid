@@ -1,4 +1,4 @@
-/* $Id: icp.c,v 1.6 1996/03/25 19:05:51 wessels Exp $ */
+/* $Id: icp.c,v 1.7 1996/03/26 21:58:43 wessels Exp $ */
 
 #include "config.h"
 #include <stdlib.h>
@@ -1426,6 +1426,22 @@ void asciiProcessInput(fd, buf, size, flag, astm)
 	    debug(5, "Invalid URL: %s\n", astm->url);
 	    astm->buf = xstrdup(cached_error_url(astm->url, ERR_INVALID_URL, NULL));
 	    astm->ptr_to_4k_page = NULL;
+	    icpWrite(fd,
+		astm->buf,
+		strlen(astm->buf),
+		30,
+		icpSendERRORComplete,
+		astm);
+	    /* icpSendERRORComplete() will close the FD and deallocate astm */
+	    safe_free(orig_url_ptr);
+	} else if (blockCheck(astm->url)) {
+	    CacheInfo->log_append(CacheInfo,	/* TCP_BLOCK */
+		astm->url,
+		inet_ntoa(astm->peer.sin_addr),
+		0,
+		"TCP_BLOCK",
+		astm->type);
+	    astm->buf = xstrdup(cached_error_url(astm->url, ERR_URL_BLOCKED, NULL));
 	    icpWrite(fd,
 		astm->buf,
 		strlen(astm->buf),
