@@ -1,6 +1,6 @@
 
 /*
- * $Id: net_db.c,v 1.165 2003/01/02 23:19:45 wessels Exp $
+ * $Id: net_db.c,v 1.166 2003/01/02 23:21:33 wessels Exp $
  *
  * DEBUG: section 38    Network Measurement Database
  * AUTHOR: Duane Wessels
@@ -913,6 +913,7 @@ netdbHostData(const char *host, int *samp, int *rtt, int *hops)
     *samp = n->pings_recv;
     *rtt = (int) (n->rtt + 0.5);
     *hops = (int) (n->hops + 0.5);
+    n->last_use_time = squid_curtime;
 #endif
 }
 
