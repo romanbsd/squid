@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.h,v 1.43 1997/02/28 21:33:40 wessels Exp $
+ * $Id: neighbors.h,v 1.44 1997/03/04 05:16:38 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -164,7 +164,8 @@ struct _peer {
     int options;
     int weight;
     int mcast_ttl;
-    time_t last_fail_time;	/* detect down dumb caches */
+    int tcp_up;			/* 0 if a connect() fails */
+    time_t last_fail_time;
     struct in_addr addresses[10];
     int n_addresses;
     struct _peer *next;
@@ -206,6 +207,7 @@ extern int neighborUp _PARAMS((const peer * e));
 extern void peerDestroy _PARAMS((peer * e));
 extern void peerUpdateFudge _PARAMS((void *));
 extern char *neighborTypeStr _PARAMS((const peer * e));
+extern void peerCheckConnectStart _PARAMS((peer *));
 
 extern const char *hier_strings[];
 

@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.31 1997/02/27 02:57:09 wessels Exp $
+ * $Id: http.h,v 1.32 1997/03/04 05:16:32 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -136,7 +136,6 @@ typedef struct {
     int req_hdr_sz;
     int reply_hdr_state;
     peer *neighbor;		/* neighbor request made to */
-    ConnectStateData connectState;
     int eof;			/* reached end-of-object? */
     request_t *orig_request;
 } HttpStateData;

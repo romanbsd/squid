@@ -1,10 +1,13 @@
-/* $Id: acconfig.h,v 1.10 1997/01/07 20:05:31 wessels Exp $ */
+/* $Id: acconfig.h,v 1.11 1997/03/04 05:16:19 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
 
 /* Define if struct mallinfo has mxfast member */
 #undef HAVE_EXT_MALLINFO
+
+/* Default FD_SETSIZE value */
+#undef DEFAULT_FD_SETSIZE
 
 /* Maximum number of open filedescriptors */
 #undef SQUID_MAXFD
