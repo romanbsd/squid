@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.28 1998/07/31 00:15:21 wessels Exp $ */
+/* $Id: acconfig.h,v 1.29 1998/08/18 19:19:42 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -81,14 +81,6 @@
 
 /* Define to enable SNMP monitoring of Squid */
 #undef SQUID_SNMP
-
-/*
- * Normally Squid's ACL information is stored as singly-linked lists.
- * When matches are found, they are moved to the top of the list.
- * However, these options allow you to explore other searching structures
- * such as splay trees and binary trees.  Define only one of these.
- */
-#undef USE_SPLAY_TREE
 
 /*
  * Squid frequently calls gettimeofday() for accurate timestamping.
