@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.453 2002/11/10 14:18:13 hno Exp $
+ * $Id: protos.h,v 1.454 2003/01/02 22:59:37 wessels Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -520,7 +520,6 @@ extern int httpRequestHdrAllowedByName(http_hdr_type id);
 
 extern void icmpOpen(void);
 extern void icmpClose(void);
-extern void icmpPing(struct in_addr to);
 extern void icmpSourcePing(struct in_addr to, const icp_common_t *, const char *url);
 extern void icmpDomainPing(struct in_addr to, const char *domain);
 
@@ -690,7 +689,6 @@ extern int netdbHops(struct in_addr);
 extern void netdbFreeMemory(void);
 extern int netdbHostHops(const char *host);
 extern int netdbHostRtt(const char *host);
-extern int netdbHostPeerRtt(const char *host, peer * p);
 extern void netdbUpdatePeer(request_t *, peer * e, int rtt, int hops);
 extern void netdbDeleteAddrNetwork(struct in_addr addr);
 extern void netdbBinaryExchange(StoreEntry *);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: icmp.c,v 1.76 2002/10/22 21:14:26 hno Exp $
+ * $Id: icmp.c,v 1.77 2003/01/02 22:59:37 wessels Exp $
  *
  * DEBUG: section 37    ICMP Routines
  * AUTHOR: Duane Wessels
@@ -146,14 +146,6 @@ icmpHandleSourcePing(const struct sockaddr_in *from, const char *buf)
 #endif
 
 #endif /* USE_ICMP */
-
-void
-icmpPing(struct in_addr to)
-{
-#if USE_ICMP
-    icmpSendEcho(to, S_ICMP_ECHO, NULL, 0);
-#endif
-}
 
 #if ALLOW_SOURCE_PING
 void
