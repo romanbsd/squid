@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.39 1997/04/29 22:12:48 wessels Exp $
+ * $Id: acl.h,v 1.40 1997/04/30 20:06:24 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -128,6 +128,10 @@ struct _aclCheck_t {
     acl_lookup_state state[ACL_ENUM_MAX];
     PF *callback;
     void *callback_data;
+    int src_fqdn_lookup_pending;
+    int dst_fqdn_lookup_pending;
+    int dst_ip_lookup_pending;
+    ipcache_addrs *dst_ia;
 };
 
 extern void aclNBCheck _PARAMS((const struct _acl_access * A,

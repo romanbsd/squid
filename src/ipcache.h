@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipcache.h,v 1.34 1997/04/29 22:13:01 wessels Exp $
+ * $Id: ipcache.h,v 1.35 1997/04/30 20:06:31 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -144,7 +144,7 @@ extern void ipcache_nbgethostbyname _PARAMS((const char *name,
 	IPH * handler,
 	void *handlerData));
 extern EVH ipcache_purgelru;
-extern int ipcache_unregister _PARAMS((const char *, int));
+extern int ipcacheUnregister _PARAMS((const char *, void *));
 extern const ipcache_addrs *ipcache_gethostbyname _PARAMS((const char *, int flags));
 extern void ipcacheInvalidate _PARAMS((const char *));
 extern void ipcacheReleaseInvalid _PARAMS((const char *));

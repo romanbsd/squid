@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.241 1997/04/30 18:30:54 wessels Exp $
+ * $Id: icp.c,v 1.242 1997/04/30 20:06:29 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -309,8 +309,6 @@ icpStateFree(int fd, void *data)
 	storeUnlockObject(icpState->old_entry);
 	icpState->old_entry = NULL;
     }
-    if (icpState->ip_lookup_pending)
-	ipcache_unregister(icpState->request->host, icpState->fd);
     requestUnlink(icpState->request);
     safe_free(icpState);
     return;

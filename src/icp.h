@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.69 1997/04/29 22:12:59 wessels Exp $
+ * $Id: icp.h,v 1.70 1997/04/30 20:06:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -197,7 +197,6 @@ typedef struct iwd {
 	void (*callback) _PARAMS((void *));
 	int state;
     } ident;
-    int ip_lookup_pending;
     int redirect_state;
 } icpStateData;
 
