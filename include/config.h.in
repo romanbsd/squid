@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.8 1996/07/09 03:41:08 wessels Exp $
+ * $Id: config.h.in,v 1.9 1996/07/09 04:46:49 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -39,6 +39,10 @@
  */
 #ifndef XFER_TIMEOUT
 #define XFER_TIMEOUT    120     /* 2 minutes */
+#endif
+
+#ifndef USE_ASYNC_IO
+#define USE_ASYNC_IO 0
 #endif
 
 /****************************************************************************
