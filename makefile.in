@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.11 1997/04/28 04:29:58 wessels Exp $
+# $Id: makefile.in,v 1.12 1997/05/14 21:08:12 wessels Exp $
 #
 
 srcdir		= @srcdir@
@@ -27,7 +27,7 @@ all install clean:
 install-pinger:
 	(cd src; $(MAKE) $(MFLAGS) prefix="$(prefix)" $@)
 
-realclean: clean
+distclean: clean
 	rm -f config.status config.cache config.log makefile
 	rm -f include/paths.h include/autoconf.h include/config.h
 	@for dir in $(SUBDIRS) contrib; do \
