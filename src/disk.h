@@ -1,6 +1,6 @@
 
 /*
- * $Id: disk.h,v 1.34 1997/05/15 23:36:03 wessels Exp $
+ * $Id: disk.h,v 1.35 1997/05/22 15:51:52 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -118,7 +118,7 @@ typedef struct _dread_ctrl {
     int req_len;
     char *buf;
     int end_of_file;
-    FILE_READ_HD *handler;
+    DRCB *handler;
     void *client_data;
 } dread_ctrl;
 
@@ -130,14 +130,14 @@ extern void file_close _PARAMS((int fd));
 extern int file_write _PARAMS((int fd,
 	char *buf,
 	int len,
-	FILE_WRITE_HD * handle,
+	DWCB * handle,
 	void *handle_data,
 	FREE *));
 extern int file_read _PARAMS((int fd,
 	char *buf,
 	int req_len,
 	int offset,
-	FILE_READ_HD * handler,
+	DRCB * handler,
 	void *client_data));
 extern int file_walk _PARAMS((int fd, FILE_WALK_HD *, void *, FILE_WALK_LHD *, void *));
 extern int disk_init _PARAMS((void));

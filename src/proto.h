@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.36 1997/05/15 23:41:35 wessels Exp $
+ * $Id: proto.h,v 1.37 1997/05/22 15:51:58 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -270,6 +270,7 @@ extern void protoDispatch _PARAMS((int, StoreEntry *, request_t *));
 extern int protoUnregister _PARAMS((StoreEntry *, request_t *, struct in_addr));
 extern void protoStart _PARAMS((int, StoreEntry *, peer *, request_t *));
 extern void protoCancelTimeout _PARAMS((int fd, StoreEntry *));
+extern int protoAbortFetch _PARAMS((StoreEntry *entry));
 
 #define DIRECT_NO    0
 #define DIRECT_MAYBE 1
