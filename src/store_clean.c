@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.32 1998/02/03 22:08:15 wessels Exp $
+ * $Id: store_clean.c,v 1.33 1998/02/04 23:41:01 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -76,7 +76,7 @@ storeDirClean(void *datanotused)
 	    continue;
 	if (storeDirValidFileno(swapfileno))
 	    if (storeDirMapBitTest(swapfileno))
-	        continue;
+		continue;
 	files[k++] = swapfileno;
     }
     closedir(dp);
