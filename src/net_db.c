@@ -1,6 +1,6 @@
 
 /*
- * $Id: net_db.c,v 1.164 2003/01/02 22:59:37 wessels Exp $
+ * $Id: net_db.c,v 1.165 2003/01/02 23:19:45 wessels Exp $
  *
  * DEBUG: section 38    Network Measurement Database
  * AUTHOR: Duane Wessels
@@ -1110,6 +1110,7 @@ netdbClosestParent(request_t * request)
 	return NULL;
     if (0 == n->n_peers)
 	return NULL;
+    n->last_use_time = squid_curtime;
     /* 
      * Find the parent with the least RTT to the origin server.
      * Make sure we don't return a parent who is farther away than
