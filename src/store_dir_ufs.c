@@ -1,7 +1,7 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.1 1999/05/03 22:41:14 wessels Exp $
- * $Id: store_dir_ufs.c,v 1.1 1999/05/03 22:41:14 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.2 1999/05/03 23:00:00 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.2 1999/05/03 23:00:00 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -45,8 +45,9 @@
 #define DefaultLevelTwoDirs     256
 
 static char *storeUfsSwapSubDir(int dirn, int subdirn);
-static int storeUfsVerifyDirectory(const char *path);
 static int storeUfsCreateDirectory(const char *path, int);
+static int storeUfsVerifyCacheDirs(void);
+static int storeUfsVerifyDirectory(const char *path);
 static void storeUfsCreateSwapSubDirs(int j);
 
 static char *
@@ -130,7 +131,7 @@ storeUfsVerifyDirectory(const char *path)
  * then Squid exits, complains about swap directories not
  * existing, and instructs the admin to run 'squid -z'
  */
-int
+static int
 storeUfsVerifyCacheDirs(void)
 {
     int i;
@@ -570,3 +571,16 @@ storeUfsDirWriteCleanLogs(int reopen)
     return n;
 }
 #undef CLEAN_BUF_SZ
+
+void
+storeUfsDirInit(void)
+{
+    static const char *errmsg =
+    "\tFailed to verify one of the swap directories, Check cache.log\n"
+    "\tfor details.  Run 'squid -z' to create swap directories\n"
+    "\tif needed, or if running Squid for the first time.";
+    if (storeUfsVerifyCacheDirs() < 0)
+	fatal(errmsg);
+    storeUfsDirOpenSwapLogs();
+    storeUfsRebuildStart();
+}
