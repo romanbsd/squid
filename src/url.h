@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.43 1997/06/01 18:19:58 wessels Exp $
+ * $Id: url.h,v 1.44 1997/06/03 18:02:53 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -76,6 +76,8 @@ struct _request {
     struct in_addr client_addr;
     char *headers;
     size_t headers_sz;
+    char *body;
+    size_t body_sz;
 };
 
 extern char *url_convert_hex _PARAMS((char *org_url, int allocate));
