@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.8 1996/07/20 04:21:55 wessels Exp $
+ * $Id: acl.h,v 1.9 1996/07/20 04:22:22 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -95,12 +95,12 @@ struct _acl_access {
 };
 
 typedef struct {
-	struct in_addr src_addr;
-	struct in_addr dst_addr;
-	char src_fqdn[SQUIDHOSTNAMELEN];
-	char dst_fqdn[SQUIDHOSTNAMELEN];
-	request_t *request;
-	char ident[ICP_IDENT_SZ];
+    struct in_addr src_addr;
+    struct in_addr dst_addr;
+    char src_fqdn[SQUIDHOSTNAMELEN];
+    char dst_fqdn[SQUIDHOSTNAMELEN];
+    request_t *request;
+    char ident[ICP_IDENT_SZ];
 } aclCheck_t;
 
 extern int aclCheck _PARAMS((struct _acl_access *, aclCheck_t *));
