@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.17 1996/09/20 06:28:59 wessels Exp $
+ * $Id: neighbors.h,v 1.18 1996/10/07 16:47:41 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -127,6 +127,7 @@ typedef enum {
 } hier_code;
 
 typedef enum {
+    EDGE_NONE,
     EDGE_SIBLING,
     EDGE_PARENT
 } neighbor_t;
@@ -138,6 +139,7 @@ typedef struct _dom_list {
     char *domain;
     int do_ping;		/* boolean */
     struct _dom_list *next;
+    neighbor_t neighbor_type;
 } dom_list;
 
 /* bitfields for edge->options */
@@ -205,7 +207,7 @@ extern edge *getFirstUpParent _PARAMS((request_t *));
 extern edge *getNextEdge _PARAMS((edge *));
 extern edge *getSingleParent _PARAMS((request_t *, int *n));
 extern int neighborsUdpPing _PARAMS((protodispatch_data *));
-extern void neighbors_cf_domain _PARAMS((char *, char *));
+extern void neighbors_cf_domain _PARAMS((char *, char *, neighbor_t));
 extern void neighbors_cf_acl _PARAMS((char *, char *));
 extern neighbors *neighbors_create _PARAMS((void));
 extern void hierarchyNote _PARAMS((request_t *, hier_code, int, char *));
