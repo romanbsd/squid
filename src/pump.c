@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.14 1998/03/13 05:44:44 wessels Exp $
+ * $Id: pump.c,v 1.15 1998/03/13 14:26:01 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -72,7 +72,7 @@ pumpInit(int fd, request_t * r, char *uri)
     int x;
     char *hdrStart, *hdrEnd;
     PumpStateData *p = xcalloc(1, sizeof(PumpStateData));
-    debug(61, 3) ("pumpInit: FD=%d , uri=%s\n", fd, uri);
+    debug(61, 3) ("pumpInit: FD=%d, uri=%s\n", fd, uri);
     /* create a StoreEntry which will buffer the data 
      * to be pumped */
 
