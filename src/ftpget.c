@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.62 1996/11/01 22:53:07 wessels Exp $
+ * $Id: ftpget.c,v 1.63 1996/11/02 00:17:48 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -172,6 +172,10 @@
 
 #include "squid.h"
 #include "mime_table.h"
+
+#ifndef HAVE_GETOPT_H
+extern int optind;
+#endif
 
 /* Junk so we can link with debug.o */
 int opt_syslog_enable = 0;
@@ -2690,6 +2694,8 @@ main(int argc, char *argv[])
 	    exit(1);
 	}
     }
+    argc -= optind;
+    argv += optind;
 
     if (argc != 6) {
 	fprintf(stderr, "Wrong number of arguments left (%d)\n", argc);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.32 1996/10/25 00:24:22 wessels Exp $
+ * $Id: objcache.c,v 1.33 1996/11/02 00:17:52 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -151,7 +151,7 @@ static int
 objcache_CheckPassword(char *password, char *user)
 {
     struct passwd *pwd = NULL;
-#if HAVE_LIBSHADOW && defined(SHADOW)
+#if HAVE_GETSPNAM && defined(SHADOW)
     struct spwd *spwd = NULL;
 #endif
     if (!password || !user)
@@ -162,7 +162,7 @@ objcache_CheckPassword(char *password, char *user)
     leave_suid();
     if (pwd == NULL)
 	return -1;
-#if HAVE_LIBSHADOW && defined(SHADOW)
+#if HAVE_GETSPNAM && defined(SHADOW)
     /* get shadow password record if /etc/shadow exists */
     if (access(SHADOW, F_OK) == 0) {
 	enter_suid();

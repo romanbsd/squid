@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.39 1996/11/01 21:25:07 wessels Exp $
+ * $Id: stat.h,v 1.40 1996/11/02 00:17:55 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -232,7 +232,7 @@ struct _cacheinfo {
     void (*NotImplement) (struct _cacheinfo * c, StoreEntry * sentry);
 
     /* stat table and data */
-    char logfilename[SQUID_MAXPATHLEN];	/* logfile name */
+    char logfilename[SQUID_MAXPATHLEN];		/* logfile name */
     int logfile_fd;		/* logfile fd */
     int logfile_access;		/* logfile access code */
     /* logfile status {enable, disable} */
