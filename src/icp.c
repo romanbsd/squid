@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.297 1997/08/11 02:29:09 wessels Exp $
+ * $Id: icp.c,v 1.298 1997/08/14 06:27:27 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -527,6 +527,8 @@ clientBuildReplyHeader(clientHttpRequest * http,
 	if (strncasecmp(xbuf, "Proxy-Connection:", 17) == 0)
 	    continue;
 	if (strncasecmp(xbuf, "Connection:", 11) == 0)
+	    continue;
+	if (strncasecmp(xbuf, "Keep-Alive:", 11) == 0)
 	    continue;
 	if (strncasecmp(xbuf, "Set-Cookie:", 11) == 0)
 	    if (isTcpHit(http->log_type))
@@ -1967,6 +1969,7 @@ clientReadRequest(int fd, void *data)
 	    err->http_status = HTTP_BAD_REQUEST;
 	    err->callback = icpErrorComplete;
 	    errorSend(fd, err);
+	    return;
 	}
     }
 }
