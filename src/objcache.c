@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.80 1998/01/12 04:30:06 wessels Exp $
+ * $Id: objcache.c,v 1.81 1998/01/31 05:32:02 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -156,7 +156,8 @@ static struct op_table OpTable[] =
     {MGR_STOREDIR, storeDirStats},
     {MGR_CBDATA, cbdataDump},
     {MGR_PCONN, pconnHistDump},
-    {MGR_5MIN, statAvgDump},
+    {MGR_5MIN, statAvg5min},
+    {MGR_60MIN, statAvg60min},
     {MGR_MEM, memStats},
     {MGR_MAX, NULL}		/* terminate list with NULL */
 };
@@ -226,6 +227,8 @@ objcacheParseRequest(const char *buf)
 	op = MGR_PCONN;
     else if (!strcmp(buf, "5min"))
 	op = MGR_5MIN;
+    else if (!strcmp(buf, "60min"))
+	op = MGR_60MIN;
     else if (!strcmp(buf, "mem"))
 	op = MGR_MEM;
     return op;
