@@ -1,4 +1,4 @@
-/* $Id: icp.h,v 1.5 1996/03/30 00:21:54 wessels Exp $ */
+/* $Id: icp.h,v 1.6 1996/04/02 00:51:55 wessels Exp $ */
 
 #ifndef ICP_H
 #define ICP_H
@@ -26,7 +26,8 @@ typedef enum {
     ERR_CANNOT_FETCH,		/* 19 */
     ERR_NO_RELAY,		/* 20 */
     ERR_DISK_IO,		/* 21 */
-    ERR_URL_BLOCKED		/* 22 */
+    ERR_URL_BLOCKED,		/* 22 */
+    ERR_ZERO_SIZE_OBJECT	/* 23 */
 } log_type;
 
 #define ERR_MIN ERR_READ_TIMEOUT
