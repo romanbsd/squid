@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.13 1996/09/15 05:04:31 wessels Exp $
+ * $Id: http.h,v 1.14 1996/09/18 21:39:34 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -105,11 +105,16 @@
 
 #define HTTP_REPLY_FIELD_SZ 128
 
+#define HTTP_CC_PRIVATE		0x01
+#define HTTP_CC_NOCACHE		0x02
+#define HTTP_CC_CACHABLE	0x04
+
 struct _http_reply {
     double version;
     int code;
     int content_length;
     int hdr_sz;
+    int cache_control;
     char content_type[HTTP_REPLY_FIELD_SZ];
     char date[HTTP_REPLY_FIELD_SZ];
     char expires[HTTP_REPLY_FIELD_SZ];

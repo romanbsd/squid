@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.19 1996/09/17 16:32:44 wessels Exp $
+ * $Id: proto.h,v 1.20 1996/09/18 21:39:39 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -283,6 +283,9 @@ typedef struct _protodispatch_data {
     int query_neighbors;
     int n_edges;
     struct _edge *single_parent;
+#if DELAY_HACK
+    int delay_fetch;
+#endif
 } protodispatch_data;
 
 extern int proto_cachable __P((char *url, int method));

@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.59 1996/09/18 20:12:20 wessels Exp $
+ * $Id: proto.c,v 1.60 1996/09/18 21:39:39 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -154,6 +154,10 @@ char *IcpOpcodeStr[] =
     "ICP_END"
 };
 
+#if DELAY_HACK
+extern int _delay_fetch;
+#endif
+
 static void
 protoDataFree(int fdunused, protodispatch_data * protoData)
 {
@@ -241,6 +245,10 @@ protoDispatchDNSHandle(int unused1, struct hostent *hp, void *data)
 	    (void *) entry,
 	    Config.neighborTimeout);
 	return;
+#ifdef DELAY_HACK
+	if (protoData->delay_fetch && entry->mem_obj)
+	    entry->mem_obj->e_pings_n_pings++;
+#endif
     }
     if (protoData->direct_fetch == DIRECT_NO) {
 	hierarchyNote(req, HIER_NO_DIRECT_FAIL, 0, req->host);
@@ -289,6 +297,9 @@ protoDispatch(int fd, char *url, StoreEntry * entry, request_t * request)
     protoData->query_neighbors = BIT_TEST(entry->flag, HIERARCHICAL);
     protoData->single_parent = getSingleParent(request, &n);
     protoData->n_edges = n;
+#ifdef DELAY_HACK
+    protoData->delay_fetch = _delay_fetch;
+#endif
 
     debug(17, 2, "protoDispatch: inside_firewall = %d (%s)\n",
 	protoData->inside_firewall,
