@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.140 1996/10/24 23:31:16 wessels Exp $
+ * $Id: icp.c,v 1.141 1996/10/25 02:15:19 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -621,7 +621,7 @@ icpGetHeadersForIMS(int fd, icpStateData * icpState)
 	return icpProcessMISS(fd, icpState);
     }
     p = strtok(IMS_hdr, ";");
-    IMS = parse_rfc850(p);
+    IMS = parse_rfc1123(p);
     IMS_length = -1;
     while ((p = strtok(NULL, ";"))) {
 	while (isspace(*p))
@@ -632,9 +632,9 @@ icpGetHeadersForIMS(int fd, icpStateData * icpState)
 
     /* Find date when the object last was modified */
     if (*mem->reply->last_modified)
-	date = parse_rfc850(mem->reply->last_modified);
+	date = parse_rfc1123(mem->reply->last_modified);
     else if (*mem->reply->date)
-	date = parse_rfc850(mem->reply->date);
+	date = parse_rfc1123(mem->reply->date);
     else
 	date = entry->timestamp;
 
