@@ -2,7 +2,7 @@
 
 
 /*
- * $Id: store.h,v 1.78 1997/01/19 08:10:54 wessels Exp $
+ * $Id: store.h,v 1.79 1997/01/31 22:30:38 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -165,7 +165,7 @@ struct _MemObject {
 
 /* These items are mutually exclusive */
     char *e_swap_buf;
-    edge *e_pings_first_miss;
+    peer *e_pings_first_miss;
     int w_rtt;			/* weighted RTT in msec */
     struct timeval start_ping;
 

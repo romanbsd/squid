@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.87 1997/01/10 23:14:22 wessels Exp $
+ * $Id: cache_cf.h,v 1.88 1997/01/31 22:30:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -240,7 +240,7 @@ struct SquidConfig {
     relist *cache_stop_relist;
     ip_acl *local_ip_list;
     ip_acl *firewall_ip_list;
-    edge *sslProxy, *passProxy;
+    peer *sslProxy, *passProxy;
     struct {
 	int size;
 	int low;
