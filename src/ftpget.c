@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.40 1996/09/17 16:39:05 wessels Exp $
+ * $Id: ftpget.c,v 1.41 1996/09/17 16:54:03 wessels Exp $
  *
  * DEBUG: section 0     FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -233,8 +233,8 @@
 #include <bstring.h>
 #endif
 
-#include "util.h"
 #include "ansiproto.h"
+#include "util.h"
 #if !HAVE_TEMPNAM
 #include "tempnam.h"
 #endif

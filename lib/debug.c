@@ -1,5 +1,5 @@
 /*
- * $Id: debug.c,v 1.9 1996/09/17 16:39:01 wessels Exp $
+ * $Id: debug.c,v 1.10 1996/09/17 16:53:55 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -112,8 +112,8 @@
 #include <string.h>
 #endif
 #define MAIN
-#include "util.h"
 #include "ansiproto.h"
+#include "util.h"
 
 static void debug_enable __P((int, int));
 static void debug_disable __P((int));
