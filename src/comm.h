@@ -1,5 +1,5 @@
 /* 
- *  $Id: comm.h,v 1.1 1996/02/22 06:23:54 wessels Exp $
+ *  $Id: comm.h,v 1.2 1996/02/29 07:23:08 wessels Exp $
  *
  *  File:         comm.h
  *  Description:  Declarations for socket communication  facility.
@@ -89,16 +89,18 @@
 #endif
 #include <sys/file.h>
 #include <sys/types.h>
-#if !defined(_HARVEST_LINUX_)
+#ifdef OLD_CODE
+#if !defined(_SQUID_LINUX_)
 #include <sys/uio.h>
 #endif
+#endif /* OLD_CODE */
 
 #include <sys/param.h>		/* For MAXHOSTNAMELEN */
 #include <netdb.h>		/* For MAXHOSTNAMELEN on Solaris */
 #if !defined(MAXHOSTNAMELEN) || (MAXHOSTNAMELEN < 128)
-#define HARVESTHOSTNAMELEN 128
+#define SQUIDHOSTNAMELEN 128
 #else
-#define HARVESTHOSTNAMELEN MAXHOSTNAMELEN
+#define SQUIDHOSTNAMELEN MAXHOSTNAMELEN
 #endif
 
 #include <netinet/in.h>

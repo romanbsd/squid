@@ -1,5 +1,5 @@
 /*
- *  $Id: proto.h,v 1.1 1996/02/22 06:23:55 wessels Exp $
+ *  $Id: proto.h,v 1.2 1996/02/29 07:23:19 wessels Exp $
  **********************************************************************
  *  Copyright (c) 1994, 1995.  All rights reserved.
  *  
@@ -80,7 +80,7 @@
 #define PROTO_H
 
 #include "ansihelp.h"
-#include "comm.h"		/* just in case.... for HARVESTHOSTNAMELEN */
+#include "comm.h"		/* just in case.... for SQUIDHOSTNAMELEN */
 #include <sys/types.h>
 #include <netinet/in.h>
 #if !defined(__ultrix) || !defined(SOCK_STREAM)		/* not protected */
@@ -261,7 +261,7 @@ typedef struct _protodispatch_data {
     int fd;
     char *url;
     struct sentry *entry;
-    char host[HARVESTHOSTNAMELEN + 1];
+    char host[SQUIDHOSTNAMELEN + 1];
     int inside_firewall;
     int direct_fetch;
     int source_ping;
