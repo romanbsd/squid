@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.57 2001/08/15 23:49:43 robertc Exp $ */
+/* $Id: acconfig.h,v 1.58 2001/08/24 14:29:32 hno Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -48,11 +48,8 @@
 
 #undef FORW_VIA_DB
 
-/* Define to use async disk I/O operations */
-#undef USE_ASYNC_IO
-
-/* Defines how many threads to use for async I/O */
-#undef ASYNC_IO_THREADS
+/* Defines how many threads aufs uses for I/O */
+#undef AUFS_IO_THREADS
 
 /*
  * If you want to use Squid's ICMP features (highly recommended!) then
