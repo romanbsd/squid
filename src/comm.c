@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.335 2002/10/02 11:06:31 robertc Exp $
+ * $Id: comm.c,v 1.336 2002/11/10 03:15:34 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -316,6 +316,7 @@ commConnectCallback(ConnectStateData * cs, comm_err_t status)
     commConnectFree(fd, cs);
     if (cbdataReferenceValid(cbdata))
 	callback(fd, status, cbdata);
+    cbdataReferenceDone(cbdata);
 }
 
 static void
