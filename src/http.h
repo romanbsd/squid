@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.20 1996/11/06 23:14:39 wessels Exp $
+ * $Id: http.h,v 1.21 1996/11/07 18:53:16 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -107,10 +107,6 @@
 #define HTTP_H
 
 #define HTTP_REPLY_FIELD_SZ 128
-
-#define HTTP_CC_PRIVATE		0x01
-#define HTTP_CC_NOCACHE		0x02
-#define HTTP_CC_CACHABLE	0x04
 
 struct _http_reply {
     double version;

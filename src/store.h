@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.68 1996/11/06 23:15:02 wessels Exp $
+ * $Id: store.h,v 1.69 1996/11/07 18:53:18 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -112,6 +112,10 @@
 #define BIT_SET(flag, bit) 	((flag) |= (bit))
 #define BIT_RESET(flag, bit) 	((flag) &= ~(bit))
 #define BIT_TEST(flag, bit) 	((flag) & (bit))
+
+#define EBIT_SET(flag, bit) 	((flag) |= ((1<<bit)))
+#define EBIT_RESET(flag, bit) 	((flag) &= ~((1<<bit)))
+#define EBIT_TEST(flag, bit) 	((flag) & ((1<<bit)))
 
 /* 
  * KEY_URL              If e->key and e->url point to the same location

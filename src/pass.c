@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.6 1996/11/06 23:14:49 wessels Exp $
+ * $Id: pass.c,v 1.7 1996/11/07 18:53:17 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -445,6 +445,8 @@ passStart(int fd,
     passState->buf = buf;
     passState->buflen = buflen;
     passState->timeout = Config.readTimeout;
+    passState->host = request->host;
+    passState->port = request->port;
     passState->size_ptr = size_ptr;
     passState->client.fd = fd;
     passState->server.fd = sock;
