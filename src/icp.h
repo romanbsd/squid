@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.20 1996/07/11 17:42:43 wessels Exp $
+ * $Id: icp.h,v 1.21 1996/07/19 17:37:40 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -186,6 +186,7 @@ typedef struct iwd {
     int http_code;
     struct sockaddr_in peer;
     struct sockaddr_in me;
+    struct in_addr log_addr;
     char *ptr_to_4k_page;
     char *buf;
     struct timeval start;
