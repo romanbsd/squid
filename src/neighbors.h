@@ -2,7 +2,7 @@
 
 
 /*
- * $Id: neighbors.h,v 1.46 1997/04/29 22:13:03 wessels Exp $
+ * $Id: neighbors.h,v 1.47 1997/06/16 22:01:51 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -180,7 +180,7 @@ struct _peer {
     int rr_count;
     struct _peer *next;
     int ip_lookup_pending;
-    int ipcache_fd;
+    int test_fd;
 };
 
 /* flags for peer->mcast.flags */

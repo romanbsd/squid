@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipcache.h,v 1.36 1997/06/01 23:22:24 wessels Exp $
+ * $Id: ipcache.h,v 1.37 1997/06/16 22:01:48 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -137,10 +137,9 @@ typedef struct _ipcache_entry {
     ipcache_status_t status:3;
 } ipcache_entry;
 
-typedef void IPH _PARAMS((int, const ipcache_addrs *, void *));
+typedef void IPH _PARAMS((const ipcache_addrs *, void *));
 
 extern void ipcache_nbgethostbyname _PARAMS((const char *name,
-	int fd,
 	IPH * handler,
 	void *handlerData));
 extern EVH ipcache_purgelru;
