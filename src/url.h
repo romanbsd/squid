@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.41 1997/05/15 01:07:05 wessels Exp $
+ * $Id: url.h,v 1.42 1997/05/26 04:05:02 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -87,6 +87,7 @@ extern request_t *requestLink _PARAMS((request_t *));
 extern void requestUnlink _PARAMS((request_t *));
 extern int matchDomainName _PARAMS((const char *d, const char *h));
 extern int urlCheckRequest _PARAMS((const request_t *));
+extern int urlDefaultPort _PARAMS((protocol_t p));
 
 /* bitfields for the flags member */
 #define REQ_UNUSED1		0x01

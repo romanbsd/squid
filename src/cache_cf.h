@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.99 1997/05/15 01:06:51 wessels Exp $
+ * $Id: cache_cf.h,v 1.100 1997/05/26 04:04:56 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -279,6 +279,12 @@ struct SquidConfig {
 	struct _acl_access *AlwaysDirect;
     } accessList;
     struct _acl_deny_info_list *denyInfoList;
+    struct {
+	size_t list_width;
+	int list_wrap;
+	char *icon_prefix;
+	char *icon_suffix;
+    } Ftp;
 };
 
 extern struct SquidConfig Config;
