@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.51 2001/03/11 21:55:20 hno Exp $
+ * $Id: config.h,v 1.1 2001/09/25 23:45:15 robertc Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -126,14 +126,6 @@
 #ifndef fd_mask
 #define fd_mask unsigned long
 #endif
-#endif
-
-#if !defined(CACHE_HTTP_PORT)
-#define CACHE_HTTP_PORT @CACHE_HTTP_PORT@
-#endif
-
-#if !defined(CACHE_ICP_PORT)
-#define CACHE_ICP_PORT @CACHE_ICP_PORT@
 #endif
 
 #if !defined(CACHEMGR_HOSTNAME)
