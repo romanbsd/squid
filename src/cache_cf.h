@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.43 1996/08/26 23:27:11 wessels Exp $
+ * $Id: cache_cf.h,v 1.44 1996/08/28 17:44:29 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -242,6 +242,11 @@ struct SquidConfig {
 	char *host;
 	u_short port;
     } sslProxy;
+    struct {
+	int size;
+	int low;
+	int high;
+    } ipcache;
 };
 
 extern struct SquidConfig Config;
