@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.19 1996/04/16 16:35:27 wessels Exp $ */
+/* $Id: ftpget.c,v 1.20 1996/04/16 23:09:51 wessels Exp $ */
 
 /*
  *    NOTES
@@ -448,6 +448,22 @@ void sigchld_handler(sig)
     signal(sig, sigchld_handler);
 #endif
 }
+
+int check_other_side()
+{
+	fd_set R;
+	struct timeval tv;
+	tv.tv_sec = 0;
+	tv.tv_usec = 0;
+	FD_ZERO(&R);
+	FD_SET(0, &R);
+	if (select(1, &R, NULL, NULL, &tv) < 0)
+		return 0;
+	if (FD_ISSET(0, &R))
+		return 0;
+	return 1;
+}
+	
 
 
 void reset_timeout(r)
@@ -1630,6 +1646,8 @@ static int process_request(r)
     reset_timeout(r);		/* to set CurrentRequest */
 
     while (1) {
+	if (!check_other_side())
+	    exit(1);
 	Debug(26, 1, ("process_request: in state %s\n",
 		state_str[r->state]));
 	switch (r->state) {

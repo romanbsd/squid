@@ -1,4 +1,4 @@
-/* $Id: objcache.c,v 1.7 1996/04/16 05:13:06 wessels Exp $ */
+/* $Id: objcache.c,v 1.8 1996/04/16 23:09:51 wessels Exp $ */
 
 /*
  * DEBUG: Section 16          objcache
@@ -99,15 +99,6 @@ int objcacheStart(fd, url, entry)
     if (getpeername(fd, (struct sockaddr *) &peer_socket_name,
 	    &sock_name_length) == -1) {
 	debug(16, 1, "getpeername failed??\n");
-    }
-    if (ip_access_check(peer_socket_name.sin_addr, manager_ip_acl)
-	== IP_DENY) {		/* Access Deny */
-	storeAbort(data->entry, "SQUID:OBJCACHE Access Denied!\n");
-	/* override negative TTL */
-	data->entry->expires = squid_curtime + STAT_TTL;
-	safe_free(data);
-	safe_free(buf);
-	return COMM_ERROR;
     }
     /* retrieve object requested */
     if (strncmp(data->request, "shutdown", strlen("shutdown")) == 0) {
