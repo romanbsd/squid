@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.118 1996/09/20 06:28:52 wessels Exp $
+ * $Id: icp.c,v 1.119 1996/09/23 22:14:17 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -748,7 +748,7 @@ icpProcessRequest(int fd, icpStateData * icpState)
 	ipcacheReleaseInvalid(icpState->request->host);
 	entry = NULL;
 	icpState->log_type = LOG_TCP_USER_REFRESH;
-    } else if (!storeEntryValidToSend(entry)) {
+    } else if (!storeEntryValidToSend(entry) && request->protocol == PROTO_HTTP) {
 	/* The object is in the cache, but is not valid.  Use
 	 * LOG_TCP_EXPIRED_MISS for the time being, maybe change it to
 	 * _HIT later in icpHandleIMSReply() */
