@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.12 1996/04/04 21:34:27 wessels Exp $ */
+/*  $Id: store.h,v 1.13 1996/04/05 01:00:54 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -80,6 +80,8 @@ typedef struct _MemObject {
 
     unsigned short swap_fd;
     int fd_of_first_client;
+    int content_length;
+    int hdr_sz;
 
 } MemObject;
 
