@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.22 1998/11/12 06:27:54 wessels Exp $
+ * $Id: aiops.c,v 1.23 1999/01/13 21:00:09 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -215,7 +215,7 @@ aio_thread_loop(void *ptr)
     sigemptyset(&new);
     sigaddset(&new, SIGPIPE);
     sigaddset(&new, SIGCHLD);
-#if (defined(_SQUID_LINUX_) && USE_ASYNC_IO)
+#ifdef _SQUID_LINUX_THREADS_
     sigaddset(&new, SIGQUIT);
     sigaddset(&new, SIGTRAP);
 #else

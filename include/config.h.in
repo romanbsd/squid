@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.41 1999/01/12 23:22:29 wessels Exp $
+ * $Id: config.h.in,v 1.42 1999/01/13 21:00:08 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -69,9 +69,15 @@
 
 #elif defined(__linux__)                        /* Linux */
 #define _SQUID_LINUX_
+#if USE_ASYNC_IO
+#define _SQUID_LINUX_THREADS_
+#endif
 
 #elif defined(__FreeBSD__)			/* FreeBSD */
 #define _SQUID_FREEBSD_
+#if USE_ASYNC_IO && defined(LINUXTHREADS)
+#define _SQUID_LINUX_THREADS_
+#endif
 
 #elif defined(__sgi__)	|| defined(sgi) || defined(__sgi) /* SGI */
 #define _SQUID_SGI_
