@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.58 1996/11/13 06:52:23 wessels Exp $
+ * $Id: icp.h,v 1.59 1996/11/15 00:36:20 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -167,7 +167,7 @@ typedef struct wwd {
     protocol_t proto;
 } icpUdpData;
 
-#define ICP_IDENT_SZ 63
+#define ICP_IDENT_SZ 64
 #define IDENT_NONE 0
 #define IDENT_PENDING 1
 #define IDENT_DONE 2

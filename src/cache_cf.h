@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.76 1996/11/12 22:37:02 wessels Exp $
+ * $Id: cache_cf.h,v 1.77 1996/11/15 00:36:14 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -277,8 +277,6 @@ extern int httpd_accel_mode;
 extern int parseConfigFile _PARAMS((const char *file_name));
 extern int setCacheSwapMax _PARAMS((int size));
 extern ip_access_type ip_access_check _PARAMS((struct in_addr, const ip_acl *));
-extern u_short setHttpPortNum _PARAMS((u_short));
-extern u_short setIcpPortNum _PARAMS((u_short));
 extern void intlistDestroy _PARAMS((intlist **));
 extern void wordlistDestroy _PARAMS((wordlist **));
 extern void configFreeMemory _PARAMS((void));
