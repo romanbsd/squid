@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.420 2003/01/09 05:10:43 hno Exp $
+ * $Id: cache_cf.c,v 1.421 2003/02/06 05:00:20 wessels Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1608,7 +1608,26 @@ parse_cachemgrpasswd(cachemgr_passwd ** head)
     p = xcalloc(1, sizeof(cachemgr_passwd));
     p->passwd = passwd;
     p->actions = actions;
-    for (P = head; *P; P = &(*P)->next);
+    for (P = head; *P; P = &(*P)->next) {
+	/*
+	 * See if any of the actions from this line already have a
+	 * password from previous lines.  The password checking
+	 * routines in cache_manager.c take the the password from
+	 * the first cachemgr_passwd struct that contains the
+	 * requested action.  Thus, we should warn users who might
+	 * think they can have two passwords for the same action.
+	 */
+	wordlist *w;
+	wordlist *u;
+	for (w = (*P)->actions; w; w = w->next) {
+	    for (u = actions; u; u = u->next) {
+		if (strcmp(w->key, u->key))
+		    continue;
+		debug(0, 0) ("WARNING: action '%s' (line %d) already has a password\n",
+		    u->key, config_lineno);
+	    }
+	}
+    }
     *P = p;
 }
 
