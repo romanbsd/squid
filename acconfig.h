@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.44 1999/12/30 17:35:48 wessels Exp $ */
+/* $Id: acconfig.h,v 1.45 2000/05/03 17:15:38 adrian Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -49,7 +49,7 @@
 #undef USE_ASYNC_IO
 
 /* Defines how many threads to use for async I/O */
-#undef NUMTHREADS
+#undef ASYNC_IO_THREADS
 
 /*
  * If you want to use Squid's ICMP features (highly recommended!) then
@@ -271,3 +271,6 @@
  * message type for message queues
  */
 #undef mtyp_t
+
+/* Define if you want to set the COSS membuf size */
+#undef COSS_MEMBUF_SZ
