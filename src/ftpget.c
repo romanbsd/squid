@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.88 1997/05/15 01:24:56 wessels Exp $
+ * $Id: ftpget.c,v 1.89 1997/05/15 23:40:59 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -190,6 +190,7 @@ const char *const appname = "ftpget";
 struct timeval current_time;
 time_t squid_curtime;
 struct SquidConfig Config;
+int opt_debug_stderr = 0;
 
 #define FTP_PORT 21
 /* #define DEFAULT_MIME_TYPE "text/plain" */
