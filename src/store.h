@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.33 1996/07/19 17:36:20 wessels Exp $
+ * $Id: store.h,v 1.34 1996/07/20 03:16:58 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -189,6 +189,7 @@ typedef struct _MemObject {
     SIH swapin_complete_handler;
     void *swapin_complete_data;
     hier_code hierarchy_code;
+    char *hierarchy_host;
 } MemObject;
 typedef enum {
     NOT_IN_MEMORY,
