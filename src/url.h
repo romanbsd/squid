@@ -1,4 +1,4 @@
-/*  $Id: url.h,v 1.8 1996/04/16 04:23:18 wessels Exp $ */
+/*  $Id: url.h,v 1.9 1996/04/16 05:13:38 wessels Exp $ */
 
 #ifndef _URL_HEADER_
 #define _URL_HEADER_
@@ -33,9 +33,9 @@ extern char *ProtocolStr[];
 typedef struct _request {
     method_t method;
     protocol_t protocol;
-    char host[SQUIDHOSTNAMELEN+1];
+    char host[SQUIDHOSTNAMELEN + 1];
     int port;
-    char urlpath[MAX_URL+1];
+    char urlpath[MAX_URL + 1];
 } request_t;
 
 extern char *url_convert_hex _PARAMS((char *org_url, int allocate));
