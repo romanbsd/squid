@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.91 1997/02/06 18:44:26 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.92 1997/02/19 00:06:48 wessels Exp $
 #
 
 #  TAG: http_port
@@ -92,7 +92,7 @@
 #		     no-query
 #		     default
 #		     round-robin
-#		     mulsticast-responder
+#		     multicast-responder
 #
 #		     use 'proxy-only' to specify that objects fetched
 #		     from this cache should not be saved locally.
