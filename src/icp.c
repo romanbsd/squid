@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.30 1996/04/05 17:48:30 wessels Exp $ */
+/* $Id: icp.c,v 1.31 1996/04/05 21:50:31 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -641,7 +641,7 @@ void icp_hit_or_miss(fd, usm)
 	/* Reset header for reply. */
 	memset(&usm->header, 0, sizeof(icp_common_t));
 	usm->header.version = ICP_VERSION_CURRENT;
-	usm->header.reqnum = 0;
+	/* usm->header.reqnum = 0; */
 	usm->header.shostid = 0;
 	usm->entry = entry;
 	usm->offset = 0;
@@ -699,10 +699,10 @@ static int icpProcessMISS(fd, usm, key)
     BIT_SET(entry->flag, IP_LOOKUP_PENDING);
     storeLockObject(entry);
 
-    /*Reset header fields for  reply. */
+    /* Reset header fields for  reply. */
     memset(&usm->header, 0, sizeof(icp_common_t));
     usm->header.version = ICP_VERSION_CURRENT;
-    usm->header.reqnum = 0;
+    /* usm->header.reqnum = 0; */
     usm->header.shostid = 0;
     usm->entry = entry;
     usm->offset = 0;
