@@ -1,4 +1,4 @@
-/* $Id: proto.c,v 1.10 1996/03/29 21:19:25 wessels Exp $ */
+/* $Id: proto.c,v 1.11 1996/04/01 18:24:09 wessels Exp $ */
 
 /*
  * DEBUG: Section 17          proto:
@@ -31,19 +31,6 @@ extern stoplist *local_domain_list;
 extern stoplist *inside_firewall_list;
 extern single_parent_bypass;
 extern char *dns_error_message;
-
-extern int httpCachable _PARAMS((char *url, char *type, char *mime_hdr));
-extern int ftpCachable _PARAMS((char *url, char *type, char *mime_hdr));
-extern int gopherCachable _PARAMS((char *url, char *type, char *mime_hdr));
-extern int objcacheStart _PARAMS((int fd, char *url, StoreEntry * entry));
-extern int ipcache_unregister _PARAMS((char *name, int fd));
-extern int proxyhttpStart _PARAMS((edge * e, char *url, StoreEntry * entry));
-extern int httpStart _PARAMS((int unusedfd, char *url, char *type, char *mime_hdr, StoreEntry * entry));
-extern int gopherStart _PARAMS((int unusedfd, char *url, StoreEntry * entry));
-extern int ftpStart _PARAMS((int unusedfd, char *url, StoreEntry * entry));
-extern int waisStart _PARAMS((int unusedfd, char *url, char *type, char *mime_hdr, StoreEntry * entry));
-extern char *storeToString _PARAMS((StoreEntry * e));
-extern void fatal_dump _PARAMS((char *));
 
 /* return 1 for cachable url
  * return 0 for uncachable url */
