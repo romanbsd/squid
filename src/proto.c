@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.63 1996/09/24 19:50:09 wessels Exp $
+ * $Id: proto.c,v 1.64 1996/10/07 15:01:28 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -310,7 +310,7 @@ protoDispatch(int fd, char *url, StoreEntry * entry, request_t * request)
     debug(17, 2, "protoDispatch:   single_parent = %s\n",
 	protoData->single_parent ? protoData->single_parent->host : "N/A");
 
-    if (!protoData->inside_firewall) {
+    if (!protoData->inside_firewall && !Config.firewall_ip_list) {
 	/* There are firewall restrictsions, and this host is outside. */
 	/* No DNS lookups, call protoDispatchDNSHandle() directly */
 	protoData->source_ping = 0;
