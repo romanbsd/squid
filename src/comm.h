@@ -1,5 +1,5 @@
 
-/* $Id: comm.h,v 1.4 1996/03/27 01:45:57 wessels Exp $ */
+/* $Id: comm.h,v 1.5 1996/03/28 22:37:54 wessels Exp $ */
 
 #ifndef COMM_H
 #define COMM_H
@@ -30,6 +30,7 @@ typedef struct fde {
     int openned;		/* Set if we did a comm_connect.  Ignored for ftp_pipes. */
     int sender;			/* Set if this fd is connected to a client */
     int port;			/* Our tcp port # */
+    char ipaddr[16];		/* dotted decimal address of peer */
     int (*handler) ();		/* Interrupt handler */
     StoreEntry *store_entry;
 

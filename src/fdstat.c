@@ -1,5 +1,5 @@
 
-/* $Id: fdstat.c,v 1.5 1996/03/27 18:15:44 wessels Exp $ */
+/* $Id: fdstat.c,v 1.6 1996/03/28 22:37:55 wessels Exp $ */
 
 #include "squid.h"
 
@@ -14,10 +14,7 @@ typedef struct _FDENTRY {
     File_Desc_Type type;
 } FDENTRY;
 
-static FDENTRY *fd_stat_tab;
-
-extern int getMaxFD();
-
+static FDENTRY *fd_stat_tab = NULL;
 
 char *fdfiletype(type)
      File_Desc_Type type;
