@@ -1,4 +1,4 @@
-/* $Id: host_cache.c,v 1.3 1996/02/29 08:15:22 wessels Exp $ */
+/* $Id: host_cache.c,v 1.4 1996/03/26 05:10:41 wessels Exp $ */
 
 #include <string.h>
 #include <stdlib.h>
@@ -153,9 +153,11 @@ static Host *new_host(hostname)
 }
 
 void dump_host_cache(d_sec, d_lvl)
+	int d_sec;
+	int d_lvl;
 {
     int i;
-    Host *h;
+    Host *h = NULL;
 
     Debug(d_sec, d_lvl, ("HostTable:\n"));
     for (i = 0; i < HASHTABLE_N; i++) {
