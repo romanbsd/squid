@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.39 1996/11/05 17:00:53 wessels Exp $
+ * $Id: objcache.c,v 1.40 1996/11/05 20:43:54 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -408,7 +408,7 @@ objcachePasswdAdd(cachemgr_passwd ** list, char *passwd, wordlist * actions)
     for (w = actions; w; w = w->next) {
 	op = objcacheParseRequest(w->key);
 	if (op <= MGR_NONE || op >= MGR_MAX) {
-	    debug(16, 0, "Invalid objcache operation: '%s'\n", w->key);
+	    debug(16, 0, "objcachePasswdAdd: Invalid operation: '%s'\n", w->key);
 	    continue;
 	}
 	q->actions |= (1 << op);
