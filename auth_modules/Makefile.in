@@ -1,14 +1,16 @@
 #  Makefile for storage modules in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.3 2000/05/18 00:29:17 wessels Exp $
+#  $Id: Makefile.in,v 1.4 2000/05/29 02:07:56 wessels Exp $
 #
 
 SUBDIRS		= @AUTH_MODULES@
 
 all:
-	@test -z "$(SUBDIRS)" || for dir in "$(SUBDIRS)"; do \
-	   sh -c "cd $$dir && $(MAKE) all" || exit 1; \
-	done
+	@if test "$(SUBDIRS)" ; then \
+	    for dir in $(SUBDIRS); do \
+		sh -c "cd $$dir && $(MAKE) all" || exit 1; \
+	    done; \
+	fi
 
 clean:
 	-for dir in *; do \
@@ -26,6 +28,8 @@ distclean:
 	done
 
 .DEFAULT:
-	@test -z "$(SUBDIRS)" || for dir in "$(SUBDIRS)"; do \
-	   sh -c "cd $$dir && $(MAKE) $@" || exit 1; \
-	done
+	@if test "$(SUBDIRS)" ; then \
+	    for dir in $(SUBDIRS); do \
+		sh -c "cd $$dir && $(MAKE) $@" || exit 1; \
+	    done; \
+	fi
