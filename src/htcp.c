@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.42 2002/10/04 14:00:22 hno Exp $
+ * $Id: htcp.c,v 1.43 2003/01/02 23:24:22 wessels Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -816,7 +816,9 @@ htcpHandle(char *buf, int sz, struct sockaddr_in *from)
     debug(31, 3) ("htcpHandle: htcpHdr.major = %d\n", (int) htcpHdr.major);
     debug(31, 3) ("htcpHandle: htcpHdr.minor = %d\n", (int) htcpHdr.minor);
     if (sz != htcpHdr.length) {
-	debug(31, 1) ("htcpHandle: sz != htcpHdr.length\n");
+	debug(31, 1) ("htcpHandle: sz/%d != htcpHdr.length/%d from %s:%d\n",
+	    sz, htcpHdr.length,
+	    inet_ntoa(from->sin_addr), (int) ntohs(from->sin_port));
 	return;
     }
     buf += sizeof(htcpHeader);
