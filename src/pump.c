@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.26 1998/03/31 07:46:45 wessels Exp $
+ * $Id: pump.c,v 1.27 1998/03/31 20:04:06 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -251,8 +251,10 @@ pumpReadFromClient(int fd, void *data)
 		p,
 		Config.Timeout.read);
 	} else {
+	    sigusr2_handle(0);
 	    debug(61, 2) ("pumpReadFromClient: aborted.\n");
 	    pumpClose(p);
+	    sigusr2_handle(0);
 	}
 	return;
     } else if (req->mem_obj->inmem_hi == 0) {
@@ -310,7 +312,7 @@ pumpClose(void *data)
     EBIT_SET(p->flags, PUMP_FLAG_CLOSING);
     if (req != NULL && req->store_status == STORE_PENDING) {
 	storeUnregister(req, p);
-	storeAbort(req, 1);
+	storeAbort(req, 0);
     }
     if (rep != NULL && rep->store_status == STORE_PENDING) {
 	storeAbort(rep, 0);
