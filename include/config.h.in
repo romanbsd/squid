@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.38 1998/07/20 17:18:49 wessels Exp $
+ * $Id: config.h.in,v 1.39 1998/08/03 21:00:08 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -91,7 +91,7 @@
 #elif defined(__NetBSD__)
 #define _SQUID_NETBSD_
 
-#elif defined(__CYGWIN32__) || defined(WIN32) || defined(WINNT) defined(__WIN32__) || defined(__WIN32)
+#elif defined(__CYGWIN32__) || defined(WIN32) || defined(WINNT) || defined(__WIN32__) || defined(__WIN32)
 #define _SQUID_MSWIN_
 
 #endif
