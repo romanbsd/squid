@@ -1,5 +1,5 @@
 
-/*  $Id: store.h,v 1.28 1996/05/01 22:36:40 wessels Exp $ */
+/*  $Id: store.h,v 1.29 1996/05/01 22:37:15 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -207,7 +207,7 @@ extern unsigned int getKeyCounter _PARAMS((void));
 extern int storeGetLowestReaderOffset _PARAMS((StoreEntry *));
 
 #if defined(__STRICT_ANSI__)
-extern void storeAppendPrintf _PARAMS((StoreEntry *, char *, ...));
+extern void storeAppendPrintf _PARAMS((StoreEntry *, char *,...));
 #else
 extern void storeAppendPrintf();
 #endif
