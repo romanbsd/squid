@@ -1,6 +1,6 @@
 
 /*
- * $Id: ttl.c,v 1.15 1996/08/26 22:00:08 wessels Exp $
+ * $Id: ttl.c,v 1.16 1996/08/26 23:27:15 wessels Exp $
  *
  * DEBUG: section 22    TTL Calculation
  * AUTHOR: Harvest Derived
@@ -287,12 +287,12 @@ void ttlSet(entry)
     match = NULL;
     for (t = TTL_tbl; t; t = t->next) {
 	if (regexec(&(t->compiled_pattern), entry->url, 0, 0, 0) != 0)
-		continue;
+	    continue;
 	match = t;
 	debug(22, 5, "ttlSet: Matched '%s %d %d%%'\n",
-		match->pattern,
-		match->abs_ttl > 0 ? match->abs_ttl : default_ttl,
-		match->pct_age);
+	    match->pattern,
+	    match->abs_ttl > 0 ? match->abs_ttl : default_ttl,
+	    match->pct_age);
 	flags |= TTL_MATCHED;
     }
 
@@ -333,8 +333,8 @@ void ttlSet(entry)
 		continue;
 	    match = t;
 	    debug(22, 5, "ttlSet: Matched '%s %d'\n",
-	        match->pattern,
-	        match->abs_ttl);
+		match->pattern,
+		match->abs_ttl);
 	}
 	if (match) {
 	    ttl = match->abs_ttl;

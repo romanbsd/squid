@@ -1,5 +1,6 @@
+
 /*
- * $Id: errorpage.h,v 1.12 1996/08/26 22:47:52 wessels Exp $
+ * $Id: errorpage.h,v 1.13 1996/08/26 23:27:13 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
