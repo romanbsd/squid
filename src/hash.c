@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.41 1998/03/19 19:15:17 wessels Exp $
+ * $Id: hash.c,v 1.42 1998/03/24 17:01:34 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -141,20 +141,8 @@ hash_string(const void *data, unsigned int size)
     return i % size;
 }
 
-/* the following 4 functions were adapted from
+/* the following function(s) were adapted from
  *    usr/src/lib/libc/db/hash_func.c, 4.4 BSD lite */
-
-/*
- * HASH FUNCTIONS
- *
- * Assume that we've already split the bucket to which this key hashes,
- * calculate that bucket, and check that in fact we did already split it.
- *
- * This came from ejb's hsearch.
- */
-
-#define PRIME1		37
-#define PRIME2		1048583
 
 /* Hash function from Chris Torek. */
 unsigned int
