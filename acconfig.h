@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.70 2002/07/28 21:55:33 hno Exp $ */
+/* $Id: acconfig.h,v 1.71 2002/10/02 11:06:28 robertc Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -69,6 +69,9 @@
 #undef XMALLOC_TRACE
 
 #undef FORW_VIA_DB
+
+/* Define to enable CPU profiling within Squid */
+#undef USE_XPROF_STATS
 
 /* Define if you have problems with memPools and want to disable Pools */
 #undef DISABLE_POOLS
