@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.46 2000/05/16 07:05:51 wessels Exp $ */
+/* $Id: acconfig.h,v 1.47 2000/05/30 09:30:10 hno Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -269,3 +269,6 @@
 
 /* Define if you want to set the COSS membuf size */
 #undef COSS_MEMBUF_SZ
+
+/* Print stacktraces on fatal errors */
+#undef PRINT_STACK_TRACE
