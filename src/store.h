@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.31 1996/07/09 04:47:25 wessels Exp $
+ * $Id: store.h,v 1.32 1996/07/17 17:10:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -181,7 +181,8 @@ typedef struct _MemObject {
     /* use another field to avoid changing the existing code */
     struct pentry **pending;
 
-    short swap_fd;
+    short swapin_fd;
+    short swapout_fd;
     int fd_of_first_client;
     struct _http_reply *reply;
     request_t *request;
