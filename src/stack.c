@@ -1,4 +1,4 @@
-/* $Id: stack.c,v 1.3 1996/03/27 01:46:19 wessels Exp $ */
+/* $Id: stack.c,v 1.4 1996/04/04 05:19:49 wessels Exp $ */
 
 #include "squid.h"
 
@@ -93,14 +93,11 @@ int full_stack(stack)
 --  Output:   None.
 --
 --------------------------------------------------------------------------*/
-char *
-     pop(stack)
+char *pop(stack)
      Stack *stack;
 {
-    if (empty_stack(stack) == 1) {
-	fprintf(stderr, "Stack empty, cannot pop()\n");
-	exit(-1);
-    }
+    if (empty_stack(stack) == 1)
+	fatal("Stack empty, cannot pop()");
     stack->top--;
     return (*stack->top);
 }
