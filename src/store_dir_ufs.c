@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.33 2000/05/02 19:43:30 hno Exp $
+ * $Id: store_dir_ufs.c,v 1.34 2000/05/02 20:07:37 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -468,6 +468,7 @@ storeRebuildFromSwapLog(void *data)
 		storeExpireNow(e);
 		storeReleaseRequest(e);
 		storeSwapFileNumberSet(e, -1);
+		storeRelease(e);
 		rb->counts.objcount--;
 		rb->counts.cancelcount++;
 	    }
