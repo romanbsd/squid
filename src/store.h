@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.11 1996/04/04 01:30:52 wessels Exp $ */
+/*  $Id: store.h,v 1.12 1996/04/04 21:34:27 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -155,6 +155,7 @@ extern int storeGetMemSpace _PARAMS((int, int));
 extern int storeGetSwapSize _PARAMS((void));
 extern int storeGetSwapSpace _PARAMS((int));
 extern int storeEntryValidToSend _PARAMS((StoreEntry *));
+extern int storeEntryValidLength _PARAMS((StoreEntry *));
 extern int storeEntryLocked _PARAMS((StoreEntry *));
 extern int storeLockObject _PARAMS((StoreEntry *));
 extern int storeOriginalKey _PARAMS((StoreEntry *));
