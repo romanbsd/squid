@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.153 1996/11/01 06:51:44 wessels Exp $
+ * $Id: icp.c,v 1.154 1996/11/01 07:43:46 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -181,7 +181,6 @@ static void icpHandleIcpV3 _PARAMS((int, struct sockaddr_in, char *, int));
 static void icpSendERRORComplete _PARAMS((int, char *, int, int, void *));
 static void icpUdpSendEntry _PARAMS((int, char *, int,
 	struct sockaddr_in *, icp_opcode, StoreEntry *, struct timeval));
-static void vizHackSendPkt _PARAMS((struct sockaddr_in * from));
 
 /*
  * This function is designed to serve a fairly specific purpose.
@@ -1840,7 +1839,7 @@ asciiHandleConn(int sock, void *notused)
 	return;
     }
     if (Config.vizHackAddr.sin_port)
-	vizHackSendPkt(&peer);
+	vizHackSendPkt(&peer, 1);
     /* set the hardwired lifetime */
     lft = comm_set_fd_lifetime(fd, Config.lifetimeDefault);
     ntcpconn++;
@@ -2085,13 +2084,15 @@ icpConstruct304reply(struct _http_reply *source)
 
 struct viz_pkt {
     u_num32 from;
+    char type;
 };
 
-static void
-vizHackSendPkt(struct sockaddr_in *from)
+void
+vizHackSendPkt(struct sockaddr_in *from, int type)
 {
     static struct viz_pkt v;
     v.from = from->sin_addr.s_addr;
+    v.type = (char) type;
     comm_udp_sendto(theOutIcpConnection,
 	&Config.vizHackAddr,
 	sizeof(struct sockaddr_in),

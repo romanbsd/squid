@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.52 1996/10/30 21:56:38 wessels Exp $
+ * $Id: icp.h,v 1.53 1996/11/01 07:43:47 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -223,10 +223,11 @@ extern void icpDetectClientClose _PARAMS((int fd, void *data));
 extern void icpDetectNewRequest _PARAMS((int fd));
 extern void icpProcessRequest _PARAMS((int fd, icpStateData *));
 extern int icpSendMoreData _PARAMS((int fd, icpStateData *));
+extern int icpUdpReply _PARAMS((int fd, icpUdpData * queue));
+extern void vizHackSendPkt _PARAMS((struct sockaddr_in * from, int type));
 
 extern int neighbors_do_private_keys;
 extern char *IcpOpcodeStr[];
-extern int icpUdpReply _PARAMS((int fd, icpUdpData * queue));
 extern char *log_tags[];
 
 #endif /* ICP_H */
