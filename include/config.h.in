@@ -1,5 +1,5 @@
 /*
- * $Id: config.h.in,v 1.39 1998/08/03 21:00:08 wessels Exp $
+ * $Id: config.h.in,v 1.40 1999/01/11 20:01:58 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -46,9 +46,9 @@
 #endif
 
 /* define the _SQUID_TYPE_ based on a guess of the OS */
-#if defined(__sun__)				/* SUN */
+#if defined(__sun__) || defined(__sun)		/* SUN */
 #define _SQUID_SUN_
-#if defined(_SQUID_SYSV_)			/* SOLARIS */
+#if defined(__SVR4)				/* SOLARIS */
 #define _SQUID_SOLARIS_
 #else						/* SUNOS */
 #define _SQUID_SUNOS_
