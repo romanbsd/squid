@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.48 1997/06/21 02:38:17 wessels Exp $
+ * $Id: stat.h,v 1.49 1997/06/26 22:35:59 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -148,7 +148,7 @@ typedef struct _meta_data_stat {
 extern Meta_data meta_data;
 
 struct _cacheinfo {
-    protocol_t (*proto_id) (const char *url);
+    protocol_t(*proto_id) (const char *url);
     void (*proto_newobject) (struct _cacheinfo * c, protocol_t proto_id, int len, int flag);
     void (*proto_purgeobject) (struct _cacheinfo * c, protocol_t proto_id, int len);
     void (*proto_touchobject) (struct _cacheinfo * c, protocol_t proto_id, int len);

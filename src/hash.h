@@ -1,5 +1,5 @@
 /*
- * $Id: hash.h,v 1.18 1997/06/17 04:54:10 wessels Exp $
+ * $Id: hash.h,v 1.19 1997/06/26 22:35:48 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -147,7 +147,7 @@ typedef struct _hash_table {
 
 /* init */
 extern void hash_init _PARAMS((int));
-extern hash_table * hash_create _PARAMS((HASHCMP *, int, HASHHASH *));
+extern hash_table *hash_create _PARAMS((HASHCMP *, int, HASHHASH *));
 extern int hash_insert _PARAMS((hash_table *, const char *, void *));
 extern int hash_delete _PARAMS((hash_table *, const char *));
 extern int hash_delete_link _PARAMS((hash_table *, hash_link *));
