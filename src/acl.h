@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.38 1997/03/29 04:45:11 wessels Exp $
+ * $Id: acl.h,v 1.39 1997/04/29 22:12:48 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -126,7 +126,7 @@ struct _aclCheck_t {
     char ident[ICP_IDENT_SZ];
     char browser[BROWSERNAMELEN];
     acl_lookup_state state[ACL_ENUM_MAX];
-    PF callback;
+    PF *callback;
     void *callback_data;
 };
 
@@ -135,7 +135,7 @@ extern void aclNBCheck _PARAMS((const struct _acl_access * A,
 	struct in_addr src_addr,
 	char *user_agent,
 	char *ident,
-	PF callback,
+	PF * callback,
 	void *callback_data));
 extern int aclCheckFast _PARAMS((const struct _acl_access * A, aclCheck_t *));
 extern int aclMatchAcl _PARAMS((struct _acl *, aclCheck_t *));

@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.23 1997/04/02 04:40:00 wessels Exp $
+ * $Id: store_clean.c,v 1.24 1997/04/29 22:13:11 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -96,7 +96,7 @@ storeDirClean(void *unused)
     swap_index++;
     if (k == 0)
 	return;
-    qsort(files, k, sizeof(int), (QS) rev_int_sort);
+    qsort(files, k, sizeof(int), (QS *) rev_int_sort);
     if (k > 10)
 	k = 10;
     for (n = 0; n < k; n++) {

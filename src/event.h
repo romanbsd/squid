@@ -1,5 +1,5 @@
 /*
- * $Id: event.h,v 1.2 1997/02/27 06:29:12 wessels Exp $
+ * $Id: event.h,v 1.3 1997/04/29 22:12:54 wessels Exp $
  *
  * AUTHOR: Henrik Nordstrom
  *
@@ -102,12 +102,12 @@
  *   re-implementations of code complying to this set of standards.  
  */
 
-typedef void (*EVH) _PARAMS((void *));
+typedef void EVH _PARAMS((void *));
 
 extern void eventAdd _PARAMS((const char *name,
-	EVH func,
+	EVH * func,
 	void *arg,
 	time_t when));
 extern void eventRun _PARAMS((void));
 extern time_t eventNextTime _PARAMS((void));
-extern void eventDelete _PARAMS((EVH func, void *arg));
+extern void eventDelete _PARAMS((EVH * func, void *arg));
