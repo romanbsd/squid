@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.44 1996/04/12 21:41:39 wessels Exp $ */
+/* $Id: icp.c,v 1.45 1996/04/14 03:05:03 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -447,7 +447,7 @@ int icpSendMoreData(fd, state)
 
     debug(12, 5, "icpSendMoreData: <URL:%s> sz %d: len %d: off %d.\n",
 	entry->url, entry->object_len,
-	has_mem_obj(entry) ? entry->mem_obj->e_current_len : 0, state->offset);
+	entry->mem_obj ? entry->mem_obj->e_current_len : 0, state->offset);
 
     p = state->ptr_to_4k_page = buf = get_free_4k_page();
     state->buf = NULL;
