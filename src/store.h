@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.38 1996/08/30 22:44:14 wessels Exp $
+ * $Id: store.h,v 1.39 1996/08/31 06:40:21 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -168,7 +168,7 @@ typedef struct _MemObject {
 
     int e_swap_access;
     char *e_abort_msg;
-    int abort_code;
+    log_type abort_code;
 
     int e_current_len;
     /* The lowest offset that store keep VM copy around

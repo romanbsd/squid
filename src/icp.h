@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.27 1996/08/30 23:23:33 wessels Exp $
+ * $Id: icp.h,v 1.28 1996/08/31 06:40:19 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -135,7 +135,7 @@ typedef enum {
     ERR_CANNOT_FETCH,		/* 26 */
     ERR_NO_RELAY,		/* 27 */
     ERR_DISK_IO,		/* 28 */
-    ERR_ZERO_SIZE_OBJECT	/* 29 */
+    ERR_ZERO_SIZE_OBJECT,	/* 29 */
     ERR_PROXY_DENIED		/* 30 */
 } log_type;
 
