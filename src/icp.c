@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.223 1997/01/31 20:13:49 wessels Exp $
+ * $Id: icp.c,v 1.224 1997/01/31 21:02:04 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -894,7 +894,7 @@ icpLogIcp(icpUdpData * queue)
 	queue->logcode);
     clientdbUpdate(queue->address.sin_addr,
 	queue->logcode,
-	Config.Port.Icp);
+	Config.Port.icp);
     if (!Config.Options.log_udp)
 	return;
     HTTPCacheInfo->log_append(HTTPCacheInfo,
