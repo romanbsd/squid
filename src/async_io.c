@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.31 1999/02/01 05:57:05 wessels Exp $
+ * $Id: async_io.c,v 1.32 1999/04/08 07:16:39 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -379,7 +379,7 @@ aioSync(void)
     debug(32, 1) ("aioSync: flushing pending I/O operations\n");
     do {
 	aioCheckCallbacks();
-    } while (aio_operations_pending());
+    } while (aio_sync());
     debug(32, 1) ("aioSync: done\n");
 }
 
