@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.28 1998/02/06 23:58:05 wessels Exp $
+ * $Id: snmp.c,v 1.29 1998/02/11 03:14:38 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -1236,7 +1236,7 @@ snmpConnectionShutdown(void)
     if (theInSnmpConnection < 0)
 	return;
     if (theInSnmpConnection != theOutSnmpConnection) {
-	debug(49,1)("FD %d Closing SNMP socket\n", theInSnmpConnection);
+	debug(49, 1) ("FD %d Closing SNMP socket\n", theInSnmpConnection);
 	comm_close(theInSnmpConnection);
     }
     /*
@@ -1261,7 +1261,7 @@ snmpConnectionClose(void)
 {
     snmpConnectionShutdown();
     if (theOutSnmpConnection > -1) {
-        debug(49,1)("FD %d Closing SNMP socket\n", theOutSnmpConnection);
-        comm_close(theOutSnmpConnection);
-    }   
+	debug(49, 1) ("FD %d Closing SNMP socket\n", theOutSnmpConnection);
+	comm_close(theOutSnmpConnection);
+    }
 }

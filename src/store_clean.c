@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.34 1998/02/10 02:30:13 wessels Exp $
+ * $Id: store_clean.c,v 1.35 1998/02/11 03:14:39 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -51,7 +51,7 @@ storeCleanSubSubDir(int index, char *path)
     int L1 = Config.cacheSwap.swapDirs[dirn].l1;
     int L2 = Config.cacheSwap.swapDirs[dirn].l2;
     snprintf(path, SQUID_MAXPATHLEN, "%s/%02X/%02X",
-        Config.cacheSwap.swapDirs[dirn].path,
+	Config.cacheSwap.swapDirs[dirn].path,
 	(index / nd) % L1,
 	((index / nd) / L1) % L2);
     return path;
