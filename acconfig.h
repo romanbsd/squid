@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.34 1998/11/12 06:29:23 wessels Exp $ */
+/* $Id: acconfig.h,v 1.35 1998/12/11 21:01:06 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -197,6 +197,11 @@
  *  Linux system.
  */
 #undef IPF_TRANSPARENT
+
+/*
+ * Enable code for assiting in finding memory leaks.  Hacker stuff only.
+ */
+#undef USE_LEAKFINDER
 
 /*
  * type of fd_set array
