@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.12 1996/03/28 06:23:29 wessels Exp $ */
+/* $Id: ftpget.c,v 1.13 1996/03/28 06:27:06 wessels Exp $ */
 
 /*
  *    NOTES
@@ -82,14 +82,17 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #if HAVE_BSTRING_H
 #include <bstring.h>
 #endif
 
+#if HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
+#endif
 
 #include "util.h"
 
