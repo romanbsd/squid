@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.37 1998/02/25 19:15:07 kostas Exp $
+ * $Id: snmp.c,v 1.38 1998/02/25 20:55:48 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -61,8 +61,7 @@ extern void init_modules();
 #ifdef __STDC__
 void snmpSnmplibDebug(int lvl, char *fmt,...);
 #else
-void
-     snmpSnmplibDebug(va_alist);
+void snmpSnmplibDebug(va_alist);
 #endif
 
 
@@ -268,7 +267,7 @@ snmpInit(void)
     communities = NULL;
     init_agent_auth();
 
-    snmplib_debug = (void *) snmpSnmplibDebug;
+    snmplib_debug_hook = snmpSnmplibDebug;
 
     debug(49, 5) ("init_mib: calling with %s\n", Config.Snmp.mibPath);
 
