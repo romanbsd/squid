@@ -1,10 +1,10 @@
 
 /*
- * $Id: async_io.h,v 1.12 1996/09/20 06:28:26 wessels Exp $
+ * $Id: async_io.h,v 1.13 1996/11/06 23:14:20 wessels Exp $
  *
  * AUTHOR: Pete Bentley <pete@demon.net>
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

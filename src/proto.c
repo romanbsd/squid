@@ -1,11 +1,11 @@
 
 /*
- * $Id: proto.c,v 1.77 1996/11/06 22:15:30 wessels Exp $
+ * $Id: proto.c,v 1.78 1996/11/06 23:14:50 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

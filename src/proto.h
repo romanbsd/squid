@@ -1,9 +1,9 @@
 /*
- * $Id: proto.h,v 1.24 1996/11/06 22:15:48 wessels Exp $
+ * $Id: proto.h,v 1.25 1996/11/06 23:14:51 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

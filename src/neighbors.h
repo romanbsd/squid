@@ -1,9 +1,9 @@
 /*
- * $Id: neighbors.h,v 1.24 1996/11/04 18:12:54 wessels Exp $
+ * $Id: neighbors.h,v 1.25 1996/11/06 23:14:47 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

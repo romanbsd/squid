@@ -1,10 +1,10 @@
 /*
- * $Id: ftpget.c,v 1.65 1996/11/05 17:08:09 wessels Exp $
+ * $Id: ftpget.c,v 1.66 1996/11/06 23:14:35 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

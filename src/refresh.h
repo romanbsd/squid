@@ -1,10 +1,10 @@
 
 /*
- * $Id: refresh.h,v 1.3 1996/11/04 18:13:00 wessels Exp $
+ * $Id: refresh.h,v 1.4 1996/11/06 23:14:54 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

@@ -1,10 +1,10 @@
 
 /*
- * $Id: tools.h,v 1.30 1996/11/05 17:08:32 wessels Exp $
+ * $Id: tools.h,v 1.31 1996/11/06 23:15:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

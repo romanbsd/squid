@@ -1,11 +1,11 @@
 
 /*
- * $Id: stack.c,v 1.13 1996/11/05 17:08:25 wessels Exp $
+ * $Id: stack.c,v 1.14 1996/11/06 23:14:56 wessels Exp $
  *
  * DEBUG: section 0     Stack Primitives
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

@@ -1,9 +1,9 @@
 /*
- * $Id: acl.h,v 1.28 1996/11/04 18:12:07 wessels Exp $
+ * $Id: acl.h,v 1.29 1996/11/06 23:14:19 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

@@ -1,10 +1,10 @@
 /*
- * $Id: fdstat.c,v 1.25 1996/11/04 18:12:30 wessels Exp $
+ * $Id: fdstat.c,v 1.26 1996/11/06 23:14:31 wessels Exp $
  *
  * DEBUG: section 7     File Descriptor Status
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

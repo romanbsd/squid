@@ -1,11 +1,11 @@
 
 /*
- * $Id: timestamps.c,v 1.1 1996/10/27 08:40:25 wessels Exp $
+ * $Id: timestamps.c,v 1.2 1996/11/06 23:15:04 wessels Exp $
  *
  * DEBUG: section 22    Timestamp Calculations
  * AUTHOR: Duane Wessels
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

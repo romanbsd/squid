@@ -1,10 +1,10 @@
 /*
- * $Id: log.c,v 1.15 1996/10/13 06:19:37 wessels Exp $
+ * $Id: log.c,v 1.16 1996/11/06 23:14:14 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

@@ -1,11 +1,11 @@
 
 /*
- * $Id: async_io.c,v 1.11 1996/09/17 02:29:49 wessels Exp $
+ * $Id: async_io.c,v 1.12 1996/11/06 23:14:19 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

@@ -1,11 +1,11 @@
 
 /*
- * $Id: objcache.c,v 1.40 1996/11/05 20:43:54 wessels Exp $
+ * $Id: objcache.c,v 1.41 1996/11/06 23:14:48 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the

@@ -1,11 +1,11 @@
 
 /*
- * $Id: background.c,v 1.8 1996/11/04 18:12:08 wessels Exp $
+ * $Id: background.c,v 1.9 1996/11/06 23:14:20 wessels Exp $
  *
  * DEBUG: Section 0     Background Processing
  * AUTHOR: Henrik Nordstrom
  *
- * SQUID Internet Object Cache  http://www.nlanr.net/Squid/
+ * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * --------------------------------------------------------
  *
  *  Squid is the result of efforts by numerous individuals from the
