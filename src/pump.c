@@ -1,6 +1,6 @@
 
 /*
- * $Id: pump.c,v 1.83 2000/06/06 19:34:31 hno Exp $
+ * $Id: pump.c,v 1.84 2000/06/27 22:06:03 hno Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -247,7 +247,7 @@ pumpReadFromClient(int fd, void *data)
     int bytes_to_read = XMIN(p->req->content_length - p->rcvd, SQUID_TCP_SO_RCVBUF);
     int len = 0;
     errno = 0;
-    Counter.syscalls.sock.reads++;
+    statCounter.syscalls.sock.reads++;
     len = read(fd, buf, bytes_to_read);
     fd_bytes(fd, len, FD_READ);
     debug(61, 5) ("pumpReadFromClient: FD %d: len %d.\n", fd, len);
