@@ -1,0 +1,21 @@
+# $Id: makefile.in,v 1.1 1996/02/22 06:38:45 wessels Exp $
+#
+
+#### Start of system configuration section. ####
+
+srcdir		= @srcdir@
+VPATH		= @srcdir@
+
+CCx		= @CC@
+
+INSTALL		= @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA	= @INSTALL_DATA@
+
+CFLAGS		= -g
+LDFLAGS		= -g
+
+# Where to install
+prefix		= /usr/local/squid
+exec_prefix	= ${prefix}
+bindir		= $(exec_prefix)/bin
