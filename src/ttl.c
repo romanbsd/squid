@@ -1,6 +1,6 @@
 
 /*
- * $Id: ttl.c,v 1.18 1996/09/04 22:03:32 wessels Exp $
+ * $Id: ttl.c,v 1.19 1996/09/12 22:17:28 wessels Exp $
  *
  * DEBUG: section 22    TTL Calculation
  * AUTHOR: Harvest Derived
@@ -270,7 +270,7 @@ void ttlSet(entry)
 	match = t;
 	debug(22, 5, "ttlSet: Matched '%s %d %d%%'\n",
 	    match->pattern,
-	    match->abs_ttl > 0 ? match->abs_ttl : default_ttl,
+	    match->abs_ttl >= 0 ? match->abs_ttl : default_ttl,
 	    match->pct_age);
 	flags |= TTL_MATCHED;
     }
