@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.89 1997/01/31 21:03:12 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.90 1997/02/06 18:02:11 wessels Exp $
 #
 
 #  TAG: http_port
@@ -531,6 +531,15 @@ debug_options ALL,1
 #	process will BLOCK on DNS lookups!
 #
 #dns_children 5
+
+#  TAG: dns_defnames
+#	Normally the 'dnsserver' disables the RES_DEFNAMES resolver
+#	option (see res_init(3)).  This prevents caches in a hierarchy
+#	from interpreting single-component hostnames locally.  To allow
+#	dnsserver to handle single-component names, enable this
+#	option.
+#
+#dns_defnames off
 
 #  TAG: redirect_program 
 #	Specify the location of the executable for the URL redirector.
