@@ -1,4 +1,4 @@
-/* $Id: proto.c,v 1.14 1996/04/05 17:48:32 wessels Exp $ */
+/* $Id: proto.c,v 1.15 1996/04/08 18:28:58 wessels Exp $ */
 
 /*
  * DEBUG: Section 17          proto:
@@ -67,6 +67,8 @@ int proto_cachable(url, method, request_hdr)
     if (!strncasecmp(url, "gopher://", 9))
 	return gopherCachable(url);
     if (!strncasecmp(url, "wais://", 7))
+	return 0;
+    if (!strncasecmp(url, "conne://", 8))
 	return 0;
     if (!strncasecmp(url, "cache_object://", 15))
 	return 0;
@@ -469,6 +471,8 @@ int getFromCache(fd, entry, e)
 	return ftpStart(fd, url, entry);
     } else if (strncasecmp(url, "wais://", 7) == 0) {
 	return waisStart(fd, url, type, request_hdr, entry);
+    } else if (strncasecmp(url, "conne://", 8) == 0) {
+      return connectStart(fd, url, type, request_hdr, entry);
     } else if (strncasecmp(url, "dht://", 6) == 0) {
 	return protoNotImplemented(fd, url, entry);
     } else {

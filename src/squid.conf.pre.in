@@ -1,4 +1,4 @@
-# $Id: squid.conf.pre.in,v 1.7 1996/04/06 00:53:05 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.8 1996/04/08 18:28:55 wessels Exp $
 #
 #  NOTE: Upon installation, cached.conf is a symbolic link to this file,
 #	 cached.conf.default.  If you want to change this file, please
@@ -751,4 +751,14 @@ ftp_user Harvest@
 # POST file upload set this to largest filesize + a few kb.
 #
 request_size 100
+
+
+
+#### NEW
+
+
+#  TAG: connect_port
+#       The port number(s) where cached will listen allow outbound CONNECT
+#       (SSL).  The defaults are 443 (https) and 563 (snews).
+#connect_ports 443 563
 
