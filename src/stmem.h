@@ -1,5 +1,5 @@
 
-/*  $Id: stmem.h,v 1.4 1996/04/04 18:41:28 wessels Exp $ */
+/*  $Id: stmem.h,v 1.5 1996/04/05 00:59:27 wessels Exp $ */
 
 #ifndef STMEM_H
 #define STMEM_H
@@ -40,8 +40,8 @@ typedef struct _stmem_stats {
     Stack free_page_stack;
 } stmem_stats;
 
-stmem_stats sm_stats;
-stmem_stats disk_stats;
+extern stmem_stats sm_stats;
+extern stmem_stats disk_stats;
 
 extern char *get_free_4k_page _PARAMS((char *, int));
 extern char *get_free_8k_page _PARAMS((char *, int));
