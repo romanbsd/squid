@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.103 1997/06/19 22:51:56 wessels Exp $
+ * $Id: store.h,v 1.104 1997/06/21 02:38:17 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -185,31 +185,6 @@ struct _MemObject {
 	STABH *callback;
 	void *data;
     } abort;
-};
-
-enum {
-    NOT_IN_MEMORY,
-    SWAPPING_IN,
-    IN_MEMORY
-};
-
-enum {
-    PING_NONE,
-    PING_WAITING,
-    PING_TIMEOUT,
-    PING_DONE
-};
-
-enum {
-    STORE_OK,
-    STORE_PENDING,
-    STORE_ABORTED
-};
-
-enum {
-    NO_SWAP,
-    SWAPPING_OUT,
-    SWAP_OK
 };
 
 typedef unsigned int store_status_t;

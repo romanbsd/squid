@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.47 1997/06/20 05:08:33 wessels Exp $
+ * $Id: stat.h,v 1.48 1997/06/21 02:38:17 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -148,23 +148,6 @@ typedef struct _meta_data_stat {
 extern Meta_data meta_data;
 
 struct _cacheinfo {
-
-    /* add a transaction to system log */
-    void (*log_append) (const struct _cacheinfo * obj,
-	const char *url,
-	struct in_addr,
-	int size,
-	const char *action,
-	const char *method,
-	int http_code,
-	int msec,
-	const char *ident,
-	const struct _hierarchyLogData * hierData,
-#if LOG_FULL_HEADERS
-	const char *request_hdrs,
-	const char *reply_hdrs,
-#endif				/* LOG_FULL_HEADERS */
-	const char *content_type);
     protocol_t (*proto_id) (const char *url);
     void (*proto_newobject) (struct _cacheinfo * c, protocol_t proto_id, int len, int flag);
     void (*proto_purgeobject) (struct _cacheinfo * c, protocol_t proto_id, int len);
@@ -194,8 +177,6 @@ extern const char *const open_bracket;
 extern const char *const close_bracket;
 
 extern void stat_init _PARAMS((cacheinfo **, const char *));
-extern void stat_rotate_log _PARAMS((void));
-extern void statCloseLog _PARAMS((void));
 extern void stat_get _PARAMS((const char *req, StoreEntry *));
 extern void log_clear _PARAMS((StoreEntry *));
 extern void log_disable _PARAMS((StoreEntry *));

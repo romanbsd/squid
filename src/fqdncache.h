@@ -2,7 +2,7 @@
 
 
 /*
- * $Id: fqdncache.h,v 1.18 1997/05/02 04:28:35 wessels Exp $
+ * $Id: fqdncache.h,v 1.19 1997/06/21 02:38:06 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -109,14 +109,6 @@
 #define _FQDNCACHE_H_
 
 typedef void FQDNH _PARAMS((const char *, void *));
-
-enum {
-    FQDN_CACHED,
-    FQDN_NEGATIVE_CACHED,
-    FQDN_PENDING,		/* waiting to be dispatched */
-    FQDN_DISPATCHED		/* waiting for reply from dnsserver */
-};
-typedef unsigned int fqdncache_status_t;
 
 #define FQDN_BLOCKING_LOOKUP	0x01
 #define FQDN_LOOKUP_IF_MISS	0x02

@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.h,v 1.8 1997/05/02 04:28:37 wessels Exp $
+ * $Id: peer_select.h,v 1.9 1997/06/21 02:38:14 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -30,28 +30,6 @@
 
 #ifndef PEER_SELECT_H
 #define PEER_SELECT_H
-
-typedef enum {
-    HIER_NONE,
-    DIRECT,
-    SIBLING_HIT,
-    PARENT_HIT,
-    DEFAULT_PARENT,
-    SINGLE_PARENT,
-    FIRSTUP_PARENT,
-    NO_PARENT_DIRECT,
-    FIRST_PARENT_MISS,
-    CLOSEST_PARENT_MISS,
-    CLOSEST_DIRECT,
-    NO_DIRECT_FAIL,
-    SOURCE_FASTEST,
-    SIBLING_UDP_HIT_OBJ,
-    PARENT_UDP_HIT_OBJ,
-    PASS_PARENT,
-    SSL_PARENT,
-    ROUNDROBIN_PARENT,
-    HIER_MAX
-} hier_code;
 
 typedef void PSC _PARAMS((peer *, void *));
 

@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.102 1997/06/04 06:15:47 wessels Exp $
+ * $Id: cache_cf.h,v 1.103 1997/06/21 02:38:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -126,11 +126,6 @@ typedef struct _relist {
     struct _relist *next;
 } relist;
 
-typedef enum {
-    IP_ALLOW,
-    IP_DENY
-} ip_access_type;
-
 struct SquidConfig {
     struct {
 	int maxSize;
@@ -195,9 +190,7 @@ struct SquidConfig {
     int redirectChildren;
     int sourcePing;
     int commonLogFormat;
-#if LOG_FULL_HEADERS
     int logMimeHdrs;
-#endif				/* LOG_FULL_HEADERS */
     int identLookup;
     int neighborTimeout;
     int stallDelay;
