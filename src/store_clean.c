@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.29 1997/11/05 05:29:39 wessels Exp $
+ * $Id: store_clean.c,v 1.30 1998/02/03 01:17:09 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -30,23 +30,6 @@
  */
 
 #include "squid.h"
-
-#if HAVE_DIRENT_H
-#include <dirent.h>
-#define NAMLEN(dirent) strlen((dirent)->d_name)
-#else /* HAVE_DIRENT_H */
-#define dirent direct
-#define NAMLEN(dirent) (dirent)->d_namlen
-#if HAVE_SYS_NDIR_H
-#include <sys/ndir.h>
-#endif /* HAVE_SYS_NDIR_H */
-#if HAVE_SYS_DIR_H
-#include <sys/dir.h>
-#endif /* HAVE_SYS_DIR_H */
-#if HAVE_NDIR_H
-#include <ndir.h>
-#endif /* HAVE_NDIR_H */
-#endif /* HAVE_DIRENT_H */
 
 static QS rev_int_sort;
 
