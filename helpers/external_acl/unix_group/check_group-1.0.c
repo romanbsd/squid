@@ -1,5 +1,5 @@
 /*
- * $Id: check_group-1.0.c,v 1.1 2002/06/23 14:31:09 hno Exp $
+ * $Id: check_group-1.0.c,v 1.2 2002/06/26 17:25:57 hno Exp $
  *
  * This is a helper for the external ACL interface for Squid Cache
  * Copyright (C) 2002 Rodrigo Albani de Campos (rodrigo@geekbunker.org)
@@ -29,9 +29,6 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *
  * Change Log:
- * $Log: check_group-1.0.c,v $
- * Revision 1.1  2002/06/23 14:31:09  hno
- * UNIX group membership external acl helper by Rodrigo Campos
  *
  * Revision 1.4  2002/04/17 01:58:48  camposr
  * minor corrections in the getopt
