@@ -1,5 +1,5 @@
 
-/* $Id: comm.h,v 1.8 1996/04/05 17:48:28 wessels Exp $ */
+/* $Id: comm.h,v 1.9 1996/04/08 17:08:01 wessels Exp $ */
 
 #ifndef COMM_H
 #define COMM_H
@@ -9,6 +9,7 @@
 #define COMM_NO_HANDLER	 (-2)
 #define COMM_NOMESSAGE	 (-3)
 #define COMM_TIMEOUT	 (-4)
+#define COMM_SHUTDOWN	 (-5)
 
 #define COMM_BLOCKING	  (0x0)
 #define COMM_NONBLOCKING  (0x1)

@@ -1,4 +1,4 @@
-/*  $Id: ipcache.h,v 1.4 1996/04/05 17:47:46 wessels Exp $ */
+/*  $Id: ipcache.h,v 1.5 1996/04/08 17:08:02 wessels Exp $ */
 
 #ifndef _IPCACHE_H_
 #define _IPCACHE_H_
@@ -29,5 +29,6 @@ extern struct hostent *ipcache_gethostbyname _PARAMS((char *));
 extern void ipcache_flush _PARAMS((void));
 extern void ipcache_init _PARAMS((void));
 extern void stat_ipcache_get _PARAMS((StoreEntry *, cacheinfo *));
+extern void ipcacheShutdownServers _PARAMS((void));
 
 #endif

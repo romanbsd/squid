@@ -1,5 +1,5 @@
 
-/* $Id: tools.h,v 1.7 1996/04/01 18:21:07 wessels Exp $ */
+/* $Id: tools.h,v 1.8 1996/04/08 17:08:04 wessels Exp $ */
 
 extern char *getMyHostname _PARAMS((void));
 extern int getMaxFD _PARAMS((void));
@@ -15,6 +15,7 @@ extern int daemonize _PARAMS((void));
 extern void writePidFile _PARAMS((void));
 extern void setMaxFD _PARAMS((void));
 extern time_t getCurrentTime _PARAMS((void));
+extern void normal_shutdown _PARAMS((void));
 
 extern int do_mallinfo;
 extern time_t cached_curtime;
