@@ -1,6 +1,6 @@
 
 /*
- * $Id: disk.h,v 1.26 1997/02/05 04:53:57 wessels Exp $
+ * $Id: disk.h,v 1.27 1997/02/19 17:10:32 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -154,7 +154,7 @@ typedef struct _FileEntry {
     enum {
 	NO_WRT_PENDING, WRT_PENDING
     } write_pending;
-    void (*wrt_handle) ();
+    FILE_WRITE_HD wrt_handle;
     void *wrt_handle_data;
     dwrite_q *write_q;
     dwrite_q *write_q_tail;
