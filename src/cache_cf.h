@@ -1,5 +1,6 @@
+
 /*
- * $Id: cache_cf.h,v 1.83 1996/11/30 23:09:50 wessels Exp $
+ * $Id: cache_cf.h,v 1.84 1996/12/04 18:22:46 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
