@@ -1,5 +1,5 @@
 /*
- * $Id: store_dir.h,v 1.7 1997/04/25 22:01:20 wessels Exp $
+ * $Id: store_dir.h,v 1.8 1997/05/16 07:43:47 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -122,6 +122,11 @@ typedef struct {
 extern char *storeSwapFullPath _PARAMS((int, char *));
 extern char *storeSwapSubSubDir _PARAMS((int, char *));
 extern int storeAddSwapDisk _PARAMS((const char *,
+	int size,
+	int l1,
+	int l2,
+	int read_only));
+extern void storeReconfigureSwapDisk _PARAMS((const char *,
 	int size,
 	int l1,
 	int l2,
