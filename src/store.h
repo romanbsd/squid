@@ -1,5 +1,5 @@
 
-/*  $Id: store.h,v 1.24 1996/04/15 19:20:26 wessels Exp $ */
+/*  $Id: store.h,v 1.25 1996/04/15 22:54:47 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -53,7 +53,7 @@ typedef struct _MemObject {
 /* These items are mutually exclusive */
     char *e_swap_buf;
     edge *e_pings_first_miss;
-    int  w_rtt; 	/* weighted RTT in msec */
+    int w_rtt;			/* weighted RTT in msec */
     struct timeval start_ping;
 
 /* These items are also mutually exclusive */
@@ -117,7 +117,7 @@ struct sentry {
     enum {
 	NO_SWAP, SWAPPING_OUT, SWAP_OK
     } swap_status:3;
-    int method:3;
+    unsigned int method:3;
 
     /* WARNING: Explicit assummption that fewer than 256
      * WARNING:  clients all hop onto the same object.  The code

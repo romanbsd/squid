@@ -1,4 +1,4 @@
-/*  $Id: url.h,v 1.5 1996/04/11 22:53:42 wessels Exp $ */
+/*  $Id: url.h,v 1.6 1996/04/15 22:55:11 wessels Exp $ */
 
 #ifndef _URL_HEADER_
 #define _URL_HEADER_
@@ -7,7 +7,8 @@ typedef enum {
     METHOD_NONE,
     METHOD_GET,
     METHOD_POST,
-    METHOD_HEAD
+    METHOD_HEAD,
+    METHOD_CONNECT
 } method_t;
 
 extern char *RequestMethodStr[];
@@ -19,6 +20,7 @@ typedef enum {
     PROTO_GOPHER,
     PROTO_WAIS,
     PROTO_CACHEOBJ,
+    PROTO_CONNECT,
     PROTO_MAX
 } protocol_t;
 
