@@ -1,4 +1,4 @@
-/* $Id: icp.h,v 1.4 1996/03/30 00:09:05 wessels Exp $ */
+/* $Id: icp.h,v 1.5 1996/03/30 00:21:54 wessels Exp $ */
 
 #ifndef ICP_H
 #define ICP_H
@@ -7,7 +7,7 @@ typedef enum {
     LOG_TAG_MIN,		/* 0 */
     LOG_TCP_HIT,		/* 1 */
     LOG_TCP_MISS,		/* 2 */
-    LOG_TCP_EXP,		/* 3 */
+    LOG_TCP_EXPIRED,		/* 3 */
     LOG_TCP_BLOCK,		/* 4 */
     LOG_TCP_DENIED,		/* 5 */
     LOG_UDP_HIT,		/* 6 */
