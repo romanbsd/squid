@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.58 1997/10/30 02:41:05 wessels Exp $
+ * $Id: pass.c,v 1.59 1997/10/30 03:31:24 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -361,7 +361,6 @@ passStart(int fd, const char *url, request_t * request, size_t * size_ptr)
     ErrorState *err = NULL;
     debug(39, 3) ("passStart: '%s %s'\n",
 	RequestMethodStr[request->method], url);
-
     /* Create socket. */
     sock = comm_open(SOCK_STREAM,
 	0,
@@ -439,7 +438,6 @@ passPeerSelectFail(peer * p, void *data)
 {
     PassStateData *passState = data;
     ErrorState *err;
-
     err = errorCon(ERR_CANNOT_FORWARD, HTTP_SERVICE_UNAVAILABLE);
     err->request = requestLink(passState->request);
     err->callback = passErrorComplete;
