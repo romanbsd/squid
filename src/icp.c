@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.121 1996/10/08 02:13:55 wessels Exp $
+ * $Id: icp.c,v 1.122 1996/10/08 14:42:12 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -998,12 +998,12 @@ icpUdpSend(int fd,
 
 static void
 icpUdpSendEntry(int fd,
-	char *url,
-	int reqnum,
-	struct sockaddr_in *to,
-	icp_opcode opcode,
-	StoreEntry * entry,
-	struct timeval start_time)
+    char *url,
+    int reqnum,
+    struct sockaddr_in *to,
+    icp_opcode opcode,
+    StoreEntry * entry,
+    struct timeval start_time)
 {
     char *buf = NULL;
     int buf_len;
