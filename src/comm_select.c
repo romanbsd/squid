@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.61 2002/11/10 14:18:13 hno Exp $
+ * $Id: comm_select.c,v 1.62 2003/01/27 17:18:36 wessels Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -343,7 +343,9 @@ comm_select(int msec)
     double timeout = current_dtime + (msec / 1000.0);
     fde *F;
     do {
+	double start;
 	getCurrentTime();
+	start = current_dtime;
 #if DELAY_POOLS
 	FD_ZERO(&slowfds);
 #endif
@@ -567,6 +569,8 @@ comm_select(int msec)
 	    }
 	}
 #endif
+	getCurrentTime();
+	statCounter.select_time += (current_dtime - start);
 	return COMM_OK;
     }
     while (timeout > current_dtime);
