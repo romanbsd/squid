@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.17 1996/04/10 03:52:24 wessels Exp $ */
+/* $Id: ftpget.c,v 1.18 1996/04/10 03:54:44 wessels Exp $ */
 
 /*
  *    NOTES
@@ -2103,9 +2103,9 @@ int main(argc, argv)
 	} else {
 	    usage();
 	    exit(1);
-	}           
-    }               
-                    
+	}
+    }
+
     if (argc != 6) {
 	fprintf(stderr, "Too many arguments left (%d)\n", argc);
 	usage();
