@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache_opcodes.h,v 1.10 1997/08/25 22:35:59 wessels Exp $
+ * $Id: objcache_opcodes.h,v 1.11 1997/11/15 06:36:34 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -58,5 +58,6 @@ static char *objcacheOpcodeStr[] =
     "storedir",
     "cbdata",
     "pconn",
+    "5min",
     "MAX"
 };
