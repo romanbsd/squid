@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.27 1996/11/16 07:08:15 wessels Exp $
+ * $Id: proto.h,v 1.28 1996/11/26 19:07:29 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -286,6 +286,7 @@ typedef struct _protodispatch_data {
     int query_neighbors;
     int n_edges;
     struct _edge *single_parent;
+    struct _edge *default_parent;
 #if DELAY_HACK
     int delay_fetch;
 #endif
