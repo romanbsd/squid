@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.49 1997/07/14 23:45:03 wessels Exp $
+ * $Id: pass.c,v 1.50 1997/07/16 04:48:30 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -441,7 +441,7 @@ passPeerSelectComplete(peer * p, void *data)
 	passState->port = request->port;
     } else if (p->http_port != 0) {
 	passState->port = p->http_port;
-    } else if ((g = neighborFindByName(p->host))) {
+    } else if ((g = peerFindByName(p->host))) {
 	passState->port = g->http_port;
     } else {
 	passState->port = CACHE_HTTP_PORT;
