@@ -1,5 +1,5 @@
 /*
- * $Id: comm.h,v 1.13 1996/07/08 22:42:45 wessels Exp $
+ * $Id: comm.h,v 1.14 1996/07/15 23:48:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -145,7 +145,6 @@ typedef struct fde {
     StoreEntry *store_entry;
 
     /* Select handlers. */
-    void *client_data;		/* App. data to associate w/ handled conn. */
     PF read_handler;		/* Read  select handler. */
     void *read_data;		/* App. data to associate w/ handled conn. */
     PF write_handler;		/* Write select handler. */
