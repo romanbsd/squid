@@ -1,5 +1,5 @@
 /*
- * $Id: fqdncache.h,v 1.1 1996/07/22 16:40:24 wessels Exp $
+ * $Id: fqdncache.h,v 1.2 1996/07/23 04:11:54 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -134,7 +134,7 @@ typedef struct _fqdncache_entry {
 } fqdncache_entry;
 
 extern int fqdncache_nbgethostbyaddr _PARAMS((struct in_addr, int fd, FQDNH handler, void *handlerData));
-extern int fqdncache_unregister _PARAMS((char *, int));
+extern int fqdncacheUnregister _PARAMS((struct in_addr, int));
 extern char *fqdncache_gethostbyaddr _PARAMS((struct in_addr, int flags));
 extern void fqdncache_init _PARAMS((void));
 extern void fqdnStats _PARAMS((StoreEntry *));
