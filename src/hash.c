@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.48 1998/05/08 23:29:26 wessels Exp $
+ * $Id: hash.c,v 1.49 1998/05/13 21:24:48 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -285,7 +285,7 @@ hash_next(hash_table * hid)
  *  On success, it returns 0 and deletes the link; otherwise, 
  *  returns non-zero on error.
  */
-int
+void
 hash_remove_link(hash_table * hid, hash_link * hl)
 {
     hash_link *walker, *prev;
@@ -304,10 +304,10 @@ hash_remove_link(hash_table * hid, hash_link * hl)
 	    if (walker == hid->current_ptr)
 		hid->current_ptr = walker->next;
 	    hid->count--;
-	    return 0;
+	    return;
 	}
     }
-    return 1;
+    fatal("hash_remove_link: could not find entry");
 }
 
 /*
