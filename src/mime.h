@@ -1,4 +1,4 @@
-/*  $Id: mime.h,v 1.2 1996/03/27 01:46:14 wessels Exp $ */
+/*  $Id: mime.h,v 1.3 1996/04/01 04:15:06 wessels Exp $ */
 
 #ifndef MIME_H
 #define MIME_H
@@ -12,6 +12,7 @@ typedef struct _ext_table_entry {
     char *icon;
 } ext_table_entry;
 
+extern char *mime_get_header _PARAMS((char *mime, char *header));
 extern void mime_process _PARAMS((char *mime));
 extern int mime_refresh_request _PARAMS((char *mime));
 extern ext_table_entry *mime_ext_to_type _PARAMS((char *extension));
