@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.h,v 1.15 1996/07/09 04:47:26 wessels Exp $
+ * $Id: tools.h,v 1.16 1996/09/11 22:40:34 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -121,6 +121,7 @@ extern void normal_shutdown _PARAMS((void));
 extern int tvSubMsec _PARAMS((struct timeval, struct timeval));
 extern int percent _PARAMS((int, int));
 extern void squid_signal _PARAMS((int sig, void (*func) (), int flags));
+extern char *accessLogTime _PARAMS((time_t));
 
 extern int do_mallinfo;
 extern time_t squid_curtime;
