@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.h,v 1.2 1997/02/26 20:49:13 wessels Exp $
+ * $Id: peer_select.h,v 1.3 1997/02/27 02:57:14 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -31,7 +31,7 @@
 #ifndef PEER_SELECT_H
 #define PEER_SELECT_H
 
-extern void peerSelect _PARAMS((int fd, request_t *, StoreEntry *));
+extern void peerSelectStart _PARAMS((int fd, request_t *, StoreEntry *));
 extern int peerSelectDirect _PARAMS((request_t *));
 extern peer *peerGetSomeParent _PARAMS((request_t *, hier_code *));
 extern int matchInsideFirewall _PARAMS((const char *));

@@ -1,5 +1,5 @@
 /*
- * $Id: ftp.h,v 1.15 1996/11/06 23:14:35 wessels Exp $
+ * $Id: ftp.h,v 1.16 1997/02/27 02:57:07 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -105,7 +105,7 @@
 #ifndef FTP_H
 #define FTP_H
 
-extern int ftpStart _PARAMS((int unusedfd, const char *url, request_t * req, StoreEntry * entry));
+extern int ftpStart _PARAMS((request_t * req, StoreEntry * entry));
 extern int ftpInitialize _PARAMS((void));
 extern void ftpServerClose _PARAMS((void));
 

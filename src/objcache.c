@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.47 1996/12/16 20:13:01 wessels Exp $
+ * $Id: objcache.c,v 1.48 1997/02/27 02:57:12 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -227,15 +227,15 @@ objcache_CheckPassword(ObjectCacheData * obj)
 }
 
 int
-objcacheStart(int fd, const char *url, StoreEntry * entry)
+objcacheStart(int fd, StoreEntry * entry)
 {
     static const char *const BADCacheURL = "Bad Object Cache URL %s ... negative cached.\n";
     static const char *const BADPassword = "Incorrect password, sorry.\n";
     ObjectCacheData *data = NULL;
     int complete_flag = 1;
 
-    debug(16, 3, "objectcacheStart: '%s'\n", url);
-    if ((data = objcache_url_parser(url)) == NULL) {
+    debug(16, 3, "objectcacheStart: '%s'\n", entry->url);
+    if ((data = objcache_url_parser(entry->url)) == NULL) {
 	storeAbort(entry, "Invalid objcache syntax.\n");
 	entry->expires = squid_curtime + STAT_TTL;
 	safe_free(data);
@@ -331,8 +331,8 @@ objcacheStart(int fd, const char *url, StoreEntry * entry)
 	complete_flag = 0;
 	break;
     default:
-	debug(16, 5, "Bad Object Cache URL %s ... negative cached.\n", url);
-	storeAppendPrintf(entry, BADCacheURL, url);
+	debug(16, 5, "Bad Object Cache URL %s ... negative cached.\n", entry->url);
+	storeAppendPrintf(entry, BADCacheURL, entry->url);
 	break;
     }
     BIT_RESET(entry->flag, DELAY_SENDING);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.h,v 1.4 1996/12/13 22:26:38 wessels Exp $
+ * $Id: objcache.h,v 1.5 1997/02/27 02:57:13 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -105,3 +105,4 @@
 
 extern void objcachePasswdAdd _PARAMS((cachemgr_passwd **, char *, wordlist *));
 extern void objcachePasswdDestroy _PARAMS((cachemgr_passwd ** a));
+extern int objcacheStart _PARAMS((int fd, StoreEntry *));

@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.64 1997/02/03 23:03:08 wessels Exp $
+ * $Id: icp.h,v 1.65 1997/02/27 02:57:11 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -187,8 +187,7 @@ typedef struct iwd {
     struct timeval start;
     int accel;
     int size;			/* hack for CONNECT which doesnt use sentry */
-    aclCheck_t *aclChecklist;
-    void (*aclHandler) (struct iwd *, int answer);
+    PF aclHandler;
     float http_ver;
     struct {
 	int fd;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.h,v 1.15 1997/02/03 23:03:06 wessels Exp $
+ * $Id: client_side.h,v 1.16 1997/02/27 02:57:06 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -31,8 +31,8 @@
 #ifndef CLIENT_SIDE_H
 #define CLIENT_SIDE_H
 
-extern void clientAccessCheck(icpStateData *, void (*)_PARAMS((icpStateData *, int)));
-extern void clientAccessCheckDone _PARAMS((icpStateData *, int answer));
+extern void clientAccessCheck _PARAMS((icpStateData *, PF));
+extern void clientAccessCheckDone _PARAMS((int, void *));
 extern void icpProcessExpired _PARAMS((int fd, void *));
 extern int modifiedSince _PARAMS((StoreEntry *, request_t *));
 extern char *clientConstructTraceEcho _PARAMS((icpStateData *));
