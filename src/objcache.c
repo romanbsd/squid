@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.50 1997/04/28 04:23:20 wessels Exp $
+ * $Id: objcache.c,v 1.51 1997/05/15 23:40:46 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -228,7 +228,7 @@ objcache_CheckPassword(ObjectCacheData * obj)
     return strcmp(pwd, obj->passwd);
 }
 
-int
+void
 objcacheStart(int fd, StoreEntry * entry)
 {
     static const char *const BADCacheURL = "Bad Object Cache URL %s ... negative cached.\n";
@@ -242,7 +242,7 @@ objcacheStart(int fd, StoreEntry * entry)
 	entry->expires = squid_curtime + STAT_TTL;
 	safe_free(data);
 	InvokeHandlers(entry);
-	return COMM_ERROR;
+	return;
     }
     data->reply_fd = fd;
     data->entry = entry;
@@ -256,7 +256,7 @@ objcacheStart(int fd, StoreEntry * entry)
 	storeAbort(entry, BADPassword);
 	entry->expires = squid_curtime + STAT_TTL;
 	InvokeHandlers(entry);
-	return COMM_ERROR;
+	return;
     }
     /* retrieve object requested */
     BIT_SET(entry->flag, DELAY_SENDING);
@@ -344,7 +344,6 @@ objcacheStart(int fd, StoreEntry * entry)
     if (complete_flag)
 	storeComplete(entry);
     safe_free(data);
-    return COMM_OK;
 }
 
 void
