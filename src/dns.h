@@ -1,5 +1,5 @@
 /*
- * $Id: dns.h,v 1.8 1996/11/06 23:14:28 wessels Exp $
+ * $Id: dns.h,v 1.9 1997/04/28 04:23:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -116,7 +116,6 @@ typedef struct _dnsserver {
     int flags;
     int inpipe;
     int outpipe;
-    time_t lastcall;
     time_t answer;
     unsigned int offset;
     unsigned int size;

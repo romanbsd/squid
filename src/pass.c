@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.35 1997/03/29 04:45:19 wessels Exp $
+ * $Id: pass.c,v 1.36 1997/04/28 04:23:21 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -48,6 +48,7 @@ typedef struct {
     time_t timeout;
     int *size_ptr;		/* pointer to size for logging */
     int proxying;
+    int ip_lookup_pending;
 } PassStateData;
 
 static void passLifetimeExpire _PARAMS((int fd, void *));
@@ -107,6 +108,8 @@ passStateFree(int fd, void *data)
 	return;
     if (fd != passState->server.fd)
 	fatal_dump("passStateFree: FD mismatch!\n");
+    if (passState->ip_lookup_pending)
+	ipcache_unregister(passState->host, passState->server.fd);
     if (passState->client.fd > -1) {
 	commSetSelect(passState->client.fd,
 	    COMM_SELECT_READ,
@@ -356,6 +359,7 @@ passConnect(int fd, const ipcache_addrs * ia, void *data)
     PassStateData *passState = data;
     request_t *request = passState->request;
     char *buf = NULL;
+    passState->ip_lookup_pending = 0;
     if (ia == NULL) {
 	debug(39, 4, "passConnect: Unknown host: %s\n", passState->host);
 	buf = squid_error_url(passState->url,
@@ -511,6 +515,7 @@ passPeerSelectComplete(peer * p, void *data)
     } else {
 	passState->port = CACHE_HTTP_PORT;
     }
+    passState->ip_lookup_pending = 1;
     ipcache_nbgethostbyname(passState->host,
 	passState->server.fd,
 	passConnect,

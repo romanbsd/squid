@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.95 1997/03/29 04:45:13 wessels Exp $
+ * $Id: cache_cf.h,v 1.96 1997/04/28 04:22:58 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -185,6 +185,7 @@ struct SquidConfig {
 	char *dnsserver;
 	char *redirect;
 	char *pinger;
+	char *unlinkd;
     } Program;
     int dnsChildren;
     int redirectChildren;
@@ -253,13 +254,15 @@ struct SquidConfig {
     struct {
 	int high;
 	int low;
-	int ttl;
+	int period;
     } Netdb;
     struct {
 	int log_udp;
 	int enable_purge;
 	int res_defnames;
 	int anonymizer;
+	int client_db;
+	int query_icmp;
     } Options;
     struct {
 	struct _acl_access *HTTP;

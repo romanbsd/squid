@@ -1,5 +1,5 @@
 /*
- * $Id: redirect.h,v 1.9 1997/04/28 04:23:25 wessels Exp $
+ * $Id: unlinkd.h,v 1.2 1997/04/28 04:23:33 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -27,22 +27,11 @@
  *  
  */
 
-#ifndef REDIRECT_H
-#define REDIRECT_H
+#ifndef UNLINKD_H
+#define UNLINKD_H
 
-#define REDIRECT_AV_FACTOR 1000
+extern void unlinkdInit _PARAMS((void));
+extern void unlinkdClose _PARAMS((void));
+extern void unlinkdUnlink _PARAMS((const char *));
 
-typedef void (*RH) (void *data, char *result);
-
-extern void redirectStart _PARAMS((int cfd, icpStateData *, RH, void *));
-extern void redirectOpenServers _PARAMS((void));
-extern void redirectShutdownServers _PARAMS((void));
-extern void redirectStats _PARAMS((StoreEntry *));
-extern int redirectUnregister _PARAMS((const char *url, int fd));
-extern void redirectFreeMemory _PARAMS((void));
-
-#define REDIRECT_NONE 0
-#define REDIRECT_PENDING 1
-#define REDIRECT_DONE 2
-
-#endif /* REDIRECT_H */
+#endif /* UNLINKD_H */
