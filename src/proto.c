@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.43 1996/08/21 20:10:27 wessels Exp $
+ * $Id: proto.c,v 1.44 1996/08/21 20:11:56 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -232,11 +232,11 @@ int protoDispatchDNSHandle(unused1, hp, data)
     } else if (neighborsUdpPing(protoData)) {
 	/* call neighborUdpPing and start timeout routine */
 	if (entry->ping_status != PING_NONE)
-		fatal_dump("protoDispatchDNSHandle: bad ping_status");
+	    fatal_dump("protoDispatchDNSHandle: bad ping_status");
 	if (entry->store_status != STORE_PENDING)
-		fatal_dump("protoDispatchDNSHandle: bad store_status");
+	    fatal_dump("protoDispatchDNSHandle: bad store_status");
 	if (entry->swap_status != NO_SWAP)
-		fatal_dump("protoDispatchDNSHandle: bad swap_status");
+	    fatal_dump("protoDispatchDNSHandle: bad swap_status");
 	entry->ping_status = PING_WAITING;
 	comm_set_select_handler_plus_timeout(protoData->fd,
 	    COMM_SELECT_TIMEOUT,
