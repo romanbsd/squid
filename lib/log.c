@@ -1,5 +1,5 @@
 /*
- * $Id: log.c,v 1.7 1996/09/15 05:04:09 wessels Exp $
+ * $Id: log.c,v 1.8 1996/09/17 02:29:46 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -297,7 +297,7 @@ log_errno2(char *file, int line, char *s)
  *  standard_msg() - Prints the standard pid and timestamp
  */
 static char *
-standard_msg()
+standard_msg(void)
 {
     time_t t;
     static char buf[BUFSIZ];

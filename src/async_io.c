@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.10 1996/09/14 08:45:34 wessels Exp $
+ * $Id: async_io.c,v 1.11 1996/09/17 02:29:49 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -232,7 +232,7 @@ aioFileQueueRead(int fd, int (*handler) (int, dread_ctrl *), dread_ctrl * ctrl_d
 }
 
 void
-aioExamine()
+aioExamine(void)
 {
     int fd;
     int rc;

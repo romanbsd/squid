@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.12 1996/09/15 05:04:29 wessels Exp $
+ * $Id: hash.c,v 1.13 1996/09/17 02:29:58 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -421,7 +421,7 @@ hash_get_bucket(HashID hid, unsigned int bucket)
  *  and prints the table again...
  */
 int
-main()
+main(void)
 {
     int hid;
     int i;

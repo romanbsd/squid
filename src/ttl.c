@@ -1,6 +1,6 @@
 
 /*
- * $Id: ttl.c,v 1.20 1996/09/14 08:46:36 wessels Exp $
+ * $Id: ttl.c,v 1.21 1996/09/17 02:30:07 wessels Exp $
  *
  * DEBUG: section 22    TTL Calculation
  * AUTHOR: Harvest Derived
@@ -150,7 +150,7 @@ ttlFreeListgeneric(ttl_t * t)
 }
 
 void
-ttlFreeList()
+ttlFreeList(void)
 {
     ttlFreeListgeneric(TTL_tbl);
     ttlFreeListgeneric(TTL_tbl_force);

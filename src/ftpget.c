@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.38 1996/09/15 05:04:28 wessels Exp $
+ * $Id: ftpget.c,v 1.39 1996/09/17 02:29:57 wessels Exp $
  *
  * DEBUG: section 0     FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -475,7 +475,7 @@ The following FTP error was encountered:\n\
 \n"
 
 char *
-html_trailer()
+html_trailer(void)
 {
     static char buf[SMALLBUFSIZ];
 

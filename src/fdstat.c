@@ -1,5 +1,5 @@
 /*
- * $Id: fdstat.c,v 1.20 1996/09/15 05:04:22 wessels Exp $
+ * $Id: fdstat.c,v 1.21 1996/09/17 02:29:55 wessels Exp $
  *
  * DEBUG: section 7     File Descriptor Status
  * AUTHOR: Harvest Derived
@@ -228,7 +228,7 @@ fdstat_close(int fd)
 
 /* return the biggest fd */
 int
-fdstat_biggest_fd()
+fdstat_biggest_fd(void)
 {
     return Biggest_FD;
 }

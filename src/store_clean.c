@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.12 1996/09/16 17:08:11 wessels Exp $
+ * $Id: store_clean.c,v 1.13 1996/09/17 02:30:06 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -57,7 +57,7 @@ rev_int_sort(int *i1, int *i2)
 }
 
 void
-storeDirClean()
+storeDirClean(void)
 {
     static int index = 0;
     DIR *dp = NULL;

@@ -1,5 +1,5 @@
 /*
- * $Id: debug.c,v 1.7 1996/09/15 05:04:09 wessels Exp $
+ * $Id: debug.c,v 1.8 1996/09/17 02:29:45 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -125,7 +125,7 @@ int Harvest_do_debug = 0;
  *  debug_reset() - Reset debugging routines.
  */
 void
-debug_reset()
+debug_reset(void)
 {
     int i;
 
@@ -205,7 +205,7 @@ debug_flag(char *flag)
  *
  */
 void
-debug_init()
+debug_init(void)
 {
     char *s, *t, *u;
 

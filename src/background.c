@@ -1,6 +1,6 @@
 
 /*
- * $Id: background.c,v 1.6 1996/09/14 16:54:49 wessels Exp $
+ * $Id: background.c,v 1.7 1996/09/17 02:29:49 wessels Exp $
  *
  * DEBUG: Section 0     Background Processing
  * AUTHOR: Henrik Nordstrom
@@ -75,7 +75,7 @@ runInBackground(char *name,
  * returns true if there is more background processing to do
  */
 extern int
-doBackgroundProcessing()
+doBackgroundProcessing(void)
 {
     struct bg_entry *this = NULL;
 
