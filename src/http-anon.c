@@ -1,5 +1,5 @@
 /*
- * $Id: http-anon.c,v 1.3 1997/02/20 22:23:00 wessels Exp $
+ * $Id: http-anon.c,v 1.4 1997/02/20 23:54:29 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Lutz Donnerhacke <lutz@iks-jena.de>
@@ -123,8 +123,8 @@ httpAnonSearchHeaderField(const struct http_anon_struct_header *header_field,
     const char *line)
 {
     const struct http_anon_struct_header *ppc;
-    if (*line == '\0')
-	return 0;
+    if (*line == '\0')	/* the terminating empty line */
+	return 1;
     for (ppc = header_field; ppc->len; ppc++)
 	if (strncasecmp(line, ppc->name, ppc->len) == 0)
 	    return 1;
