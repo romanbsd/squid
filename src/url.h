@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.18 1996/08/30 23:23:37 wessels Exp $
+ * $Id: url.h,v 1.19 1996/09/13 20:50:52 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -39,7 +39,7 @@ typedef enum {
     METHOD_POST,		/* 010 */
     METHOD_PUT,			/* 011 */
     METHOD_HEAD,		/* 100 */
-    METHOD_CONNECT,		/* 101 */
+    METHOD_CONNECT		/* 101 */
 } method_t;
 
 extern char *RequestMethodStr[];

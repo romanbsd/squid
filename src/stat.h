@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.27 1996/09/13 20:23:32 wessels Exp $
+ * $Id: stat.h,v 1.28 1996/09/13 20:50:51 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -172,6 +172,7 @@ struct _cacheinfo {
 
     /* statistic update method */
 
+#if LOG_FULL_HEADERS
     /* add a transaction to system log */
     void (*log_append) _PARAMS((struct _cacheinfo * obj,
 	    char *url,
@@ -182,12 +183,21 @@ struct _cacheinfo {
 	    int http_code,
 	    int msec,
 	    char *ident,
-#ifndef LOG_FULL_HEADERS
-	    struct _hierarchyLogData * hierData));
-#else
 	    struct _hierarchyLogData * hierData,
 	    char *request_hdrs,
 	    char *reply_hdrs));
+#else
+    /* add a transaction to system log */
+    void (*log_append) _PARAMS((struct _cacheinfo * obj,
+	    char *url,
+	    struct in_addr,
+	    int size,
+	    char *action,
+	    char *method,
+	    int http_code,
+	    int msec,
+	    char *ident,
+	    struct _hierarchyLogData * hierData));
 #endif				/* LOG_FULL_HEADERS */
 
     /* clear logfile */
