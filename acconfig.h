@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.63 2002/01/01 09:47:46 adrian Exp $ */
+/* $Id: acconfig.h,v 1.64 2002/04/06 08:49:21 adrian Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -53,6 +53,9 @@
 #undef CACHE_ICP_PORT
 #endif
 
+/* Compile & use the malloc package by Doug Lea] */
+#undef USE_DLMALLOC
+
 /* Define to do simple malloc debugging */
 #undef XMALLOC_DEBUG
 
@@ -66,6 +69,9 @@
 #undef XMALLOC_TRACE
 
 #undef FORW_VIA_DB
+
+/* Define if you have problems with memPools and want to disable Pools */
+#undef DISABLE_POOLS
 
 /* Defines how many threads aufs uses for I/O */
 #undef AUFS_IO_THREADS
