@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.32 1998/09/22 21:16:23 wessels Exp $ */
+/* $Id: acconfig.h,v 1.33 1998/10/02 04:36:24 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -198,3 +198,7 @@
  */
 #undef IPF_TRANSPARENT
 
+/*
+ * type of fd_set array
+ */
+#undef fd_mask
