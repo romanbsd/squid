@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.56 1998/09/14 22:18:01 wessels Exp $
+ * $Id: pump.c,v 1.57 1998/09/14 22:40:10 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -316,7 +316,7 @@ pumpClose(void *data)
 	p, p->s_fd, p->c_fd);
     /* double-call detection */
     assert(!p->flags.closing);
-    P->flags.closing = 1;
+    p->flags.closing = 1;
     if (req != NULL && req->store_status == STORE_PENDING) {
 	storeUnregister(req, p);
 	storeAbort(req, 0);
