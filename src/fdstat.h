@@ -1,4 +1,4 @@
-/* $Id: fdstat.h,v 1.2 1996/03/27 01:46:03 wessels Exp $ */
+/* $Id: fdstat.h,v 1.3 1996/04/16 20:30:00 wessels Exp $ */
 
 #ifndef FDSTAT_H
 #define FDSTAT_H
@@ -17,5 +17,7 @@ extern int fdstat_isopen _PARAMS((int fd));
 extern void fdstat_close _PARAMS((int fd));
 extern void fdstat_open _PARAMS((int fd, File_Desc_Type type));
 extern int fdstat_are_n_free_fd _PARAMS((int));
+extern File_Desc_Type fdstatGetType _PARAMS((int));
+
 
 #endif

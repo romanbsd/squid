@@ -1,5 +1,5 @@
 
-/* $Id: fdstat.c,v 1.11 1996/04/10 20:53:45 wessels Exp $ */
+/* $Id: fdstat.c,v 1.12 1996/04/16 20:29:50 wessels Exp $ */
 
 /* DEBUG: Section 7             fdstat: */
 
@@ -17,6 +17,11 @@ typedef struct _FDENTRY {
 } FDENTRY;
 
 static FDENTRY *fd_stat_tab = NULL;
+
+File_Desc_Type fdstatGetType(fd)
+{
+	return fd_stat_tab[fd].type;
+}
 
 char *fdfiletype(type)
      File_Desc_Type type;
