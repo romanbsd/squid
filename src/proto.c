@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.33 1996/07/11 18:31:01 wessels Exp $
+ * $Id: proto.c,v 1.34 1996/07/15 23:10:55 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -201,7 +201,7 @@ int protoDispatchDNSHandle(unused1, unused2, data)
 	if ((hp = ipcache_gethostbyname(req->host, 0)) == NULL) {
 	    debug(17, 1, "Unknown host: %s\n", req->host);
 	} else if (firewall_ip_list) {
-	    xmemcpy(&srv_addr, hp->h_addr_list[0], hp->h_length);
+	    xmemcpy(&srv_addr, *(hp->h_addr_list + 0), hp->h_length);
 	    if (ip_access_check(srv_addr, firewall_ip_list) == IP_DENY) {
 		hierarchy_log_append(entry,
 		    HIER_LOCAL_IP_DIRECT, 0,
@@ -210,7 +210,7 @@ int protoDispatchDNSHandle(unused1, unused2, data)
 		return 0;
 	    }
 	} else if (local_ip_list) {
-	    xmemcpy(&srv_addr, hp->h_addr_list[0], hp->h_length);
+	    xmemcpy(&srv_addr, *(hp->h_addr_list + 0), hp->h_length);
 	    if (ip_access_check(srv_addr, local_ip_list) == IP_DENY) {
 		hierarchy_log_append(entry,
 		    HIER_LOCAL_IP_DIRECT, 0,
