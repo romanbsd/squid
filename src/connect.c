@@ -1,5 +1,5 @@
 /*
- *  $Id: connect.c,v 1.4 1996/04/10 00:21:24 wessels Exp $ 
+ *  $Id: connect.c,v 1.5 1996/04/10 03:51:43 wessels Exp $ 
  *
  * DEBUG: Section 26                    connect
  */
@@ -268,6 +268,7 @@ static void connectConnectRemote(fd, data)
 }
 
 static void connectCloseAndFree(fd, data)
+     int fd;
      ConnectData *data;
 {
     if (fd >= 0) {
