@@ -1,6 +1,6 @@
 
 /*
- * $Id: client.c,v 1.100 2002/09/01 15:16:35 hno Exp $
+ * $Id: client.c,v 1.101 2003/01/07 20:46:12 wessels Exp $
  *
  * DEBUG: section 0     WWW Client
  * AUTHOR: Harvest Derived
@@ -124,7 +124,8 @@ main(int argc, char *argv[])
     if (argc < 2) {
 	usage(argv[0]);		/* need URL */
     } else if (argc >= 2) {
-	strcpy(url, argv[argc - 1]);
+	strncpy(url, argv[argc - 1], BUFSIZ);
+	url[BUFSIZ - 1] = '\0';
 	if (url[0] == '-')
 	    usage(argv[0]);
 	while ((c = getopt(argc, argv, "ah:l:P:i:km:p:rsvt:g:p:I:H:T:u:U:w:W:?")) != -1)
