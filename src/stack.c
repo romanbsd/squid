@@ -1,5 +1,5 @@
 /*
- * $Id: stack.c,v 1.6 1996/07/09 03:41:40 wessels Exp $
+ * $Id: stack.c,v 1.7 1996/07/17 17:02:09 wessels Exp $
  *
  * DEBUG: section 0     Stack Primitives
  * AUTHOR: Harvest Derived
@@ -122,7 +122,7 @@ void init_stack(stack, size)
      int size;
 {
     stack->stack_size = size;
-    stack->base = xcalloc(size, sizeof(generic_ptr *));
+    stack->base = xcalloc(size, sizeof(void **));
     stack->top = &stack->base[0];
 }
 
@@ -140,7 +140,7 @@ void init_stack(stack, size)
 --------------------------------------------------------------------------*/
 void push(stack, data)
      Stack *stack;
-     generic_ptr data;
+     void *data;
 {
     if (current_stacksize(stack) == stack->stack_size) {
 	safe_free(data);
@@ -196,7 +196,7 @@ int full_stack(stack)
 --  Output:   None.
 --
 --------------------------------------------------------------------------*/
-char *pop(stack)
+void *pop(stack)
      Stack *stack;
 {
     if (empty_stack(stack) == 1)

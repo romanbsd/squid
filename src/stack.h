@@ -1,5 +1,5 @@
 /*
- * $Id: stack.h,v 1.3 1996/07/08 22:42:53 wessels Exp $
+ * $Id: stack.h,v 1.4 1996/07/17 17:02:10 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -107,18 +107,16 @@
 
 #define current_stacksize(stack) ((stack)->top - (stack)->base)
 
-typedef char *generic_ptr;
-
 typedef struct {
-    generic_ptr *base;
-    generic_ptr *top;
+    void **base;
+    void **top;
     int stack_size;
 } Stack;
 
-extern char *pop _PARAMS((Stack *));
+extern void *pop _PARAMS((Stack *));
 extern int empty_stack _PARAMS((Stack *));
 extern int full_stack _PARAMS((Stack *));
-extern void push _PARAMS((Stack *, generic_ptr));
+extern void push _PARAMS((Stack *, void *));
 extern void init_stack _PARAMS((Stack *, int));
 
 #endif /* _STACK_H_ */
