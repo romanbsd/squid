@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.196 1996/12/03 20:26:56 wessels Exp $
+ * $Id: icp.c,v 1.197 1996/12/04 16:16:21 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -657,7 +657,7 @@ icpGetHeadersForIMS(int fd, icpStateData * icpState)
 
     lmt = mem->reply->last_modified;
     if (lmt < 0)
-	debug(12, 0, "WARNING: '%s' has LMTIME=%s\n", mkrfc1123(lmt));
+	debug(12, 0, "WARNING: '%s' has LMTIME=%s\n", entry->url, mkrfc1123(lmt));
 
     /* Find size of the object */
     if (mem->reply->content_length)
