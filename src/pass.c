@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.26 1997/02/05 04:54:13 wessels Exp $
+ * $Id: pass.c,v 1.27 1997/02/19 00:03:58 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -107,10 +107,12 @@ passStateFree(int fd, void *data)
 	return;
     if (fd != passState->server.fd)
 	fatal_dump("passStateFree: FD mismatch!\n");
-    commSetSelect(passState->client.fd,
-	COMM_SELECT_READ,
-	NULL,
-	NULL, 0);
+    if (passState->client.fd > -1) {
+	commSetSelect(passState->client.fd,
+	    COMM_SELECT_READ,
+	    NULL,
+	    NULL, 0);
+    }
     safe_free(passState->server.buf);
     safe_free(passState->client.buf);
     xfree(passState->url);
