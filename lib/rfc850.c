@@ -1,5 +1,5 @@
 /*
- * $Id: rfc850.c,v 1.5 1996/07/09 03:41:13 wessels Exp $
+ * $Id: rfc850.c,v 1.6 1996/09/04 22:51:22 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -250,11 +250,11 @@ time_t parse_rfc850(str)
 }
 
 char *mkrfc850(t)
-     time_t *t;
+     time_t t;
 {
     static char buf[128];
 
-    struct tm *gmt = gmtime(t);
+    struct tm *gmt = gmtime(&t);
 
     buf[0] = '\0';
     (void) strftime(buf, 127, "%A, %d-%b-%y %H:%M:%S GMT", gmt);
@@ -309,7 +309,7 @@ int main()
     time_t t, pt;
 
     t = time(NULL);
-    x = mkrfc850(&t);
+    x = mkrfc850(t);
     printf("HTTP Time: %s\n", x);
 
     pt = parse_rfc850(x);
