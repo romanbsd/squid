@@ -1,4 +1,4 @@
-/* $Id: storetoString.c,v 1.4 1996/03/27 04:42:10 wessels Exp $ */
+/* $Id: storetoString.c,v 1.5 1996/04/04 01:30:53 wessels Exp $ */
 
 #include "squid.h"
 
@@ -186,16 +186,16 @@ char *storeToString(e)
     sprintf(tmpbuf, "TypeId: ");
     switch (e->type_id) {
 
-    case REQ_GET:
-	strcat(tmpbuf, "REQ_GET\n");
+    case METHOD_GET:
+	strcat(tmpbuf, "METHOD_GET\n");
 	break;
 
-    case REQ_POST:
-	strcat(tmpbuf, "REQ_POST\n");
+    case METHOD_POST:
+	strcat(tmpbuf, "METHOD_POST\n");
 	break;
 
-    case REQ_HEAD:
-	strcat(tmpbuf, "REQ_POST\n");
+    case METHOD_HEAD:
+	strcat(tmpbuf, "METHOD_HEAD\n");
 	break;
 
     default:
