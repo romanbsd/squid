@@ -1,5 +1,5 @@
 /*
- * $Id: ipcache.h,v 1.12 1996/08/21 05:50:09 wessels Exp $
+ * $Id: ipcache.h,v 1.13 1996/08/26 19:16:07 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -133,15 +133,19 @@ typedef struct _ipcache_entry {
     ipcache_status_t status:3;
 } ipcache_entry;
 
-extern int ipcache_nbgethostbyname _PARAMS((char *name, int fd, IPH handler, void *handlerData));
+extern int ipcache_nbgethostbyname _PARAMS((char *name,
+	int fd,
+	IPH handler,
+	void *handlerData));
+extern int ipcache_purgelru _PARAMS((void));
 extern int ipcache_unregister _PARAMS((char *, int));
 extern struct hostent *ipcache_gethostbyname _PARAMS((char *, int flags));
+extern void ipcacheInvalidate _PARAMS((char *));
+extern void ipcacheReleaseInvalid _PARAMS((char *));
+extern void ipcacheOpenServers _PARAMS((void));
+extern void ipcacheShutdownServers _PARAMS((void));
 extern void ipcache_init _PARAMS((void));
 extern void stat_ipcache_get _PARAMS((StoreEntry *));
-extern void ipcacheShutdownServers _PARAMS((void));
-extern void ipcacheOpenServers _PARAMS((void));
-extern void ipcacheReleaseInvalid _PARAMS((char *));
-extern int ipcache_purgelru _PARAMS((void));
 
 extern char *dns_error_message;
 
