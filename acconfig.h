@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.69 2002/07/01 08:54:53 hno Exp $ */
+/* $Id: acconfig.h,v 1.70 2002/07/28 21:55:33 hno Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -121,15 +121,6 @@
  * Define to enable WCCP
  */
 #define USE_WCCP 1
-
-/*
- * Squid frequently calls gettimeofday() for accurate timestamping.
- * If you are concerned that gettimeofday() is called too often, and
- * could be causing performance degradation, then you can define
- * ALARM_UPDATES_TIME and cause Squid's clock to be updated at regular
- * intervals (one second) with ALARM signals.
- */
-#undef ALARM_UPDATES_TIME
 
 /*
  * Define this to include code which lets you specify access control
