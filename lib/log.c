@@ -1,4 +1,5 @@
-/* $Id: log.c,v 1.2 1996/02/29 08:15:23 wessels Exp $ */
+
+/* $Id: log.c,v 1.3 1996/04/14 03:25:16 wessels Exp $ */
 
 #include <stdio.h>
 #include <string.h>
@@ -89,7 +90,7 @@ void Log(va_alist)
     lbuf[0] = '\0';
     vsprintf(lbuf, fmt, ap);
     va_end(ap);
-    fprintf (fp_log, "%s: %s", standard_msg(), lbuf);
+    fprintf(fp_log, "%s: %s", standard_msg(), lbuf);
 }
 
 /*
