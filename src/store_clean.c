@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.48 1999/01/12 23:38:38 wessels Exp $
+ * $Id: store_clean.c,v 1.49 1999/05/03 22:41:12 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -94,7 +94,7 @@ storeDirClean(void *datanotused)
 	fn = storeDirProperFileno(D0, swapfileno);
 	if (storeDirValidFileno(fn))
 	    if (storeDirMapBitTest(fn))
-		if (storeFilenoBelongsHere(fn, D0, D1, D2))
+		if (storeUfsFilenoBelongsHere(fn, D0, D1, D2))
 		    continue;
 #if USE_TRUNCATE_NOT_UNLINK
 	if (!stat(de->d_name, &sb))
