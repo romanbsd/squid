@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.20 1998/02/27 05:51:12 kostas Exp $ */
+/* $Id: acconfig.h,v 1.21 1998/03/28 04:33:39 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -119,6 +119,12 @@
  * functions found in 4.4 BSD derviations (e.g. FreeBSD, ?).
  */
 #undef USE_ARP_ACL
+
+/*
+ * Define this to include code for the Hypertext Cache Protocol (HTCP)
+ */
+#undef USE_HTCP
+
 /********************************
  *  END OF CONFIGURABLE OPTIONS *
  ********************************/
