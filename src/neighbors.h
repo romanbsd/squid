@@ -2,7 +2,7 @@
 
 
 /*
- * $Id: neighbors.h,v 1.48 1997/06/17 03:03:25 wessels Exp $
+ * $Id: neighbors.h,v 1.49 1997/06/18 00:19:59 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -179,7 +179,7 @@ struct _peer {
     int n_addresses;
     int rr_count;
     struct _peer *next;
-    callback_meta *cbm_list;
+    int ip_lookup_pending;
     int test_fd;
 };
 

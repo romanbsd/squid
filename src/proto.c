@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.114 1997/06/04 06:16:06 wessels Exp $
+ * $Id: proto.c,v 1.115 1997/06/18 00:20:02 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -153,7 +153,7 @@ protoDispatchComplete(peer * p, void *data)
 	return;
     protoStart(pctrl->fd, pctrl->entry, p, pctrl->request);
     requestUnlink(pctrl->request);
-    xfree(pctrl);
+    cbdataFree(pctrl);
 }
 
 static void
@@ -244,6 +244,7 @@ protoDispatch(int fd, StoreEntry * entry, request_t * request)
 	return;
     }
     pctrl = xcalloc(1, sizeof(pctrl_t));
+    cbdataAdd(pctrl);
     pctrl->entry = entry;
     pctrl->fd = fd;
     pctrl->request = requestLink(request);

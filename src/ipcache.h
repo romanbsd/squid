@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipcache.h,v 1.38 1997/06/17 03:03:23 wessels Exp $
+ * $Id: ipcache.h,v 1.39 1997/06/18 00:19:56 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -141,8 +141,7 @@ typedef void IPH _PARAMS((const ipcache_addrs *, void *));
 
 extern void ipcache_nbgethostbyname _PARAMS((const char *name,
 	IPH * handler,
-	void *handlerData,
-	callback_meta **));
+	void *handlerData));
 extern EVH ipcache_purgelru;
 extern const ipcache_addrs *ipcache_gethostbyname _PARAMS((const char *, int flags));
 extern void ipcacheInvalidate _PARAMS((const char *));
@@ -158,6 +157,7 @@ extern void ipcacheRemoveBadAddr _PARAMS((const char *name, struct in_addr));
 extern void ipcacheFreeMemory _PARAMS((void));
 extern ipcache_addrs *ipcacheCheckNumeric _PARAMS((const char *name));
 extern void ipcache_restart _PARAMS((void));
+extern int ipcacheUnregister _PARAMS((const char *name, void *data));
 
 extern char *dns_error_message;
 
