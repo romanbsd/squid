@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.50 1999/05/22 07:42:09 wessels Exp $
+ * $Id: store_clean.c,v 1.51 1999/05/25 06:53:47 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -65,7 +65,7 @@ storeDirClean(void *datanotused)
     int N0, N1, N2;
     int D0, D1, D2;
     eventAdd("storeDirClean", storeDirClean, NULL, 15.0, 1);
-    if (store_rebuilding)
+    if (store_dirs_rebuilding)
 	return;
     N0 = Config.cacheSwap.n_configured;
     D0 = swap_index % N0;
