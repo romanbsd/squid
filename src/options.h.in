@@ -1,5 +1,5 @@
 /*
- * $Id: options.h,v 1.2 1997/12/06 01:30:34 wessels Exp $
+ * $Id: options.h.in,v 1.1 1997/12/06 05:16:58 wessels Exp $
  */
 
 /*
@@ -79,3 +79,4 @@
  * functions found in 4.4 BSD derviations (e.g. FreeBSD, ?).
  */
 #undef USE_ARP_ACL 1
+
