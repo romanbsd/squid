@@ -1,6 +1,6 @@
 
 /*
- *  $Id: config.h.in,v 1.4 1996/04/11 23:52:43 wessels Exp $
+ *  $Id: config.h.in,v 1.5 1996/04/16 05:48:30 wessels Exp $
  */
 
 #ifndef _CONFIG_H_
@@ -89,7 +89,7 @@
 #endif
 
 #if !defined(DEFAULT_CONFIG_FILE)
-#define DEFAULT_CONFIG_FILE "@prefix@/etc/cached.conf"
+#define DEFAULT_CONFIG_FILE "@prefix@/etc/squid.conf"
 #endif
 
 #if !defined(DEFAULT_CACHE_LOG)
