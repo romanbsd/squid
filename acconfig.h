@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.66 2002/04/13 15:30:10 hno Exp $ */
+/* $Id: acconfig.h,v 1.67 2002/04/13 16:29:06 hno Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -152,7 +152,7 @@
 /*
  * Cache Array Routing Protocol
  */
-#undef USE_CARP
+#define USE_CARP 1
 
 /* Define if NTLM is allowed to fail gracefully when a helper has problems */
 #undef NTLM_FAIL_OPEN
