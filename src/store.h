@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.65 1996/11/05 17:08:30 wessels Exp $
+ * $Id: store.h,v 1.66 1996/11/06 08:16:44 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -328,8 +328,8 @@ extern int store_rebuilding;
 #define STORE_REBUILDING_SLOW 1
 #define STORE_REBUILDING_FAST 2
 
-#define SWAP_DIRECTORIES_L1	16
-#define SWAP_DIRECTORIES_L2	256
+#define SWAP_DIRECTORIES_L1	(Config.levelOneDirs)
+#define SWAP_DIRECTORIES_L2	(Config.levelTwoDirs)
 extern int ncache_dirs;
 extern unsigned long store_mem_size;
 
