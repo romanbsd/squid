@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.318 1997/10/26 02:35:34 wessels Exp $
+ * $Id: icp.c,v 1.319 1997/10/27 22:53:12 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -378,12 +378,6 @@ icpCachable(clientHttpRequest * http)
     request_t *req = http->request;
     method_t method = req->method;
     const wordlist *p;
-#ifdef OLD_CODE
-    /* Now we look for Cache-Control: proxy-revalidate before
-     * deciding if it will be cachable or not */
-    if (BIT_TEST(http->request->flags, REQ_AUTH))
-	return 0;
-#endif
     for (p = Config.cache_stoplist; p; p = p->next) {
 	if (strstr(url, p->key))
 	    return 0;
