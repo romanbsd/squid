@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.60 1998/12/05 00:54:37 wessels Exp $
+ * $Id: pump.c,v 1.61 1999/01/08 21:12:15 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -324,15 +324,9 @@ pumpClose(void *data)
     p->flags.closing = 1;
     if (req != NULL && req->store_status == STORE_PENDING) {
 	storeUnregister(req, p);
-	storeAbort(req, 0);
     }
     if (rep != NULL && rep->store_status == STORE_PENDING) {
-	/*
-	 * Set the storeAbort() 'cbflag' so that the server-side
-	 * abort handler (httpAbort) gets called and the server-side
-	 * FD gets closed.
-	 */
-	storeAbort(rep, 1);
+	debug(0, 0) ("XXX did the server-side FD (%d) get closed?\n", p->s_fd);
     }
     if (p->s_fd > -1) {
 	comm_close(p->s_fd);
@@ -369,19 +363,11 @@ pumpFree(int fd, void *data)
     rep = p->reply_entry;
     if (req != NULL) {
 	storeUnregister(req, p);
-	if (req->store_status == STORE_PENDING)
-	    storeAbort(req, 0);
 	storeUnlockObject(req);
 	p->request_entry = NULL;
     }
     if (rep != NULL) {
-	/*
-	 * Set the storeAbort() 'cbflag' so that the server-side
-	 * abort handler (httpAbort) gets called and the server-side
-	 * FD gets closed.
-	 */
-	if (rep->store_status == STORE_PENDING)
-	    storeAbort(rep, 1);
+	debug(0, 0) ("XXX did the server-side FD (%d) get closed?\n", p->s_fd);
 	storeUnlockObject(rep);
 	p->reply_entry = NULL;
     }
