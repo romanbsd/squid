@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.116 1996/09/18 21:39:34 wessels Exp $
+ * $Id: icp.c,v 1.117 1996/09/19 05:12:57 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -276,7 +276,8 @@ icpStateFree(int fd, icpStateData * icpState)
 	icpState->log_type);
     if (icpState->ident_fd)
 	comm_close(icpState->ident_fd);
-    checkFailureRatio(icpState->log_type, hierData->code);
+    checkFailureRatio(icpState->log_type,
+	hierData ? hierData->code : HIER_NONE);
     safe_free(icpState->inbuf);
     meta_data.misc -= icpState->inbufsize;
     safe_free(icpState->url);
