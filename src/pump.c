@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.34 1998/04/05 22:51:39 wessels Exp $
+ * $Id: pump.c,v 1.35 1998/04/06 22:25:45 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -405,6 +405,8 @@ pumpServerClosed(int fd, void *data)
      * we have been called from comm_close for the server side, so
      * just need to clean up the client side
      */
+    assert(p->s_fd == fd):
+    p->s_fd = -1;
     comm_close(p->c_fd);
 }
 
