@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.38 1999/04/15 06:14:52 wessels Exp $ */
+/* $Id: acconfig.h,v 1.39 1999/04/26 20:44:01 glenn Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -81,6 +81,9 @@
 
 /* Define to enable SNMP monitoring of Squid */
 #undef SQUID_SNMP
+
+/* Define to enable WCCP */
+#undef WCCP
 
 /*
  * Squid frequently calls gettimeofday() for accurate timestamping.
