@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.10 1998/03/12 07:21:30 wessels Exp $
+ * $Id: pump.c,v 1.11 1998/03/12 07:37:56 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -80,13 +80,18 @@ pumpInit(int fd, request_t * r, char *uri)
     memset(&hdr, '\0', sizeof(HttpHeader));
     hdrStart = r->headers;
     hdrEnd = &r->headers[r->headers_sz];
-    if (!httpHeaderParse(&hdr, hdrStart, hdrEnd)) {
-	debug(61, 1) ("pumpInit: Cannot find Content-Length.\n");
+    if (NULL == httpHeaderParse(&hdr, hdrStart, hdrEnd)) {
+	debug(61, 1) ("pumpInit: Cannot find Content-Length\n");
 	xfree(p);
 	return;
     }
     clen = httpHeaderGetInt(&hdr, HDR_CONTENT_LENGTH);
     debug(61, 4) ("pumpInit: Content-Length=%d.\n", clen);
+    if (clen < 0) {
+	debug(61, 1) ("pumpInit: Cannot find Content-Length\n");
+	xfree(p);
+	return;
+    }
 
     EBIT_SET(flags, REQ_NOCACHE);	/* for now, don't cache */
     snprintf(new_key, MAX_URL + 5, "%s|Pump", uri);
