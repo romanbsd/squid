@@ -1,5 +1,5 @@
 /*
- * $Id: stat.h,v 1.19 1996/07/22 16:40:30 wessels Exp $
+ * $Id: stat.h,v 1.20 1996/07/22 17:20:59 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -173,7 +173,7 @@ struct _cacheinfo {
     /* add a transaction to system log */
     void (*log_append) _PARAMS((struct _cacheinfo * obj,
 	    char *url,
-	    char *id,
+	    struct in_addr,
 	    int size,
 	    char *action,
 	    char *method,
