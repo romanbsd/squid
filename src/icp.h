@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.48 1996/10/15 16:40:08 wessels Exp $
+ * $Id: icp.h,v 1.49 1996/10/24 05:07:21 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -152,7 +152,7 @@ typedef enum {
 #define		REQ_IMS		0x04
 #define		REQ_AUTH	0x08
 #define		REQ_CACHABLE	0x10
-#define 	REQ_ACCEL	0x20
+#define 	REQ_UNUSED	0x20
 #define 	REQ_HIERARCHICAL 0x40
 #define 	REQ_LOOPDETECT  0x80
 

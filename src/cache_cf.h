@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.61 1996/10/10 18:48:48 wessels Exp $
+ * $Id: cache_cf.h,v 1.62 1996/10/24 05:07:17 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -219,9 +219,10 @@ struct SquidConfig {
     char *errHtmlText;
     struct {
 	char *host;
-	u_short port;
 	char *file;
 	int rate;
+	int on;
+	u_short port;
     } Announce;
     struct {
 	struct in_addr tcp_incoming;

@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.55 1996/10/19 00:13:49 wessels Exp $
+ * $Id: ftpget.c,v 1.56 1996/10/24 05:07:19 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -175,6 +175,7 @@
 
 /* Junk so we can link with debug.o */
 int opt_syslog_enable = 0;
+int opt_read_only = 0;
 volatile int unbuffered_logs = 1;
 char w_space[] = " \t\n\r";
 char appname[] = "pinger";
