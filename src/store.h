@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.36 1996/08/14 22:57:18 wessels Exp $
+ * $Id: store.h,v 1.37 1996/08/19 22:46:01 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -328,4 +328,3 @@ extern int store_rebuilding;
 extern int ncache_dirs;
 
 #endif
-
