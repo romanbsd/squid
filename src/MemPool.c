@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.11 1998/03/25 06:14:23 wessels Exp $
+ * $Id: MemPool.c,v 1.12 1998/04/02 00:21:59 rousskov Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -48,6 +48,10 @@ static size_t mem_idle_limit = 0;
 static MemPoolMeter TheMeter;
 static gb_t mem_traffic_volume = {0, 0};
 static Stack Pools;
+
+/* local prototypes */
+static void memPoolDescribe(const MemPool * pool);
+
 
 static double 
 toMB(size_t size)
@@ -111,7 +115,7 @@ memCleanModule()
 	}
     }
     if (dirty_count)
-	debug(13, 2) ("memCleanModule: %d pools are left dirty\n", dirty_count);
+	debug(63, 2) ("memCleanModule: %d pools are left dirty\n", dirty_count);
     /* we clean the stack anyway */
     stackClean(&Pools);
 }
@@ -247,11 +251,12 @@ memPoolInUseSize(const MemPool * pool)
     return pool->obj_size * pool->meter.inuse.level;
 }
 
-void
+/* to-do: make debug level a parameter? */
+static void
 memPoolDescribe(const MemPool * pool)
 {
     assert(pool);
-    debug(63, 1) ("%-20s: %6d x %4d bytes = %5d KB\n",
+    debug(63, 2) ("%-20s: %6d x %4d bytes = %5d KB\n",
 	pool->label, memPoolInUseCount(pool), pool->obj_size,
 	toKB(memPoolInUseSize(pool)));
 }
