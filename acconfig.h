@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.21 1998/03/28 04:33:39 wessels Exp $ */
+/* $Id: acconfig.h,v 1.22 1998/03/31 18:57:49 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -54,6 +54,8 @@
 
 /* Define to have a detailed trace of memory allocations */
 #undef XMALLOC_TRACE
+
+#undef FORW_VIA_DB
 
 /* Define to use async disk I/O operations */
 #undef USE_ASYNC_IO
