@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.47 1998/12/02 05:07:25 wessels Exp $
+ * $Id: store_clean.c,v 1.48 1999/01/12 23:38:38 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -99,7 +99,7 @@ storeDirClean(void *datanotused)
 #if USE_TRUNCATE_NOT_UNLINK
 	if (!stat(de->d_name, &sb))
 	    if (sb.st_size == 0)
-	        continue;
+		continue;
 #endif
 	files[k++] = swapfileno;
     }
