@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.79 1997/02/13 05:15:01 wessels Exp $
+ * $Id: ftpget.c,v 1.80 1997/02/19 00:06:41 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -2594,9 +2594,9 @@ main(int argc, char *argv[])
 
 
 #ifdef NSIG
-    for (i = 0; i < NSIG; i++) {
+    for (i = 1; i < NSIG; i++) {
 #else
-    for (i = 0; i < _sys_nsig; i++) {
+    for (i = 1; i < _sys_nsig; i++) {
 #endif
 	switch (i) {
 	case SIGALRM:
