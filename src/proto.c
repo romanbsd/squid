@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.139 1997/12/06 18:58:35 wessels Exp $
+ * $Id: proto.c,v 1.140 1997/12/27 18:15:03 kostas Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -180,8 +180,11 @@ protoStart(int fd, StoreEntry * entry, peer * e, request_t * request)
 	    objcacheStart(fd, entry);
 	    break;
 	case PROTO_URN:
-	     urnStart(request, entry);
-	     break;
+	    urnStart(request, entry);
+	    break;
+	case PROTO_WHOIS:
+	    whoisStart(request, entry);
+	    break;
 	default:
 	    if (request->method == METHOD_CONNECT) {
 		ErrorState *err;
