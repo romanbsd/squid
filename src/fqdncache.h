@@ -1,6 +1,6 @@
 
 /*
- * $Id: fqdncache.h,v 1.8 1996/09/14 16:51:57 wessels Exp $
+ * $Id: fqdncache.h,v 1.9 1996/09/15 05:04:25 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -134,16 +134,16 @@ typedef struct _fqdncache_entry {
     fqdncache_status_t status:3;
 } fqdncache_entry;
 
-extern int fqdncache_nbgethostbyaddr(struct in_addr, int fd, FQDNH handler, void *handlerData);
-extern int fqdncacheUnregister(struct in_addr, int);
-extern char *fqdncache_gethostbyaddr(struct in_addr, int flags);
-extern void fqdncache_init(void);
-extern void fqdnStats(StoreEntry *);
-extern void fqdncacheShutdownServers(void);
-extern void fqdncacheOpenServers(void);
-extern void fqdncacheReleaseInvalid(char *);
-extern char *fqdnFromAddr(struct in_addr);
-extern int fqdncacheQueueDrain(void);
+extern int fqdncache_nbgethostbyaddr __P((struct in_addr, int fd, FQDNH handler, void *handlerData));
+extern int fqdncacheUnregister __P((struct in_addr, int));
+extern char *fqdncache_gethostbyaddr __P((struct in_addr, int flags));
+extern void fqdncache_init __P((void));
+extern void fqdnStats __P((StoreEntry *));
+extern void fqdncacheShutdownServers __P((void));
+extern void fqdncacheOpenServers __P((void));
+extern void fqdncacheReleaseInvalid __P((char *));
+extern char *fqdnFromAddr __P((struct in_addr));
+extern int fqdncacheQueueDrain __P((void));
 
 extern char *dns_error_message;
 

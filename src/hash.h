@@ -1,5 +1,5 @@
 /*
- * $Id: hash.h,v 1.7 1996/09/14 16:54:54 wessels Exp $
+ * $Id: hash.h,v 1.8 1996/09/15 05:04:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -140,25 +140,25 @@ typedef struct HASH_LINK {
 typedef int HashID;
 
 /* init */
-extern void hash_init(int);
+extern void hash_init __P((int));
 extern HashID hash_create(int (*)(char *, char *),
     int,
     int (*)(char *, HashID));
 
 /* insert/delete */
-extern int hash_insert(HashID, char *, void *);
-extern int hash_delete(HashID, char *);
-extern int hash_delete_link(HashID, hash_link *);
-extern int hash_join(HashID, hash_link *);
-extern int hash_remove_link(HashID, hash_link *);
+extern int hash_insert __P((HashID, char *, void *));
+extern int hash_delete __P((HashID, char *));
+extern int hash_delete_link __P((HashID, hash_link *));
+extern int hash_join __P((HashID, hash_link *));
+extern int hash_remove_link __P((HashID, hash_link *));
 
 /* searching, accessing */
-extern hash_link *hash_lookup(HashID, char *);
-extern hash_link *hash_first(HashID);
-extern hash_link *hash_next(HashID);
-extern hash_link *hash_get_bucket(HashID, unsigned int);
-extern int hash_url(char *, HashID);
-extern int hash_string(char *, HashID);
+extern hash_link *hash_lookup __P((HashID, char *));
+extern hash_link *hash_first __P((HashID));
+extern hash_link *hash_next __P((HashID));
+extern hash_link *hash_get_bucket __P((HashID, unsigned int));
+extern int hash_url __P((char *, HashID));
+extern int hash_string __P((char *, HashID));
 
 extern int hash_links_allocated;
 

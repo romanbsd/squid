@@ -1,5 +1,5 @@
 /*
- * $Id: debug.c,v 1.6 1996/09/14 08:50:46 wessels Exp $
+ * $Id: debug.c,v 1.7 1996/09/15 05:04:09 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -114,8 +114,8 @@
 #define MAIN
 #include "util.h"
 
-static void debug_enable(int, int);
-static void debug_disable(int);
+static void debug_enable __P((int, int));
+static void debug_disable __P((int));
 
 int Harvest_debug_levels[MAX_DEBUG_LEVELS];
 int Harvest_do_debug = 0;

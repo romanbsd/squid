@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_clean.c,v 1.10 1996/09/14 08:46:32 wessels Exp $
+ * $Id: store_clean.c,v 1.11 1996/09/15 05:04:47 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -48,7 +48,7 @@
 #endif /* HAVE_NDIR_H */
 #endif /* HAVE_DIRENT_H */
 
-static int rev_int_sort(int *, int *);
+static int rev_int_sort __P((int *, int *));
 
 static int
 rev_int_sort(int *i1, int *i2)

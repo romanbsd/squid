@@ -1,5 +1,5 @@
 /*
- * $Id: objcache.c,v 1.20 1996/09/14 08:46:17 wessels Exp $
+ * $Id: objcache.c,v 1.21 1996/09/15 05:04:38 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -107,7 +107,7 @@
 
 #define STAT_TTL 2
 
-extern void shut_down(int);
+extern void shut_down __P((int));
 
 cacheinfo *HTTPCacheInfo = NULL;
 cacheinfo *ICPCacheInfo = NULL;

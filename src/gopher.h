@@ -1,5 +1,5 @@
 /*
- * $Id: gopher.h,v 1.4 1996/09/14 08:46:03 wessels Exp $
+ * $Id: gopher.h,v 1.5 1996/09/15 05:04:29 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -102,5 +102,5 @@
  *   re-implementations of code complying to this set of standards.  
  */
 
-extern int gopherStart(int, char *, StoreEntry *);
-extern int gopherCachable(char *);
+extern int gopherStart __P((int, char *, StoreEntry *));
+extern int gopherCachable __P((char *));

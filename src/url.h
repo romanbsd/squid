@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.21 1996/09/14 16:51:58 wessels Exp $
+ * $Id: url.h,v 1.22 1996/09/15 05:04:48 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -68,17 +68,17 @@ struct _request {
     struct _hierarchyLogData hierarchy;
 };
 
-extern char *url_convert_hex(char *org_url, int allocate);
-extern char *url_escape(char *url);
-extern protocol_t urlParseProtocol(char *);
-extern method_t urlParseMethod(char *);
-extern int urlDefaultPort(protocol_t);
-extern void urlInitialize(void);
-extern request_t *urlParse(method_t, char *);
-extern char *urlCanonical(request_t *, char *);
-extern request_t *requestLink(request_t *);
-extern void requestUnlink(request_t *);
-extern int matchDomainName(char *d, char *h);
-extern int urlCheckRequest(request_t *);
+extern char *url_convert_hex __P((char *org_url, int allocate));
+extern char *url_escape __P((char *url));
+extern protocol_t urlParseProtocol __P((char *));
+extern method_t urlParseMethod __P((char *));
+extern int urlDefaultPort __P((protocol_t));
+extern void urlInitialize __P((void));
+extern request_t *urlParse __P((method_t, char *));
+extern char *urlCanonical __P((request_t *, char *));
+extern request_t *requestLink __P((request_t *));
+extern void requestUnlink __P((request_t *));
+extern int matchDomainName __P((char *d, char *h));
+extern int urlCheckRequest __P((request_t *));
 
 #endif /* _URL_HEADER_ */

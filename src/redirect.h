@@ -1,5 +1,5 @@
 /*
- * $Id: redirect.h,v 1.3 1996/09/14 08:46:21 wessels Exp $
+ * $Id: redirect.h,v 1.4 1996/09/15 05:04:41 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -31,8 +31,8 @@
 
 typedef void (*RH) (void *data, char *result);
 
-extern void redirectStart(int cfd, icpStateData *, RH, void *);
-extern void redirectOpenServers(void);
-extern void redirectShutdownServers(void);
-extern void redirectStats(StoreEntry *);
-extern int redirectUnregister(char *url, int fd);
+extern void redirectStart __P((int cfd, icpStateData *, RH, void *));
+extern void redirectOpenServers __P((void));
+extern void redirectShutdownServers __P((void));
+extern void redirectStats __P((StoreEntry *));
+extern int redirectUnregister __P((char *url, int fd));
