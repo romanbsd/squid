@@ -1,5 +1,5 @@
 /*
- * $Id: http-anon.c,v 1.1 1996/12/06 17:52:39 wessels Exp $
+ * $Id: http-anon.c,v 1.2 1997/01/31 23:44:11 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Lutz Donnerhacke <lutz@iks-jena.de>
@@ -61,6 +61,7 @@ const struct http_anon_struct_header http_anon_allowed_header[] =
     {"POST ", 5},
     {"HEAD ", 5},
     {"Allow:", 6},
+    {"Authorization:", 14},
     {"Cache-control:", 14},
     {"Content-Encoding:", 17},
     {"Content-Length:", 15},
@@ -87,7 +88,6 @@ const struct http_anon_struct_header http_anon_allowed_header[] =
 /* list of headers known to definitly compromise privacy */
 const struct http_anon_struct_header http_anon_denied_header[] =
 {
-    {"Authorisation:", 14},	/* filtering violates HTTP */
     {"From:", 5},
     {"Referer:", 8},
     {"Server:", 7},
@@ -107,7 +107,13 @@ httpAnonSearchHeaderField(const struct http_anon_struct_header *header_field,
 	return line;
     for (ppc = header_field; ppc->len; ppc++) {
 	if (strncasecmp(line, ppc->name, ppc->len) == 0)
+#ifdef USE_PARANOID_ANONYMIZER
 	    return ppc->name;
     }
     return NULL;
+#else
+	    return NULL;
+    }
+    return line;
+#endif
 }
