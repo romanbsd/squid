@@ -1,4 +1,4 @@
-/* $Id: proto.c,v 1.17 1996/04/10 00:23:30 wessels Exp $ */
+/* $Id: proto.c,v 1.18 1996/04/10 05:26:36 wessels Exp $ */
 
 /*
  * DEBUG: Section 17          proto:
@@ -439,7 +439,6 @@ int getFromCache(fd, entry, e)
      edge *e;
 {
     char *url = entry->url;
-    char *type = RequestMethodStr[entry->type_id];
     char *request_hdr = entry->mem_obj->mime_hdr;
 
     debug(17, 5, "getFromCache: FD %d <URL:%s>\n", fd, entry->url);
