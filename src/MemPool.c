@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.28 2001/10/24 08:19:08 hno Exp $
+ * $Id: MemPool.c,v 1.29 2002/03/10 15:17:13 hno Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -118,12 +118,13 @@ memCleanModule(void)
     int dirty_count = 0;
     for (i = 0; i < Pools.count; i++) {
 	MemPool *pool = Pools.items[i];
+	if (!pool)
+	    continue;
 	if (memPoolInUseCount(pool)) {
 	    memPoolDescribe(pool);
 	    dirty_count++;
 	} else {
 	    memPoolDestroy(pool);
-	    Pools.items[i] = NULL;
 	}
     }
     if (dirty_count)
@@ -214,14 +215,17 @@ memPoolCreate(const char *label, size_t obj_size)
     return pool;
 }
 
-/*
- * warning: we do not clean this entry from Pools stack assuming memPoolDestroy
- * is used at the end of the program only
- */
 void
 memPoolDestroy(MemPool * pool)
 {
+    int i;
     assert(pool);
+    for (i = 0; i < Pools.count; i++) {
+	if (Pools.items[i] == pool) {
+	    Pools.items[i] = NULL;
+	    break;
+	}
+    }
     stackClean(&pool->pstack);
     xfree(pool);
 }
