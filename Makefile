@@ -1,10 +1,10 @@
 # Makefile for SQUID Cache
 #
-# $Id: Makefile,v 1.4 1996/04/08 23:25:16 wessels Exp $
+# $Id: Makefile,v 1.6 1996/07/09 03:41:01 wessels Exp $
 #
 
 prefix		= /usr/local/squid
-exec_prefix	= ${prefix}
+exec_prefix     = '$${prefix}'
 
 SHELL		= /bin/sh
 

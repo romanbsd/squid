@@ -1,4 +1,4 @@
-/* $Id: proto.c,v 1.28 1996/05/01 22:36:35 wessels Exp $ */
+/* $Id: proto.c,v 1.29 1996/05/03 22:56:30 wessels Exp $ */
 
 /*
  * DEBUG: Section 17          proto:
@@ -295,6 +295,7 @@ int protoUndispatch(fd, url, entry, request)
 	    protoDNSError(fd, entry);
 	return 1;
     }
+    /* NOTREACHED */
     return 0;
 }
 
@@ -411,11 +412,12 @@ int getFromCache(fd, entry, e, request)
     } else if (request->protocol == PROTO_GOPHER) {
 	return gopherStart(fd, url, entry);
     } else if (request->protocol == PROTO_FTP) {
-	return ftpStart(fd, url, entry);
+	return ftpStart(fd, url, request, entry);
     } else if (request->protocol == PROTO_WAIS) {
 	return waisStart(fd, url, entry->method, request_hdr, entry);
     } else if (entry->method == METHOD_CONNECT) {
-	return connectStart(fd, url, request, request_hdr, entry);
+	fatal_dump("getFromCache() should not be handling CONNECT");
+	return 0;
     } else {
 	return protoNotImplemented(fd, url, entry);
     }

@@ -1,6 +1,6 @@
 
 /*
- *  $Id: config.h.in,v 1.6 1996/04/16 20:53:31 wessels Exp $
+ *  $Id: config.h.in,v 1.7 1996/05/03 22:56:17 wessels Exp $
  */
 
 #ifndef _CONFIG_H_
@@ -26,13 +26,6 @@
 #ifdef USE_POSIX_REGEX
 #ifndef USE_RE_SYNTAX
 #define USE_RE_SYNTAX	REG_EXTENDED	/* default Syntax */
-#endif
-#endif
-
-#ifndef BUFSIZ
-#include <stdio.h>		/* try to find it... */
-#ifndef BUFSIZ
-#define BUFSIZ  4096		/* make reasonable guess */
 #endif
 #endif
 
@@ -86,38 +79,6 @@
 
 #if !defined(CACHEMGR_HOSTNAME)
 #define CACHEMGR_HOSTNAME ""
-#endif
-
-#if !defined(DEFAULT_CONFIG_FILE)
-#define DEFAULT_CONFIG_FILE "@prefix@/etc/squid.conf"
-#endif
-
-#if !defined(DEFAULT_CACHE_LOG)
-#define DEFAULT_CACHE_LOG "@prefix@/logs/cache.log"
-#endif
-
-#if !defined(DEFAULT_ACCESS_LOG)
-#define DEFAULT_ACCESS_LOG "@prefix@/logs/access.log"
-#endif
-
-#if !defined(DEFAULT_HIERARCHY_LOG)
-#define DEFAULT_HIERARCHY_LOG "@prefix@/logs/hierarchy.log"
-#endif
-
-#if !defined(DEFAULT_STORE_LOG)
-#define DEFAULT_STORE_LOG "@prefix@/logs/store.log"
-#endif
-
-#if !defined(DEFAULT_FTPGET_PATH)
-#define DEFAULT_FTPGET_PATH "@prefix@/bin/ftpget"
-#endif
-
-#if !defined(DEFAULT_DNSSERVER_PATH)
-#define DEFAULT_DNSSERVER_PATH "@prefix@/bin/dnsserver"
-#endif
-
-#if !defined(DEFAULT_SWAP_DIR)
-#define DEFAULT_SWAP_DIR "@prefix@/cache"
 #endif
 
 #endif /* _CONFIG_H_ */
