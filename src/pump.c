@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.16 1998/03/13 14:30:04 wessels Exp $
+ * $Id: pump.c,v 1.17 1998/03/13 14:52:30 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -327,6 +327,8 @@ pumpFree(int fd, void *data)
 {
     PumpStateData *p = NULL;
     PumpStateData *q = NULL;
+    StoreEntry *req;
+    StoreEntry *rep;
     debug(61, 2) ("pumpFree: FD %d, releasing %p!\n", fd, data);
     for (p = pump_head; p && p != data; q = p, p = p->next);
     if (p == NULL) {
@@ -338,14 +340,22 @@ pumpFree(int fd, void *data)
     else
 	pump_head = p->next;
     assert(fd == p->c_fd);
-    if (p->request_entry != NULL) {
-	assert(p->request_entry->store_status != STORE_PENDING);
-	storeUnlockObject(p->request_entry);
+    req = p->request_entry;
+    rep = p->reply_entry;
+    if (req != NULL) {
+	if (req->store_status == STORE_PENDING) {
+	    storeUnregister(req, p);
+	    storeAbort(req, 0);
+	}
+	storeUnlockObject(req);
 	p->request_entry = NULL;
     }
-    if (p->reply_entry != NULL) {
-	assert(p->reply_entry->store_status != STORE_PENDING);
-	storeUnlockObject(p->reply_entry);
+    if (req != NULL) {
+	if (req->store_status == STORE_PENDING) {
+	    storeUnregister(req, p);
+	    storeAbort(req, 0);
+	}
+	storeUnlockObject(req);
 	p->reply_entry = NULL;
     }
     requestUnlink(p->req);
