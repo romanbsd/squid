@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.63 1996/11/04 18:13:10 wessels Exp $
+ * $Id: store.h,v 1.64 1996/11/05 17:03:10 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -315,6 +315,7 @@ extern void storeNegativeCache _PARAMS((StoreEntry *));
 extern void storeFreeMemory _PARAMS((void));
 extern int expiresMoreThan _PARAMS((time_t, time_t));
 extern void storeClientListAdd _PARAMS((StoreEntry *, int, int));
+extern void InvokeHandlers _PARAMS((StoreEntry *));
 
 #ifdef __STDC__
 extern void storeAppendPrintf _PARAMS((StoreEntry *, const char *, ...));
