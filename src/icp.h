@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.59 1996/11/15 00:36:20 wessels Exp $
+ * $Id: icp.h,v 1.60 1996/11/27 22:19:19 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -156,6 +156,7 @@ typedef enum {
 #define 	REQ_UNUSED	0x20
 #define 	REQ_HIERARCHICAL 0x40
 #define 	REQ_LOOPDETECT  0x80
+#define		REQ_REFRESH	0x100
 
 typedef struct wwd {
     struct sockaddr_in address;

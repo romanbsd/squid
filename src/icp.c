@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.185 1996/11/26 19:05:39 wessels Exp $
+ * $Id: icp.c,v 1.186 1996/11/27 22:19:19 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1588,16 +1588,16 @@ parseHttpRequest(icpStateData * icpState)
     sscanf(http_ver, "HTTP/%f", &icpState->http_ver);
     debug(12, 5, "parseHttpRequest: HTTP version is '%s'\n", http_ver);
 
+    /* Check if headers are received */
+    if (!mime_headers_end(t)) {
+	xfree(inbuf);
+	return 0;		/* not a complete request */
+    }
     while (isspace(*t))
 	t++;
     req_hdr = t;
     req_hdr_sz = icpState->offset - (req_hdr - inbuf);
 
-    /* Check if headers are received */
-    if (!mime_headers_end(req_hdr)) {
-	xfree(inbuf);
-	return 0;		/* not a complete request */
-    }
     /* Ok, all headers are received */
     icpState->req_hdr_sz = req_hdr_sz;
     icpState->request_hdr = xmalloc(req_hdr_sz + 1);
