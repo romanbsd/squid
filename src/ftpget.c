@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.5 1996/03/22 17:47:10 wessels Exp $ */
+/* $Id: ftpget.c,v 1.6 1996/03/22 20:57:07 wessels Exp $ */
 
 /*
  *    NOTES
@@ -1848,6 +1848,8 @@ int ftpget_srv_mode(port)
 	FD_SET(0, &R);
 	FD_SET(sock, &R);
 	if (select(sock + 1, &R, NULL, NULL, NULL) < 0) {
+	    if (errno == EINTR)
+		continue;
 	    log_errno2(__FILE__, __LINE__, "select");
 	    continue;
 	}
