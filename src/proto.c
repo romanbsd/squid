@@ -1,4 +1,4 @@
-/* $Id: proto.c,v 1.19 1996/04/10 20:45:31 wessels Exp $ */
+/* $Id: proto.c,v 1.20 1996/04/10 20:53:47 wessels Exp $ */
 
 /*
  * DEBUG: Section 17          proto:
@@ -538,7 +538,7 @@ static int matchInsideFirewall(host)
     if (!s)
 	/* no domains, all hosts are "inside" the firewall */
 	return NO_FIREWALL;
-    for ( ; s; s = s->next) {
+    for (; s; s = s->next) {
 	if (!strcasecmp(s->key, "none"))
 	    /* no domains are inside the firewall, all domains are outside */
 	    return OUTSIDE_FIREWALL;
