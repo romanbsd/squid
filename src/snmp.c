@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.9 1997/12/01 22:45:54 wessels Exp $
+ * $Id: snmp.c,v 1.10 1997/12/02 00:13:55 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -1661,6 +1661,7 @@ var_cachesys_entry(struct variable * vp, oid * name, int *length, int exact,
 
     debug(49, 3) ("snmp: var_cachesys_entry called with magic=%d, *length=%d, *var_len=%d\n",
 	vp->magic, *length, *var_len);
+
     sprint_objid(snbuf, name, *length);
     debug(49, 3) ("snmp: var_cachesys_entry oid: %s\n", snbuf);
 
