@@ -1,6 +1,6 @@
 
 /*
- *  $Id: config.h.in,v 1.5 1996/04/16 05:48:30 wessels Exp $
+ *  $Id: config.h.in,v 1.6 1996/04/16 20:53:31 wessels Exp $
  */
 
 #ifndef _CONFIG_H_
@@ -114,6 +114,10 @@
 
 #if !defined(DEFAULT_DNSSERVER_PATH)
 #define DEFAULT_DNSSERVER_PATH "@prefix@/bin/dnsserver"
+#endif
+
+#if !defined(DEFAULT_SWAP_DIR)
+#define DEFAULT_SWAP_DIR "@prefix@/cache"
 #endif
 
 #endif /* _CONFIG_H_ */
