@@ -1,4 +1,4 @@
-/*  $Id: url.h,v 1.6 1996/04/15 22:55:11 wessels Exp $ */
+/*  $Id: url.h,v 1.7 1996/04/16 01:51:20 wessels Exp $ */
 
 #ifndef _URL_HEADER_
 #define _URL_HEADER_
@@ -20,12 +20,13 @@ typedef enum {
     PROTO_GOPHER,
     PROTO_WAIS,
     PROTO_CACHEOBJ,
-    PROTO_CONNECT,
+#ifdef NEED_PROTO_CONNECT
+    PROTO_CONNECT
+#endif
     PROTO_MAX
 } protocol_t;
 
 extern char *ProtocolStr[];
-
 
 #define MAX_URL  (ICP_MAX_URL)
 
