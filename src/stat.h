@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.h,v 1.33 1996/09/15 05:04:44 wessels Exp $
+ * $Id: stat.h,v 1.34 1996/09/17 16:32:47 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -255,8 +255,8 @@ extern struct _iostats IOStats;
 
 extern cacheinfo *HTTPCacheInfo;
 extern cacheinfo *ICPCacheInfo;
-extern unsigned long ntcpconn;
-extern unsigned long nudpconn;
+extern volatile unsigned long ntcpconn;
+extern volatile unsigned long nudpconn;
 extern char *open_bracket;
 extern char *close_bracket;
 

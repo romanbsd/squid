@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.51 1996/09/15 05:04:14 wessels Exp $
+ * $Id: cache_cf.h,v 1.52 1996/09/17 16:32:33 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -212,7 +212,7 @@ struct SquidConfig {
 	int withProxy;
     } Accel;
     char *appendDomain;
-    char *debugOptions;
+    char *volatile debugOptions;
     char *pidFilename;
     char *visibleHostname;
     char *ftpUser;
@@ -262,7 +262,7 @@ extern char *cfg_filename;	/* Only the tail component of the path */
 extern char config_input_line[];
 extern char w_space[];
 extern int config_lineno;
-extern int unbuffered_logs;
+extern volatile int unbuffered_logs;
 extern char ForwardedBy[];
 extern int httpd_accel_mode;
 

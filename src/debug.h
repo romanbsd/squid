@@ -1,5 +1,5 @@
 /*
- * $Id: debug.h,v 1.18 1996/09/17 02:29:53 wessels Exp $
+ * $Id: debug.h,v 1.19 1996/09/17 16:32:36 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -105,8 +105,8 @@
 #ifndef _DEBUG_H_
 #define _DEBUG_H_
 
-extern char *_db_file;
-extern int _db_line;
+extern char *volatile _db_file;
+extern volatile int _db_line;
 extern int syslog_enable;
 extern FILE *debug_log;
 

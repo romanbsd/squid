@@ -1,5 +1,5 @@
 /*
- * $Id: objcache.c,v 1.22 1996/09/16 21:50:26 wessels Exp $
+ * $Id: objcache.c,v 1.23 1996/09/17 16:32:43 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -129,7 +129,7 @@ static int objcache_url_parser __P((char *url,
 
 
 /* Parse a object_cache url into components.  By Anawat. */
-int
+static int
 objcache_url_parser(char *url, char *host, char *request, char *password)
 {
     int t;
