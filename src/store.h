@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.6 1996/03/29 01:07:38 wessels Exp $ */
+/*  $Id: store.h,v 1.7 1996/03/30 00:09:06 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -68,6 +68,7 @@ typedef struct _MemObject {
 
     int e_swap_access;
     char *e_abort_msg;
+    int abort_code;
 
     int e_current_len;
     /* The lowest offset that store keep VM copy around
