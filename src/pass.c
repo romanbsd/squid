@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.14 1996/11/26 23:13:14 wessels Exp $
+ * $Id: pass.c,v 1.15 1996/11/26 23:22:18 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -43,7 +43,7 @@ typedef struct {
 	int len;
 	int offset;
 	char *buf;
-    } client    , server;
+    } client, server;
     time_t timeout;
     int *size_ptr;		/* pointer to size for logging */
     int proxying;
