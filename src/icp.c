@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.285 1997/07/15 03:29:03 wessels Exp $
+ * $Id: icp.c,v 1.286 1997/07/15 23:23:26 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -399,7 +399,7 @@ icpCachable(clientHttpRequest * http)
     const wordlist *p;
 #ifdef OLD_CODE
     /* Now we look for Cache-Control: proxy-revalidate before
-    deciding if it will be cachable or not */
+     * deciding if it will be cachable or not */
     if (BIT_TEST(http->request->flags, REQ_AUTH))
 	return 0;
 #endif
@@ -1117,7 +1117,7 @@ icpProcessMISS(int fd, clientHttpRequest * http)
 	icpSendMoreData,
 	http);
     /* protoDispatch() needs to go after storeClientCopy() at least
-	for OBJCACHE requests */
+     * for OBJCACHE requests */
     protoDispatch(fd, http->entry, http->request);
     return;
 }

@@ -1,5 +1,6 @@
+
 /*
- * $Id: hash.c,v 1.29 1997/07/14 03:33:37 wessels Exp $
+ * $Id: hash.c,v 1.30 1997/07/15 23:23:24 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
