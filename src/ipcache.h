@@ -1,5 +1,5 @@
 /*
- * $Id: ipcache.h,v 1.16 1996/09/04 22:03:27 wessels Exp $
+ * $Id: ipcache.h,v 1.17 1996/09/14 08:46:11 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -105,7 +105,7 @@
 #ifndef _IPCACHE_H_
 #define _IPCACHE_H_
 
-typedef int (*IPH) _PARAMS((int, struct hostent *, void *));
+typedef int (*IPH) (int, struct hostent *, void *);
 
 typedef enum {
     IP_CACHED,
@@ -137,16 +137,16 @@ extern void ipcache_nbgethostbyname _PARAMS((char *name,
 	int fd,
 	IPH handler,
 	void *handlerData));
-extern int ipcache_purgelru _PARAMS((void));
-extern int ipcache_unregister _PARAMS((char *, int));
-extern struct hostent *ipcache_gethostbyname _PARAMS((char *, int flags));
-extern void ipcacheInvalidate _PARAMS((char *));
-extern void ipcacheReleaseInvalid _PARAMS((char *));
-extern void ipcacheOpenServers _PARAMS((void));
-extern void ipcacheShutdownServers _PARAMS((void));
-extern void ipcache_init _PARAMS((void));
-extern void stat_ipcache_get _PARAMS((StoreEntry *));
-extern int ipcacheQueueDrain _PARAMS((void));
+extern int ipcache_purgelru(void);
+extern int ipcache_unregister(char *, int);
+extern struct hostent *ipcache_gethostbyname(char *, int flags);
+extern void ipcacheInvalidate(char *);
+extern void ipcacheReleaseInvalid(char *);
+extern void ipcacheOpenServers(void);
+extern void ipcacheShutdownServers(void);
+extern void ipcache_init(void);
+extern void stat_ipcache_get(StoreEntry *);
+extern int ipcacheQueueDrain(void);
 
 extern char *dns_error_message;
 

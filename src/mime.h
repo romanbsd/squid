@@ -1,5 +1,5 @@
 /*
- * $Id: mime.h,v 1.5 1996/07/09 04:47:22 wessels Exp $
+ * $Id: mime.h,v 1.6 1996/09/14 08:46:14 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -114,11 +114,12 @@ typedef struct _ext_table_entry {
     char *icon;
 } ext_table_entry;
 
-extern char *mime_get_header _PARAMS((char *mime, char *header));
-extern char *mime_headers_end _PARAMS((char *mime));
-extern int mime_headers_size _PARAMS((char *mime));
-extern void mime_process _PARAMS((char *mime));
-extern ext_table_entry *mime_ext_to_type _PARAMS((char *extension));
-extern int mk_mime_hdr _PARAMS((char *, time_t, int, time_t, char *));
+extern char *mime_get_header(char *mime, char *header);
+extern char *mime_headers_end(char *mime);
+extern int mime_headers_size(char *mime);
+extern void mime_process(char *mime);
+extern ext_table_entry *mime_ext_to_type(char *extension);
+extern int mk_mime_hdr(char *result, char *type, int size, time_t ttl, time_t lmt);
+
 
 #endif

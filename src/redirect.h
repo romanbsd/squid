@@ -1,5 +1,5 @@
 /*
- * $Id: redirect.h,v 1.2 1996/08/14 21:38:30 wessels Exp $
+ * $Id: redirect.h,v 1.3 1996/09/14 08:46:21 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -29,10 +29,10 @@
 
 #define REDIRECT_AV_FACTOR 1000
 
-typedef void (*RH) _PARAMS((void *data, char *result));
+typedef void (*RH) (void *data, char *result);
 
-extern void redirectStart _PARAMS((int cfd, icpStateData *, RH, void *));
-extern void redirectOpenServers _PARAMS((void));
-extern void redirectShutdownServers _PARAMS((void));
-extern void redirectStats _PARAMS((StoreEntry *));
-extern int redirectUnregister _PARAMS((char *url, int fd));
+extern void redirectStart(int cfd, icpStateData *, RH, void *);
+extern void redirectOpenServers(void);
+extern void redirectShutdownServers(void);
+extern void redirectStats(StoreEntry *);
+extern int redirectUnregister(char *url, int fd);
