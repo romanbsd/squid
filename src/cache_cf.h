@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.40 1996/08/19 22:44:50 wessels Exp $
+ * $Id: cache_cf.h,v 1.41 1996/08/26 22:00:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -152,6 +152,11 @@ struct SquidConfig {
 	char *relayHost;
 	u_short relayPort;
     } Wais;
+    struct {
+	int min;
+	int pct;
+	int max;
+    } quickAbort;
     int negativeTtl;
     int negativeDnsTtl;
     int positiveDnsTtl;
@@ -187,7 +192,6 @@ struct SquidConfig {
     int dnsChildren;
     int redirectChildren;
     int sourcePing;
-    int quickAbort;
     int commonLogFormat;
     int identLookup;
     int neighborTimeout;
