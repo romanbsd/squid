@@ -1,6 +1,6 @@
 
 /*
- * $Id: aiops.c,v 1.8 1998/02/17 23:05:38 wessels Exp $
+ * $Id: aiops.c,v 1.9 1998/02/26 17:26:39 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -437,20 +437,11 @@ aio_cancel(aio_result_t * resultp)
 
     for (threadp = busy_threads_head; threadp != NULL; threadp = threadp->next)
 	if (threadp->donereq->resultp == resultp)
-	    break;
-    if (threadp != NULL) {
-	threadp->donereq->cancelled = 1;
-	return 0;
-    }
+	    threadp->donereq->cancelled = 1;
     for (requestp = request_queue_head; requestp != NULL; requestp = requestp->next)
 	if (requestp->resultp == resultp)
-	    break;
-    if (requestp != NULL) {
-	requestp->cancelled = 1;
-	return 0;
-    }
-    errno = ENOENT;
-    return -1;
+	    requestp->cancelled = 1;
+    return 0;
 }				/* aio_cancel */
 
 
