@@ -1,4 +1,4 @@
-# $Id: squid.conf.pre.in,v 1.1 1996/02/22 06:23:53 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.2 1996/03/27 18:50:22 wessels Exp $
 #
 #  NOTE: Upon installation, cached.conf is a symbolic link to this file,
 #	 cached.conf.default.  If you want to change this file, please
@@ -702,3 +702,9 @@ announce_organization	Your Organization
 # line.
 #
 #announce_comment
+
+
+# NEW THINGS
+
+#debug_options
+#pid_filename
