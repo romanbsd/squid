@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.141 1998/01/05 21:51:28 wessels Exp $
+ * $Id: proto.c,v 1.142 1998/01/06 02:47:20 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -229,12 +229,13 @@ protoDispatch(int fd, StoreEntry * entry, request_t * request)
     pctrl_t *pctrl;
     debug(17, 3) ("protoDispatch: '%s'\n", storeUrl(entry));
     entry->mem_obj->request = requestLink(request);
-    if (request->protocol == PROTO_CACHEOBJ)
+    if (request->protocol == PROTO_CACHEOBJ) {
 	protoStart(fd, entry, NULL, request);
 	return;
-    else if (request->protocol == PROTO_WAIS)
+    } else if (request->protocol == PROTO_WAIS) {
 	protoStart(fd, entry, NULL, request);
 	return;
+    }
     pctrl = xcalloc(1, sizeof(pctrl_t));
     cbdataAdd(pctrl);
     pctrl->entry = entry;
