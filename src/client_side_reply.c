@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side_reply.c,v 1.19 2003/01/09 04:16:37 hno Exp $
+ * $Id: client_side_reply.c,v 1.20 2003/01/27 04:57:11 wessels Exp $
  *
  * DEBUG: section 88    Client-side Reply Routines
  * AUTHOR: Robert Collins (Originally Duane Wessels in client_side.c)
@@ -577,7 +577,7 @@ clientCacheHit(void *data, StoreIOBuffer result)
 	if (e->mem_status == IN_MEMORY)
 	    http->logType = LOG_TCP_MEM_HIT;
 	clientSendMoreData(context, result);
-    } else if (!config.onoff.offline && refreshCheckHTTP(e, r) && !http->flags.internal) {
+    } else if (!Config.onoff.offline && refreshCheckHTTP(e, r) && !http->flags.internal) {
 	debug(88, 5) ("clientCacheHit: in refreshCheck() block\n");
 	/*
 	 * We hold a stale copy; it needs to be validated
