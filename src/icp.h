@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.65 1997/02/27 02:57:11 wessels Exp $
+ * $Id: icp.h,v 1.66 1997/02/27 06:29:14 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -123,7 +123,7 @@ typedef enum {
     LOG_UDP_MISS,		/* 13 */
     LOG_UDP_DENIED,		/* 14 */
     LOG_UDP_INVALID,		/* 15 */
-    LOG_UDP_RELOADING,		/* 16 */
+    LOG_UDP_MISSNOFETCH,	/* 16 */
     ERR_READ_TIMEOUT,		/* 17 */
     ERR_LIFETIME_EXP,		/* 18 */
     ERR_NO_CLIENTS_BIG_OBJ,	/* 19 */

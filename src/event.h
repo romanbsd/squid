@@ -1,5 +1,5 @@
 /*
- * $Id: event.h,v 1.1 1996/11/12 22:37:04 wessels Exp $
+ * $Id: event.h,v 1.2 1997/02/27 06:29:12 wessels Exp $
  *
  * AUTHOR: Henrik Nordstrom
  *
@@ -110,3 +110,4 @@ extern void eventAdd _PARAMS((const char *name,
 	time_t when));
 extern void eventRun _PARAMS((void));
 extern time_t eventNextTime _PARAMS((void));
+extern void eventDelete _PARAMS((EVH func, void *arg));
