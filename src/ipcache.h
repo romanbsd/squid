@@ -1,5 +1,5 @@
 /*
- * $Id: ipcache.h,v 1.10 1996/07/09 22:59:42 wessels Exp $
+ * $Id: ipcache.h,v 1.11 1996/07/12 17:40:10 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -127,7 +127,6 @@ typedef struct _ipcache_entry {
     time_t ttl;
     unsigned char addr_count;
     unsigned char alias_count;
-    unsigned char lock;
     struct hostent entry;
     struct _ip_pending *pending_head;
     char *error_message;
@@ -141,7 +140,6 @@ extern void ipcache_init _PARAMS((void));
 extern void stat_ipcache_get _PARAMS((StoreEntry *));
 extern void ipcacheShutdownServers _PARAMS((void));
 extern void ipcacheOpenServers _PARAMS((void));
-extern void ipcacheLockEntry _PARAMS((char *));
 extern void ipcacheReleaseInvalid _PARAMS((char *));
 
 extern char *dns_error_message;
