@@ -1,4 +1,4 @@
-# $Id: makefile.in,v 1.5 1996/02/29 07:24:37 wessels Exp $
+# $Id: makefile.in,v 1.6 1996/03/28 02:32:49 wessels Exp $
 #
 
 srcdir		= @srcdir@
@@ -11,8 +11,8 @@ INSTALL_DATA	= @INSTALL_DATA@
 SHELL		= /bin/sh
 
 # Where to install
-prefix		= /usr/local/squid
-exec_prefix	= ${prefix}
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
 
 SUBDIRS		= lib scripts src
 
