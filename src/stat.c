@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.360 2003/01/10 17:53:03 wessels Exp $
+ * $Id: stat.c,v 1.361 2003/01/17 05:21:49 wessels Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -456,7 +456,7 @@ info_get(StoreEntry * sentry)
 	statCounter.icp.pkts_sent);
     storeAppendPrintf(sentry, "\tNumber of queued ICP replies:\t%u\n",
 	statCounter.icp.replies_queued);
-    storeAppendPrintf(sentry, "\tRequest failure ratio:\t%5.2f%%\n",
+    storeAppendPrintf(sentry, "\tRequest failure ratio:\t%5.2f\n",
 	request_failure_ratio);
 
     storeAppendPrintf(sentry, "\tAverage HTTP requests per minute since start:\t%.1f\n",
