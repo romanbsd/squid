@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.96 1997/04/28 04:22:58 wessels Exp $
+ * $Id: cache_cf.h,v 1.97 1997/04/30 03:11:59 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -149,10 +149,13 @@ struct SquidConfig {
     int negativeTtl;
     int negativeDnsTtl;
     int positiveDnsTtl;
-    int readTimeout;
-    int lifetimeDefault;
-    int lifetimeShutdown;
-    int connectTimeout;
+    struct {
+        int read;
+        int defer;
+        int lifetime;
+        int connect;
+    } Timeout;
+    int shutdownLifetime;
     int cleanRate;
     int maxRequestSize;
     struct {

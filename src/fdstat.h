@@ -1,6 +1,6 @@
 
 /*
- * $Id: fdstat.h,v 1.16 1997/04/29 23:34:50 wessels Exp $
+ * $Id: fdstat.h,v 1.17 1997/04/30 03:12:05 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -107,8 +107,6 @@
 #define FDSTAT_H
 
 extern void fdstat_init _PARAMS((void));
-extern int fdstat_isopen _PARAMS((int fd));
-extern void fdstat_close _PARAMS((int fd));
 extern void fdstat_open _PARAMS((int fd, unsigned int type));
 extern int fdstat_are_n_free_fd _PARAMS((int));
 

@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.103 1997/04/29 23:34:51 wessels Exp $
+ * $Id: proto.c,v 1.104 1997/04/30 03:12:11 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -213,12 +213,6 @@ protoCancelTimeout(int fd, StoreEntry * entry)
 	debug_trap("protoCancelTimeout: called on non-socket");
 	return;
     }
-    /* cancel the timeout handler */
-    commSetSelect(fd,
-	COMM_SELECT_TIMEOUT,
-	NULL,
-	NULL,
-	0);
 }
 
 int
