@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.56 1996/09/24 18:50:05 wessels Exp $
+ * $Id: cache_cf.h,v 1.57 1996/09/26 19:19:11 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -273,6 +273,7 @@ extern u_short setHttpPortNum _PARAMS((u_short));
 extern u_short setIcpPortNum _PARAMS((u_short));
 extern void intlistDestroy _PARAMS((intlist **));
 extern void wordlistDestroy _PARAMS((wordlist **));
+extern void configFreeMemory _PARAMS((void));
 
 
 #endif /* ndef  _CACHE_CONFIG_H_ */

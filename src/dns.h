@@ -1,5 +1,5 @@
 /*
- * $Id: dns.h,v 1.5 1996/09/20 06:28:37 wessels Exp $
+ * $Id: dns.h,v 1.6 1996/09/26 19:19:15 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -138,6 +138,7 @@ extern void dnsEnqueue _PARAMS((void *));
 extern void *dnsDequeue _PARAMS((void));
 extern dnsserver_t *dnsGetFirstAvailable _PARAMS((void));
 extern void dnsStats _PARAMS((StoreEntry *));
+extern void dnsFreeMemory _PARAMS((void));
 
 extern char *dns_error_message;
 extern struct _dnsStats DnsStats;

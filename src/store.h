@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.52 1996/09/20 06:29:15 wessels Exp $
+ * $Id: store.h,v 1.53 1996/09/26 19:19:24 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -320,6 +320,7 @@ extern int storeGetLowestReaderOffset _PARAMS((StoreEntry *));
 extern void storeCloseLog _PARAMS((void));
 extern void storeConfigure _PARAMS((void));
 extern void storeNegativeCache _PARAMS((StoreEntry *));
+extern void storeFreeMemory _PARAMS((void));
 
 #if __STDC__
 extern void storeAppendPrintf _PARAMS((StoreEntry *, char *,...));

@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.48 1996/09/20 20:58:30 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.49 1996/09/26 19:19:21 wessels Exp $
 #
 
 #  TAG: http_port
@@ -787,9 +787,9 @@ icp_access  allow  all
 #	This is the maximum object size to keep saved in memory for
 #	fast access.  Objects larger than this will not be kept in
 #	fully in memory.  To disable ``Hot VM'' objects, set this to
-#	zero.  The default is 12k.
+#	zero.  The default is 256k.
 #
-#max_hotvm_obj_size 12288
+#max_hotvm_obj_size 262144
 
 
 # MISCELLANEOUS

@@ -1,5 +1,5 @@
 /*
- * $Id: comm.h,v 1.28 1996/09/20 06:28:33 wessels Exp $
+ * $Id: comm.h,v 1.29 1996/09/26 19:19:13 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -205,6 +205,7 @@ extern void comm_write _PARAMS((int fd,
 	rw_complete_handler * handler,
 	void *handler_data,
 	void       (*)_PARAMS((void *))));
+extern void commFreeMemory _PARAMS((void));
 
 extern int RESERVED_FD;
 

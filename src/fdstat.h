@@ -1,5 +1,5 @@
 /*
- * $Id: fdstat.h,v 1.10 1996/09/20 06:28:40 wessels Exp $
+ * $Id: fdstat.h,v 1.11 1996/09/26 19:19:17 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -123,6 +123,7 @@ extern void fdstat_close _PARAMS((int fd));
 extern void fdstat_open _PARAMS((int fd, File_Desc_Type type));
 extern int fdstat_are_n_free_fd _PARAMS((int));
 extern File_Desc_Type fdstatGetType _PARAMS((int));
+extern void fdstatFreeMemory _PARAMS((void));
 
 extern char *fdstatTypeStr[];
 

@@ -1,5 +1,5 @@
 /*
- * $Id: disk.h,v 1.18 1996/09/20 06:28:35 wessels Exp $
+ * $Id: disk.h,v 1.19 1996/09/26 19:19:14 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -207,5 +207,6 @@ extern int file_walk _PARAMS((int fd,
 extern int file_write_lock _PARAMS((int fd));
 extern int disk_init _PARAMS((void));
 extern int diskWriteIsComplete _PARAMS((int));
+extern void diskFreeMemory _PARAMS((void));
 
 #endif /* DISK_H */

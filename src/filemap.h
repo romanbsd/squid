@@ -1,5 +1,5 @@
 /*
- * $Id: filemap.h,v 1.6 1996/09/20 06:28:41 wessels Exp $
+ * $Id: filemap.h,v 1.7 1996/09/26 19:19:18 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -119,5 +119,6 @@ extern int file_map_allocate _PARAMS((int));
 extern int file_map_bit_set _PARAMS((int));
 extern int file_map_bit_test _PARAMS((int));
 extern void file_map_bit_reset _PARAMS((int));
+extern void filemapFreeMemory _PARAMS((void));
 
 #endif /* _FILEMAP_H_ */

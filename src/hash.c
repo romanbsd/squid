@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.14 1996/09/20 06:28:47 wessels Exp $
+ * $Id: hash.c,v 1.15 1996/09/26 19:19:19 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -121,8 +121,6 @@ struct master_table {
 
 static int default_hash_size = -1;
 struct master_table htbl[MAX_HTABLE];
-
-extern void *xcalloc _PARAMS((int, size_t));
 
 /*
  *  hash_url() - Returns a well-distributed hash function for URLs.
@@ -411,6 +409,14 @@ hash_get_bucket(HashID hid, unsigned int bucket)
     if (bucket >= htbl[hid].size)
 	return NULL;
     return (htbl[hid].buckets[bucket]);
+}
+
+
+void
+hashFreeMemory (HashID hid)
+{
+	safe_free(htbl[hid].buckets);
+        htbl[hid].valid = 0;
 }
 
 

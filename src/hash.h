@@ -1,5 +1,5 @@
 /*
- * $Id: hash.h,v 1.11 1996/09/20 06:28:49 wessels Exp $
+ * $Id: hash.h,v 1.12 1996/09/26 19:19:19 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -159,6 +159,7 @@ extern hash_link *hash_next _PARAMS((HashID));
 extern hash_link *hash_get_bucket _PARAMS((HashID, unsigned int));
 extern int hash_url _PARAMS((char *, HashID));
 extern int hash_string _PARAMS((char *, HashID));
+extern void hashFreeMemory _PARAMS((HashID));
 
 extern int hash_links_allocated;
 

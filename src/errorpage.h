@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.h,v 1.18 1996/09/20 06:28:38 wessels Exp $
+ * $Id: errorpage.h,v 1.19 1996/09/26 19:19:16 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -38,5 +38,6 @@ extern char *access_denied_redirect _PARAMS((int, int, char *, char *, char *));
 extern char *proxy_denied_msg _PARAMS((int, int, char *, char *));
 #endif /* USE_PROXY_AUTH */
 extern char *authorization_needed_msg _PARAMS((request_t *, char *));
+extern void errorpageFreeMemory _PARAMS((void));
 
 extern char *tmp_error_buf;

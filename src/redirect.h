@@ -1,5 +1,5 @@
 /*
- * $Id: redirect.h,v 1.5 1996/09/20 06:29:06 wessels Exp $
+ * $Id: redirect.h,v 1.6 1996/09/26 19:19:20 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -36,3 +36,4 @@ extern void redirectOpenServers _PARAMS((void));
 extern void redirectShutdownServers _PARAMS((void));
 extern void redirectStats _PARAMS((StoreEntry *));
 extern int redirectUnregister _PARAMS((char *url, int fd));
+extern void redirectFreeMemory _PARAMS((void));
