@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.70 1997/10/29 05:19:58 wessels Exp $
+ * $Id: objcache.c,v 1.71 1997/10/30 02:41:05 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -270,10 +270,8 @@ objcacheStart(int fd, StoreEntry * entry)
     ErrorState *err = NULL;
     debug(16, 3) ("objectcacheStart: '%s'\n", entry->url);
     if ((data = objcache_url_parser(entry->url)) == NULL) {
-	err = xcalloc(1, sizeof(ErrorState));
+	err = errorCon(ERR_INVALID_REQ, HTTP_NOT_FOUND);
 	err->url = xstrdup(entry->url);
-	err->type = ERR_INVALID_REQ;
-	err->http_status = HTTP_NOT_FOUND;
 	errorAppendEntry(entry, err);
 	entry->expires = squid_curtime;
 	storeAbort(entry, 0);
@@ -289,9 +287,7 @@ objcacheStart(int fd, StoreEntry * entry)
     if (objcache_CheckPassword(data) != 0) {
 	safe_free(data);
 	debug(16, 1) ("WARNING: Incorrect Cachemgr Password!\n");
-	err = xcalloc(1, sizeof(ErrorState));
-	err->type = ERR_INVALID_REQ;
-	err->http_status = HTTP_NOT_FOUND;
+	err = errorCon(ERR_INVALID_REQ, HTTP_NOT_FOUND);
 	errorAppendEntry(entry, err);
 	storeAbort(entry, 0);
 	entry->expires = squid_curtime;
