@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.30 1998/08/18 20:46:48 wessels Exp $ */
+/* $Id: acconfig.h,v 1.31 1998/08/21 03:49:13 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -182,3 +182,11 @@
  * should be defined to int.
  */
 #undef socklen_t
+
+/*
+ * By default (for now anyway) Squid includes options which allows
+ * the cache administrator to violate the HTTP protocol specification
+ * in terms of cache behaviour.  Setting this to '0' will disable
+ * such code.
+ */
+#define HTTP_VIOLATIONS 1
