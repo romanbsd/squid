@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.3 1996/03/27 01:46:24 wessels Exp $ */
+/*  $Id: store.h,v 1.4 1996/03/28 03:02:12 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -178,5 +178,6 @@ extern int urlcmp _PARAMS((char *, char *));
 extern int storeSwapInStart _PARAMS((StoreEntry *));
 extern int swapInError _PARAMS((int fd, StoreEntry *));
 extern int storeCopy _PARAMS((StoreEntry *, int, int, char *, int *));
+extern void storeMaintainSwapSpace _PARAMS((void));
 
 #endif

@@ -1,4 +1,4 @@
-/*  $Id: disk.h,v 1.2 1996/03/27 01:46:00 wessels Exp $ */
+/*  $Id: disk.h,v 1.3 1996/03/28 03:02:08 wessels Exp $ */
 
 #ifndef DISK_H
 #define DISK_H
@@ -38,5 +38,6 @@ extern int file_walk _PARAMS((int fd,
 extern int file_get_fd _PARAMS((char *filename));
 extern int file_update_open _PARAMS((int fd, char *path));
 extern int file_write_lock _PARAMS((int fd));
+extern int disk_init _PARAMS((void));
 
 #endif /* DISK_H */
