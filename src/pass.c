@@ -1,6 +1,6 @@
 
 /*
- * $Id: pass.c,v 1.40 1997/04/30 20:06:34 wessels Exp $
+ * $Id: pass.c,v 1.41 1997/05/15 06:55:47 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -91,10 +91,7 @@ passClientClosed(int fd, void *data)
     debug(39, 3, "passClientClosed: FD %d\n", fd);
     /* we have been called from comm_close for the client side, so
      * just need to clean up the server side */
-    protoUnregister(passState->server.fd,
-	NULL,
-	passState->request,
-	no_addr);
+    protoUnregister( NULL, passState->request, no_addr);
     comm_close(passState->server.fd);
 }
 

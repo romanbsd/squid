@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.34 1997/04/28 04:23:24 wessels Exp $
+ * $Id: proto.h,v 1.35 1997/05/15 06:55:48 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -267,10 +267,7 @@ typedef struct icp_message_s icp_message_t;
 
 extern void protoDispatch _PARAMS((int, StoreEntry *, request_t *));
 
-extern int protoUnregister _PARAMS((int fd,
-	StoreEntry *,
-	request_t *,
-	struct in_addr));
+extern int protoUnregister _PARAMS((StoreEntry *, request_t *, struct in_addr));
 extern int protoStart _PARAMS((int, StoreEntry *, peer *, request_t *));
 extern void protoCancelTimeout _PARAMS((int fd, StoreEntry *));
 
