@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.7 1996/07/08 22:42:43 wessels Exp $
+ * $Id: acl.h,v 1.8 1996/07/20 04:21:55 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -94,15 +94,17 @@ struct _acl_access {
     struct _acl_access *next;
 };
 
-extern int aclCheck _PARAMS((struct _acl_access *, struct in_addr, method_t, protocol_t, char *, int, char *));
-extern int aclMatchAcl _PARAMS((
-	struct _acl * acl,
-	struct in_addr c,
-	method_t m,
-	protocol_t pr,
-	char *h,
-	int po,
-	char *r));
+typedef struct {
+	struct in_addr src_addr;
+	struct in_addr dst_addr;
+	char src_fqdn[SQUIDHOSTNAMELEN];
+	char dst_fqdn[SQUIDHOSTNAMELEN];
+	request_t *request;
+	char ident[ICP_IDENT_SZ];
+} aclCheck_t;
+
+extern int aclCheck _PARAMS((struct _acl_access *, aclCheck_t *));
+extern int aclMatchAcl _PARAMS((struct _acl *, aclCheck_t *));
 extern void aclDestroyAccessList _PARAMS((struct _acl_access ** list));
 extern void aclDestroyAcls _PARAMS((void));
 extern void aclParseAccessLine _PARAMS((struct _acl_access **));
