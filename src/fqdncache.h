@@ -1,5 +1,6 @@
+
 /*
- * $Id: fqdncache.h,v 1.4 1996/08/30 22:39:27 wessels Exp $
+ * $Id: fqdncache.h,v 1.5 1996/08/30 23:23:29 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *

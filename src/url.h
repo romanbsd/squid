@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.17 1996/08/23 21:19:59 wessels Exp $
+ * $Id: url.h,v 1.18 1996/08/30 23:23:37 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -78,5 +78,6 @@ extern char *urlCanonical _PARAMS((request_t *, char *));
 extern request_t *requestLink _PARAMS((request_t *));
 extern void requestUnlink _PARAMS((request_t *));
 extern int matchDomainName _PARAMS((char *d, char *h));
+extern int urlCheckRequest _PARAMS((request_t *));
 
 #endif /* _URL_HEADER_ */
