@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.88 1997/01/24 22:18:24 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.89 1997/01/31 21:03:12 wessels Exp $
 #
 
 #  TAG: http_port
@@ -91,6 +91,7 @@
 #		     ttl=n
 #		     no-query
 #		     default
+#		     round-robin
 #
 #		     use 'proxy-only' to specify that objects fetched
 #		     from this cache should not be saved locally.
@@ -113,6 +114,10 @@
 #		     be used as a "last-resort." You should probably
 #		     only use 'default' in situations where you cannot
 #		     use ICP with your parent cache(s).
+#
+#		     use 'round-robin' to define a set of parents which
+#		     should be used in a round-robin fashion in the
+#		     absence of any ICP queries.
 #
 #	NOTE: non-ICP neighbors must be specified as 'parent'.
 #

@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.88 1997/01/02 07:17:39 wessels Exp $
+ * $Id: proto.c,v 1.89 1997/01/31 21:03:12 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -265,6 +265,9 @@ protoDispatchDNSHandle(int unused1, const ipcache_addrs * ia, void *data)
     if ((e = protoData->default_parent)) {
 	hierarchyNote(req, HIER_DEFAULT_PARENT, protoData->fd, e->host);
 	protoStart(protoData->fd, entry, e, req);
+    } else if ((e = getRoundRobinParent(req))) {
+	hierarchyNote(req, HIER_ROUNDROBIN_PARENT, protoData->fd, e->host);
+	protoStart(protoData->fd, entry, e, req);
     } else if (protoData->direct_fetch == DIRECT_NO) {
 	hierarchyNote(req, HIER_NO_DIRECT_FAIL, 0, req->host);
 	protoCantFetchObject(protoData->fd, entry,
@@ -478,6 +481,10 @@ getFromDefaultSource(int fd, StoreEntry * entry)
     }
     if ((e = getSingleParent(request))) {
 	hierarchyNote(request, HIER_SINGLE_PARENT, fd, e->host);
+	return protoStart(fd, entry, e, request);
+    }
+    if ((e = getRoundRobinParent(request))) {
+	hierarchyNote(request, HIER_ROUNDROBIN_PARENT, fd, e->host);
 	return protoStart(fd, entry, e, request);
     }
     if ((e = getFirstUpParent(request))) {
