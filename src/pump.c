@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.39 1998/04/24 07:00:59 wessels Exp $
+ * $Id: pump.c,v 1.40 1998/04/24 07:09:43 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -160,7 +160,7 @@ pumpStart(int s_fd, StoreEntry * reply_entry, request_t * r, CWCB * callback, vo
     if (p->sent == p->cont_len) {
 	pumpServerCopyComplete(p->s_fd, NULL, 0, DISK_OK, p);
     } else {
-        storeClientCopy(p->request_entry, p->sent, p->sent, 4096,
+	storeClientCopy(p->request_entry, p->sent, p->sent, 4096,
 	    memAllocate(MEM_4K_BUF),
 	    pumpServerCopy, p);
     }
