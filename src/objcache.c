@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.69 1997/10/28 21:59:10 wessels Exp $
+ * $Id: objcache.c,v 1.70 1997/10/29 05:19:58 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -389,5 +389,5 @@ objcacheUnimplemented(StoreEntry * entry)
 void
 objcacheInit(void)
 {
-    assert(sizeof(objcacheOpcodeStr) == (MGR_MAX + 1) * 4);
+    assert(sizeof(objcacheOpcodeStr) == (MGR_MAX + 1) * sizeof(char *));
 }
