@@ -1,5 +1,5 @@
 /*
- * $Id: options.h.in,v 1.1 1997/12/06 05:16:58 wessels Exp $
+ * $Id: options.h.in,v 1.2 1997/12/31 20:42:00 wessels Exp $
  */
 
 /*
@@ -67,11 +67,6 @@
  */
 #undef STORE_KEY_SHA 1
 #undef STORE_KEY_MD5 1
-
-/*
- * Define this for Aschyncronous I/O suport.
- */
-#undef USE_ASYNC_IO 1
 
 /*
  * Define this to include code which lets you specify access control
