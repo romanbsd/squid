@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.83 1997/06/02 01:06:13 wessels Exp $
+ * $Id: icp.h,v 1.84 1997/06/04 05:50:28 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -179,7 +179,6 @@ typedef struct _clientHttpRequest {
 	int size;
     } out;
     size_t req_sz;
-    size_t body_sz;
     StoreEntry *entry;
     StoreEntry *old_entry;
     log_type log_type;
@@ -190,6 +189,9 @@ typedef struct _clientHttpRequest {
     int redirect_state;
     aclCheck_t *acl_checklist;	/* need ptr back so we can unreg if needed */
     struct _clientHttpRequest *next;
+#if LOG_FULL_HEADERS
+    char *reply_hdr;		/* HTTP reply header */
+#endif
 } clientHttpRequest;
 
 struct _ConnStateData {
@@ -200,9 +202,6 @@ struct _ConnStateData {
 	int size;
     } in;
     clientHttpRequest *chr;
-#if LOG_FULL_HEADERS
-    char *reply_hdr;		/* HTTP reply header */
-#endif				/* LOG_FULL_HEADERS */
     struct sockaddr_in peer;
     struct sockaddr_in me;
     struct in_addr log_addr;
