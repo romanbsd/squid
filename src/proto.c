@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.112 1997/06/02 01:06:15 wessels Exp $
+ * $Id: proto.c,v 1.113 1997/06/02 05:39:47 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -261,9 +261,9 @@ protoAbortFetch(StoreEntry * entry)
 {
 #if !DONT_USE_VM
     if (!BIT_TEST(entry->flag, DELETE_BEHIND))
-	return 0;
+        return 0;
     if (storeClientWaiting(entry))
-	return 0;
+        return 0;
 #endif
     return 1;
 }
