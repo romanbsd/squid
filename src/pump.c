@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.47 1998/06/09 05:55:03 wessels Exp $
+ * $Id: pump.c,v 1.48 1998/06/10 05:47:39 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -152,6 +152,7 @@ pumpStart(int s_fd, StoreEntry * reply_entry, request_t * r, CWCB * callback, vo
     if (p->rcvd < p->cont_len && r->body_sz > 0) {
 	assert(p->request_entry->store_status == STORE_PENDING);
 	assert(r->body != NULL);
+	assert(r->body_sz <= p->cont_len);
 	copy_sz = XMIN(r->body_sz, p->cont_len);
 	debug(61, 3) ("pumpStart: Appending %d bytes from r->body\n", copy_sz);
 	storeAppend(p->request_entry, r->body, copy_sz);
