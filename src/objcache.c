@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.29 1996/10/14 23:45:29 wessels Exp $
+ * $Id: objcache.c,v 1.30 1996/10/15 04:57:56 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -293,13 +293,11 @@ objcacheStart(int fd, char *url, StoreEntry * entry)
 	BIT_RESET(data->entry->flag, DELAY_SENDING);
 	storeComplete(data->entry);
 
-#if USE_ICMP
     } else if (strcmp(data->request, "stats/netdb") == 0) {
 	BIT_SET(data->entry->flag, DELAY_SENDING);
 	HTTPCacheInfo->stat_get(HTTPCacheInfo, "netdb", data->entry);
 	BIT_RESET(data->entry->flag, DELAY_SENDING);
 	storeComplete(data->entry);
-#endif
 
     } else if (strcmp(data->request, "log/status") == 0) {
 	BIT_SET(data->entry->flag, DELAY_SENDING);
