@@ -1,14 +1,7 @@
 
-/* $Id: fdstat.c,v 1.3 1996/03/22 17:48:16 wessels Exp $ */
+/* $Id: fdstat.c,v 1.4 1996/03/27 01:46:02 wessels Exp $ */
 
-#include "config.h"
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-#include "debug.h"
-#include "fdstat.h"
-#include "util.h"
+#include "squid.h"
 
 static int Biggest_FD = 0;
 

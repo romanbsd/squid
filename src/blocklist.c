@@ -1,5 +1,5 @@
 /*
- * $Id: blocklist.c,v 1.2 1996/03/26 22:08:58 wessels Exp $
+ * $Id: blocklist.c,v 1.3 1996/03/27 01:45:52 wessels Exp $
  *
  *  File:         block.c
  *  Description:  Blacklisting specific URLs
@@ -12,22 +12,7 @@
 #define USE_POSIX_REGEX		/* put before includes; always use POSIX */
 #endif
 
-#include "config.h"
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <netdb.h>
-#include <memory.h>
-
-#include "autoconf.h"
-#include "GNUregex.h"
-#include "debug.h"
-#include "comm.h"
-#include "store.h"
-#include "cache_cf.h"
-#include "util.h"
+#include "squid.h"
 
 typedef struct _blocklist {
     char *pattern;

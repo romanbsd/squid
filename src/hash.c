@@ -1,16 +1,7 @@
 
-/* $Id: hash.c,v 1.3 1996/03/22 17:48:17 wessels Exp $ */
+/* $Id: hash.c,v 1.4 1996/03/27 01:46:06 wessels Exp $ */
 
-#include "config.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-#undef USE_HASH_DRIVER
-#include "ansihelp.h"
-#include "hash.h"
-#define safe_free(x)	{if ((x) != NULL) { free(x); (x) = NULL; }}
+#include "squid.h"
 
 #define MAX_HTABLE 4
 

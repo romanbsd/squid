@@ -1,12 +1,6 @@
-/* $Id: stack.c,v 1.2 1996/02/29 07:23:20 wessels Exp $ */
+/* $Id: stack.c,v 1.3 1996/03/27 01:46:19 wessels Exp $ */
 
-#include "config.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include "stack.h"
-#include "ansihelp.h"
-
-void *xcalloc _PARAMS((int, size_t));	/* Wrapper for calloc(3) */
+#include "squid.h"
 
 
 /*-------------------------------------------------------------------------

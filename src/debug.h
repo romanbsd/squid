@@ -1,12 +1,7 @@
-/*
- *  $Id: debug.h,v 1.2 1996/03/25 21:26:13 wessels Exp $
- */
+/*  $Id: debug.h,v 1.3 1996/03/27 01:45:58 wessels Exp $ */
 
 #ifndef _DEBUG_H_
 #define _DEBUG_H_
-
-#include <stdio.h>
-#include "ansihelp.h"
 
 extern int _db_level;
 extern char *_db_file;
@@ -32,5 +27,7 @@ void _db_print();
         _db_print
 
 #define safe_free(x)	if (x) { free(x); x = NULL; }
+
+extern void _db_rotate_log _PARAMS((void));
 
 #endif /* _DEBUG_H_ */

@@ -1,4 +1,4 @@
-/* $Id: ftpget.c,v 1.10 1996/03/26 05:17:43 wessels Exp $ */
+/* $Id: ftpget.c,v 1.11 1996/03/27 01:46:05 wessels Exp $ */
 
 /*
  *    NOTES
@@ -90,6 +90,7 @@
 #include <arpa/inet.h>
 
 #include "util.h"
+
 
 char *rfc1738_escape();
 char *http_time();

@@ -1,12 +1,6 @@
-/* $Id: storetoString.c,v 1.2 1996/02/29 07:23:23 wessels Exp $ */
+/* $Id: storetoString.c,v 1.3 1996/03/27 01:46:24 wessels Exp $ */
 
-#include "config.h"
-#include <string.h>
-#include "comm.h"
-#include "store.h"
-#include "util.h"
-
-extern time_t cached_curtime;
+#include "squid.h"
 
 /* convert store entry content to string. Use for debugging */
 /* return pointer to static buffer containing string */

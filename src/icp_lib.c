@@ -1,16 +1,7 @@
-/* $Id: icp_lib.c,v 1.2 1996/02/29 07:23:15 wessels Exp $ */
+/* $Id: icp_lib.c,v 1.3 1996/03/27 01:46:10 wessels Exp $ */
 
-#include "config.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "squid.h"
 
-#include "debug.h"
-#include "icp_lib.h"
-#include "comm.h"
-#include "proto.h"
-#include "util.h"
 
 /* Send a QUERY request to server  */
 int icp_query(sock, reqnum, auth, rid, url, hostname, port)
