@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.123 2002/10/04 14:00:22 hno Exp $
+ * $Id: ssl.c,v 1.124 2002/12/04 10:30:01 hno Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -351,10 +351,13 @@ sslTimeout(int fd, void *data)
 {
     SslStateData *sslState = data;
     debug(26, 3) ("sslTimeout: FD %d\n", fd);
+    /* Temporary lock to protect our own feets (comm_close -> sslClientClosed -> Free) */
+    cbdataInternalLock(sslState);
     if (sslState->client.fd > -1)
 	comm_close(sslState->client.fd);
     if (sslState->server.fd > -1)
 	comm_close(sslState->server.fd);
+    cbdataInternalUnlock(sslState);
 }
 
 static void
