@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.23 1998/05/22 21:11:46 wessels Exp $
+ * $Id: async_io.c,v 1.24 1998/07/20 17:19:19 wessels Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -26,7 +26,7 @@
  *  
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *  
  */
 

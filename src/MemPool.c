@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.16 1998/06/28 16:36:17 wessels Exp $
+ * $Id: MemPool.c,v 1.17 1998/07/20 17:19:10 wessels Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -25,7 +25,7 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *
  */
 

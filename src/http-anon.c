@@ -1,6 +1,6 @@
 
 /*
- * $Id: http-anon.c,v 1.11 1998/05/22 23:44:10 wessels Exp $
+ * $Id: http-anon.c,v 1.12 1998/07/20 17:19:44 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Lutz Donnerhacke <lutz@iks-jena.de>
@@ -25,7 +25,7 @@
  *  
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *  
  */
 

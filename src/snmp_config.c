@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_config.c,v 1.19 1998/04/06 22:32:17 wessels Exp $
+ * $Id: snmp_config.c,v 1.20 1998/07/20 17:20:06 wessels Exp $
  *
  * DEBUG: section 49     SNMP Interface
  * AUTHOR: Kostas Anagnostakis
@@ -25,7 +25,7 @@
  *  
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *  
  */
 

@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.41 1998/05/15 15:16:36 wessels Exp $
+ * $Id: store_clean.c,v 1.42 1998/07/20 17:20:14 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -26,7 +26,7 @@
  *  
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *  
  */
 

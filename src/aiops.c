@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.15 1998/07/16 23:24:49 wessels Exp $
+ * $Id: aiops.c,v 1.16 1998/07/20 17:19:17 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -24,7 +24,7 @@
  *  
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *  
  */
 
