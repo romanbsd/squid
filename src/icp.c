@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.33 1996/04/09 18:18:49 wessels Exp $ */
+/* $Id: icp.c,v 1.34 1996/04/09 18:20:26 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -824,7 +824,7 @@ int icpUdpReply(fd, queue)
     }
     /* Reinstate handler if needed */
     if ((UdpQueueHead = UdpQueueHead->next)) {
-        comm_set_select_handler(fd,
+	comm_set_select_handler(fd,
 	    COMM_SELECT_WRITE,
 	    (PF) icpUdpReply,
 	    (void *) UdpQueueHead);
