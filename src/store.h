@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.16 1996/04/09 23:27:59 wessels Exp $ */
+/*  $Id: store.h,v 1.17 1996/04/10 20:45:33 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -77,7 +77,7 @@ typedef struct _MemObject {
     /* use another field to avoid changing the existing code */
     struct pentry **pending;
 
-    unsigned short swap_fd;
+    short swap_fd;
     int fd_of_first_client;
     struct _http_reply *reply;
 

@@ -1,4 +1,4 @@
-/*  $Id: ipcache.h,v 1.6 1996/04/08 18:28:57 wessels Exp $ */
+/*  $Id: ipcache.h,v 1.7 1996/04/10 20:45:29 wessels Exp $ */
 
 #ifndef _IPCACHE_H_
 #define _IPCACHE_H_
@@ -30,6 +30,7 @@ extern void ipcache_flush _PARAMS((void));
 extern void ipcache_init _PARAMS((void));
 extern void stat_ipcache_get _PARAMS((StoreEntry *, cacheinfo *));
 extern void ipcacheShutdownServers _PARAMS((void));
+extern void ipcacheOpenServers _PARAMS((void));
 
 extern char *dns_error_message;
 
