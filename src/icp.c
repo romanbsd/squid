@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.61 1996/04/17 20:59:19 wessels Exp $ */
+/* $Id: icp.c,v 1.62 1996/04/18 20:28:56 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -1429,7 +1429,7 @@ int asciiHandleConn(sock, notused)
     }
     /* set the hardwired lifetime */
     lft = comm_set_fd_lifetime(fd, getClientLifetime());
-    nconn++;
+    ntcpconn++;
 
     debug(12, 4, "asciiHandleConn: FD %d: accepted (lifetime %d).\n", fd, lft);
     fd_note(fd, inet_ntoa(peer.sin_addr));
