@@ -1,6 +1,6 @@
 
 /*
- * $Id: objcache.c,v 1.72 1997/11/03 22:43:17 wessels Exp $
+ * $Id: objcache.c,v 1.73 1997/11/05 05:29:33 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -310,7 +310,7 @@ objcacheStart(int fd, StoreEntry * entry)
 }
 
 static void
-cachemgrShutdown(StoreEntry * unused)
+cachemgrShutdown(StoreEntry * entryunused)
 {
     debug(16, 0) ("Shutdown by command.\n");
     shut_down(0);
@@ -356,7 +356,7 @@ void
 objcachePasswdDestroy(cachemgr_passwd ** a)
 {
     cachemgr_passwd *b;
-    cachemgr_passwd *n;
+    cachemgr_passwd *n = NULL;
     for (b = *a; b; b = n) {
 	n = b->next;
 	safe_free(b->passwd);
