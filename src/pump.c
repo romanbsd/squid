@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.80 2000/03/06 16:23:33 wessels Exp $
+ * $Id: pump.c,v 1.81 2000/05/02 21:17:20 hno Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -227,6 +227,12 @@ pumpServerCopyComplete(int fd, char *bufnotused, size_t size, int errflag, void 
     cbdataUnlock(p->cbdata);
     storeUnlockObject(p->reply_entry);
     p->reply_entry = NULL;
+    /*
+     * and now we don't care about the client side either
+     * tear down the pump state.
+     */
+    comm_remove_close_handler(p->c_fd, pumpFree, p);
+    pumpFree(p->c_fd, p);
 }
 
 
