@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.28 2000/01/11 06:02:55 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.29 2000/02/01 05:44:33 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -397,7 +397,7 @@ storeRebuildFromDirectory(void *data)
 	    tmpe.flags,		/* flags */
 	    (int) rb->flags.clean);
     }
-    eventAdd("storeRebuild", storeRebuildFromDirectory, rb, 0.0, 1);
+    eventAdd("storeRebuild", storeRebuildFromDirectory, rb, 0.0, 0);
 }
 
 static void
@@ -550,7 +550,7 @@ storeRebuildFromSwapLog(void *data)
 	    (int) rb->flags.clean);
 	storeDirSwapLog(e, SWAP_LOG_ADD);
     }
-    eventAdd("storeRebuild", storeRebuildFromSwapLog, rb, 0.0, 1);
+    eventAdd("storeRebuild", storeRebuildFromSwapLog, rb, 0.0, 0);
 }
 
 static int
@@ -714,7 +714,7 @@ storeUfsDirRebuild(SwapDir * sd)
 	sd->path, clean ? "CLEAN" : "DIRTY");
     store_dirs_rebuilding++;
     cbdataAdd(rb, cbdataXfree, 0);
-    eventAdd("storeRebuild", func, rb, 0.0, 1);
+    eventAdd("storeRebuild", func, rb, 0.0, 0);
 }
 
 static void
