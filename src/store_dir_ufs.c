@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.14 1999/06/14 22:11:46 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.15 1999/06/24 20:20:16 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -495,6 +495,9 @@ storeRebuildFromSwapLog(void *data)
 		e->lastmod = s.lastmod;
 		e->flags = s.flags;
 		e->refcount += s.refcount;
+#if HEAP_REPLACEMENT
+		storeHeapPositionUpdate(e);
+#endif
 	    } else {
 		debug_trap("storeRebuildFromSwapLog: bad condition");
 		debug(20, 1) ("\tSee %s:%d\n", __FILE__, __LINE__);
@@ -667,7 +670,9 @@ storeAddDiskRestore(const cache_key * key,
     e->swap_file_number = file_number;
     e->swap_file_sz = swap_file_sz;
     e->lock_count = 0;
+#if !HEAP_REPLACEMENT
     e->refcount = 0;
+#endif
     e->lastref = lastref;
     e->timestamp = timestamp;
     e->expires = expires;
