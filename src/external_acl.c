@@ -1,6 +1,6 @@
 
 /*
- * $Id: external_acl.c,v 1.14 2002/09/29 19:01:31 hno Exp $
+ * $Id: external_acl.c,v 1.15 2002/11/10 04:41:22 hno Exp $
  *
  * DEBUG: section 82    External ACL
  * AUTHOR: Henrik Nordstrom, MARA Systems AB
@@ -106,7 +106,7 @@ struct _external_acl_format {
 	EXT_ACL_HEADER,
 	EXT_ACL_HEADER_MEMBER,
 	EXT_ACL_HEADER_ID,
-	EXT_ACL_HEADER_ID_MEMBER,
+	EXT_ACL_HEADER_ID_MEMBER
     } type;
     external_acl_format *next;
     char *header;
