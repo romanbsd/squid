@@ -1,5 +1,5 @@
 /*
- * $Id: store_dir.h,v 1.2 1997/04/02 04:40:01 wessels Exp $
+ * $Id: store_dir.h,v 1.3 1997/04/02 05:22:16 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -116,6 +116,7 @@ typedef struct {
     int read_only;
     int suggest;
     fileMap *map;
+    int swaplog_fd;
 } SwapDir;
 
 extern char *storeSwapFullPath _PARAMS((int, char *));
