@@ -1,4 +1,4 @@
-/* $Id: icp.h,v 1.10 1996/04/05 17:48:30 wessels Exp $ */
+/* $Id: icp.h,v 1.11 1996/04/09 18:18:49 wessels Exp $ */
 
 #ifndef ICP_H
 #define ICP_H
@@ -56,8 +56,10 @@ extern int icpUdpSend _PARAMS((int, char *, icp_common_t *, struct sockaddr_in *
 
 extern int icpHandleUdp _PARAMS((int sock, void *data));
 extern int asciiHandleConn _PARAMS((int sock, void *data));
+extern void AppendUdp _PARAMS((icpUdpData *));
 
 extern int neighbors_do_private_keys;
 extern char *IcpOpcodeStr[];
+extern int icpUdpReply _PARAMS((int fd, icpUdpData *queue));
 
 #endif

@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.17 1996/04/08 18:39:28 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.18 1996/04/09 18:18:46 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -103,6 +103,10 @@ extern int setUdpPortNum _PARAMS((int));
 extern ip_access_type ip_access_check _PARAMS((struct in_addr, ip_acl *));
 extern int getWAISMax _PARAMS((void));
 extern int getConnectTimeout _PARAMS((void));
+extern char *getAnnounceHost _PARAMS((void));
+extern int getAnnouncePort _PARAMS((void));
+extern char *getAnnounceFile _PARAMS((void));
+extern int getAnnounceRate _PARAMS((void));
 
 extern char w_space[];
 
