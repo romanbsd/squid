@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.300 1997/08/25 22:35:56 wessels Exp $
+ * $Id: icp.c,v 1.301 1997/10/07 04:13:50 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1896,7 +1896,7 @@ clientReadRequest(int fd, void *data)
 		err->url = xstrdup(http->url);
 		http->al.http.code = err->http_status;
 		errorSend(fd, err);
-		continue;	/* while offset > 0 */
+		break;
 	    }
 	    request->client_addr = conn->peer.sin_addr;
 	    request->http_ver = http->http_ver;
