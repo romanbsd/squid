@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.227 1997/02/19 17:05:23 wessels Exp $
+ * $Id: icp.c,v 1.228 1997/02/19 19:46:12 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1538,7 +1538,6 @@ parseHttpRequest(icpStateData * icpState)
     char *token = NULL;
     char *t = NULL;
     char *s = NULL;
-    char *ad = NULL;
     int free_request = 0;
     int req_hdr_sz;
     int len;
@@ -1618,8 +1617,8 @@ parseHttpRequest(icpStateData * icpState)
 	*t = '\0';
 
 #ifdef OLD_CODE
-    if ((ad = Config.appendDomain)) {
-	if ((t = do_append_domain(url, ad))) {
+    if (Config.appendDomain) {
+	if ((t = do_append_domain(url, Config.appendDomain))) {
 	    if (free_request)
 		safe_free(url);
 	    url = t;
