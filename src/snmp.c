@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.48 1998/03/17 05:12:37 wessels Exp $
+ * $Id: snmp.c,v 1.49 1998/03/20 06:30:44 wessels Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -91,7 +91,7 @@ void snmpUdpSend(int, const struct sockaddr_in *, void *, int);
 #include "cache_snmp.h"
 
 
-void
+static void
 snmpSnmplibDebug(int lvl, char *buf)
 {
     debug(49, lvl) ("%s", buf);
