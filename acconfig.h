@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.45 2000/05/03 17:15:38 adrian Exp $ */
+/* $Id: acconfig.h,v 1.46 2000/05/16 07:05:51 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -261,11 +261,6 @@
  * Use the heap-based replacement techniques
  */
 #undef HEAP_REPLACEMENT
-
-/*
- * Use DISKD
- */
-#undef USE_DISKD
 
 /*
  * message type for message queues
