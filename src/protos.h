@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.451 2002/10/08 16:08:17 wessels Exp $
+ * $Id: protos.h,v 1.452 2002/10/13 16:56:26 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1120,6 +1120,7 @@ extern void useragentLogClose(void);
 extern void refererOpenLog(void);
 extern void refererRotateLog(void);
 extern void logReferer(const char *, const char *, const char *);
+extern void refererCloseLog(void);
 extern peer_t parseNeighborType(const char *s);
 
 extern void errorInitialize(void);
