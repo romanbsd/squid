@@ -1,5 +1,5 @@
 /*
- * $Id: log.c,v 1.4 1996/07/09 03:41:12 wessels Exp $
+ * $Id: log.c,v 1.5 1996/08/14 22:57:04 wessels Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -119,6 +119,9 @@
 #endif
 #if HAVE_TIME_H
 #include <time.h>
+#endif
+#if HAVE_STDLIB_H
+#include <stdlib.h>
 #endif
 #if HAVE_SYS_TYPES_H
 #include <sys/types.h>

@@ -1,5 +1,5 @@
 /*
- * $Id: store.h,v 1.35 1996/07/26 17:00:37 wessels Exp $
+ * $Id: store.h,v 1.36 1996/08/14 22:57:18 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -244,7 +244,7 @@ struct sentry {
     ping_status_t ping_status:3;
     store_status_t store_status:3;
     swap_status_t swap_status:3;
-    method_t method:3;
+    method_t method:4;
 
     /* WARNING: Explicit assummption that fewer than 256
      * WARNING:  clients all hop onto the same object.  The code
@@ -323,4 +323,9 @@ extern int store_rebuilding;
 #define STORE_REBUILDING_SLOW 1
 #define STORE_REBUILDING_FAST 2
 
+#define SWAP_DIRECTORIES_L1	16
+#define SWAP_DIRECTORIES_L2	256
+extern int ncache_dirs;
+
 #endif
+
