@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.123 1997/10/17 00:00:44 wessels Exp $
+ * $Id: proto.c,v 1.124 1997/10/17 18:51:17 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -276,10 +276,27 @@ protoDispatch(int fd, StoreEntry * entry, request_t * request)
 	pctrl);
 }
 
+/* This is called before reading data from the server side to
+ * decide if the server side should abort the fetch.
+ * XXX This probably breaks quick_abort!
+ * When to abort?
+ * - NOT if there are clients reading
+ * - YES if we don't know the content length
+ * - YES if we do know the content length and we don't have the
+ * whole object
+ */
 int
 protoAbortFetch(StoreEntry * entry)
 {
+    MemObject *mem;
+    struct _http_reply *reply;
     if (storeClientWaiting(entry))
 	return 0;
-    return 1;
+    mem = entry->mem_obj;
+    reply = mem->reply;
+    if (reply->content_length == 0)
+	return 1;
+    if (mem->inmem_hi < reply->content_length + reply->hdr_sz)
+	return 1;
+    return 0;
 }
