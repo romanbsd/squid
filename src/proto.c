@@ -1,4 +1,4 @@
-/* $Id: proto.c,v 1.26 1996/04/16 05:13:36 wessels Exp $ */
+/* $Id: proto.c,v 1.27 1996/04/16 18:29:21 wessels Exp $ */
 
 /*
  * DEBUG: Section 17          proto:
@@ -209,7 +209,7 @@ int protoDispatch(fd, url, entry, request)
     data->fd = fd;
     data->url = url;
     data->entry = entry;
-    data->request = request;
+    data->request = entry->mem_obj->request = request;
 
     data->inside_firewall = matchInsideFirewall(request->host);
     data->cachable = proto_cachable(url, request->method);
@@ -331,13 +331,13 @@ static void protoCancelTimeout(fd, entry)
  *  Called from comm_select() if neighbor pings timeout or from
  *  neighborsUdpAck() if all parents and neighbors miss.
  */
-int getFromDefaultSource(fd, entry, request)
+int getFromDefaultSource(fd, entry)
      int fd;
      StoreEntry *entry;
-     request_t *request;
 {
     edge *e = NULL;
     char *url = NULL;
+    request_t *request = entry->mem_obj->request;
 
     url = entry->url;
 

@@ -1,4 +1,4 @@
-/*  $Id: proto.h,v 1.6 1996/04/16 05:05:28 wessels Exp $ */
+/*  $Id: proto.h,v 1.7 1996/04/16 18:29:20 wessels Exp $ */
 
 #ifndef PROTO_H
 #define PROTO_H
@@ -171,9 +171,8 @@ typedef struct _protodispatch_data {
 extern int proto_cachable _PARAMS((char *url, int method));
 extern int protoDispatch _PARAMS((int, char *, StoreEntry *, request_t *));
 extern int protoUndispatch _PARAMS((int, char *, StoreEntry *, request_t *));
-extern int getFromDefaultSource _PARAMS((int, StoreEntry *, request_t *));
+extern int getFromDefaultSource _PARAMS((int, StoreEntry *));
 extern int getFromCache _PARAMS((int, StoreEntry *, edge *, request_t *));
-
 
 #define DIRECT_NO    0
 #define DIRECT_MAYBE 1
