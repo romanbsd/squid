@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.202 1996/12/13 21:38:34 wessels Exp $
+ * $Id: icp.c,v 1.203 1996/12/14 18:56:04 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -325,7 +325,7 @@ icpParseRequestHeaders(icpStateData * icpState)
 	while ((t = strchr(t, ';'))) {
 	    for (t++; isspace(*t); t++);
 	    if (strncasecmp(t, "length=", 7) == 0)
-		request->imslen = atoi(t+7);
+		request->imslen = atoi(t + 7);
 	}
     }
     if ((t = mime_get_header(request_hdr, "Pragma"))) {
