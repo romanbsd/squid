@@ -10,6 +10,8 @@
 	  hash functions as cache keys.
 	- Fixed SSL snprintf() bug which broke SSL proxying.
 	- Fixed store_dir swap log bug from reconfigure (SIGHUP).
+	- Fixed LUR Reference Age bug.  The arg to pow() must be
+	  minutes, not seconds.
 
 Changes to squid-1.2.beta4 (Oct 30, 1997):
 
