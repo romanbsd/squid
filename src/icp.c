@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.22 1996/04/04 01:30:46 wessels Exp $ */
+/* $Id: icp.c,v 1.23 1996/04/04 01:47:15 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -598,7 +598,6 @@ void icp_hit_or_miss(fd, usm)
 {
     char *url = usm->url;
     char *pubkey = NULL;
-    char *mime_hdr = usm->mime_hdr;
     StoreEntry *entry = NULL;
     int lock = 0;
 
