@@ -1,6 +1,6 @@
 
 /*
- * $Id: ttl.c,v 1.13 1996/07/25 05:47:34 wessels Exp $
+ * $Id: ttl.c,v 1.14 1996/07/25 07:10:45 wessels Exp $
  *
  * DEBUG: section 22    TTL Calculation
  * AUTHOR: Harvest Derived
@@ -237,11 +237,11 @@ void ttlSet(entry)
     }
     /*  Calculate default TTL for later use */
     if (request->protocol == PROTO_HTTP)
-	default_ttl = getHttpTTL();
+	default_ttl = Config.Http.defaultTtl;
     else if (request->protocol == PROTO_FTP)
-	default_ttl = getFtpTTL();
+	default_ttl = Config.Ftp.defaultTtl;
     else if (request->protocol == PROTO_GOPHER)
-	default_ttl = getGopherTTL();
+	default_ttl = Config.Gopher.defaultTtl;
 
     match = NULL;
     for (t = TTL_tbl; t; t = t->next) {
