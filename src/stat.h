@@ -1,5 +1,5 @@
 /*
- * $Id: stat.h,v 1.18 1996/07/20 04:22:27 wessels Exp $
+ * $Id: stat.h,v 1.19 1996/07/22 16:40:30 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -134,6 +134,7 @@ typedef struct _meta_data_stat {
     int store_entries;
     int store_in_mem_objects;
     int ipcache_count;
+    int fqdncache_count;
     int hash_links;
     int url_strings;
     int misc;
