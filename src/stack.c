@@ -1,4 +1,4 @@
-/* $Id: stack.c,v 1.4 1996/04/04 05:19:49 wessels Exp $ */
+/* $Id: stack.c,v 1.5 1996/04/14 03:06:35 wessels Exp $ */
 
 #include "squid.h"
 
@@ -40,7 +40,7 @@ void push(stack, data)
      generic_ptr data;
 {
     if (current_stacksize(stack) == stack->stack_size) {
-	free(data);
+	safe_free(data);
 	return;
     }
     *stack->top = data;

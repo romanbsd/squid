@@ -1,4 +1,4 @@
-/*  $Id: debug.h,v 1.8 1996/04/01 23:22:33 wessels Exp $ */
+/*  $Id: debug.h,v 1.9 1996/04/14 03:06:34 wessels Exp $ */
 
 #ifndef _DEBUG_H_
 #define _DEBUG_H_
@@ -23,7 +23,7 @@ void _db_print();
 	    (_db_line = __LINE__)) \
         _db_print
 
-#define safe_free(x)	if (x) { free(x); x = NULL; }
+#define safe_free(x)	if (x) { xfree(x); x = NULL; }
 
 extern void _db_rotate_log _PARAMS((void));
 
