@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.49 1999/05/03 22:41:12 wessels Exp $
+ * $Id: store_clean.c,v 1.50 1999/05/22 07:42:09 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -69,9 +69,9 @@ storeDirClean(void *datanotused)
 	return;
     N0 = Config.cacheSwap.n_configured;
     D0 = swap_index % N0;
-    N1 = Config.cacheSwap.swapDirs[D0].l1;
+    N1 = Config.cacheSwap.swapDirs[D0].u.ufs.l1;
     D1 = (swap_index / N0) % N1;
-    N2 = Config.cacheSwap.swapDirs[D0].l2;
+    N2 = Config.cacheSwap.swapDirs[D0].u.ufs.l2;
     D2 = ((swap_index / N0) / N1) % N2;
     snprintf(p1, SQUID_MAXPATHLEN, "%s/%02X/%02X",
 	Config.cacheSwap.swapDirs[D0].path, D1, D2);
