@@ -1,5 +1,5 @@
 /*
- * $Id: cache_cf.h,v 1.69 1996/11/04 18:12:12 wessels Exp $
+ * $Id: cache_cf.h,v 1.70 1996/11/04 22:07:25 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -246,6 +246,7 @@ struct SquidConfig {
 	int high;
     } ipcache;
     int minDirectHops;
+    cachemgr_passwd *passwd_list;
     struct {
 	int objectsPerBucket;
 	int avgObjectSize;
@@ -276,6 +277,7 @@ extern u_short setIcpPortNum _PARAMS((u_short));
 extern void intlistDestroy _PARAMS((intlist **));
 extern void wordlistDestroy _PARAMS((wordlist **));
 extern void configFreeMemory _PARAMS((void));
+extern char *cachemgr_getpassword _PARAMS((cachemgr_passwd **, char *));
 
 
 #endif /* ndef  _CACHE_CONFIG_H_ */

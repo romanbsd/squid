@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.65 1996/11/01 21:31:04 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.66 1996/11/04 22:07:27 wessels Exp $
 #
 
 #  TAG: http_port
@@ -903,6 +903,18 @@ dns_testnames internic.net usc.edu cs.colorado.edu mit.edu yale.edu
 #	If using the ICMP pinging stuff, do direct fetches for sites
 #	which are no more than this many hops away.
 minimum_direct_hops 4
+
+#  TAG: cachemgr_passwd
+#       Specify the password for cachemgr actions.
+#       WARNING: by default there are _NO_ any passwords.
+#
+#       Usage: cachemgr_passwd password action1 action2 action3
+#
+#       So password followed by the list of actions that password will
+#       let you do.
+#
+#cachemgr_passwd secret shutdown restart
+#cachemgr_passwd lesssssssecret info stats/objects
 
 store_objects_per_bucket 50
 store_avg_object_size 20
