@@ -1,5 +1,5 @@
 /*
- * $Id: acl.h,v 1.10 1996/07/22 16:40:20 wessels Exp $
+ * $Id: acl.h,v 1.11 1996/07/23 02:40:00 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -99,7 +99,6 @@ struct _aclCheck_t {
     struct in_addr src_addr;
     struct in_addr dst_addr;
     char src_fqdn[SQUIDHOSTNAMELEN];
-    char dst_fqdn[SQUIDHOSTNAMELEN];
     request_t *request;
     char ident[ICP_IDENT_SZ];
     int need;
