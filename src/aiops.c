@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.26 1999/04/08 07:16:38 wessels Exp $
+ * $Id: aiops.c,v 1.27 1999/05/03 16:49:14 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -203,7 +203,7 @@ aio_init(void)
 }
 
 
-static void *
+static void
 aio_thread_loop(void *ptr)
 {
     aio_thread_t *threadp = (aio_thread_t *) ptr;
