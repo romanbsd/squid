@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.113 1996/09/15 05:04:32 wessels Exp $
+ * $Id: icp.c,v 1.114 1996/09/15 08:06:04 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -686,14 +686,14 @@ icpProcessRequest(int fd, icpStateData * icpState)
 	ipcacheReleaseInvalid(icpState->request->host);
 	entry = NULL;
 	icpState->log_type = LOG_TCP_USER_REFRESH;
+    } else if (!storeEntryValidToSend(entry)) {
+	/* The object is in the cache, but is not valid.  Use
+	 * LOG_TCP_EXPIRED_MISS for the time being, maybe change it to
+	 * _HIT later in icpHandleIMSReply() */
+	icpState->log_type = LOG_TCP_EXPIRED_MISS;
     } else if (BIT_TEST(icpState->flags, REQ_IMS)) {
 	/* A cached IMS request */
 	icpState->log_type = LOG_TCP_IMS_MISS;
-    } else if (!storeEntryValidToSend(entry)) {
-	/* The object is in the cache, but is not valid */
-	/* use LOG_TCP_EXPIRED_MISS for the time being, maybe change
-	 * * it to _HIT later in icpHandleIMSReply() */
-	icpState->log_type = LOG_TCP_EXPIRED_MISS;
     } else {
 	icpState->log_type = LOG_TCP_HIT;
     }
