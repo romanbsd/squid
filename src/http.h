@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.27 1996/12/03 20:26:55 wessels Exp $
+ * $Id: http.h,v 1.28 1996/12/13 20:33:07 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -114,6 +114,7 @@ struct _http_reply {
     int content_length;
     int hdr_sz;
     int cache_control;
+    int misc_headers;
     time_t date;
     time_t expires;
     time_t last_modified;
