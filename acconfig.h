@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.48 2000/05/31 01:04:43 hno Exp $ */
+/* $Id: acconfig.h,v 1.49 2000/07/13 08:35:47 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -74,6 +74,13 @@
  * directory.
  */
 #undef USE_USERAGENT_LOG
+
+/*
+ * If you want to log Referer request header values, define this.
+ * By default, they are written to referer.log in the Squid log
+ * directory.
+ */
+#undef USE_REFERER_LOG
 
 /*
  * A dangerous feature which causes Squid to kill its parent process
