@@ -1,4 +1,4 @@
-static char rcsid[] = "$Id: icp.c,v 1.1 1996/02/22 06:23:55 wessels Exp $";
+static char rcsid[] = "$Id: icp.c,v 1.2 1996/02/23 05:41:24 wessels Exp $";
 /* 
  *  File:         icp.c
  *  Description:  Implementation of binary cache protocol.
@@ -1518,7 +1518,7 @@ void asciiProcessInput(fd, buf, size, flag, astm)
 		110,
 		"Invalid URL",
 		"Your request is not a valid URL string.  Please check it again.",
-		HARVEST_VERSION,
+		SQUID_VERSION,
 		comm_hostname());
 	    astm->buf = xstrdup(tmp_error_buf);
 	    astm->ptr_to_4k_page = NULL;

@@ -1,4 +1,4 @@
-static char rcsid[] = "$Id: proto.c,v 1.1 1996/02/22 06:23:55 wessels Exp $";
+static char rcsid[] = "$Id: proto.c,v 1.2 1996/02/23 05:41:26 wessels Exp $";
 /*
  **********************************************************************
  *  Copyright (c) 1994, 1995.  All rights reserved.
@@ -579,7 +579,7 @@ static int protoNotImplemented(fd, url, entry)
 	501,
 	"Unsupported protocol",
 	buf,
-	HARVEST_VERSION,
+	SQUID_VERSION,
 	comm_hostname());
     storeAbort(entry, tmp_error_buf);
 #ifdef LOG_ERRORS
@@ -613,7 +613,7 @@ static int protoCantFetchObject(fd, entry, reason)
 	502,
 	"Cache cannot fetch the requested object.",
 	buf,
-	HARVEST_VERSION,
+	SQUID_VERSION,
 	comm_hostname());
     storeAbort(entry, tmp_error_buf);
 #ifdef LOG_ERRORS
@@ -640,7 +640,7 @@ static int protoDNSError(fd, entry)
 	102,
 	"DNS name lookup failure",
 	dns_error_message,
-	HARVEST_VERSION,
+	SQUID_VERSION,
 	comm_hostname());
     storeAbort(entry, tmp_error_buf);
 #ifdef LOG_ERRORS
