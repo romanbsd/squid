@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.34 1996/11/22 08:37:53 wessels Exp $
+ * $Id: url.h,v 1.35 1996/11/24 02:37:38 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -66,6 +66,7 @@ struct _request {
     struct _hierarchyLogData hierarchy;
     int flags;
     time_t max_age;
+    float http_ver;
 };
 
 extern char *url_convert_hex _PARAMS((char *org_url, int allocate));

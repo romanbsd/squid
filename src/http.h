@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.22 1996/11/12 22:37:06 wessels Exp $
+ * $Id: http.h,v 1.23 1996/11/24 02:37:35 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -137,11 +137,12 @@ typedef struct {
     edge *neighbor;		/* neighbor request made to */
     ConnectStateData connectState;
     int eof;			/* reached end-of-object? */
+    request_t *orig_request;
 } HttpStateData;
 
 extern int httpCachable _PARAMS((const char *, int));
-extern int proxyhttpStart _PARAMS((edge *, const char *, StoreEntry *));
-extern int httpStart _PARAMS((int, char *, request_t *, char *, int, StoreEntry *));
+extern int proxyhttpStart _PARAMS((const char *, request_t *, StoreEntry *, edge *));
+extern int httpStart _PARAMS((char *, request_t *, char *, int, StoreEntry *));
 extern void httpParseReplyHeaders _PARAMS((const char *, struct _http_reply *));
 extern void httpProcessReplyHeader _PARAMS((HttpStateData *, const char *, int));
 extern void httpReplyHeaderStats _PARAMS((StoreEntry *));
