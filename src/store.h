@@ -1,4 +1,4 @@
-/*  $Id: store.h,v 1.8 1996/04/01 18:22:07 wessels Exp $ */
+/*  $Id: store.h,v 1.9 1996/04/01 23:34:46 wessels Exp $ */
 
 #ifndef _STORE_H_
 #define _STORE_H_
@@ -143,7 +143,8 @@ typedef struct pentry {
 
 extern int has_mem_obj _PARAMS((StoreEntry *));
 extern StoreEntry *storeGet _PARAMS((char *));
-extern StoreEntry *storeAdd _PARAMS((char *, char *, char *, int, int, int));
+extern StoreEntry *storeCreateEntry _PARAMS((char *, char *, int, int, int));
+extern void storeAddEntry _PARAMS((StoreEntry *));
 extern StoreEntry *storeGetFirst _PARAMS((void));
 extern StoreEntry *storeGetNext _PARAMS((void));
 extern StoreEntry *storeLRU _PARAMS((void));

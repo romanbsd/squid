@@ -1,4 +1,6 @@
-/* $Id: icp.c,v 1.19 1996/04/01 18:23:27 wessels Exp $ */
+
+
+/* $Id: icp.c,v 1.20 1996/04/01 23:34:45 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -97,6 +99,7 @@ static void icpFreeBufOrPage(icpState)
 	put_free_4k_page(icpState->ptr_to_4k_page);
     else
 	safe_free(icpState->buf);
+    icpState->ptr_to_4k_page = icpState->buf = NULL;
 }
 
 
@@ -628,8 +631,7 @@ static int icpProcessMISS(fd, usm)	/* Formally icpProcessSENDA */
 	    storeRelease(entry);
 	}
     }
-    entry = storeAdd(url,
-	type,
+    entry = storeCreateEntry(url,
 	mime_hdr,
 	proto_cachable(url, type, mime_hdr),
 	usm->html_request,
