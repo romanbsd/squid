@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp.c,v 1.19 1998/01/02 06:56:52 wessels Exp $
+ * $Id: snmp.c,v 1.20 1998/01/02 22:38:40 kostas Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -1380,12 +1380,12 @@ var_system(struct variable * vp, oid * name, int *length, int exact,
     oid newname[MAX_NAME_LEN];
     int result;
     char *pp;
-    bcopy((char *) vp->name, (char *) newname, (int) vp->namelen * sizeof(oid));
+    xmemcpy((char *) newname, (char *) vp->name, (int) vp->namelen * sizeof(oid));
     newname[8] = 0;
     result = compare(name, *length, newname, (int) vp->namelen + 1);
     if ((exact && (result != 0)) || (!exact && (result >= 0)))
 	return NULL;
-    bcopy((char *) newname, (char *) name, ((int) vp->namelen + 1) * sizeof(oid));
+    xmemcpy((char *) name, (char *) newname, ((int) vp->namelen + 1) * sizeof(oid));
     *length = vp->namelen + 1;
     *write_method = 0;
     *var_len = sizeof(long);	/* default length */
