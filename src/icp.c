@@ -1,6 +1,6 @@
 
 
-/* $Id: icp.c,v 1.27 1996/04/04 21:34:25 wessels Exp $ */
+/* $Id: icp.c,v 1.28 1996/04/05 17:22:21 wessels Exp $ */
 
 /*
  * DEBUG: Section 12          icp:
@@ -132,6 +132,8 @@ static void icpCloseAndFree(fd, icpState, line)
     if (icpState->entry) {
 	size = icpState->entry->mem_obj->e_current_len;
 	http_code = icpState->entry->mem_obj->http_code;
+    } else {
+	http_code = icpState->http_code;
     }
     elapsed_msec = (current_time.tv_sec - icpState->start.tv_sec) * 1000 +
 	(current_time.tv_usec - icpState->start.tv_usec) / 1000;
