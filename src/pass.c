@@ -2,7 +2,7 @@
 
 
 /*
- * $Id: pass.c,v 1.65 1998/01/12 04:30:07 wessels Exp $
+ * $Id: pass.c,v 1.66 1998/02/24 21:17:06 wessels Exp $
  *
  * DEBUG: section 39    HTTP Passthrough
  * AUTHOR: Duane Wessels
@@ -128,7 +128,10 @@ passReadServer(int fd, void *data)
     PassStateData *passState = data;
     int len;
     len = read(passState->server.fd, passState->server.buf, SQUID_TCP_SO_RCVBUF);
-    fd_bytes(passState->server.fd, len, FD_READ);
+    if (len > 0) {
+	fd_bytes(passState->server.fd, len, FD_READ);
+	kb_incr(&Counter.server.kbytes_in, len);
+    }
     debug(39, 5) ("passReadServer FD %d, read %d bytes\n", fd, len);
     if (len < 0) {
 	debug(50, 2) ("passReadServer: FD %d: read failure: %s\n",
@@ -168,7 +171,10 @@ passReadClient(int fd, void *data)
     PassStateData *passState = data;
     int len;
     len = read(passState->client.fd, passState->client.buf, SQUID_TCP_SO_RCVBUF);
-    fd_bytes(passState->client.fd, len, FD_READ);
+    if (len > 0) {
+	fd_bytes(passState->client.fd, len, FD_READ);
+	kb_incr(&Counter.client_http.kbytes_in, len);
+    }
     debug(39, 5) ("passReadClient FD %d, read %d bytes\n",
 	passState->client.fd, len);
     if (len < 0) {
@@ -206,7 +212,10 @@ passWriteServer(int fd, void *data)
     len = write(passState->server.fd,
 	passState->client.buf + passState->client.offset,
 	passState->client.len - passState->client.offset);
-    fd_bytes(fd, len, FD_WRITE);
+    if (len > 0) {
+	fd_bytes(passState->server.fd, len, FD_WRITE);
+	kb_incr(&Counter.server.kbytes_out, len);
+    }
     debug(39, 5) ("passWriteServer FD %d, wrote %d bytes\n", fd, len);
     if (len < 0) {
 	if (ignoreErrno(errno)) {
@@ -253,7 +262,10 @@ passWriteClient(int fd, void *data)
     len = write(passState->client.fd,
 	passState->server.buf + passState->server.offset,
 	passState->server.len - passState->server.offset);
-    fd_bytes(fd, len, FD_WRITE);
+    if (len > 0) {
+	fd_bytes(passState->client.fd, len, FD_WRITE);
+	kb_incr(&Counter.client_http.kbytes_out, len);
+    }
     debug(39, 5) ("passWriteClient FD %d, wrote %d bytes\n", fd, len);
     if (len < 0) {
 	if (ignoreErrno(errno)) {
