@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.104 1997/06/21 02:38:17 wessels Exp $
+ * $Id: store.h,v 1.105 1997/07/02 22:42:59 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -136,13 +136,8 @@
 #define RELEASE_REQUEST 	(1<<5)
 #define ABORT_MSG_PENDING 	(1<<4)
 #define DELAY_SENDING 		(1<<3)
-#ifdef OLD_CODE
-#define CLIENT_ABORT_REQUEST 	(1<<2)
-#endif
+#define ENTRY_REVALIDATE 	(1<<2)
 #define DELETE_BEHIND   	(1<<1)
-#ifdef OLD_CODE
-#define IP_LOOKUP_PENDING      	(1<<0)
-#endif
 
 typedef void STABH _PARAMS((void *));
 
@@ -256,9 +251,6 @@ extern void storeClientCopy _PARAMS((StoreEntry * e,
 	void *data));
 extern int storePendingNClients _PARAMS((const StoreEntry *));
 extern int storeWriteCleanLogs _PARAMS((void));
-#if OLD_CODE
-extern void storeRegister _PARAMS((StoreEntry *, STCB *, void *, off_t));
-#endif
 extern HASHCMP urlcmp;
 extern EVH storeMaintainSwapSpace;
 extern void storeExpireNow _PARAMS((StoreEntry *));
