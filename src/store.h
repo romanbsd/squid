@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.102 1997/06/17 04:54:13 wessels Exp $
+ * $Id: store.h,v 1.103 1997/06/19 22:51:56 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -259,7 +259,7 @@ extern void storeComplete _PARAMS((StoreEntry *));
 extern void storeInit _PARAMS((void));
 extern int storeReleaseEntry _PARAMS((StoreEntry *));
 extern int storeClientWaiting _PARAMS((const StoreEntry *));
-extern void storeAbort _PARAMS((StoreEntry *, const char *));
+extern void storeAbort _PARAMS((StoreEntry *, log_type, const char *, int));
 extern void storeAppend _PARAMS((StoreEntry *, const char *, int));
 extern int storeGetMemSize _PARAMS((void));
 extern int storeGetSwapSize _PARAMS((void));

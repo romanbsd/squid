@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.276 1997/06/18 16:16:12 wessels Exp $
+ * $Id: icp.c,v 1.277 1997/06/19 22:51:52 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -2150,8 +2150,7 @@ CheckQuickAbort(clientHttpRequest * http)
 	return;
     debug(12, 3) ("CheckQuickAbort: ABORTING %s\n", entry->url);
     storeReleaseRequest(entry);
-    storeAbort(entry, "aborted by client");
-    http->log_type = ERR_CLIENT_ABORT;
+    storeAbort(entry, ERR_CLIENT_ABORT, "aborted by client", 1);
 }
 
 static int

@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.h,v 1.22 1997/02/28 21:33:36 wessels Exp $
+ * $Id: errorpage.h,v 1.23 1997/06/19 22:51:49 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -28,7 +28,6 @@
  *  
  */
 
-extern void squid_error_entry _PARAMS((StoreEntry *, log_type, const char *));
 extern char *squid_error_url _PARAMS((const char *, int, int, const char *, int, const char *));
 extern char *squid_error_request _PARAMS((const char *, int, int));
 extern void errorInitialize _PARAMS((void));
