@@ -1,5 +1,5 @@
 /*
- * $Id: ftpget.c,v 1.59 1996/10/29 02:41:12 wessels Exp $
+ * $Id: ftpget.c,v 1.60 1996/10/30 18:43:19 wessels Exp $
  *
  * DEBUG: section 38    FTP Retrieval
  * AUTHOR: Harvest Derived
@@ -586,7 +586,7 @@ sigchld_handler(int sig)
 #else
     int status;
 #endif
-    int pid;
+    pid_t pid;
 
 #if defined(_SQUID_NEXT_) && !defined(_POSIX_SOURCE)
     if ((pid = wait4(0, &status, WNOHANG, NULL)) > 0)
