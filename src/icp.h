@@ -1,9 +1,8 @@
-/* $Id: icp.h,v 1.2 1996/03/27 01:46:09 wessels Exp $ */
+/* $Id: icp.h,v 1.3 1996/03/27 20:21:43 wessels Exp $ */
 
 #ifndef ICP_H
 #define ICP_H
 
-extern int icpHandleTcp _PARAMS((int sock, caddr_t data));
 extern int icpHandleUdp _PARAMS((int sock, caddr_t data));
 extern int asciiHandleConn _PARAMS((int sock, caddr_t data));
 

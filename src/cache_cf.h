@@ -1,5 +1,5 @@
 
-/*  $Id: cache_cf.h,v 1.6 1996/03/27 18:50:21 wessels Exp $ */
+/*  $Id: cache_cf.h,v 1.7 1996/03/27 20:21:41 wessels Exp $ */
 
 #ifndef _CACHE_CONFIG_H_
 #define _CACHE_CONFIG_H_
@@ -53,7 +53,6 @@ extern double getCacheHotVmFactor _PARAMS((void));
 extern int getAccelWithProxy _PARAMS((void));
 extern int getAsciiPortNum _PARAMS((void));
 extern int getBehindFirewall _PARAMS((void));
-extern int getBinaryPortNum _PARAMS((void));
 extern int getCacheMemHighWaterMark _PARAMS((void));
 extern int getCacheMemLowWaterMark _PARAMS((void));
 extern int getCacheMemMax _PARAMS((void));
@@ -81,7 +80,6 @@ extern int getWaisRelayPort _PARAMS((void));
 extern int ip_acl_match _PARAMS((int, int, int, int, int, int, int, int));
 extern int parseConfigFile _PARAMS((char *file_name));
 extern int setAsciiPortNum _PARAMS((int));
-extern int setBinaryPortNum _PARAMS((int));
 extern int setCacheSwapMax _PARAMS((int size));
 extern int setUdpPortNum _PARAMS((int));
 extern ip_access_type ip_access_check _PARAMS((struct in_addr, ip_acl *));
