@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.78 1997/05/15 23:39:57 wessels Exp $
+ * $Id: icp.h,v 1.79 1997/05/17 15:59:47 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -176,9 +176,10 @@ typedef struct _clientHttpRequest {
 	char *buf;
 	int offset;
 	int size;
-    } in  , out;
+    } out;
     char *request_hdr;
-    int req_hdr_sz;
+    size_t req_sz;
+    size_t req_hdr_sz;
     StoreEntry *entry;
     StoreEntry *old_entry;
     log_type log_type;
@@ -193,6 +194,11 @@ typedef struct _clientHttpRequest {
 
 struct _ConnStateData {
     int fd;
+    struct {
+	char *buf;
+	int offset;
+	int size;
+    } in;
     clientHttpRequest *chr;
 #if LOG_FULL_HEADERS
     char *reply_hdr;		/* HTTP reply header */
