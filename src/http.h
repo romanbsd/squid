@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.h,v 1.15 1996/09/20 06:28:50 wessels Exp $
+ * $Id: http.h,v 1.16 1996/10/08 14:48:34 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -133,13 +133,14 @@ typedef struct {
 				 * middle of an icpwrite, don't lose the
 				 * icpReadWriteData */
     char *reply_hdr;
+    int req_hdr_sz;
     int reply_hdr_state;
     edge *neighbor;		/* neighbor request made to */
 } HttpStateData;
 
 extern int httpCachable _PARAMS((char *, int));
 extern int proxyhttpStart _PARAMS((edge *, char *, StoreEntry *));
-extern int httpStart _PARAMS((int, char *, request_t *, char *, StoreEntry *));
+extern int httpStart _PARAMS((int, char *, request_t *, char *, int, StoreEntry *));
 extern void httpParseHeaders _PARAMS((char *, struct _http_reply *));
 extern void httpProcessReplyHeader _PARAMS((HttpStateData *, char *, int));
 extern void httpReplyHeaderStats _PARAMS((StoreEntry *));

@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.42 1996/10/08 02:13:56 wessels Exp $
+ * $Id: icp.h,v 1.43 1996/10/08 14:48:36 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -174,6 +174,7 @@ typedef struct iwd {
     method_t method;		/* GET, POST, ... */
     request_t *request;		/* Parsed URL ... */
     char *request_hdr;		/* HTTP request header */
+    int req_hdr_sz;
 #if LOG_FULL_HEADERS
     char *reply_hdr;		/* HTTP reply header */
 #endif				/* LOG_FULL_HEADERS */

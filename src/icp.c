@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.122 1996/10/08 14:42:12 wessels Exp $
+ * $Id: icp.c,v 1.123 1996/10/08 14:48:35 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -832,6 +832,7 @@ icpProcessMISS(int fd, icpStateData * icpState)
     }
     entry = storeCreateEntry(url,
 	request_hdr,
+	icpState->req_hdr_sz,
 	icpState->request->flags,
 	icpState->method);
     /* NOTE, don't call storeLockObject(), storeCreateEntry() does it */
@@ -1571,6 +1572,7 @@ parseHttpRequest(icpStateData * icpState)
 	return 0;		/* not a complete request */
     }
     /* Ok, all headers are received */
+    icpState->req_hdr_sz = req_hdr_sz;
     icpState->request_hdr = xmalloc(req_hdr_sz + 1);
     xmemcpy(icpState->request_hdr, req_hdr, req_hdr_sz);
     *(icpState->request_hdr + req_hdr_sz) = '\0';

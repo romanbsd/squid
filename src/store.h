@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.h,v 1.53 1996/09/26 19:19:24 wessels Exp $
+ * $Id: store.h,v 1.54 1996/10/08 14:48:37 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -191,6 +191,7 @@ typedef struct _MemObject {
     request_t *request;
     SIH swapin_complete_handler;
     void *swapin_complete_data;
+    int mime_hdr_sz;
 } MemObject;
 
 enum {
@@ -272,7 +273,7 @@ typedef struct pentry {
 } PendingEntry;
 
 extern StoreEntry *storeGet _PARAMS((char *));
-extern StoreEntry *storeCreateEntry _PARAMS((char *, char *, int, method_t));
+extern StoreEntry *storeCreateEntry _PARAMS((char *, char *, int, int, method_t));
 extern void storeSetPublicKey _PARAMS((StoreEntry *));
 extern void storeSetPrivateKey _PARAMS((StoreEntry *));
 extern StoreEntry *storeGetFirst _PARAMS((void));
