@@ -1,4 +1,4 @@
-/* $Id: acconfig.h,v 1.15 1998/01/02 02:05:58 wessels Exp $ */
+/* $Id: acconfig.h,v 1.16 1998/01/02 18:04:19 wessels Exp $ */
 
 /* Define if struct tm has tm_gmtoff member */
 #undef HAVE_TM_GMTOFF
@@ -68,3 +68,6 @@
 
 /* Define to use async disk I/O operations */
 #undef USE_ASYNC_IO
+
+/* Define if you have struct rusage */
+#undef HAVE_STRUCT_RUSAGE
