@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.310 1997/10/20 22:59:46 wessels Exp $
+ * $Id: icp.c,v 1.311 1997/10/21 04:06:27 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -668,6 +668,11 @@ clientWriteComplete(int fd, char *buf, int size, int errflag, void *data)
     if (errflag) {
 	CheckQuickAbort(http);
 	/* Log the number of bytes that we managed to read */
+	HTTPCacheInfo->proto_touchobject(HTTPCacheInfo,
+	    urlParseProtocol(entry->url),
+	    http->out.size);
+	comm_close(fd);
+    } else if (entry->store_status == STORE_ABORTED) {
 	HTTPCacheInfo->proto_touchobject(HTTPCacheInfo,
 	    urlParseProtocol(entry->url),
 	    http->out.size);
