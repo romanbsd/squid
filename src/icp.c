@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.159 1996/11/05 20:43:53 wessels Exp $
+ * $Id: icp.c,v 1.160 1996/11/06 08:17:06 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1545,12 +1545,14 @@ parseHttpRequest(icpStateData * icpState)
     char *token = NULL;
     char *t = NULL;
     char *ad = NULL;
-    char *post_data = NULL;
     int free_request = 0;
-    int content_length;
     int req_hdr_sz;
-    int post_sz;
     int len;
+#ifdef DONT
+    char *post_data = NULL;
+    int content_length;
+    int post_sz;
+#endif
 
     /* Make sure a complete line has been received */
     if (strchr(icpState->inbuf, '\n') == NULL) {
