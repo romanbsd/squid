@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.43 1999/12/11 17:58:29 wessels Exp $ */
+/* $Id: acconfig.h,v 1.44 1999/12/30 17:35:48 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -256,6 +256,11 @@
  * Allow underscores in host names
  */
 #undef ALLOW_HOSTNAME_UNDERSCORES
+
+/*
+ * Use the heap-based replacement techniques
+ */
+#undef HEAP_REPLACEMENT
 
 /*
  * Use DISKD

@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.25 1999/12/11 16:04:48 wessels Exp $
+ * $Id: store_dir_ufs.c,v 1.26 1999/12/30 17:36:57 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -626,11 +626,11 @@ storeGetNextFile(RebuildState * rb, int *sfileno, int *size)
 		rb->fullpath, rb->entry->d_name);
 	    debug(20, 3) ("storeGetNextFile: Opening %s\n", rb->fullfilename);
 	    fd = file_open(rb->fullfilename, O_RDONLY);
-           if (fd < 0)
-                debug(50, 1) ("storeGetNextFile: %s: %s\n", rb->fullfilename, xstrerror());
-           else
-                store_open_disk_fd++;
-           continue;
+	    if (fd < 0)
+		debug(50, 1) ("storeGetNextFile: %s: %s\n", rb->fullfilename, xstrerror());
+	    else
+		store_open_disk_fd++;
+	    continue;
 	}
 	rb->in_dir = 0;
 	if (++rb->curlvl2 < rb->sd->u.ufs.l2)
