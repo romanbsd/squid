@@ -1,5 +1,5 @@
 /*
- * $Id: disk.h,v 1.8 1996/07/09 04:47:17 wessels Exp $
+ * $Id: disk.h,v 1.9 1996/07/09 04:56:01 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -168,7 +168,7 @@ typedef struct _FileEntry {
 	NO, YES
     } at_eof;
     enum {
-	NOT_OPEN, OPEN
+	FILE_NOT_OPEN, FILE_OPEN
     } open_stat;
     enum {
 	NOT_REQUEST, REQUEST
