@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.187 1996/11/28 07:17:33 wessels Exp $
+ * $Id: icp.c,v 1.188 1996/11/28 07:26:45 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1950,7 +1950,7 @@ icpCheckTransferDone(icpStateData *icpState)
 	return 0;
     if (mem->reply->content_length == 0)
 	return 0;
-    if (icpState->offset >= mem->reply->content_length)
+    if (icpState->offset >= mem->reply->content_length + mem->reply->hdr_sz)
 	return 1;
     return 0;
 }
@@ -1958,7 +1958,7 @@ icpCheckTransferDone(icpStateData *icpState)
 void
 icpDetectClientClose(int fd, void *data)
 {
-    icpStateData *icpState = icpState;
+    icpStateData *icpState = data;
     LOCAL_ARRAY(char, buf, 256);
     int n;
     int x;
