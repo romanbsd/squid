@@ -20,7 +20,7 @@
  *
  */
 @TOP@
-/* $Id: acconfig.h,v 1.33 1998/10/02 04:36:24 wessels Exp $ */
+/* $Id: acconfig.h,v 1.34 1998/11/12 06:29:23 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -202,3 +202,13 @@
  * type of fd_set array
  */
 #undef fd_mask
+
+/*
+ * If _res structure has nsaddr_list member
+ */
+#undef HAVE_RES_NSADDR_LIST
+
+/*
+ * If _res structure has ns_list member
+ */
+#undef HAVE_RES_NS_LIST
