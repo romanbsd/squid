@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store_clean.c,v 1.45 1998/09/23 20:13:55 wessels Exp $
+ * $Id: store_clean.c,v 1.46 1998/09/29 16:33:53 wessels Exp $
  *
  * DEBUG: section 36    Cache Directory Cleanup
  * AUTHOR: Duane Wessels
@@ -106,7 +106,7 @@ storeDirClean(void *datanotused)
 	debug(36, 3) ("storeDirClean: Cleaning file %08X\n", files[n]);
 	snprintf(p2, MAXPATHLEN + 1, "%s/%08X", p1, files[n]);
 	safeunlink(p2, 0);
-        Counter.swap_files_cleaned++;
+	Counter.swap_files_cleaned++;
     }
     debug(36, 3) ("Cleaned %d unused files from %s\n", k, p1);
 }

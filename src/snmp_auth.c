@@ -1,5 +1,5 @@
 /*
- * $Id: snmp_auth.c,v 1.5 1998/09/23 21:25:29 glenn Exp $
+ * $Id: snmp_auth.c,v 1.6 1998/09/29 16:33:49 wessels Exp $
  *
  * DEBUG: section 49     SNMP Interface
  * AUTHOR: Kostas Anagnostakis
@@ -103,7 +103,7 @@ snmpAclCheckDone(int answer, void *data)
 
 	/* access check for each variable */
 
-	debug(49, 3) ("snmpAclCheckDone: Length=%d \n",VarPtr->name_length);
+	debug(49, 3) ("snmpAclCheckDone: Length=%d \n", VarPtr->name_length);
 	snmpDebugOid(3, VarPtr->name, VarPtr->name_length);
 
 	if (!snmpCommunityCheck((char *) Community, VarPtr->name, VarPtr->name_length)) {
