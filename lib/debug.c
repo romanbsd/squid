@@ -1,4 +1,4 @@
-/* $Id: debug.c,v 1.2 1996/02/29 08:15:21 wessels Exp $ */
+/* $Id: debug.c,v 1.3 1996/03/19 01:29:11 wessels Exp $ */
 
 #include <stdlib.h>
 #include <string.h>
@@ -116,14 +116,14 @@ void debug_flag(flag)
 }
 
 /*
- *  debug_init() - Initializes debugging from $HARVEST_DEBUG variable
+ *  debug_init() - Initializes debugging from $SQUID_DEBUG variable
  *
  */
 void debug_init()
 {
     char *s, *t, *u;
 
-    s = getenv("HARVEST_DEBUG");
+    s = getenv("SQUID_DEBUG");
     if (s == (char *) 0)
 	return;
 
@@ -132,6 +132,6 @@ void debug_init()
     u = strtok(t, " \t\n");
     do {
 	debug_flag(u);
-    } while (u = strtok((char *) 0, " \t\n"));
+    } while ((u = strtok((char *) 0, " \t\n")) != (char *) NULL);
     xfree(t);
 }
