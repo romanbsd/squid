@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.65 1996/10/08 14:48:36 wessels Exp $
+ * $Id: proto.c,v 1.66 1996/10/08 19:37:35 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -231,6 +231,13 @@ protoDispatchDNSHandle(int unused1, struct hostent *hp, void *data)
 	hierarchyNote(req, HIER_FIRSTUP_PARENT, 0, e->host);
 	protoStart(protoData->fd, entry, e, req);
 	return;
+#if USE_ICMP
+    } else if (protoData->direct_fetch == DIRECT_MAYBE && hp
+	&& netdbHops(inaddrFromHostent(hp)) <= Config.minDirectHops) {
+	hierarchyNote(req, HIER_DIRECT, 0, req->host);
+        protoStart(protoData->fd, entry, NULL, req);
+        return;
+#endif
     } else if (neighborsUdpPing(protoData)) {
 	/* call neighborUdpPing and start timeout routine */
 	if (entry->ping_status != PING_NONE)
