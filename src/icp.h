@@ -1,5 +1,5 @@
 /*
- * $Id: icp.h,v 1.24 1996/07/26 21:09:36 wessels Exp $
+ * $Id: icp.h,v 1.25 1996/08/23 21:18:35 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -184,6 +184,7 @@ typedef struct iwd {
     int ident_fd;
     aclCheck_t *aclChecklist;
     void (*aclHandler) _PARAMS((struct iwd *, int answer));
+    float http_ver;
 } icpStateData;
 
 extern int icpUdpSend _PARAMS((int,

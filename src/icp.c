@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.c,v 1.90 1996/08/21 20:11:35 wessels Exp $
+ * $Id: icp.c,v 1.91 1996/08/23 21:17:35 wessels Exp $
  *
  * DEBUG: section 12    Client Handling
  * AUTHOR: Harvest Derived
@@ -1503,6 +1503,7 @@ static int parseHttpRequest(icpState)
     len = (int) (t - token);
     memset(http_ver, '\0', 32);
     strncpy(http_ver, token, len < 31 ? len : 31);
+    sscanf(http_ver, "%f", &icpState->http_ver);
     debug(12, 5, "parseHttpRequest: HTTP version is '%s'\n", http_ver);
 
     req_hdr = t;
