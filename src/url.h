@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.14 1996/07/08 22:42:56 wessels Exp $
+ * $Id: url.h,v 1.15 1996/07/26 16:58:34 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -56,7 +56,7 @@ typedef enum {
 
 extern char *ProtocolStr[];
 
-typedef struct _request {
+struct _request {
     method_t method;
     protocol_t protocol;
     char login[MAX_LOGIN_SZ + 1];
@@ -64,7 +64,9 @@ typedef struct _request {
     int port;
     char urlpath[MAX_URL + 1];
     int link_count;		/* free when zero */
-} request_t;
+    hier_code hierarchy_code;
+    char *hierarchy_host;
+};
 
 extern char *url_convert_hex _PARAMS((char *org_url, int allocate));
 extern char *url_escape _PARAMS((char *url));
