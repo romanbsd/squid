@@ -1,5 +1,5 @@
 /*
- * $Id: comm.h,v 1.18 1996/08/27 05:51:37 wessels Exp $
+ * $Id: comm.h,v 1.19 1996/08/30 22:36:22 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -169,6 +169,7 @@ extern FD_ENTRY *fd_table;
 extern char **getAddressList _PARAMS((char *name));
 extern char *fd_note _PARAMS((int fd, char *));
 extern int commSetNonBlocking _PARAMS((int fd));
+extern void commSetCloseOnExec _PARAMS((int fd));
 extern int comm_accept _PARAMS((int fd, struct sockaddr_in *, struct sockaddr_in *));
 extern void comm_close _PARAMS((int fd));
 extern int comm_connect _PARAMS((int sock, char *hst, int prt));
