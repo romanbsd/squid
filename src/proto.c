@@ -1,6 +1,6 @@
 
 /*
- * $Id: proto.c,v 1.83 1996/11/24 02:37:37 wessels Exp $
+ * $Id: proto.c,v 1.84 1996/11/25 18:50:30 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -463,6 +463,10 @@ getFromDefaultSource(int fd, StoreEntry * entry)
 	    return protoDNSError(fd, entry);
 	hierarchyNote(request, HIER_DIRECT, fd, request->host);
 	return protoStart(fd, entry, NULL, request);
+    }
+    if ((e = getDefaultParent(request))) {
+	hierarchyNote(request, HIER_DEFAULT_PARENT, fd, e->host);
+        return protoStart(fd, entry, e, request);
     }
     if ((e = getSingleParent(request, NULL))) {
 	/* last chance effort; maybe there was a single_parent and a ICP
