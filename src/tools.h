@@ -1,4 +1,5 @@
-/* $Id: tools.h,v 1.4 1996/03/27 18:50:25 wessels Exp $ */
+
+/* $Id: tools.h,v 1.5 1996/03/27 18:51:00 wessels Exp $ */
 
 extern char *getMyHostname _PARAMS((void));
 extern int getMaxFD _PARAMS((void));

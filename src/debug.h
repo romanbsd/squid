@@ -1,4 +1,4 @@
-/*  $Id: debug.h,v 1.5 1996/03/27 18:50:23 wessels Exp $ */
+/*  $Id: debug.h,v 1.6 1996/03/27 18:50:58 wessels Exp $ */
 
 #ifndef _DEBUG_H_
 #define _DEBUG_H_
@@ -8,7 +8,7 @@ extern int _db_line;
 extern int syslog_enable;
 extern FILE *debug_log;
 
-void _db_init _PARAMS((char *logfile)); 
+void _db_init _PARAMS((char *logfile));
 #if defined(__STRICT_ANSI__)
 void _db_print _PARAMS((int,...));
 #else
