@@ -1,6 +1,6 @@
 # @configure_input@
 #
-# $Id: squid.conf.pre.in,v 1.79 1996/12/06 22:12:49 wessels Exp $
+# $Id: squid.conf.pre.in,v 1.80 1996/12/14 18:54:23 wessels Exp $
 #
 
 #  TAG: http_port
@@ -580,7 +580,7 @@ debug_options ALL,1
 #Default:
 #refresh_pattern 	.	0 20% 4320
 
-#  TAG: reference_age
+#  TAG: reference_age (in minutes)
 #	If set, objects which have not been referenced for this amount
 #	of time will be purged from the cache.  This is the only
 #	parameter for removing cache objects except when the disk space
