@@ -1,5 +1,5 @@
 /*
- * $Id: proto.h,v 1.9 1996/07/08 22:42:52 wessels Exp $
+ * $Id: proto.h,v 1.10 1996/07/23 04:16:57 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -287,7 +287,10 @@ typedef struct _protodispatch_data {
 
 extern int proto_cachable _PARAMS((char *url, int method));
 extern int protoDispatch _PARAMS((int, char *, StoreEntry *, request_t *));
-extern int protoUndispatch _PARAMS((int, char *, StoreEntry *, request_t *));
+extern void protoUnregister _PARAMS((int fd,
+	StoreEntry *,
+	request_t *,
+	struct in_addr));
 extern int getFromDefaultSource _PARAMS((int, StoreEntry *));
 extern int getFromCache _PARAMS((int, StoreEntry *, edge *, request_t *));
 extern void protoCancelTimeout _PARAMS((int fd, StoreEntry *));
