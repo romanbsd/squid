@@ -1,5 +1,5 @@
 /*
- * $Id: neighbors.h,v 1.10 1996/07/25 05:46:38 wessels Exp $
+ * $Id: neighbors.h,v 1.11 1996/07/26 19:28:51 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -210,6 +210,7 @@ extern void neighbors_init _PARAMS((void));
 extern void neighbors_open _PARAMS((int));
 extern void neighbors_rotate_log _PARAMS((void));
 extern void neighborsDestroy _PARAMS((void));
+extern edge *neighborFindByName _PARAMS((char *));
 
 extern char *hier_strings[];
 
