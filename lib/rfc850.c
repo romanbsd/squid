@@ -1,4 +1,5 @@
-static char rcsid[] = "$Id: rfc850.c,v 1.1 1996/02/22 06:23:58 wessels Exp $";
+/* $Id: rfc850.c,v 1.2 1996/02/29 08:15:24 wessels Exp $ */
+
 /*
  *  Adapted from HTSUtils.c in CERN httpd 3.0 (http://info.cern.ch/httpd/)
  *  by Darren Hardy <hardy@cs.colorado.edu>, November 1994.
