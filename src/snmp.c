@@ -1,5 +1,5 @@
 /*
- * $Id: snmp.c,v 1.42 1998/02/26 23:18:14 kostas Exp $
+ * $Id: snmp.c,v 1.43 1998/03/01 22:31:26 kostas Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Kostas Anagnostakis
@@ -266,16 +266,21 @@ snmpInit(void)
     snmp_inbadcommunitynames = 0;
     snmp_inasnparseerrors = 0;
     snmp_inbadvalues = 0;
+#if 0
     users = NULL;
     communities = NULL;
-    init_agent_auth();
-
-    snmplib_debug_hook = snmpSnmplibDebug;
-#if 0
-    debug(49, 5) ("init_mib: calling with %s\n", Config.Snmp.mibPath);
-
-    init_mib(Config.Snmp.mibPath);
 #endif
+
+    init_agent_auth();
+    assert(Config.Snmp.mibPath);
+    snmplib_debug_hook = snmpSnmplibDebug;
+    
+    if (Mib == NULL) {
+    	debug(49, 5) ("init_mib: calling with %s\n", Config.Snmp.mibPath);
+    	snmplib_debug_hook = snmpSnmplibDebug;
+        init_mib(Config.Snmp.mibPath);
+    }
+
     if (!Config.Snmp.communities)
 	debug(49, 2) ("snmpInit: WARNING:communities not defined yet!\n");
     else
