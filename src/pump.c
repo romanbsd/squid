@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.20 1998/03/16 01:59:15 wessels Exp $
+ * $Id: pump.c,v 1.21 1998/03/16 03:01:21 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -344,8 +344,7 @@ pumpFree(int fd, void *data)
     req = p->request_entry;
     rep = p->reply_entry;
     if (req != NULL) {
-	if (p->sent < p->cont_len)
-	    storeUnregister(req, p);
+	storeUnregister(req, p);
 	if (req->store_status == STORE_PENDING)
 	    storeAbort(req, 0);
 	storeUnlockObject(req);
