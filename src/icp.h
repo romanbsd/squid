@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp.h,v 1.62 1997/01/18 06:03:27 wessels Exp $
+ * $Id: icp.h,v 1.63 1997/01/19 00:16:00 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -184,7 +184,6 @@ typedef struct iwd {
     struct sockaddr_in peer;
     struct sockaddr_in me;
     struct in_addr log_addr;
-    char *buf;
     struct timeval start;
     int accel;
     int size;			/* hack for CONNECT which doesnt use sentry */
