@@ -1,5 +1,5 @@
 /*
- * $Id: proto.c,v 1.34 1996/07/15 23:10:55 wessels Exp $
+ * $Id: proto.c,v 1.35 1996/07/18 20:27:07 wessels Exp $
  *
  * DEBUG: section 17    Neighbor Selection
  * AUTHOR: Harvest Derived
@@ -536,7 +536,7 @@ static int protoNotImplemented(fd, url, entry)
      char *url;
      StoreEntry *entry;
 {
-    static char buf[256];
+    LOCAL_ARRAY(char, buf, 256);
 
     debug(17, 1, "protoNotImplemented: Cannot retrieve <URL:%s>\n", url);
 
@@ -555,7 +555,7 @@ static int protoCantFetchObject(fd, entry, reason)
      StoreEntry *entry;
      char *reason;
 {
-    static char buf[2048];
+    LOCAL_ARRAY(char, buf, 2048);
 
     debug(17, 1, "protoCantFetchObject: FD %d %s\n", fd, reason);
     debug(17, 1, "--> <URL:%s>\n", entry->url);

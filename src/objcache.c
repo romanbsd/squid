@@ -1,5 +1,5 @@
 /*
- * $Id: objcache.c,v 1.11 1996/07/11 17:42:47 wessels Exp $
+ * $Id: objcache.c,v 1.12 1996/07/18 20:27:06 wessels Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Harvest Derived
@@ -170,7 +170,7 @@ int objcacheStart(fd, url, entry)
     char *buf = NULL;
     char *BADCacheURL = "Bad Object Cache URL %s ... negative cached.\n";
     char *BADPassword = "Incorrect password, sorry.\n";
-    static char password[64];
+    LOCAL_ARRAY(char, password, 64);
     struct sockaddr_in peer_socket_name;
     int sock_name_length = sizeof(peer_socket_name);
 

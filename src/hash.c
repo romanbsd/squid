@@ -1,5 +1,5 @@
 /*
- * $Id: hash.c,v 1.7 1996/07/15 23:17:25 wessels Exp $
+ * $Id: hash.c,v 1.8 1996/07/18 20:27:02 wessels Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -436,8 +436,8 @@ int main()
 {
     int hid;
     int i;
-    static char buf[BUFSIZ];
-    static char todelete[BUFSIZ];
+    LOCAL_ARRAY(char, buf, BUFSIZ);
+    LOCAL_ARRAY(char, todelete, BUFSIZ);
     hash_link *walker = NULL;
 
     todelete[0] = '\0';
