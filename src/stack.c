@@ -1,6 +1,6 @@
 
 /*
- * $Id: stack.c,v 1.8 1996/08/12 23:22:36 wessels Exp $
+ * $Id: stack.c,v 1.9 1996/08/27 05:18:19 wessels Exp $
  *
  * DEBUG: section 0     Stack Primitives
  * AUTHOR: Harvest Derived
@@ -124,7 +124,7 @@ void init_stack(stack, size)
 {
     stack->stack_size = size;
     stack->base = xcalloc(size, sizeof(void **));
-    stack->top = &stack->base[0];
+    stack->top = stack->base;
 }
 
 /*-------------------------------------------------------------------------
@@ -165,8 +165,7 @@ void push(stack, data)
 int empty_stack(stack)
      Stack *stack;
 {
-    int empty = ((stack->top == &stack->base[0]) ? 1 : 0);
-    return (empty);
+    return stack->top == stack->base;
 }
 /*-------------------------------------------------------------------------
 --
@@ -200,8 +199,11 @@ int full_stack(stack)
 void *pop(stack)
      Stack *stack;
 {
-    if (empty_stack(stack) == 1)
+    void *p;
+    if (stack->top == stack->base)
 	fatal("Stack empty, cannot pop()");
     stack->top--;
-    return (*stack->top);
+    p = *stack->top;
+    *stack->top = NULL;
+    return p;
 }
