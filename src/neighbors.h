@@ -1,5 +1,5 @@
 
-/*  $Id: neighbors.h,v 1.4 1996/04/08 19:32:41 wessels Exp $ */
+/*  $Id: neighbors.h,v 1.5 1996/04/15 18:06:32 wessels Exp $ */
 
 #ifndef NEIGHBORS_H
 #define NEIGHBORS_H
@@ -45,7 +45,8 @@ struct _edge {
     int rtt;
     int ack_deficit;
     enum {
-	is_a_neighbor = 0, is_a_parent = 1
+	EDGE_SIBLING,
+	EDGE_PARENT
     } type;			/* 0 if neighbor, 1 if parent */
 
     int num_pings;
