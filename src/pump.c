@@ -1,5 +1,5 @@
 /*
- * $Id: pump.c,v 1.54 1998/08/21 03:15:22 wessels Exp $
+ * $Id: pump.c,v 1.55 1998/09/04 23:04:57 wessels Exp $
  *
  * DEBUG: section 61    PUMP handler
  * AUTHOR: Kostas Anagnostakis
@@ -238,6 +238,7 @@ pumpReadFromClient(int fd, void *data)
     errno = 0;
     if (p->cont_len - p->rcvd < bytes_to_read)
 	bytes_to_read = p->cont_len - p->rcvd;
+    Counter.syscalls.sock.reads++;
     len = read(fd, buf, bytes_to_read);
     fd_bytes(fd, len, FD_READ);
     debug(61, 5) ("pumpReadFromClient: FD %d: len %d.\n", fd, len);
