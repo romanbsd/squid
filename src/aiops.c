@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.32 1999/08/02 06:18:29 wessels Exp $
+ * $Id: aiops.c,v 1.33 1999/10/04 05:05:00 wessels Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -352,7 +352,7 @@ aio_queue_request(aio_request_t * requestp)
 	if (request_queue_len < queue_low)
 	    queue_low = request_queue_len;
 	if (squid_curtime >= (last_warn + 15) &&
-	    squid_curtime >= (high_start + 1)) {
+	    squid_curtime >= (high_start + 3)) {
 	    debug(43, 1) ("aio_queue_request: WARNING - Running out of I/O threads\n");
 	    debug(43, 2) ("aio_queue_request: Queue Length: current=%d, high=%d, low=%d, duration=%d\n",
 		request_queue_len, queue_high, queue_low, squid_curtime - high_start);
@@ -402,7 +402,7 @@ aio_queue_request(aio_request_t * requestp)
 
 
 static void
-aio_process_request_queue()
+aio_process_request_queue(void)
 {
     aio_thread_t *threadp;
     aio_request_t *requestp;
@@ -818,7 +818,7 @@ aio_poll_threads(void)
 }				/* aio_poll_threads */
 
 aio_result_t *
-aio_poll_done()
+aio_poll_done(void)
 {
     aio_request_t *requestp;
     aio_result_t *resultp;

@@ -20,7 +20,7 @@
  *
  */
 @ TOP @
-/* $Id: acconfig.h,v 1.40 1999/07/13 14:50:54 wessels Exp $ */
+/* $Id: acconfig.h,v 1.41 1999/10/04 05:04:01 wessels Exp $ */
 
 /*********************************
  * START OF CONFIGURABLE OPTIONS *
@@ -47,6 +47,9 @@
 
 /* Define to use async disk I/O operations */
 #undef USE_ASYNC_IO
+
+/* Defines how many threads to use for async I/O */
+#undef NUMTHREADS
 
 /*
  * If you want to use Squid's ICMP features (highly recommended!) then
@@ -248,3 +251,8 @@
  * Do we want to use truncate(2) or unlink(2)?
  */
 #undef USE_TRUNCATE
+
+/*
+ * Allow underscores in host names
+ */
+#undef ALLOW_HOSTNAME_UNDERSCORES

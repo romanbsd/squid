@@ -1,6 +1,6 @@
 
 /*
- * $Id: debug.c,v 1.76 1999/08/02 06:18:33 wessels Exp $
+ * $Id: debug.c,v 1.77 1999/10/04 05:05:07 wessels Exp $
  *
  * DEBUG: section 0     Debug Routines
  * AUTHOR: Harvest Derived
@@ -370,7 +370,7 @@ ctx_exit(Ctx ctx)
  * info for deducing the current execution stack
  */
 static void
-ctx_print()
+ctx_print(void)
 {
     /* lock so _db_print will not call us recursively */
     Ctx_Lock++;
