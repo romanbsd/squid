@@ -1,5 +1,5 @@
 /*
- * $Id: url.h,v 1.32 1996/11/15 00:36:25 wessels Exp $
+ * $Id: url.h,v 1.33 1996/11/15 17:26:23 wessels Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -59,7 +59,7 @@ struct _request {
     method_t method;
     protocol_t protocol;
     char login[MAX_LOGIN_SZ];
-    char host[SQUIDHOSTNAMELEN+1];
+    char host[SQUIDHOSTNAMELEN + 1];
     int port;
     char urlpath[MAX_URL];
     int link_count;		/* free when zero */

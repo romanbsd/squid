@@ -1,7 +1,7 @@
 
 
 /*
- * $Id: store.h,v 1.73 1996/11/14 03:00:56 wessels Exp $
+ * $Id: store.h,v 1.74 1996/11/15 17:26:22 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -313,7 +313,7 @@ extern int expiresMoreThan _PARAMS((time_t, time_t));
 extern int storeClientListAdd _PARAMS((StoreEntry *, int, int));
 extern void InvokeHandlers _PARAMS((StoreEntry *));
 extern int storeEntryValidToSend _PARAMS((StoreEntry *));
-extern int storeFirstClientFD _PARAMS((MemObject *mem));
+extern int storeFirstClientFD _PARAMS((MemObject * mem));
 
 
 #ifdef __STDC__
