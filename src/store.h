@@ -1,5 +1,6 @@
+
 /*
- * $Id: store.h,v 1.100 1997/06/02 05:39:51 wessels Exp $
+ * $Id: store.h,v 1.101 1997/06/04 06:16:12 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -181,7 +182,7 @@ struct _MemObject {
     void *ircb_data;
     int fd;			/* FD of client creating this entry */
     struct {
-    	STABH *callback;
+	STABH *callback;
 	void *data;
     } abort;
 };

@@ -1,5 +1,6 @@
+
 /*
- * $Id: gopher.h,v 1.10 1997/05/15 23:38:00 wessels Exp $
+ * $Id: gopher.h,v 1.11 1997/06/04 06:15:57 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *

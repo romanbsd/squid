@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.h,v 1.101 1997/06/01 04:23:10 wessels Exp $
+ * $Id: cache_cf.h,v 1.102 1997/06/04 06:15:47 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -281,7 +281,7 @@ struct SquidConfig {
 	int list_wrap;
 	char *icon_prefix;
 	char *icon_suffix;
-        char *anon_user;
+	char *anon_user;
     } Ftp;
 };
 

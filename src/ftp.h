@@ -1,5 +1,6 @@
+
 /*
- * $Id: ftp.h,v 1.18 1997/05/26 04:04:59 wessels Exp $
+ * $Id: ftp.h,v 1.19 1997/06/04 06:15:54 wessels Exp $
  *
  * AUTHOR: Harvest Derived
  *
