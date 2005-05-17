@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpStatusLine.c,v 1.25 2002/09/23 04:01:51 wessels Exp $
+ * $Id: HttpStatusLine.c,v 1.26 2005/05/17 16:56:37 hno Exp $
  *
  * DEBUG: section 57    HTTP Status-line
  * AUTHOR: Alex Rousskov

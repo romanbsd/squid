@@ -1,5 +1,5 @@
 /*
- * $Id: md5.c,v 1.15 2002/08/09 10:57:42 robertc Exp $
+ * $Id: md5.c,v 1.16 2005/05/17 16:56:36 hno Exp $
  */
 
 /* taken from RFC-1321/Appendix A.3 */
@@ -30,11 +30,13 @@
  * documentation and/or software.
  */
 
-#include "md5.h"
+#include "config.h"
 
 #if HAVE_STRING_H
 #include <string.h>
 #endif
+
+#include "md5.h"
 
 /*
  * Constants for MD5Transform routine.

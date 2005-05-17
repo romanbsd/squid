@@ -1,4 +1,4 @@
-$Id: README,v 1.1 2002/06/23 14:25:16 hno Exp $
+$Id: README,v 1.2 2005/05/17 16:56:29 hno Exp $
 
 README file for ip_user_check, an external helper for the 
 Squid external acl scheme.

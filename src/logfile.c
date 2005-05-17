@@ -1,5 +1,5 @@
 /*
- * $Id: logfile.c,v 1.12 2003/01/20 18:58:48 hno Exp $
+ * $Id: logfile.c,v 1.13 2005/05/17 16:56:38 hno Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Duane Wessels

@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.13 2002/10/02 11:06:30 robertc Exp $
+ * $Id: hash.c,v 1.14 2005/05/17 16:56:36 hno Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -61,7 +61,6 @@
 
 #include "hash.h"
 #include "util.h"
-#include "profiling.h"
 
 static void hash_next_bucket(hash_table * hid);
 
@@ -184,17 +183,13 @@ hash_lookup(hash_table * hid, const void *k)
 {
     hash_link *walker;
     int b;
-    PROF_start(hash_lookup);
     assert(k != NULL);
     b = hid->hash(k, hid->size);
     for (walker = hid->buckets[b]; walker != NULL; walker = walker->next) {
-	if ((hid->cmp) (k, walker->key) == 0) {
-	    PROF_stop(hash_lookup);
+	if ((hid->cmp) (k, walker->key) == 0)
 	    return (walker);
-	}
 	assert(walker != walker->next);
     }
-    PROF_stop(hash_lookup);
     return NULL;
 }
 

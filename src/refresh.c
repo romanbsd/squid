@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh.c,v 1.57 2002/06/14 19:26:43 hno Exp $
+ * $Id: refresh.c,v 1.58 2005/05/17 16:56:38 hno Exp $
  *
  * DEBUG: section 22    Refresh Calculation
  * AUTHOR: Harvest Derived

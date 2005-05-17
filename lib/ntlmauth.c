@@ -1,5 +1,5 @@
 /*
- * $Id: ntlmauth.c,v 1.7 2002/07/22 02:05:00 hno Exp $
+ * $Id: ntlmauth.c,v 1.8 2005/05/17 16:56:36 hno Exp $
  *
  * * * * * * * * Legal stuff * * * * * * *
  *
@@ -84,7 +84,7 @@ ntlm_fetch_string(char *packet, int32_t length, strhdr * str)
     o = WSWAP(str->offset);
     /* debug("fetch_string(plength=%d,l=%d,o=%d)\n",length,l,o); */
 
-    if (l < 0 || l > MAX_FIELD_LENGTH || o + l > length || o == 0) {
+    if (l < 0 || o <= 0 || l > MAX_FIELD_LENGTH || o + l > length) {
 	/* debug("ntlmssp: insane data (l: %d, o: %d)\n", l,o); */
 	return rv;
     }
@@ -123,7 +123,7 @@ ntlm_add_to_payload(char *payload, int *payload_length,
  */
 const char *
 ntlm_make_challenge(char *domain, char *domain_controller,
-    char *challenge_nonce, int challenge_nonce_len)
+    unsigned char *challenge_nonce, int challenge_nonce_len)
 {
     ntlm_challenge ch;
     int pl = 0;

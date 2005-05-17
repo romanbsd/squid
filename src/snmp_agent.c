@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_agent.c,v 1.83 2001/10/24 06:16:17 hno Exp $
+ * $Id: snmp_agent.c,v 1.84 2005/05/17 16:56:38 hno Exp $
  *
  * DEBUG: section 49     SNMP Interface
  * AUTHOR: Kostas Anagnostakis
@@ -195,12 +195,12 @@ snmp_meshPtblFn(variable_list * Var, snint * ErrP)
     case MESH_PTBL_SENT:
 	Answer = snmp_var_new_integer(Var->name, Var->name_length,
 	    p->stats.pings_sent,
-	    ASN_INTEGER);
+	    SMI_COUNTER32);
 	break;
     case MESH_PTBL_PACKED:
 	Answer = snmp_var_new_integer(Var->name, Var->name_length,
 	    p->stats.pings_acked,
-	    ASN_INTEGER);
+	    SMI_COUNTER32);
 	break;
     case MESH_PTBL_FETCHES:
 	Answer = snmp_var_new_integer(Var->name, Var->name_length,
@@ -300,7 +300,7 @@ snmp_prfSysFn(variable_list * Var, snint * ErrP)
     case PERF_SYS_NUMOBJCNT:
 	Answer = snmp_var_new_integer(Var->name, Var->name_length,
 	    (snint) memInUse(MEM_STOREENTRY),
-	    SMI_COUNTER32);
+	    SMI_GAUGE32);
 	break;
     default:
 	*ErrP = SNMP_ERR_NOSUCHNAME;
@@ -390,12 +390,12 @@ snmp_prfProtoFn(variable_list * Var, snint * ErrP)
 	case PERF_PROTOSTAT_AGGR_CURSWAP:
 	    Answer = snmp_var_new_integer(Var->name, Var->name_length,
 		(snint) store_swap_size,
-		SMI_COUNTER32);
+		SMI_GAUGE32);
 	    break;
 	case PERF_PROTOSTAT_AGGR_CLIENTS:
 	    Answer = snmp_var_new_integer(Var->name, Var->name_length,
 		(snint) statCounter.client_http.clients,
-		SMI_COUNTER32);
+		SMI_GAUGE32);
 	    break;
 	default:
 	    *ErrP = SNMP_ERR_NOSUCHNAME;

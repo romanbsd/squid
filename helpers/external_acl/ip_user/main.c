@@ -1,4 +1,4 @@
-/* $Id: main.c,v 1.2 2002/07/06 12:33:09 hno Exp $ 
+/* $Id: main.c,v 1.3 2005/05/17 16:56:29 hno Exp $ 
 * Copyright (C) 2002 Rodrigo Campos
 *
 * This program is free software; you can redistribute it and/or modify

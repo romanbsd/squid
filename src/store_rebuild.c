@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_rebuild.c,v 1.77 2001/10/17 12:41:50 hno Exp $
+ * $Id: store_rebuild.c,v 1.78 2005/05/17 16:56:38 hno Exp $
  *
  * DEBUG: section 20    Store Rebuild Routines
  * AUTHOR: Duane Wessels
@@ -52,7 +52,9 @@ static int
 storeCleanupDoubleCheck(StoreEntry * e)
 {
     SwapDir *SD = &Config.cacheSwap.swapDirs[e->swap_dirn];
-    return (SD->dblcheck(SD, e));
+    if (SD->dblcheck)
+	return (SD->dblcheck(SD, e));
+    return 0;
 }
 
 static void

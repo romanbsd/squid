@@ -1,5 +1,5 @@
 /*
- * $Id: md5.h,v 1.13 2002/10/06 02:05:22 robertc Exp $
+ * $Id: md5.h,v 1.14 2005/05/17 16:56:35 hno Exp $
  */
 
 #ifndef SQUID_MD5_H
@@ -52,7 +52,7 @@
  * documentation and/or software.
  */
 
-#include "config.h"
+#include "squid_types.h"
 
 /* MD5 context. */
 typedef struct {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: url.c,v 1.139 2003/01/18 14:16:33 hno Exp $
+ * $Id: url.c,v 1.140 2005/05/17 16:56:38 hno Exp $
  *
  * DEBUG: section 23    URL Parsing
  * AUTHOR: Duane Wessels
@@ -307,7 +307,7 @@ urlParse(method_t method, char *url)
 	}
     }
 #if CHECK_HOSTNAMES
-    if (Config.onoff.check_hostnames && strspn(host, valid_hostname_chars) != strlen(host)) {
+    if (strspn(host, valid_hostname_chars) != strlen(host)) {
 	debug(23, 1) ("urlParse: Illegal character in hostname '%s'\n", host);
 	return NULL;
     }

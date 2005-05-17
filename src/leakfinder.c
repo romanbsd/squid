@@ -1,6 +1,6 @@
 
 /*
- * $Id: leakfinder.c,v 1.6 2002/10/12 09:45:56 robertc Exp $
+ * $Id: leakfinder.c,v 1.7 2005/05/17 16:56:38 hno Exp $
  *
  * DEBUG: section 45    Callback Data Registry
  * AUTHOR: Duane Wessels
@@ -135,6 +135,6 @@ ptrDump(StoreEntry * sentry)
     while ((hptr = hash_next(htable))) {
 	c = (ptr *) hptr;
 	storeAppendPrintf(sentry, "%20p last used %9d seconds ago by %s:%d\n",
-	    c->key, (int) (squid_curtime - c->when), c->file, c->line);
+	    c->key, squid_curtime - c->when, c->file, c->line);
     }
 }

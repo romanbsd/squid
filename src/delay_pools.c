@@ -1,6 +1,6 @@
 
 /*
- * $Id: delay_pools.c,v 1.26 2002/09/24 21:29:31 robertc Exp $
+ * $Id: delay_pools.c,v 1.27 2005/05/17 16:56:38 hno Exp $
  *
  * DEBUG: section 77    Delay Pools
  * AUTHOR: David Luyer <david@luyer.net>
@@ -37,7 +37,6 @@
 
 #if DELAY_POOLS
 #include "squid.h"
-#include "StoreClient.h"
 
 struct _class1DelayPool {
     int class;
@@ -398,7 +397,6 @@ delayClient(clientHttpRequest * http)
 	position |= 255;
 	if (!(delay_data[pool].class3->individual_255_used[i / 8] & (1 << (i % 8)))) {
 	    delay_data[pool].class3->individual_255_used[i / 8] |= (1 << (i % 8));
-	    assert(position < C3_IND_SZ);
 	    delay_data[pool].class3->individual[position] =
 		(int) (((double) Config.Delay.rates[pool]->individual.max_bytes *
 		    Config.Delay.initial) / 100);
@@ -416,7 +414,6 @@ delayClient(clientHttpRequest * http)
 	    assert(j < (IND_MAP_SZ - 1));
 	    delay_data[pool].class3->individual_map[i][j + 1] = 255;
 	    position |= j;
-	    assert(position < C3_IND_SZ);
 	    delay_data[pool].class3->individual[position] =
 		(int) (((double) Config.Delay.rates[pool]->individual.max_bytes *
 		    Config.Delay.initial) / 100);
@@ -649,19 +646,15 @@ delayMostBytesWanted(const MemObject * mem, int max)
 {
     int i = 0;
     int found = 0;
-    int wanted;
     store_client *sc;
     dlink_node *node;
     for (node = mem->clients.head; node; node = node->next) {
 	sc = (store_client *) node->data;
-	if (sc->callback_data == NULL)	/* not waiting for more data */
+	if (sc->callback_data == NULL)	/* open slot */
 	    continue;
 	if (sc->type != STORE_MEM_CLIENT)
 	    continue;
-	wanted = sc->copyInto.length;
-	if (wanted > max)
-	    wanted = max;
-	i = delayBytesWanted(sc->delay_id, i, wanted);
+	i = delayBytesWanted(sc->delay_id, i, max);
 	found = 1;
     }
     return found ? i : max;
@@ -677,11 +670,11 @@ delayMostBytesAllowed(const MemObject * mem)
     delay_id d = 0;
     for (node = mem->clients.head; node; node = node->next) {
 	sc = (store_client *) node->data;
-	if (sc->callback_data == NULL)	/* not waiting for more data */
+	if (sc->callback_data == NULL)	/* open slot */
 	    continue;
 	if (sc->type != STORE_MEM_CLIENT)
 	    continue;
-	j = delayBytesWanted(sc->delay_id, 0, sc->copyInto.length);
+	j = delayBytesWanted(sc->delay_id, 0, SQUID_TCP_SO_RCVBUF);
 	if (j > jmax) {
 	    jmax = j;
 	    d = sc->delay_id;

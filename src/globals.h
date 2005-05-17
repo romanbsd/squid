@@ -1,6 +1,6 @@
 
 /*
- * $Id: globals.h,v 1.112 2003/01/10 17:53:03 wessels Exp $
+ * $Id: globals.h,v 1.113 2005/05/17 16:56:38 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -79,7 +79,6 @@ extern int do_mallinfo;		/* 0 */
 extern int opt_reuseaddr;	/* 1 */
 extern int icmp_sock;		/* -1 */
 extern int neighbors_do_private_keys;	/* 1 */
-extern int opt_accel_uses_host;	/* 0 */
 extern int opt_catch_signals;	/* 1 */
 extern int opt_debug_stderr;	/* -1 */
 extern int opt_dns_tests;	/* 1 */
@@ -155,7 +154,7 @@ extern storerepl_entry_t *storerepl_list;	/* NULL */
 extern int store_swap_low;	/* 0 */
 extern int store_swap_high;	/* 0 */
 extern int store_pages_max;	/* 0 */
-extern ssize_t store_maxobjsize;	/* -1 */
+extern squid_off_t store_maxobjsize;	/* -1 */
 extern RemovalPolicy *mem_policy;
 extern hash_table *proxy_auth_username_cache;	/* NULL */
 extern int incoming_sockets_accepted;
@@ -166,5 +165,6 @@ extern char *WIN32_OS_string;	/* NULL */
 #if HAVE_SBRK
 extern void *sbrk_start;	/* 0 */
 #endif
+extern int opt_send_signal;	/* -1 */
 
 #endif /* SQUID_GLOBALS_H */

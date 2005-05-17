@@ -1,7 +1,7 @@
 #
 #  Makefile for the ip_user external_acl helper by Rodrigo Campos
 #
-#  $Id: Makefile.am,v 1.2 2002/07/22 00:38:14 robertc Exp $
+#  $Id: Makefile.am,v 1.3 2005/05/17 16:56:29 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #

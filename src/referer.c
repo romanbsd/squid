@@ -1,6 +1,6 @@
 
 /*
- * $Id: referer.c,v 1.5 2002/10/13 16:56:26 hno Exp $
+ * $Id: referer.c,v 1.6 2005/05/17 16:56:38 hno Exp $
  *
  * DEBUG: section 40    User-Agent and Referer logging
  * AUTHOR: Joe Ramey <ramey@csc.ti.com> (useragent)

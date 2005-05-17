@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.9 2002/08/12 01:11:48 hno Exp $
+#  $Id: Makefile.am,v 1.10 2005/05/17 16:56:23 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
