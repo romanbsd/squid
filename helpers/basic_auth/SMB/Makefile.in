@@ -16,7 +16,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.22 2005/05/17 16:56:26 hno Exp $
+#  $Id: Makefile.in,v 1.23 2005/10/23 15:20:38 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -78,6 +78,8 @@ AUTH_MODULES = @AUTH_MODULES@
 AUTH_OBJS = @AUTH_OBJS@
 AWK = @AWK@
 BASIC_AUTH_HELPERS = @BASIC_AUTH_HELPERS@
+CACHE_HTTP_PORT = @CACHE_HTTP_PORT@
+CACHE_ICP_PORT = @CACHE_ICP_PORT@
 CC = @CC@
 CGIEXT = @CGIEXT@
 CPP = @CPP@

@@ -1,5 +1,5 @@
 /*
- * $Id: Stack.c,v 1.11 2001/01/12 00:37:12 wessels Exp $
+ * $Id: Stack.c,v 1.12 2005/10/23 15:20:49 hno Exp $
  *
  * AUTHOR: Alex Rousskov
  *
@@ -50,13 +50,13 @@
 void *
 stackPop(Stack * s)
 {
-    assert(s);
+    assert(s != NULL);
     return s->count ? s->items[--s->count] : NULL;
 }
 
 void *
 stackTop(Stack * s)
 {
-    assert(s);
+    assert(s != NULL);
     return s->count ? s->items[s->count - 1] : NULL;
 }

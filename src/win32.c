@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.6 2005/05/17 16:56:38 hno Exp $
+ * $Id: win32.c,v 1.7 2005/10/23 15:20:55 hno Exp $
  *
  * * * * * * * * Legal stuff * * * * * * *
  *
@@ -58,8 +58,12 @@ GetOSVersion()
 	    return _WIN_OS_WINXP;
 	}
 	if ((osvi.dwMajorVersion == 5) && (osvi.dwMinorVersion == 2)) {
-	    WIN32_OS_string = xstrdup("Windows .NET");
+	    WIN32_OS_string = xstrdup("Windows Server 2003");
 	    return _WIN_OS_WINNET;
+	}
+	if ((osvi.dwMajorVersion == 6) && (osvi.dwMinorVersion == 0)) {
+	    WIN32_OS_string = xstrdup("Windows code name \"Longhorn\"");
+	    return _WIN_OS_WINLON;
 	}
 	break;
     case VER_PLATFORM_WIN32_WINDOWS:

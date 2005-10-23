@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_manager.c,v 1.26 2001/02/23 20:59:50 hno Exp $
+ * $Id: cache_manager.c,v 1.27 2005/10/23 15:20:54 hno Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Duane Wessels
@@ -201,6 +201,7 @@ cachemgrStart(int fd, request_t * request, StoreEntry * entry)
     if ((mgr = cachemgrParseUrl(storeUrl(entry))) == NULL) {
 	err = errorCon(ERR_INVALID_URL, HTTP_NOT_FOUND);
 	err->url = xstrdup(storeUrl(entry));
+	err->request = requestLink(request);
 	errorAppendEntry(entry, err);
 	entry->expires = squid_curtime;
 	return;
@@ -250,8 +251,7 @@ cachemgrStart(int fd, request_t * request, StoreEntry * entry)
     /* retrieve object requested */
     a = cachemgrFindAction(mgr->action);
     assert(a != NULL);
-    if (a->flags.atomic)
-	storeBuffer(entry);
+    storeBuffer(entry);
     {
 	http_version_t version;
 	HttpReply *rep = entry->mem_obj->reply;
@@ -269,10 +269,9 @@ cachemgrStart(int fd, request_t * request, StoreEntry * entry)
 	httpReplySwapOut(rep, entry);
     }
     a->handler(entry);
-    if (a->flags.atomic) {
-	storeBufferFlush(entry);
+    storeBufferFlush(entry);
+    if (a->flags.atomic)
 	storeComplete(entry);
-    }
     cachemgrStateFree(mgr);
 }
 

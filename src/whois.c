@@ -1,6 +1,6 @@
 
 /*
- * $Id: whois.c,v 1.19 2005/05/17 16:56:38 hno Exp $
+ * $Id: whois.c,v 1.20 2005/10/23 15:20:55 hno Exp $
  *
  * DEBUG: section 75    WHOIS protocol
  * AUTHOR: Duane Wessels, Kostas Anagnostakis
@@ -97,25 +97,30 @@ whoisReadReply(int fd, void *data)
     debug(75, 3) ("whoisReadReply: FD %d read %d bytes\n", fd, len);
     debug(75, 5) ("{%s}\n", buf);
     if (len > 0) {
-	if (0 == mem->inmem_hi)
-	    mem->reply->sline.status = HTTP_OK;
+	if (0 == mem->inmem_hi) {
+	    http_reply *reply = mem->reply;
+	    http_version_t version;
+	    storeBuffer(entry);
+	    httpBuildVersion(&version, 1, 0);
+	    httpReplySetHeaders(reply, version, HTTP_OK, "Gatewaying", "text/plain", -1, -1, -2);
+	    httpReplySwapOut(reply, entry);
+	}
 	fd_bytes(fd, len, FD_READ);
 	kb_incr(&statCounter.server.all.kbytes_in, len);
 	kb_incr(&statCounter.server.http.kbytes_in, len);
 	storeAppend(entry, buf, len);
+	storeBufferFlush(entry);
 	commSetSelect(fd, COMM_SELECT_READ, whoisReadReply, p, Config.Timeout.read);
     } else if (len < 0) {
 	debug(50, 2) ("whoisReadReply: FD %d: read failure: %s.\n",
 	    fd, xstrerror());
 	if (ignoreErrno(errno)) {
 	    commSetSelect(fd, COMM_SELECT_READ, whoisReadReply, p, Config.Timeout.read);
-	} else if (mem->inmem_hi == 0) {
+	} else {
 	    ErrorState *err;
 	    err = errorCon(ERR_READ_ERROR, HTTP_INTERNAL_SERVER_ERROR);
 	    err->xerrno = errno;
 	    fwdFail(p->fwd, err);
-	    comm_close(fd);
-	} else {
 	    comm_close(fd);
 	}
     } else {

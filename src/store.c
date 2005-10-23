@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.549 2005/05/17 16:56:38 hno Exp $
+ * $Id: store.c,v 1.550 2005/10/23 15:20:55 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1232,9 +1232,11 @@ storeBuffer(StoreEntry * e)
 void
 storeBufferFlush(StoreEntry * e)
 {
-    EBIT_CLR(e->flags, DELAY_SENDING);
-    InvokeHandlers(e);
-    storeSwapOut(e);
+    if (EBIT_TEST(e->flags, DELAY_SENDING)) {
+	EBIT_CLR(e->flags, DELAY_SENDING);
+	InvokeHandlers(e);
+	storeSwapOut(e);
+    }
 }
 
 squid_off_t

@@ -1,6 +1,6 @@
 
 /*
- * $Id: urn.c,v 1.76 2005/05/17 16:56:38 hno Exp $
+ * $Id: urn.c,v 1.77 2005/10/23 15:20:55 hno Exp $
  *
  * DEBUG: section 52    URN Parsing
  * AUTHOR: Kostas Anagnostakis
@@ -132,6 +132,7 @@ urnStart(request_t * r, StoreEntry * e)
 	debug(52, 3) ("urnStart: Bad uri-res URL %s\n", urlres);
 	err = errorCon(ERR_URN_RESOLVE, HTTP_NOT_FOUND);
 	err->url = xstrdup(urlres);
+	err->request = requestLink(r);
 	errorAppendEntry(e, err);
 	return;
     }

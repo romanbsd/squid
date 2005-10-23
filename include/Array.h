@@ -1,5 +1,5 @@
 /*
- * $Id: Array.h,v 1.6 2001/10/08 16:18:31 hno Exp $
+ * $Id: Array.h,v 1.7 2005/10/23 15:20:49 hno Exp $
  *
  * AUTHOR: Alex Rousskov
  *
@@ -48,6 +48,7 @@ extern void arrayInit(Array * s);
 extern void arrayClean(Array * s);
 extern void arrayDestroy(Array * s);
 extern void arrayAppend(Array * s, void *obj);
+extern void arrayInsert(Array * s, void *obj, int position);
 extern void arrayPreAppend(Array * s, int app_count);
 
 

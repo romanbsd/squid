@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.14 2005/05/17 16:56:36 hno Exp $
+ * $Id: hash.c,v 1.15 2005/10/23 15:20:49 hno Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -239,7 +239,7 @@ hash_next(hash_table * hid)
 void
 hash_last(hash_table * hid)
 {
-    assert(hid);
+    assert(hid != NULL);
     hid->next = NULL;
     hid->current_slot = 0;
 }
@@ -307,7 +307,7 @@ hashFreeItems(hash_table * hid, HASHFREE * free_func)
 void
 hashFreeMemory(hash_table * hid)
 {
-    assert(hid);
+    assert(hid != NULL);
     if (hid->buckets)
 	xfree(hid->buckets);
     xfree(hid);

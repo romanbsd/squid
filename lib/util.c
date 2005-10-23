@@ -1,6 +1,6 @@
 
 /*
- * $Id: util.c,v 1.89 2005/05/17 16:56:36 hno Exp $
+ * $Id: util.c,v 1.90 2005/10/23 15:20:49 hno Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -608,7 +608,7 @@ char *
 xstrndup(const char *s, size_t n)
 {
     size_t sz;
-    assert(s);
+    assert(s != NULL);
     assert(n);
     sz = strlen(s) + 1;
     if (sz > n)

@@ -1,5 +1,5 @@
 /*
- * $Id: rfc1035.h,v 1.8 2005/05/17 16:56:35 hno Exp $
+ * $Id: rfc1035.h,v 1.9 2005/10/23 15:20:49 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -100,6 +100,7 @@ extern int rfc1035_errno;
 extern const char *rfc1035_error_message;
 
 #define RFC1035_TYPE_A 1
+#define RFC1035_TYPE_CNAME 5
 #define RFC1035_TYPE_PTR 12
 #define RFC1035_CLASS_IN 1
 

@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_db.c,v 1.55 2005/05/17 16:56:38 hno Exp $
+ * $Id: client_db.c,v 1.56 2005/10/23 15:20:54 hno Exp $
  *
  * DEBUG: section 0     Client Database
  * AUTHOR: Duane Wessels
@@ -328,7 +328,7 @@ variable_list *
 snmp_meshCtblFn(variable_list * Var, snint * ErrP)
 {
     variable_list *Answer = NULL;
-    static char key[15];
+    static char key[16];
     ClientInfo *c = NULL;
     int aggr = 0;
     log_type l;
