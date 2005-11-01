@@ -1,6 +1,6 @@
 
 /*
- * $Id: ftp.c,v 1.331 2005/10/23 15:20:54 hno Exp $
+ * $Id: ftp.c,v 1.332 2005/11/01 11:02:45 serassio Exp $
  *
  * DEBUG: section 9     File Transfer Protocol (FTP)
  * AUTHOR: Harvest Derived
@@ -1786,7 +1786,7 @@ ftpSendPasv(FtpStateData * ftpState)
     }
     /* Open data channel with the same local address as control channel */
     fd = comm_open(SOCK_STREAM,
-	0,
+	IPPROTO_TCP,
 	addr.sin_addr,
 	0,
 	COMM_NONBLOCKING,
@@ -1926,7 +1926,7 @@ ftpOpenListenSocket(FtpStateData * ftpState, int fallback)
 	port = ntohs(addr.sin_port);
     }
     fd = comm_open(SOCK_STREAM,
-	0,
+	IPPROTO_TCP,
 	addr.sin_addr,
 	port,
 	COMM_NONBLOCKING | (fallback ? COMM_REUSEADDR : 0),

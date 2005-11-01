@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.227 2005/05/17 16:56:38 hno Exp $
+ * $Id: squid.h,v 1.228 2005/11/01 11:02:45 serassio Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -480,6 +480,14 @@ struct rusage {
 
 #define FD_READ_METHOD(fd, buf, len) (*fd_table[fd].read_method)(fd, buf, len)
 #define FD_WRITE_METHOD(fd, buf, len) (*fd_table[fd].write_method)(fd, buf, len)
+
+#ifndef IPPROTO_UDP
+#define IPPROTO_UDP 0
+#endif
+
+#ifndef IPPROTO_TCP
+#define IPPROTO_TCP 0
+#endif
 
 /*
  * Trap attempts to build large file cache support without support for

@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp_v2.c,v 1.68 2005/05/17 16:56:38 hno Exp $
+ * $Id: icp_v2.c,v 1.69 2005/11/01 11:02:45 serassio Exp $
  *
  * DEBUG: section 12    Internet Cache Protocol
  * AUTHOR: Duane Wessels
@@ -413,7 +413,7 @@ icpConnectionsOpen(void)
 	return;
     enter_suid();
     theInIcpConnection = comm_open(SOCK_DGRAM,
-	0,
+	IPPROTO_UDP,
 	Config.Addrs.udp_incoming,
 	port,
 	COMM_NONBLOCKING,
@@ -434,7 +434,7 @@ icpConnectionsOpen(void)
     if ((addr = Config.Addrs.udp_outgoing).s_addr != no_addr.s_addr) {
 	enter_suid();
 	theOutIcpConnection = comm_open(SOCK_DGRAM,
-	    0,
+	    IPPROTO_UDP,
 	    addr,
 	    port,
 	    COMM_NONBLOCKING,

@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.606 2005/10/23 15:20:54 hno Exp $
+ * $Id: client_side.c,v 1.607 2005/11/01 11:02:45 serassio Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3808,7 +3808,7 @@ clientHttpConnectionsOpen(void)
 	}
 	enter_suid();
 	fd = comm_open(SOCK_STREAM,
-	    0,
+	    IPPROTO_TCP,
 	    s->s.sin_addr,
 	    ntohs(s->s.sin_port),
 	    COMM_NONBLOCKING,
@@ -3846,7 +3846,7 @@ clientHttpsConnectionsOpen(void)
 	}
 	enter_suid();
 	fd = comm_open(SOCK_STREAM,
-	    0,
+	    IPPROTO_TCP,
 	    s->s.sin_addr,
 	    ntohs(s->s.sin_port),
 	    COMM_NONBLOCKING,

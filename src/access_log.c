@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.77 2005/05/17 16:56:37 hno Exp $
+ * $Id: access_log.c,v 1.78 2005/11/01 11:02:45 serassio Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -402,7 +402,7 @@ accessLogInit(void)
 	mcast_miss_to.sin_port = htons(Config.mcast_miss.port);
 	mcast_miss_to.sin_addr.s_addr = Config.mcast_miss.addr.s_addr;
 	mcast_miss_fd = comm_open(SOCK_DGRAM,
-	    0,
+	    IPPROTO_UDP,
 	    Config.Addrs.udp_incoming,
 	    Config.mcast_miss.port,
 	    COMM_NONBLOCKING,

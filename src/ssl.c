@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.126 2005/10/23 15:20:55 hno Exp $
+ * $Id: ssl.c,v 1.127 2005/11/01 11:02:45 serassio Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -520,7 +520,7 @@ sslStart(clientHttpRequest * http, squid_off_t * size_ptr, int *status_ptr)
     statCounter.server.other.requests++;
     /* Create socket. */
     sock = comm_openex(SOCK_STREAM,
-	0,
+	IPPROTO_TCP,
 	getOutgoingAddr(request),
 	0,
 	COMM_NONBLOCKING,
