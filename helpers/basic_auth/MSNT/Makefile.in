@@ -16,7 +16,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.27 2005/10/23 15:20:38 hno Exp $
+#  $Id: Makefile.in,v 1.28 2005/11/03 01:12:41 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -99,6 +99,7 @@ MKDIR = @MKDIR@
 MV = @MV@
 NTLM_AUTH_HELPERS = @NTLM_AUTH_HELPERS@
 OBJEXT = @OBJEXT@
+OPT_DEFAULT_HOSTS = @OPT_DEFAULT_HOSTS@
 PACKAGE = @PACKAGE@
 PERL = @PERL@
 PKGCONFIG = @PKGCONFIG@

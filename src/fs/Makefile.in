@@ -15,7 +15,7 @@
 
 #  Makefile for storage modules in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.21 2005/10/23 15:21:01 hno Exp $
+#  $Id: Makefile.in,v 1.22 2005/11/03 01:13:14 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -96,6 +96,7 @@ MKDIR = @MKDIR@
 MV = @MV@
 NTLM_AUTH_HELPERS = @NTLM_AUTH_HELPERS@
 OBJEXT = @OBJEXT@
+OPT_DEFAULT_HOSTS = @OPT_DEFAULT_HOSTS@
 PACKAGE = @PACKAGE@
 PERL = @PERL@
 PKGCONFIG = @PKGCONFIG@
