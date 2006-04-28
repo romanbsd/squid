@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.219 2005/10/23 15:20:54 hno Exp $
+ * $Id: enums.h,v 1.220 2006/04/28 10:17:21 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -398,6 +398,7 @@ enum {
     METHOD_SUBSCRIBE,
     METHOD_UNSUBSCRIBE,
     METHOD_POLL,
+    METHOD_REPORT,
     METHOD_EXT00,
     METHOD_EXT01,
     METHOD_EXT02,

@@ -14,7 +14,7 @@
 @SET_MAKE@
 
 #
-# $Id: Makefile.in,v 1.32 2005/11/03 01:12:40 hno Exp $
+# $Id: Makefile.in,v 1.33 2006/04/28 10:17:15 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -128,6 +128,7 @@ DEFAULT_ERROR_DIR = $(errordir)
 
 INSTALL_LANGUAGES = @ERR_LANGUAGES@
 LANGUAGES = \
+		Azerbaijani \
 		Bulgarian \
 		Catalan \
 		Czech \

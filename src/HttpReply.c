@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpReply.c,v 1.50 2005/05/17 16:56:37 hno Exp $
+ * $Id: HttpReply.c,v 1.51 2006/04/28 10:17:18 hno Exp $
  *
  * DEBUG: section 58    HTTP Reply (Response)
  * AUTHOR: Alex Rousskov
@@ -64,7 +64,7 @@ void
 httpReplyInitModule(void)
 {
     httpHeaderMaskInit(&Denied304HeadersMask, 0);
-    httpHeaderCalcMask(&Denied304HeadersMask, (const int *) Denied304HeadersArr, countof(Denied304HeadersArr));
+    httpHeaderCalcMask(&Denied304HeadersMask, Denied304HeadersArr, countof(Denied304HeadersArr));
 }
 
 

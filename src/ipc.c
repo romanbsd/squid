@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipc.c,v 1.30 2005/11/01 11:02:45 serassio Exp $
+ * $Id: ipc.c,v 1.31 2006/04/28 10:17:22 hno Exp $
  *
  * DEBUG: section 54    Interprocess Communication
  * AUTHOR: Duane Wessels
@@ -258,10 +258,11 @@ ipcCreate(int type, const char *prog, const char *const args[], const char *name
      *  crfd, cwfd, or debug_log are in the rage 0-2.
      */
     do {
-	x = open(_PATH_DEVNULL, 0, 0444);
-	if (x > -1)
-	    commSetCloseOnExec(x);
-    } while (x < 3);
+	/* First make sure 0-2 is occupied by something. Gets cleaned up later */
+	x = dup(crfd);
+	assert(x > -1);
+    } while (x < 3 && x > -1);
+    close(x);
     t1 = dup(crfd);
     t2 = dup(cwfd);
     t3 = dup(fileno(debug_log));

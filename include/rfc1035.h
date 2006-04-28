@@ -1,5 +1,5 @@
 /*
- * $Id: rfc1035.h,v 1.9 2005/10/23 15:20:49 hno Exp $
+ * $Id: rfc1035.h,v 1.10 2006/04/28 10:17:18 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -46,7 +46,7 @@
 #endif
 
 /* rfc1035 - DNS */
-#define RFC1035_MAXHOSTNAMESZ 250
+#define RFC1035_MAXHOSTNAMESZ 256
 typedef struct _rfc1035_rr rfc1035_rr;
 struct _rfc1035_rr {
     char name[RFC1035_MAXHOSTNAMESZ];
