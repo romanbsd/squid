@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.83 2006/04/28 10:17:18 hno Exp $
+ * $Id: HttpHeader.c,v 1.84 2006/05/12 22:09:12 hno Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -798,6 +798,7 @@ httpHeaderGetByNameListMember(const HttpHeader * hdr, const char *name, const ch
 	    break;
 	}
     }
+    stringClean(&header);
     return result;
 }
 
