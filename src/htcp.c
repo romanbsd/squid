@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.45 2005/11/01 11:02:45 serassio Exp $
+ * $Id: htcp.c,v 1.46 2006/05/12 22:08:09 hno Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -598,6 +598,9 @@ htcpTstReply(htcpDataHeader * dhdr, StoreEntry * e, htcpSpecifier * spec, struct
 	packerClean(&p);
     }
     pkt = htcpBuildPacket(&stuff, &pktlen);
+    safe_free(stuff.D.resp_hdrs);
+    safe_free(stuff.D.entity_hdrs);
+    safe_free(stuff.D.cache_hdrs);
     if (pkt == NULL) {
 	debug(31, 0) ("htcpTstReply: htcpBuildPacket() failed\n");
 	return;
