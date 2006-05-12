@@ -1,6 +1,6 @@
 
 /*
- * $Id: mem.c,v 1.68 2005/05/17 16:56:38 hno Exp $
+ * $Id: mem.c,v 1.69 2006/05/12 22:04:59 hno Exp $
  *
  * DEBUG: section 13    High Level Memory Pool Management
  * AUTHOR: Harvest Derived
@@ -101,6 +101,21 @@ memStats(StoreEntry * sentry)
     memReport(sentry);
     memStringStats(sentry);
     storeBufferFlush(sentry);
+#if WITH_VALGRIND
+    if (RUNNING_ON_VALGRIND) {
+	long int leaked = 0, dubious = 0, reachable = 0, suppressed = 0;
+	storeAppendPrintf(sentry, "Valgrind Report:\n");
+	storeAppendPrintf(sentry, "Type\tAmount\n");
+	debug(13, 1) ("Asking valgrind for memleaks\n");
+	VALGRIND_DO_LEAK_CHECK;
+	debug(13, 1) ("Getting valgrind statistics\n");
+	VALGRIND_COUNT_LEAKS(leaked, dubious, reachable, suppressed);
+	storeAppendPrintf(sentry, "Leaked\t%ld\n", leaked);
+	storeAppendPrintf(sentry, "Dubious\t%ld\n", dubious);
+	storeAppendPrintf(sentry, "Reachable\t%ld\n", reachable);
+	storeAppendPrintf(sentry, "Suppressed\t%ld\n", suppressed);
+    }
+#endif
 }
 
 

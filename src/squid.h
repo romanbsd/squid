@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.230 2006/05/12 21:55:10 hno Exp $
+ * $Id: squid.h,v 1.231 2006/05/12 22:04:59 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -91,6 +91,14 @@
 /* Increase FD_SETSIZE if SQUID_MAXFD is bigger */
 #if CHANGE_FD_SETSIZE && SQUID_MAXFD > DEFAULT_FD_SETSIZE
 #define FD_SETSIZE SQUID_MAXFD
+#endif
+
+#if PURIFY
+#define LEAK_CHECK_MODE 1
+#elif WITH_VALGRIND
+#define LEAK_CHECK_MODE 1
+#elif XMALLOC_TRACE
+#define LEAK_CHECK_MODE 1
 #endif
 
 #if defined(NODEBUG)
@@ -337,7 +345,7 @@ struct rusage {
 #define SA_RESETHAND SA_ONESHOT
 #endif
 
-#if PURIFY
+#if LEAK_CHECK_MODE
 #define LOCAL_ARRAY(type,name,size) \
         static type *local_##name=NULL; \
         type *name = local_##name ? local_##name : \
@@ -490,5 +498,21 @@ struct rusage {
 #if LARGE_CACHE_FILES && SIZEOF_SQUID_OFF_T <= 4
 #error Your platform does not support large integers. Can not build with --enable-large-cache-files
 #endif
+
+/*
+ * valgrind debug support
+ */
+#if WITH_VALGRIND
+#include <valgrind/memcheck.h>
+#else
+#define VALGRIND_MAKE_NOACCESS(a,b) (0)
+#define VALGRIND_MAKE_WRITEABLE(a,b) (0)
+#define VALGRIND_MAKE_READABLE(a,b) (0)
+#define VALGRIND_CHECK_WRITEABLE(a,b) (0)
+#define VALGRIND_CHECK_READABLE(a,b) (0)
+#define VALGRIND_MALLOCLIKE_BLOCK(a,b,c,d)
+#define VALGRIND_FREELIKE_BLOCK(a,b)
+#define RUNNING_ON_VALGRIND 0
+#endif /* WITH_VALGRIND */
 
 #endif /* SQUID_H */

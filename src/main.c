@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.360 2005/10/23 15:20:54 hno Exp $
+ * $Id: main.c,v 1.361 2006/05/12 22:04:59 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -995,7 +995,7 @@ SquidShutdown(void *unused)
 #endif
     storeDirSync();		/* Flush log close */
     storeFsDone();
-#if PURIFY || XMALLOC_TRACE
+#if LEAK_CHECK_MODE
     configFreeMemory();
     storeFreeMemory();
     /*stmemFreeMemory(); */

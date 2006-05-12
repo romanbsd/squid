@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.437 2006/04/28 10:17:22 hno Exp $
+ * $Id: structs.h,v 1.438 2006/05/12 22:04:59 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1961,6 +1961,9 @@ struct _MemPoolMeter {
 struct _MemPool {
     const char *label;
     size_t obj_size;
+#if DEBUG_MEMPOOL
+    size_t real_obj_size;	/* with alignment */
+#endif
     Stack pstack;		/* stack for free pointers */
     MemPoolMeter meter;
 };
