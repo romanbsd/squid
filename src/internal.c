@@ -1,6 +1,6 @@
 
 /*
- * $Id: internal.c,v 1.28 2006/04/28 10:17:22 hno Exp $
+ * $Id: internal.c,v 1.29 2006/05/12 22:07:35 hno Exp $
  *
  * DEBUG: section 76    Internal Squid Object handling
  * AUTHOR: Duane, Alex, Henrik
@@ -135,6 +135,9 @@ internalHostname(void)
 {
     LOCAL_ARRAY(char, host, SQUIDHOSTNAMELEN + 1);
     xstrncpy(host, getMyHostname(), SQUIDHOSTNAMELEN);
+    if (Config.appendDomain && !strchr(host, '.'))
+	strncat(host, Config.appendDomain, SQUIDHOSTNAMELEN -
+	    strlen(host) - 1);
     Tolower(host);
     return host;
 }
