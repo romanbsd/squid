@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.c,v 1.179 2006/04/28 10:17:21 hno Exp $
+ * $Id: errorpage.c,v 1.180 2006/05/14 15:44:47 serassio Exp $
  *
  * DEBUG: section 4     Error Generation
  * AUTHOR: Duane Wessels
@@ -549,7 +549,7 @@ errorConvert(char token, ErrorState * err)
 	}
 	break;
     case 's':
-	p = full_appname_string;
+	p = visible_appname_string;
 	break;
     case 'S':
 	/* signature may contain %-escapes, recursion */

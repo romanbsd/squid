@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.438 2006/05/12 22:04:59 hno Exp $
+ * $Id: structs.h,v 1.439 2006/05/14 15:44:47 serassio Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -483,6 +483,7 @@ struct _SquidConfig {
     char *EmailFrom;
     char *EmailProgram;
     char *effectiveUser;
+    char *visible_appname_string;
     char *effectiveGroup;
     struct {
 #if USE_DNSSERVERS
@@ -613,6 +614,7 @@ struct _SquidConfig {
 	int accel_uses_host_header;
 	int accel_no_pmtu_disc;
 	int global_internal_static;
+	int httpd_suppress_version_string;
     } onoff;
     acl *aclList;
     struct {

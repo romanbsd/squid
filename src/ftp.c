@@ -1,6 +1,6 @@
 
 /*
- * $Id: ftp.c,v 1.333 2006/04/28 10:17:21 hno Exp $
+ * $Id: ftp.c,v 1.334 2006/05/14 15:44:47 serassio Exp $
  *
  * DEBUG: section 9     File Transfer Protocol (FTP)
  * AUTHOR: Harvest Derived
@@ -448,7 +448,7 @@ ftpListingFinish(FtpStateData * ftpState)
     storeAppendPrintf(e, "Generated %s by %s (%s)\n",
 	mkrfc1123(squid_curtime),
 	getMyHostname(),
-	full_appname_string);
+	visible_appname_string);
     storeAppendPrintf(e, "</ADDRESS></BODY></HTML>\n");
 }
 
