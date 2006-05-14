@@ -1,5 +1,5 @@
 /*
- * $Id: cache_snmp.h,v 1.26 2001/10/08 16:55:25 hno Exp $
+ * $Id: cache_snmp.h,v 1.27 2006/05/14 09:25:01 serassio Exp $
  */
 
 #ifndef SQUID_CACHE_SNMP_H
@@ -79,6 +79,7 @@ enum {
     CONF_VERSION_ID,
     CONF_LOG_FAC,
     CONF_STORAGE,
+    CONF_UNIQNAME,
     CONF_END
 };
 

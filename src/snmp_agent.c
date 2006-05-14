@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_agent.c,v 1.84 2005/05/17 16:56:38 hno Exp $
+ * $Id: snmp_agent.c,v 1.85 2006/05/14 09:25:02 serassio Exp $
  *
  * DEBUG: section 49     SNMP Interface
  * AUTHOR: Kostas Anagnostakis
@@ -130,6 +130,13 @@ snmp_confFn(variable_list * Var, snint * ErrP)
 	Answer = snmp_var_new(Var->name, Var->name_length);
 	if (!(cp = Config.debugOptions))
 	    cp = "None";
+	Answer->type = ASN_OCTET_STR;
+	Answer->val_len = strlen(cp);
+	Answer->val.string = (u_char *) xstrdup(cp);
+	break;
+    case CONF_UNIQNAME:
+	Answer = snmp_var_new(Var->name, Var->name_length);
+	cp = uniqueHostname();
 	Answer->type = ASN_OCTET_STR;
 	Answer->val_len = strlen(cp);
 	Answer->val.string = (u_char *) xstrdup(cp);
