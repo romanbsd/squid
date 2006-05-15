@@ -1,6 +1,6 @@
 
 /*
- * $Id: authenticate.c,v 1.45 2005/10/23 15:20:53 hno Exp $
+ * $Id: authenticate.c,v 1.46 2006/05/15 22:06:48 hno Exp $
  *
  * DEBUG: section 29    Authenticator
  * AUTHOR: Duane Wessels
@@ -763,11 +763,16 @@ authenticateFixHeader(HttpReply * rep, auth_user_request_t * auth_user_request, 
 	    /* call each configured & running authscheme */
 	    for (i = 0; i < Config.authConfig.n_configured; i++) {
 		scheme = Config.authConfig.schemes + i;
-		if (authscheme_list[scheme->Id].Active())
-		    authscheme_list[scheme->Id].authFixHeader(NULL, rep, type,
-			request);
-		else
+		if (authscheme_list[scheme->Id].Active()) {
+		    if (auth_user_request && scheme->Id == auth_user_request->auth_user->auth_module - 1)
+			authscheme_list[scheme->Id].authFixHeader(
+			    auth_user_request, rep, type, request);
+		    else
+			authscheme_list[scheme->Id].authFixHeader(
+			    NULL, rep, type, request);
+		} else {
 		    debug(29, 4) ("authenticateFixHeader: Configured scheme %s not Active\n", scheme->typestr);
+		}
 	    }
 	}
     }

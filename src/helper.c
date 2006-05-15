@@ -1,6 +1,6 @@
 
 /*
- * $Id: helper.c,v 1.51 2006/04/28 10:17:22 hno Exp $
+ * $Id: helper.c,v 1.52 2006/05/15 22:06:48 hno Exp $
  *
  * DEBUG: section 84    Helper process maintenance
  * AUTHOR: Harvest Derived?
@@ -389,6 +389,8 @@ helperStatefulStats(StoreEntry * sentry, statefulhelper * hlp)
     helper_stateful_server *srv;
     dlink_node *link;
     double tt;
+    storeAppendPrintf(sentry, "program: %s\n",
+	hlp->cmdline->key);
     storeAppendPrintf(sentry, "number running: %d of %d\n",
 	hlp->n_running, hlp->n_to_start);
     storeAppendPrintf(sentry, "requests sent: %d\n",
@@ -670,6 +672,8 @@ helperHandleRead(int fd, void *data)
     } else if ((t = strchr(srv->buf, '\n'))) {
 	/* end of reply found */
 	debug(84, 3) ("helperHandleRead: end of reply found\n");
+	if (t > srv->buf && t[-1] == '\r')
+	    t[-1] = '\0';
 	*t = '\0';
 	srv->flags.busy = 0;
 	srv->offset = 0;
@@ -727,6 +731,8 @@ helperStatefulHandleRead(int fd, void *data)
     } else if ((t = strchr(srv->buf, '\n'))) {
 	/* end of reply found */
 	debug(84, 3) ("helperStatefulHandleRead: end of reply found\n");
+	if (t > srv->buf && t[-1] == '\r')
+	    t[-1] = '\0';
 	*t = '\0';
 	srv->flags.busy = 0;
 	srv->offset = 0;
