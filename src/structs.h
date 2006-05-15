@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.441 2006/05/15 22:18:06 hno Exp $
+ * $Id: structs.h,v 1.442 2006/05/15 23:43:08 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1747,7 +1747,6 @@ struct _ErrorState {
     request_t *request;
     char *url;
     int xerrno;
-    u_short port;
     char *dnsserver_msg;
     time_t ttl;
     struct in_addr src_addr;

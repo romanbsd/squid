@@ -1,6 +1,6 @@
 
 /*
- * $Id: gopher.c,v 1.176 2006/05/14 15:44:47 serassio Exp $
+ * $Id: gopher.c,v 1.177 2006/05/15 23:43:07 hno Exp $
  *
  * DEBUG: section 10    Gopher
  * AUTHOR: Harvest Derived
@@ -708,7 +708,6 @@ gopherSendComplete(int fd, char *buf, size_t size, int errflag, void *data)
 	ErrorState *err;
 	err = errorCon(ERR_WRITE_ERROR, HTTP_BAD_GATEWAY);
 	err->xerrno = errno;
-	err->port = gopherState->req->port;
 	err->url = xstrdup(storeUrl(entry));
 	fwdFail(gopherState->fwdState, err);
 	comm_close(fd);
