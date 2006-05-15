@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.361 2006/05/12 22:04:59 hno Exp $
+ * $Id: main.c,v 1.362 2006/05/15 15:41:02 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -299,6 +299,9 @@ serverConnectionsOpen(void)
 #if USE_WCCP
     wccpConnectionOpen();
 #endif
+#if USE_WCCPv2
+    wccp2ConnectionOpen();
+#endif
     clientdbInit();
     icmpOpen();
     netdbInit();
@@ -325,6 +328,9 @@ serverConnectionsClose(void)
 #if USE_WCCP
     wccpConnectionShutdown();
 #endif
+#if USE_WCCPv2
+    wccp2ConnectionShutdown();
+#endif
     asnFreeMemory();
 }
 
@@ -344,6 +350,9 @@ mainReconfigure(void)
 #endif
 #if USE_WCCP
     wccpConnectionClose();
+#endif
+#if USE_WCCPv2
+    wccp2ConnectionClose();
 #endif
 #if USE_DNSSERVERS
     dnsShutdown();
@@ -382,6 +391,9 @@ mainReconfigure(void)
     externalAclInit();
 #if USE_WCCP
     wccpInit();
+#endif
+#if USE_WCCPv2
+    wccp2Init();
 #endif
     serverConnectionsOpen();
     if (theOutIcpConnection >= 0) {
@@ -546,6 +558,9 @@ mainInitialize(void)
     }
 #if USE_WCCP
     wccpInit();
+#endif
+#if USE_WCCPv2
+    wccp2Init();
 #endif
     serverConnectionsOpen();
     if (theOutIcpConnection >= 0) {
@@ -974,6 +989,9 @@ SquidShutdown(void *unused)
 #endif
 #if USE_WCCP
     wccpConnectionClose();
+#endif
+#if USE_WCCPv2
+    wccp2ConnectionClose();
 #endif
     releaseServerSockets();
     commCloseAllSockets();

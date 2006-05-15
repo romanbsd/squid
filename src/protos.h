@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.457 2006/04/28 10:17:22 hno Exp $
+ * $Id: protos.h,v 1.458 2006/05/15 15:41:02 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -562,6 +562,13 @@ extern void wccpConnectionOpen(void);
 extern void wccpConnectionShutdown(void);
 extern void wccpConnectionClose(void);
 #endif /* USE_WCCP */
+
+#if USE_WCCPv2
+extern void wccp2Init(void);
+extern void wccp2ConnectionOpen(void);
+extern void wccp2ConnectionShutdown(void);
+extern void wccp2ConnectionClose(void);
+#endif /* USE_WCCPv2 */
 
 extern void icpHandleIcpV3(int, struct sockaddr_in, char *, int);
 extern int icpCheckUdpHit(StoreEntry *, request_t * request);
@@ -1340,5 +1347,15 @@ extern void externalAclInit(void);
 extern void externalAclShutdown(void);
 extern int externalAclRequiresAuth(void *acl_data);
 extern char *strtokFile(void);
+
+#if USE_WCCPv2
+extern void parse_wccp2_service(void *v);
+extern void free_wccp2_service(void *v);
+extern void dump_wccp2_service(StoreEntry * e, const char *label, void *v);
+
+extern void parse_wccp2_service_info(void *v);
+extern void free_wccp2_service_info(void *v);
+extern void dump_wccp2_service_info(StoreEntry * e, const char *label, void *v);
+#endif
 
 #endif /* SQUID_PROTOS_H */

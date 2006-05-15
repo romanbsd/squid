@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.73 2005/05/17 16:55:56 hno Exp $ */
+/* $Id: acconfig.h,v 1.74 2006/05/15 15:41:01 hno Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -112,9 +112,14 @@
 #undef SQUID_SNMP
 
 /*
- * Define to enable WCCP
+ * Define to enable WCCP V1
  */
 #define USE_WCCP 1
+
+/*
+ * Define to enable WCCP V2
+ */
+#undef USE_WCCPv2
 
 /*
  * Squid frequently calls gettimeofday() for accurate timestamping.
