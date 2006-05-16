@@ -1,6 +1,6 @@
 
 /*
- * $Id: external_acl.c,v 1.17 2005/05/17 16:56:38 hno Exp $
+ * $Id: external_acl.c,v 1.18 2006/05/16 01:12:35 hno Exp $
  *
  * DEBUG: section 82    External ACL
  * AUTHOR: Henrik Nordstrom, MARA Systems AB
@@ -871,7 +871,7 @@ externalAclInit(void)
 	    p->helper = helperCreate(p->name);
 	p->helper->cmdline = p->cmdline;
 	p->helper->n_to_start = p->children;
-	p->helper->ipc_type = IPC_TCP_SOCKET;
+	p->helper->ipc_type = IPC_STREAM;
 	helperOpenServers(p->helper);
     }
     if (firstTimeInit) {

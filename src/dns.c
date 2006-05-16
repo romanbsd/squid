@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns.c,v 1.89 2005/05/17 16:56:38 hno Exp $
+ * $Id: dns.c,v 1.90 2006/05/16 01:12:35 hno Exp $
  *
  * DEBUG: section 34    Dnsserver interface
  * AUTHOR: Harvest Derived
@@ -54,7 +54,7 @@ dnsInit(void)
     if (dnsservers == NULL)
 	dnsservers = helperCreate("dnsserver");
     dnsservers->n_to_start = Config.dnsChildren;
-    dnsservers->ipc_type = IPC_TCP_SOCKET;
+    dnsservers->ipc_type = IPC_STREAM;
     assert(dnsservers->cmdline == NULL);
     wordlistAdd(&dnsservers->cmdline, Config.Program.dnsserver);
     if (Config.onoff.res_defnames)

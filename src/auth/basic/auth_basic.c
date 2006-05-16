@@ -1,5 +1,5 @@
 /*
- * $Id: auth_basic.c,v 1.20 2005/05/17 16:56:41 hno Exp $
+ * $Id: auth_basic.c,v 1.21 2006/05/16 01:12:35 hno Exp $
  *
  * DEBUG: section 29    Authenticator
  * AUTHOR: Duane Wessels
@@ -561,7 +561,7 @@ authBasicInit(authScheme * scheme)
 	    basicauthenticators = helperCreate("basicauthenticator");
 	basicauthenticators->cmdline = basicConfig->authenticate;
 	basicauthenticators->n_to_start = basicConfig->authenticateChildren;
-	basicauthenticators->ipc_type = IPC_TCP_SOCKET;
+	basicauthenticators->ipc_type = IPC_STREAM;
 	helperOpenServers(basicauthenticators);
 	if (!init) {
 	    cachemgrRegister("basicauthenticator",

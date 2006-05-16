@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_ntlm.c,v 1.28 2006/05/15 22:14:25 hno Exp $
+ * $Id: auth_ntlm.c,v 1.29 2006/05/16 01:12:36 hno Exp $
  *
  * DEBUG: section 29    NTLM Authenticator
  * AUTHOR: Robert Collins
@@ -224,7 +224,7 @@ authNTLMInit(authScheme * scheme)
 	    ntlmauthenticators = helperStatefulCreate("ntlmauthenticator");
 	ntlmauthenticators->cmdline = ntlmConfig->authenticate;
 	ntlmauthenticators->n_to_start = ntlmConfig->authenticateChildren;
-	ntlmauthenticators->ipc_type = IPC_TCP_SOCKET;
+	ntlmauthenticators->ipc_type = IPC_STREAM;
 	helperStatefulOpenServers(ntlmauthenticators);
 	if (!ntlminit) {
 	    cachemgrRegister("ntlmauthenticator",

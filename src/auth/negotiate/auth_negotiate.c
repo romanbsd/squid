@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_negotiate.c,v 1.1 2006/05/15 22:06:49 hno Exp $
+ * $Id: auth_negotiate.c,v 1.2 2006/05/16 01:12:36 hno Exp $
  *
  * DEBUG: section 29    Negotiate Authenticator
  * AUTHOR: Robert Collins
@@ -224,7 +224,7 @@ authNegotiateInit(authScheme * scheme)
 	    negotiateauthenticators = helperStatefulCreate("negotiateauthenticator");
 	negotiateauthenticators->cmdline = negotiateConfig->authenticate;
 	negotiateauthenticators->n_to_start = negotiateConfig->authenticateChildren;
-	negotiateauthenticators->ipc_type = IPC_TCP_SOCKET;
+	negotiateauthenticators->ipc_type = IPC_STREAM;
 	helperStatefulOpenServers(negotiateauthenticators);
 	if (!negotiateinit) {
 	    cachemgrRegister("negotiateauthenticator",
