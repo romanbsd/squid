@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp_v2.c,v 1.70 2006/05/15 22:18:06 hno Exp $
+ * $Id: icp_v2.c,v 1.71 2006/05/16 01:08:28 hno Exp $
  *
  * DEBUG: section 12    Internet Cache Protocol
  * AUTHOR: Duane Wessels
@@ -407,8 +407,6 @@ icpConnectionsOpen(void)
     int x;
     socklen_t len;
     wordlist *s;
-    if (Config2.Accel.on && !Config.onoff.accel_with_proxy)
-	return;
     if ((port = Config.Port.icp) <= 0)
 	return;
     enter_suid();

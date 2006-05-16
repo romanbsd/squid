@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.74 2006/05/15 15:41:01 hno Exp $ */
+/* $Id: acconfig.h,v 1.75 2006/05/16 01:08:26 hno Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -406,6 +406,11 @@
  * Enable support for the X-Accelerator-Vary HTTP header
  */
 #undef X_ACCELERATOR_VARY
+
+/*
+ * Enable authentication support in accelerators
+ */
+#undef AUTH_ON_ACCELERATION
 
 @BOTTOM@
 

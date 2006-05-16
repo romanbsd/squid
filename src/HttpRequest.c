@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpRequest.c,v 1.33 2006/04/28 10:17:19 hno Exp $
+ * $Id: HttpRequest.c,v 1.34 2006/05/16 01:08:27 hno Exp $
  *
  * DEBUG: section 73    HTTP Request
  * AUTHOR: Duane Wessels
@@ -61,6 +61,7 @@ requestDestroy(request_t * req)
 	authenticateAuthUserRequestUnlock(req->auth_user_request);
     safe_free(req->canonical);
     safe_free(req->vary_headers);
+    safe_free(req->urlgroup);
     stringClean(&req->urlpath);
     httpHeaderClean(&req->header);
     if (req->cache_control)

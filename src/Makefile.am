@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.41 2006/05/15 15:41:02 hno Exp $
+#  $Id: Makefile.am,v 1.42 2006/05/16 01:08:27 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -131,6 +131,7 @@ squid_SOURCES = \
 	errorpage.c \
 	ETag.c \
 	event.c \
+	errormap.c \
 	external_acl.c \
 	fd.c \
 	filemap.c \
@@ -160,6 +161,7 @@ squid_SOURCES = \
 	ipc.c \
 	ipcache.c \
 	$(LEAKFINDERSOURCE) \
+	locrewrite.c \
 	logfile.c \
 	main.c \
 	mem.c \
@@ -172,7 +174,10 @@ squid_SOURCES = \
 	Packer.c \
 	pconn.c \
 	peer_digest.c \
+	peer_monitor.c \
 	peer_select.c \
+	peer_sourcehash.c \
+	peer_userhash.c \
 	protos.h \
 	redirect.c \
 	referer.c \

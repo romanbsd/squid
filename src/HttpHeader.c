@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.84 2006/05/12 22:09:12 hno Exp $
+ * $Id: HttpHeader.c,v 1.85 2006/05/16 01:08:27 hno Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -130,6 +130,8 @@ static const HttpHeaderFieldAttrs HeadersAttrs[] =
 #if X_ACCELERATOR_VARY
     {"X-Accelerator-Vary", HDR_X_ACCELERATOR_VARY, ftStr},
 #endif
+    {"X-Error-URL", HDR_X_ERROR_URL, ftStr},
+    {"X-Error-Status", HDR_X_ERROR_STATUS, ftInt},
     {"Other:", HDR_OTHER, ftStr}	/* ':' will not allow matches */
 };
 static HttpHeaderFieldInfo *Headers = NULL;
