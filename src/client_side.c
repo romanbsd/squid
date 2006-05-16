@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.610 2006/05/16 01:08:28 hno Exp $
+ * $Id: client_side.c,v 1.611 2006/05/16 02:35:27 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -454,6 +454,8 @@ clientRedirectDone(void *data, char *result)
 	    old_request->body_reader_data = NULL;
 	}
 	new_request->content_length = old_request->content_length;
+	if (strBuf(old_request->extacl_log))
+	    new_request->log = stringDup(&old_request->extacl_log);
 	requestUnlink(old_request);
 	http->request = requestLink(new_request);
     } else {

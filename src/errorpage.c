@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.c,v 1.181 2006/05/16 01:08:28 hno Exp $
+ * $Id: errorpage.c,v 1.182 2006/05/16 02:35:27 hno Exp $
  *
  * DEBUG: section 4     Error Generation
  * AUTHOR: Duane Wessels
@@ -425,6 +425,7 @@ errorStateFree(ErrorState * err)
  * L - HREF link for more info/contact          x
  * M - Request Method                           x
  * m - Error message returned by external Auth. x 
+ * o - Error message returned by external ACL   x
  * p - URL port #                               x
  * P - Protocol                                 x
  * R - Full HTTP Request                        x
@@ -520,6 +521,11 @@ errorConvert(char token, ErrorState * err)
 	break;
     case 'M':
 	p = r ? RequestMethodStr[r->method] : "[unkown method]";
+	break;
+    case 'o':
+	p = external_acl_message;
+	if (!p)
+	    p = "[not available]";
 	break;
     case 'p':
 	if (r) {

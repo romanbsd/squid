@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpRequest.c,v 1.34 2006/05/16 01:08:27 hno Exp $
+ * $Id: HttpRequest.c,v 1.35 2006/05/16 02:35:27 hno Exp $
  *
  * DEBUG: section 73    HTTP Request
  * AUTHOR: Duane Wessels
@@ -68,6 +68,7 @@ requestDestroy(request_t * req)
 	httpHdrCcDestroy(req->cache_control);
     if (req->range)
 	httpHdrRangeDestroy(req->range);
+    stringClean(&req->extacl_log);
     memFree(req, MEM_REQUEST_T);
 }
 
