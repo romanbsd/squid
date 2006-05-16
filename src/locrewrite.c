@@ -1,6 +1,6 @@
 
 /*
- * $Id: locrewrite.c,v 1.3 2006/05/16 02:18:33 hno Exp $
+ * $Id: locrewrite.c,v 1.4 2006/05/16 04:43:30 hno Exp $
  *
  * DEBUG: section 29    Redirector
  * AUTHOR: Henrik Nordstrom
@@ -137,7 +137,7 @@ locationRewriteInit(void)
 	locrewriters = helperCreate("location_rewriter");
     locrewriters->cmdline = Config.Program.location_rewrite.command;
     locrewriters->n_to_start = Config.Program.location_rewrite.children;
-    locrewriters->concurrency = Config.Program.location_rewrite.concurrencty;
+    locrewriters->concurrency = Config.Program.location_rewrite.concurrency;
     locrewriters->ipc_type = IPC_STREAM;
     helperOpenServers(locrewriters);
     if (!init) {

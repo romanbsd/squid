@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.307 2006/05/16 03:20:01 hno Exp $
+# $Id: cf.data.pre,v 1.308 2006/05/16 04:43:30 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1481,7 +1481,7 @@ DOC_END
 NAME: location_rewrite_concurrency
 TYPE: int
 DEFAULT: 0
-LOC: Config.Program.location_rewrite.concurrencty
+LOC: Config.Program.location_rewrite.concurrency
 DOC_START
 	The number of requests each Location rewriter helper can handle in
 	parallell. Defaults to 0 which indicates that the helper
