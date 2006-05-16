@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.445 2006/05/16 02:35:27 hno Exp $
+ * $Id: structs.h,v 1.446 2006/05/16 04:52:26 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1383,7 +1383,7 @@ struct _peer {
     int max_conn;
     struct {
 	char *url;
-	ssize_t min, max;
+	int min, max;
 	int interval;
 	int timeout;
 	int state;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_sourcehash.c,v 1.1 2006/05/16 01:08:29 hno Exp $
+ * $Id: peer_sourcehash.c,v 1.2 2006/05/16 04:52:26 hno Exp $
  *
  * DEBUG: section 44    Peer user hash based selection
  * AUTHOR: Henrik Nordstrom
@@ -36,7 +36,7 @@
 
 #include "squid.h"
 
-#define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (((sizeof(unsigned long)*8)-(n)))))
+#define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> ((32-(n)))))
 
 static int n_sourcehash_peers = 0;
 static peer **sourcehash_peers = NULL;
