@@ -1,6 +1,6 @@
 
 /*
- * $Id: redirect.c,v 1.94 2006/05/16 01:12:35 hno Exp $
+ * $Id: redirect.c,v 1.95 2006/05/16 02:18:33 hno Exp $
  *
  * DEBUG: section 61    Redirector
  * AUTHOR: Duane Wessels
@@ -143,6 +143,7 @@ redirectInit(void)
 	redirectors = helperCreate("url_rewriter");
     redirectors->cmdline = Config.Program.url_rewrite.command;
     redirectors->n_to_start = Config.Program.url_rewrite.children;
+    redirectors->concurrency = Config.Program.url_rewrite.concurrency;
     redirectors->ipc_type = IPC_STREAM;
     helperOpenServers(redirectors);
     if (!init) {
