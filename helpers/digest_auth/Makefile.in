@@ -15,7 +15,7 @@
 
 #  Makefile for digest auth helpers in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.20 2005/11/03 01:12:43 hno Exp $
+#  $Id: Makefile.in,v 1.21 2006/05/16 03:20:18 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -123,7 +123,7 @@ am__quote = @am__quote@
 install_sh = @install_sh@
 makesnmplib = @makesnmplib@
 
-DIST_SUBDIRS = password
+DIST_SUBDIRS = password ldap
 SUBDIRS = @DIGEST_AUTH_HELPERS@
 subdir = helpers/digest_auth
 mkinstalldirs = $(SHELL) $(top_srcdir)/cfgaux/mkinstalldirs
