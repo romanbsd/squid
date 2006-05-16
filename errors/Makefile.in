@@ -14,7 +14,7 @@
 @SET_MAKE@
 
 #
-# $Id: Makefile.in,v 1.33 2006/04/28 10:17:15 hno Exp $
+# $Id: Makefile.in,v 1.34 2006/05/16 03:25:11 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -87,6 +87,7 @@ LIBDLMALLOC = @LIBDLMALLOC@
 LIBREGEX = @LIBREGEX@
 LIBSASL = @LIBSASL@
 LIB_LBER = @LIB_LBER@
+LIB_LDAP = @LIB_LDAP@
 LIB_MALLOC = @LIB_MALLOC@
 LN = @LN@
 LN_S = @LN_S@

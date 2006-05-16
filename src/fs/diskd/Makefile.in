@@ -16,7 +16,7 @@
 #
 #  Makefile for the DISKD storage driver for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.19 2005/11/03 01:13:15 hno Exp $
+#  $Id: Makefile.in,v 1.20 2006/05/16 03:25:34 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -89,6 +89,7 @@ LIBDLMALLOC = @LIBDLMALLOC@
 LIBREGEX = @LIBREGEX@
 LIBSASL = @LIBSASL@
 LIB_LBER = @LIB_LBER@
+LIB_LDAP = @LIB_LDAP@
 LIB_MALLOC = @LIB_MALLOC@
 LN = @LN@
 LN_S = @LN_S@

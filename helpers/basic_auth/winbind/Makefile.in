@@ -16,7 +16,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.15 2005/11/03 01:12:42 hno Exp $
+#  $Id: Makefile.in,v 1.16 2006/05/16 03:25:17 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -89,6 +89,7 @@ LIBDLMALLOC = @LIBDLMALLOC@
 LIBREGEX = @LIBREGEX@
 LIBSASL = @LIBSASL@
 LIB_LBER = @LIB_LBER@
+LIB_LDAP = @LIB_LDAP@
 LIB_MALLOC = @LIB_MALLOC@
 LN = @LN@
 LN_S = @LN_S@

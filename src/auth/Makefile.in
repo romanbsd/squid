@@ -15,7 +15,7 @@
 
 #  Makefile for authentication modules in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.21 2006/05/15 22:08:16 hno Exp $
+#  $Id: Makefile.in,v 1.22 2006/05/16 03:25:30 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -88,6 +88,7 @@ LIBDLMALLOC = @LIBDLMALLOC@
 LIBREGEX = @LIBREGEX@
 LIBSASL = @LIBSASL@
 LIB_LBER = @LIB_LBER@
+LIB_LDAP = @LIB_LDAP@
 LIB_MALLOC = @LIB_MALLOC@
 LN = @LN@
 LN_S = @LN_S@
