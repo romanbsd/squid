@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.15 2005/10/23 15:20:49 hno Exp $
+ * $Id: hash.c,v 1.16 2006/05/17 23:32:13 hno Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -186,6 +186,9 @@ hash_lookup(hash_table * hid, const void *k)
     assert(k != NULL);
     b = hid->hash(k, hid->size);
     for (walker = hid->buckets[b]; walker != NULL; walker = walker->next) {
+        /* strcmp of NULL is a SEGV */
+        if (NULL == walker->key)
+            return NULL;
 	if ((hid->cmp) (k, walker->key) == 0)
 	    return (walker);
 	assert(walker != walker->next);
