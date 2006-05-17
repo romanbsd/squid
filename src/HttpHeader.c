@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.85 2006/05/16 01:08:27 hno Exp $
+ * $Id: HttpHeader.c,v 1.86 2006/05/17 23:17:02 hno Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -132,6 +132,7 @@ static const HttpHeaderFieldAttrs HeadersAttrs[] =
 #endif
     {"X-Error-URL", HDR_X_ERROR_URL, ftStr},
     {"X-Error-Status", HDR_X_ERROR_STATUS, ftInt},
+    {"Front-End-Https", HDR_FRONT_END_HTTPS, ftStr},
     {"Other:", HDR_OTHER, ftStr}	/* ':' will not allow matches */
 };
 static HttpHeaderFieldInfo *Headers = NULL;

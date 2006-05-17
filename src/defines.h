@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.110 2006/05/16 01:12:35 hno Exp $
+ * $Id: defines.h,v 1.111 2006/05/17 23:17:04 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -75,8 +75,10 @@
 #define COMM_NOCLOEXEC		0x02
 #define COMM_REUSEADDR		0x04
 
+#define do_debug(SECTION, LEVEL) \
+	((_db_level = (LEVEL)) <= debugLevels[SECTION])
 #define debug(SECTION, LEVEL) \
-        ((_db_level = (LEVEL)) > debugLevels[SECTION]) ? (void) 0 : _db_print
+        !do_debug(SECTION, LEVEL) ? (void) 0 : _db_print
 
 #define safe_free(x)	if (x) { xxfree(x); x = NULL; }
 
