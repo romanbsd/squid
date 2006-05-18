@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.41 2006/05/18 06:49:47 adrian Exp $
+ * $Id: store_dir_coss.c,v 1.42 2006/05/18 12:34:52 hno Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -84,6 +84,7 @@ static STLOGCLOSE storeCossDirCloseSwapLog;
 static STLOGWRITE storeCossDirSwapLog;
 static STNEWFS storeCossDirNewfs;
 static STCHECKOBJ storeCossDirCheckObj;
+static STCHECKLOADAV storeCossDirCheckLoadAv;
 static STFREE storeCossDirShutdown;
 static STFSPARSE storeCossDirParse;
 static STFSRECONFIGURE storeCossDirReconfigure;
