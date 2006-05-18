@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh.c,v 1.58 2005/05/17 16:56:38 hno Exp $
+ * $Id: refresh.c,v 1.59 2006/05/18 23:11:12 hno Exp $
  *
  * DEBUG: section 22    Refresh Calculation
  * AUTHOR: Harvest Derived
@@ -362,6 +362,13 @@ refreshCheckHTTP(const StoreEntry * entry, request_t * request)
     int reason = refreshCheck(entry, request, 0);
     refreshCounts[rcHTTP].total++;
     refreshCounts[rcHTTP].status[reason]++;
+    return (reason < 200) ? 0 : 1;
+}
+
+int
+refreshCheckHTTPStale(const StoreEntry * entry, request_t * request)
+{
+    int reason = refreshCheck(entry, request, -Config.refresh_stale_window);
     return (reason < 200) ? 0 : 1;
 }
 

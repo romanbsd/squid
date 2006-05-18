@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.95 2006/05/18 04:03:23 hno Exp $
+ * $Id: forward.c,v 1.96 2006/05/18 23:11:12 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -592,6 +592,7 @@ fwdDispatch(FwdState * fwdState)
     assert(entry->lock_count);
     EBIT_SET(entry->flags, ENTRY_DISPATCHED);
     netdbPingSite(request->host);
+    entry->mem_obj->refresh_timestamp = squid_curtime;
     if (fwdState->servers && (p = fwdState->servers->peer)) {
 	p->stats.fetches++;
 	fwdState->request->peer_login = p->login;

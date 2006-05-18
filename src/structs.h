@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.451 2006/05/18 12:48:52 hno Exp $
+ * $Id: structs.h,v 1.452 2006/05/18 23:11:12 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -658,6 +658,7 @@ struct _SquidConfig {
 	int request_entities;
 	int detect_broken_server_pconns;
 	int balance_on_multiple_ip;
+	int collapsed_forwarding;
 	int relaxed_header_parser;
 	int accel_no_pmtu_disc;
 	int global_internal_static;
@@ -784,6 +785,7 @@ struct _SquidConfig {
 	SSL_CTX *sslContext;
     } ssl_client;
 #endif
+    time_t refresh_stale_window;
 };
 
 struct _SquidConfig2 {
@@ -1657,6 +1659,8 @@ struct _MemObject {
     unsigned int chksum;
 #endif
     const char *vary_headers;
+    StoreEntry *ims_entry;
+    time_t refresh_timestamp;
 };
 
 struct _StoreEntry {
