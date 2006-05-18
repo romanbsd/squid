@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.340 2006/05/18 04:03:23 hno Exp $
+ * $Id: comm.c,v 1.341 2006/05/18 06:30:02 adrian Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -675,6 +675,7 @@ comm_close_finish(int fd)
     statCounter.syscalls.sock.closes++;
 }
 
+#if USE_SSL
 static inline void
 comm_close_ssl_finish(int fd)
 {
@@ -702,6 +703,8 @@ comm_close_ssl_timeout(int fd, void *unused)
     debug(50, 1) ("comm_close_ssl: FD %d: timeout\n", fd);
     comm_close_ssl_finish(fd);
 }
+
+#endif
 
 void
 comm_close(int fd)
