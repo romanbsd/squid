@@ -1,5 +1,5 @@
 /*
- * $Id: config.h,v 1.7 2005/05/17 16:56:35 hno Exp $
+ * $Id: config.h,v 1.8 2006/05/18 12:15:59 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -42,6 +42,12 @@
  * DO *NOT* MAKE ANY CHANGES below here unless you know what you're doing...*
  *--------------------------------------------------------------------------*
  ****************************************************************************/
+
+/*
+ * Linux GLIBC supports lots of things, but not all standards
+ * enabled by default. Let it give us what it have.
+ */
+#define _GNU_SOURCE 1
 
 #ifdef USE_POSIX_REGEX
 #ifndef USE_RE_SYNTAX
