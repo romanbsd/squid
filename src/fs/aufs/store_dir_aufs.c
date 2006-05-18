@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_aufs.c,v 1.53 2006/05/18 06:49:46 adrian Exp $
+ * $Id: store_dir_aufs.c,v 1.54 2006/05/18 12:54:07 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1592,7 +1592,7 @@ storeAufsDirMaintain(SwapDir * SD)
  * object is able to be stored on this filesystem. AUFS filesystems will
  * happily store anything as long as the LRU time isn't too small.
  */
-char
+int
 storeAufsDirCheckObj(SwapDir * SD, const StoreEntry * e)
 {
     return 1;

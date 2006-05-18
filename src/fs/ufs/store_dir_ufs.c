@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.52 2006/05/18 06:49:48 adrian Exp $
+ * $Id: store_dir_ufs.c,v 1.53 2006/05/18 12:54:10 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1614,7 +1614,7 @@ storeUfsDirMaintain(SwapDir * SD)
  * object is able to be stored on this filesystem. UFS filesystems will
  * happily store anything as long as the LRU time isn't too small.
  */
-char
+int
 storeUfsDirCheckObj(SwapDir * SD, const StoreEntry * e)
 {
     return 1;

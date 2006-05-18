@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_diskd.c,v 1.74 2006/05/18 06:49:47 adrian Exp $
+ * $Id: store_dir_diskd.c,v 1.75 2006/05/18 12:54:08 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1815,7 +1815,7 @@ storeDiskdDirMaintain(SwapDir * SD)
  * object is able to be stored on this filesystem. DISKD filesystems will
  * happily store anything as long as the LRU time isn't too small.
  */
-char
+int
 storeDiskdDirCheckObj(SwapDir * SD, const StoreEntry * e)
 {
     diskdinfo_t *diskdinfo = SD->fsdata;

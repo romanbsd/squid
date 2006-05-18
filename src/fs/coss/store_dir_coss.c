@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.42 2006/05/18 12:34:52 hno Exp $
+ * $Id: store_dir_coss.c,v 1.43 2006/05/18 12:54:07 hno Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -692,7 +692,7 @@ storeCossDirShutdown(SwapDir * SD)
  * not store everything. We don't check for maxobjsize here since its
  * done by the upper layers.
  */
-char
+int
 storeCossDirCheckObj(SwapDir * SD, const StoreEntry * e)
 {
     /* Check if the object is a special object, we can't cache these */

@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_null.c,v 1.5 2006/05/18 06:49:48 adrian Exp $
+ * $Id: store_null.c,v 1.6 2006/05/18 12:57:11 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -87,7 +87,7 @@ storeNullDirRebuildComplete(void *unused)
     storeRebuildComplete(&counts);
 }
 
-static char
+static int
 storeNullDirCheckObj(SwapDir * SD, const StoreEntry * e)
 {
     return 0;
