@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.450 2006/05/18 06:49:46 adrian Exp $
+ * $Id: structs.h,v 1.451 2006/05/18 12:48:52 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1772,6 +1772,7 @@ struct _storeIOState {
     mode_t mode;
     squid_off_t st_size;	/* do stat(2) after read open */
     squid_off_t offset;		/* current on-disk offset pointer */
+    squid_off_t write_offset;	/* current storeWrite offset pointer */
     STFNCB *file_callback;	/* called on delayed sfileno assignments */
     STIOCB *callback;
     void *callback_data;
