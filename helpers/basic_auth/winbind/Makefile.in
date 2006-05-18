@@ -16,7 +16,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.16 2006/05/16 03:25:17 hno Exp $
+#  $Id: Makefile.in,v 1.17 2006/05/18 04:32:01 hno Exp $
 #
 
 SHELL = @SHELL@
@@ -88,6 +88,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBDLMALLOC = @LIBDLMALLOC@
 LIBREGEX = @LIBREGEX@
 LIBSASL = @LIBSASL@
+LIB_EPOLL = @LIB_EPOLL@
 LIB_LBER = @LIB_LBER@
 LIB_LDAP = @LIB_LDAP@
 LIB_MALLOC = @LIB_MALLOC@
