@@ -23,7 +23,7 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
 @TOP@
-/* $Id: acconfig.h,v 1.75 2006/05/16 01:08:26 hno Exp $ */
+/* $Id: acconfig.h,v 1.76 2006/05/18 04:03:22 hno Exp $ */
 
 /*
  * configure command line used to configure Squid
@@ -411,6 +411,11 @@
  * Enable authentication support in accelerators
  */
 #undef AUTH_ON_ACCELERATION
+
+/*
+ * Supports epoll
+ */
+#undef HAVE_EPOLL
 
 @BOTTOM@
 

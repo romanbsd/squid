@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.339 2006/05/17 23:17:03 hno Exp $
+ * $Id: comm.c,v 1.340 2006/05/18 04:03:23 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -373,6 +373,11 @@ commResetFD(ConnectStateData * cs)
 #ifdef TCP_NODELAY
     if (F->flags.nodelay)
 	commSetTcpNoDelay(cs->fd);
+#endif
+
+#if HAVE_EPOLL
+    // If we are using epoll(), we need to make sure that this fd will be polled
+    commSetSelect(cs->fd, 0, NULL, NULL, 0);
 #endif
     if (Config.tcpRcvBufsz > 0)
 	commSetTcpRcvbuf(cs->fd, Config.tcpRcvBufsz);
@@ -770,6 +775,8 @@ commSetDefer(int fd, DEFER * func, void *data)
     F->defer_data = data;
 }
 
+/* Epoll redefines this function in comm_select.c */
+#if !HAVE_EPOLL
 void
 commSetSelect(int fd, unsigned int type, PF * handler, void *client_data, time_t timeout)
 {
@@ -790,6 +797,7 @@ commSetSelect(int fd, unsigned int type, PF * handler, void *client_data, time_t
     if (timeout)
 	F->timeout = squid_curtime + timeout;
 }
+#endif
 
 void
 comm_add_close_handler(int fd, PF * handler, void *data)

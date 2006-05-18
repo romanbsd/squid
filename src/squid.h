@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.231 2006/05/12 22:04:59 hno Exp $
+ * $Id: squid.h,v 1.232 2006/05/18 04:03:24 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -257,6 +257,10 @@
 #undef HAVE_POLL
 #endif /* HAVE_POLL_H */
 #endif /* HAVE_POLL */
+
+#if HAVE_EPOLL
+#include <sys/epoll.h>
+#endif
 
 #if defined(HAVE_STDARG_H)
 #include <stdarg.h>

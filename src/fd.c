@@ -1,6 +1,6 @@
 
 /*
- * $Id: fd.c,v 1.45 2005/05/17 16:56:38 hno Exp $
+ * $Id: fd.c,v 1.46 2006/05/18 04:03:23 hno Exp $
  *
  * DEBUG: section 51    Filedescriptor Functions
  * AUTHOR: Duane Wessels
@@ -84,6 +84,11 @@ fd_close(int fd)
 	assert(F->write_handler == NULL);
     }
     debug(51, 3) ("fd_close FD %d %s\n", fd, F->desc);
+#if HAVE_EPOLL
+    /* the epoll code needs to update the descriptor before flags.ope is 0 */
+    commSetSelect(fd, COMM_SELECT_READ, NULL, NULL, 0);
+    commSetSelect(fd, COMM_SELECT_WRITE, NULL, NULL, 0);
+#endif
     F->flags.open = 0;
     fdUpdateBiggest(fd, 0);
     Number_FD--;
