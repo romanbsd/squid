@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.449 2006/05/18 04:03:24 hno Exp $
+ * $Id: structs.h,v 1.450 2006/05/18 06:49:46 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1704,6 +1704,7 @@ struct _SwapDir {
     STSTATFS *statfs;		/* Dump fs statistics */
     STMAINTAINFS *maintainfs;	/* Replacement maintainence */
     STCHECKOBJ *checkobj;	/* Check if the fs will store an object */
+    STCHECKLOADAV *checkload;	/* Check if the fs is getting overloaded .. */
     /* These two are notifications */
     STREFOBJ *refobj;		/* Reference this object */
     STUNREFOBJ *unrefobj;	/* Unreference this object */

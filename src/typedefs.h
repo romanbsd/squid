@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.142 2006/05/17 23:17:05 hno Exp $
+ * $Id: typedefs.h,v 1.143 2006/05/18 06:49:46 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -295,7 +295,8 @@ typedef void STFREE(SwapDir *);
 typedef int STDBLCHECK(SwapDir *, StoreEntry *);
 typedef void STSTATFS(SwapDir *, StoreEntry *);
 typedef void STMAINTAINFS(SwapDir *);
-typedef int STCHECKOBJ(SwapDir *, const StoreEntry *);
+typedef int STCHECKLOADAV(SwapDir *, store_op_t op);
+typedef char STCHECKOBJ(SwapDir *, const StoreEntry *);
 typedef void STREFOBJ(SwapDir *, StoreEntry *);
 typedef void STUNREFOBJ(SwapDir *, StoreEntry *);
 typedef void STSETUP(storefs_entry_t *);

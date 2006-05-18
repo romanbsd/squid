@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.225 2006/05/18 04:03:23 hno Exp $
+ * $Id: enums.h,v 1.226 2006/05/18 06:49:46 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -769,5 +769,11 @@ typedef enum {
     COMM_PENDING_NOW		/* needs to be called again, without needing to wait for readiness
 				 * for example when data is already buffered etc */
 } comm_pending;
+
+typedef enum {
+    ST_OP_NONE,
+    ST_OP_OPEN,
+    ST_OP_CREATE
+} store_op_t;
 
 #endif /* SQUID_ENUMS_H */
