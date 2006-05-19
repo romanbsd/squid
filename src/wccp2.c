@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.2 2006/05/16 15:55:45 hno Exp $
+ * $Id: wccp2.c,v 1.3 2006/05/19 06:24:01 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -479,7 +479,10 @@ wccp2Init(void)
 
     /* Calculate the number of routers configured in the config file */
     for (s = Config.Wccp2.router; s; s = s->next) {
-	wccp2_numrouters++;
+	if (s->s.sin_addr.s_addr != any_addr.s_addr) {
+	    /* Increment the counter */
+	    wccp2_numrouters++;
+	}
     }
     if (wccp2_numrouters == 0) {
 	return;
