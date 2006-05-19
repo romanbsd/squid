@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.24 2006/05/19 00:06:35 adrian Exp $
+ * $Id: aiops.c,v 1.25 2006/05/19 00:09:31 adrian Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -697,7 +697,7 @@ squidaio_write(int fd, char *bufp, int bufs, off_t offset, int whence, squidaio_
 static void
 squidaio_do_write(squidaio_request_t * requestp)
 {
-    assert(requestp->offset > 0);
+    assert(requestp->offset >= 0);
     requestp->ret = pwrite(requestp->fd, requestp->bufferp, requestp->buflen, requestp->offset);
     requestp->err = errno;
 }
