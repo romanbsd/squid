@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.25 2006/05/19 00:09:31 adrian Exp $
+ * $Id: aiops.c,v 1.26 2006/05/19 00:16:14 adrian Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -37,7 +37,7 @@
 #endif
 
 #include "squid.h"
-#include "store_asyncufs.h"
+#include "async_io.h"
 
 #include	<stdio.h>
 #include	<sys/types.h>

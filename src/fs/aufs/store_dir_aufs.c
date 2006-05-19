@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_aufs.c,v 1.54 2006/05/18 12:54:07 hno Exp $
+ * $Id: store_dir_aufs.c,v 1.55 2006/05/19 00:16:14 adrian Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -35,6 +35,7 @@
 
 #include "squid.h"
 
+#include "async_io.h"
 #include "store_asyncufs.h"
 
 #define DefaultLevelOneDirs     16
