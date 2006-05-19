@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.23 2006/05/16 05:42:14 hno Exp $
+ * $Id: aiops.c,v 1.24 2006/05/19 00:06:35 adrian Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -669,8 +669,7 @@ squidaio_read(int fd, char *bufp, int bufs, off_t offset, int whence, squidaio_r
 static void
 squidaio_do_read(squidaio_request_t * requestp)
 {
-    lseek(requestp->fd, requestp->offset, requestp->whence);
-    requestp->ret = read(requestp->fd, requestp->bufferp, requestp->buflen);
+    requestp->ret = pread(requestp->fd, requestp->bufferp, requestp->buflen, requestp->offset);
     requestp->err = errno;
 }
 
@@ -698,7 +697,8 @@ squidaio_write(int fd, char *bufp, int bufs, off_t offset, int whence, squidaio_
 static void
 squidaio_do_write(squidaio_request_t * requestp)
 {
-    requestp->ret = write(requestp->fd, requestp->bufferp, requestp->buflen);
+    assert(requestp->offset > 0);
+    requestp->ret = pwrite(requestp->fd, requestp->bufferp, requestp->buflen, requestp->offset);
     requestp->err = errno;
 }
 
