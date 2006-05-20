@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.111 2006/05/17 23:17:04 hno Exp $
+ * $Id: defines.h,v 1.112 2006/05/20 21:51:49 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -249,7 +249,7 @@
 #define countof(arr) (sizeof(arr)/sizeof(*arr))
 
 /* to initialize static variables (see also MemBufNull) */
-#define MemBufNULL { NULL, 0, 0, 0, NULL }
+#define MemBufNULL { NULL, 0, 0, 0, 0 }
 
 /*
  * Max number of ICP messages to receive per call to icpHandleUdp

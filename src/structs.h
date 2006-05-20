@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.452 2006/05/18 23:11:12 hno Exp $
+ * $Id: structs.h,v 1.453 2006/05/20 21:51:49 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -905,7 +905,7 @@ struct _MemBuf {
     /* private, stay away; use interface function instead */
     mb_size_t max_capacity;	/* when grows: assert(new_capacity <= max_capacity) */
     mb_size_t capacity;		/* allocated space */
-    FREE *freefunc;		/* what to use to free the buffer, NULL after memBufFreeFunc() is called */
+    unsigned stolen:1;		/* the buffer has been stolen for use by someone else */
 };
 
 /* see Packer.c for description */
