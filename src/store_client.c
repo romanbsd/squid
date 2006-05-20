@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.116 2006/05/18 04:03:24 hno Exp $
+ * $Id: store_client.c,v 1.117 2006/05/20 12:23:49 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -448,6 +448,8 @@ storeClientReadHeader(void *data, const char *buf, ssize_t len)
 		swap_object_ok = 0;
 		break;
 	    }
+	    break;
+	case STORE_META_OBJSIZE:
 	    break;
 	case STORE_META_STD:
 	case STORE_META_STD_LFS:

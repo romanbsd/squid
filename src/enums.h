@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.226 2006/05/18 06:49:46 adrian Exp $
+ * $Id: enums.h,v 1.227 2006/05/20 12:23:49 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -644,6 +644,7 @@ enum {
     STORE_META_VALID,
     STORE_META_VARY_HEADERS,	/* Stores Vary request headers */
     STORE_META_STD_LFS,		/* standard metadata in lfs format */
+    STORE_META_OBJSIZE,		/* object size, if its known */
     STORE_META_END
 };
 
