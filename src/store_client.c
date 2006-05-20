@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.117 2006/05/20 12:23:49 adrian Exp $
+ * $Id: store_client.c,v 1.118 2006/05/20 12:58:51 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -464,7 +464,7 @@ storeClientReadHeader(void *data, const char *buf, ssize_t len)
 	    }
 	    break;
 	default:
-	    debug(20, 1) ("WARNING: got unused STORE_META type %d\n", t->type);
+	    debug(20, 2) ("WARNING: got unused STORE_META type %d\n", t->type);
 	    break;
 	}
     }
