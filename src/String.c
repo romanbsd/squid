@@ -1,6 +1,6 @@
 
 /*
- * $Id: String.c,v 1.11 2005/05/17 16:56:37 hno Exp $
+ * $Id: String.c,v 1.12 2006/05/20 21:39:39 hno Exp $
  *
  * DEBUG: section 67    String
  * AUTHOR: Duane Wessels
@@ -38,7 +38,7 @@
 static void
 stringInitBuf(String * s, size_t sz)
 {
-    s->buf = memAllocBuf(sz, &sz);
+    s->buf = memAllocString(sz, &sz);
     assert(sz < 65536);
     s->size = sz;
 }
@@ -77,7 +77,7 @@ stringClean(String * s)
 {
     assert(s);
     if (s->buf)
-	memFreeBuf(s->size, s->buf);
+	memFreeString(s->size, s->buf);
     *s = StringNull;
 }
 
