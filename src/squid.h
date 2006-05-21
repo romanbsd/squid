@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.232 2006/05/18 04:03:24 hno Exp $
+ * $Id: squid.h,v 1.233 2006/05/21 09:40:31 serassio Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -424,6 +424,10 @@ struct rusage {
 
 #if !HAVE_SNPRINTF
 #include "snprintf.h"
+#endif
+
+#if !HAVE_STRSEP
+#include "strsep.h"
 #endif
 
 #if !HAVE_INITGROUPS

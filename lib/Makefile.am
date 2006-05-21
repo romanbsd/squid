@@ -1,12 +1,17 @@
 ## Process this file with automake to produce Makefile.in
 #
-#  $Id: Makefile.am,v 1.6 2005/05/17 16:56:36 hno Exp $
+#  $Id: Makefile.am,v 1.7 2006/05/21 09:40:31 serassio Exp $
 #
 
 if NEED_OWN_SNPRINTF
 SNPRINTFSOURCE=snprintf.c
 else
 SNPRINTFSOURCE=
+endif
+if NEED_OWN_STRSEP
+STRSEPSOURCE=strsep.c
+else
+STRSEPSOURCE=
 endif
 if NEED_OWN_MD5
 MD5SOURCE=md5.c
@@ -24,7 +29,8 @@ noinst_LIBRARIES = \
 	@LIBREGEX@
 EXTRA_libmiscutil_a_SOURCES = \
 	md5.c \
-	snprintf.c
+	snprintf.c \
+	strsep.c
 libmiscutil_a_SOURCES = \
 	Array.c \
 	base64.c \
@@ -43,6 +49,7 @@ libmiscutil_a_SOURCES = \
 	$(SNPRINTFSOURCE) \
 	splay.c \
 	Stack.c \
+	$(STRSEPSOURCE) \
 	stub_memaccount.c \
 	util.c \
 	uudecode.c
