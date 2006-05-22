@@ -1,6 +1,6 @@
 
 /*
- * $Id: mime.c,v 1.106 2005/05/17 16:56:38 hno Exp $
+ * $Id: mime.c,v 1.107 2006/05/22 18:55:23 serassio Exp $
  *
  * DEBUG: section 25    MIME Parsing
  * AUTHOR: Harvest Derived
@@ -302,7 +302,7 @@ mimeInit(char *filename)
 	debug(25, 1) ("mimeInit: %s: %s\n", filename, xstrerror());
 	return;
     }
-#if defined (_SQUID_CYGWIN_)
+#ifdef _SQUID_WIN32_
     setmode(fileno(fp), O_TEXT);
 #endif
     mimeFreeMemory();

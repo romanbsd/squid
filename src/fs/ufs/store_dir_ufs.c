@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.53 2006/05/18 12:54:10 hno Exp $
+ * $Id: store_dir_ufs.c,v 1.54 2006/05/22 18:55:24 serassio Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1335,7 +1335,7 @@ storeUfsDirWriteCleanDone(SwapDir * sd)
     fd = state->fd;
     /* rename */
     if (state->fd >= 0) {
-#if defined(_SQUID_OS2_) || defined(_SQUID_CYGWIN_) || defined(_SQUID_MSWIN_)
+#if defined(_SQUID_OS2_) || defined(_SQUID_WIN32_)
 	file_close(state->fd);
 	state->fd = -1;
 #endif

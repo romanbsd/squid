@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.7 2005/10/23 15:20:55 hno Exp $
+ * $Id: win32.c,v 1.8 2006/05/22 18:55:23 serassio Exp $
  *
  * * * * * * * * Legal stuff * * * * * * *
  *
@@ -25,7 +25,7 @@
 #include "squid.h"
 
 /* This code compiles only CygWin & Windows NT Port */
-#if defined(_SQUID_MSWIN_) || defined(_SQUID_CYGWIN_)
+#ifdef _SQUID_WIN32_
 #include <windows.h>
 
 static unsigned int GetOSVersion();

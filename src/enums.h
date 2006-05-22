@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.229 2006/05/22 01:13:11 hno Exp $
+ * $Id: enums.h,v 1.230 2006/05/22 18:55:23 serassio Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -741,8 +741,8 @@ enum {
     VARY_CANCEL
 };
 
-/* CygWin & Windows NT Port */
-#if defined(_SQUID_MSWIN_) || defined(_SQUID_CYGWIN_)
+/* Windows Port */
+#ifdef _SQUID_WIN32_
 /*
  * Supported Windows OS types codes
  */

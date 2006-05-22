@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.466 2006/05/20 21:51:49 hno Exp $
+ * $Id: protos.h,v 1.467 2006/05/22 18:55:23 serassio Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1348,9 +1348,9 @@ extern StatCounters *snmpStatGet(int);
 /* Vary support functions */
 int varyEvaluateMatch(StoreEntry * entry, request_t * req);
 
-/* CygWin & Windows NT Port */
+/* Windows Port */
 /* win32.c */
-#if defined(_SQUID_MSWIN_) || defined(_SQUID_CYGWIN_)
+#ifdef _SQUID_WIN32_
 extern int WIN32_Subsystem_Init(void);
 extern void WIN32_Exit(void);
 #endif

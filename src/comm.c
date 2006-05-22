@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.341 2006/05/18 06:30:02 adrian Exp $
+ * $Id: comm.c,v 1.342 2006/05/22 18:55:23 serassio Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -872,7 +872,7 @@ commSetNonBlocking(int fd)
 {
     int flags;
     int dummy = 0;
-#ifdef _SQUID_CYGWIN_
+#ifdef _SQUID_WIN32_
     int nonblocking = TRUE;
     if (fd_table[fd].type != FD_PIPE) {
 	if (ioctl(fd, FIONBIO, &nonblocking) < 0) {

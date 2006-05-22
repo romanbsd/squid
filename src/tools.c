@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.229 2006/04/28 10:17:22 hno Exp $
+ * $Id: tools.c,v 1.230 2006/05/22 18:55:23 serassio Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -972,7 +972,7 @@ int
 xrename(const char *from, const char *to)
 {
     debug(21, 2) ("xrename: renaming %s to %s\n", from, to);
-#if defined(_SQUID_OS2_) || defined(_SQUID_CYGWIN_) || defined(_SQUID_MSWIN_)
+#if defined(_SQUID_OS2_) || defined(_SQUID_WIN32_)
     remove(to);
 #endif
     if (0 == rename(from, to))
@@ -1028,7 +1028,7 @@ parseEtcHosts(void)
 	    Config.etcHostsPath, xstrerror());
 	return;
     }
-#if defined(_SQUID_MSWIN_) || defined(_SQUID_CYGWIN_)
+#ifdef _SQUID_WIN32_
     setmode(fileno(fp), O_TEXT);
 #endif
     while (fgets(buf, 1024, fp)) {	/* for each line */
