@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.455 2006/05/22 21:54:56 adrian Exp $
+ * $Id: structs.h,v 1.456 2006/05/22 22:16:37 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1820,6 +1820,7 @@ struct _request_t {
     struct in_addr client_addr;
     struct in_addr my_addr;
     unsigned short my_port;
+    unsigned short client_port;
     HttpHeader header;
     squid_off_t content_length;
     HierarchyLogEntry hier;
