@@ -1,7 +1,7 @@
 #  Makefile for storage modules in the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.6 2005/05/17 16:56:32 hno Exp $
+#  $Id: Makefile.am,v 1.7 2006/05/22 20:19:32 hno Exp $
 #
 
-DIST_SUBDIRS	= fakeauth no_check SMB winbind
+DIST_SUBDIRS	= fakeauth no_check SMB
 SUBDIRS		= @NTLM_AUTH_HELPERS@
