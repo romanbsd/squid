@@ -1,6 +1,6 @@
 
 /*
- * $Id: external_acl.c,v 1.22 2006/05/22 01:13:11 hno Exp $
+ * $Id: external_acl.c,v 1.23 2006/05/22 20:23:11 hno Exp $
  *
  * DEBUG: section 82    External ACL
  * AUTHOR: Henrik Nordstrom, MARA Systems AB
@@ -186,7 +186,7 @@ parse_externalAclHelper(external_acl ** list)
     if (!token)
 	self_destruct();
     a->name = xstrdup(token);
-    a->quote = QUOTE_METHOD_SHELL;
+    a->quote = QUOTE_METHOD_URL;
 
     token = strtok(NULL, w_space);
     /* Parse options */
