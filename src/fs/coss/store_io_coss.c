@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_coss.c,v 1.21 2006/05/20 16:03:51 hno Exp $
+ * $Id: store_io_coss.c,v 1.22 2006/05/22 10:56:16 adrian Exp $
  *
  * DEBUG: section 79    Storage Manager COSS Interface
  * AUTHOR: Eric Stern
@@ -661,6 +661,7 @@ storeCossCreateMemBuf(SwapDir * SD, int stripe, sfileno curfn, int *collision)
     int numreleased = 0;
     CossInfo *cs = (CossInfo *) SD->fsdata;
     off_t start = (off_t) stripe * COSS_MEMBUF_SZ;
+    off_t o;
     assert(start >= 0);
 
     /* No, we shouldn't ever try to create a membuf if we haven't freed the one on
@@ -697,7 +698,6 @@ storeCossCreateMemBuf(SwapDir * SD, int stripe, sfileno curfn, int *collision)
     m = cs->stripes[stripe].objlist.head;
     while (m != NULL) {
 	n = m->next;
-	off_t o;
 	e = m->data;
 	o = storeCossFilenoToDiskOffset(e->swap_filen, cs);
 	if (curfn > -1 && curfn == e->swap_filen)
