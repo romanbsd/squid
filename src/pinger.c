@@ -1,6 +1,6 @@
 
 /*
- * $Id: pinger.c,v 1.48 2005/05/17 16:56:38 hno Exp $
+ * $Id: pinger.c,v 1.49 2006/05/22 19:05:17 serassio Exp $
  *
  * DEBUG: section 42    ICMP Pinger program
  * AUTHOR: Duane Wessels
@@ -129,7 +129,7 @@ pingerOpen(void)
     }
     icmp_sock = socket(PF_INET, SOCK_RAW, proto->p_proto);
     if (icmp_sock < 0) {
-	debug(50, 0) ("pingerOpen: icmp_sock: %s\n", xstrerror());
+	debug(42, 0) ("pingerOpen: icmp_sock: %s\n", xstrerror());
 	exit(1);
     }
     icmp_ident = getpid() & 0xffff;
@@ -335,7 +335,7 @@ pingerSendtoSquid(pingerReplyData * preply)
 {
     int len = sizeof(pingerReplyData) - MAX_PKT_SZ + preply->psize;
     if (send(1, (char *) preply, len, 0) < 0) {
-	debug(50, 0) ("pinger: send: %s\n", xstrerror());
+	debug(42, 0) ("pinger: send: %s\n", xstrerror());
 	exit(1);
     }
 }

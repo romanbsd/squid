@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.65 2006/05/18 04:03:23 hno Exp $
+ * $Id: comm_select.c,v 1.66 2006/05/22 19:01:32 serassio Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -804,7 +804,7 @@ comm_select(int msec)
 		break;
 	    if (ignoreErrno(errno))
 		break;
-	    debug(50, 0) ("comm_select: select failure: %s\n",
+	    debug(5, 0) ("comm_select: select failure: %s\n",
 		xstrerror());
 	    examine_select(&readfds, &writefds);
 	    return COMM_ERROR;
