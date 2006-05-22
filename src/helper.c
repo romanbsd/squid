@@ -1,6 +1,6 @@
 
 /*
- * $Id: helper.c,v 1.55 2006/05/21 13:23:07 hno Exp $
+ * $Id: helper.c,v 1.56 2006/05/22 00:58:31 hno Exp $
  *
  * DEBUG: section 84    Helper process maintenance
  * AUTHOR: Harvest Derived?
@@ -576,7 +576,7 @@ helperServerFree(int fd, void *data)
 	concurrency = 1;
     assert(srv->rfd == fd);
     if (srv->rbuf) {
-	memFreeBuf(srv->rbuf, srv->rbuf_sz);
+	memFreeBuf(srv->rbuf_sz, srv->rbuf);
 	srv->rbuf = NULL;
     }
     if (!memBufIsNull(&srv->wqueue))
