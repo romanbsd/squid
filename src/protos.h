@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.467 2006/05/22 18:55:23 serassio Exp $
+ * $Id: protos.h,v 1.468 2006/05/22 21:54:56 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1157,8 +1157,9 @@ extern int errorReservePageId(const char *page_name);
 extern ErrorState *errorCon(err_type type, http_status);
 extern int errorPageId(const char *page_name);
 
-extern void pconnPush(int, const char *host, u_short port, const char *domain);
-extern int pconnPop(const char *host, u_short port, const char *domain);
+extern void pconnPush(int, const char *host, u_short port, const char *domain, struct in_addr *client_address, u_short client_port);
+extern int pconnPop(const char *host, u_short port, const char *domain, struct in_addr *client_address, u_short client_port);
+extern hash_link *pconnLookup(const char *peer, u_short port, const char *domain, struct in_addr *client_address, u_short client_port);
 extern void pconnInit(void);
 
 extern int asnMatchIp(void *, struct in_addr);
