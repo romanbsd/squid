@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.318 2006/05/22 22:16:37 hno Exp $
+# $Id: cf.data.pre,v 1.319 2006/05/22 23:05:27 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2042,6 +2042,9 @@ DOC_START
 	  		HTTP request header list member using ; as
 	  		list separator. ; can be any non-alphanumeric
 			character.
+	 %ACL		The ACL name
+	 %DATA		The ACL arguments. If not used then any arguments
+	 		is automatically added at the end
 
 	In addition, any string specified in the referencing acl will
 	also be included in the helper request line, after the specified

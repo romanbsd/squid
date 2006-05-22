@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.297 2006/05/22 18:55:23 serassio Exp $
+ * $Id: acl.c,v 1.298 2006/05/22 23:05:27 hno Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -1069,7 +1069,7 @@ aclParseAclLine(acl ** head)
 	break;
 #endif
     case ACL_EXTERNAL:
-	aclParseExternal(&A->data);
+	aclParseExternal(&A->data, A->name);
 	break;
     case ACL_URLGROUP:
 	aclParseWordList(&A->data);
