@@ -1,6 +1,6 @@
 #  Makefile for storage modules in the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.3 2005/05/17 16:56:44 hno Exp $
+#  $Id: Makefile.am,v 1.4 2006/05/23 20:28:21 serassio Exp $
 #
 
 AUTOMAKE_OPTIONS = subdir-objects
@@ -17,7 +17,7 @@ liblru_a_SOURCES = lru/store_repl_lru.c
 libheap_a_SOURCES = heap/store_heap_replacement.h heap/store_heap_replacement.c heap/store_repl_heap.c
 
 INCLUDES      = -I. -I$(top_builddir)/include -I$(top_srcdir)/include \
-	-I$(top_srcdir)/src/
+	-I$(top_srcdir)/src
 
 ##all:
 ##	@test -z "$(SUBDIRS)" || for dir in $(SUBDIRS); do \

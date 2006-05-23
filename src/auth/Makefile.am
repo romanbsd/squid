@@ -1,6 +1,6 @@
 #  Makefile for authentication modules in the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.2 2006/05/15 22:06:48 hno Exp $
+#  $Id: Makefile.am,v 1.3 2006/05/23 20:28:20 serassio Exp $
 #
 AUTOMAKE_OPTIONS = subdir-objects
 
@@ -16,4 +16,4 @@ libntlm_a_SOURCES	= ntlm/auth_ntlm.c ntlm/auth_ntlm.h
 libnegotiate_a_SOURCES	= negotiate/auth_negotiate.c negotiate/auth_negotiate.h
 
 INCLUDES      = -I. -I$(top_builddir)/include -I$(top_srcdir)/include \
-	-I$(top_srcdir)/src/
+	-I$(top_srcdir)/src
