@@ -245,7 +245,7 @@ target_alias = @target_alias@
 
 #  Makefile for authentication modules in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.26 2006/05/23 14:54:44 hno Exp $
+#  $Id: Makefile.in,v 1.27 2006/05/23 20:33:43 serassio Exp $
 #
 AUTOMAKE_OPTIONS = subdir-objects
 DIST_SUBDIRS = basic digest ntlm negotiate
@@ -257,7 +257,7 @@ libdigest_a_SOURCES = digest/auth_digest.c digest/auth_digest.h
 libntlm_a_SOURCES = ntlm/auth_ntlm.c ntlm/auth_ntlm.h
 libnegotiate_a_SOURCES = negotiate/auth_negotiate.c negotiate/auth_negotiate.h
 INCLUDES = -I. -I$(top_builddir)/include -I$(top_srcdir)/include \
-	-I$(top_srcdir)/src/
+	-I$(top_srcdir)/src
 
 all: all-recursive
 

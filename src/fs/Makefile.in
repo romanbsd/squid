@@ -16,7 +16,7 @@
 
 #  Makefile for storage modules in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.27 2006/05/23 14:54:44 hno Exp $
+#  $Id: Makefile.in,v 1.28 2006/05/23 20:33:45 serassio Exp $
 #
 
 srcdir = @srcdir@
@@ -275,7 +275,7 @@ EXTRA_DIST = \
 	coss/coss-notes.txt
 
 INCLUDES = -I. -I$(top_builddir)/include -I$(top_srcdir)/include \
-	-I$(top_srcdir)/src/
+	-I$(top_srcdir)/src
 
 all: all-recursive
 
