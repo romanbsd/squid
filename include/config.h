@@ -1,5 +1,5 @@
 /*
- * $Id: config.h,v 1.9 2006/05/22 18:30:35 serassio Exp $
+ * $Id: config.h,v 1.10 2006/05/23 14:51:36 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -34,7 +34,11 @@
 #ifndef SQUID_CONFIG_H
 #define SQUID_CONFIG_H
 
+#ifndef AUTOCONF_H
+#define AUTOCONF_H 1
 #include "autoconf.h"		/* For GNU autoconf variables */
+#endif
+
 #include "version.h"
 
 /****************************************************************************
