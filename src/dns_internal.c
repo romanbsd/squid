@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.54 2006/05/22 20:18:38 serassio Exp $
+ * $Id: dns_internal.c,v 1.55 2006/05/23 20:39:07 serassio Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -318,7 +318,7 @@ idnsParseWIN32SearchList(const char *Separator)
 
 	    while (token) {
 		idnsAddPathComponent(token);
-		debug(78, 1,) ("Adding domain %s from Registry\n", token);
+		debug(78, 1) ("Adding domain %s from Registry\n", token);
 		token = strtok(NULL, Separator);
 	    }
 	}
