@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.97 2006/05/22 21:54:56 adrian Exp $
+ * $Id: forward.c,v 1.98 2006/05/23 00:03:23 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -501,8 +501,7 @@ fwdConnectStart(void *data)
 	((fwdState->request->my_port == Config.tproxy_port) || (Config.tproxy_port == 0)))
 	fd = pconnPop(name, port, domain, &fwdState->request->client_addr, 0);
 #endif
-    if (fd == -1) {
-	fd = pconnPop(name, port, domain, NULL, 0);
+    if (fd == -1 && (fd = pconnPop(name, port, domain, NULL, 0)) >= 0) {
 	if (fwdCheckRetriable(fwdState)) {
 	    debug(17, 3) ("fwdConnectStart: reusing pconn FD %d\n", fd);
 	    fwdState->server_fd = fd;
