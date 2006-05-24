@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.433 2006/05/22 18:55:23 serassio Exp $
+ * $Id: cache_cf.c,v 1.434 2006/05/24 11:22:04 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2529,6 +2529,7 @@ parseNeighborType(const char *s)
     return PEER_SIBLING;
 }
 
+#if USE_WCCPv2
 static void
 parse_sockaddr_in_list(sockaddr_in_list ** head)
 {
@@ -2592,6 +2593,7 @@ free_sockaddr_in_list(sockaddr_in_list ** head)
 	xfree(s);
     }
 }
+#endif
 
 #if UNUSED_CODE
 static int
