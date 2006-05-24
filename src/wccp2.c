@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.4 2006/05/24 03:02:11 hno Exp $
+ * $Id: wccp2.c,v 1.5 2006/05/24 22:08:55 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -513,7 +513,7 @@ wccp2Init(void)
 	} else {
 	    fatalf("Bad WCCP2 security type\n");
 	}
-	wccp2_here_i_am_header.length += wccp2_security_md5.security_length + 4;
+	wccp2_here_i_am_header.length += ntohs(wccp2_security_md5.security_length) + 4;
 	assert(wccp2_here_i_am_header.length <= WCCP_RESPONSE_SIZE);
 	wccp2_security_md5.security_type = htons(WCCP2_SECURITY_INFO);
 	service_list_ptr->security_info = (struct wccp2_security_md5_t *) ptr;
