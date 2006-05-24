@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.298 2006/05/22 23:05:27 hno Exp $
+ * $Id: acl.c,v 1.299 2006/05/24 20:19:00 hno Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -2527,7 +2527,7 @@ aclDestroyAcls(acl ** head)
 	    aclDestroyExternal(&a->data);
 	    break;
 	case ACL_URLGROUP:
-	    wordlistDestroy((wordlist **) & a->data);
+	    wordlistDestroy((wordlist **) (void *) &a->data);
 	    break;
 #if USE_SSL
 	case ACL_USER_CERT:

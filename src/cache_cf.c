@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.435 2006/05/24 11:25:02 hno Exp $
+ * $Id: cache_cf.c,v 1.436 2006/05/24 20:19:00 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2812,7 +2812,7 @@ parse_https_port_list(https_port_list ** head)
 	}
     }
     while (*head)
-	head = (https_port_list **) (&(*head)->http.next);
+	head = (https_port_list **) (void *) (&(*head)->http.next);
     s->sslContext = sslCreateServerContext(s->cert, s->key, s->version, s->cipher, s->options, s->sslflags, s->clientca, s->cafile, s->capath, s->crlfile, s->dhfile, s->sslcontext);
 #if WE_DONT_CARE_ABOUT_THIS_ERROR
     if (!s->sslContext)
