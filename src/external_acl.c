@@ -1,6 +1,6 @@
 
 /*
- * $Id: external_acl.c,v 1.25 2006/05/22 23:05:27 hno Exp $
+ * $Id: external_acl.c,v 1.26 2006/05/24 20:48:38 serassio Exp $
  *
  * DEBUG: section 82    External ACL
  * AUTHOR: Henrik Nordstrom, MARA Systems AB
@@ -604,8 +604,8 @@ makeExternalAclKey(aclCheck_t * ch, external_acl_data * acl_data)
     external_acl_format *format;
     request_t *request = ch->request;
     String sb = StringNull;
-    memBufReset(&mb);
     int data_used = 0;
+    memBufReset(&mb);
     for (format = acl_data->def->format; format; format = format->next) {
 	const char *str = NULL;
 	switch (format->type) {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.232 2006/05/24 17:27:14 serassio Exp $
+ * $Id: tools.c,v 1.233 2006/05/24 20:48:38 serassio Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -296,7 +296,7 @@ death(int sig)
 #endif
 #endif /* PRINT_STACK_TRACE */
 
-#if SA_RESETHAND == 0
+#if SA_RESETHAND == 0 && !defined(_SQUID_MSWIN_)
     signal(SIGSEGV, SIG_DFL);
     signal(SIGBUS, SIG_DFL);
     signal(sig, SIG_DFL);
