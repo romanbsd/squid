@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.55 2006/05/23 20:39:07 serassio Exp $
+ * $Id: dns_internal.c,v 1.56 2006/05/24 20:05:49 hno Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -1016,7 +1016,7 @@ snmp_netIdnsFn(variable_list * Var, snint * ErrP)
 	break;
     case DNS_SERVERS:
 	Answer = snmp_var_new_integer(Var->name, Var->name_length,
-	    0,
+	    nns,
 	    SMI_COUNTER32);
 	break;
     default:
