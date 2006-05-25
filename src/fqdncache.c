@@ -1,6 +1,6 @@
 
 /*
- * $Id: fqdncache.c,v 1.154 2005/10/23 15:20:54 hno Exp $
+ * $Id: fqdncache.c,v 1.155 2006/05/25 02:58:22 hno Exp $
  *
  * DEBUG: section 35    FQDN Cache
  * AUTHOR: Harvest Derived
@@ -64,8 +64,6 @@ static struct {
     int hits;
     int misses;
     int negative_hits;
-    int errors;
-    int ghba_calls;		/* # calls to blocking gethostbyaddr() */
 } FqdncacheStats;
 
 static dlink_list lru_list;
@@ -488,8 +486,6 @@ fqdnStats(StoreEntry * sentry)
 	FqdncacheStats.negative_hits);
     storeAppendPrintf(sentry, "FQDNcache Misses: %d\n",
 	FqdncacheStats.misses);
-    storeAppendPrintf(sentry, "Blocking calls to gethostbyaddr(): %d\n",
-	FqdncacheStats.ghba_calls);
     storeAppendPrintf(sentry, "FQDN Cache Contents:\n\n");
     storeAppendPrintf(sentry, "%-15.15s %3s %3s %3s %s\n",
 	"Address", "Flg", "TTL", "Cnt", "Hostnames");
@@ -638,9 +634,8 @@ snmp_netFqdnFn(variable_list * Var, snint * ErrP)
 	    SMI_COUNTER32);
 	break;
     case FQDN_PENDHIT:
-	/* this is now worthless */
 	Answer = snmp_var_new_integer(Var->name, Var->name_length,
-	    0,
+	    0,			/* deprecated */
 	    SMI_GAUGE32);
 	break;
     case FQDN_NEGHIT:
@@ -655,7 +650,7 @@ snmp_netFqdnFn(variable_list * Var, snint * ErrP)
 	break;
     case FQDN_GHBN:
 	Answer = snmp_var_new_integer(Var->name, Var->name_length,
-	    FqdncacheStats.ghba_calls,
+	    0,			/* deprecated */
 	    SMI_COUNTER32);
 	break;
     default:
