@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 #
-# $Id: Makefile.am,v 1.18 2006/05/23 21:52:27 hno Exp $
+# $Id: Makefile.am,v 1.19 2006/05/25 12:43:40 hno Exp $
 #
 
 AUTOMAKE_OPTIONS = dist-bzip2 subdir-objects 1.5
@@ -24,7 +24,7 @@ dist-hook:
 	@if [ -f $(top_srcdir)/RELEASENOTES.html ]; then \
 	  cp -p $(top_srcdir)/RELEASENOTES.html $(distdir)/RELEASENOTES.html; \
 	else \
-	  cp $(top_srcdir)/doc/release-notes/release-2.5.html $(distdir)/RELEASENOTES.html; \
+	  cp $(top_srcdir)/doc/release-notes/release-2.6.html $(distdir)/RELEASENOTES.html; \
 	fi
 
 EXTRA_DIST = \
