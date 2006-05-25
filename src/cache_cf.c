@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.439 2006/05/25 03:36:55 hno Exp $
+ * $Id: cache_cf.c,v 1.440 2006/05/25 03:50:50 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -467,6 +467,12 @@ configDoConfigure(void)
 	    break;
 	}
     }
+#endif
+#if !HTTP_VIOLATIONS
+    Config.onoff.via = 1;
+#else
+    if (!Config.onoff.via)
+	debug(22, 1) ("WARNING: HTTP requires the use of Via\n");
 #endif
     if (Config.Wais.relayHost) {
 	if (Config.Wais.peer)
