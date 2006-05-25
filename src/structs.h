@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.458 2006/05/25 02:40:25 hno Exp $
+ * $Id: structs.h,v 1.459 2006/05/25 02:48:43 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -434,6 +434,7 @@ struct _SquidConfig {
 	int pct;
 	squid_off_t max;
     } quickAbort;
+    squid_off_t readAheadGap;
     RemovalPolicySettings *replPolicy;
     RemovalPolicySettings *memPolicy;
     time_t negativeTtl;

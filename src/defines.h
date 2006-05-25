@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.113 2006/05/24 17:27:13 serassio Exp $
+ * $Id: defines.h,v 1.114 2006/05/25 02:48:43 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -178,8 +178,6 @@
 #if !defined(ERROR_BUF_SZ) && defined(MAX_URL)
 #define ERROR_BUF_SZ (MAX_URL << 2)
 #endif
-
-#define READ_AHEAD_GAP		(1<<14)
 
 #if SQUID_SNMP
 #define VIEWINCLUDED    1

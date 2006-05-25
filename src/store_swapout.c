@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_swapout.c,v 1.91 2006/05/18 12:48:51 hno Exp $
+ * $Id: store_swapout.c,v 1.92 2006/05/25 02:48:43 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Swapout Functions
  * AUTHOR: Duane Wessels
@@ -150,7 +150,7 @@ storeSwapOutMaintainMemObject(StoreEntry * e)
 	 * flush until it has less than READ_AHEAD_GAP bytes in memory */
 	if (EBIT_TEST(e->flags, ENTRY_DEFER_READ)) {
 
-	    if (mem->inmem_hi - mem->inmem_lo <= READ_AHEAD_GAP) {
+	    if (mem->inmem_hi - mem->inmem_lo <= Config.readAheadGap) {
 		EBIT_CLR(e->flags, ENTRY_DEFER_READ);
 #if HAVE_EPOLL
 		if (mem->serverfd != 0) {
