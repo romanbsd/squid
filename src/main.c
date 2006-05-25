@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.372 2006/05/25 04:39:05 hno Exp $
+ * $Id: main.c,v 1.373 2006/05/25 05:18:32 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -373,10 +373,10 @@ serverConnectionsClose(void)
     snmpConnectionShutdown();
 #endif
 #if USE_WCCP
-    wccpConnectionShutdown();
+    wccpConnectionClose();
 #endif
 #if USE_WCCPv2
-    wccp2ConnectionShutdown();
+    wccp2ConnectionClose();
 #endif
     asnFreeMemory();
 }
@@ -394,12 +394,6 @@ mainReconfigure(void)
 #endif
 #ifdef SQUID_SNMP
     snmpConnectionClose();
-#endif
-#if USE_WCCP
-    wccpConnectionClose();
-#endif
-#if USE_WCCPv2
-    wccp2ConnectionClose();
 #endif
 #if USE_DNSSERVERS
     dnsShutdown();
