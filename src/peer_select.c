@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.c,v 1.126 2006/05/16 01:08:29 hno Exp $
+ * $Id: peer_select.c,v 1.127 2006/05/25 02:40:25 hno Exp $
  *
  * DEBUG: section 44    Peer Selection Algorithm
  * AUTHOR: Duane Wessels
@@ -334,11 +334,6 @@ peerGetSomeNeighbor(ps_state * ps)
 	    code = CD_SIBLING_HIT;
     } else
 #endif
-#if USE_CARP
-    if ((p = carpSelectParent(request))) {
-	code = CARP;
-    } else
-#endif
     if ((p = netdbClosestParent(request))) {
 	code = CLOSEST_PARENT;
     } else if (peerSelectIcpPing(request, ps->direct, entry)) {
@@ -448,6 +443,10 @@ peerGetSomeParent(ps_state * ps)
 	code = USERHASH_PARENT;
     } else if ((p = peerSourceHashSelectParent(request))) {
 	code = SOURCEHASH_PARENT;
+#if USE_CARP
+    } else if ((p = carpSelectParent(request))) {
+	code = CARP;
+#endif
     } else if ((p = getRoundRobinParent(request))) {
 	code = ROUNDROBIN_PARENT;
     } else if ((p = getFirstUpParent(request))) {
