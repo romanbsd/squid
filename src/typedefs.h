@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.144 2006/05/18 12:54:07 hno Exp $
+ * $Id: typedefs.h,v 1.145 2006/05/25 11:59:29 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -398,5 +398,8 @@ typedef struct _external_acl external_acl;
 typedef struct _external_acl_entry external_acl_entry;
 
 typedef void ERRMAPCB(StoreEntry *, int body_offset, squid_off_t content_length, void *data);
+
+typedef struct _VaryData VaryData;
+typedef void STLVCB(VaryData * vary, void *cbdata);
 
 #endif /* SQUID_TYPEDEFS_H */
