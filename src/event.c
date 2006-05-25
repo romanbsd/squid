@@ -1,6 +1,6 @@
 
 /*
- * $Id: event.c,v 1.35 2006/05/25 05:24:29 hno Exp $
+ * $Id: event.c,v 1.36 2006/05/25 09:27:09 hno Exp $
  *
  * DEBUG: section 41    Event Processing
  * AUTHOR: Henrik Nordstrom
@@ -103,8 +103,7 @@ eventDelete(EVH * func, void *arg)
 	if (NULL != event->arg)
 	    cbdataUnlock(event->arg);
 	memFree(event, MEM_EVENT);
-	if (arg)
-	    return;
+	return;
     }
     if (arg)
 	debug_trap("eventDelete: event not found");
