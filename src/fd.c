@@ -1,6 +1,6 @@
 
 /*
- * $Id: fd.c,v 1.46 2006/05/18 04:03:23 hno Exp $
+ * $Id: fd.c,v 1.47 2006/05/25 02:00:06 hno Exp $
  *
  * DEBUG: section 51    Filedescriptor Functions
  * AUTHOR: Duane Wessels
@@ -92,8 +92,8 @@ fd_close(int fd)
     F->flags.open = 0;
     fdUpdateBiggest(fd, 0);
     Number_FD--;
-    commUpdateReadBits(fd, NULL);
-    commUpdateWriteBits(fd, NULL);
+    commUpdateReadHandler(fd, NULL, NULL);
+    commUpdateWriteHandler(fd, NULL, NULL);
     memset(F, '\0', sizeof(fde));
     F->timeout = 0;
 }
