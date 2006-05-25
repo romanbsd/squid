@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.44 2006/05/23 21:52:27 hno Exp $
+#  $Id: Makefile.am,v 1.45 2006/05/25 11:47:43 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -62,6 +62,16 @@ else
 WIN32SOURCE = 
 endif
 
+if USE_POLL
+COMMLOOP_SOURCE = comm_poll.c
+endif
+if USE_EPOLL
+COMMLOOP_SOURCE = comm_epoll.c
+endif
+if USE_SELECT
+COMMLOOP_SOURCE = comm_select.c
+endif
+
 SUBDIRS		= fs repl auth
 
 INCLUDES        = -I. -I$(srcdir) -I$(top_builddir)/include -I$(top_srcdir)/include
@@ -99,6 +109,9 @@ EXTRA_squid_SOURCES = \
 	unlinkd.c \
 	ssl_support.c \
 	ssl_support.h \
+	comm_epoll.c \
+	comm_poll.c \
+	comm_select.c \
 	win32.c
 
 squid_SOURCES = \
@@ -114,7 +127,7 @@ squid_SOURCES = \
 	client_db.c \
 	client_side.c \
 	comm.c \
-	comm_select.c \
+	$(COMMLOOP_SOURCE) \
 	debug.c \
 	defines.h \
 	$(DELAY_POOL_SOURCE) \

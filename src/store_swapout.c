@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_swapout.c,v 1.92 2006/05/25 02:48:43 hno Exp $
+ * $Id: store_swapout.c,v 1.93 2006/05/25 11:47:44 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Swapout Functions
  * AUTHOR: Duane Wessels
@@ -152,7 +152,7 @@ storeSwapOutMaintainMemObject(StoreEntry * e)
 
 	    if (mem->inmem_hi - mem->inmem_lo <= Config.readAheadGap) {
 		EBIT_CLR(e->flags, ENTRY_DEFER_READ);
-#if HAVE_EPOLL
+#if USE_EPOLL
 		if (mem->serverfd != 0) {
 		    commResumeFD(mem->serverfd);
 		    mem->serverfd = 0;
