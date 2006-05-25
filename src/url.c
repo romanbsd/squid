@@ -1,6 +1,6 @@
 
 /*
- * $Id: url.c,v 1.141 2006/04/28 10:17:22 hno Exp $
+ * $Id: url.c,v 1.142 2006/05/25 03:16:37 hno Exp $
  *
  * DEBUG: section 23    URL Parsing
  * AUTHOR: Duane Wessels
@@ -107,18 +107,14 @@ const char *ProtocolStr[] =
 };
 
 static request_t *urnParse(method_t method, char *urn);
-#if CHECK_HOSTNAMES
-static const char *const valid_hostname_chars =
-#if ALLOW_HOSTNAME_UNDERSCORES
+static const char valid_hostname_chars_u[] =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 "abcdefghijklmnopqrstuvwxyz"
 "0123456789-._";
-#else
+static const char valid_hostname_chars[] =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 "abcdefghijklmnopqrstuvwxyz"
 "0123456789-.";
-#endif
-#endif /* CHECK_HOSTNAMES */
 
 /* convert %xx in url string to a character 
  * Allocate a new string and return a pointer to converted string */
@@ -307,12 +303,10 @@ urlParse(method_t method, char *url)
 	    *q = '\0';
 	}
     }
-#if CHECK_HOSTNAMES
-    if (strspn(host, valid_hostname_chars) != strlen(host)) {
+    if (Config.onoff.check_hostnames && strspn(host, Config.onoff.allow_underscore ? valid_hostname_chars_u : valid_hostname_chars) != strlen(host)) {
 	debug(23, 1) ("urlParse: Illegal character in hostname '%s'\n", host);
 	return NULL;
     }
-#endif
     if (Config.appendDomain && !strchr(host, '.'))
 	strncat(host, Config.appendDomain, SQUIDHOSTNAMELEN - strlen(host) - 1);
     /* remove trailing dots from hostnames */

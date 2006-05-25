@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.320 2006/05/25 02:48:43 hno Exp $
+# $Id: cf.data.pre,v 1.321 2006/05/25 03:16:37 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1433,6 +1433,26 @@ DOC_START
 	try setting this directive to off. If that helps, report to the
 	operator of the FTP server in question that their FTP server
 	is broken and does not follow the FTP standard.
+DOC_END
+
+NAME: check_hostnames
+TYPE: onoff
+DEFAULT: on
+LOC: Config.onoff.check_hostnames
+DOC_START
+	For security and stability reasons Squid by default checks
+	hostnames for Internet standard RFC compliance. If you do not want
+	Squid to perform these checks then turn this directive off.
+DOC_END
+
+NAME: allow_underscore
+TYPE: onoff
+DEFAULT: on
+LOC: Config.onoff.allow_underscore
+DOC_START
+	Underscore characers is not strictly allowed in Internet hostnames
+	but nevertheless used by many sites. Set this to off if you want
+	Squid to be strict about the standard.
 DOC_END
 
 NAME: cache_dns_program
