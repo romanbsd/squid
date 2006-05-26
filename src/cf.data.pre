@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.325 2006/05/26 22:36:18 hno Exp $
+# $Id: cf.data.pre,v 1.326 2006/05/26 22:45:23 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -796,6 +796,15 @@ NOCOMMENT_START
 acl QUERY urlpath_regex cgi-bin \?
 cache deny QUERY
 NOCOMMENT_END
+DOC_END
+
+NAME: cache_vary
+TYPE: onoff
+DEFAULT: on
+LOC: Config.onoff.cache_vary
+DOC_START
+	A list of ACL elements which, if matched, cause the replies with
+	varying entities (Vary header) to not be cached.
 DOC_END
 
 
