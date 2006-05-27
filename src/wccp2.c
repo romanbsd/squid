@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.7 2006/05/25 08:31:42 hno Exp $
+ * $Id: wccp2.c,v 1.8 2006/05/27 11:16:35 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -1276,11 +1276,11 @@ parse_wccp2_service(void *v)
 	debug(80, 0) ("wccp2ParseServiceInfo: service info id %d is out of range (0..255)\n", service_id);
 	self_destruct();
     }
+    memset(wccp_password, 0, sizeof(wccp_password));
     /* Handle password, if any */
     if ((t = strtok(NULL, w_space)) != NULL) {
 	if (strncmp(t, "password=", 9) == 0) {
 	    security_type = WCCP2_MD5_SECURITY;
-	    bzero(wccp_password, WCCP2_PASSWORD_LEN + 1);
 	    strncpy(wccp_password, t + 9, WCCP2_PASSWORD_LEN);
 	}
     }
