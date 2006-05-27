@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.404 2006/05/26 22:45:23 hno Exp $
+ * $Id: http.c,v 1.405 2006/05/27 12:41:32 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -373,9 +373,11 @@ httpMakeVaryMark(request_t * request, HttpReply * reply)
 	stringClean(&hdr);
     }
     safe_free(request->vary_hdr);
-    request->vary_hdr = xstrdup(strBuf(vary));
     safe_free(request->vary_headers);
-    request->vary_headers = xstrdup(strBuf(vstr));
+    if (strBuf(vary) && strBuf(vstr)) {
+	request->vary_hdr = xstrdup(strBuf(vary));
+	request->vary_headers = xstrdup(strBuf(vstr));
+    }
     debug(11, 3) ("httpMakeVaryMark: %s\n", strBuf(vstr));
     stringClean(&vary);
     stringClean(&vstr);
