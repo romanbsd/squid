@@ -1,5 +1,5 @@
 /*
- * $Id: config.h,v 1.10 2006/05/23 14:51:36 hno Exp $
+ * $Id: config.h,v 1.11 2006/05/27 14:25:13 serassio Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -192,7 +192,7 @@
 #define squid_srandom srand
 #endif
 
-#if __GNUC__
+#if __GNUC__ && !defined(_SQUID_MSWIN_)
 #define PRINTF_FORMAT_ARG1 __attribute__ ((format (printf, 1, 2)))
 #define PRINTF_FORMAT_ARG2 __attribute__ ((format (printf, 2, 3)))
 #define PRINTF_FORMAT_ARG3 __attribute__ ((format (printf, 3, 4)))
