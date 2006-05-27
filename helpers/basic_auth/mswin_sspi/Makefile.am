@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.1 2006/05/27 08:58:28 serassio Exp $
+#  $Id: Makefile.am,v 1.2 2006/05/27 09:09:28 serassio Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -16,4 +16,4 @@ LDADD	= -L$(top_builddir)/lib -lnetapi32 -ladvapi32 -lsspwin32 \
 
 INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/src
 
-EXTRA_DIST = README.txt
+EXTRA_DIST = readme.txt
