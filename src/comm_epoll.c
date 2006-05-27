@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.2 2006/05/27 11:16:35 hno Exp $
+ * $Id: comm_epoll.c,v 1.3 2006/05/27 13:08:28 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -137,6 +137,10 @@ commDeferFD(int fd)
     assert(F->flags.open);
 
     /* set up ev struct */
+    if (RUNNING_ON_VALGRIND) {
+	/* Keep valgrind happy.. complains about uninitialized bytes otherwise */
+	memset(&ev, 0, sizeof(ev));
+    }
     ev.events = 0;
     ev.data.fd = fd;
 
