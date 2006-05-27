@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir.c,v 1.138 2006/05/18 06:49:46 adrian Exp $
+ * $Id: store_dir.c,v 1.139 2006/05/27 15:50:16 serassio Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -272,7 +272,7 @@ storeDirSwapLog(const StoreEntry * e, int op)
 	e->swap_dirn,
 	e->swap_filen);
     sd = &Config.cacheSwap.swapDirs[e->swap_dirn];
-    sd->log.write(sd, e, op);
+    (sd->log.write) (sd, e, op);
 }
 
 void
@@ -430,7 +430,7 @@ storeDirWriteCleanLogs(int reopen)
 		continue;
 	    if (EBIT_TEST(e->flags, ENTRY_SPECIAL))
 		continue;
-	    sd->log.clean.write(sd, e);
+	    (sd->log.clean.write) (sd, e);
 	    if ((++n & 0xFFFF) == 0) {
 		getCurrentTime();
 		debug(20, 1) ("  %7d entries written so far.\n", n);
