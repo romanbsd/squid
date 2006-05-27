@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.235 2006/05/25 11:47:44 hno Exp $
+ * $Id: squid.h,v 1.236 2006/05/27 14:17:25 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -514,9 +514,9 @@ struct rusage {
 #include <valgrind/memcheck.h>
 #else
 #define VALGRIND_MAKE_NOACCESS(a,b) (0)
-#define VALGRIND_MAKE_WRITEABLE(a,b) (0)
+#define VALGRIND_MAKE_WRITABLE(a,b) (0)
 #define VALGRIND_MAKE_READABLE(a,b) (0)
-#define VALGRIND_CHECK_WRITEABLE(a,b) (0)
+#define VALGRIND_CHECK_WRITABLE(a,b) (0)
 #define VALGRIND_CHECK_READABLE(a,b) (0)
 #define VALGRIND_MALLOCLIKE_BLOCK(a,b,c,d)
 #define VALGRIND_FREELIKE_BLOCK(a,b)
