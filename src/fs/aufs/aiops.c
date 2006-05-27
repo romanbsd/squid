@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.26 2006/05/19 00:16:14 adrian Exp $
+ * $Id: aiops.c,v 1.27 2006/05/27 14:47:02 hno Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -364,10 +364,10 @@ squidaio_shutdown(void)
 	squidaio_poll_queues();
     } while (request_queue_len > 0);
 
-    close(done_fd);
-    close(done_fd_read);
     fd_close(done_fd);
     fd_close(done_fd_read);
+    close(done_fd);
+    close(done_fd_read);
 }
 
 
