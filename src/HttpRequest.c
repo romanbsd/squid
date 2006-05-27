@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpRequest.c,v 1.38 2006/05/26 22:45:23 hno Exp $
+ * $Id: HttpRequest.c,v 1.39 2006/05/27 11:42:29 hno Exp $
  *
  * DEBUG: section 73    HTTP Request
  * AUTHOR: Duane Wessels
@@ -76,6 +76,7 @@ requestDestroy(request_t * req)
 	if (req->etags == &req->vary->etags)
 	    req->etags = NULL;
 	storeLocateVaryDone(req->vary);
+	req->vary = NULL;
     }
     assert(req->etags == NULL);
     safe_free(req->etag);
