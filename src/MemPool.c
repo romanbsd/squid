@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.33 2006/05/27 13:32:46 hno Exp $
+ * $Id: MemPool.c,v 1.34 2006/05/27 13:33:27 hno Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -306,7 +306,7 @@ memPoolFree(MemPool * pool, void *obj)
     memMeterDec(pool->meter.inuse);
     memMeterDel(TheMeter.inuse, pool->obj_size);
     mem_pool_free_calls++;
-    (void) VALGRIND_CHECK_WRITEABLE(obj, pool->obj_size);
+    (void) VALGRIND_CHECK_WRITABLE(obj, pool->obj_size);
 #if DEBUG_MEMPOOL
     {
 	struct mempool_cookie *cookie = (void *) (((unsigned char *) obj) + pool->real_obj_size);
