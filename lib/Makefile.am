@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 #
-#  $Id: Makefile.am,v 1.7 2006/05/21 09:40:31 serassio Exp $
+#  $Id: Makefile.am,v 1.8 2006/05/27 08:58:31 serassio Exp $
 #
 
 if NEED_OWN_SNPRINTF
@@ -18,15 +18,22 @@ MD5SOURCE=md5.c
 else
 MD5SOURCE=
 endif
+if ENABLE_WIN32SPECIFIC
+LIBSSPWIN32=libsspwin32.a
+else
+LIBSSPWIN32=
+endif
 
 EXTRA_LIBRARIES = \
 	libdlmalloc.a \
-	libregex.a
+	libregex.a \
+	libsspwin32.a
 noinst_LIBRARIES = \
 	@LIBDLMALLOC@ \
 	libmiscutil.a \
 	libntlmauth.a \
-	@LIBREGEX@
+	@LIBREGEX@ \
+	$(LIBSSPWIN32)
 EXTRA_libmiscutil_a_SOURCES = \
 	md5.c \
 	snprintf.c \
@@ -64,5 +71,7 @@ libntlmauth_a_SOURCES = \
 	ntlmauth.c
 libntlmauth_a_LIBADD = \
 	@LIBOBJS@
+libsspwin32_a_SOURCES = \
+	sspwin32.c
 
 INCLUDES	= -I$(top_builddir)/include -I$(top_srcdir)/include
