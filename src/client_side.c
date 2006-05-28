@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.628 2006/05/28 22:24:51 hno Exp $
+ * $Id: client_side.c,v 1.629 2006/05/28 22:32:59 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4648,7 +4648,10 @@ clientHttpConnectionsOpen(void)
 	 * peg the CPU with select() when we hit the FD limit.
 	 */
 	commSetDefer(fd, httpAcceptDefer, NULL);
-	debug(1, 1) ("Accepting HTTP connections at %s, port %d, FD %d.\n",
+	debug(1, 1) ("Accepting %s HTTP connections at %s, port %d, FD %d.\n",
+	    s->transparent ? "transparently proxied" :
+	    s->accel ? "accelerated" :
+	    "proxy",
 	    inet_ntoa(s->s.sin_addr),
 	    (int) ntohs(s->s.sin_port),
 	    fd);
