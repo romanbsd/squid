@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.299 2006/05/24 20:19:00 hno Exp $
+ * $Id: acl.c,v 1.300 2006/05/28 23:11:15 hno Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -1341,6 +1341,7 @@ aclMatchRegex(relist * data, const char *word)
 		data->next = first->next;
 		first->next = data;
 	    }
+	    debug(28, 2) ("aclMatchRegex: match '%s' found in '%s'\n", data->pattern, word);
 	    return 1;
 	}
 	prev = data;
