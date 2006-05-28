@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_ntlm.c,v 1.29 2006/05/16 01:12:36 hno Exp $
+ * $Id: auth_ntlm.c,v 1.30 2006/05/28 15:55:48 serassio Exp $
  *
  * DEBUG: section 29    NTLM Authenticator
  * AUTHOR: Robert Collins
@@ -299,8 +299,6 @@ static void
 authenticateNTLMFixErrorHeader(auth_user_request_t * auth_user_request, HttpReply * rep, http_hdr_type type, request_t * request)
 {
     ntlm_request_t *ntlm_request;
-    if (!request->flags.proxy_keepalive)
-	return;
     if (!ntlmConfig->authenticate)
 	return;
     /* New request, no user details */
