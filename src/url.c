@@ -1,6 +1,6 @@
 
 /*
- * $Id: url.c,v 1.142 2006/05/25 03:16:37 hno Exp $
+ * $Id: url.c,v 1.143 2006/05/28 22:24:51 hno Exp $
  *
  * DEBUG: section 23    URL Parsing
  * AUTHOR: Duane Wessels
@@ -542,6 +542,7 @@ urlCheckRequest(const request_t * r)
     switch (r->protocol) {
     case PROTO_URN:
     case PROTO_HTTP:
+    case PROTO_INTERNAL:
     case PROTO_CACHEOBJ:
 	rc = 1;
 	break;

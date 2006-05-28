@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.478 2006/05/26 22:45:23 hno Exp $
+ * $Id: protos.h,v 1.479 2006/05/28 22:24:51 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1244,6 +1244,7 @@ extern void internalStart(request_t *, StoreEntry *);
 extern int internalCheck(const char *urlpath);
 extern int internalStaticCheck(const char *urlpath);
 extern char *internalLocalUri(const char *dir, const char *name);
+extern char *internalStoreUri(const char *dir, const char *name);
 extern char *internalRemoteUri(const char *, u_short, const char *, const char *);
 extern const char *internalHostname(void);
 extern int internalHostnameIs(const char *);
