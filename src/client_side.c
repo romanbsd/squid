@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.626 2006/05/26 22:45:23 hno Exp $
+ * $Id: client_side.c,v 1.627 2006/05/28 20:11:15 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3718,6 +3718,7 @@ clientReadRequest(int fd, void *data)
 		err = errorCon(ERR_INVALID_URL, HTTP_BAD_REQUEST);
 		err->src_addr = conn->peer.sin_addr;
 		err->url = xstrdup(http->uri);
+		err->request = requestLink(request);
 		http->al.http.code = err->http_status;
 		http->log_type = LOG_TCP_DENIED;
 		http->entry = clientCreateStoreEntry(http, method, null_request_flags);
