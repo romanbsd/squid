@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6.PRE1 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.5 2006/05/29 13:07:38 hno Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.6 2006/05/29 14:33:26 hno Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -67,6 +67,8 @@ for Applied Network Research and members of the Web Caching community.
 <P>There is a few known issues in this version of Squid which we hope to correct in a later release
 
 <descrip>
+<tag>
+<tag>Bug <url url="http://www.squid-cache.org/bugs/show_bug.cgi?id=1590" name="#1590"></tag>"ETag Loop" warnings in cache.log
 <tag>Bug <url url="http://www.squid-cache.org/bugs/show_bug.cgi?id=761" name="#761"></tag>assertion failed: cbdata.c:249: "c-&gt;locks &gt; 0" when using diskd
 <tag>Bug <url url="http://www.squid-cache.org/bugs/show_bug.cgi?id=888" name="#888"></tag>ntlm_user_pool assertion error on shutdown
 <tag>Bug <url url="http://www.squid-cache.org/bugs/show_bug.cgi?id=1420" name="#1420"></tag>302 responses with an Expires header is always cached
