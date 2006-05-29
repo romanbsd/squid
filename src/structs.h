@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.464 2006/05/26 22:45:23 hno Exp $
+ * $Id: structs.h,v 1.465 2006/05/29 03:08:57 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2021,11 +2021,8 @@ struct _StatCounters {
 	    int recvfroms;
 	    int sendtos;
 	} sock;
-#if USE_POLL || USE_EPOLL
 	int polls;
-#else
 	int selects;
-#endif
     } syscalls;
     int aborted_requests;
     struct {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.10 2006/05/29 02:55:45 hno Exp $
+ * $Id: comm_poll.c,v 1.11 2006/05/29 03:08:57 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -33,6 +33,8 @@
  */
 
 #include "squid.h"
+
+#include <sys/poll.h>
 
 static int MAX_POLL_TIME = 1000;	/* see also comm_quick_poll_required() */
 
@@ -604,8 +606,9 @@ commIncomingStats(StoreEntry * sentry)
 }
 
 void
-commSetEvents(int fd, int need_read, int need_write)
+commSetEvents(int fd, int need_read, int need_write, int force)
 {
+    /* XXX Here we could optimize the poll arrays quite considerably */
 }
 
 static int

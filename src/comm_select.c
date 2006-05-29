@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.71 2006/05/29 02:55:45 hno Exp $
+ * $Id: comm_select.c,v 1.72 2006/05/29 03:08:57 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -655,8 +655,8 @@ commIncomingStats(StoreEntry * sentry)
     statHistDump(&f->comm_http_incoming, sentry, statHistIntDumper);
 }
 
-static void
-commSetEvents(int fd, int need_read, int need_write)
+void
+commSetEvents(int fd, int need_read, int need_write, int force)
 {
     if (need_read && !FD_ISSET(fd, &global_readfds)) {
 	FD_SET(fd, &global_readfds);
