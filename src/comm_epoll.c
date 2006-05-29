@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.3 2006/05/27 13:08:28 hno Exp $
+ * $Id: comm_epoll.c,v 1.4 2006/05/29 01:53:22 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -215,6 +215,8 @@ comm_select_init()
 	fatalf("comm_select_init: xmalloc() failed: %s\n", xstrerror());
     }
     kdpfd = epoll_create(SQUID_MAXFD);
+    fd_open(kdpfd, FD_UNKNOWN, "epoll ctl");
+    commSetCloseOnExec(kdpfd);
 
     if (kdpfd < 0) {
 	fatalf("comm_select_init: epoll_create(): %s\n", xstrerror());

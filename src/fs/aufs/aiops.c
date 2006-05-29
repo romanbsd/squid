@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.27 2006/05/27 14:47:02 hno Exp $
+ * $Id: aiops.c,v 1.28 2006/05/29 01:53:23 hno Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -313,6 +313,8 @@ squidaio_init(void)
     fd_open(done_fd, FD_PIPE, "async-io completion event: threads");
     commSetNonBlocking(done_pipe[0]);
     commSetNonBlocking(done_pipe[1]);
+    commSetCloseOnExec(done_pipe[0]);
+    commSetCloseOnExec(done_pipe[1]);
     commSetSelect(done_pipe[0], COMM_SELECT_READ, squidaio_fdhandler, NULL, 0);
 
     /* Create threads and get them to sit in their wait loop */
@@ -643,6 +645,20 @@ squidaio_do_open(squidaio_request_t * requestp)
 {
     requestp->ret = open(requestp->path, requestp->oflag, requestp->mode);
     requestp->err = errno;
+#ifdef FD_CLOEXEC
+    if (requestp->ret >= 0) {
+	int fd = requestp->ret;
+	int flags;
+	int dummy = 0;
+	if ((flags = fcntl(fd, F_GETFL, dummy)) < 0) {
+	    debug(50, 0) ("FD %d: fcntl F_GETFL: %s\n", fd, xstrerror());
+	    return;
+	}
+	if (fcntl(fd, F_SETFD, flags | FD_CLOEXEC) < 0)
+	    debug(50, 0) ("FD %d: set close-on-exec failed: %s\n", fd, xstrerror());
+	fd_table[fd].flags.close_on_exec = 1;
+    }
+#endif
 }
 
 

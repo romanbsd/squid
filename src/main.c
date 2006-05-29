@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.374 2006/05/25 11:47:44 hno Exp $
+ * $Id: main.c,v 1.375 2006/05/29 01:53:22 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -462,6 +462,7 @@ mainRotate(void)
     externalAclShutdown();
     _db_rotate_log();		/* cache.log */
     storeDirWriteCleanLogs(1);
+    storeDirSync();		/* Flush pending I/O ops */
     storeLogRotate();		/* store.log */
     accessLogRotate();		/* access.log */
     useragentRotateLog();	/* useragent.log */
@@ -1015,6 +1016,8 @@ watch_child(char *argv[])
 	dup2(nullfd, 1);
 	dup2(nullfd, 2);
     }
+    if (nullfd > 2)
+	close(nullfd);
     for (;;) {
 	mainStartScript(argv[0]);
 	if ((pid = fork()) == 0) {

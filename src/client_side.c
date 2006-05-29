@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.629 2006/05/28 22:32:59 hno Exp $
+ * $Id: client_side.c,v 1.630 2006/05/29 01:53:22 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4138,6 +4138,8 @@ clientNatLookup(ConnStateData * conn)
 #endif
 	save_errno = errno;
 	leave_suid();
+	if (natfd >= 0)
+	    commSetCloseOnExec(natfd);
 	errno = save_errno;
     }
     if (natfd < 0) {
@@ -4213,8 +4215,11 @@ clientNatLookup(ConnStateData * conn)
     struct pfioc_natlook nl;
     static int pffd = -1;
     static time_t last_reported = 0;
-    if (pffd < 0)
+    if (pffd < 0) {
 	pffd = open("/dev/pf", O_RDWR);
+	if (pffd >= 0)
+	    commSetCloseOnExec(natfd);
+    }
     if (pffd < 0) {
 	debug(50, 1) ("parseHttpRequest: PF open failed: %s\n",
 	    xstrerror());
