@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.369 2006/05/29 03:08:57 hno Exp $
+ * $Id: stat.c,v 1.370 2006/05/29 10:35:32 hno Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -843,9 +843,9 @@ statAvgDump(StoreEntry * sentry, int minutes, int hours)
     storeAppendPrintf(sentry, "aborted_requests = %f/sec\n",
 	XAVG(aborted_requests));
 
-    if (syscalls.polls)
+    if (statCounter.syscalls.polls)
 	storeAppendPrintf(sentry, "syscalls.polls = %f/sec\n", XAVG(syscalls.polls));
-    if (syscalls.selects)
+    if (statCounter.syscalls.selects)
 	storeAppendPrintf(sentry, "syscalls.selects = %f/sec\n", XAVG(syscalls.selects));
     storeAppendPrintf(sentry, "syscalls.disk.opens = %f/sec\n", XAVG(syscalls.disk.opens));
     storeAppendPrintf(sentry, "syscalls.disk.closes = %f/sec\n", XAVG(syscalls.disk.closes));
