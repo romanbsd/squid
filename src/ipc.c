@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipc.c,v 1.33 2006/05/29 01:53:22 hno Exp $
+ * $Id: ipc.c,v 1.34 2006/05/29 14:48:29 hno Exp $
  *
  * DEBUG: section 54    Interprocess Communication
  * AUTHOR: Duane Wessels
@@ -221,6 +221,8 @@ ipcCreate(int type, const char *prog, const char *const args[], const char *name
 	commSetTimeout(prfd, -1, NULL, NULL);
 	commSetNonBlocking(prfd);
 	commSetNonBlocking(pwfd);
+	commSetCloseOnExec(prfd);
+	commSetCloseOnExec(pwfd);
 	if (rfd)
 	    *rfd = prfd;
 	if (wfd)
