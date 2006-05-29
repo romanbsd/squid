@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.69 2006/05/25 11:47:44 hno Exp $
+ * $Id: comm_select.c,v 1.70 2006/05/29 01:57:53 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -562,6 +562,11 @@ comm_select_init(void)
     FD_ZERO(&global_readfds);
     FD_ZERO(&global_writefds);
     nreadfds = nwritefds = 0;
+}
+
+void
+comm_select_shutdown(void)
+{
 }
 
 /*

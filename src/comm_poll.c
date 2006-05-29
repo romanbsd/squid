@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.8 2006/05/25 11:47:44 hno Exp $
+ * $Id: comm_poll.c,v 1.9 2006/05/29 01:57:53 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -576,6 +576,11 @@ comm_select_init(void)
     cachemgrRegister("comm_incoming",
 	"comm_incoming() stats",
 	commIncomingStats, 0, 1);
+}
+
+void
+comm_select_shutdown(void)
+{
 }
 
 static void
