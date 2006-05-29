@@ -2,11 +2,12 @@
 <article>
 <title>Squid 2.6.PRE1 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.8 2006/05/29 22:35:23 hno Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.9 2006/05/29 23:44:47 hno Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
-Squid is a WWW Cache application developed by the National Laboratory
+Squid is a WWW Cache application developed by the Web Caching community.
+Squid was initially developed by the National Laboratory
 for Applied Network Research and members of the Web Caching community.
 </abstract>
 
