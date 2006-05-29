@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.101 2006/05/25 11:47:44 hno Exp $
+ * $Id: forward.c,v 1.102 2006/05/29 16:32:39 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -888,8 +888,12 @@ fwdCheckDeferRead(int fd, void *data)
 	    rc = -1;
     }
 #endif
-    if (EBIT_TEST(e->flags, ENTRY_DEFER_READ))
+    if (EBIT_TEST(e->flags, ENTRY_DEFER_READ)) {
+#if USE_EPOLL
+	commDeferFD(mem->serverfd);
+#endif
 	return 1;
+    }
     if (EBIT_TEST(e->flags, ENTRY_FWD_HDR_WAIT))
 	return rc;
     if (EBIT_TEST(e->flags, RELEASE_REQUEST)) {
