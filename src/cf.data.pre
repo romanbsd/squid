@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.327 2006/05/29 13:07:38 hno Exp $
+# $Id: cf.data.pre,v 1.328 2006/05/29 16:31:16 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2286,7 +2286,7 @@ DOC_END
 
 NAME: read_ahead_gap
 COMMENT: buffer-size
-TYPE: kb_size_t
+TYPE: b_size_t
 LOC: Config.readAheadGap
 DEFAULT: 16 KB
 DOC_START
