@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6.PRE1 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.4 2006/05/29 03:32:20 hno Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.5 2006/05/29 13:07:38 hno Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -59,6 +59,7 @@ for Applied Network Research and members of the Web Caching community.
 <tag>via</tag>New directive to disable the use of the Via directive
 <tag>wccp2_*</tag>WCCP2 protocol support
 <tag>linux_tproxy, tproxy_port</tag>Linux TPROXY support for masquerading outgoing connections as the original client
+<tag>umask</tag>New directive enforcing a minimum umask
 </descrip>
 
 <sect>Known issues and limitations

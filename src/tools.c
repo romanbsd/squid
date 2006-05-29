@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.235 2006/05/25 05:39:26 hno Exp $
+ * $Id: tools.c,v 1.236 2006/05/29 13:07:38 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1243,4 +1243,21 @@ getMyPort(void)
 #endif
     fatal("No port defined");
     return 0;			/* NOT REACHED */
+}
+
+/*
+ * Set the umask to at least the given mask. This is in addition
+ * to the umask set at startup
+ */
+void
+setUmask(mode_t mask)
+{
+    static mode_t orig_umask = ~0;
+    if (orig_umask == ~0) {
+	/* Unfortunately, there is no way to get the current
+	 * umask value without setting it.
+	 */
+	orig_umask = umask(mask);
+    }
+    umask(mask | orig_umask);
 }

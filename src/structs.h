@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.465 2006/05/29 03:08:57 hno Exp $
+ * $Id: structs.h,v 1.466 2006/05/29 13:07:38 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -793,6 +793,7 @@ struct _SquidConfig {
     } ssl_client;
 #endif
     time_t refresh_stale_window;
+    int umask;
 };
 
 struct _SquidConfig2 {

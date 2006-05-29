@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.482 2006/05/29 03:08:57 hno Exp $
+ * $Id: protos.h,v 1.483 2006/05/29 13:07:38 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1181,6 +1181,8 @@ extern int getMyPort(void);
 
 char *strwordtok(char *buf, char **t);
 void strwordquote(MemBuf * mb, const char *str);
+
+void setUmask(mode_t mask);
 
 #if USE_HTCP
 extern void htcpInit(void);
