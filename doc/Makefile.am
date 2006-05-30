@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.3 2005/05/17 16:56:01 hno Exp $
+#  $Id: Makefile.am,v 1.4 2006/05/30 23:52:10 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -16,6 +16,7 @@ SUBSTITUTE=sed "\
 	s%@DEFAULT_CACHEMGR_CONFIG@%$(DEFAULT_CACHEMGR_CONFIG)%g;\
 	s%@DEFAULT_ERROR_DIR@%$(DEFAULT_ERROR_DIR)%g;\
 	s%@DEFAULT_MIME_TABLE@%$(DEFAULT_MIME_TABLE)%g;\
+	s%@""PACKAGE_STRING""@%$(PACKAGE_STRING)%g;\
 	"
 
 squid.8: $(srcdir)/squid.8.in Makefile
