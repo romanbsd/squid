@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.300 2006/05/28 23:11:15 hno Exp $
+ * $Id: acl.c,v 1.301 2006/05/30 12:08:26 hno Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -157,6 +157,8 @@ aclStrToType(const char *s)
     if (!strcmp(s, "browser"))
 	return ACL_BROWSER;
     if (!strcmp(s, "referer_regex"))
+	return ACL_REFERER_REGEX;
+    if (!strcmp(s, "referrer_regex"))
 	return ACL_REFERER_REGEX;
     if (!strcmp(s, "proxy_auth"))
 	return ACL_PROXY_AUTH;

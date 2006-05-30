@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.328 2006/05/29 16:31:16 hno Exp $
+# $Id: cf.data.pre,v 1.329 2006/05/30 12:08:26 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1320,7 +1320,7 @@ DOC_START
 DOC_END
 
 
-NAME: referer_log
+NAME: referer_log referrer_log
 TYPE: string
 LOC: Config.Log.referer
 DEFAULT: none
