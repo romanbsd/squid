@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.236 2006/05/29 13:07:38 hno Exp $
+ * $Id: tools.c,v 1.237 2006/05/30 20:44:58 serassio Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -459,6 +459,7 @@ debug_trap(const char *message)
 void
 sig_child(int sig)
 {
+#ifndef _SQUID_MSWIN_
 #ifdef _SQUID_NEXT_
     union wait status;
 #else
@@ -479,6 +480,7 @@ sig_child(int sig)
     } while (pid > 0 || (pid < 0 && errno == EINTR));
     signal(sig, sig_child);
 #endif
+#endif /* _SQUID_MSWIN_ */
 }
 
 const char *
