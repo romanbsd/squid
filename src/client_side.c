@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.631 2006/05/30 12:57:54 hno Exp $
+ * $Id: client_side.c,v 1.632 2006/05/30 19:15:09 serassio Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2840,17 +2840,7 @@ clientKeepaliveNextRequest(clientHttpRequest * http)
 	 * Set the timeout BEFORE calling clientReadRequest().
 	 */
 	commSetTimeout(conn->fd, Config.Timeout.persistent_request, requestTimeout, conn);
-	/*
-	 * CYGWIN has a problem and is blocking on read() requests when there
-	 * is no data present.
-	 * This hack may hit performance a little, but it's better than 
-	 * blocking!.
-	 */
-#ifdef _SQUID_CYGWIN_
-	commSetSelect(conn->fd, COMM_SELECT_READ, clientReadRequest, conn, 0);
-#else
 	clientReadRequest(conn->fd, conn);	/* Read next request */
-#endif
 	/*
 	 * Note, the FD may be closed at this point.
 	 */
