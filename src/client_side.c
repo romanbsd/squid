@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.630 2006/05/29 01:53:22 hno Exp $
+ * $Id: client_side.c,v 1.631 2006/05/30 12:57:54 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3536,8 +3536,6 @@ clientReadDefer(int fd, void *data)
     if (conn->body.size_left && !F->flags.socket_eof) {
 	if (conn->in.offset >= conn->in.size - 1) {
 #if USE_EPOLL
-	    /* The commResumeFD function is called in this file */
-	    conn->in.clientfd = fd;
 	    commDeferFD(fd);
 #endif
 	    return 1;
@@ -3954,12 +3952,8 @@ clientProcessBody(ConnStateData * conn)
 	conn->in.offset -= size;
 #if USE_EPOLL
 	/* Resume the fd if necessary */
-	if (conn->in.clientfd) {
-	    if (conn->in.offset < conn->in.size - 1) {
-		commResumeFD(conn->in.clientfd);
-		conn->in.clientfd = 0;
-	    }
-	}
+	if (conn->in.offset < conn->in.size - 1)
+	    commResumeFD(conn->fd);
 #endif
 	if (conn->in.offset > 0)
 	    xmemmove(conn->in.buf, conn->in.buf + size, conn->in.offset);
