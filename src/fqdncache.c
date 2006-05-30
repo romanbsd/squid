@@ -1,6 +1,6 @@
 
 /*
- * $Id: fqdncache.c,v 1.155 2006/05/25 02:58:22 hno Exp $
+ * $Id: fqdncache.c,v 1.156 2006/05/30 00:56:11 hno Exp $
  *
  * DEBUG: section 35    FQDN Cache
  * AUTHOR: Harvest Derived
@@ -190,11 +190,6 @@ fqdncacheAddEntry(fqdncache_entry * f)
     fqdncache_entry *e = (fqdncache_entry *) hash_lookup(fqdn_table, f->hash.key);
     if (NULL != e) {
 	/* avoid collision */
-	if (f->flags.negcached && !e->flags.negcached && e->expires > squid_curtime) {
-	    /* Don't waste good information */
-	    fqdncacheFreeEntry(f);
-	    return;
-	}
 	fqdncacheRelease(e);
     }
     hash_join(fqdn_table, &f->hash);
