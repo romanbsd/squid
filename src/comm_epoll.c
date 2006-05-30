@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.8 2006/05/29 21:12:27 hno Exp $
+ * $Id: comm_epoll.c,v 1.9 2006/05/30 12:56:10 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -88,13 +88,15 @@ commResumeFD(int fd)
 {
     fde *F = &fd_table[fd];
 
-    /* If the fd has been modified, do nothing and remove the flag */
-    if (!(F->read_handler) || !(F->epoll_backoff)) {
-	debug(5, 2) ("commResumeFD: fd=%d ignoring read_handler=%p, epoll_backoff=%d\n", fd, F->read_handler, F->epoll_backoff);
-	F->epoll_backoff = 0;
+    if (!F->epoll_backoff)
+	return;
+
+    F->epoll_backoff = 0;
+
+    if (!F->read_handler) {
+	debug(5, 2) ("commResumeFD: fd=%d ignoring read_handler=%p\n", fd, F->read_handler);
 	return;
     }
-    F->epoll_backoff = 0;
     commUpdateEvents(fd, 0);
 }
 
