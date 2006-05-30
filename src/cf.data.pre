@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.331 2006/05/30 13:25:06 hno Exp $
+# $Id: cf.data.pre,v 1.332 2006/05/30 23:05:26 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2832,6 +2832,43 @@ NOCOMMENT_START
 #Allow ICP queries from everyone
 icp_access allow all
 NOCOMMENT_END
+DOC_END
+
+NAME: htcp_access
+IFDEF: USE_HTCP
+TYPE: acl_access
+LOC: Config.accessList.htcp
+DEFAULT: none
+DEFAULT_IF_NONE: deny all
+DOC_START
+	Allowing or Denying access to the HTCP port based on defined
+	access lists
+
+	htcp_access  allow|deny [!]aclname ...
+
+	See http_access for details
+
+#Allow HTCP queries from everyone
+htcp_access allow all
+DOC_END
+
+NAME: htcp_clr_access
+IFDEF: USE_HTCP
+TYPE: acl_access
+LOC: Config.accessList.htcp_clr
+DEFAULT: none
+DEFAULT_IF_NONE: deny all
+DOC_START
+	Allowing or Denying access to purge content using HTCP based
+	on defined access lists
+
+	htcp_clr_access  allow|deny [!]aclname ...
+
+	See http_access for details
+
+#Allow HTCP CLR requests from trusted peers
+acl htcp_clr_peer src 172.16.1.2
+htcp_clr_access allow htcp_clr_peer
 DOC_END
 
 
