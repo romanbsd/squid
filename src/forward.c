@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.102 2006/05/29 16:32:39 hno Exp $
+ * $Id: forward.c,v 1.103 2006/05/30 13:13:34 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -903,8 +903,8 @@ fwdCheckDeferRead(int fd, void *data)
 	 * few other corner cases.
 	 */
 	if (fd >= 0 && mem->inmem_hi - mem->inmem_lo > SM_PAGE_SIZE + Config.Store.maxInMemObjSize + Config.readAheadGap) {
-#if USE_EPOLL
 	    EBIT_SET(e->flags, ENTRY_DEFER_READ);
+#if USE_EPOLL
 	    mem->serverfd = fd;
 	    commDeferFD(fd);
 #endif
