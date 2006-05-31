@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.332 2006/05/30 23:05:26 hno Exp $
+# $Id: cf.data.pre,v 1.333 2006/05/31 19:39:14 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -4440,7 +4440,7 @@ DOC_START
 DOC_END
 
 NAME: mcast_miss_ttl
-IFDEF: MULTICAST_MISS_TTL
+IFDEF: MULTICAST_MISS_STREAM
 TYPE: ushort
 LOC: Config.mcast_miss.ttl
 DEFAULT: 16
