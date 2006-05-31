@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.56 2006/05/24 20:05:49 hno Exp $
+ * $Id: dns_internal.c,v 1.57 2006/05/31 11:01:41 serassio Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -35,7 +35,7 @@
 
 #include "squid.h"
 
-/* MS VisualStudio Projects are monolitich, so we need the following
+/* MS VisualStudio Projects are monolithic, so we need the following
  * #ifndef to exclude the internal DNS code from compile process when
  * using External DNS process.
  */
@@ -1025,5 +1025,5 @@ snmp_netIdnsFn(variable_list * Var, snint * ErrP)
     }
     return Answer;
 }
-#endif /*SQUID_SNMP */
+#endif /* SQUID_SNMP */
 #endif /* USE_DNSSERVERS */
