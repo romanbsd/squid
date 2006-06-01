@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.237 2006/05/30 20:44:58 serassio Exp $
+ * $Id: tools.c,v 1.238 2006/06/01 23:08:53 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -34,10 +34,10 @@
  */
 
 #include "squid.h"
+
 #if LINUX_TPROXY
-#include <linux/capability.h>
-#undef __FD_SETSIZE
-#define __FD_SETSIZE SQUID_MAXFD
+#undef _POSIX_SOURCE
+#include <sys/capability.h>
 #endif
 
 #if HAVE_SYS_PRCTL_H
