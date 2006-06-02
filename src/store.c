@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.552 2006/05/25 11:59:29 hno Exp $
+ * $Id: store.c,v 1.553 2006/06/02 00:07:40 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1828,3 +1828,27 @@ storeSwapFileNumberSet(StoreEntry * e, sfileno filn)
     }
 }
 #endif
+
+/* Defer server-side reads */
+void
+storeDeferRead(StoreEntry * e, int fd)
+{
+    MemObject *mem = e->mem_obj;
+    EBIT_SET(e->flags, ENTRY_DEFER_READ);
+    if (fd >= 0) {
+	mem->serverfd = fd;
+	commDeferFD(fd);
+    }
+}
+
+/* Resume reading from the server-side */
+void
+storeResumeRead(StoreEntry * e)
+{
+    MemObject *mem = e->mem_obj;
+    EBIT_CLR(e->flags, ENTRY_DEFER_READ);
+    if (mem->serverfd != 0) {
+	commResumeFD(mem->serverfd);
+	mem->serverfd = 0;
+    }
+}

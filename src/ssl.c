@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.131 2006/05/25 11:47:44 hno Exp $
+ * $Id: ssl.c,v 1.132 2006/06/02 00:07:40 hno Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -139,9 +139,7 @@ sslDeferServerRead(int fd, void *data)
     if (i == INT_MAX)
 	return 0;
     if (i == 0) {
-#if USE_EPOLL
 	commDeferFD(fd);
-#endif
 	return 1;
     }
     return -1;

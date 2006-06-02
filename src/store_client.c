@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.120 2006/05/25 11:47:44 hno Exp $
+ * $Id: store_client.c,v 1.121 2006/06/02 00:07:40 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -268,13 +268,7 @@ storeClientCopy3(StoreEntry * e, store_client * sc)
 	    (storeLowestMemReaderOffset(e) == mem->inmem_hi)) {
 	    debug(20, 3) ("storeClientCopy3: %s - clearing ENTRY_DEFER_READ\n", e->mem_obj->url);
 	    /* Clear the flag and re-poll the fd */
-	    EBIT_CLR(e->flags, ENTRY_DEFER_READ);
-#if USE_EPOLL
-	    if (mem->serverfd != 0) {
-		commResumeFD(mem->serverfd);
-		mem->serverfd = 0;
-	    }
-#endif
+	    storeResumeRead(e);
 	}
 	return;
     }

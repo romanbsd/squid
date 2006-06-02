@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.485 2006/05/30 22:10:51 hno Exp $
+ * $Id: protos.h,v 1.486 2006/06/02 00:07:40 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -158,10 +158,8 @@ extern int comm_open(int, int, struct in_addr, u_short port, int, const char *no
 extern int comm_openex(int, int, struct in_addr, u_short, int, unsigned char TOS, const char *);
 extern u_short comm_local_port(int fd);
 
-#if USE_EPOLL
 extern void commDeferFD(int fd);
 extern void commResumeFD(int fd);
-#endif
 extern void commSetSelect(int, unsigned int, PF *, void *, time_t);
 extern void comm_add_close_handler(int fd, PF *, void *);
 extern void comm_remove_close_handler(int fd, PF *, void *);
@@ -942,6 +940,8 @@ extern void storeFsInit(void);
 extern void storeFsDone(void);
 extern void storeFsAdd(const char *, STSETUP *);
 extern void storeReplAdd(const char *, REMOVALPOLICYCREATE *);
+void storeDeferRead(StoreEntry *, int fd);
+void storeResumeRead(StoreEntry *);
 
 /* store_modules.c */
 extern void storeFsSetup(void);

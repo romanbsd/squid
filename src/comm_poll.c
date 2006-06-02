@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.11 2006/05/29 03:08:57 hno Exp $
+ * $Id: comm_poll.c,v 1.12 2006/06/02 00:07:40 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -653,4 +653,18 @@ void
 comm_quick_poll_required(void)
 {
     MAX_POLL_TIME = 10;
+}
+
+/* Defer reads from this fd */
+void
+commDeferFD(int fd)
+{
+    /* Not implemented */
+}
+
+/* Resume reading from the given fd */
+void
+commResumeFD(int fd)
+{
+    /* Not implemented */
 }

@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.633 2006/05/30 22:10:51 hno Exp $
+ * $Id: client_side.c,v 1.634 2006/06/02 00:07:40 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3529,20 +3529,16 @@ clientReadDefer(int fd, void *data)
     ConnStateData *conn = data;
     if (conn->body.size_left && !F->flags.socket_eof) {
 	if (conn->in.offset >= conn->in.size - 1) {
-#if USE_EPOLL
 	    commDeferFD(fd);
-#endif
 	    return 1;
 	} else {
 	    return 0;
 	}
     } else {
 	if (conn->defer.until > squid_curtime) {
-#if USE_EPOLL
 	    /* This is a second resolution timer, so commEpollBackon will 
 	     * handle the resume for this defer call */
 	    commDeferFD(fd);
-#endif
 	    return 1;
 	} else {
 	    return 0;
@@ -3944,11 +3940,9 @@ clientProcessBody(ConnStateData * conn)
 	conn->body.size_left -= size;
 	/* Move any remaining data */
 	conn->in.offset -= size;
-#if USE_EPOLL
 	/* Resume the fd if necessary */
 	if (conn->in.offset < conn->in.size - 1)
 	    commResumeFD(conn->fd);
-#endif
 	if (conn->in.offset > 0)
 	    xmemmove(conn->in.buf, conn->in.buf + size, conn->in.offset);
 	/* Remove request link if this is the last part of the body, as

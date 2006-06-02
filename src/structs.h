@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.468 2006/05/30 23:05:26 hno Exp $
+ * $Id: structs.h,v 1.469 2006/06/02 00:07:40 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1642,10 +1642,8 @@ struct _MemObject {
     mem_hdr data_hdr;
     squid_off_t inmem_hi;
     squid_off_t inmem_lo;
-#if USE_EPOLL
     int serverfd;		/* Record the server's fd if we have too much
 				 * data waiting to send to the client */
-#endif
     dlink_list clients;
     int nclients;
     struct {
