@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.47 2006/05/30 23:05:26 hno Exp $
+ * $Id: htcp.c,v 1.48 2006/06/02 01:19:06 hno Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -743,7 +743,7 @@ htcpClrStore(const htcpSpecifier * s)
     request_t *request = s->request;
     char *blk_end;
     StoreEntry *e = NULL;
-    int released;
+    int released = 0;
 
     if (request == NULL) {
 	debug(31, 3) ("htcpClrStore: failed to parse URL\n");
