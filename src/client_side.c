@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.635 2006/06/02 17:32:45 serassio Exp $
+ * $Id: client_side.c,v 1.636 2006/06/02 17:49:45 serassio Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4200,7 +4200,7 @@ clientNatLookup(ConnStateData * conn)
     if (pffd < 0) {
 	pffd = open("/dev/pf", O_RDWR);
 	if (pffd >= 0)
-	    commSetCloseOnExec(natfd);
+	    commSetCloseOnExec(pffd);
     }
     if (pffd < 0) {
 	debug(50, 1) ("parseHttpRequest: PF open failed: %s\n",
