@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.9 2006/05/30 12:15:35 hno Exp $
+ * $Id: wccp2.c,v 1.10 2006/06/02 20:09:10 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -875,7 +875,6 @@ wccp2HandleUdp(int sock, void *not_used)
     /* Check that the service in the packet is configured on this router */
     service_list_ptr = wccp2_service_list_head;
     while (service_list_ptr != NULL) {
-	//debug(80, 5) ("wccpv2: checking %d against %d\n", service_info->service_id, service_list_ptr->service_info->service_id);
 	if (service_info->service_id == service_list_ptr->service_info->service_id) {
 	    break;
 	}

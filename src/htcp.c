@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.49 2006/06/02 13:14:07 serassio Exp $
+ * $Id: htcp.c,v 1.50 2006/06/02 20:09:10 hno Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -323,7 +323,7 @@ htcpBuildOpData(char *buf, size_t buflen, htcpStuff * stuff)
 	off = htcpBuildTstOpData(buf + off, buflen, stuff);
 	break;
     case HTCP_CLR:
-	// nothing to be done
+	/* nothing to be done */
 	break;
     default:
 	assert(0);
