@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 #
-# $Id: Makefile.am,v 1.19 2006/05/25 12:43:40 hno Exp $
+# $Id: Makefile.am,v 1.20 2006/06/02 21:35:38 hno Exp $
 #
 
 AUTOMAKE_OPTIONS = dist-bzip2 subdir-objects 1.5
@@ -42,3 +42,6 @@ EXTRA_DIST = \
 install-pinger:
 	chown root $(DEFAULT_PINGER) 
 	chmod 4711 $(DEFAULT_PINGER)
+
+distuninstallcheck_listfiles = \
+	find . -name squid.conf -prune -o -name cachemgr.conf -prune -type f -print

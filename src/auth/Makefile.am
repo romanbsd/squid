@@ -1,11 +1,8 @@
 #  Makefile for authentication modules in the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.3 2006/05/23 20:28:20 serassio Exp $
+#  $Id: Makefile.am,v 1.4 2006/06/02 21:35:38 hno Exp $
 #
 AUTOMAKE_OPTIONS = subdir-objects
-
-DIST_SUBDIRS	= basic digest ntlm negotiate
-SUBDIRS		= @AUTH_MODULES@
 
 EXTRA_LIBRARIES	= libbasic.a libdigest.a libntlm.a libnegotiate.a
 noinst_LIBRARIES	= @AUTH_LIBS@
