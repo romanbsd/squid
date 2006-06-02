@@ -1,6 +1,6 @@
 
 /*
- * $Id: hash.c,v 1.16 2006/05/17 23:32:13 hno Exp $
+ * $Id: hash.c,v 1.17 2006/06/02 17:32:44 serassio Exp $
  *
  * DEBUG: section 0     Hash Tables
  * AUTHOR: Harvest Derived
@@ -49,7 +49,7 @@
 #endif
 #if HAVE_GNUMALLLOC_H
 #include <gnumalloc.h>
-#elif HAVE_MALLOC_H && !defined(_SQUID_FREEBSD_) && !defined(_SQUID_NEXT_)
+#elif HAVE_MALLOC_H
 #include <malloc.h>
 #endif
 #if HAVE_ASSERT_H

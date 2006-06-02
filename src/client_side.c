@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.634 2006/06/02 00:07:40 hno Exp $
+ * $Id: client_side.c,v 1.635 2006/06/02 17:32:45 serassio Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4226,7 +4226,7 @@ clientNatLookup(ConnStateData * conn)
 	}
 	return -1;
     } else {
-	int natted = conn->me.sin_addr.s_addr != nt.rdaddr.v4.s_addr;
+	int natted = conn->me.sin_addr.s_addr != nl.rdaddr.v4.s_addr;
 	conn->me.sin_port = nl.rdport;
 	conn->me.sin_addr = nl.rdaddr.v4;
 	if (natted)

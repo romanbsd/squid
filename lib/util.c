@@ -1,6 +1,6 @@
 
 /*
- * $Id: util.c,v 1.90 2005/10/23 15:20:49 hno Exp $
+ * $Id: util.c,v 1.91 2006/06/02 17:32:44 serassio Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -54,7 +54,7 @@
 #endif
 #if HAVE_GNUMALLLOC_H
 #include <gnumalloc.h>
-#elif HAVE_MALLOC_H && !defined(_SQUID_FREEBSD_) && !defined(_SQUID_NEXT_)
+#elif HAVE_MALLOC_H
 #include <malloc.h>
 #endif
 #if HAVE_ERRNO_H
