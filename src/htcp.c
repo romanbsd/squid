@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.48 2006/06/02 01:19:06 hno Exp $
+ * $Id: htcp.c,v 1.49 2006/06/02 13:14:07 serassio Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -888,6 +888,7 @@ htcpHandleSet(htcpDataHeader * hdr, char *buf, int sz, struct sockaddr_in *from)
 static void
 htcpHandleClr(htcpDataHeader * hdr, char *buf, int sz, struct sockaddr_in *from)
 {
+    htcpSpecifier *s;
     /* buf[0/1] is reserved and reason */
     int reason = buf[1] << 4;
     debug(31, 3) ("htcpHandleClr: reason=%d\n", reason);
@@ -895,7 +896,6 @@ htcpHandleClr(htcpDataHeader * hdr, char *buf, int sz, struct sockaddr_in *from)
     sz -= 2;
 
     /* buf should be a SPECIFIER */
-    htcpSpecifier *s;
     if (sz == 0) {
 	debug(31, 4) ("htcpHandleClr: nothing to do\n");
 	return;
