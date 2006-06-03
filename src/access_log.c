@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.80 2006/05/17 23:17:02 hno Exp $
+ * $Id: access_log.c,v 1.81 2006/06/03 21:04:53 serassio Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -787,7 +787,7 @@ accessLogGetNewLogFormatToken(logformat_token * lt, char *def, enum log_quote *q
 	lt->zero = 1;
 	cur++;
     }
-    if (isdigit(*cur))
+    if (isdigit((int) *cur))
 	lt->width = strtol(cur, &cur, 10);
     if (*cur == '.')
 	lt->precision = strtol(cur + 1, &cur, 10);
