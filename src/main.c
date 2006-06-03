@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.377 2006/05/29 13:07:38 hno Exp $
+ * $Id: main.c,v 1.378 2006/06/03 20:26:19 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -833,13 +833,7 @@ main(int argc, char **argv)
 	eventRun();
 	if ((loop_delay = eventNextTime()) < 0)
 	    loop_delay = 0;
-#if USE_EPOLL
-	switch (comm_epoll(loop_delay)) {
-#elif USE_POLL
-	    switch (comm_poll(loop_delay)) {
-#else
 	switch (comm_select(loop_delay)) {
-#endif
 	case COMM_OK:
 	    errcount = 0;	/* reset if successful */
 	    break;

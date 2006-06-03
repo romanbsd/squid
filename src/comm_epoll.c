@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.11 2006/06/03 20:21:28 hno Exp $
+ * $Id: comm_epoll.c,v 1.12 2006/06/03 20:26:19 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -250,7 +250,7 @@ comm_call_handlers(int fd, int read_event, int write_event)
 }
 
 int
-comm_epoll(int msec)
+comm_select(int msec)
 {
     static time_t last_timeout = 0;
     int i;
