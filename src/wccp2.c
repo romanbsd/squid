@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.10 2006/06/02 20:09:10 hno Exp $
+ * $Id: wccp2.c,v 1.11 2006/06/03 20:56:38 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -695,7 +695,7 @@ wccp2ConnectionOpen(void)
     }
     if (wccp2_numrouters == 1) {
 	router.sin_family = AF_INET;
-	connect(theWccp2Connection, (struct sockaddr *) &router, router_len);
+	connect(theWccp2Connection, (struct sockaddr *) &router, sizeof(router));
     }
     wccp2_connected = 1;
 }
