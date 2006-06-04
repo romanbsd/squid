@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.145 2006/05/25 11:59:29 hno Exp $
+ * $Id: typedefs.h,v 1.146 2006/06/04 02:45:57 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -41,7 +41,7 @@ typedef unsigned int swap_status_t;
 typedef signed int sfileno;
 typedef signed int sdirno;
 
-#if SIZEOF_INT64_T > SIZEOF_LONG && defined(PRId64) && defined(INT64_MAX) && HAVE_STRTOLL
+#if SIZEOF_INT64_T > SIZEOF_LONG && defined(INT64_MAX) && HAVE_STRTOLL
 typedef int64_t squid_off_t;
 #define SIZEOF_SQUID_OFF_T SIZEOF_INT64_T
 #define PRINTF_OFF_T PRId64
