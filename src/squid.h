@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.237 2006/06/02 17:32:45 serassio Exp $
+ * $Id: squid.h,v 1.238 2006/06/04 02:01:38 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -522,5 +522,13 @@ struct rusage {
 #define VALGRIND_FREELIKE_BLOCK(a,b)
 #define RUNNING_ON_VALGRIND 0
 #endif /* WITH_VALGRIND */
+
+#ifndef PRId64
+#define PRId64	"lld"
+#endif
+
+#ifndef PRIu64
+#define PRIu64	"llu"
+#endif
 
 #endif /* SQUID_H */

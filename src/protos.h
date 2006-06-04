@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.487 2006/06/03 20:26:19 hno Exp $
+ * $Id: protos.h,v 1.488 2006/06/04 02:01:38 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1018,7 +1018,13 @@ extern void storeDirCallback(void);
 extern void storeDirLRUDelete(StoreEntry *);
 extern void storeDirLRUAdd(StoreEntry *);
 extern int storeDirGetBlkSize(const char *path, int *blksize);
+
+#ifdef HAVE_STATVFS
+extern int storeDirGetUFSStats(const char *, fsblkcnt_t *, fsblkcnt_t *, fsfilcnt_t *, fsfilcnt_t *);
+#else
 extern int storeDirGetUFSStats(const char *, int *, int *, int *, int *);
+#endif
+
 
 /*
  * store_swapmeta.c
