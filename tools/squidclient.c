@@ -1,6 +1,6 @@
 
 /*
- * $Id: squidclient.c,v 1.4 2006/05/27 15:46:16 serassio Exp $
+ * $Id: squidclient.c,v 1.5 2006/06/04 02:50:05 hno Exp $
  *
  * DEBUG: section 0     WWW Client
  * AUTHOR: Harvest Derived
@@ -85,7 +85,11 @@
 #define BUFSIZ 8192
 #endif
 
-#if SIZEOF_INT64_T > SIZEOF_LONG && defined(PRId64) && defined(INT64_MAX) && HAVE_STRTOLL
+#ifndef PRId64
+#define PRId64 "lld"
+#endif
+
+#if SIZEOF_INT64_T > SIZEOF_LONG && HAVE_STRTOLL
 typedef int64_t squid_off_t;
 #define SIZEOF_SQUID_OFF_T SIZEOF_INT64_T
 #define PRINTF_OFF_T PRId64
