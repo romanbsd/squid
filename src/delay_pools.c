@@ -1,6 +1,6 @@
 
 /*
- * $Id: delay_pools.c,v 1.29 2006/04/28 10:17:21 hno Exp $
+ * $Id: delay_pools.c,v 1.30 2006/06/04 02:27:54 hno Exp $
  *
  * DEBUG: section 77    Delay Pools
  * AUTHOR: David Luyer <david@luyer.net>
@@ -319,7 +319,12 @@ delayClient(clientHttpRequest * http)
     r = http->request;
 
     memset(&ch, '\0', sizeof(ch));
-    ch.src_addr = r->client_addr;
+#if FOLLOW_X_FORWARDED_FOR
+    if (Config.onoff.delay_pool_uses_indirect_client) {
+	ch.src_addr = r->indirect_client_addr;
+    } else
+#endif /* FOLLOW_X_FORWARDED_FOR */
+	ch.src_addr = r->client_addr;
     ch.my_addr = r->my_addr;
     ch.my_port = r->my_port;
     ch.conn = http->conn;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.301 2006/05/30 12:08:26 hno Exp $
+ * $Id: acl.c,v 1.302 2006/06/04 02:27:54 hno Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -2372,7 +2372,12 @@ aclChecklistCreate(const acl_access * A, request_t * request, const char *ident)
     cbdataLock(A);
     if (request != NULL) {
 	checklist->request = requestLink(request);
-	checklist->src_addr = request->client_addr;
+#if FOLLOW_X_FORWARDED_FOR
+	if (Config.onoff.acl_uses_indirect_client) {
+	    checklist->src_addr = request->indirect_client_addr;
+	} else
+#endif /* FOLLOW_X_FORWARDED_FOR */
+	    checklist->src_addr = request->client_addr;
 	checklist->my_addr = request->my_addr;
 	checklist->my_port = request->my_port;
     }

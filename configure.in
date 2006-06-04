@@ -3,7 +3,7 @@ dnl  Configuration input file for Squid
 dnl
 dnl  Duane Wessels, wessels@nlanr.net, February 1996 (autoconf v2.9)
 dnl
-dnl  $Id: configure.in,v 1.356 2006/06/04 02:01:38 hno Exp $
+dnl  $Id: configure.in,v 1.357 2006/06/04 02:27:53 hno Exp $
 dnl
 dnl
 dnl
@@ -11,7 +11,7 @@ AC_INIT(Squid Web Proxy, 2.6.PRE1-CVS, http://www.squid-cache.org/bugs/, squid)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.356 $)dnl
+AC_REVISION($Revision: 1.357 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -1393,6 +1393,18 @@ AC_ARG_ENABLE(x_accelerator_vary,
 [ if test "$enableval" = "yes" ; then
     echo "Enabling support for X-Accelerator-Vary"
     AC_DEFINE(X_ACCELERATOR_VARY, 1, [Enable support for the X-Accelerator-Vary HTTP header])
+  fi
+])
+
+AC_ARG_ENABLE(follow-x-forwarded-for,
+[  --enable-follow-x-forwarded-for
+                          Enable support for following the X-Forwarded-For
+                          HTTP header to try to find the IP address of the
+                          original or indirect client when a request has
+                          been forwarded through other proxies.],
+[ if test "$enableval" = "yes" ; then
+    echo "follow X-Forwarded-For enabled"
+    AC_DEFINE(FOLLOW_X_FORWARDED_FOR, 1, [Enable following X-Forwarded-For headers])
   fi
 ])
 
