@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.638 2006/06/04 02:27:54 hno Exp $
+ * $Id: client_side.c,v 1.639 2006/06/04 03:00:43 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -343,11 +343,11 @@ clientCheckFollowXForwardedFor(void *data)
     clientHttpRequest *http = data;
 #if FOLLOW_X_FORWARDED_FOR
     if (Config.accessList.followXFF && httpHeaderHas(&http->request->header, HDR_X_FORWARDED_FOR)) {
-	clientFollowXForwardedForStart(data);
+	clientFollowXForwardedForStart(http);
 	return;
     }
 #endif
-    clientAccessCheck(data);
+    clientAccessCheck(http);
 }
 
 static void
