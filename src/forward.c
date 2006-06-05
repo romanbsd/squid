@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.104 2006/06/02 00:07:40 hno Exp $
+ * $Id: forward.c,v 1.105 2006/06/05 22:47:01 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -118,7 +118,7 @@ fwdStateFree(FwdState * fwdState)
     fwdState->request = NULL;
     if (fwdState->err)
 	errorStateFree(fwdState->err);
-    storeUnregisterAbort(e);
+    storeClientUnregisterAbort(e);
     storeUnlockObject(e);
     fwdState->entry = NULL;
     sfd = fwdState->server_fd;

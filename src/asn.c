@@ -1,6 +1,6 @@
 
 /*
- * $Id: asn.c,v 1.83 2006/05/29 00:49:33 hno Exp $
+ * $Id: asn.c,v 1.84 2006/06/05 22:47:01 hno Exp $
  *
  * DEBUG: section 53    AS Number handling
  * AUTHOR: Duane Wessels, Kostas Anagnostakis
@@ -204,11 +204,11 @@ asnCacheStart(int as)
     asState->request = requestLink(req);
     if ((e = storeGetPublic(asres, METHOD_GET)) == NULL) {
 	e = storeCreateEntry(asres, asres, null_request_flags, METHOD_GET);
-	asState->sc = storeClientListAdd(e, asState);
+	asState->sc = storeClientRegister(e, asState);
 	fwdStart(-1, e, asState->request);
     } else {
 	storeLockObject(e);
-	asState->sc = storeClientListAdd(e, asState);
+	asState->sc = storeClientRegister(e, asState);
     }
     asState->entry = e;
     asState->seen = 0;
@@ -305,7 +305,7 @@ asStateFree(void *data)
 {
     ASState *asState = data;
     debug(53, 3) ("asnStateFree: %s\n", storeUrl(asState->entry));
-    storeUnregister(asState->sc, asState->entry, asState);
+    storeClientUnregister(asState->sc, asState->entry, asState);
     storeUnlockObject(asState->entry);
     requestUnlink(asState->request);
     cbdataFree(asState);

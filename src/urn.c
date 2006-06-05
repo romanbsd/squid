@@ -1,6 +1,6 @@
 
 /*
- * $Id: urn.c,v 1.77 2005/10/23 15:20:55 hno Exp $
+ * $Id: urn.c,v 1.78 2006/06/05 22:47:01 hno Exp $
  *
  * DEBUG: section 52    URN Parsing
  * AUTHOR: Kostas Anagnostakis
@@ -139,11 +139,11 @@ urnStart(request_t * r, StoreEntry * e)
     httpHeaderPutStr(&urlres_r->header, HDR_ACCEPT, "text/plain");
     if ((urlres_e = storeGetPublic(urlres, METHOD_GET)) == NULL) {
 	urlres_e = storeCreateEntry(urlres, urlres, null_request_flags, METHOD_GET);
-	urnState->sc = storeClientListAdd(urlres_e, urnState);
+	urnState->sc = storeClientRegister(urlres_e, urnState);
 	fwdStart(-1, urlres_e, urlres_r);
     } else {
 	storeLockObject(urlres_e);
-	urnState->sc = storeClientListAdd(urlres_e, urnState);
+	urnState->sc = storeClientRegister(urlres_e, urnState);
     }
     urnState->urlres_e = urlres_e;
     urnState->urlres_r = requestLink(urlres_r);
@@ -294,7 +294,7 @@ urnHandleReply(void *data, char *buf, ssize_t size)
     }
     safe_free(urls);
     /* mb was absorbed in httpBodySet call, so we must not clean it */
-    storeUnregister(urnState->sc, urlres_e, urnState);
+    storeClientUnregister(urnState->sc, urlres_e, urnState);
     storeUnlockObject(urlres_e);
     storeUnlockObject(urnState->entry);
     requestUnlink(urnState->request);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_digest.c,v 1.93 2005/05/17 16:56:38 hno Exp $
+ * $Id: peer_digest.c,v 1.94 2006/06/05 22:47:01 hno Exp $
  *
  * DEBUG: section 72    Peer Digest Routines
  * AUTHOR: Alex Rousskov
@@ -316,11 +316,11 @@ peerDigestRequest(PeerDigest * pd)
 	debug(72, 5) ("peerDigestRequest: found old entry\n");
 	storeLockObject(old_e);
 	storeCreateMemObject(old_e, url, url);
-	fetch->old_sc = storeClientListAdd(old_e, fetch);
+	fetch->old_sc = storeClientRegister(old_e, fetch);
     }
     e = fetch->entry = storeCreateEntry(url, url, req->flags, req->method);
     assert(EBIT_TEST(e->flags, KEY_PRIVATE));
-    fetch->sc = storeClientListAdd(e, fetch);
+    fetch->sc = storeClientRegister(e, fetch);
     /* set lastmod to trigger IMS request if possible */
     if (old_e)
 	e->lastmod = old_e->lastmod;
@@ -369,7 +369,7 @@ peerDigestFetchReply(void *data, char *buf, ssize_t size)
 	    httpReplyUpdateOnNotModified(fetch->old_entry->mem_obj->reply, reply);
 	    storeTimestampsSet(fetch->old_entry);
 	    /* get rid of 304 reply */
-	    storeUnregister(fetch->sc, fetch->entry, fetch);
+	    storeClientUnregister(fetch->sc, fetch->entry, fetch);
 	    storeUnlockObject(fetch->entry);
 	    fetch->entry = fetch->old_entry;
 	    fetch->old_entry = NULL;
@@ -380,7 +380,7 @@ peerDigestFetchReply(void *data, char *buf, ssize_t size)
 	    /* get rid of old entry if any */
 	    if (fetch->old_entry) {
 		debug(72, 3) ("peerDigestFetchReply: got new digest, releasing old one\n");
-		storeUnregister(fetch->old_sc, fetch->old_entry, fetch);
+		storeClientUnregister(fetch->old_sc, fetch->old_entry, fetch);
 		storeReleaseRequest(fetch->old_entry);
 		storeUnlockObject(fetch->old_entry);
 		fetch->old_entry = NULL;
@@ -688,7 +688,7 @@ peerDigestFetchFinish(DigestFetchState * fetch, int err)
 
     if (fetch->old_entry) {
 	debug(72, 2) ("peerDigestFetchFinish: deleting old entry\n");
-	storeUnregister(fetch->old_sc, fetch->old_entry, fetch);
+	storeClientUnregister(fetch->old_sc, fetch->old_entry, fetch);
 	storeReleaseRequest(fetch->old_entry);
 	storeUnlockObject(fetch->old_entry);
 	fetch->old_entry = NULL;
@@ -700,7 +700,7 @@ peerDigestFetchFinish(DigestFetchState * fetch, int err)
     statCounter.cd.msgs_recv += fetch->recv.msg;
 
     /* unlock everything */
-    storeUnregister(fetch->sc, fetch->entry, fetch);
+    storeClientUnregister(fetch->sc, fetch->entry, fetch);
     storeUnlockObject(fetch->entry);
     requestUnlink(fetch->request);
     fetch->entry = NULL;

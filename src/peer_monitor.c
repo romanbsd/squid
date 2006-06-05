@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_monitor.c,v 1.1 2006/05/16 01:08:29 hno Exp $
+ * $Id: peer_monitor.c,v 1.2 2006/06/05 22:47:01 hno Exp $
  *
  * DEBUG: section ??    Peer monitoring
  * AUTHOR: Henrik Nordstrom
@@ -148,7 +148,7 @@ peerMonitorRequest(void *data)
 	xstrncpy(req->login, pm->peer->login, MAX_LOGIN_SZ);
     pm->running.req = requestLink(req);
     pm->running.e = storeCreateEntry(url, url, req->flags, req->method);
-    pm->running.sc = storeClientListAdd(pm->running.e, pm);
+    pm->running.sc = storeClientRegister(pm->running.e, pm);
     pm->running.buf = memAllocate(MEM_4K_BUF);
     fwdStartPeer(pm->peer, pm->running.e, pm->running.req);
     storeClientCopy(pm->running.sc, pm->running.e, 0, 0, 4096, pm->running.buf, peerMonitorFetchReplyHeaders, pm);
@@ -160,7 +160,7 @@ peerMonitorCompleted(PeerMonitor * pm)
 {
     int state = PEER_ALIVE;
     peer *p = pm->peer;
-    storeUnregister(pm->running.sc, pm->running.e, pm);
+    storeClientUnregister(pm->running.sc, pm->running.e, pm);
     storeUnlockObject(pm->running.e);
     requestUnlink(pm->running.req);
     memFree(pm->running.buf, MEM_4K_BUF);
