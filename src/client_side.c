@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.640 2006/06/05 13:32:10 hno Exp $
+ * $Id: client_side.c,v 1.641 2006/06/05 20:36:20 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3416,7 +3416,6 @@ clientProcessMiss(clientHttpRequest * http)
 	storeReleaseRequest(http->entry);
 	httpRedirectReply(rep, http->redirect.status, http->redirect.location);
 	httpReplySwapOut(rep, http->entry);
-	httpReplyAbsorb(http->entry->mem_obj->reply, rep);
 	storeComplete(http->entry);
 	return;
     }

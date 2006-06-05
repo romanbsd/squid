@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.c,v 1.184 2006/05/27 15:50:16 serassio Exp $
+ * $Id: errorpage.c,v 1.185 2006/06/05 20:36:20 hno Exp $
  *
  * DEBUG: section 4     Error Generation
  * AUTHOR: Duane Wessels
@@ -320,7 +320,6 @@ errorAppendEntry(StoreEntry * entry, ErrorState * err)
      */
     authenticateFixHeader(rep, err->auth_user_request, err->request, 0, 1);
     httpReplySwapOut(rep, entry);
-    httpReplyAbsorb(mem->reply, rep);
     EBIT_CLR(entry->flags, ENTRY_FWD_HDR_WAIT);
     storeBufferFlush(entry);
     storeComplete(entry);
