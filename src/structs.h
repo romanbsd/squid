@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.470 2006/06/04 02:27:54 hno Exp $
+ * $Id: structs.h,v 1.471 2006/06/05 21:59:44 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1606,6 +1606,9 @@ struct _store_client {
     delay_id delay_id;
 #endif
     dlink_node node;
+#if STORE_CLIENT_LIST_DEBUG
+    void *owner;
+#endif
 };
 
 
