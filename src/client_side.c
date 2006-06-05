@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.639 2006/06/04 03:00:43 hno Exp $
+ * $Id: client_side.c,v 1.640 2006/06/05 13:32:10 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -694,6 +694,7 @@ clientHandleETagMiss(clientHttpRequest * http)
     safe_free(request->vary_hdr);
     storeUnregister(http->sc, entry, http);
     storeUnlockObject(entry);
+    http->entry = NULL;
     clientProcessRequest(http);
 }
 
