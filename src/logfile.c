@@ -1,5 +1,5 @@
 /*
- * $Id: logfile.c,v 1.15 2006/05/16 04:50:54 hno Exp $
+ * $Id: logfile.c,v 1.16 2006/06/05 21:06:34 serassio Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Duane Wessels
@@ -37,6 +37,12 @@
 static void logfileWriteWrapper(Logfile * lf, const void *buf, size_t len);
 
 #if HAVE_SYSLOG
+
+/* Define LOG_AUTHPRIV as LOG_AUTH on systems still using the old deprecated LOG_AUTH */
+#if !defined(LOG_AUTHPRIV) && defined(LOG_AUTH)
+#define LOG_AUTHPRIV LOG_AUTH
+#endif
+
 typedef struct {
     const char *name;
     int value;
