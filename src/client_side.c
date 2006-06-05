@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.642 2006/06/05 22:47:01 hno Exp $
+ * $Id: client_side.c,v 1.643 2006/06/05 23:20:24 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -806,12 +806,6 @@ clientProcessExpired(void *data)
     http->request->flags.refresh = 1;
     http->old_entry = http->entry;
     http->old_sc = http->sc;
-    /*
-     * Assert that 'http' is already a client of old_entry.  If 
-     * it is not, then the beginning of the object data might get
-     * freed from memory before we need to access it.
-     */
-    assert(http->sc->callback_data == http);
     if (http->entry->mem_obj && http->entry->mem_obj->ims_entry) {
 	entry = http->entry->mem_obj->ims_entry;
 	debug(33, 5) ("clientProcessExpired: collapsed request\n");
