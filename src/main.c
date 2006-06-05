@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.378 2006/06/03 20:26:19 hno Exp $
+ * $Id: main.c,v 1.379 2006/06/05 12:44:33 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -753,6 +753,9 @@ main(int argc, char **argv)
     if (-1 == opt_send_signal)
 	if (checkRunningPid())
 	    exit(1);
+
+    /* Make sure the OS allows core dumps if enabled in squid.conf */
+    enableCoredumps();
 
 #if TEST_ACCESS
     comm_init();
