@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_diskd.c,v 1.29 2005/05/17 16:56:43 hno Exp $
+ * $Id: store_io_diskd.c,v 1.30 2006/06/05 07:48:04 hno Exp $
  *
  * DEBUG: section 79    Squid-side DISKD I/O functions.
  * AUTHOR: Duane Wessels
@@ -175,6 +175,7 @@ storeDiskdClose(SwapDir * SD, storeIOState * sio)
     diskdstate_t *diskdstate = sio->fsstate;
     debug(79, 3) ("storeDiskdClose: dirno %d, fileno %08X\n", SD->index,
 	sio->swap_filen);
+    diskdstate->flags.close_request = 1;
     x = storeDiskdSend(_MQD_CLOSE,
 	SD,
 	diskdstate->id,
@@ -186,7 +187,6 @@ storeDiskdClose(SwapDir * SD, storeIOState * sio)
 	debug(79, 1) ("storeDiskdSend CLOSE: %s\n", xstrerror());
 	storeDiskdIOCallback(sio, DISK_ERROR);
     }
-    diskdstate->flags.close_request = 1;
     diskd_stats.close.ops++;
 }
 
