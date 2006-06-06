@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_manager.c,v 1.28 2006/06/05 20:36:20 hno Exp $
+ * $Id: cache_manager.c,v 1.29 2006/06/06 17:38:59 hno Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Duane Wessels
@@ -120,7 +120,9 @@ cachemgrParseUrl(const char *url)
     } else if (request[0] == '\0') {
 	xstrncpy(request, "menu", MAX_URL);
 #endif
-    } else if ((a = cachemgrFindAction(request)) == NULL) {
+    }
+    request[strcspn(request, "/")] = '\0';
+    if ((a = cachemgrFindAction(request)) == NULL) {
 	debug(16, 1) ("cachemgrParseUrl: action '%s' not found\n", request);
 	return NULL;
     } else {
