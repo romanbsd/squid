@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.239 2006/06/05 12:44:33 hno Exp $
+ * $Id: tools.c,v 1.240 2006/06/06 07:28:59 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1271,7 +1271,7 @@ void
 setUmask(mode_t mask)
 {
     static mode_t orig_umask = ~0;
-    if (orig_umask == ~0) {
+    if (orig_umask == (mode_t) ~ 0) {
 	/* Unfortunately, there is no way to get the current
 	 * umask value without setting it.
 	 */
