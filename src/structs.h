@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.475 2006/06/06 06:37:41 hno Exp $
+ * $Id: structs.h,v 1.476 2006/06/06 17:40:02 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2146,6 +2146,9 @@ struct _MemPool {
 #endif
     Stack pstack;		/* stack for free pointers */
     MemPoolMeter meter;
+#if DEBUG_MEMPOOL
+    MemPoolMeter diff_meter;
+#endif
 };
 
 struct _ClientInfo {
