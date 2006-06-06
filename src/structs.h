@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.474 2006/06/06 05:57:55 hno Exp $
+ * $Id: structs.h,v 1.475 2006/06/06 06:37:41 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1395,6 +1395,7 @@ struct _peer {
 	unsigned int closest_only:1;
 #if USE_HTCP
 	unsigned int htcp:1;
+	unsigned int htcp_oldsquid:1;
 #endif
 	unsigned int no_netdb_exchange:1;
 #if DELAY_POOLS
