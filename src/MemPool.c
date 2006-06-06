@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.35 2006/06/06 17:40:02 hno Exp $
+ * $Id: MemPool.c,v 1.36 2006/06/06 17:40:53 hno Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -426,8 +426,8 @@ memReport(StoreEntry * e)
     int inuse_count = 0;
     int idle_count = 0;
     int i;
-#if DEBUG_MEMPOOL
     int diff = 0;
+#if DEBUG_MEMPOOL
     char *arg = strrchr(e->mem_obj->url, '/');
     if (arg) {
 	arg++;
