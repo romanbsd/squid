@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.643 2006/06/05 23:20:24 hno Exp $
+ * $Id: client_side.c,v 1.644 2006/06/06 04:39:55 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1460,12 +1460,6 @@ clientInterpretRequestHeaders(clientHttpRequest * http)
 	if (request->range)
 	    request->flags.range = 1;
     }
-    /* If any connection has been pinned to this client, force keep alive */
-    if (http->conn->pinned) {
-	request->flags.must_keepalive = 1;
-	request->flags.auth = 1;
-	request->flags.pinned = 1;
-    }
     if (httpHeaderHas(req_hdr, HDR_AUTHORIZATION))
 	request->flags.auth = 1;
     else if (request->login[0] != '\0')
@@ -1877,15 +1871,7 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
 		    ||
 		    (strncasecmp(value, "Negotiate", 9) == 0 &&
 			(value[9] == '\0' || value[9] == ' '))) {
-
-		    if (!request->flags.accelerated) {
-			httpHeaderPutStr(hdr, HDR_PROXY_SUPPORT, "Session-Based-Authentication");
-			httpHeaderPutStr(hdr, HDR_CONNECTION, "Proxy-support");
-		    }
-		    request->flags.pinned = 1;
-		    request->flags.must_keepalive = 1;
-		    http->conn->pinned = 1;
-		    break;
+		    httpHeaderDelAt(hdr, pos);
 		}
 	    }
 	}

@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.471 2006/06/05 21:59:44 hno Exp $
+ * $Id: structs.h,v 1.472 2006/06/06 04:39:55 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1234,7 +1234,6 @@ struct _ConnStateData {
     struct in_addr log_addr;
     char rfc931[USER_IDENT_SZ];
     int nrequests;
-    int pinned;			/* Is this connection pinned */
     struct {
 	int n;
 	time_t until;
@@ -1784,7 +1783,6 @@ struct _request_flags {
     unsigned int body_sent:1;
     unsigned int reset_tcp:1;
     unsigned int must_keepalive:1;
-    unsigned int pinned:1;	/* If set, this request is tightly tied to a client-side connection */
 #if FOLLOW_X_FORWARDED_FOR
     /* XXX this flag could be eliminated;
      * see comments in clientAccessCheck */

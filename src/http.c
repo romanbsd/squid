@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.405 2006/05/27 12:41:32 hno Exp $
+ * $Id: http.c,v 1.406 2006/06/06 04:39:55 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -727,12 +727,8 @@ httpReadReply(int fd, void *data)
 		    }
 		}
 		if (keep_alive) {
-		    if (httpState->request->flags.pinned) {
-			client_addr = &httpState->request->client_addr;
-			client_port = httpState->request->client_port;
-		    }
 #if LINUX_TPROXY
-		    else if ((Config.onoff.linux_tproxy) &&
+		    if ((Config.onoff.linux_tproxy) &&
 			((httpState->request->my_port == Config.tproxy_port) || (Config.tproxy_port == 0))) {
 			client_addr = &httpState->request->client_addr;
 		    }
