@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.36 2006/06/06 17:40:53 hno Exp $
+ * $Id: MemPool.c,v 1.37 2006/06/06 17:43:08 hno Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -385,6 +385,7 @@ memTotalAllocated(void)
     return TheMeter.alloc.level;
 }
 
+#if DEBUG_MEMPOOL
 static void
 memPoolDiffReport(const MemPool * pool, StoreEntry * e)
 {
@@ -400,6 +401,7 @@ memPoolDiffReport(const MemPool * pool, StoreEntry * e)
 	diff.alloc.level, pool->meter.inuse.level, pool->meter.idle.level,
 	e);
 }
+#endif
 
 static void
 memPoolReport(MemPool * pool, StoreEntry * e, int diff)
