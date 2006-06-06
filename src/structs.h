@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.472 2006/06/06 04:39:55 hno Exp $
+ * $Id: structs.h,v 1.473 2006/06/06 05:23:17 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1783,11 +1783,6 @@ struct _request_flags {
     unsigned int body_sent:1;
     unsigned int reset_tcp:1;
     unsigned int must_keepalive:1;
-#if FOLLOW_X_FORWARDED_FOR
-    /* XXX this flag could be eliminated;
-     * see comments in clientAccessCheck */
-    unsigned int done_follow_x_forwarded_for;
-#endif
 };
 
 struct _link_list {

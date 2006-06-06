@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.644 2006/06/06 04:39:55 hno Exp $
+ * $Id: client_side.c,v 1.645 2006/06/06 05:23:17 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -331,7 +331,6 @@ clientFollowXForwardedForDone(int answer, void *data)
 	    inet_ntoa(conn->log_addr));
     }
     stringClean(&request->x_forwarded_for_iterator);
-    request->flags.done_follow_x_forwarded_for = 1;
     http->acl_checklist = NULL;	/* XXX do we need to aclChecklistFree() ? */
     clientAccessCheck(http);
 }
