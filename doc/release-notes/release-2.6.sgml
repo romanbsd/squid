@@ -1,8 +1,8 @@
 <!doctype linuxdoc system>
 <article>
-<title>Squid 2.6.PRE1 release notes</title>
+<title>Squid 2.6.PRE2 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.12 2006/05/31 12:42:52 serassio Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.13 2006/06/06 08:20:55 hno Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
