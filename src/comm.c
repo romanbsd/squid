@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.347 2006/05/29 16:32:39 hno Exp $
+ * $Id: comm.c,v 1.348 2006/06/06 20:06:36 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -786,9 +786,7 @@ commUpdateEvents(int fd, int force)
     int need_write = 0;
 
     if (F->read_handler
-#if USE_EPOLL
-	&& !F->epoll_backoff
-#endif
+	&& !F->backoff
 	) {
 	switch (F->read_pending) {
 	case COMM_PENDING_NORMAL:

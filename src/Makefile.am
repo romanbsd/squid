@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.47 2006/06/02 12:05:33 serassio Exp $
+#  $Id: Makefile.am,v 1.48 2006/06/06 20:06:35 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -112,6 +112,7 @@ EXTRA_squid_SOURCES = \
 	comm_epoll.c \
 	comm_poll.c \
 	comm_select.c \
+	comm_generic.c \
 	win32.c
 
 squid_SOURCES = \
