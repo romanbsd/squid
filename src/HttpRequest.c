@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpRequest.c,v 1.39 2006/05/27 11:42:29 hno Exp $
+ * $Id: HttpRequest.c,v 1.40 2006/06/06 05:57:55 hno Exp $
  *
  * DEBUG: section 73    HTTP Request
  * AUTHOR: Duane Wessels
@@ -80,6 +80,9 @@ requestDestroy(request_t * req)
     }
     assert(req->etags == NULL);
     safe_free(req->etag);
+    if (req->pinned_connection)
+	cbdataUnlock(req->pinned_connection);
+    req->pinned_connection = NULL;
     memFree(req, MEM_REQUEST_T);
 }
 
