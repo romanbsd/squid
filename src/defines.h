@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.114 2006/05/25 02:48:43 hno Exp $
+ * $Id: defines.h,v 1.115 2006/06/07 22:55:45 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -307,6 +307,9 @@
 #endif
 #ifndef O_BINARY
 #define O_BINARY 0
+#endif
+#ifndef O_NOATIME
+#define O_NOATIME 0
 #endif
 
 /* Windows Port */

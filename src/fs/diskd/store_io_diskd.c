@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_diskd.c,v 1.30 2006/06/05 07:48:04 hno Exp $
+ * $Id: store_io_diskd.c,v 1.31 2006/06/07 22:55:45 hno Exp $
  *
  * DEBUG: section 79    Squid-side DISKD I/O functions.
  * AUTHOR: Duane Wessels
@@ -76,7 +76,7 @@ storeDiskdOpen(SwapDir * SD, StoreEntry * e, STFNCB * file_callback,
 
     sio->swap_filen = f;
     sio->swap_dirn = SD->index;
-    sio->mode = O_RDONLY | O_BINARY;
+    sio->mode = O_RDONLY | O_BINARY | O_NOATIME;
     sio->callback = callback;
     sio->callback_data = callback_data;
     sio->e = e;
