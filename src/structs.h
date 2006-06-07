@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.477 2006/06/06 20:06:36 hno Exp $
+ * $Id: structs.h,v 1.478 2006/06/07 13:03:41 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1893,6 +1893,9 @@ struct _refresh_t {
 	unsigned int override_lastmod:1;
 	unsigned int reload_into_ims:1;
 	unsigned int ignore_reload:1;
+	unsigned int ignore_no_cache:1;
+	unsigned int ignore_private:1;
+	unsigned int ignore_auth:1;
 #endif
     } flags;
 };
