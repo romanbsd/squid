@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.349 2006/06/07 20:04:22 hno Exp $
+ * $Id: comm.c,v 1.350 2006/06/07 21:11:18 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -784,6 +784,8 @@ commUpdateEvents(int fd)
     fde *F = &fd_table[fd];
     int need_read = 0;
     int need_write = 0;
+
+    assert(F->flags.open);
 
     if (F->read_handler
 	&& !F->backoff
