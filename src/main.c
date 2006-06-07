@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.380 2006/06/07 21:14:55 hno Exp $
+ * $Id: main.c,v 1.381 2006/06/07 23:13:14 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -1129,7 +1129,6 @@ SquidShutdown(void *unused)
     mimeFreeMemory();
     errorClean();
 #endif
-    comm_select_shutdown();
 #if !XMALLOC_TRACE
     if (opt_no_daemon) {
 	fd_close(0);
@@ -1137,6 +1136,7 @@ SquidShutdown(void *unused)
 	fd_close(2);
     }
 #endif
+    comm_select_shutdown();
     fdDumpOpen();
     fdFreeMemory();
     memClean();
