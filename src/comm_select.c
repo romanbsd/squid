@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.73 2006/06/02 00:07:40 hno Exp $
+ * $Id: comm_select.c,v 1.74 2006/06/07 20:04:22 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -656,7 +656,7 @@ commIncomingStats(StoreEntry * sentry)
 }
 
 void
-commSetEvents(int fd, int need_read, int need_write, int force)
+commSetEvents(int fd, int need_read, int need_write)
 {
     if (need_read && !FD_ISSET(fd, &global_readfds)) {
 	FD_SET(fd, &global_readfds);

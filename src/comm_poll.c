@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.13 2006/06/03 20:26:19 hno Exp $
+ * $Id: comm_poll.c,v 1.14 2006/06/07 20:04:22 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -606,7 +606,7 @@ commIncomingStats(StoreEntry * sentry)
 }
 
 void
-commSetEvents(int fd, int need_read, int need_write, int force)
+commSetEvents(int fd, int need_read, int need_write)
 {
     /* XXX Here we could optimize the poll arrays quite considerably */
 }

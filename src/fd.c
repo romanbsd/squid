@@ -1,6 +1,6 @@
 
 /*
- * $Id: fd.c,v 1.50 2006/05/30 13:05:57 hno Exp $
+ * $Id: fd.c,v 1.51 2006/06/07 20:04:22 hno Exp $
  *
  * DEBUG: section 51    Filedescriptor Functions
  * AUTHOR: Duane Wessels
@@ -84,7 +84,7 @@ fd_close(int fd)
 	assert(F->write_handler == NULL);
     }
     debug(51, 3) ("fd_close FD %d %s\n", fd, F->desc);
-    commSetEvents(fd, 0, 0, 0);
+    commSetEvents(fd, 0, 0);
     F->flags.open = 0;
     fdUpdateBiggest(fd, 0);
     Number_FD--;

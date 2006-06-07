@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.495 2006/06/07 19:43:51 hno Exp $
+ * $Id: protos.h,v 1.496 2006/06/07 20:04:22 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -186,8 +186,8 @@ extern void commCloseAllSockets(void);
 extern void comm_select_init(void);
 extern void comm_select_shutdown(void);
 extern int comm_select(int);
-extern void commUpdateEvents(int fd, int force);
-extern void commSetEvents(int fd, int need_read, int need_write, int force);
+extern void commUpdateEvents(int fd);
+extern void commSetEvents(int fd, int need_read, int need_write);
 extern void commUpdateReadHandler(int, PF *, void *);
 extern void commUpdateWriteHandler(int, PF *, void *);
 extern void comm_quick_poll_required(void);
