@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.379 2006/06/05 12:44:33 hno Exp $
+ * $Id: main.c,v 1.380 2006/06/07 21:14:55 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -37,8 +37,6 @@
 #ifdef LINUX_TPROXY
 #include <linux/capability.h>
 #include <sys/prctl.h>
-#undef __FD_SETSIZE
-#define __FD_SETSIZE SQUID_MAXFD
 #endif
 
 #if defined(USE_WIN32_SERVICE) && defined(_SQUID_WIN32_)
