@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.17 2006/06/07 20:04:22 hno Exp $
+ * $Id: comm_epoll.c,v 1.18 2006/06/07 20:31:39 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -100,7 +100,7 @@ commSetEvents(int fd, int need_read, int need_write)
     ev.events = 0;
     ev.data.fd = fd;
 
-    if (need_read & !F->backoff)
+    if (need_read)
 	ev.events |= EPOLLIN;
 
     if (need_write)
