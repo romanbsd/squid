@@ -1,6 +1,6 @@
 
 /*
- * $Id: delay_pools.c,v 1.30 2006/06/04 02:27:54 hno Exp $
+ * $Id: delay_pools.c,v 1.31 2006/06/08 12:53:20 hno Exp $
  *
  * DEBUG: section 77    Delay Pools
  * AUTHOR: David Luyer <david@luyer.net>
@@ -37,6 +37,10 @@
 
 #if DELAY_POOLS
 #include "squid.h"
+
+#if HAVE_SYS_SELECT_H
+#include <sys/select.h>
+#endif
 
 struct _class1DelayPool {
     int class;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.21 2006/06/08 00:05:35 hno Exp $
+ * $Id: comm_epoll.c,v 1.22 2006/06/08 12:53:20 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -33,6 +33,8 @@
  */
 
 #include "squid.h"
+
+#include <sys/epoll.h>
 
 #define MAX_EVENTS	256	/* max events to process in one go */
 
@@ -148,10 +150,10 @@ comm_select(int msec)
     int num;
     int fd;
     struct epoll_event *cevents;
-    double timeout;
     double start = current_dtime;
 
-    timeout = current_dtime + (msec / 1000.0);
+    if (msec > MAX_POLL_TIME)
+	msec = MAX_POLL_TIME;
 
     debug(50, 3) ("comm_epoll: timeout %d\n", msec);
 

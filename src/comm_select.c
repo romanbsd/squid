@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.74 2006/06/07 20:04:22 hno Exp $
+ * $Id: comm_select.c,v 1.75 2006/06/08 12:53:20 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -33,6 +33,10 @@
  */
 
 #include "squid.h"
+
+#if HAVE_SYS_SELECT_H
+#include <sys/select.h>
+#endif
 
 static int MAX_POLL_TIME = 1000;	/* see also comm_quick_poll_required() */
 

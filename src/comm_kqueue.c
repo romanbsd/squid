@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_kqueue.c,v 1.4 2006/06/08 00:00:52 hno Exp $
+ * $Id: comm_kqueue.c,v 1.5 2006/06/08 12:53:20 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -34,6 +34,10 @@
 
 #include "squid.h"
 #include "comm_generic.c"
+
+#if HAVE_SYS_EVENT_H
+#include <sys/event.h>
+#endif
 
 #define KE_LENGTH       128
 #define STATE_READ      1
