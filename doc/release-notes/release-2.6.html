@@ -7,7 +7,7 @@
 <BODY>
 <H1>Squid 2.6.PRE2 release notes</H1>
 
-<H2>Squid Developers</H2>$Id: release-2.6.html,v 1.12 2006/06/08 00:20:07 hno Exp $
+<H2>Squid Developers</H2>$Id: release-2.6.html,v 1.13 2006/06/08 00:43:34 hno Exp $
 <HR>
 <EM>This document contains the release notes for version 2.6 of Squid.
 Squid is a WWW Cache application developed by the Web Caching community.
@@ -47,7 +47,7 @@ benefit in accelerator setups but also provides some benefits to non accelerator
 setups.</LI>
 <LI>Support for epoll under Linux and kqueue under FreeBSD, which gives Squid
 the ability to handle many many more concurrent requests with lower CPU
-overhead and.  This feature is of particular benefit to very busy caches 
+overhead. This feature is of particular benefit to very busy caches 
 as the poll() and select() routines do not scale anywhere near as well as epoll 
 and kqueue does under high loads.</LI>
 <LI>SSL assisted hardware encryption making use of OpenSSL functionality 
