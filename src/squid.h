@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.240 2006/06/04 08:24:33 serassio Exp $
+ * $Id: squid.h,v 1.241 2006/06/08 00:00:52 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -260,6 +260,12 @@
 
 #if USE_EPOLL
 #include <sys/epoll.h>
+#endif
+
+#if USE_KQUEUE
+#if HAVE_SYS_EVENT_H
+#include <sys/event.h>
+#endif
 #endif
 
 #if defined(HAVE_STDARG_H)
