@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_null.c,v 1.6 2006/05/18 12:57:11 hno Exp $
+ * $Id: store_null.c,v 1.7 2006/06/08 13:39:52 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -78,6 +78,15 @@ storeNullDirInit(SwapDir * sd)
 	NULL, 0.0, 1);
 }
 
+/*
+ * Only "free" the filesystem specific stuff here
+ */
+static void
+storeNullDirFree(SwapDir * s)
+{
+}
+
+
 static void
 storeNullDirRebuildComplete(void *unused)
 {
@@ -121,6 +130,7 @@ storeNullDirParse(SwapDir * sd, int index, char *path)
     sd->path = xstrdup(path);
     sd->statfs = storeNullDirStats;
     sd->init = storeNullDirInit;
+    sd->freefs = storeNullDirFree;
     sd->checkobj = storeNullDirCheckObj;
     sd->checkload = storeNullDirCheckLoadAv;
     sd->log.clean.start = storeNullDirWriteCleanStart;
