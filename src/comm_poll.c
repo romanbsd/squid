@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.16 2006/06/09 14:47:13 hno Exp $
+ * $Id: comm_poll.c,v 1.17 2006/06/09 19:13:37 serassio Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -307,7 +307,7 @@ comm_select(int msec)
 	/* Handle any fs callbacks that need doing */
 	storeDirCallback();
 #if DELAY_POOLS
-	memset(slowfds, 0, BiggestFD);
+	memset(slowfds, 0, Biggest_FD);
 #endif
 	if (commCheckICPIncoming)
 	    comm_poll_icp_incoming();
