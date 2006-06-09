@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.240 2006/06/06 07:28:59 hno Exp $
+ * $Id: tools.c,v 1.241 2006/06/09 14:22:38 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1278,4 +1278,17 @@ setUmask(mode_t mask)
 	orig_umask = umask(mask);
     }
     umask(mask | orig_umask);
+}
+
+/*
+ * xusleep, as usleep but accepts longer pauses
+ */
+int
+xusleep(unsigned int usec)
+{
+    /* XXX emulation of usleep() */
+    struct timeval sl;
+    sl.tv_sec = usec / 1000000;
+    sl.tv_usec = usec % 1000000;
+    return select(0, NULL, NULL, NULL, &sl);
 }

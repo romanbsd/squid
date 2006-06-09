@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipc.c,v 1.35 2006/06/07 21:19:18 hno Exp $
+ * $Id: ipc.c,v 1.36 2006/06/09 14:22:38 hno Exp $
  *
  * DEBUG: section 54    Interprocess Communication
  * AUTHOR: Duane Wessels
@@ -229,13 +229,8 @@ ipcCreate(int type, const char *prog, const char *const args[], const char *name
 	    *wfd = pwfd;
 	fd_table[prfd].flags.ipc = 1;
 	fd_table[pwfd].flags.ipc = 1;
-	if (Config.sleep_after_fork) {
-	    /* XXX emulation of usleep() */
-	    struct timeval sl;
-	    sl.tv_sec = Config.sleep_after_fork / 1000000;
-	    sl.tv_usec = Config.sleep_after_fork % 1000000;
-	    select(0, NULL, NULL, NULL, &sl);
-	}
+	if (Config.sleep_after_fork)
+	    xusleep(Config.sleep_after_fork);
 	return pid;
     }
     /* child */
