@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.49 2006/06/08 00:00:52 hno Exp $
+#  $Id: Makefile.am,v 1.50 2006/06/09 13:00:03 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -303,7 +303,7 @@ DEFAULT_PID_FILE        = $(DEFAULT_LOG_PREFIX)/squid.pid
 DEFAULT_SWAP_DIR        = $(localstatedir)/cache
 DEFAULT_PINGER		= $(libexecdir)/`echo pinger | sed '$(transform);s/$$/$(EXEEXT)/'`
 DEFAULT_UNLINKD		= $(libexecdir)/`echo unlinkd | sed '$(transform);s/$$/$(EXEEXT)/'`
-DEFAULT_DISKD		= $(libexecdir)/`echo diskd | sed '$(transform);s/$$/$(EXEEXT)/'`
+DEFAULT_DISKD		= $(libexecdir)/`echo diskd_daemon | sed '$(transform);s/$$/$(EXEEXT)/'`
 DEFAULT_ICON_DIR	= $(datadir)/icons
 DEFAULT_ERROR_DIR	= $(datadir)/errors/@ERR_DEFAULT_LANGUAGE@
 DEFAULT_MIB_PATH	= $(datadir)/mib.txt
