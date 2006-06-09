@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.339 2006/06/09 11:07:51 hno Exp $
+# $Id: cf.data.pre,v 1.340 2006/06/09 12:38:16 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -824,7 +824,7 @@ NOCOMMENT_START
 # Apache mod_gzip and mod_deflate known to be broken so don't trust
 # Apache to signal ETag correctly on such responses
 acl Apache rep_header Server ^Apache
-broken_vary_encoding accept apache
+broken_vary_encoding allow apache
 NOCOMMENT_END
 DOC_END
 
