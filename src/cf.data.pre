@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.340 2006/06/09 12:38:16 hno Exp $
+# $Id: cf.data.pre,v 1.341 2006/06/10 22:56:22 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -4217,6 +4217,7 @@ NAME: wccp2_service
 TYPE: wccp2_service
 LOC: Config.Wccp2.info
 DEFAULT: none
+DEFAULT_IF_NONE: standard 0
 IFDEF: USE_WCCPv2
 DOC_START
 	WCCP2 allows for multiple traffic services. There are two
