@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpReply.c,v 1.55 2006/06/05 22:01:22 hno Exp $
+ * $Id: HttpReply.c,v 1.56 2006/06/11 00:28:19 hno Exp $
  *
  * DEBUG: section 58    HTTP Reply (Response)
  * AUTHOR: Alex Rousskov
@@ -196,7 +196,7 @@ httpReplySwapOut(HttpReply * rep, StoreEntry * e)
     packerToStoreInit(&p, e);
     httpReplyPackInto(e->mem_obj->reply, &p);
     packerClean(&p);
-    rep->hdr_sz = e->mem_obj->inmem_hi;
+    rep->hdr_sz = e->mem_obj->inmem_hi - rep->body.mb.size;
 }
 
 #if UNUSED_CODE
