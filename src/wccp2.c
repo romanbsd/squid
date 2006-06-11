@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.12 2006/06/04 02:54:29 hno Exp $
+ * $Id: wccp2.c,v 1.13 2006/06/11 00:12:39 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -1307,6 +1307,12 @@ dump_wccp2_service(StoreEntry * e, const char *label, void *v)
 void
 free_wccp2_service(void *v)
 {
+}
+
+int
+check_null_wccp2_service(void *v)
+{
+    return !wccp2_service_list_head;
 }
 
 /*

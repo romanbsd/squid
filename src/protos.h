@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.497 2006/06/09 14:22:38 hno Exp $
+ * $Id: protos.h,v 1.498 2006/06/11 00:12:39 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1379,6 +1379,7 @@ const char *externalAclMessage(external_acl_entry * entry);
 extern void parse_wccp2_service(void *v);
 extern void free_wccp2_service(void *v);
 extern void dump_wccp2_service(StoreEntry * e, const char *label, void *v);
+extern int check_null_wccp2_service(void *v);
 
 extern void parse_wccp2_service_info(void *v);
 extern void free_wccp2_service_info(void *v);
