@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp.c,v 1.29 2006/05/25 05:18:32 hno Exp $
+ * $Id: wccp.c,v 1.30 2006/06/11 00:11:48 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Glenn Chisholm
@@ -78,7 +78,6 @@ struct wccp_assign_bucket_t {
     int number;
 };
 
-static int theWccpConnection = -1;
 static int theWccpConnection = -1;
 static struct wccp_here_i_am_t wccp_here_i_am;
 static struct wccp_i_see_you_t wccp_i_see_you;
