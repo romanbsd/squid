@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.369 2006/06/10 22:51:22 hno Exp $
+dnl  $Id: configure.in,v 1.370 2006/06/11 00:52:21 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.369 $)dnl
+AC_REVISION($Revision: 1.370 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -541,14 +541,17 @@ if test $USE_WCCP = 1; then
     AC_DEFINE(USE_WCCP, 1, [Define to enable WCCP])
 fi
 
+USE_WCCPv2=1
 AC_ARG_ENABLE(wccpv2,
-[  --enable-wccpv2          Enable Web Cache Coordination V2 Protocol],
-[ if test "$enableval" = "yes" ; then
-    echo "Web Cache Coordination V2 Protocol enabled"
-    AC_DEFINE(USE_WCCPv2, 1, [Define to enable WCCP V2])
+[  --disable-wccpv2          Enable Web Cache Coordination V2 Protocol],
+[ if test "$enableval" = "no" ; then
+    echo "Web Cache Coordination V2 Protocol disabled"
+    USE_WCCPv2=0
   fi
 ])
- 
+if test $USE_WCCPv2 = 1; then
+    AC_DEFINE(USE_WCCPv2, 1, [Define to enable WCCP V2])
+fi
 
 
 AC_ARG_ENABLE(kill-parent-hack,
