@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.374 2006/06/12 06:04:08 hno Exp $
+dnl  $Id: configure.in,v 1.375 2006/06/12 20:59:23 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.374 $)dnl
+AC_REVISION($Revision: 1.375 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -794,16 +794,15 @@ AC_ARG_WITH(coss-membuf-size,
 
 dnl COSS I/O method
 AC_ARG_ENABLE(coss-aio-ops,
-[  --enable-coss-aio-ops   Enable COSS I/O with Posix AIO (default is aufs I/O) ],
-[  if test "$enableval" = "yes"; then
+[  --enable-coss-aio-ops   Enable COSS I/O with Posix AIO (default is aufs I/O) ])
+if test "$enable_coss_aio_ops" = "yes"; then
       echo "Using Posix AIO method for COSS disk I/O"
       AC_DEFINE(USE_AUFSOPS, 0, [  Define this if you would like to use the aufs I/O method for
            disk I/O instead of the POSIX AIO method.])
-   else
+else
       AC_DEFINE(USE_AUFSOPS, 1, [  Define this if you would like to use the aufs I/O method for
            disk I/O instead of the POSIX AIO method.])
-   fi
-])
+fi
 
 dnl Enable select()
 AC_ARG_ENABLE(select,
