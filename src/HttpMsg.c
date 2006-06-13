@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpMsg.c,v 1.11 2005/05/17 16:56:37 hno Exp $
+ * $Id: HttpMsg.c,v 1.12 2006/06/13 14:12:17 hno Exp $
  *
  * DEBUG: section 74    HTTP Message
  * AUTHOR: Alex Rousskov
@@ -91,13 +91,15 @@ httpMsgIsolateHeaders(const char **parse_start, const char **blk_start, const ch
 int
 httpMsgIsPersistent(http_version_t http_ver, const HttpHeader * hdr)
 {
+    if (httpHeaderHasConnDir(hdr, "close"))
+	return 0;
 #if WHEN_SQUID_IS_HTTP1_1
     if ((http_ver.major >= 1) && (http_ver.minor >= 1)) {
 	/*
 	 * for modern versions of HTTP: persistent unless there is
 	 * a "Connection: close" header.
 	 */
-	return !httpHeaderHasConnDir(hdr, "close");
+	return 1;
     } else {
 #else
     {
