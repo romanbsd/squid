@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_ntlm.c,v 1.31 2006/06/11 00:27:36 hno Exp $
+ * $Id: auth_ntlm.c,v 1.32 2006/06/15 22:13:33 hno Exp $
  *
  * DEBUG: section 29    NTLM Authenticator
  * AUTHOR: Robert Collins
@@ -102,12 +102,10 @@ authNTLMDone(void)
 	helperStatefulFree(ntlmauthenticators);
     ntlmauthenticators = NULL;
     if (ntlm_request_pool) {
-	assert(memPoolInUseCount(ntlm_request_pool) == 0);
 	memPoolDestroy(ntlm_request_pool);
 	ntlm_request_pool = NULL;
     }
     if (ntlm_user_pool) {
-	assert(memPoolInUseCount(ntlm_user_pool) == 0);
 	memPoolDestroy(ntlm_user_pool);
 	ntlm_user_pool = NULL;
     }
