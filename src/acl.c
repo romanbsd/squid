@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.302 2006/06/04 02:27:54 hno Exp $
+ * $Id: acl.c,v 1.303 2006/06/17 23:31:03 hno Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -375,6 +375,8 @@ aclParseMethodList(void *curlist)
     while ((t = strtokFile())) {
 	q = memAllocate(MEM_INTLIST);
 	q->i = (int) urlParseMethod(t);
+	if (q->i == METHOD_NONE)
+	    self_destruct();
 	*(Tail) = q;
 	Tail = &q->next;
     }
