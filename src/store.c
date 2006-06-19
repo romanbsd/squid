@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.557 2006/06/08 15:02:04 hno Exp $
+ * $Id: store.c,v 1.558 2006/06/19 23:01:11 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1944,4 +1944,13 @@ storeResumeRead(StoreEntry * e)
 	commResumeFD(mem->serverfd);
 	mem->serverfd = 0;
     }
+}
+
+/* Reset defer state when FD goes away under our feets */
+void
+storeResetDefer(StoreEntry * e)
+{
+    EBIT_CLR(e->flags, ENTRY_DEFER_READ);
+    if (e->mem_obj)
+	e->mem_obj->serverfd = 0;
 }
