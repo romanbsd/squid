@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.108 2006/06/19 23:01:10 hno Exp $
+ * $Id: forward.c,v 1.109 2006/06/19 23:40:53 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -539,6 +539,12 @@ fwdConnectStart(void *data)
 	    if (!fs->peer)
 		fwdState->origin_tries++;
 	    comm_add_close_handler(fd, fwdServerClosed, fwdState);
+	    if (fs->peer)
+		hierarchyNote(&fwdState->request->hier, fs->code, fs->peer->host);
+	    else if (Config.onoff.log_ip_on_direct && fs->code == HIER_DIRECT)
+		hierarchyNote(&fwdState->request->hier, fs->code, fd_table[fd].ipaddr);
+	    else
+		hierarchyNote(&fwdState->request->hier, fs->code, name);
 	    fwdDispatch(fwdState);
 	    return;
 	} else {
