@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.377 2006/06/20 20:51:21 hno Exp $
+dnl  $Id: configure.in,v 1.378 2006/06/21 20:32:58 serassio Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.377 $)dnl
+AC_REVISION($Revision: 1.378 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -1815,11 +1815,14 @@ fi
 
 dnl Check for typedefs
 AC_CHECK_SIZEOF(void *)
+AC_CHECK_SIZEOF(char)
 AC_CHECK_SIZEOF(short)
 AC_CHECK_SIZEOF(int)
 AC_CHECK_SIZEOF(long)
 AC_CHECK_SIZEOF(long long)
 AC_CHECK_SIZEOF_SYSTYPE(__int64)
+AC_CHECK_SIZEOF_SYSTYPE(uint8_t)
+AC_CHECK_SIZEOF_SYSTYPE(u_int8_t)
 AC_CHECK_SIZEOF_SYSTYPE(int16_t)
 AC_CHECK_SIZEOF_SYSTYPE(uint16_t)
 AC_CHECK_SIZEOF_SYSTYPE(u_int16_t)
@@ -1830,6 +1833,12 @@ AC_CHECK_SIZEOF_SYSTYPE(int64_t)
 AC_CHECK_SIZEOF_SYSTYPE(uint64_t)
 AC_CHECK_SIZEOF_SYSTYPE(u_int64_t)
 
+dnl u_int8_t
+if test "x$ac_cv_sizeof_uint8_t" = "x1"; then
+	AC_CHECK_SYSTYPE(u_int8_t,uint8_t)
+elif test "x$ac_cv_sizeof_char" = "x1"; then
+	AC_CHECK_SYSTYPE(u_int8_t,unsigned char)
+fi
 dnl int16_t
 if test "x$ac_cv_sizeof_short" = "x2"; then
 	AC_CHECK_SYSTYPE(int16_t,short)
