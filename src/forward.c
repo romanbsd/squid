@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.110 2006/06/21 12:13:55 hno Exp $
+ * $Id: forward.c,v 1.111 2006/06/21 12:45:59 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -110,6 +110,8 @@ fwdStateFree(FwdState * fwdState)
 	    storeReleaseRequest(e);
 	}
     }
+    if (EBIT_TEST(e->flags, ENTRY_DEFER_READ))
+	storeResetDefer(e);
     if (storePendingNClients(e) > 0)
 	assert(!EBIT_TEST(e->flags, ENTRY_FWD_HDR_WAIT));
     p = fwdStateServerPeer(fwdState);
@@ -125,8 +127,6 @@ fwdStateFree(FwdState * fwdState)
     if (sfd > -1) {
 	comm_remove_close_handler(sfd, fwdServerClosed, fwdState);
 	fwdState->server_fd = -1;
-	if (EBIT_TEST(fwdState->entry->flags, ENTRY_DEFER_READ))
-	    storeResetDefer(fwdState->entry);
 	debug(17, 3) ("fwdStateFree: closing FD %d\n", sfd);
 	comm_close(sfd);
     }
