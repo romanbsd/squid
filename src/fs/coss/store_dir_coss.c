@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.46 2006/05/27 17:20:18 serassio Exp $
+ * $Id: store_dir_coss.c,v 1.47 2006/06/22 22:05:00 adrian Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -661,7 +661,7 @@ storeCossDirParse(SwapDir * sd, int index, char *path)
     if (size <= 0)
 	fatal("storeCossDirParse: invalid size value");
 
-    cs = xmalloc(sizeof(CossInfo));
+    cs = xcalloc(1, sizeof(CossInfo));
     if (cs == NULL)
 	fatal("storeCossDirParse: couldn't xmalloc() CossInfo!\n");
 
