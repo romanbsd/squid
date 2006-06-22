@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.445 2006/06/22 13:46:51 hno Exp $
+ * $Id: cache_cf.c,v 1.446 2006/06/22 23:08:07 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -559,6 +559,10 @@ configDoConfigure(void)
 #if USE_SSL
     Config.ssl_client.sslContext = sslCreateClientContext(Config.ssl_client.cert, Config.ssl_client.key, Config.ssl_client.version, Config.ssl_client.cipher, Config.ssl_client.options, Config.ssl_client.flags, Config.ssl_client.cafile, Config.ssl_client.capath, Config.ssl_client.crlfile);
 #endif
+    if (Config.onoff.pipeline_prefetch && Config.onoff.connection_oriented_auth) {
+	debug(22, 0) ("WARNING: forwarding of connection oriented authentication is incompatible with pipeline prefetching. Disabling support for connection oriented auth\n");
+	Config.onoff.connection_oriented_auth = 0;
+    }
 }
 
 /* Parse a time specification from the config file.  Store the
