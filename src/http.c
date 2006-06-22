@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.409 2006/06/07 19:43:51 hno Exp $
+ * $Id: http.c,v 1.410 2006/06/22 13:46:51 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -586,6 +586,18 @@ peer_supports_connection_pinning(HttpStateData * httpState)
     String header;
 
     if (!httpState->peer)
+	return 1;
+
+    if (!httpState->peer->connection_auth)
+	return 0;
+
+    if (httpState->peer->connection_auth == 1)
+	return 1;
+
+    if (httpState->peer->options.originserver)
+	return 1;
+
+    if (rep->sline.status == HTTP_PROXY_AUTHENTICATION_REQUIRED)
 	return 1;
 
     if (req->pinned_connection)

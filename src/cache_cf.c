@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.444 2006/06/17 23:29:41 hno Exp $
+ * $Id: cache_cf.c,v 1.445 2006/06/22 13:46:51 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1583,6 +1583,7 @@ parse_peer(peer ** head)
     p->http_port = (u_short) i;
     i = GetInteger();
     p->icp.port = (u_short) i;
+    p->connection_auth = -1;	/* auto */
     while ((token = strtok(NULL, w_space))) {
 	if (!strcasecmp(token, "proxy-only")) {
 	    p->options.proxy_only = 1;
@@ -1702,12 +1703,22 @@ parse_peer(peer ** head)
 	    safe_free(p->ssldomain);
 	    p->ssldomain = xstrdup(token + 10);
 #endif
+	} else if (strcmp(token, "front-end-https=off") == 0) {
+	    p->front_end_https = 0;
 	} else if (strcmp(token, "front-end-https") == 0) {
 	    p->front_end_https = 1;
 	} else if (strcmp(token, "front-end-https=on") == 0) {
 	    p->front_end_https = 1;
 	} else if (strcmp(token, "front-end-https=auto") == 0) {
-	    p->front_end_https = 2;
+	    p->front_end_https = -1;
+	} else if (strcmp(token, "connection-auth=off") == 0) {
+	    p->connection_auth = 0;
+	} else if (strcmp(token, "connection-auth") == 0) {
+	    p->connection_auth = 1;
+	} else if (strcmp(token, "connection-auth=on") == 0) {
+	    p->connection_auth = 1;
+	} else if (strcmp(token, "connection-auth=auto") == 0) {
+	    p->connection_auth = -1;
 	} else {
 	    debug(3, 0) ("parse_peer: token='%s'\n", token);
 	    self_destruct();

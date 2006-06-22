@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.481 2006/06/17 23:31:03 hno Exp $
+ * $Id: structs.h,v 1.482 2006/06/22 13:46:51 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1475,6 +1475,7 @@ struct _peer {
     SSL_SESSION *sslSession;
 #endif
     int front_end_https;
+    int connection_auth;
 };
 
 struct _net_db_name {
