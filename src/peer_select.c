@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.c,v 1.128 2006/06/22 21:52:29 hno Exp $
+ * $Id: peer_select.c,v 1.129 2006/06/22 23:26:46 hno Exp $
  *
  * DEBUG: section 44    Peer Selection Algorithm
  * AUTHOR: Duane Wessels
@@ -276,7 +276,7 @@ peerSelectFoo(ps_state * ps)
 	debug(44, 3) ("peerSelectFoo: direct = %s\n",
 	    DirectStr[ps->direct]);
     }
-    if (entry->ping_status == PING_NONE)
+    if (!entry || entry->ping_status == PING_NONE)
 	peerGetPinned(ps);
     if (entry == NULL) {
 	(void) 0;
@@ -323,10 +323,12 @@ peerGetPinned(ps_state * ps)
     if (clientGetPinnedInfo(request->pinned_connection, request, &peer) != -1) {
 	if (peer && peerAllowedToUse(peer, request)) {
 	    peerAddFwdServer(&ps->servers, peer, PINNED);
-	    ps->entry->ping_status = PING_DONE;		/* Skip ICP */
+	    if (ps->entry)
+		ps->entry->ping_status = PING_DONE;	/* Skip ICP */
 	} else if (!peer && ps->direct != DIRECT_NO) {
 	    peerAddFwdServer(&ps->servers, NULL, PINNED);
-	    ps->entry->ping_status = PING_DONE;		/* Skip ICP */
+	    if (ps->entry)
+		ps->entry->ping_status = PING_DONE;	/* Skip ICP */
 	}
     }
 }
