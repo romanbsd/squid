@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.232 2006/06/17 23:31:03 hno Exp $
+ * $Id: enums.h,v 1.233 2006/06/22 21:52:29 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -326,6 +326,7 @@ typedef enum {
     ANY_OLD_PARENT,
     USERHASH_PARENT,
     SOURCEHASH_PARENT,
+    PINNED,
     HIER_MAX
 } hier_code;
 

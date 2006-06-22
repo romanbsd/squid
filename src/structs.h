@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.482 2006/06/22 13:46:51 hno Exp $
+ * $Id: structs.h,v 1.483 2006/06/22 21:52:29 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1242,6 +1242,7 @@ struct _ConnStateData {
 	char *host;		/* host name of pinned connection */
 	int port;		/* port of pinned connection */
 	int pinned;		/* this connection was pinned */
+	peer *peer;		/* peer the connection goes via */
     } pinning;
 };
 
