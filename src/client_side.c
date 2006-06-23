@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.650 2006/06/22 23:08:07 hno Exp $
+ * $Id: client_side.c,v 1.651 2006/06/23 02:10:01 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1463,7 +1463,9 @@ clientInterpretRequestHeaders(clientHttpRequest * http)
 #endif
 	    request->flags.nocache = 1;
     }
-    if (!Config.onoff.connection_oriented_auth)
+    if (http->conn->port->no_connection_auth)
+	request->flags.no_connection_auth = 1;
+    if (Config.onoff.pipeline_prefetch)
 	request->flags.no_connection_auth = 1;
 
     /* ignore range header in non-GETs */
