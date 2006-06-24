@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.10 2006/05/24 20:48:38 serassio Exp $
+ * $Id: win32.c,v 1.11 2006/06/24 09:35:40 serassio Exp $
  *
  * * * * * * * * Legal stuff * * * * * * *
  *
@@ -75,7 +75,7 @@ static SC_ACTION Squid_SCAction[] =
 {
     {SC_ACTION_RESTART, 60000}};
 static SERVICE_DESCRIPTION Squid_ServiceDescription =
-{SOFTWARENAME " " VERSION " WWW Proxy Server"};
+{SOFTWARENAME " " VERSION " " PACKAGE_NAME};
 static SERVICE_FAILURE_ACTIONS Squid_ServiceFailureActions =
 {INFINITE, NULL, NULL, 1, Squid_SCAction};
 static char REGKEY[256] = "SOFTWARE\\" VENDOR "\\" SOFTWARENAME "\\" WIN32_VERSION "\\";
