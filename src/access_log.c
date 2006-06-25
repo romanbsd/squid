@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.81 2006/06/03 21:04:53 serassio Exp $
+ * $Id: access_log.c,v 1.82 2006/06/25 19:28:28 hno Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -896,10 +896,10 @@ accessLogDumpLogFormat(StoreEntry * entry, const char *name, logformat * definit
     logformat_token *t;
     logformat *format;
     struct logformat_token_table_entry *te;
-    debug(46, 0) ("accessLogDumpLogFormat called\n");
+    debug(46, 4) ("accessLogDumpLogFormat called\n");
 
     for (format = definitions; format; format = format->next) {
-	debug(46, 0) ("Dumping logformat definition for %s\n", format->name);
+	debug(46, 4) ("Dumping logformat definition for %s\n", format->name);
 	storeAppendPrintf(entry, "logformat %s ", format->name);
 	for (t = format->format; t; t = t->next) {
 	    if (t->type == LFT_STRING)
