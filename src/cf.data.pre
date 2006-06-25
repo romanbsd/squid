@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.350 2006/06/25 20:00:25 hno Exp $
+# $Id: cf.data.pre,v 1.351 2006/06/25 21:55:08 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -3177,8 +3177,8 @@ DEFAULT: none
 COMMENT: allow|deny acl acl...
 DOC_START
         This options allows you to control which requests gets logged
-	to access.log (see cache_access_log directive). Requests denied
-	for logging will also not be accounted for in performance counters.
+	to access.log (see access_log directive). Requests denied for
+	logging will also not be accounted for in performance counters.
 DOC_END
 
 COMMENT_START
