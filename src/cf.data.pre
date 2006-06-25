@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.349 2006/06/23 02:10:01 hno Exp $
+# $Id: cf.data.pre,v 1.350 2006/06/25 20:00:25 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -652,7 +652,7 @@ DOC_START
 		     not support Microsoft connection oriented authentication,
 		     and any such challenges received from there should be
 		     ignored. Default is auto to automatically determine the
-		     status of the peer peer.
+		    status of the peer.
 
 	NOTE: non-ICP/HTCP neighbors must be specified as 'parent'.
 DOC_END
