@@ -7,7 +7,7 @@
 <BODY>
 <H1>Squid 2.6.STABLE1 release notes</H1>
 
-<H2>Squid Developers</H2>$Id: release-2.6.html,v 1.16 2006/06/25 10:22:44 serassio Exp $
+<H2>Squid Developers</H2>$Id: release-2.6.html,v 1.17 2006/06/25 12:06:39 serassio Exp $
 <HR>
 <EM>This document contains the release notes for version 2.6 of Squid.
 Squid is a WWW Cache application developed by the Web Caching community.
@@ -234,10 +234,10 @@ If multiple service command line options must be specified, use quote. The -n sw
 needed only when a non default service name is in use.</P>
 <P>Don't use the "Start parameters" in the Windows 2000/XP/2003 Service applet: they are
 specific to Windows services functionality and Squid is not designed for understand they.</P>
-<P>In the following example the command line of the "squidsvc" Squid service is set to "-D -a 8080": </P>
+<P>In the following example the command line of the "squidsvc" Squid service is set to "-D -u 3130": </P>
 <P>
 <PRE>
-squid -O "-D -a 8080" -n squidsvc
+squid -O "-D -u 3130" -n squidsvc
 </PRE>
 </P>
 </DL>

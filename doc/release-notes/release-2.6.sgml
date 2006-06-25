@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6.STABLE1 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.19 2006/06/25 10:22:44 serassio Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.20 2006/06/25 12:06:39 serassio Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -206,9 +206,9 @@ needed only when a non default service name is in use.
 Don't use the "Start parameters" in the Windows 2000/XP/2003 Service applet: they are
 specific to Windows services functionality and Squid is not designed for understand they.
 
-In the following example the command line of the "squidsvc" Squid service is set to "-D -a 8080": 
+In the following example the command line of the "squidsvc" Squid service is set to "-D -u 3130": 
 
-<verb>squid -O "-D -a 8080" -n squidsvc</verb>
+<verb>squid -O "-D -u 3130" -n squidsvc</verb>
 </descrip>
 
 <descrip>
