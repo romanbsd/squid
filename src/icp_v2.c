@@ -1,6 +1,6 @@
 
 /*
- * $Id: icp_v2.c,v 1.71 2006/05/16 01:08:28 hno Exp $
+ * $Id: icp_v2.c,v 1.72 2006/06/25 15:53:14 serassio Exp $
  *
  * DEBUG: section 12    Internet Cache Protocol
  * AUTHOR: Duane Wessels
@@ -367,7 +367,7 @@ icpHandleUdp(int sock, void *data)
 	    /* or maybe an EHOSTUNREACH "No route to host" message */
 	    if (errno != ECONNREFUSED && errno != EHOSTUNREACH)
 #endif
-		debug(50, 1) ("icpHandleUdp: FD %d recvfrom: %s\n",
+		debug(12, 1) ("icpHandleUdp: FD %d recvfrom: %s\n",
 		    sock, xstrerror());
 	    break;
 	}
@@ -458,7 +458,7 @@ icpConnectionsOpen(void)
     x = getsockname(theOutIcpConnection,
 	(struct sockaddr *) &xaddr, &len);
     if (x < 0)
-	debug(50, 1) ("theOutIcpConnection FD %d: getsockname: %s\n",
+	debug(12, 1) ("theOutIcpConnection FD %d: getsockname: %s\n",
 	    theOutIcpConnection, xstrerror());
     else
 	theOutICPAddr = xaddr.sin_addr;
