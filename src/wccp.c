@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp.c,v 1.30 2006/06/11 00:11:48 hno Exp $
+ * $Id: wccp.c,v 1.31 2006/06/26 15:01:59 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Glenn Chisholm
@@ -212,7 +212,7 @@ wccpHandleUdp(int sock, void *not_used)
 	return;
     if (ntohl(wccp_i_see_you.type) != WCCP_I_SEE_YOU)
 	return;
-    if (ntohl(wccp_i_see_you.number) > WCCP_ACTIVE_CACHES || ntohl(wccp_i_see_you.number) < 0) {
+    if (ntohl(wccp_i_see_you.number) > WCCP_ACTIVE_CACHES) {
 	debug(80, 1) ("Ignoring WCCP_I_SEE_YOU from %s with number of caches set to %d\n",
 	    inet_ntoa(from.sin_addr), (int) ntohl(wccp_i_see_you.number));
 	return;

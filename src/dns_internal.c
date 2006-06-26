@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.57 2006/05/31 11:01:41 serassio Exp $
+ * $Id: dns_internal.c,v 1.58 2006/06/26 15:01:59 hno Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -93,7 +93,7 @@ struct _idns_query {
     char buf[RESOLV_BUFSZ];
     char name[NS_MAXDNAME + 1];
     char orig[NS_MAXDNAME + 1];
-    size_t sz;
+    ssize_t sz;
     unsigned short id;
     int nsends;
     struct timeval start_t;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl_support.c,v 1.9 2006/05/31 10:57:49 serassio Exp $
+ * $Id: ssl_support.c,v 1.10 2006/06/26 15:01:59 hno Exp $
  *
  * AUTHOR: Benno Rice
  * DEBUG: section 83    SSL accelerator support
@@ -803,7 +803,7 @@ ssl_write_method(fd, buf, len)
 }
 
 int
-ssl_shutdown_method(fd)
+ssl_shutdown_method(int fd)
 {
     SSL *ssl = fd_table[fd].ssl;
     int ret;
