@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_generic.c,v 1.3 2006/06/08 23:14:22 hno Exp $
+ * $Id: comm_generic.c,v 1.4 2006/06/27 08:13:32 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -62,8 +62,12 @@ commResumeFD(int fd)
     fde *F = &fd_table[fd];
 
     assert(fd >= 0);
-    assert(F->flags.open);
 
+    if (!F->flags.open) {
+	debug(5, 1) ("commResumeFD: fd %d is closed. Ignoring\n", fd);
+	F->backoff = 0;
+	return;
+    }
     if (!F->backoff)
 	return;
 
