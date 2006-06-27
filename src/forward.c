@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.112 2006/06/22 21:52:29 hno Exp $
+ * $Id: forward.c,v 1.113 2006/06/27 11:49:11 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -151,8 +151,6 @@ fwdCheckRetry(FwdState * fwdState)
     if (fwdState->flags.dont_retry)
 	return 0;
     if (fwdState->request->flags.body_sent)
-	return 0;
-    if (fwdState->request->pinned_connection)
 	return 0;
     return 1;
 }
