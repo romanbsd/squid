@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.652 2006/06/26 15:01:59 hno Exp $
+ * $Id: client_side.c,v 1.653 2006/06/27 09:31:39 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4694,6 +4694,7 @@ httpsAccept(int sock, void *data)
 	connState->log_addr.s_addr &= Config.Addrs.client_netmask.s_addr;
 	connState->me = me;
 	connState->fd = fd;
+	connState->pinning.fd = -1;
 	connState->in.buf = memAllocBuf(CLIENT_REQ_BUF_SZ, &connState->in.size);
 	/* transparent on SSL does not really make sense, but what the heck */
 	if (connState->port->transparent)
