@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.23 2006/06/25 15:53:14 serassio Exp $
+ * $Id: comm_epoll.c,v 1.24 2006/06/27 13:09:43 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -69,12 +69,11 @@ void
 comm_select_init()
 {
     kdpfd = epoll_create(Squid_MaxFD);
+    if (kdpfd < 0)
+	fatalf("comm_select_init: epoll_create(): %s\n", xstrerror());
     fd_open(kdpfd, FD_UNKNOWN, "epoll ctl");
     commSetCloseOnExec(kdpfd);
 
-    if (kdpfd < 0) {
-	fatalf("comm_select_init: epoll_create(): %s\n", xstrerror());
-    }
     epoll_state = xcalloc(Squid_MaxFD, sizeof(*epoll_state));
 }
 
