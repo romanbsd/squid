@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.352 2006/06/25 15:53:14 serassio Exp $
+ * $Id: comm.c,v 1.353 2006/06/27 11:14:22 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -796,7 +796,7 @@ commUpdateEvents(int fd)
     assert(F->flags.open);
 
     if (F->read_handler
-	&& !F->backoff
+	&& !F->flags.backoff
 	) {
 	switch (F->read_pending) {
 	case COMM_PENDING_NORMAL:

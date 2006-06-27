@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.485 2006/06/23 02:10:01 hno Exp $
+ * $Id: structs.h,v 1.486 2006/06/27 11:14:22 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -872,13 +872,13 @@ struct _fde {
 	unsigned int called_connect:1;
 	unsigned int nodelay:1;
 	unsigned int close_on_exec:1;
+	unsigned int backoff:1;	/* keep track of whether the fd is backed off */
     } flags;
     comm_pending read_pending;
     comm_pending write_pending;
     squid_off_t bytes_read;
     squid_off_t bytes_written;
     int uses;			/* ie # req's over persistent conn */
-    int backoff;		/* keep track of whether the fd is backed off */
     struct _fde_disk {
 	DWCB *wrt_handle;
 	void *wrt_handle_data;
