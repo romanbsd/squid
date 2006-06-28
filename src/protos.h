@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.501 2006/06/22 21:52:29 hno Exp $
+ * $Id: protos.h,v 1.502 2006/06/28 10:31:57 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -140,9 +140,9 @@ extern int checkNegativeHit(StoreEntry *);
 extern void clientOpenListenSockets(void);
 extern void clientHttpConnectionsClose(void);
 extern int isTcpHit(log_type);
-extern void clientPinConnection(ConnStateData * conn, int fd, const request_t * request, peer * peer);
+extern void clientPinConnection(ConnStateData * conn, int fd, const request_t * request, peer * peer, int auth);
 extern int clientGetPinnedInfo(const ConnStateData * conn, const request_t * request, peer ** peer);
-extern int clientGetPinnedConnection(ConnStateData * conn, const request_t * request, const peer * peer);
+extern int clientGetPinnedConnection(ConnStateData * conn, const request_t * request, const peer * peer, int *auth);
 
 extern int commSetNonBlocking(int fd);
 extern int commUnsetNonBlocking(int fd);

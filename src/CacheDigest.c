@@ -1,6 +1,6 @@
 
 /*
- * $Id: CacheDigest.c,v 1.34 2005/05/17 16:56:37 hno Exp $
+ * $Id: CacheDigest.c,v 1.35 2006/06/28 10:31:56 hno Exp $
  *
  * DEBUG: section 70    Cache Digest
  * AUTHOR: Alex Rousskov
@@ -194,7 +194,7 @@ cacheDigestStats(const CacheDigest * cd, CacheDigestStats * stats)
     assert(stats);
     memset(stats, 0, sizeof(*stats));
     while (pos-- > 0) {
-	const int is_on = 0 != CBIT_TEST(cd->mask, pos);
+	const int is_on = CBIT_TEST(cd->mask, pos);
 	if (is_on)
 	    on_count++;
 	if (is_on != cur_seq_type || !pos) {

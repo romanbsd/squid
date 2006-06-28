@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.486 2006/06/27 11:14:22 hno Exp $
+ * $Id: structs.h,v 1.487 2006/06/28 10:31:57 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1243,6 +1243,7 @@ struct _ConnStateData {
 	char *host;		/* host name of pinned connection */
 	int port;		/* port of pinned connection */
 	int pinned;		/* this connection was pinned */
+	int auth;		/* pinned for www authentication */
 	peer *peer;		/* peer the connection goes via */
     } pinning;
 };
@@ -1792,7 +1793,10 @@ struct _request_flags {
     unsigned int reset_tcp:1;
     unsigned int must_keepalive:1;
     unsigned int connection_auth:1;	/* Request wants connection oriented auth */
+    unsigned int connection_proxy_auth:1;	/* Request wants connection oriented auth */
     unsigned int no_connection_auth:1;	/* Connection oriented auth can not be supported */
+    unsigned int pinned:1;	/* Request seont on a pinned connection */
+    unsigned int auth_sent:1;	/* Authentication forwarded */
 };
 
 struct _link_list {

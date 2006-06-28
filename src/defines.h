@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.117 2006/06/25 15:07:31 serassio Exp $
+ * $Id: defines.h,v 1.118 2006/06/28 10:31:56 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -158,7 +158,7 @@
 #define CBIT_BIN(mask, bit)     (mask)[(bit)>>3]
 #define CBIT_SET(mask, bit) 	((void)(CBIT_BIN(mask, bit) |= CBIT_BIT(bit)))
 #define CBIT_CLR(mask, bit) 	((void)(CBIT_BIN(mask, bit) &= ~CBIT_BIT(bit)))
-#define CBIT_TEST(mask, bit) 	(CBIT_BIN(mask, bit) & CBIT_BIT(bit))
+#define CBIT_TEST(mask, bit) 	((CBIT_BIN(mask, bit) & CBIT_BIT(bit)) != 0)
 
 #define MAX_FILES_PER_DIR (1<<20)
 
