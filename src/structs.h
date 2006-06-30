@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.487 2006/06/28 10:31:57 hno Exp $
+ * $Id: structs.h,v 1.488 2006/06/30 15:05:38 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2458,7 +2458,6 @@ struct _errormap {
 };
 
 struct _VaryData {
-    int broken_encoding:1;
     char *key;
     char *etag;
     Array etags;

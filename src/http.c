@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.413 2006/06/28 10:31:57 hno Exp $
+ * $Id: http.c,v 1.414 2006/06/30 15:05:38 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -371,7 +371,7 @@ httpMakeVaryMark(request_t * request, HttpReply * reply)
 	    memset(&checklist, 0, sizeof(checklist));
 	    checklist.request = request;
 	    checklist.reply = reply;
-	    if (aclCheckFast(Config.accessList.vary_encoding, &checklist)) {
+	    if (Config.accessList.vary_encoding && aclCheckFast(Config.accessList.vary_encoding, &checklist)) {
 		stringClean(&request->vary_encoding);
 		request->vary_encoding = httpHeaderGetStrOrList(&request->header, HDR_ACCEPT_ENCODING);
 		strCat(request->vary_encoding, "");
