@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.655 2006/06/30 15:05:38 hno Exp $
+ * $Id: client_side.c,v 1.656 2006/06/30 21:23:05 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3983,6 +3983,9 @@ clientReadRequest(int fd, void *data)
 	    }
 	    if (conn->port->urlgroup)
 		request->urlgroup = xstrdup(conn->port->urlgroup);
+#if LINUX_TPROXY
+	    request->flags.tproxy = conn->port->tproxy;
+#endif
 	    request->flags.accelerated = http->flags.accel;
 	    /*
 	     * cache the Content-length value in request_t.

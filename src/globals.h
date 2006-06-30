@@ -1,6 +1,6 @@
 
 /*
- * $Id: globals.h,v 1.119 2006/05/24 17:27:13 serassio Exp $
+ * $Id: globals.h,v 1.120 2006/06/30 21:23:05 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -173,5 +173,8 @@ extern void *sbrk_start;	/* 0 */
 #endif
 extern int opt_send_signal;	/* -1 */
 extern int opt_no_daemon;	/* 0 */
+#if LINUX_TPROXY
+extern int need_linux_tproxy;	/* 0 */
+#endif
 
 #endif /* SQUID_GLOBALS_H */

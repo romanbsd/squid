@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.448 2006/06/23 02:13:33 hno Exp $
+ * $Id: cache_cf.c,v 1.449 2006/06/30 21:23:04 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2718,6 +2718,11 @@ parse_http_port_option(http_port_list * s, char *token)
 	s->urlgroup = xstrdup(token + 9);
     } else if (strncmp(token, "protocol=", 9) == 0) {
 	s->protocol = xstrdup(token + 9);
+#if LINUX_TPROXY
+    } else if (strcmp(token, "tproxy") == 0) {
+	s->tproxy = 1;
+	need_linux_tproxy = 1;
+#endif
     } else {
 	self_destruct();
     }

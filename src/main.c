@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.383 2006/06/11 17:06:25 serassio Exp $
+ * $Id: main.c,v 1.384 2006/06/30 21:23:05 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -481,7 +481,7 @@ static void
 setEffectiveUser(void)
 {
 #if LINUX_TPROXY
-    if (Config.onoff.linux_tproxy) {
+    if (need_linux_tproxy) {
 	if (prctl(PR_SET_KEEPCAPS, 1, 0, 0, 0)) {
 	    debug(0, 1) ("Error - tproxy support requires capability setting which has failed.  Continuing without tproxy support\n");
 	}

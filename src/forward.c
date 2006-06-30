@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.114 2006/06/28 10:31:57 hno Exp $
+ * $Id: forward.c,v 1.115 2006/06/30 21:23:05 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -520,8 +520,7 @@ fwdConnectStart(void *data)
 	return;
     }
 #if LINUX_TPROXY
-    if (fd == -1 && (Config.onoff.linux_tproxy) &&
-	((fwdState->request->my_port == Config.tproxy_port) || (Config.tproxy_port == 0)))
+    if (fd == -1 && fwdState->request->flags.tproxy)
 	fd = pconnPop(name, port, domain, &fwdState->request->client_addr, 0);
 #endif
     if (fd == -1)
@@ -596,8 +595,7 @@ fwdConnectStart(void *data)
 	hierarchyNote(&fwdState->request->hier, fs->code, fs->peer->host);
     } else {
 #if LINUX_TPROXY
-	if (Config.onoff.linux_tproxy &&
-	    ((fwdState->request->my_port == Config.tproxy_port) || (Config.tproxy_port == 0))) {
+	if (fwdState->request->flags.tproxy) {
 
 	    itp.v.addr.faddr.s_addr = fwdState->src.sin_addr.s_addr;
 	    itp.v.addr.fport = 0;
