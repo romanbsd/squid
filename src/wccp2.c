@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.13 2006/06/11 00:12:39 hno Exp $
+ * $Id: wccp2.c,v 1.14 2006/07/02 16:41:56 serassio Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -1063,6 +1063,9 @@ wccp2HereIam(void *voidnotused)
 	    }
 	    debug(80, 3) ("Sending HereIam packet size %d\n", (int) service_list_ptr->wccp_packet_size);
 	    /* Send the packet */
+
+	    statCounter.syscalls.sock.sendtos++;
+
 	    sendto(theWccp2Connection,
 		&service_list_ptr->wccp_packet,
 		service_list_ptr->wccp_packet_size,
