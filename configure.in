@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.384 2006/07/01 18:41:21 hno Exp $
+dnl  $Id: configure.in,v 1.385 2006/07/04 21:51:15 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.384 $)dnl
+AC_REVISION($Revision: 1.385 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -733,15 +733,6 @@ AC_ARG_ENABLE(cache-digests,
     echo "USE_CACHE_DIGESTS enabled"
     AC_DEFINE(USE_CACHE_DIGESTS, 1, [Use Cache Digests for locating objects in neighbor caches.  This
 	code is still semi-experimental.])
-  fi
-])
-
-AC_ARG_ENABLE(auth-on-acceleration,
-[  --enable-auth-on-acceleration
-			  Enable authentication in accelerators],
-[ if test "$enableval" = "yes" ; then
-    echo "AUTH_ON_ACCELERATION enabled"
-    AC_DEFINE(AUTH_ON_ACCELERATION, 1, [Enable authentication support in accelerators])
   fi
 ])
 
