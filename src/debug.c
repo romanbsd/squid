@@ -1,6 +1,6 @@
 
 /*
- * $Id: debug.c,v 1.89 2006/05/25 05:39:26 hno Exp $
+ * $Id: debug.c,v 1.90 2006/07/04 21:45:24 hno Exp $
  *
  * DEBUG: section 0     Debug Routines
  * AUTHOR: Harvest Derived
@@ -174,8 +174,7 @@ debugOpenLog(const char *logfile)
 	debug_log = stderr;
 	return;
     }
-    if (debug_log_file)
-	xfree(debug_log_file);
+    safe_free(debug_log_file);
     debug_log_file = xstrdup(logfile);	/* keep a static copy */
     if (debug_log && debug_log != stderr)
 	fclose(debug_log);

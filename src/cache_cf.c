@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.449 2006/06/30 21:23:04 hno Exp $
+ * $Id: cache_cf.c,v 1.450 2006/07/04 21:45:24 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2482,8 +2482,7 @@ free_removalpolicy(RemovalPolicySettings ** settings)
 	return;
     free_string(&(*settings)->type);
     free_wordlist(&(*settings)->args);
-    xfree(*settings);
-    *settings = NULL;
+    safe_free(*settings);
 }
 
 static void

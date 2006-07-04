@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_rebuild.c,v 1.78 2005/05/17 16:56:38 hno Exp $
+ * $Id: store_rebuild.c,v 1.79 2006/07/04 21:45:24 hno Exp $
  *
  * DEBUG: section 20    Store Rebuild Routines
  * AUTHOR: Duane Wessels
@@ -145,8 +145,7 @@ storeRebuildComplete(struct _store_rebuild_data *dc)
 	(double) counts.objcount / (dt > 0.0 ? dt : 1.0));
     debug(20, 1) ("Beginning Validation Procedure\n");
     eventAdd("storeCleanup", storeCleanup, NULL, 0.0, 1);
-    xfree(RebuildProgress);
-    RebuildProgress = NULL;
+    safe_free(RebuildProgress);
 }
 
 /*

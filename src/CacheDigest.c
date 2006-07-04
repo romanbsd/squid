@@ -1,6 +1,6 @@
 
 /*
- * $Id: CacheDigest.c,v 1.35 2006/06/28 10:31:56 hno Exp $
+ * $Id: CacheDigest.c,v 1.36 2006/07/04 21:45:24 hno Exp $
  *
  * DEBUG: section 70    Cache Digest
  * AUTHOR: Alex Rousskov
@@ -79,8 +79,7 @@ static void
 cacheDigestClean(CacheDigest * cd)
 {
     assert(cd);
-    xfree(cd->mask);
-    cd->mask = NULL;
+    safe_free(cd->mask);
 }
 
 void
