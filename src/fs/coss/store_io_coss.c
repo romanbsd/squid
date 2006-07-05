@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_coss.c,v 1.22 2006/05/22 10:56:16 adrian Exp $
+ * $Id: store_io_coss.c,v 1.23 2006/07/05 06:52:12 adrian Exp $
  *
  * DEBUG: section 79    Storage Manager COSS Interface
  * AUTHOR: Eric Stern
@@ -175,6 +175,14 @@ storeCossUnlink(SwapDir * SD, StoreEntry * e)
     coss_stats.unlink.success++;
     storeCossRemove(SD, e);
 }
+
+void
+storeCossRecycle(SwapDir * SD, StoreEntry * e)
+{
+    debug(79, 3) ("storeCossRecycle: %s: offset %d\n", SD->path, e->swap_filen);
+    storeCossUnlink(SD, e);
+}
+
 
 
 storeIOState *

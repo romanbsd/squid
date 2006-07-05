@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.490 2006/07/04 21:51:18 hno Exp $
+ * $Id: structs.h,v 1.491 2006/07/05 06:52:12 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1750,6 +1750,7 @@ struct _SwapDir {
 	STOBJREAD *read;
 	STOBJWRITE *write;
 	STOBJUNLINK *unlink;
+	STOBJRECYCLE *recycle;
     } obj;
     struct {
 	STLOGOPEN *open;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_diskd.c,v 1.31 2006/06/07 22:55:45 hno Exp $
+ * $Id: store_io_diskd.c,v 1.32 2006/07/05 06:52:13 adrian Exp $
  *
  * DEBUG: section 79    Squid-side DISKD I/O functions.
  * AUTHOR: Duane Wessels
@@ -299,6 +299,24 @@ storeDiskdUnlink(SwapDir * SD, StoreEntry * e)
     diskd_stats.unlink.ops++;
 }
 
+void
+storeDiskdRecycle(SwapDir * SD, StoreEntry * e)
+{
+    debug(79, 3) ("storeDiskdUnlink: fileno %08X\n", e->swap_filen);
+
+    /* Release the object without releasing the underlying physical object */
+    storeExpireNow(e);
+    storeReleaseRequest(e);
+    if (e->swap_filen > -1) {
+	storeDiskdDirReplRemove(e);
+	storeDiskdDirMapBitReset(SD, e->swap_filen);
+	e->swap_filen = -1;
+	e->swap_dirn = -1;
+    }
+    storeRelease(e);
+}
+
+
 
 /*  === STATIC =========================================================== */
 
@@ -454,7 +472,7 @@ static void
 storeDiskdIOCallback(storeIOState * sio, int errflag)
 {
     int valid = cbdataValid(sio->callback_data);
-    debug(79, 3) ("storeUfsIOCallback: errflag=%d\n", errflag);
+    debug(79, 3) ("storeDiskdIOCallback: errflag=%d\n", errflag);
     cbdataUnlock(sio->callback_data);
     if (valid)
 	sio->callback(sio->callback_data, errflag, sio);

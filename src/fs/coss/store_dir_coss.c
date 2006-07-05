@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.47 2006/06/22 22:05:00 adrian Exp $
+ * $Id: store_dir_coss.c,v 1.48 2006/07/05 06:52:12 adrian Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -693,6 +693,7 @@ storeCossDirParse(SwapDir * sd, int index, char *path)
     sd->obj.read = storeCossRead;
     sd->obj.write = storeCossWrite;
     sd->obj.unlink = storeCossUnlink;
+    sd->obj.recycle = storeCossRecycle;
 
     sd->log.open = storeCossDirOpenSwapLog;
     sd->log.close = storeCossDirCloseSwapLog;
@@ -1191,13 +1192,10 @@ static void
 storeCoss_DeleteStoreEntry(RebuildState * rb, const cache_key * key, StoreEntry * e)
 {
     assert(rb->counts.objcount >= 0);
+    /* XXX are these counters even correct, considering e could be a different storedir? */
     rb->counts.objcount--;
     assert(e->swap_dirn >= 0);
-    storeCossRemove(INDEXSD(e->swap_dirn), e);
-    e->swap_filen = -1;
-    storeExpireNow(e);
-    storeReleaseRequest(e);
-    storeRelease(e);
+    storeRecycle(e);
 }
 
 /*

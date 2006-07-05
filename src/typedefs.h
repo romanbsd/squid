@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.147 2006/06/04 02:50:05 hno Exp $
+ * $Id: typedefs.h,v 1.148 2006/07/05 06:52:12 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -310,6 +310,7 @@ typedef void STOBJCLOSE(SwapDir *, storeIOState *);
 typedef void STOBJREAD(SwapDir *, storeIOState *, char *, size_t, squid_off_t, STRCB *, void *);
 typedef void STOBJWRITE(SwapDir *, storeIOState *, char *, size_t, squid_off_t, FREE *);
 typedef void STOBJUNLINK(SwapDir *, StoreEntry *);
+typedef void STOBJRECYCLE(SwapDir *, StoreEntry *);
 
 typedef void STLOGOPEN(SwapDir *);
 typedef void STLOGCLOSE(SwapDir *);
