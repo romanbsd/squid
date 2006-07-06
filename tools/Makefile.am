@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.1 2006/05/23 21:52:30 hno Exp $
+#  $Id: Makefile.am,v 1.2 2006/07/06 08:35:32 adrian Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -17,12 +17,14 @@ check_PROGRAMS=
 SUBDIRS		= 
 
 bin_PROGRAMS = \
-	squidclient
+	squidclient \
+	cossdump
 
 libexec_PROGRAMS = \
 	cachemgr$(CGIEXT)
 
 squidclient_SOURCES = squidclient.c
+cossdump_SOURCES = cossdump.c
 cachemgr__CGIEXT__SOURCES = cachemgr.c
 cachemgr__CGIEXT__CFLAGS = -DDEFAULT_CACHEMGR_CONFIG=\"$(DEFAULT_CACHEMGR_CONFIG)\" $(AM_CFLAGS)
 
