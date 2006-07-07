@@ -1,5 +1,5 @@
 /*
- * $Id: auth_basic.c,v 1.22 2006/05/22 00:37:23 hno Exp $
+ * $Id: auth_basic.c,v 1.23 2006/07/07 19:11:35 serassio Exp $
  *
  * DEBUG: section 29    Authenticator
  * AUTHOR: Duane Wessels
@@ -352,7 +352,7 @@ authBasicParse(authScheme * scheme, int n_configured, char *param_str)
     } else if (strcasecmp(param_str, "blankpassword") == 0) {
 	parse_onoff(&basicConfig->blankpassword);
     } else {
-	debug(28, 0) ("unrecognised basic auth scheme parameter '%s'\n", param_str);
+	debug(29, 0) ("unrecognised basic auth scheme parameter '%s'\n", param_str);
     }
 }
 
