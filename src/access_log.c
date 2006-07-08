@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.82 2006/06/25 19:28:28 hno Exp $
+ * $Id: access_log.c,v 1.83 2006/07/08 15:34:48 hno Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -573,9 +573,16 @@ accessLogCustom(AccessLogEntry * al, customlog * log)
 	    break;
 
 	case LFT_USER_NAME:
-	    out = accessLogFormatName(al->cache.authuser ?
-		al->cache.authuser : al->cache.rfc931);
-	    dofree = 1;
+	    {
+		char *user = accessLogFormatName(al->cache.authuser);
+		if (!user)
+		    user = accessLogFormatName(al->cache.rfc931);
+#if USE_SSL
+		if (!user)
+		    user = accessLogFormatName(al->cache.ssluser);
+#endif
+		dofree = 1;
+	    }
 	    break;
 
 	case LFT_USER_LOGIN:
