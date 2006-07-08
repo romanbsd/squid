@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.659 2006/07/08 10:14:11 hno Exp $
+ * $Id: client_side.c,v 1.660 2006/07/08 13:41:34 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -749,7 +749,7 @@ clientHandleETagReply(void *data, char *buf, ssize_t size)
 	return;
     }
     /* Send the new object to the client */
-    clientSendMoreData(data, buf, size);
+    clientSendMoreHeaderData(data, buf, size);
     return;
 }
 
