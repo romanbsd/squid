@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.563 2006/07/08 11:43:31 hno Exp $
+ * $Id: store.c,v 1.564 2006/07/08 13:30:13 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -844,7 +844,11 @@ storeLocateVaryRead(void *data, char *buf, ssize_t size)
 	} else if (state->current.ignore) {
 	    /* Skip this entry */
 	} else if (!state->current.key) {
-	    debug(11, 1) ("storeLocateVaryRead: Unexpected data '%s'", p);
+	    char *t1 = xstrndup(p, e - p);
+	    char *t2 = xstrndup(state->buf, size + state->buf_offset);
+	    debug(11, 1) ("storeLocateVaryRead: Unexpected data '%s' in '%s'", t1, t2);
+	    safe_free(t2);
+	    safe_free(t1);
 	} else if (strmatchbeg(p, "ETag: ", l) == 0) {
 	    /* etag field */
 	    char *etag;
