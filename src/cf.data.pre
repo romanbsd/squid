@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.356 2006/07/08 13:26:26 hno Exp $
+# $Id: cf.data.pre,v 1.357 2006/07/09 14:39:31 serassio Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2015,7 +2015,6 @@ NOCOMMENT_START
 #auth_param negotiate keep_alive on
 #auth_param ntlm program <uncomment and complete this line to activate>
 #auth_param ntlm children 5
-#auth_param ntlm use_ntlm_negotiate on
 #auth_param ntlm keep_alive on
 #auth_param digest program <uncomment and complete this line>
 #auth_param digest children 5
