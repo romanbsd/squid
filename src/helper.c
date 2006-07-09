@@ -1,6 +1,6 @@
 
 /*
- * $Id: helper.c,v 1.60 2006/06/24 09:46:38 serassio Exp $
+ * $Id: helper.c,v 1.61 2006/07/09 15:44:32 serassio Exp $
  *
  * DEBUG: section 84    Helper process maintenance
  * AUTHOR: Harvest Derived?
@@ -255,7 +255,7 @@ helperStatefulSubmit(statefulhelper * hlp, const char *buf, HLPSCB * callback, v
     if (!srv)
 	srv = helperStatefulGetServer(hlp);
     if (srv) {
-	debug(84, 5) ("helperStatefulSubmit: sever %p, buf '%s'.\n", srv, buf ? buf : "NULL");
+	debug(84, 5) ("helperStatefulSubmit: server %p, buf '%s'.\n", srv, buf ? buf : "NULL");
 	assert(!srv->request);
 	assert(!srv->flags.busy);
 	helperStatefulDispatch(srv, r);
