@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.48 2006/07/05 06:52:12 adrian Exp $
+ * $Id: store_dir_coss.c,v 1.49 2006/07/10 14:18:23 adrian Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -209,6 +209,10 @@ storeCossRemove(SwapDir * sd, StoreEntry * e)
     debug(1, 1) ("storeCossRemove: %x: %d/%d\n", e, (int) e->swap_dirn, (e) e->swap_filen);
 #endif
     CossIndexNode *coss_node = e->repl.data;
+    /* Do what the LRU and HEAP repl policies do.. */
+    if (e->repl.data == NULL) {
+	return;
+    }
     assert(sd->index == e->swap_dirn);
     assert(e->swap_filen >= 0);
     e->repl.data = NULL;
