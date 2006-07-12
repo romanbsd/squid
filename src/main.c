@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.384 2006/06/30 21:23:05 hno Exp $
+ * $Id: main.c,v 1.385 2006/07/12 06:51:47 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -35,7 +35,7 @@
 
 #include "squid.h"
 #ifdef LINUX_TPROXY
-#include <linux/capability.h>
+#include <sys/capability.h>
 #include <sys/prctl.h>
 #endif
 
