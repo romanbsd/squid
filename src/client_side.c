@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.660 2006/07/08 13:41:34 hno Exp $
+ * $Id: client_side.c,v 1.661 2006/07/12 06:53:53 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1935,7 +1935,7 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
 			continue;
 		    }
 		    request->flags.must_keepalive = 1;
-		    if (!request->flags.accelerated) {
+		    if (!request->flags.accelerated && !request->flags.transparent) {
 			httpHeaderPutStr(hdr, HDR_PROXY_SUPPORT, "Session-Based-Authentication");
 			httpHeaderPutStr(hdr, HDR_CONNECTION, "Proxy-support");
 		    }
