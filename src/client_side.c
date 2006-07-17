@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.662 2006/07/17 01:02:36 hno Exp $
+ * $Id: client_side.c,v 1.663 2006/07/17 01:16:38 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4509,12 +4509,12 @@ clientNatLookup(ConnStateData * conn)
 static int inline
 clientNatLookup(ConnStateData * conn)
 {
-    static time_t last_reported = 0;
-    if (squid_curtime - last_reported > 60) {
-	debug(33, 1) ("WARNING: transparent proxying not supported\n");
-	last_reported = squid_curtime;
+    static int reported = 0;
+    if (!reported) {
+	debug(33, 1) ("NOTICE: no explicit transparent proxy support. Assuming getsockname works\n");
+	reported = 1;
     }
-    return -1;
+    return 0;
 }
 #endif
 
