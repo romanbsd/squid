@@ -1,5 +1,5 @@
 /*
- * $Id: logfile.c,v 1.16 2006/06/05 21:06:34 serassio Exp $
+ * $Id: logfile.c,v 1.17 2006/07/18 22:29:07 hno Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Duane Wessels
@@ -270,7 +270,10 @@ logfilePrintf(va_alist)
 	if (fmt[strlen(fmt) - 1] == '\n')
 	    buf[8191] = '\n';
     }
-    logfileWrite(lf, buf, (size_t) s);
+    if (s > 0)
+	logfileWrite(lf, buf, (size_t) s);
+    else
+	debug(50, 1) ("Failed to format log data for %s\n", lf->path);
     va_end(args);
 }
 
