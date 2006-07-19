@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeaderTools.c,v 1.35 2006/04/28 10:17:18 hno Exp $
+ * $Id: HttpHeaderTools.c,v 1.36 2006/07/19 16:05:11 hno Exp $
  *
  * DEBUG: section 66    HTTP Header Tools
  * AUTHOR: Alex Rousskov
@@ -468,7 +468,13 @@ httpHdrMangleList(HttpHeader * l, request_t * request)
 {
     HttpHeaderEntry *e;
     HttpHeaderPos p = HttpHeaderInitPos;
-    while ((e = httpHeaderGetEntry(l, &p)))
-	if (0 == httpHdrMangle(e, request))
+    int removed_headers = 0;
+    while ((e = httpHeaderGetEntry(l, &p))) {
+	if (0 == httpHdrMangle(e, request)) {
 	    httpHeaderDelAt(l, p);
+	    removed_headers++;
+	}
+    }
+    if (removed_headers)
+	httpHeaderRefreshMask(l);
 }

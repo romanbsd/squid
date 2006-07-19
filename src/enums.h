@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.233 2006/06/22 21:52:29 hno Exp $
+ * $Id: enums.h,v 1.234 2006/07/19 16:05:11 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -257,6 +257,7 @@ typedef enum {
     HDR_X_ERROR_STATUS,		/* errormap, received HTTP status line */
     HDR_FRONT_END_HTTPS,
     HDR_PROXY_SUPPORT,
+    HDR_KEEP_ALIVE,
     HDR_OTHER,
     HDR_ENUM_END
 } http_hdr_type;
