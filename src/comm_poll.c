@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.18 2006/06/25 15:53:14 serassio Exp $
+ * $Id: comm_poll.c,v 1.19 2006/07/19 15:56:39 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -41,15 +41,6 @@
 #endif
 
 static int MAX_POLL_TIME = 1000;	/* see also comm_quick_poll_required() */
-
-#ifndef        howmany
-#define howmany(x, y)   (((x)+((y)-1))/(y))
-#endif
-#ifndef        NBBY
-#define        NBBY    8
-#endif
-#define FD_MASK_BYTES sizeof(fd_mask)
-#define FD_MASK_BITS (FD_MASK_BYTES*NBBY)
 
 /* STATIC */
 static int fdIsHttp(int fd);
