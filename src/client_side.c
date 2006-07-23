@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.665 2006/07/19 16:05:11 hno Exp $
+ * $Id: client_side.c,v 1.666 2006/07/23 21:44:22 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1998,7 +1998,7 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
     }
     /* Signal keep-alive if needed */
     httpHeaderPutStr(hdr,
-	http->flags.accel ? HDR_CONNECTION : HDR_PROXY_CONNECTION,
+	(http->flags.accel || http->flags.transparent) ? HDR_CONNECTION : HDR_PROXY_CONNECTION,
 	request->flags.proxy_keepalive ? "keep-alive" : "close");
 #if ADD_X_REQUEST_URI
     /*
