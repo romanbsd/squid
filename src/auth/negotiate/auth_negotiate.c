@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_negotiate.c,v 1.3 2006/07/07 19:11:35 serassio Exp $
+ * $Id: auth_negotiate.c,v 1.4 2006/07/26 20:21:56 serassio Exp $
  *
  * DEBUG: section 29    Negotiate Authenticator
  * AUTHOR: Robert Collins
@@ -426,6 +426,12 @@ authenticateNegotiateHandleReply(void *data, void *srv, char *reply)
     valid = cbdataValid(r->data);
     if (!valid) {
 	debug(29, 2) ("AuthenticateNegotiateHandleReply: invalid callback data. Releasing helper '%p'.\n", srv);
+	negotiate_request = r->auth_user_request->scheme_data;
+	if (negotiate_request != NULL) {
+	    if (negotiate_request->authserver == NULL)
+		negotiate_request->authserver = srv;
+	    authenticateNegotiateReleaseServer(negotiate_request);
+	}
 	cbdataUnlock(r->data);
 	authenticateStateFree(r);
 	return;
