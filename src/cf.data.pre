@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.358 2006/07/17 09:47:39 hno Exp $
+# $Id: cf.data.pre,v 1.359 2006/07/26 21:40:23 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1199,6 +1199,8 @@ DOC_START
 		un	User name
 		ul	User login
 		ui	User ident
+		us	User SSL
+		ue	User external acl
 		Hs	HTTP status code
 		Ss	Squid request status (TCP_MISS etc)
 		Sh	Squid hierarchy status (DEFAULT_PARENT etc)
