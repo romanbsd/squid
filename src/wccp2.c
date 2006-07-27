@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.18 2006/07/26 23:46:35 hno Exp $
+ * $Id: wccp2.c,v 1.19 2006/07/27 00:24:00 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -704,9 +704,9 @@ wccp2ConnectionOpen(void)
 	    /* Disconnect the sending socket */
 	    if (wccp2_numrouters > 1) {
 		null.sin_family = AF_UNSPEC;
-		if (connect(theWccp2Connection, (struct sockaddr *) &router, router_len)) {
+		if (connect(theWccp2Connection, (struct sockaddr *) &null, router_len)) {
 		    null.sin_family = AF_INET;
-		    if (connect(theWccp2Connection, (struct sockaddr *) &router, router_len))
+		    if (connect(theWccp2Connection, (struct sockaddr *) &null, router_len))
 			fatal("Unable to disconnect WCCP out socket");
 		}
 	    }
