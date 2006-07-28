@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh.c,v 1.60 2006/06/07 13:03:41 hno Exp $
+ * $Id: refresh.c,v 1.61 2006/07/28 20:49:09 hno Exp $
  *
  * DEBUG: section 22    Refresh Calculation
  * AUTHOR: Harvest Derived
@@ -330,7 +330,7 @@ refreshIsCachable(const StoreEntry * entry)
      * 60 seconds delta, to avoid objects which expire almost
      * immediately, and which can't be refreshed.
      */
-    int reason = refreshCheck(entry, NULL, 60);
+    int reason = refreshCheck(entry, NULL, Config.minimum_expiry_time);
     refreshCounts[rcStore].total++;
     refreshCounts[rcStore].status[reason]++;
     if (reason < 200)

@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.492 2006/07/26 21:40:23 hno Exp $
+ * $Id: structs.h,v 1.493 2006/07/28 20:49:10 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -787,6 +787,7 @@ struct _SquidConfig {
     } warnings;
     char *store_dir_select_algorithm;
     int sleep_after_fork;	/* microseconds */
+    time_t minimum_expiry_time;	/* seconds */
     external_acl *externalAclHelperList;
     errormap *errorMapList;
 #if USE_SSL
