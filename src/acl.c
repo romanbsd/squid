@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.306 2006/07/26 21:01:31 serassio Exp $
+ * $Id: acl.c,v 1.307 2006/07/29 13:44:44 hno Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -943,6 +943,10 @@ aclParseAclLine(acl ** head)
     /* snarf the ACL name */
     if ((t = strtok(NULL, w_space)) == NULL) {
 	debug(28, 0) ("aclParseAclLine: missing ACL name.\n");
+	self_destruct();
+    }
+    if (strlen(t) >= ACL_NAME_SZ) {
+	debug(28, 0) ("aclParseAclLine: ACL name '%s' too long. Max %d characters allowed\n", t, ACL_NAME_SZ - 1);
 	self_destruct();
     }
     xstrncpy(aclname, t, ACL_NAME_SZ);
