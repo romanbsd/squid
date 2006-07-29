@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.26 2006/07/28 20:49:09 hno Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.27 2006/07/29 07:56:46 serassio Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -266,7 +266,7 @@ redirect_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd</verb>
 <itemize>
         <item>Bug #1650: transparent interception "Unable to forward this request at this time"
 	<item>Bug #1658: Memory corruption when using client-side SSL certificates
-	<item>Multiple fixes to the expreimental COSS cache_dir type
+	<item>Multiple fixes to the experimental COSS cache_dir type
 	<item>Added the missing concurrency parameter to basic/digest auth schemes
 	<item>Bug #1669: SEGV in storeAddVaryReadOld
 	<item>Bug #1670: assertion failure: i-&gt;prefix_size &gt; 0 in client_side.c:2509
