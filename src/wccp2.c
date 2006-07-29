@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.20 2006/07/27 00:45:21 hno Exp $
+ * $Id: wccp2.c,v 1.21 2006/07/29 20:24:05 serassio Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -664,7 +664,7 @@ wccp2ConnectionOpen(void)
 	return;
     }
     theWccp2Connection = comm_open(SOCK_DGRAM,
-	0,
+	IPPROTO_UDP,
 	Config.Wccp2.address,
 	port,
 	COMM_NONBLOCKING,
