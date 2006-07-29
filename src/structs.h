@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.493 2006/07/28 20:49:10 hno Exp $
+ * $Id: structs.h,v 1.494 2006/07/29 17:35:31 serassio Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2009,6 +2009,10 @@ struct _StatCounters {
 	int query_timeouts;
 	int times_used;
     } icp;
+    struct {
+	int pkts_sent;
+	int pkts_recv;
+    } htcp;
     struct {
 	int requests;
     } unlink;

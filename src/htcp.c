@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.52 2006/06/12 17:44:41 hno Exp $
+ * $Id: htcp.c,v 1.53 2006/07/29 17:35:31 serassio Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -448,6 +448,8 @@ htcpSend(const char *buf, int len, struct sockaddr_in *to)
 	len);
     if (x < 0)
 	debug(31, 1) ("htcpSend: FD %d sendto: %s\n", htcpOutSocket, xstrerror());
+    else
+	statCounter.htcp.pkts_sent++;
 }
 
 /*
@@ -1094,6 +1096,8 @@ htcpRecv(int fd, void *data)
     len = recvfrom(fd, buf, sizeof(buf) - 1, 0, (struct sockaddr *) &from, &flen);
     debug(31, 3) ("htcpRecv: FD %d, %d bytes from %s:%d\n",
 	fd, len, inet_ntoa(from.sin_addr), ntohs(from.sin_port));
+    if (len)
+	statCounter.htcp.pkts_recv++;
     htcpHandle(buf, len, &from);
     commSetSelect(fd, COMM_SELECT_READ, htcpRecv, NULL, 0);
 }
