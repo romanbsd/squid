@@ -1,5 +1,5 @@
 /*
- * $Id: aiops.c,v 1.28 2006/05/29 01:53:23 hno Exp $
+ * $Id: aiops.c,v 1.29 2006/07/29 17:37:18 hno Exp $
  *
  * DEBUG: section 43    AIOPS
  * AUTHOR: Stewart Forster <slf@connect.com.au>
@@ -327,7 +327,16 @@ squidaio_init(void)
 	    if (j < 4)
 		j = 4;
 	}
+#if COSS_USE_AUFSOPS
+	j = 6;
+	for (i = 0; i < n_coss_dirs; i++) {
+	    squidaio_nthreads += j;
+	    j = 3;
+	}
+#endif
     }
+    if (squidaio_nthreads == 0)
+	squidaio_nthreads = 16;
     squidaio_magic1 = squidaio_nthreads * MAGIC1_FACTOR;
     squidaio_magic2 = squidaio_nthreads * MAGIC2_FACTOR;
     for (i = 0; i < squidaio_nthreads; i++) {
