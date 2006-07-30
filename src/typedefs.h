@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.148 2006/07/05 06:52:12 adrian Exp $
+ * $Id: typedefs.h,v 1.149 2006/07/30 23:27:03 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -289,6 +289,7 @@ typedef void HLPCMDOPTS(int *argc, char **argv);
 typedef void IDNSCB(void *, rfc1035_rr *, int, const char *);
 
 typedef void STINIT(SwapDir *);
+typedef void STCHECKCONFIG(SwapDir *);
 typedef void STNEWFS(SwapDir *);
 typedef void STDUMP(StoreEntry *, SwapDir *);
 typedef void STFREE(SwapDir *);
@@ -346,6 +347,7 @@ typedef void AUTHSFREECONFIG(authScheme *);
 typedef char *AUTHSUSERNAME(auth_user_t *);
 typedef void AUTHSONCLOSEC(ConnStateData *);
 typedef void AUTHSPARSE(authScheme *, int, char *);
+typedef void AUTHSCHECKCONFIG(authScheme *);
 typedef void AUTHSINIT(authScheme *);
 typedef void AUTHSREQFREE(auth_user_request_t *);
 typedef void AUTHSSETUP(authscheme_entry_t *);

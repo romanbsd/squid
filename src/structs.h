@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.495 2006/07/30 22:15:30 hno Exp $
+ * $Id: structs.h,v 1.496 2006/07/30 23:27:03 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -182,6 +182,7 @@ struct _authscheme_entry {
     AUTHSDECODE *decodeauth;
     AUTHSDIRECTION *getdirection;
     AUTHSPARSE *parse;
+    AUTHSCHECKCONFIG *checkconfig;
     AUTHSINIT *init;
     AUTHSREQFREE *requestFree;
     AUTHSSHUTDOWN *donefunc;
@@ -1732,6 +1733,7 @@ struct _SwapDir {
 	unsigned int read_only:1;
     } flags;
     STINIT *init;		/* Initialise the fs */
+    STCHECKCONFIG *checkconfig;	/* Verify configuration */
     STNEWFS *newfs;		/* Create a new fs */
     STDUMP *dump;		/* Dump fs config snippet */
     STFREE *freefs;		/* Free the fs data */

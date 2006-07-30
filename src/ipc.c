@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipc.c,v 1.37 2006/06/24 09:41:36 serassio Exp $
+ * $Id: ipc.c,v 1.38 2006/07/30 23:27:03 hno Exp $
  *
  * DEBUG: section 54    Interprocess Communication
  * AUTHOR: Duane Wessels
@@ -77,6 +77,8 @@ ipcCreate(int type, const char *prog, const char *const args[], const char *name
 #if HAVE_POLL && defined(_SQUID_OSF_)
     assert(type != IPC_FIFO);
 #endif
+
+    requirePathnameExists(name, prog);
 
     if (rfd)
 	*rfd = -1;

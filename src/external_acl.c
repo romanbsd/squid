@@ -1,6 +1,6 @@
 
 /*
- * $Id: external_acl.c,v 1.26 2006/05/24 20:48:38 serassio Exp $
+ * $Id: external_acl.c,v 1.27 2006/07/30 23:27:03 hno Exp $
  *
  * DEBUG: section 82    External ACL
  * AUTHOR: Henrik Nordstrom, MARA Systems AB
@@ -1084,6 +1084,15 @@ externalAclStats(StoreEntry * sentry)
 	storeAppendPrintf(sentry, "Cache size: %d\n", p->cache->count);
 	helperStats(sentry, p->helper);
 	storeAppendPrintf(sentry, "\n");
+    }
+}
+
+void
+externalAclConfigure(void)
+{
+    external_acl *p;
+    for (p = Config.externalAclHelperList; p; p = p->next) {
+	requirePathnameExists("external_acl_type", p->cmdline->key);
     }
 }
 

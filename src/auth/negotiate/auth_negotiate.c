@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_negotiate.c,v 1.4 2006/07/26 20:21:56 serassio Exp $
+ * $Id: auth_negotiate.c,v 1.5 2006/07/30 23:27:04 hno Exp $
  *
  * DEBUG: section 29    Negotiate Authenticator
  * AUTHOR: Robert Collins
@@ -69,6 +69,7 @@ static AUTHSONCLOSEC authenticateNegotiateOnCloseConnection;
 static AUTHSUSERNAME authenticateNegotiateUsername;
 static AUTHSREQFREE authNegotiateAURequestFree;
 static AUTHSPARSE authNegotiateParse;
+static AUTHSCHECKCONFIG authNegotiateCheckConfig;
 static AUTHSSTART authenticateNegotiateStart;
 static AUTHSSTATS authenticateNegotiateStats;
 static AUTHSSHUTDOWN authNegotiateDone;
@@ -160,7 +161,6 @@ authNegotiateParse(authScheme * scheme, int n_configured, char *param_str)
 	if (negotiateConfig->authenticate)
 	    wordlistDestroy(&negotiateConfig->authenticate);
 	parse_wordlist(&negotiateConfig->authenticate);
-	requirePathnameExists("authparam negotiate program", negotiateConfig->authenticate->key);
     } else if (strcasecmp(param_str, "children") == 0) {
 	parse_int(&negotiateConfig->authenticateChildren);
     } else if (strcasecmp(param_str, "keep_alive") == 0) {
@@ -170,6 +170,12 @@ authNegotiateParse(authScheme * scheme, int n_configured, char *param_str)
     }
 }
 
+static void
+authNegotiateCheckConfig(authScheme * scheme)
+{
+    auth_negotiate_config *config = scheme->scheme_data;
+    requirePathnameExists("authparam negotiate program", config->authenticate->key);
+}
 
 void
 authSchemeSetup_negotiate(authscheme_entry_t * authscheme)
@@ -178,6 +184,7 @@ authSchemeSetup_negotiate(authscheme_entry_t * authscheme)
     authscheme->Active = authenticateNegotiateActive;
     authscheme->configured = authNegotiateConfigured;
     authscheme->parse = authNegotiateParse;
+    authscheme->checkconfig = authNegotiateCheckConfig;
     authscheme->dump = authNegotiateCfgDump;
     authscheme->requestFree = authNegotiateAURequestFree;
     authscheme->freeconfig = authNegotiateFreeConfig;

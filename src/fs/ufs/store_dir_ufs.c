@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.58 2006/07/05 06:52:13 adrian Exp $
+ * $Id: store_dir_ufs.c,v 1.59 2006/07/30 23:27:05 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -355,6 +355,13 @@ storeUfsDirCloseSwapLog(SwapDir * sd)
     assert(n_ufs_dirs >= 0);
     if (0 == n_ufs_dirs)
 	safe_free(ufs_dir_index);
+}
+
+static void
+storeUfsCheckConfig(SwapDir * sd)
+{
+    if (!opt_create_swap_dirs)
+	requirePathnameExists("cache_dir", sd->path);
 }
 
 static void
@@ -1904,6 +1911,7 @@ storeUfsDirParse(SwapDir * sd, int index, char *path)
     ufsinfo->map = NULL;	/* Debugging purposes */
     ufsinfo->suggest = 0;
     ufsinfo->open_files = 0;
+    sd->checkconfig = storeUfsCheckConfig;
     sd->init = storeUfsDirInit;
     sd->newfs = storeUfsDirNewfs;
     sd->dump = storeUfsDirDump;

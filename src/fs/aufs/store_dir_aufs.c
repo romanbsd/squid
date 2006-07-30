@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_aufs.c,v 1.58 2006/07/05 06:52:12 adrian Exp $
+ * $Id: store_dir_aufs.c,v 1.59 2006/07/30 23:27:04 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -345,6 +345,14 @@ storeAufsDirCloseSwapLog(SwapDir * sd)
 	sd->index, aioinfo->swaplog_fd);
     aioinfo->swaplog_fd = -1;
 }
+
+static void
+storeAufsCheckConfig(SwapDir * sd)
+{
+    if (!opt_create_swap_dirs)
+	requirePathnameExists("cache_dir", sd->path);
+}
+
 
 static void
 storeAufsDirInit(SwapDir * sd)
@@ -1868,6 +1876,7 @@ storeAufsDirParse(SwapDir * sd, int index, char *path)
     aioinfo->swaplog_fd = -1;
     aioinfo->map = NULL;	/* Debugging purposes */
     aioinfo->suggest = 0;
+    sd->checkconfig = storeAufsCheckConfig;
     sd->init = storeAufsDirInit;
     sd->newfs = storeAufsDirNewfs;
     sd->dump = storeAufsDirDump;

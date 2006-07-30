@@ -1,6 +1,6 @@
 
 /*
- * $Id: authenticate.c,v 1.47 2006/07/08 16:55:59 serassio Exp $
+ * $Id: authenticate.c,v 1.48 2006/07/30 23:27:03 hno Exp $
  *
  * DEBUG: section 29    Authenticator
  * AUTHOR: Duane Wessels
@@ -698,6 +698,19 @@ void
 authenticateSchemeInit(void)
 {
     authSchemeSetup();
+}
+
+void
+authenticateConfigure(authConfig * config)
+{
+    int i;
+    authScheme *scheme;
+    for (i = 0; i < config->n_configured; i++) {
+	scheme = config->schemes + i;
+	if (authscheme_list[scheme->Id].checkconfig && authscheme_list[scheme->Id].configured()) {
+	    authscheme_list[scheme->Id].checkconfig(scheme);
+	}
+    }
 }
 
 void
