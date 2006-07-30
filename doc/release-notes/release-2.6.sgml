@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.28 2006/07/29 08:00:44 serassio Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.29 2006/07/30 22:15:30 hno Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -119,6 +119,7 @@ membership check
 <tag>via</tag>New directive to disable the use of the Via directive
 <tag>wccp2_*</tag>WCCP2 protocol support
 <tag>minimum_expiry_time</tag>tune the magic 60 seconds limit of what is considered cachable when the object doesn't have any cache validators. (2.6.STABLE2)
+<tag>wccp2_rebuild_wait</tag>make Squid delay registering with a WCCP router until store rebuild have finished. Default on. (2.6.STABLE2)
 
 </descrip>
 
