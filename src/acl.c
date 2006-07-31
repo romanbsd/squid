@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.307 2006/07/29 13:44:44 hno Exp $
+ * $Id: acl.c,v 1.308 2006/07/31 10:06:21 hno Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -620,7 +620,8 @@ aclParseTimeSpec(void *curlist)
 		default:
 		    debug(28, 0) ("%s line %d: %s\n",
 			cfg_filename, config_lineno, config_input_line);
-		    debug(28, 0) ("aclParseTimeSpec: Bad Day '%c'\n", *t);
+		    debug(28, 0) ("aclParseTimeSpec: Bad Day '%c'\n", t[-1]);
+		    self_destruct();
 		    break;
 		}
 	    }
