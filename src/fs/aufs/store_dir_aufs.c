@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_aufs.c,v 1.60 2006/07/31 10:29:44 hno Exp $
+ * $Id: store_dir_aufs.c,v 1.61 2006/07/31 10:31:44 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1544,8 +1544,6 @@ storeAufsDirMaintain(SwapDir * SD)
     walker = SD->repl->PurgeInit(SD->repl, max_scan);
     while (1) {
 	if (SD->cur_size < SD->low_size && aioinfo->map->n_files_in_map < FILEMAP_MAX)
-	    break;
-	if (SD->cur_size < SD->low_size)
 	    break;
 	if (removed >= max_remove)
 	    break;
