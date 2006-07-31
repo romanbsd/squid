@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.29 2006/07/30 22:15:30 hno Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.30 2006/07/31 00:36:05 hno Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -281,6 +281,8 @@ redirect_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd</verb>
 	<item>Added ARP acl support for OpenBSD and ARP fixes for Windows
 	<item>Bug #1681: All ntlmauthenticator processes are busy
 	<item>new minimum_expiry_time squid.conf directive backported from Squid-3
+	<item>Bug #1703: Wrong default path to the diskd helper causing hangs at 100% CPU
+	<item>Bug #1685: Crashes or other odd results after storeSwapMetaUnpack: errors
 	<item>a number of other minor and cosmetic bugfixes. See the list of <url
 		url="http://www.squid-cache.org/Versions/v2/2.6/changesets/"
 			name="squid-2.6 changes"> and the <url url="ChangeLog"
