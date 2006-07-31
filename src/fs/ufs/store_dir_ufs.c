@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.59 2006/07/30 23:27:05 hno Exp $
+ * $Id: store_dir_ufs.c,v 1.60 2006/07/31 10:29:45 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1554,6 +1554,7 @@ storeUfsDirValidFileno(SwapDir * SD, sfileno filn, int flag)
 void
 storeUfsDirMaintain(SwapDir * SD)
 {
+    ufsinfo_t *ufsinfo = SD->fsdata;
     StoreEntry *e = NULL;
     int removed = 0;
     int max_scan;
@@ -1575,7 +1576,7 @@ storeUfsDirMaintain(SwapDir * SD)
     debug(47, 3) ("storeMaintainSwapSpace: f=%f, max_scan=%d, max_remove=%d\n", f, max_scan, max_remove);
     walker = SD->repl->PurgeInit(SD->repl, max_scan);
     while (1) {
-	if (SD->cur_size < SD->low_size)
+	if (SD->cur_size < SD->low_size && ufsinfo->map->n_files_in_map < FILEMAP_MAX)
 	    break;
 	if (removed >= max_remove)
 	    break;

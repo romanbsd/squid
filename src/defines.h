@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.118 2006/06/28 10:31:56 hno Exp $
+ * $Id: defines.h,v 1.119 2006/07/31 10:29:44 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -323,5 +323,9 @@
 #else
 #define FILE_MODE(x) ((x)&(O_RDONLY|O_WRONLY|O_RDWR))
 #endif
+
+/* swap_filen is 25 bits, signed */
+#define FILEMAP_MAX_SIZE (1<<24)
+#define FILEMAP_MAX (FILEMAP_MAX_SIZE - 65536)
 
 #endif /* SQUID_DEFINES_H */
