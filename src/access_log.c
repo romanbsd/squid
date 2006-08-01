@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.86 2006/08/01 17:42:29 hno Exp $
+ * $Id: access_log.c,v 1.87 2006/08/01 17:45:30 hno Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -309,7 +309,9 @@ typedef enum {
 /*LFT_USER_SCHEME, */
     LFT_USER_IDENT,
     LFT_USER_EXT,
+#if USE_SSL
     LFT_USER_SSL,
+#endif
 
     LFT_HTTP_CODE,
 /*LFT_HTTP_STATUS, */
