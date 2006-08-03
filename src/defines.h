@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.119 2006/07/31 10:29:44 hno Exp $
+ * $Id: defines.h,v 1.120 2006/08/03 02:31:11 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -40,6 +40,25 @@
 #ifndef FALSE
 #define FALSE 0
 #endif
+
+/* Define load weights for cache_dir types */
+#define MAX_LOAD_VALUE 1000
+
+#define COSS_LOAD_BASE 0
+#define AUFS_LOAD_BASE 100
+#define DISKD_LOAD_BASE 100
+#define UFS_LOAD_BASE 500
+
+#define COSS_LOAD_STRIPE_WEIGHT (900 - COSS_LOAD_BASE)
+#define COSS_LOAD_QUEUE_WEIGHT (100 - COSS_LOAD_BASE)
+#if COSS_LOAD_QUEUE_WEIGHT < 0
+#undef COSS_LOAD_QUEUE_WEIGHT
+#define COSS_LOAD_QUEUE_WEIGHT 0
+#endif
+
+#define AUFS_LOAD_QUEUE_WEIGHT (MAX_LOAD_VALUE - AUFS_LOAD_BASE)
+
+#define DISKD_LOAD_QUEUE_WEIGHT (MAX_LOAD_VALUE - DISKD_LOAD_BASE)
 
 #define ACL_NAME_SZ 32
 #define BROWSERNAMELEN 128
