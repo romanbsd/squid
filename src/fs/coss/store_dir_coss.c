@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.51 2006/08/03 02:31:12 adrian Exp $
+ * $Id: store_dir_coss.c,v 1.52 2006/08/05 15:36:24 hno Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -841,9 +841,8 @@ storeCossDirReconfigure(SwapDir * sd, int index, char *path)
 void
 storeCossDirDump(StoreEntry * entry, SwapDir * s)
 {
-    storeAppendPrintf(entry, " %d",
-	s->max_size >> 20);
-    dump_cachedir_options(entry, NULL, s);
+    storeAppendPrintf(entry, " %d", s->max_size >> 10);
+    dump_cachedir_options(entry, options, s);
 }
 
 static void
