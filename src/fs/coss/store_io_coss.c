@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_coss.c,v 1.26 2006/08/03 02:31:12 adrian Exp $
+ * $Id: store_io_coss.c,v 1.27 2006/08/05 15:06:29 hno Exp $
  *
  * DEBUG: section 79    Storage Manager COSS Interface
  * AUTHOR: Eric Stern
@@ -241,7 +241,7 @@ storeCossRecycle(SwapDir * SD, StoreEntry * e)
     storeCossUnlink(SD, e);
 }
 
-int
+static int
 storeCossRelocateRequired(CossInfo * cs, sfileno f)
 {
     int stripes_written;
