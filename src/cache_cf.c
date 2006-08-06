@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.452 2006/07/30 23:27:03 hno Exp $
+ * $Id: cache_cf.c,v 1.453 2006/08/06 19:00:19 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -667,21 +667,25 @@ parseBytesUnits(const char *unit)
 static void
 dump_acl(StoreEntry * entry, const char *name, acl * ae)
 {
-    wordlist *w;
-    wordlist *v;
     while (ae != NULL) {
 	debug(3, 3) ("dump_acl: %s %s\n", name, ae->name);
-	v = w = aclDumpGeneric(ae);
-	while (v != NULL) {
-	    debug(3, 3) ("dump_acl: %s %s %s\n", name, ae->name, v->key);
-	    storeAppendPrintf(entry, "%s %s %s %s\n",
-		name,
-		ae->name,
-		aclTypeToStr(ae->type),
-		v->key);
-	    v = v->next;
+	if (strstr(ae->cfgline, " \""))
+	    storeAppendPrintf(entry, "%s\n", ae->cfgline);
+	else {
+	    wordlist *w;
+	    wordlist *v;
+	    v = w = aclDumpGeneric(ae);
+	    while (v != NULL) {
+		debug(3, 3) ("dump_acl: %s %s %s\n", name, ae->name, v->key);
+		storeAppendPrintf(entry, "%s %s %s %s\n",
+		    name,
+		    ae->name,
+		    aclTypeToStr(ae->type),
+		    v->key);
+		v = v->next;
+	    }
+	    wordlistDestroy(&w);
 	}
-	wordlistDestroy(&w);
 	ae = ae->next;
     }
 }
