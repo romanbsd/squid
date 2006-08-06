@@ -1,5 +1,5 @@
 /*
- * $Id: splay.c,v 1.15 2005/05/17 16:56:36 hno Exp $
+ * $Id: splay.c,v 1.16 2006/08/06 18:40:59 hno Exp $
  */
 
 #include "config.h"
@@ -24,11 +24,11 @@ splay_insert(void *data, splayNode * top, SPLAYCMP * compare)
 {
     splayNode *new = xcalloc(sizeof(splayNode), 1);
     new->data = data;
+    top = splay_splay(data, top, compare);
     if (top == NULL) {
 	new->left = new->right = NULL;
 	return new;
     }
-    top = splay_splay(data, top, compare);
     if (splayLastResult < 0) {
 	new->left = top->left;
 	new->right = top;
