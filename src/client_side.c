@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.668 2006/08/06 18:41:34 hno Exp $
+ * $Id: client_side.c,v 1.669 2006/08/07 11:04:13 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4325,7 +4325,7 @@ clientLifetimeTimeout(int fd, void *data)
 }
 
 static int
-httpAcceptDefer(int fdunused, void *dataunused)
+httpAcceptDefer(int fd, void *dataunused)
 {
     static time_t last_warn = 0;
     if (fdNFree() >= RESERVED_FD)
@@ -4334,6 +4334,7 @@ httpAcceptDefer(int fdunused, void *dataunused)
 	debug(33, 0) ("WARNING! Your cache is running out of filedescriptors\n");
 	last_warn = squid_curtime;
     }
+    commDeferFD(fd);
     return 1;
 }
 
