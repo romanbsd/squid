@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_swapout.c,v 1.94 2006/06/02 00:07:40 hno Exp $
+ * $Id: store_swapout.c,v 1.95 2006/08/07 15:03:28 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Swapout Functions
  * AUTHOR: Duane Wessels
@@ -243,8 +243,13 @@ storeSwapOut(StoreEntry * e)
 	assert(mem->inmem_lo == 0);
 	if (storeCheckCachable(e))
 	    storeSwapOutStart(e);
-	else
+	else {
+	    /* Now that we know the data is not cachable, free the memory
+	     * to make sure the forwarding code does not defer the connection
+	     */
+	    storeSwapOutMaintainMemObject(e);
 	    return;
+	}
 	/* ENTRY_CACHABLE will be cleared and we'll never get here again */
     }
     if (NULL == mem->swapout.sio)
