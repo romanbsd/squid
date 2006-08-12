@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.496 2006/07/30 23:27:03 hno Exp $
+ * $Id: structs.h,v 1.497 2006/08/12 13:33:45 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -843,6 +843,16 @@ struct _dwrite_q {
     FREE *free_func;
 };
 
+struct _CommWriteStateData {
+    int valid;
+    char *buf;
+    size_t size;
+    size_t offset;
+    CWCB *handler;
+    void *handler_data;
+    FREE *free_func;
+};
+
 
 /* ETag support is rudimantal;
  * this struct is likely to change
@@ -898,7 +908,7 @@ struct _fde {
     close_handler *close_handler;	/* linked list */
     DEFER *defer_check;		/* check if we should defer read */
     void *defer_data;
-    CommWriteStateData *rwstate;	/* State data for comm_write */
+    struct _CommWriteStateData rwstate;		/* State data for comm_write */
     READ_HANDLER *read_method;
     WRITE_HANDLER *write_method;
 #if USE_SSL
@@ -1911,15 +1921,6 @@ struct _refresh_t {
 	unsigned int ignore_auth:1;
 #endif
     } flags;
-};
-
-struct _CommWriteStateData {
-    char *buf;
-    size_t size;
-    size_t offset;
-    CWCB *handler;
-    void *handler_data;
-    FREE *free_func;
 };
 
 struct _ErrorState {
