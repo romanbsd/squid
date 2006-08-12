@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.354 2006/08/12 13:33:45 adrian Exp $
+ * $Id: comm.c,v 1.355 2006/08/12 23:27:20 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -82,7 +82,7 @@ CommWriteStateCallbackAndFree(int fd, int code)
     CommWriteStateData *CommWriteState = &fd_table[fd].rwstate;
     CWCB *callback = NULL;
     void *data;
-    if (CommWriteState->valid == NULL) {
+    if (!CommWriteState->valid) {
 	return;
     }
     CommWriteState->valid = 0;
@@ -1046,7 +1046,7 @@ commHandleWrite(int fd, void *data)
     int nleft;
     CommWriteStateData *state = &fd_table[fd].rwstate;
 
-    assert(state->valid == 1);
+    assert(state->valid);
 
     debug(5, 5) ("commHandleWrite: FD %d: off %ld, sz %ld.\n",
 	fd, (long int) state->offset, (long int) state->size);
