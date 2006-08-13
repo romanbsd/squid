@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.670 2006/08/12 13:33:46 adrian Exp $
+ * $Id: client_side.c,v 1.671 2006/08/13 07:52:39 adrian Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3764,6 +3764,7 @@ parseHttpRequest(ConnStateData * conn, method_t * method_p, int *status,
     /* This tries to back out what is done above */
     dlinkDelete(&http->active, &ClientActiveRequests);
     safe_free(http->uri);
+    xfree(inbuf);
     cbdataFree(http);
     return parseHttpRequestAbort(conn, "error:invalid-request");
 }
