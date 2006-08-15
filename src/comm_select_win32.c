@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select_win32.c,v 1.1 2006/06/11 17:06:25 serassio Exp $
+ * $Id: comm_select_win32.c,v 1.2 2006/08/15 20:28:20 serassio Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -607,8 +607,20 @@ comm_select_init(void)
 }
 
 void
+comm_select_postinit()
+{
+    debug(5, 1) ("Using select for the IO loop\n");
+}
+
+void
 comm_select_shutdown(void)
 {
+}
+
+void
+comm_select_status(StoreEntry * sentry)
+{
+    storeAppendPrintf(sentry, "\tIO loop method:                     select\n");
 }
 
 /*
