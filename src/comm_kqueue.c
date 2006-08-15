@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_kqueue.c,v 1.8 2006/08/15 14:32:26 hno Exp $
+ * $Id: comm_kqueue.c,v 1.9 2006/08/15 19:27:28 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -53,7 +53,6 @@ static unsigned *kqueue_state;	/* keep track of the kqueue state */
 void
 comm_select_init()
 {
-    debug(5, 1) ("comm_select_init: using kqueue\n");
     kq = kqueue();
     if (kq < 0)
 	fatalf("comm_select_init: kqueue(): %s\n", xstrerror());
@@ -67,12 +66,24 @@ comm_select_init()
 }
 
 void
+comm_select_postinit()
+{
+    debug(5, 1) ("Using kqueue for the IO loop\n");
+}
+
+void
 comm_select_shutdown()
 {
     fd_close(kq);
     close(kq);
     kq = -1;
     safe_free(kqueue_state);
+}
+
+void
+comm_select_status(StoreEntry * sentry)
+{
+    storeAppendPrintf(sentry, "\tIO loop method:                     kqueue\n");
 }
 
 void

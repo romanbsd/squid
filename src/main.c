@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.387 2006/07/30 23:27:03 hno Exp $
+ * $Id: main.c,v 1.388 2006/08/15 19:27:28 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -552,6 +552,7 @@ mainInitialize(void)
 	debug(1, 1) ("Windows sockets initialized\n");
 #endif
 
+    comm_select_postinit();
     if (!configured_once)
 	disk_init();		/* disk_init must go before ipcache_init() */
     ipcache_init();
