@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.19 2006/07/19 15:56:39 hno Exp $
+ * $Id: comm_poll.c,v 1.20 2006/08/15 14:32:26 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -570,6 +570,7 @@ comm_poll_dns_incoming(void)
 void
 comm_select_init(void)
 {
+    debug(5, 1) ("comm_select_init: using poll\n");
     cachemgrRegister("comm_incoming",
 	"comm_incoming() stats",
 	commIncomingStats, 0, 1);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.75 2006/06/08 12:53:20 hno Exp $
+ * $Id: comm_select.c,v 1.76 2006/08/15 14:32:26 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -558,6 +558,7 @@ comm_select_dns_incoming(void)
 void
 comm_select_init(void)
 {
+    debug(5, 1) ("comm_select_init: using select\n");
     zero_tv.tv_sec = 0;
     zero_tv.tv_usec = 0;
     cachemgrRegister("comm_incoming",

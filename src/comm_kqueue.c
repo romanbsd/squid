@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_kqueue.c,v 1.7 2006/06/27 13:09:43 hno Exp $
+ * $Id: comm_kqueue.c,v 1.8 2006/08/15 14:32:26 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -53,6 +53,7 @@ static unsigned *kqueue_state;	/* keep track of the kqueue state */
 void
 comm_select_init()
 {
+    debug(5, 1) ("comm_select_init: using kqueue\n");
     kq = kqueue();
     if (kq < 0)
 	fatalf("comm_select_init: kqueue(): %s\n", xstrerror());

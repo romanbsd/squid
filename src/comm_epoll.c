@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.24 2006/06/27 13:09:43 hno Exp $
+ * $Id: comm_epoll.c,v 1.25 2006/08/15 14:32:26 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -68,6 +68,7 @@ epolltype_atoi(int x)
 void
 comm_select_init()
 {
+    debug(5, 1) ("comm_select_init: using epoll\n");
     kdpfd = epoll_create(Squid_MaxFD);
     if (kdpfd < 0)
 	fatalf("comm_select_init: epoll_create(): %s\n", xstrerror());
