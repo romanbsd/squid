@@ -1,6 +1,6 @@
 
 /*
- * $Id: Packer.c,v 1.15 2005/10/23 15:20:52 hno Exp $
+ * $Id: Packer.c,v 1.16 2006/08/16 00:54:16 hno Exp $
  *
  * DEBUG: section 60    Packer: A uniform interface to store-like modules
  * AUTHOR: Alex Rousskov
@@ -93,7 +93,7 @@
 
 /* append()'s */
 static void (*const store_append) (StoreEntry *, const char *, int) = &storeAppend;
-static void (*const memBuf_append) (MemBuf *, const char *, int) = &memBufAppend;
+static void (*const memBuf_append) (MemBuf *, const void *, int) = &memBufAppend;
 
 /* vprintf()'s */
 static void (*const store_vprintf) (StoreEntry *, const char *, va_list ap) = &storeAppendVPrintf;
