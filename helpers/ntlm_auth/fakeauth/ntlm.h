@@ -1,5 +1,5 @@
 /*
- * $Id: ntlm.h,v 1.5 2006/08/14 16:26:48 serassio Exp $
+ * $Id: ntlm.h,v 1.6 2006/08/16 18:37:42 serassio Exp $
  *
  * AUTHOR: Andrew Doran <ad@interlude.eu.org>
  *
@@ -121,7 +121,7 @@ extern int fail_debug_enabled;
 #include <unistd.h>
 static char *__foo;
 #define debug(X...) if (debug_enabled) { \
-                    fprintf(stderr,"ntlm-auth[%d](%s:%d): ", getpid(), \
+                    fprintf(stderr,"ntlm-auth[%d](%s:%d): ", (int)getpid(), \
                     ((__foo=strrchr(__FILE__,'/'))==NULL?__FILE__:__foo+1),\
                     __LINE__);\
                     fprintf(stderr,X); }
