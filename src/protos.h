@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.508 2006/08/15 21:15:19 hno Exp $
+ * $Id: protos.h,v 1.509 2006/08/16 00:27:20 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -604,7 +604,7 @@ extern void memBufReset(MemBuf * mb);
 /* unfirtunate hack to test if the buffer has been Init()ialized */
 extern int memBufIsNull(MemBuf * mb);
 /* calls memcpy, appends exactly size bytes, extends buffer if needed */
-extern void memBufAppend(MemBuf * mb, const char *buf, int size);
+extern void memBufAppend(MemBuf * mb, const void *buf, int size);
 /* calls snprintf, extends buffer if needed */
 #if STDC_HEADERS
 extern void
