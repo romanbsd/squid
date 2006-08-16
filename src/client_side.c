@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.672 2006/08/16 00:38:47 hno Exp $
+ * $Id: client_side.c,v 1.673 2006/08/16 00:40:20 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3735,7 +3735,7 @@ parseHttpRequest(ConnStateData * conn, method_t * method_p, int *status,
 	    http->flags.transparent = 1;
     } else if (conn->port->accel) {
 	http->flags.accel = 1;
-	if (!conn->port->vhost) {
+	if (!conn->port->vhost && strncasecmp(url, "cache_object://", 15) != 0) {
 	    url = strstr(url, "//");
 	    if (!url)
 		goto invalid_request;
