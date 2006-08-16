@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.671 2006/08/13 07:52:39 adrian Exp $
+ * $Id: client_side.c,v 1.672 2006/08/16 00:38:47 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2053,7 +2053,8 @@ clientProcessVary(VaryData * vary, void *data)
 	return;
     }
     if (vary->key) {
-	debug(33, 2) ("clientProcessVary: HIT key=%s etag=%s\n", vary->key, vary->etag);
+	debug(33, 2) ("clientProcessVary: HIT key=%s etag=%s\n",
+	    vary->key, vary->etag ? vary->etag : "NONE");
     } else {
 	int i;
 	debug(33, 2) ("clientProcessVary MISS\n");
