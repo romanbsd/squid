@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh.c,v 1.61 2006/07/28 20:49:09 hno Exp $
+ * $Id: refresh.c,v 1.62 2006/08/18 21:06:04 hno Exp $
  *
  * DEBUG: section 22    Refresh Calculation
  * AUTHOR: Harvest Derived
@@ -168,6 +168,13 @@ refreshStaleness(const StoreEntry * entry, time_t check_time, time_t age, const 
 	debug(22, 3) ("STALE: age %d > max %d \n", (int) age, (int) R->max);
 	sf->max = 1;
 	return (age - R->max);
+    }
+    if (check_time < entry->timestamp) {
+	debug(22, 1) ("STALE: Entry's timestamp greater than check time. Clock going backwards?\n");
+	debug(22, 1) ("\tcheck_time:\t%s\n", mkrfc1123(check_time));
+	debug(22, 1) ("\tentry->timestamp:\t%s\n", mkrfc1123(entry->timestamp));
+	debug(22, 1) ("\tstaleness:\t%ld\n", (long int) entry->timestamp - check_time);
+	return (entry->timestamp - check_time);
     }
     /*
      * Try the last-modified factor algorithm.
