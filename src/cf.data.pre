@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.364 2006/08/16 02:33:22 swilton Exp $
+# $Id: cf.data.pre,v 1.365 2006/08/18 23:20:54 adrian Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -3489,6 +3489,15 @@ DOC_START
 	purposes, so -k rotate uses another signal.  It is best to get
 	in the habit of using 'squid -k rotate' instead of 'kill -USR1
 	<pid>'.
+DOC_END
+
+NAME: logfile_daemon
+TYPE: string
+DEFAULT: @DEFAULT_LOGFILED@
+LOC: Config.Program.logfile_daemon
+DOC_START
+	Specify the path to the logfile-writing daemon. This daemon is
+	used to write the access and store logs, if configured.
 DOC_END
 
 

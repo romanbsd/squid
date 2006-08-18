@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.149 2006/07/30 23:27:03 hno Exp $
+ * $Id: typedefs.h,v 1.150 2006/08/18 23:20:54 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -213,6 +213,7 @@ typedef struct _link_list link_list;
 typedef struct _storefs_entry storefs_entry_t;
 typedef struct _storerepl_entry storerepl_entry_t;
 typedef struct _diskd_queue diskd_queue;
+typedef struct _logfile_buffer logfile_buffer_t;
 typedef struct _Logfile Logfile;
 typedef struct _logformat_token logformat_token;
 typedef struct _logformat logformat;

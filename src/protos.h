@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.510 2006/08/16 00:54:16 hno Exp $
+ * $Id: protos.h,v 1.511 2006/08/18 23:20:54 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1320,8 +1320,10 @@ extern void *leakFreeFL(void *, const char *, int);
 extern Logfile *logfileOpen(const char *path, size_t bufsz, int);
 extern void logfileClose(Logfile * lf);
 extern void logfileRotate(Logfile * lf);
-extern void logfileWrite(Logfile * lf, void *buf, size_t len);
+extern void logfileWrite(Logfile * lf, char *buf, size_t len);
 extern void logfileFlush(Logfile * lf);
+extern void logfileLineStart(Logfile * lf);
+extern void logfileLineEnd(Logfile * lf);
 #if STDC_HEADERS
 extern void
 logfilePrintf(Logfile * lf, const char *fmt,...) PRINTF_FORMAT_ARG2;
