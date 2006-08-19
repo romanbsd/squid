@@ -1,5 +1,5 @@
 /*
- * $Id: logfile.c,v 1.18 2006/08/18 23:20:54 adrian Exp $
+ * $Id: logfile.c,v 1.19 2006/08/19 13:19:31 serassio Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Duane Wessels
@@ -309,7 +309,8 @@ logfileOpen(const char *path, size_t bufsz, int fatal_flag)
     lf->nbufs = 0;
 
     /* Queue the initial control data */
-    asprintf(&tmpbuf, "r%d\nb%d\n", Config.Log.rotateNumber, Config.onoff.buffered_logs);
+    tmpbuf = (char *) xmalloc(BUFSIZ);
+    snprintf(tmpbuf, BUFSIZ, "r%d\nb%d\n", Config.Log.rotateNumber, Config.onoff.buffered_logs);
     logfileAppend(lf, tmpbuf, strlen(tmpbuf));
     xfree(tmpbuf);
 
