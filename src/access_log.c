@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.89 2006/08/18 23:20:54 adrian Exp $
+ * $Id: access_log.c,v 1.90 2006/08/19 01:30:52 hno Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -1116,30 +1116,32 @@ accessLogLog(AccessLogEntry * al, aclCheck_t * checklist)
     for (log = Config.Log.accesslogs; log; log = log->next) {
 	if (checklist && log->aclList && aclMatchAclList(log->aclList, checklist) != 1)
 	    continue;
-	logfileLineStart(log->logfile);
-	switch (log->type) {
-	case CLF_AUTO:
-	    if (Config.onoff.common_log)
-		accessLogCommon(al, log->logfile);
-	    else
+	if (log->logfile) {
+	    logfileLineStart(log->logfile);
+	    switch (log->type) {
+	    case CLF_AUTO:
+		if (Config.onoff.common_log)
+		    accessLogCommon(al, log->logfile);
+		else
+		    accessLogSquid(al, log->logfile);
+		break;
+	    case CLF_SQUID:
 		accessLogSquid(al, log->logfile);
-	    break;
-	case CLF_SQUID:
-	    accessLogSquid(al, log->logfile);
-	    break;
-	case CLF_COMMON:
-	    accessLogCommon(al, log->logfile);
-	    break;
-	case CLF_CUSTOM:
-	    accessLogCustom(al, log);
-	    break;
-	case CLF_NONE:
-	    goto last;
-	default:
-	    fatalf("Unknown log format %d\n", log->type);
-	    break;
+		break;
+	    case CLF_COMMON:
+		accessLogCommon(al, log->logfile);
+		break;
+	    case CLF_CUSTOM:
+		accessLogCustom(al, log);
+		break;
+	    case CLF_NONE:
+		goto last;
+	    default:
+		fatalf("Unknown log format %d\n", log->type);
+		break;
+	    }
+	    logfileLineEnd(log->logfile);
 	}
-	logfileLineEnd(log->logfile);
 	if (!checklist)
 	    break;
     }
