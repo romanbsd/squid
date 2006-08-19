@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.242 2006/06/08 12:53:20 hno Exp $
+ * $Id: squid.h,v 1.243 2006/08/19 12:40:31 serassio Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -153,6 +153,9 @@
 #include <netinet/in_systm.h>
 #endif
 #include <netdb.h>
+#endif
+#if HAVE_PATHS_H
+#include <paths.h>
 #endif
 #if HAVE_PWD_H
 #include <pwd.h>

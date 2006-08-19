@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.120 2006/08/03 02:31:11 adrian Exp $
+ * $Id: defines.h,v 1.121 2006/08/19 12:40:31 serassio Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -298,7 +298,11 @@
 #define URI_WHITESPACE_DENY 4
 
 #ifndef _PATH_DEVNULL
+#ifdef _SQUID_MSWIN_
+#define _PATH_DEVNULL "NUL"
+#else
 #define _PATH_DEVNULL "/dev/null"
+#endif
 #endif
 
 /* cbdata macros */
