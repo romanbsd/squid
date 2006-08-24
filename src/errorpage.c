@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.c,v 1.186 2006/07/04 21:45:24 hno Exp $
+ * $Id: errorpage.c,v 1.187 2006/08/24 14:57:16 serassio Exp $
  *
  * DEBUG: section 4     Error Generation
  * AUTHOR: Duane Wessels
@@ -452,7 +452,7 @@ errorConvert(char token, ErrorState * err)
     memBufReset(&mb);
     switch (token) {
     case 'a':
-	if (r->auth_user_request)
+	if (r && r->auth_user_request)
 	    p = authenticateUserRequestUsername(r->auth_user_request);
 	if (!p)
 	    p = "-";
