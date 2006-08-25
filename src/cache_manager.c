@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_manager.c,v 1.29 2006/06/06 17:38:59 hno Exp $
+ * $Id: cache_manager.c,v 1.30 2006/08/25 12:26:07 serassio Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Duane Wessels
@@ -201,9 +201,8 @@ cachemgrStart(int fd, request_t * request, StoreEntry * entry)
     action_table *a;
     debug(16, 3) ("objectcacheStart: '%s'\n", storeUrl(entry));
     if ((mgr = cachemgrParseUrl(storeUrl(entry))) == NULL) {
-	err = errorCon(ERR_INVALID_URL, HTTP_NOT_FOUND);
+	err = errorCon(ERR_INVALID_URL, HTTP_NOT_FOUND, request);
 	err->url = xstrdup(storeUrl(entry));
-	err->request = requestLink(request);
 	errorAppendEntry(entry, err);
 	entry->expires = squid_curtime;
 	return;
@@ -220,7 +219,7 @@ cachemgrStart(int fd, request_t * request, StoreEntry * entry)
 	/* build error message */
 	ErrorState *err;
 	HttpReply *rep;
-	err = errorCon(ERR_CACHE_MGR_ACCESS_DENIED, HTTP_UNAUTHORIZED);
+	err = errorCon(ERR_CACHE_MGR_ACCESS_DENIED, HTTP_UNAUTHORIZED, request);
 	/* warn if user specified incorrect password */
 	if (mgr->passwd)
 	    debug(16, 1) ("CACHEMGR: %s@%s: incorrect password for '%s'\n",
@@ -230,7 +229,6 @@ cachemgrStart(int fd, request_t * request, StoreEntry * entry)
 	    debug(16, 1) ("CACHEMGR: %s@%s: password needed for '%s'\n",
 		mgr->user_name ? mgr->user_name : "<unknown>",
 		fd_table[fd].ipaddr, mgr->action);
-	err->request = requestLink(request);
 	rep = errorBuildReply(err);
 	errorStateFree(err);
 	/*

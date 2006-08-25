@@ -1,6 +1,6 @@
 
 /*
- * $Id: urn.c,v 1.79 2006/06/25 15:32:31 serassio Exp $
+ * $Id: urn.c,v 1.80 2006/08/25 12:26:07 serassio Exp $
  *
  * DEBUG: section 52    URN Parsing
  * AUTHOR: Kostas Anagnostakis
@@ -130,9 +130,8 @@ urnStart(request_t * r, StoreEntry * e)
     urlres_r = urlParse(METHOD_GET, urlres);
     if (urlres_r == NULL) {
 	debug(52, 3) ("urnStart: Bad uri-res URL %s\n", urlres);
-	err = errorCon(ERR_URN_RESOLVE, HTTP_NOT_FOUND);
+	err = errorCon(ERR_URN_RESOLVE, HTTP_NOT_FOUND, r);
 	err->url = xstrdup(urlres);
-	err->request = requestLink(r);
 	errorAppendEntry(e, err);
 	return;
     }
@@ -225,8 +224,7 @@ urnHandleReply(void *data, char *buf, ssize_t size)
 	urlres_e->mem_obj->reply->sline.status);
     if (urlres_e->mem_obj->reply->sline.status != HTTP_OK) {
 	debug(52, 3) ("urnHandleReply: failed.\n");
-	err = errorCon(ERR_URN_RESOLVE, HTTP_NOT_FOUND);
-	err->request = requestLink(urnState->request);
+	err = errorCon(ERR_URN_RESOLVE, HTTP_NOT_FOUND, urnState->request);
 	err->url = xstrdup(storeUrl(e));
 	errorAppendEntry(e, err);
 	return;
@@ -239,8 +237,7 @@ urnHandleReply(void *data, char *buf, ssize_t size)
     debug(52, 3) ("urnHandleReply: Counted %d URLs\n", i);
     if (urls == NULL) {		/* unkown URN error */
 	debug(52, 3) ("urnHandleReply: unknown URN %s\n", storeUrl(e));
-	err = errorCon(ERR_URN_RESOLVE, HTTP_NOT_FOUND);
-	err->request = requestLink(urnState->request);
+	err = errorCon(ERR_URN_RESOLVE, HTTP_NOT_FOUND, urnState->request);
 	err->url = xstrdup(storeUrl(e));
 	errorAppendEntry(e, err);
 	return;
