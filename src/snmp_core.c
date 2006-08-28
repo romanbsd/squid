@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_core.c,v 1.60 2006/07/29 20:38:59 serassio Exp $
+ * $Id: snmp_core.c,v 1.61 2006/08/28 09:34:59 serassio Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Glenn Chisholm
@@ -620,11 +620,13 @@ snmpAgentResponse(struct snmp_pdu *PDU)
 		    Answer->errstat = SNMP_ERR_NOSUCHNAME;
 		    debug(49, 5) ("snmpAgentResponse: No such oid.\n");
 		} else {
+		    int *errstatTmp;
 		    if (get_next) {
 			VarPtr = snmp_var_new(NextOidName, NextOidNameLen);
 			xfree(NextOidName);
 		    }
-		    VarNew = (*ParseFn) (VarPtr, (snint *) & (Answer->errstat));
+		    errstatTmp = &(Answer->errstat);
+		    VarNew = (*ParseFn) (VarPtr, (snint *) errstatTmp);
 		    if (get_next)
 			snmp_var_free(VarPtr);
 		}
