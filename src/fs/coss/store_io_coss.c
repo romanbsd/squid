@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_coss.c,v 1.29 2006/08/29 04:33:18 swilton Exp $
+ * $Id: store_io_coss.c,v 1.30 2006/08/29 05:03:06 swilton Exp $
  *
  * DEBUG: section 79    Storage Manager COSS Interface
  * AUTHOR: Eric Stern
@@ -164,7 +164,7 @@ storeCossAllocate(SwapDir * SD, const StoreEntry * e, int which)
 
     /* Check to see if we need to allocate a membuf to start */
     if (cs->current_membuf == NULL) {
-	if (cs->curstripe < cs->numstripes)
+	if (cs->curstripe < (cs->numstripes - 1))
 	    newmb = storeCossCreateMemBuf(SD, cs->curstripe + 1, checkf, &coll);
 	else
 	    newmb = storeCossCreateMemBuf(SD, 0, checkf, &coll);
