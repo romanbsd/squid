@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.514 2006/09/02 14:08:42 hno Exp $
+ * $Id: protos.h,v 1.515 2006/09/02 14:16:10 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -221,6 +221,7 @@ _db_print(const char *,...) PRINTF_FORMAT_ARG1;
 #else
 extern void _db_print();
 #endif
+extern int debug_log_flush(void);
 extern void xassert(const char *, const char *, int);
 
 /* packs, then prints an object using debug() */

@@ -1,6 +1,6 @@
 
 /*
- * $Id: debug.c,v 1.90 2006/07/04 21:45:24 hno Exp $
+ * $Id: debug.c,v 1.91 2006/09/02 14:16:10 hno Exp $
  *
  * DEBUG: section 0     Debug Routines
  * AUTHOR: Harvest Derived
@@ -99,6 +99,21 @@ _db_print(va_alist)
 #endif
 }
 
+static int debug_log_dirty = 0;
+int
+debug_log_flush(void)
+{
+    static time_t last_flush = 0;
+    if (!debug_log_dirty)
+	return 0;
+    if (last_flush != squid_curtime) {
+	fflush(debug_log);
+	last_flush = squid_curtime;
+	debug_log_dirty = 0;
+    }
+    return debug_log_dirty;
+}
+
 static void
 _db_print_file(const char *format, va_list args)
 {
@@ -110,6 +125,8 @@ _db_print_file(const char *format, va_list args)
     vfprintf(debug_log, format, args);
     if (!Config.onoff.buffered_logs)
 	fflush(debug_log);
+    else
+	debug_log_dirty++;
 }
 
 static void
