@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.454 2006/08/18 23:20:54 adrian Exp $
+ * $Id: cache_cf.c,v 1.455 2006/09/02 14:08:42 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -448,7 +448,6 @@ configDoConfigure(void)
 #if USE_UNLINKD
     requirePathnameExists("unlinkd_program", Config.Program.unlinkd);
 #endif
-    requirePathnameExists("logfile_daemon", Config.Program.logfile_daemon);
     if (Config.Program.url_rewrite.command)
 	requirePathnameExists("url_rewrite_program", Config.Program.url_rewrite.command->key);
     if (Config.Program.location_rewrite.command)

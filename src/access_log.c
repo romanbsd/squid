@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.91 2006/08/21 16:34:08 hno Exp $
+ * $Id: access_log.c,v 1.92 2006/09/02 14:08:42 hno Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -1114,32 +1114,29 @@ accessLogLog(AccessLogEntry * al, aclCheck_t * checklist)
     for (log = Config.Log.accesslogs; log; log = log->next) {
 	if (checklist && log->aclList && aclMatchAclList(log->aclList, checklist) != 1)
 	    continue;
-	if (log->logfile) {
-	    logfileLineStart(log->logfile);
-	    switch (log->type) {
-	    case CLF_AUTO:
-		if (Config.onoff.common_log)
-		    accessLogCommon(al, log->logfile);
-		else
-		    accessLogSquid(al, log->logfile);
-		break;
-	    case CLF_SQUID:
-		accessLogSquid(al, log->logfile);
-		break;
-	    case CLF_COMMON:
+	switch (log->type) {
+	case CLF_AUTO:
+	    if (Config.onoff.common_log)
 		accessLogCommon(al, log->logfile);
-		break;
-	    case CLF_CUSTOM:
-		accessLogCustom(al, log);
-		break;
-	    case CLF_NONE:
-		goto last;
-	    default:
-		fatalf("Unknown log format %d\n", log->type);
-		break;
-	    }
-	    logfileLineEnd(log->logfile);
+	    else
+		accessLogSquid(al, log->logfile);
+	    break;
+	case CLF_SQUID:
+	    accessLogSquid(al, log->logfile);
+	    break;
+	case CLF_COMMON:
+	    accessLogCommon(al, log->logfile);
+	    break;
+	case CLF_CUSTOM:
+	    accessLogCustom(al, log);
+	    break;
+	case CLF_NONE:
+	    goto last;
+	default:
+	    fatalf("Unknown log format %d\n", log->type);
+	    break;
 	}
+	logfileFlush(log->logfile);
 	if (!checklist)
 	    break;
     }
@@ -1439,6 +1436,7 @@ headersLog(int cs, int pq, method_t m, void *data)
     logfileWrite(headerslog, &S, sizeof(S));
     logfileWrite(headerslog, hmask, sizeof(HttpHeaderMask));
     logfileWrite(headerslog, &ccmask, sizeof(int));
+    logfileFlush(headerslog);
 }
 
 #endif

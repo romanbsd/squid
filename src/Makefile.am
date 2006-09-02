@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.53 2006/08/18 23:20:54 adrian Exp $
+#  $Id: Makefile.am,v 1.54 2006/09/02 14:08:42 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -43,8 +43,6 @@ else
 UNLINKDSOURCE = 
 UNLINKD = 
 endif
-
-LOGFILED = logfile-daemon
 
 if ENABLE_PINGER
 PINGER = pinger
@@ -98,8 +96,7 @@ sbin_PROGRAMS = \
 libexec_PROGRAMS = \
 	$(PINGER) \
 	$(DNSSERVER) \
-	$(UNLINKD) \
-	$(LOGFILED)
+	$(UNLINKD)
 
 cf_gen_SOURCES = cf_gen.c defines.h debug.c
 nodist_cf_gen_SOURCES = globals.c
@@ -311,7 +308,6 @@ DEFAULT_SWAP_DIR        = $(localstatedir)/cache
 DEFAULT_PINGER		= $(libexecdir)/`echo pinger | sed '$(transform);s/$$/$(EXEEXT)/'`
 DEFAULT_UNLINKD		= $(libexecdir)/`echo unlinkd | sed '$(transform);s/$$/$(EXEEXT)/'`
 DEFAULT_DISKD		= $(libexecdir)/`echo diskd-daemon | sed '$(transform);s/$$/$(EXEEXT)/'`
-DEFAULT_LOGFILED	= $(libexecdir)/`echo logfile-daemon | sed '$(transform);s/$$/$(EXEEXT)/'`
 DEFAULT_ICON_DIR	= $(datadir)/icons
 DEFAULT_ERROR_DIR	= $(datadir)/errors/@ERR_DEFAULT_LANGUAGE@
 DEFAULT_MIB_PATH	= $(datadir)/mib.txt
@@ -359,7 +355,6 @@ cf.data: cf.data.pre Makefile
 	s%@DEFAULT_UNLINKD@%$(DEFAULT_UNLINKD)%g;\
 	s%@DEFAULT_PINGER@%$(DEFAULT_PINGER)%g;\
 	s%@DEFAULT_DISKD@%$(DEFAULT_DISKD)%g;\
-	s%@DEFAULT_LOGFILED@%$(DEFAULT_LOGFILED)%g;\
 	s%@DEFAULT_CACHE_LOG@%$(DEFAULT_CACHE_LOG)%g;\
 	s%@DEFAULT_ACCESS_LOG@%$(DEFAULT_ACCESS_LOG)%g;\
 	s%@DEFAULT_STORE_LOG@%$(DEFAULT_STORE_LOG)%g;\
