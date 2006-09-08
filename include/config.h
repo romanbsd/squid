@@ -1,5 +1,5 @@
 /*
- * $Id: config.h,v 1.13 2006/09/01 13:29:17 serassio Exp $
+ * $Id: config.h,v 1.14 2006/09/08 19:41:23 serassio Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -121,6 +121,7 @@
 #elif defined(WIN32) || defined(WINNT) || defined(__WIN32__) || defined(__WIN32)
 #define _SQUID_MSWIN_
 #define _SQUID_WIN32_
+#include "squid_mswin.h"
 
 #elif defined(__APPLE__)
 #define _SQUID_APPLE_

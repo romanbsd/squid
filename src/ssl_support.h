@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl_support.h,v 1.5 2006/05/17 23:17:05 hno Exp $
+ * $Id: ssl_support.h,v 1.6 2006/09/08 19:41:24 serassio Exp $
  *
  * AUTHOR: Benno Rice
  *
@@ -58,5 +58,11 @@ const char *sslGetUserAttribute(SSL * ssl, const char *attribute);
 const char *sslGetCAAttribute(SSL * ssl, const char *attribute);
 const char *sslGetUserCertificatePEM(SSL * ssl);
 const char *sslGetUserCertificateChainPEM(SSL * ssl);
+
+#ifdef _SQUID_MSWIN_
+
+#define SSL_set_fd(s,f) (SSL_set_fd(s,fd_table[fd].win32.handle))
+
+#endif /* _SQUID_MSWIN_ */
 
 #endif /* SQUID_SSL_SUPPORT_H */

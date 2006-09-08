@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_diskd.c,v 1.83 2006/08/03 02:31:12 adrian Exp $
+ * $Id: store_dir_diskd.c,v 1.84 2006/09/08 19:41:25 serassio Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -375,7 +375,7 @@ static void
 storeDiskdDirInit(SwapDir * sd)
 {
     static int started_clean_event = 0;
-    int x;
+    pid_t pid;
     int i;
     int ikey;
     const char *args[5];
@@ -426,13 +426,14 @@ storeDiskdDirInit(SwapDir * sd)
     args[2] = skey2;
     args[3] = skey3;
     args[4] = NULL;
-    x = ipcCreate(IPC_STREAM,
+    pid = ipcCreate(IPC_STREAM,
 	Config.Program.diskd,
 	args,
 	"diskd",
 	&diskdinfo->rfd,
-	&diskdinfo->wfd);
-    if (x < 0)
+	&diskdinfo->wfd,
+	&diskdinfo->hIpc);
+    if (pid < 0)
 	fatalf("execl: %s", Config.Program.diskd);
     fd_note(diskdinfo->rfd, "diskd -> squid health monitor");
     fd_note(diskdinfo->wfd, "squid -> diskd health monitor");

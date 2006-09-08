@@ -1,6 +1,6 @@
 
 /*
- * $Id: util.c,v 1.92 2006/06/26 15:01:59 hno Exp $
+ * $Id: util.c,v 1.93 2006/09/08 19:41:24 serassio Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -32,6 +32,11 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *
  */
+
+/* On native Windows, squid_mswin.h needs to know when we are compiling
+ * util.c for the correct handling of FD<=>socket magic
+ */
+#define UTIL_C
 
 #define _etext etext
 
@@ -626,7 +631,7 @@ xstrerror(void)
     const char *errmsg;
 
     errmsg = strerror(errno);
-   
+
     if (!errmsg || !*errmsg)
 	errmsg = "Unknown error";
 

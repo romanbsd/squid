@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.355 2006/08/12 23:27:20 hno Exp $
+ * $Id: comm.c,v 1.356 2006/09/08 19:41:24 serassio Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -32,6 +32,11 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *
  */
+
+/* On native Windows, squid_mswin.h needs to know when we are compiling
+ * comm.c for the correct handling of FD<=>socket magic
+ */
+#define COMM_C
 
 #include "squid.h"
 

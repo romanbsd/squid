@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.245 2006/08/20 09:32:28 serassio Exp $
+ * $Id: tools.c,v 1.246 2006/09/08 19:41:24 serassio Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -32,6 +32,11 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *
  */
+
+/* On native Windows, squid_mswin.h needs to know when we are compiling
+ * tools.c for the correct handling of FD<=>socket magic
+ */
+#define TOOLS_C
 
 #include "squid.h"
 

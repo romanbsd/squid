@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.499 2006/09/02 14:08:42 hno Exp $
+ * $Id: structs.h,v 1.500 2006/09/08 19:41:24 serassio Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -913,6 +913,11 @@ struct _fde {
     WRITE_HANDLER *write_method;
 #if USE_SSL
     SSL *ssl;
+#endif
+#ifdef _SQUID_MSWIN_
+    struct {
+	long handle;
+    } win32;
 #endif
 };
 
@@ -2327,6 +2332,7 @@ struct _helper_server {
 	int uses;
 	unsigned int pending;
     } stats;
+    void *hIpc;
 };
 
 
@@ -2356,6 +2362,7 @@ struct _helper_stateful_server {
 	int releases;
     } stats;
     void *data;			/* State data used by the calling routines */
+    void *hIpc;
 };
 
 /*
