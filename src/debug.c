@@ -1,6 +1,6 @@
 
 /*
- * $Id: debug.c,v 1.92 2006/09/08 19:41:24 serassio Exp $
+ * $Id: debug.c,v 1.93 2006/09/09 12:45:06 serassio Exp $
  *
  * DEBUG: section 0     Debug Routines
  * AUTHOR: Harvest Derived
@@ -85,7 +85,7 @@ _db_print(va_alist)
 	BOOL(FAR WINAPI * InitializeCriticalSectionAndSpinCount)
 	    (LPCRITICAL_SECTION, DWORD) = NULL;
 	if (krnl_lib)
-	    (FARPROC) InitializeCriticalSectionAndSpinCount =
+	    InitializeCriticalSectionAndSpinCount =
 		GetProcAddress(krnl_lib,
 		"InitializeCriticalSectionAndSpinCount");
 	dbg_mutex = xcalloc(1, sizeof(CRITICAL_SECTION));

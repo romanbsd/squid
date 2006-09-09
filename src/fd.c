@@ -1,6 +1,6 @@
 
 /*
- * $Id: fd.c,v 1.52 2006/06/11 17:06:25 serassio Exp $
+ * $Id: fd.c,v 1.53 2006/09/09 12:45:06 serassio Exp $
  *
  * DEBUG: section 51    Filedescriptor Functions
  * AUTHOR: Duane Wessels
@@ -117,6 +117,7 @@ socket_write_method(int fd, const char *buf, int len)
     return (send(fd, buf, len, 0));
 }
 
+int
 file_write_method(int fd, const char *buf, int len)
 {
     return (_write(fd, buf, len));

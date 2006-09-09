@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipc_win32.c,v 1.1 2006/09/08 19:41:24 serassio Exp $
+ * $Id: ipc_win32.c,v 1.2 2006/09/09 12:45:06 serassio Exp $
  *
  * DEBUG: section 54    Interprocess Communication
  * AUTHOR: Duane Wessels
@@ -582,7 +582,7 @@ ipc_thread_1(void *in_params)
 	snprintf(buf1, 8191, "%s(%ld) <-> ipc PARENT socket", prog, (long int) pid);
 	fd_note(prfd_ipc, buf1);
     }
-    /* else {                      /* IPC_TCP_SOCKET */
+    /* else {                       IPC_TCP_SOCKET */
     /*     commSetNoLinger(fd); */
     /*  } */
     thread_params.prog = prog;
