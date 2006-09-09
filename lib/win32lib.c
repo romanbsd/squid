@@ -1,10 +1,10 @@
+
 /*
- * $Id: win32lib.c,v 1.1 2006/09/08 19:41:24 serassio Exp $
+ * $Id: win32lib.c,v 1.2 2006/09/09 15:41:45 serassio Exp $
  *
- * * * * * * * * Legal stuff * * * * * * *
- *
- * (C) 2001 Guido Serassio <serassio@libero.it>,
- *   inspired by previous work by Romeo Anghelache & Eric Stern.
+ * Windows support
+ * AUTHOR: Guido Serassio <serassio@squid-cache.org>
+ * inspired by previous work by Romeo Anghelache & Eric Stern.
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
  * ----------------------------------------------------------

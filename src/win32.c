@@ -1,11 +1,10 @@
 
 /*
- * $Id: win32.c,v 1.14 2006/09/09 12:45:06 serassio Exp $
+ * $Id: win32.c,v 1.15 2006/09/09 15:41:45 serassio Exp $
  *
- * * * * * * * * Legal stuff * * * * * * *
- *
- * (C) 2001 Guido Serassio <serassio@libero.it>,
- *   inspired by previous work by Romeo Anghelache & Eric Stern.
+ * Windows support
+ * AUTHOR: Guido Serassio <serassio@squid-cache.org>
+ * inspired by previous work by Romeo Anghelache & Eric Stern.
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
  * ----------------------------------------------------------
@@ -28,14 +27,13 @@
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- *
+ *  
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111, USA.
  *
  */
 
-#ifndef WIN32_C
 #define WIN32_C
 
 #include "squid.h"
@@ -944,5 +942,3 @@ WIN32_ExceptionHandlerCleanup()
 #endif /* _SQUID_MSWIN_ */
 
 #endif /* _SQUID_WIN32 */
-
-#endif /* WIN32_C */

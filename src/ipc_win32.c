@@ -1,9 +1,10 @@
 
 /*
- * $Id: ipc_win32.c,v 1.2 2006/09/09 12:45:06 serassio Exp $
+ * $Id: ipc_win32.c,v 1.3 2006/09/09 15:41:45 serassio Exp $
  *
- * DEBUG: section 54    Interprocess Communication
- * AUTHOR: Duane Wessels
+ * DEBUG: section 54    Windows Interprocess Communication
+ * AUTHOR: Andrey Shorin <tolsty@tushino.com>
+ * AUTHOR: Guido Serassio <serassio@squid-cache.org>
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
  * ----------------------------------------------------------

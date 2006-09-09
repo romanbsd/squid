@@ -1,7 +1,8 @@
 /*
- * $Id: squid_mswin.h,v 1.1 2006/09/08 19:41:23 serassio Exp $
+ * $Id: squid_mswin.h,v 1.2 2006/09/09 15:41:45 serassio Exp $
  *
- * AUTHOR: Guido Serassio & Andrey Shorin
+ * AUTHOR: Andrey Shorin <tolsty@tushino.com>
+ * AUTHOR: Guido Serassio <serassio@squid-cache.org>
  *
  * SQUID Internet Object Cache  http://squid.nlanr.net/Squid/
  * ----------------------------------------------------------
