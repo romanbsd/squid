@@ -1,6 +1,6 @@
 
 /*
- * $Id: async_io.c,v 1.20 2006/05/19 00:16:14 adrian Exp $
+ * $Id: async_io.c,v 1.21 2006/09/09 16:04:38 serassio Exp $
  *
  * DEBUG: section 32    Asynchronous Disk I/O
  * AUTHOR: Pete Bentley <pete@demon.net>
@@ -268,6 +268,7 @@ aioUnlink(const char *path, AIOCB * callback, void *callback_data)
     dlinkAdd(ctrlp, &ctrlp->node, &used_list);
 }				/* aioUnlink */
 
+#if USE_TRUNCATE
 void
 aioTruncate(const char *path, off_t length, AIOCB * callback, void *callback_data)
 {
@@ -285,6 +286,7 @@ aioTruncate(const char *path, off_t length, AIOCB * callback, void *callback_dat
     dlinkAdd(ctrlp, &ctrlp->node, &used_list);
 }				/* aioTruncate */
 
+#endif
 
 int
 aioCheckCallbacks(SwapDir * SD)

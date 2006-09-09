@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.395 2006/09/08 19:41:23 serassio Exp $
+dnl  $Id: configure.in,v 1.396 2006/09/09 16:04:38 serassio Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.395 $)dnl
+AC_REVISION($Revision: 1.396 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -423,8 +423,17 @@ for fs in $STORE_MODULES none; do
 	;;
     aufs)
 	if test -z "$with_pthreads"; then
-	    echo "aufs store used, pthreads support automatically enabled"
-	    with_pthreads=yes
+            case "$host_os" in
+            mingw|mingw32|cygwin|cygwin32)
+        	AM_CONDITIONAL(USE_AIOPS_WIN32, true)
+	        echo "aufs store used, Windows threads support automatically enabled"
+                ;;
+            *)
+        	AM_CONDITIONAL(USE_AIOPS_WIN32, false)
+	        echo "aufs store used, pthreads support automatically enabled"
+	        with_pthreads=yes
+                ;;
+            esac
 	fi
 	;;
     coss)
