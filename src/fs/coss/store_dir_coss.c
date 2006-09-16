@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.56 2006/09/15 19:48:27 serassio Exp $
+ * $Id: store_dir_coss.c,v 1.57 2006/09/16 20:29:58 serassio Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -34,7 +34,9 @@
  */
 
 #include "squid.h"
+#if HAVE_AIO_H
 #include <aio.h>
+#endif
 
 #include "async_io.h"
 #include "store_coss.h"

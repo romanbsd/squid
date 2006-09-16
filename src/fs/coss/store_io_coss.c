@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_coss.c,v 1.32 2006/09/15 20:13:02 serassio Exp $
+ * $Id: store_io_coss.c,v 1.33 2006/09/16 20:29:58 serassio Exp $
  *
  * DEBUG: section 79    Storage Manager COSS Interface
  * AUTHOR: Eric Stern
@@ -34,7 +34,9 @@
  */
 
 #include "squid.h"
+#if HAVE_AIO_H
 #include <aio.h>
+#endif
 #include "async_io.h"
 #include "store_coss.h"
 #if USE_AUFSOPS

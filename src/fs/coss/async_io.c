@@ -11,12 +11,14 @@
  * supports are read/write, and since COSS works on a single file
  * per storedir it should work just fine.
  *
- * $Id: async_io.c,v 1.13 2006/05/20 12:23:50 adrian Exp $
+ * $Id: async_io.c,v 1.14 2006/09/16 20:29:58 serassio Exp $
  */
 
 #include "squid.h"
 #include <time.h>
+#if HAVE_AIO_H
 #include <aio.h>
+#endif
 
 #include "async_io.h"
 
@@ -29,6 +31,7 @@
 
 /* Internal routines */
 
+#if !USE_AUFSOPS
 /*
  * find a free aio slot.
  * Return the index, or -1 if we can't find one.
@@ -47,8 +50,6 @@ a_file_findslot(async_queue_t * q)
     /* found nothing */
     return -1;
 }
-
-
 
 
 /* Exported routines */
@@ -221,6 +222,7 @@ a_file_callback(async_queue_t * q)
     }
     return completed;
 }
+#endif
 
 
 void

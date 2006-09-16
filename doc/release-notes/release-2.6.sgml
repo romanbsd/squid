@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.37 2006/09/10 20:06:44 serassio Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.38 2006/09/16 20:29:57 serassio Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -297,6 +297,10 @@ When running configure, --disable-wccp and --disable-wccpv2 options should alway
 <itemize>
 <item>--enable-arp-acl<newline>
 <item>--enable-default-hostsfile<newline>
+</itemize>
+<item>Unsupported configure options:<newline>
+<itemize>
+<item>--enable-coss-aio-ops: On Cygwin Posix AIO is not available<newline>
 </itemize>
 </itemize>
 </descrip>
