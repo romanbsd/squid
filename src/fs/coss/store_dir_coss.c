@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.57 2006/09/16 20:29:58 serassio Exp $
+ * $Id: store_dir_coss.c,v 1.58 2006/09/17 09:29:26 serassio Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -489,7 +489,7 @@ storeCossDirWriteCleanDone(SwapDir * sd)
     storeCossDirCloseSwapLog(sd);
     /* rename */
     if (state->fd >= 0) {
-#ifdef _SQUID_OS2_
+#if defined(_SQUID_OS2_) || defined(_SQUID_WIN32_)
 	file_close(state->fd);
 	state->fd = -1;
 #endif
