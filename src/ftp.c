@@ -1,6 +1,6 @@
 
 /*
- * $Id: ftp.c,v 1.339 2006/09/18 23:01:41 hno Exp $
+ * $Id: ftp.c,v 1.340 2006/09/18 23:03:36 hno Exp $
  *
  * DEBUG: section 9     File Transfer Protocol (FTP)
  * AUTHOR: Harvest Derived
@@ -311,6 +311,7 @@ ftpStateFreed(void *data)
     stringClean(&ftpState->title_url);
     stringClean(&ftpState->base_href);
     safe_free(ftpState->filepath);
+    safe_free(ftpState->dirpath);
     safe_free(ftpState->data.host);
 }
 
