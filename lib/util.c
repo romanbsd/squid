@@ -1,6 +1,6 @@
 
 /*
- * $Id: util.c,v 1.93 2006/09/08 19:41:24 serassio Exp $
+ * $Id: util.c,v 1.94 2006/09/18 22:54:38 hno Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -317,7 +317,6 @@ malloc_number(void *p)
 static void
 xmalloc_show_trace(void *p, int sign)
 {
-    int statMemoryAccounted();
     static size_t last_total = 0, last_accounted = 0, last_mallinfo = 0;
     size_t accounted = statMemoryAccounted();
     size_t mi = 0;

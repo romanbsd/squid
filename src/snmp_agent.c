@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_agent.c,v 1.86 2006/05/16 01:08:30 hno Exp $
+ * $Id: snmp_agent.c,v 1.87 2006/09/18 22:54:39 hno Exp $
  *
  * DEBUG: section 49     SNMP Interface
  * AUTHOR: Kostas Anagnostakis
@@ -108,7 +108,7 @@ snmp_confFn(variable_list * Var, snint * ErrP)
 	    break;
 	case CONF_ST_SWMAXSZ:
 	    Answer = snmp_var_new_integer(Var->name, Var->name_length,
-		(snint) Config.Swap.maxSize >> 10,
+		(snint) (Config.Swap.maxSize >> 10),
 		ASN_INTEGER);
 	    break;
 	case CONF_ST_SWHIWM:
@@ -292,7 +292,7 @@ snmp_prfSysFn(variable_list * Var, snint * ErrP)
 	break;
     case PERF_SYS_MEMUSAGE:
 	Answer = snmp_var_new_integer(Var->name, Var->name_length,
-	    (snint) statMemoryAccounted() >> 10,
+	    (snint) (statMemoryAccounted() >> 10),
 	    ASN_INTEGER);
 	break;
     case PERF_SYS_CPUTIME:

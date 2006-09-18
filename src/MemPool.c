@@ -1,6 +1,6 @@
 
 /*
- * $Id: MemPool.c,v 1.38 2006/06/26 15:01:59 hno Exp $
+ * $Id: MemPool.c,v 1.39 2006/09/18 22:54:39 hno Exp $
  *
  * DEBUG: section 63    Low Level Memory Pool Management
  * AUTHOR: Alex Rousskov
@@ -377,7 +377,7 @@ memPoolDescribe(const MemPool * pool)
 	(long int) toKB(memPoolInUseSize(pool)));
 }
 
-int
+size_t
 memTotalAllocated(void)
 {
     return TheMeter.alloc.level;

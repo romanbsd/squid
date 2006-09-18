@@ -1,5 +1,5 @@
 /*
- * $Id: util.h,v 1.66 2006/09/08 19:41:24 serassio Exp $
+ * $Id: util.h,v 1.67 2006/09/18 22:54:38 hno Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -120,7 +120,7 @@ double drand48(void);
 /*
  * Returns the amount of known allocated memory
  */
-int statMemoryAccounted(void);
+extern size_t statMemoryAccounted(void);
 
 /* Cygwin & Windows NT Port */
 /* win32lib.c */
