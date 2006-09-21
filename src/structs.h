@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.501 2006/09/18 23:09:39 hno Exp $
+ * $Id: structs.h,v 1.502 2006/09/21 04:14:46 swilton Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -507,6 +507,7 @@ struct _SquidConfig {
 	struct in_addr address;
 	int forwarding_method;
 	int return_method;
+	int assignment_method;
 	int weight;
 	int rebuildwait;
 	void *info;
