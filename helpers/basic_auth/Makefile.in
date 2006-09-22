@@ -16,7 +16,7 @@
 
 #  Makefile for storage modules in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.35 2006/09/09 16:05:24 serassio Exp $
+#  $Id: Makefile.in,v 1.36 2006/09/22 09:09:39 hno Exp $
 #
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
@@ -137,6 +137,8 @@ MAKE_LEAKFINDER_FALSE = @MAKE_LEAKFINDER_FALSE@
 MAKE_LEAKFINDER_TRUE = @MAKE_LEAKFINDER_TRUE@
 MKDIR = @MKDIR@
 MV = @MV@
+NEED_COSSDUMP_FALSE = @NEED_COSSDUMP_FALSE@
+NEED_COSSDUMP_TRUE = @NEED_COSSDUMP_TRUE@
 NEED_DISKD_FALSE = @NEED_DISKD_FALSE@
 NEED_DISKD_TRUE = @NEED_DISKD_TRUE@
 NEED_OWN_MD5_FALSE = @NEED_OWN_MD5_FALSE@

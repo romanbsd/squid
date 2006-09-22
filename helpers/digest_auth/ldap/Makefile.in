@@ -17,7 +17,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.13 2006/09/09 16:05:29 serassio Exp $
+#  $Id: Makefile.in,v 1.14 2006/09/22 09:09:43 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -154,6 +154,8 @@ MAKE_LEAKFINDER_FALSE = @MAKE_LEAKFINDER_FALSE@
 MAKE_LEAKFINDER_TRUE = @MAKE_LEAKFINDER_TRUE@
 MKDIR = @MKDIR@
 MV = @MV@
+NEED_COSSDUMP_FALSE = @NEED_COSSDUMP_FALSE@
+NEED_COSSDUMP_TRUE = @NEED_COSSDUMP_TRUE@
 NEED_DISKD_FALSE = @NEED_DISKD_FALSE@
 NEED_DISKD_TRUE = @NEED_DISKD_TRUE@
 NEED_OWN_MD5_FALSE = @NEED_OWN_MD5_FALSE@
