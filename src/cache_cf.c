@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.456 2006/09/22 10:44:24 hno Exp $
+ * $Id: cache_cf.c,v 1.457 2006/09/22 10:47:04 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2740,6 +2740,10 @@ parse_http_port_option(http_port_list * s, char *token)
 	need_linux_tproxy = 1;
 #endif
     } else {
+	self_destruct();
+    }
+    if (s->accel && s->transparent) {
+	debug(28, 0) ("Can't be both a transparent proxy and web server accelerator on the same port\n");
 	self_destruct();
     }
 }
