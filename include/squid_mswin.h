@@ -1,5 +1,5 @@
 /*
- * $Id: squid_mswin.h,v 1.2 2006/09/09 15:41:45 serassio Exp $
+ * $Id: squid_mswin.h,v 1.3 2006/09/22 11:30:17 serassio Exp $
  *
  * AUTHOR: Andrey Shorin <tolsty@tushino.com>
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -138,6 +138,7 @@ typedef unsigned long ino_t;
 #define S_IRWXO 007
 #if defined(_MSC_VER) /* Microsoft C Compiler ONLY */
 #define	S_ISDIR(m) (((m) & _S_IFDIR) == _S_IFDIR)
+#define	S_ISREG(m) (((m) & _S_IFREG) == _S_IFREG)
 #endif
 
 #ifndef SIGHUP
