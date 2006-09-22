@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_swapout.c,v 1.95 2006/08/07 15:03:28 hno Exp $
+ * $Id: store_swapout.c,v 1.96 2006/09/22 03:15:20 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Swapout Functions
  * AUTHOR: Duane Wessels
@@ -238,7 +238,7 @@ storeSwapOut(StoreEntry * e)
 	    return;
     }
     /* Ok, we have stuff to swap out.  Is there a swapout.sio open? */
-    if (e->swap_status == SWAPOUT_NONE) {
+    if (e->swap_status == SWAPOUT_NONE && !EBIT_TEST(e->flags, ENTRY_FWD_HDR_WAIT)) {
 	assert(mem->swapout.sio == NULL);
 	assert(mem->inmem_lo == 0);
 	if (storeCheckCachable(e))
