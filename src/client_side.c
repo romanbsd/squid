@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.677 2006/09/22 09:45:12 hno Exp $
+ * $Id: client_side.c,v 1.678 2006/09/22 09:47:55 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3912,7 +3912,7 @@ clientReadRequest(int fd, void *data)
 	    conn->nrequests++;
 	    commSetTimeout(fd, Config.Timeout.lifetime, clientLifetimeTimeout, http);
 	    if (parser_return_code < 0) {
-		debug(33, 1) ("clientReadRequest: FD %d Invalid Request\n", fd);
+		debug(33, 1) ("clientReadRequest: FD %d (%s:%d) Invalid Request\n", fd, fd_table[fd].ipaddr, fd_table[fd].remote_port);
 		err = errorCon(ERR_INVALID_REQ, HTTP_BAD_REQUEST, NULL);
 		err->src_addr = conn->peer.sin_addr;
 		err->request_hdrs = xstrdup(conn->in.buf);
