@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.674 2006/08/25 12:26:07 serassio Exp $
+ * $Id: client_side.c,v 1.675 2006/09/22 03:01:31 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3281,7 +3281,7 @@ clientProcessRequest2(clientHttpRequest * http)
 	debug(33, 3) ("clientProcessRequest2: storeGet() MISS\n");
 	if (r->vary) {
 	    if (r->done_etag) {
-		debug(33, 1) ("clientProcessRequest2: ETag loop\n");
+		debug(33, 2) ("clientProcessRequest2: ETag loop\n");
 	    } else if (r->etags) {
 		debug(33, 2) ("clientProcessRequest2: ETag miss\n");
 		r->etags = NULL;
