@@ -1,6 +1,6 @@
 
 /*
- * $Id: authenticate.c,v 1.49 2006/08/05 15:01:26 hno Exp $
+ * $Id: authenticate.c,v 1.50 2006/09/22 08:48:38 hno Exp $
  *
  * DEBUG: section 29    Authenticator
  * AUTHOR: Duane Wessels
@@ -545,8 +545,10 @@ authenticateAuthenticate(auth_user_request_t ** auth_user_request, http_hdr_type
 		/* failed connection based authentication */
 		debug(29, 4) ("authenticateAuthenticate: Auth user request %p conn-auth user request %p conn type %d authentication failed.\n",
 		    *auth_user_request, conn->auth_user_request, conn->auth_type);
-		authenticateAuthUserRequestUnlock(*auth_user_request);
-		*auth_user_request = NULL;
+		if (*auth_user_request) {
+		    authenticateAuthUserRequestUnlock(*auth_user_request);
+		    *auth_user_request = NULL;
+		}
 		return AUTH_ACL_CHALLENGE;
 	    }
 	}
