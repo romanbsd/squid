@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.15 2006/09/09 15:41:45 serassio Exp $
+ * $Id: win32.c,v 1.16 2006/09/23 10:42:44 serassio Exp $
  *
  * Windows support
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -941,4 +941,4 @@ WIN32_ExceptionHandlerCleanup()
 
 #endif /* _SQUID_MSWIN_ */
 
-#endif /* _SQUID_WIN32 */
+#endif /* _SQUID_WIN32_ */
