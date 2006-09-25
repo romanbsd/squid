@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.59 2006/09/23 10:34:41 serassio Exp $
+ * $Id: store_dir_coss.c,v 1.60 2006/09/25 19:31:35 serassio Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -48,7 +48,6 @@
 #define STORE_META_BUFSZ 4096
 #define HITONLY_BUFS 2
 
-int n_coss_dirs = 0;
 int max_coss_dir_size = 0;
 /* static int last_coss_pick_index = -1; */
 int coss_initialised = 0;
