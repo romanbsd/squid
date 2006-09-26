@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.61 2006/09/25 20:14:41 serassio Exp $
+ * $Id: store_dir_coss.c,v 1.62 2006/09/26 18:02:22 hno Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -1053,7 +1053,7 @@ storeCossDirDumpBlkSize(StoreEntry * e, const char *option, SwapDir * sd)
     storeAppendPrintf(e, " block-size=%d", 1 << cs->blksz_bits);
 }
 
-SwapDir *
+static SwapDir *
 storeCossDirPick(void)
 {
     int i, choosenext = 0;
