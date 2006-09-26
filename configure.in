@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.402 2006/09/22 11:10:14 hno Exp $
+dnl  $Id: configure.in,v 1.403 2006/09/26 18:03:37 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.402 $)dnl
+AC_REVISION($Revision: 1.403 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -615,7 +615,7 @@ AC_ARG_ENABLE(snmp,
 [ if test "$enableval" = "yes" ; then
     echo "SNMP monitoring enabled"
     AC_DEFINE(SQUID_SNMP, 1, [Define to enable SNMP monitoring of Squid])
-    SNMPLIB='-L../snmplib -lsnmp'
+    SNMPLIB='../snmplib/libsnmp.a'
     AM_CONDITIONAL(USE_SNMP, true)
     SNMP_MAKEFILE=./snmplib/Makefile
     makesnmplib=snmplib
