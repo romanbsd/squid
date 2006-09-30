@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.116 2006/08/25 12:26:07 serassio Exp $
+ * $Id: forward.c,v 1.117 2006/09/30 21:10:48 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -827,7 +827,8 @@ fwdStart(int fd, StoreEntry * e, request_t * r)
 	}
     }
     debug(17, 3) ("fwdStart: '%s'\n", storeUrl(e));
-    e->mem_obj->request = requestLink(r);
+    if (!e->mem_obj->request)
+	e->mem_obj->request = requestLink(r);
 #if URL_CHECKSUM_DEBUG
     assert(e->mem_obj->chksum == url_checksum(e->mem_obj->url));
 #endif

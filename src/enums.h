@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.234 2006/07/19 16:05:11 hno Exp $
+ * $Id: enums.h,v 1.235 2006/09/30 21:10:48 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -528,10 +528,8 @@ enum {
     ENTRY_VALIDATED,
     ENTRY_BAD_LENGTH,
     ENTRY_ABORTED,
-    ENTRY_DEFER_READ
-#if UNUSED_CODE
-    ENTRY_DONT_LOG
-#endif
+    ENTRY_DEFER_READ,
+    KEY_EARLY_PUBLIC
 };
 
 typedef enum {
@@ -742,6 +740,7 @@ enum {
     VARY_NONE,
     VARY_MATCH,
     VARY_OTHER,
+    VARY_RESTART,
     VARY_CANCEL
 };
 
