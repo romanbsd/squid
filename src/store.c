@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.567 2006/09/30 21:10:48 hno Exp $
+ * $Id: store.c,v 1.568 2006/10/09 13:18:24 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1009,10 +1009,12 @@ storeSetPublicKey(StoreEntry * e)
 		    storeRelease(pe);
 	    }
 	    /* Make sure the request knows the variance status */
-	    if (!request->vary_headers) {
-		const char *vary = httpMakeVaryMark(request, mem->reply);
-		if (vary)
-		    request->vary_headers = xstrdup(vary);
+	    else if (!request->vary_headers) {
+		if (!httpMakeVaryMark(request, mem->reply)) {
+		    /* Release the object if we could not index the variance */
+		    storeReleaseRequest(e);
+		    return;
+		}
 	    }
 	}
 	newkey = storeKeyPublicByRequest(mem->request);
