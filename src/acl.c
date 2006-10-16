@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.315 2006/10/09 12:44:24 hno Exp $
+ * $Id: acl.c,v 1.316 2006/10/16 20:11:41 serassio Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -747,7 +747,7 @@ aclDestroyHeader(void *data)
 	acl_hdr_data *q = *acldata;
 	*acldata = q->next;
 	if (q->reglist)
-	    aclDestroyRegexList((*acldata)->reglist);
+	    aclDestroyRegexList(q->reglist);
 	safe_free(q);
     }
 }
