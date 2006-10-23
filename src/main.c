@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.391 2006/09/02 14:16:10 hno Exp $
+ * $Id: main.c,v 1.392 2006/10/23 11:22:21 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -671,8 +671,6 @@ main(int argc, char **argv)
 #endif
 
     debug_log = stderr;
-    if (FD_SETSIZE < Squid_MaxFD)
-	Squid_MaxFD = FD_SETSIZE;
 
 #ifdef _SQUID_WIN32_
     if ((WIN32_init_err = WIN32_Subsystem_Init(&argc, &argv)))

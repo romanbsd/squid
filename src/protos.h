@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.518 2006/09/22 10:44:24 hno Exp $
+ * $Id: protos.h,v 1.519 2006/10/23 11:22:21 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -166,6 +166,7 @@ extern u_short comm_local_port(int fd);
 extern void commDeferFD(int fd);
 extern void commResumeFD(int fd);
 extern void commSetSelect(int, unsigned int, PF *, void *, time_t);
+extern void commRemoveSlow(int fd);
 extern void comm_add_close_handler(int fd, PF *, void *);
 extern void comm_remove_close_handler(int fd, PF *, void *);
 extern int comm_udp_sendto(int, const struct sockaddr_in *, int, const void *, int);
@@ -258,6 +259,7 @@ extern void eventCleanup(void);
 extern void eventFreeMemory(void);
 extern int eventFind(EVH *, void *);
 
+extern void fd_init(void);
 extern void fd_close(int fd);
 extern void fd_open(int fd, unsigned int type, const char *);
 extern void fd_note(int fd, const char *);

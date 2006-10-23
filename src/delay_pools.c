@@ -1,6 +1,6 @@
 
 /*
- * $Id: delay_pools.c,v 1.33 2006/08/02 21:33:51 hno Exp $
+ * $Id: delay_pools.c,v 1.34 2006/10/23 11:22:21 hno Exp $
  *
  * DEBUG: section 77    Delay Pools
  * AUTHOR: David Luyer <david@luyer.net>
@@ -145,7 +145,6 @@ delayInitDelayData(unsigned short pools)
 	return;
     delay_data = xcalloc(pools, sizeof(*delay_data));
     memory_used += pools * sizeof(*delay_data);
-    eventAdd("delayPoolsUpdate", delayPoolsUpdate, NULL, 1.0, 1);
     delay_id_ptr_hash = hash_create(delayIdPtrHashCmp, 256, delayIdPtrHash);
 }
 
@@ -164,7 +163,6 @@ delayFreeDelayData(unsigned short pools)
 {
     if (!delay_id_ptr_hash)
 	return;
-    eventDelete(delayPoolsUpdate, NULL);
     safe_free(delay_data);
     memory_used -= pools * sizeof(*delay_data);
     hashFreeItems(delay_id_ptr_hash, delayIdZero);
@@ -546,7 +544,6 @@ delayPoolsUpdate(void *unused)
     unsigned char class;
     if (!Config.Delay.pools)
 	return;
-    eventAdd("delayPoolsUpdate", delayPoolsUpdate, NULL, 1.0, 1);
     if (incr < 1)
 	return;
     delay_pools_last_update = squid_curtime;
@@ -682,6 +679,8 @@ delayMostBytesAllowed(const MemObject * mem, size_t * read_sz)
     if (jmax >= 0 && jmax < (int) *read_sz) {
 	if (jmax == 0)
 	    jmax = 1;
+	if (jmax > 1460)
+	    jmax = 1460;
 	*read_sz = (size_t) jmax;
     }
     return d;

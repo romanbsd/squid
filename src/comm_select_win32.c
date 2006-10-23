@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select_win32.c,v 1.2 2006/08/15 20:28:20 serassio Exp $
+ * $Id: comm_select_win32.c,v 1.3 2006/10/23 11:22:21 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -762,6 +762,9 @@ checkTimeouts(void)
 	    comm_close(fd);
 	}
     }
+#if DELAYPOOLS
+    delayPoolsUpdate(NULL);
+#endif
 }
 
 

@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.503 2006/09/30 21:10:48 hno Exp $
+ * $Id: structs.h,v 1.504 2006/10/23 11:22:21 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -920,6 +920,9 @@ struct _fde {
     struct {
 	long handle;
     } win32;
+#endif
+#if DELAY_POOLS
+    int slow_id;
 #endif
 };
 
