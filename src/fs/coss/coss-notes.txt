@@ -2,7 +2,7 @@ COSS notes
 
 Adrian Chadd <adrian@creative.net.au>
 
-$Id: coss-notes.txt,v 1.3 2006/05/20 12:23:50 adrian Exp $
+$Id: coss-notes.txt,v 1.4 2006/10/26 19:29:38 serassio Exp $
 
 
 COSS is a Cyclic Object storage system originally designed by
@@ -129,3 +129,8 @@ out the storeCossAllocate(SD, e, COSS_ALLOC_NOTIFY) call.
   sure the right options have been enabled. no compile or run-time checks
   are currently made to ensure the code has been compiled to support
   large filesystems.. at least yet.
+
+-- Notes: Guido Serassio, 26/October/2006
+
+* When using a regular file as container, COSS storage must be initialized
+  once using squid -z like UFS storage.
