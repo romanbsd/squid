@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.64 2006/10/26 19:29:38 serassio Exp $
+ * $Id: store_dir_coss.c,v 1.65 2006/10/26 20:00:21 serassio Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -571,7 +571,7 @@ storeCossDirSwapLog(const SwapDir * sd, const StoreEntry * e, int op)
 }
 
 static void
-storeCossCreateStripe(SwapDir * SD, char *path)
+storeCossCreateStripe(SwapDir * SD, const char *path)
 {
     char *block;
     int swap;
@@ -601,7 +601,7 @@ storeCossDirNewfs(SwapDir * SD)
 		storeCossCreateStripe(SD, stripePath(SD));
 	}
     } else
-	storeCossCreateStripe(SD, SD->path);
+	storeCossCreateStripe(SD, (const char *) SD->path);
 }
 
 /*
