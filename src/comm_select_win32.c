@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select_win32.c,v 1.5 2006/10/28 08:56:42 serassio Exp $
+ * $Id: comm_select_win32.c,v 1.6 2006/10/28 17:08:16 serassio Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -125,7 +125,7 @@ do_comm_select(int msec)
     if (num == 0)
 	return COMM_TIMEOUT;
 
-    for (fd = 0; fd < Biggest_FD; fd++) {
+    for (fd = 0; fd <= Biggest_FD; fd++) {
 	int read_event = __WSAFDIsSet(fd_table[fd].win32.handle, &readfds);
 	int write_event = __WSAFDIsSet(fd_table[fd].win32.handle, &writefds) || __WSAFDIsSet(fd_table[fd].win32.handle, &errfds);
 	if (read_event || write_event)
