@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.22 2006/10/23 11:22:21 hno Exp $
+ * $Id: comm_poll.c,v 1.23 2006/10/28 00:34:54 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -66,6 +66,7 @@ static void
 do_select_shutdown()
 {
     safe_free(pfds);
+    safe_free(pfd_map);
 }
 
 void
