@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.55 2006/09/08 19:41:24 serassio Exp $
+#  $Id: Makefile.am,v 1.56 2006/10/30 00:07:33 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -79,6 +79,9 @@ endif
 if USE_SELECT
 COMMLOOP_SOURCE = comm_select.c
 endif
+if USE_SELECT_SIMPLE
+COMMLOOP_SOURCE = comm_select_simple.c
+endif
 if USE_SELECT_WIN32
 COMMLOOP_SOURCE = comm_select_win32.c
 endif
@@ -127,6 +130,7 @@ EXTRA_squid_SOURCES = \
 	comm_poll.c \
 	comm_select.c \
 	comm_select_win32.c \
+	comm_select_simple.c \
 	comm_kqueue.c \
 	comm_generic.c \
 	ipc.c \
