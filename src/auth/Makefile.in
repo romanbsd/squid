@@ -207,6 +207,8 @@ USE_KQUEUE_TRUE = @USE_KQUEUE_TRUE@
 USE_POLL_FALSE = @USE_POLL_FALSE@
 USE_POLL_TRUE = @USE_POLL_TRUE@
 USE_SELECT_FALSE = @USE_SELECT_FALSE@
+USE_SELECT_SIMPLE_FALSE = @USE_SELECT_SIMPLE_FALSE@
+USE_SELECT_SIMPLE_TRUE = @USE_SELECT_SIMPLE_TRUE@
 USE_SELECT_TRUE = @USE_SELECT_TRUE@
 USE_SELECT_WIN32_FALSE = @USE_SELECT_WIN32_FALSE@
 USE_SELECT_WIN32_TRUE = @USE_SELECT_WIN32_TRUE@
@@ -258,7 +260,7 @@ target_alias = @target_alias@
 
 #  Makefile for authentication modules in the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.35 2006/09/22 09:09:49 hno Exp $
+#  $Id: Makefile.in,v 1.36 2006/10/30 01:13:34 hno Exp $
 #
 AUTOMAKE_OPTIONS = subdir-objects
 EXTRA_LIBRARIES = libbasic.a libdigest.a libntlm.a libnegotiate.a
