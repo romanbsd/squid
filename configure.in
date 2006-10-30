@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.407 2006/10/30 02:09:18 hno Exp $
+dnl  $Id: configure.in,v 1.408 2006/10/30 02:10:58 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.407 $)dnl
+AC_REVISION($Revision: 1.408 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -856,7 +856,7 @@ AC_ARG_ENABLE(select-simple,
 [
   case "$enableval" in
   yes)
-    echo "Forcing select() to be enabled"
+    echo "Forcing select() to be enabled in simple POSIX mode"
     SELECT_TYPE="select_simple"
     ac_cv_func_select='yes'
     ;;
