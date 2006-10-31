@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_generic.c,v 1.7 2006/10/23 12:09:01 hno Exp $
+ * $Id: comm_generic.c,v 1.8 2006/10/31 18:25:15 serassio Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -132,8 +132,9 @@ commRemoveSlow(int fd)
 	return;
     fd2 = slow_fds[n_slow_fds--];
     if (F->slow_id <= n_slow_fds) {
+	fde *F2;
 	slow_fds[F->slow_id] = fd2;
-	fde *F2 = &fd_table[fd2];
+	F2 = &fd_table[fd2];
 	F2->slow_id = F->slow_id;
     }
     F->slow_id = 0;
