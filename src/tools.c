@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.248 2006/09/22 10:47:42 hno Exp $
+ * $Id: tools.c,v 1.249 2006/11/01 20:58:52 wessels Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -987,6 +987,18 @@ kb_incr(kb_t * k, squid_off_t v)
     k->bytes += v;
     k->kb += (k->bytes >> 10);
     k->bytes &= 0x3FF;
+    if (k->kb < 0) {
+	/*
+	 * If kb overflows and becomes negative then add powers of
+	 * 2 until it becomes positive again.
+	 */
+	kb_t x;
+	x.kb = 1 << 31;
+	while (x.kb && ((k->kb + x.kb) < 0)) {
+	    x.kb <<= 1;
+	}
+	k->kb += x.kb;
+    }
 }
 
 void

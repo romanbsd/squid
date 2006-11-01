@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.376 2006/09/18 22:54:39 hno Exp $
+ * $Id: stat.c,v 1.377 2006/11/01 20:58:52 wessels Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -696,7 +696,7 @@ info_get(StoreEntry * sentry)
 #endif
 }
 
-#define XAVG(X) (dt ? (double) (f->X - l->X) / dt : 0.0)
+#define XAVG(X) (dt ? (f->X > l->X ? ((double) (f->X - l->X) / dt) : 0.0) : 0.0)
 static void
 statAvgDump(StoreEntry * sentry, int minutes, int hours)
 {
