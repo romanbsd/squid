@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.410 2006/11/03 13:16:21 hno Exp $
+dnl  $Id: configure.in,v 1.411 2006/11/04 23:26:22 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.410 $)dnl
+AC_REVISION($Revision: 1.411 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -2301,7 +2301,6 @@ dnl Check for library functions
 AC_CHECK_FUNCS(\
 	bcopy \
 	backtrace_symbols_fd \
-	crypt \
 	fchmod \
 	getdtablesize \
 	getpagesize \
@@ -2359,6 +2358,11 @@ AC_CHECK_FUNCS(\
 SAVED_LIBS="$LIBS"
 LIBS="$LIBS $LIB_EPOLL"
 AC_CHECK_FUNCS(epoll_ctl)
+LIBS="$SAVED_LIBS"
+
+SAVED_LIBS="$LIBS"
+LIBS="$LIBS $CRYPTLIB"
+AC_CHECK_FUNCS(crypt)
 LIBS="$SAVED_LIBS"
 
 dnl Verify that epoll really works
