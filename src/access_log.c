@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.93 2006/09/28 21:55:37 hno Exp $
+ * $Id: access_log.c,v 1.94 2006/11/04 15:39:26 hno Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -279,7 +279,7 @@ typedef enum {
 
     LFT_CLIENT_IP_ADDRESS,
     LFT_CLIENT_FQDN,
-/*LFT_CLIENT_PORT, */
+    LFT_CLIENT_PORT,
 
 /*LFT_SERVER_IP_ADDRESS, */
     LFT_SERVER_IP_OR_PEER_NAME,
@@ -382,7 +382,7 @@ struct logformat_token_table_entry logformat_token_table[] =
 {
 
     {">a", LFT_CLIENT_IP_ADDRESS},
-/*{ ">p", LFT_CLIENT_PORT}, */
+    {">p", LFT_CLIENT_PORT},
     {">A", LFT_CLIENT_FQDN},
 
 /*{ "<a", LFT_SERVER_IP_ADDRESS }, */
@@ -485,7 +485,12 @@ accessLogCustom(AccessLogEntry * al, customlog * log)
 		out = inet_ntoa(al->cache.caddr);
 	    break;
 
-	    /* case LFT_CLIENT_PORT: */
+	case LFT_CLIENT_PORT:
+	    if (al->request) {
+		outint = al->request->client_port;
+		doint = 1;
+	    }
+	    break;
 
 	    /* case LFT_SERVER_IP_ADDRESS: */
 

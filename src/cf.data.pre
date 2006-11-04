@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.374 2006/10/12 20:48:48 wessels Exp $
+# $Id: cf.data.pre,v 1.375 2006/11/04 15:39:26 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1220,6 +1220,7 @@ DOC_START
 
 		>a	Client source IP address
 		>A	Client FQDN
+		>p	Client source port
 		<A	Server IP address or peer name
 		la	Local IP address (http_port)
 		lp	Local port number (http_port)
