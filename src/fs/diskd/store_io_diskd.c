@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_diskd.c,v 1.32 2006/07/05 06:52:13 adrian Exp $
+ * $Id: store_io_diskd.c,v 1.33 2006/11/05 21:14:36 hno Exp $
  *
  * DEBUG: section 79    Squid-side DISKD I/O functions.
  * AUTHOR: Duane Wessels
@@ -304,16 +304,13 @@ storeDiskdRecycle(SwapDir * SD, StoreEntry * e)
 {
     debug(79, 3) ("storeDiskdUnlink: fileno %08X\n", e->swap_filen);
 
-    /* Release the object without releasing the underlying physical object */
-    storeExpireNow(e);
-    storeReleaseRequest(e);
+    /* Detach from the underlying physical object */
     if (e->swap_filen > -1) {
 	storeDiskdDirReplRemove(e);
 	storeDiskdDirMapBitReset(SD, e->swap_filen);
 	e->swap_filen = -1;
 	e->swap_dirn = -1;
     }
-    storeRelease(e);
 }
 
 

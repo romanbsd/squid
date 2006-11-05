@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_aufs.c,v 1.33 2006/09/09 16:04:38 serassio Exp $
+ * $Id: store_io_aufs.c,v 1.34 2006/11/05 21:14:31 hno Exp $
  *
  * DEBUG: section 79    Squid-side AUFS I/O functions.
  *
@@ -278,18 +278,15 @@ storeAufsUnlink(SwapDir * SD, StoreEntry * e)
 void
 storeAufsRecycle(SwapDir * SD, StoreEntry * e)
 {
-    debug(79, 3) ("storeAufsUnlink: fileno %08X\n", e->swap_filen);
+    debug(79, 3) ("storeAufsRecycle: fileno %08X\n", e->swap_filen);
 
-    /* Release the object without releasing the underlying physical object */
-    storeExpireNow(e);
-    storeReleaseRequest(e);
+    /* detach from the underlying physical object */
     if (e->swap_filen > -1) {
 	storeAufsDirReplRemove(e);
 	storeAufsDirMapBitReset(SD, e->swap_filen);
 	e->swap_filen = -1;
 	e->swap_dirn = -1;
     }
-    storeRelease(e);
 }
 
 /*  === STATIC =========================================================== */

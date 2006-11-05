@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_coss.c,v 1.34 2006/09/23 10:34:41 serassio Exp $
+ * $Id: store_io_coss.c,v 1.35 2006/11/05 21:14:32 hno Exp $
  *
  * DEBUG: section 79    Storage Manager COSS Interface
  * AUTHOR: Eric Stern
@@ -264,10 +264,6 @@ storeCossRecycle(SwapDir * SD, StoreEntry * e)
 {
     debug(79, 3) ("storeCossRecycle: %s: offset %d\n", stripePath(SD), e->swap_filen);
 
-    /* Expire the object */
-    storeExpireNow(e);
-    storeReleaseRequest(e);
-
     /* If there is a valid filen remove from COSS linked list */
     if (e->swap_filen > -1) {
 	storeCossUnlink(SD, e);
@@ -279,8 +275,6 @@ storeCossRecycle(SwapDir * SD, StoreEntry * e)
 	e->swap_filen = -1;
 	e->swap_dirn = -1;
     }
-    /* Finally make the store layer forget about this object */
-    storeRelease(e);
 }
 
 static int

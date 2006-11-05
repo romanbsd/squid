@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.61 2006/08/03 02:31:13 adrian Exp $
+ * $Id: store_dir_ufs.c,v 1.62 2006/11/05 21:14:37 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -613,11 +613,6 @@ storeUfsDirRebuildFromSwapLog(void *data)
 		 * the cleanup procedure.
 		 */
 		storeRecycle(e);
-		/*
-		 * XXX considering we might've canceled an object from another store;
-		 * XXX what should happen with these stats?
-		 */
-		rb->counts.objcount--;
 		rb->counts.cancelcount++;
 	    }
 	    continue;
@@ -768,8 +763,6 @@ storeUfsDirRebuildFromSwapLogOld(void *data)
 		 * the cleanup procedure.
 		 */
 		storeRecycle(e);
-		/* XXX are these counters valid since e could be from another swapfs? */
-		rb->counts.objcount--;
 		rb->counts.cancelcount++;
 	    }
 	    continue;

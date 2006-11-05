@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_aufs.c,v 1.64 2006/09/15 20:13:02 serassio Exp $
+ * $Id: store_dir_aufs.c,v 1.65 2006/11/05 21:14:31 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -608,7 +608,6 @@ storeAufsDirRebuildFromSwapLog(void *data)
 		 * the cleanup procedure.
 		 */
 		storeRecycle(e);
-		rb->counts.objcount--;
 		rb->counts.cancelcount++;
 	    }
 	    continue;
@@ -759,7 +758,6 @@ storeAufsDirRebuildFromSwapLogOld(void *data)
 		 * the cleanup procedure.
 		 */
 		storeRecycle(e);
-		rb->counts.objcount--;
 		rb->counts.cancelcount++;
 	    }
 	    continue;

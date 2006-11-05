@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_diskd.c,v 1.85 2006/09/22 00:51:43 adrian Exp $
+ * $Id: store_dir_diskd.c,v 1.86 2006/11/05 21:14:36 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -799,7 +799,6 @@ storeDiskdDirRebuildFromSwapLog(void *data)
 		 * the cleanup procedure.
 		 */
 		storeRecycle(e);
-		rb->counts.objcount--;
 		rb->counts.cancelcount++;
 	    }
 	    continue;
@@ -975,7 +974,6 @@ storeDiskdDirRebuildFromSwapLogOld(void *data)
 		 * the cleanup procedure.
 		 */
 		storeRecycle(e);
-		rb->counts.objcount--;
 		rb->counts.cancelcount++;
 	    }
 	    continue;

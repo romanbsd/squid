@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.65 2006/10/26 20:00:21 serassio Exp $
+ * $Id: store_dir_coss.c,v 1.66 2006/11/05 21:14:32 hno Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -1441,10 +1441,6 @@ storeCoss_AddStoreEntry(RebuildState * rb, const cache_key * key, StoreEntry * e
 static void
 storeCoss_DeleteStoreEntry(RebuildState * rb, const cache_key * key, StoreEntry * e)
 {
-    assert(rb->counts.objcount >= 0);
-    /* XXX are these counters even correct, considering e could be a different storedir? */
-    rb->counts.objcount--;
-    assert(e->swap_dirn >= 0);
     storeRecycle(e);
 }
 
