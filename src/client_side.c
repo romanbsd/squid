@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.683 2006/11/16 16:49:01 hno Exp $
+ * $Id: client_side.c,v 1.684 2006/11/17 11:51:07 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3746,13 +3746,12 @@ parseHttpRequest(ConnStateData * conn, method_t * method_p, int *status,
 	    if (!url)
 		url = (char *) "/";
 	}
-	if (!url != '/') {
+	if (*url != '/') {
 	    /* Fully qualified URL. Nothing special to do */
 	} else if (vhost && (t = mime_get_header(req_hdr, "Host"))) {
 	    char *portstr = strchr(t, ':');
 	    int port = 0;
-	    size_t url_sz = strlen(url) + 32 + Config.appendDomainLen +
-	    strlen(t);
+	    size_t url_sz = strlen(url) + 32 + Config.appendDomainLen + strlen(t);
 	    if (portstr) {
 		*portstr++ = '\0';
 		port = atoi(portstr);
