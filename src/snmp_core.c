@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_core.c,v 1.62 2006/09/22 02:49:24 hno Exp $
+ * $Id: snmp_core.c,v 1.63 2006/11/28 23:16:48 hno Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Glenn Chisholm
@@ -1094,16 +1094,17 @@ snmpOidDup(oid * A, snint ALen)
 void
 snmpDebugOid(int lvl, oid * Name, snint Len)
 {
-    char mbuf[16], objid[1024];
+    char mbuf[16];
     int x;
-    objid[0] = '\0';
+    String objid = StringNull;
 
     for (x = 0; x < Len; x++) {
 	snprintf(mbuf, sizeof(mbuf), ".%u", (unsigned int) Name[x]);
-	strncat(objid, mbuf, sizeof(objid));
+	strCat(objid, mbuf);
     }
 
-    debug(49, lvl) ("   oid = %s\n", objid);
+    debug(49, lvl) ("   oid = %s\n", strBuf(objid));
+    stringClean(&objid);
 }
 
 static void
