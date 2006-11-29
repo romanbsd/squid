@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.685 2006/11/29 10:12:06 adrian Exp $
+ * $Id: client_side.c,v 1.686 2006/11/29 15:54:09 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2878,7 +2878,6 @@ clientCheckErrorMap(clientCheckHeaderStateData * state)
 static void
 clientCheckHeaderDone(clientCheckHeaderStateData * state)
 {
-    char *buf = state->buf;
     const char *body_buf = state->body_buf;
     ssize_t body_size = state->body_size;
     HttpReply *rep = state->http->reply;
