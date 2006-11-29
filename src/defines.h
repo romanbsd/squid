@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.121 2006/08/19 12:40:31 serassio Exp $
+ * $Id: defines.h,v 1.122 2006/11/29 15:58:52 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -350,5 +350,8 @@
 /* swap_filen is 25 bits, signed */
 #define FILEMAP_MAX_SIZE (1<<24)
 #define FILEMAP_MAX (FILEMAP_MAX_SIZE - 65536)
+
+#define	DLINK_ISEMPTY(n)	( (n).head == NULL )
+#define	DLINK_HEAD(n)		( (n).head->data )
 
 #endif /* SQUID_DEFINES_H */
