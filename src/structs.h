@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.504 2006/10/23 11:22:21 hno Exp $
+ * $Id: structs.h,v 1.505 2006/11/29 10:12:06 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1226,6 +1226,12 @@ struct _clientHttpRequest {
     } redirect;
     dlink_node active;
     squid_off_t maxBodySize;
+    /*
+     * This can be changed into a pointer later on when the memory allocator
+     * has been taught the difference between buffers to zero and buffers not to
+     * zero.. [ahc]
+     */
+    char readbuf[CLIENT_SOCK_SZ];
 };
 
 struct _ConnStateData {
