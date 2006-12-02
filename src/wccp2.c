@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.28 2006/10/26 00:50:04 swilton Exp $
+ * $Id: wccp2.c,v 1.29 2006/12/02 21:51:14 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -772,6 +772,12 @@ wccp2ConnectionOpen(void)
 	"WCCPv2 Socket");
     if (theWccp2Connection < 0)
 	fatal("Cannot open WCCP Port");
+#if defined(IP_MTU_DISCOVER) && defined(IP_PMTUDISC_DONT)
+    {
+	int i = IP_PMTUDISC_DONT;
+	setsockopt(theWccp2Connection, SOL_IP, IP_MTU_DISCOVER, &i, sizeof i);
+    }
+#endif
     commSetSelect(theWccp2Connection,
 	COMM_SELECT_READ,
 	wccp2HandleUdp,
