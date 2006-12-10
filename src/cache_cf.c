@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.458 2006/09/30 21:01:08 hno Exp $
+ * $Id: cache_cf.c,v 1.459 2006/12/10 05:33:25 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1605,6 +1605,10 @@ parse_peer(peer ** head)
     if ((token = strtok(NULL, w_space)) == NULL)
 	self_destruct();
     p->type = parseNeighborType(token);
+    if (p->type == PEER_MULTICAST) {
+	p->options.no_digest = 1;
+	p->options.no_netdb_exchange = 1;
+    }
     p->http_port = GetShort();
     if (!p->http_port)
 	self_destruct();
