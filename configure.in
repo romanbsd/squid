@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.412 2006/12/10 13:36:22 serassio Exp $
+dnl  $Id: configure.in,v 1.413 2006/12/10 15:04:15 serassio Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.412 $)dnl
+AC_REVISION($Revision: 1.413 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -697,7 +697,7 @@ AC_ARG_ENABLE(ssl,
     AM_CONDITIONAL(ENABLE_SSL, true)
     case "$host_os" in
     mingw|mingw32)
-	SSLLIB='-lssl -lcrypto -lgdi32'
+	SSLLIB='-lssleay32 -leay32 -lgdi32'
 	;;
     *)
 	SSLLIB='-lssl -lcrypto'
