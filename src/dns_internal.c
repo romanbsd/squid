@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.60 2006/09/18 23:11:13 hno Exp $
+ * $Id: dns_internal.c,v 1.61 2006/12/17 10:51:44 serassio Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -39,8 +39,7 @@
  * #ifndef to exclude the internal DNS code from compile process when
  * using External DNS process.
  */
-#ifndef USE_DNSSERVERS
-#include "config.h"
+#if !USE_DNSSERVERS
 
 #if HAVE_ARPA_NAMESER_H
 #include <arpa/nameser.h>
