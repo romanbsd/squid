@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.459 2006/12/10 05:33:25 hno Exp $
+ * $Id: cache_cf.c,v 1.460 2006/12/17 11:05:56 serassio Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2806,6 +2806,8 @@ dump_generic_http_port(StoreEntry * e, const char *n, const http_port_list * s)
 	storeAppendPrintf(e, " vport");
     if (s->no_connection_auth)
 	storeAppendPrintf(e, " no-connection-auth");
+    if (s->tproxy)
+	storeAppendPrintf(e, " tproxy");
 }
 static void
 dump_http_port_list(StoreEntry * e, const char *n, const http_port_list * s)
