@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select_simple.c,v 1.2 2006/11/03 12:30:40 hno Exp $
+ * $Id: comm_select_simple.c,v 1.3 2006/12/28 22:11:26 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -113,7 +113,6 @@ do_comm_select(int msec)
     tv.tv_usec = (msec % 1000) * 1000;
     statCounter.syscalls.selects++;
     num = select(Biggest_FD + 1, &readfds, &writefds, &errfds, &tv);
-    statCounter.select_loops++;
 
     if (num < 0) {
 	getCurrentTime();
