@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHdrCc.c,v 1.23 2005/05/17 16:56:37 hno Exp $
+ * $Id: HttpHdrCc.c,v 1.24 2006/12/31 14:52:51 hno Exp $
  *
  * DEBUG: section 65    HTTP Cache Control Header
  * AUTHOR: Alex Rousskov
@@ -145,9 +145,13 @@ httpHdrCcParseInit(HttpHdrCc * cc, const String * str)
 	    }
 	    break;
 	case CC_MAX_STALE:
-	    if (!p || !httpHeaderParseInt(p, &cc->max_stale)) {
-		debug(65, 2) ("cc: max-stale directive is valid without value\n");
+	    if (!p) {
+		debug(65, 3) ("cc: max-stale directive is valid without value\n");
 		cc->max_stale = -1;
+	    } else if (!httpHeaderParseInt(p, &cc->max_stale)) {
+		debug(65, 2) ("cc: invalid max-stale specs near '%s'\n", item);
+		cc->max_stale = -1;
+		EBIT_CLR(cc->mask, type);
 	    }
 	    break;
 	case CC_OTHER:
@@ -204,7 +208,7 @@ httpHdrCcPackInto(const HttpHdrCc * cc, Packer * p)
 	    if (flag == CC_S_MAXAGE)
 		packerPrintf(p, "=%d", (int) cc->s_maxage);
 
-	    if (flag == CC_MAX_STALE)
+	    if (flag == CC_MAX_STALE && cc->max_stale > 0)
 		packerPrintf(p, "=%d", (int) cc->max_stale);
 
 	    pcount++;
