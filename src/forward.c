@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.118 2006/12/10 05:22:41 hno Exp $
+ * $Id: forward.c,v 1.119 2007/01/06 17:22:45 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -823,7 +823,7 @@ fwdStart(int fd, StoreEntry * e, request_t * r)
 	answer = aclCheckFast(Config.accessList.miss, &ch);
 	if (answer == 0) {
 	    err_type page_id;
-	    page_id = aclGetDenyInfoPage(&Config.denyInfoList, AclMatchedName);
+	    page_id = aclGetDenyInfoPage(&Config.denyInfoList, AclMatchedName, 1);
 	    if (page_id == ERR_NONE)
 		page_id = ERR_FORWARDING_DENIED;
 	    err = errorCon(page_id, HTTP_FORBIDDEN, r);
