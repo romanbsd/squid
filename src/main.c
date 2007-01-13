@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.392 2006/10/23 11:22:21 hno Exp $
+ * $Id: main.c,v 1.393 2007/01/13 16:10:14 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -1114,6 +1114,11 @@ SquidShutdown(void *unused)
 #endif
     storeDirSync();		/* Flush log close */
     storeFsDone();
+    if (Config.pidFilename && strcmp(Config.pidFilename, "none") != 0) {
+	enter_suid();
+	safeunlink(Config.pidFilename, 0);
+	leave_suid();
+    }
 #if LEAK_CHECK_MODE
     configFreeMemory();
     storeFreeMemory();
@@ -1147,11 +1152,6 @@ SquidShutdown(void *unused)
 #if MEM_GEN_TRACE
     log_trace_done();
 #endif
-    if (Config.pidFilename && strcmp(Config.pidFilename, "none") != 0) {
-	enter_suid();
-	safeunlink(Config.pidFilename, 0);
-	leave_suid();
-    }
     debug(1, 1) ("Squid Cache (Version %s): Exiting normally.\n",
 	version_string);
     if (debug_log)
