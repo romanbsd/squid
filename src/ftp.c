@@ -1,6 +1,6 @@
 
 /*
- * $Id: ftp.c,v 1.341 2007/01/01 21:38:39 hno Exp $
+ * $Id: ftp.c,v 1.342 2007/01/19 00:52:49 hno Exp $
  *
  * DEBUG: section 9     File Transfer Protocol (FTP)
  * AUTHOR: Harvest Derived
@@ -2624,7 +2624,7 @@ char *
 ftpUrlWith2f(const request_t * request)
 {
     LOCAL_ARRAY(char, buf, MAX_URL);
-    LOCAL_ARRAY(char, loginbuf, MAX_LOGIN_SZ + 1);
+    LOCAL_ARRAY(char, loginbuf, MAX_LOGIN_SZ + 2);
     LOCAL_ARRAY(char, portbuf, 32);
     char *t;
     portbuf[0] = '\0';
@@ -2634,7 +2634,7 @@ ftpUrlWith2f(const request_t * request)
 	snprintf(portbuf, 32, ":%d", request->port);
     loginbuf[0] = '\0';
     if ((int) strlen(request->login) > 0) {
-	xstrncpy(loginbuf, request->login, sizeof(loginbuf) - 2);
+	xstrncpy(loginbuf, request->login, MAX_LOGIN_SZ);
 	if ((t = strchr(loginbuf, ':')))
 	    *t = '\0';
 	strcat(loginbuf, "@");
