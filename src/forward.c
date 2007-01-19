@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.119 2007/01/06 17:22:45 hno Exp $
+ * $Id: forward.c,v 1.120 2007/01/19 00:21:01 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -106,8 +106,8 @@ fwdStateFree(FwdState * fwdState)
 	    fwdState->err = NULL;
 	} else {
 	    EBIT_CLR(e->flags, ENTRY_FWD_HDR_WAIT);
-	    storeComplete(e);
 	    storeReleaseRequest(e);
+	    storeComplete(e);
 	}
     }
     if (EBIT_TEST(e->flags, ENTRY_DEFER_READ))

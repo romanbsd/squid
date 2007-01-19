@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.569 2006/12/10 05:55:17 hno Exp $
+ * $Id: store.c,v 1.570 2007/01/19 00:21:01 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1308,6 +1308,7 @@ storeComplete(StoreEntry * e)
     if (e->mem_obj->request)
 	e->mem_obj->request->hier.store_complete_stop = current_time;
 #endif
+    e->mem_obj->refresh_timestamp = e->timestamp;
     /*
      * We used to call InvokeHandlers, then storeSwapOut.  However,
      * Madhukar Reddy <myreddy@persistence.com> reported that

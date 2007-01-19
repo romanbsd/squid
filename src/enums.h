@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.235 2006/09/30 21:10:48 hno Exp $
+ * $Id: enums.h,v 1.236 2007/01/19 00:21:01 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -51,6 +51,7 @@ typedef enum {
 #if LOG_TCP_REDIRECTS
     LOG_TCP_REDIRECT,
 #endif
+    LOG_TCP_STALE_HIT,
     LOG_UDP_HIT,
     LOG_UDP_MISS,
     LOG_UDP_DENIED,

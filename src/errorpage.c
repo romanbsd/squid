@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.c,v 1.189 2006/11/07 02:59:27 hno Exp $
+ * $Id: errorpage.c,v 1.190 2007/01/19 00:21:01 hno Exp $
  *
  * DEBUG: section 4     Error Generation
  * AUTHOR: Duane Wessels
@@ -324,10 +324,10 @@ errorAppendEntry(StoreEntry * entry, ErrorState * err)
     authenticateFixHeader(rep, err->auth_user_request, err->request, 0, 1);
     httpReplySwapOut(rep, entry);
     EBIT_CLR(entry->flags, ENTRY_FWD_HDR_WAIT);
-    storeBufferFlush(entry);
-    storeComplete(entry);
     storeNegativeCache(entry);
     storeReleaseRequest(entry);
+    storeBufferFlush(entry);
+    storeComplete(entry);
     storeUnlockObject(entry);
     errorStateFree(err);
 }
