@@ -1,6 +1,6 @@
 
 /*
- * $Id: globals.h,v 1.122 2006/09/25 19:31:34 serassio Exp $
+ * $Id: globals.h,v 1.123 2007/01/19 00:19:26 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -120,10 +120,10 @@ extern int store_swap_size;	/* 0 */
 extern unsigned long store_mem_size;	/* 0 */
 extern time_t hit_only_mode_until;	/* 0 */
 extern StatCounters statCounter;
-extern char *err_type_str[];
-extern char *icp_opcode_str[];
-extern char *swap_log_op_str[];
-extern char *lookup_t_str[];
+extern const char *err_type_str[];
+extern const char *icp_opcode_str[];
+extern const char *swap_log_op_str[];
+extern const char *lookup_t_str[];
 extern double request_failure_ratio;	/* 0.0 */
 extern double current_dtime;
 extern int store_hash_buckets;	/* 0 */
