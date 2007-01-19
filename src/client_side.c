@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.691 2007/01/19 00:21:01 hno Exp $
+ * $Id: client_side.c,v 1.692 2007/01/19 00:23:52 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -983,12 +983,14 @@ clientHandleIMSReply(void *data, char *buf, ssize_t size)
 	    oldentry->mem_obj->request = requestLink(mem->request);
 	    unlink_request = 1;
 	}
-	/* Don't memcpy() the whole reply structure here.  For example,
-	 * www.thegist.com (Netscape/1.13) returns a content-length for
-	 * 304's which seems to be the length of the 304 HEADERS!!! and
-	 * not the body they refer to.  */
-	httpReplyUpdateOnNotModified(oldentry->mem_obj->reply, mem->reply);
-	storeTimestampsSet(oldentry);
+	if (mem->reply->sline.status == HTTP_NOT_MODIFIED) {
+	    /* Don't memcpy() the whole reply structure here.  For example,
+	     * www.thegist.com (Netscape/1.13) returns a content-length for
+	     * 304's which seems to be the length of the 304 HEADERS!!! and
+	     * not the body they refer to.  */
+	    httpReplyUpdateOnNotModified(oldentry->mem_obj->reply, mem->reply);
+	    storeTimestampsSet(oldentry);
+	}
 	storeClientUnregister(http->sc, entry, http);
 	http->sc = http->old_sc;
 	storeUnlockObject(entry);
