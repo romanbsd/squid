@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.236 2007/01/19 00:21:01 hno Exp $
+ * $Id: enums.h,v 1.237 2007/01/19 01:10:12 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -209,6 +209,9 @@ typedef enum {
     HDR_CONTENT_MD5,
     HDR_CONTENT_RANGE,
     HDR_CONTENT_TYPE,
+    HDR_TE,
+    HDR_TRANSFER_ENCODING,
+    HDR_TRAILER,
     HDR_COOKIE,
     HDR_DATE,
     HDR_ETAG,
@@ -236,12 +239,11 @@ typedef enum {
     HDR_RETRY_AFTER,
     HDR_SERVER,
     HDR_SET_COOKIE,
-    HDR_TITLE,
-    HDR_TRANSFER_ENCODING,
     HDR_UPGRADE,
     HDR_USER_AGENT,
     HDR_VARY,
     HDR_VIA,
+    HDR_EXPECT,
     HDR_WARNING,
     HDR_WWW_AUTHENTICATE,
     HDR_AUTHENTICATION_INFO,
