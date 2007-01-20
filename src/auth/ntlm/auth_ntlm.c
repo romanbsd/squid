@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_ntlm.c,v 1.36 2007/01/03 12:17:30 hno Exp $
+ * $Id: auth_ntlm.c,v 1.37 2007/01/20 21:13:28 hno Exp $
  *
  * DEBUG: section 29    NTLM Authenticator
  * AUTHOR: Robert Collins
@@ -333,6 +333,7 @@ authenticateNTLMFixErrorHeader(auth_user_request_t * auth_user_request, HttpRepl
 	request->flags.must_keepalive = 1;
 	break;
     case AUTHENTICATE_STATE_FINISHED:
+    case AUTHENTICATE_STATE_DONE:
 	/* Special case when authentication finished, but not allowed by ACL */
 	debug(29, 9) ("authenticateNTLMFixErrorHeader: Sending type:%d header: 'NTLM'\n", type);
 	httpHeaderPutStrf(&rep->header, type, "NTLM");
