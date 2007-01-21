@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.91 2007/01/19 01:10:12 hno Exp $
+ * $Id: HttpHeader.c,v 1.91.2.1 2007/01/21 10:26:44 hno Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -113,14 +113,12 @@ static const HttpHeaderFieldAttrs HeadersAttrs[] =
     {"Retry-After", HDR_RETRY_AFTER, ftStr},	/* for now (ftDate_1123 or ftInt!) */
     {"Server", HDR_SERVER, ftStr},
     {"Set-Cookie", HDR_SET_COOKIE, ftStr},
+    {"Title", HDR_TITLE, ftStr},
     {"Transfer-Encoding", HDR_TRANSFER_ENCODING, ftStr},
-    {"Te", HDR_TE, ftStr},
-    {"Trailer", HDR_TRAILER, ftStr},
     {"Upgrade", HDR_UPGRADE, ftStr},	/* for now */
     {"User-Agent", HDR_USER_AGENT, ftStr},
     {"Vary", HDR_VARY, ftStr},	/* for now */
     {"Via", HDR_VIA, ftStr},	/* for now */
-    {"Expect", HDR_EXPECT, ftStr},
     {"Warning", HDR_WARNING, ftStr},	/* for now */
     {"WWW-Authenticate", HDR_WWW_AUTHENTICATE, ftStr},
     {"Authentication-Info", HDR_AUTHENTICATION_INFO, ftStr},
@@ -159,8 +157,6 @@ static http_hdr_type ListHeadersArr[] =
     HDR_LINK, HDR_PRAGMA,
     HDR_PROXY_CONNECTION,
     HDR_PROXY_SUPPORT,
-    HDR_TE,
-    HDR_TRAILER,
     HDR_TRANSFER_ENCODING,
     HDR_UPGRADE,
     HDR_VARY,
@@ -169,7 +165,7 @@ static http_hdr_type ListHeadersArr[] =
     HDR_WWW_AUTHENTICATE,
     HDR_AUTHENTICATION_INFO,
     HDR_PROXY_AUTHENTICATION_INFO,
-    HDR_EXPECT,
+    /* HDR_EXPECT, HDR_TE, HDR_TRAILER */
 #if X_ACCELERATOR_VARY
     HDR_X_ACCELERATOR_VARY,
 #endif
@@ -181,8 +177,8 @@ static http_hdr_type GeneralHeadersArr[] =
 {
     HDR_CACHE_CONTROL, HDR_CONNECTION, HDR_DATE, HDR_PRAGMA,
     HDR_TRANSFER_ENCODING,
-    HDR_TRAILER,
     HDR_UPGRADE,
+    /* HDR_TRAILER, */
     HDR_VIA
 };
 
@@ -220,7 +216,7 @@ static http_hdr_type RequestHeadersArr[] =
     HDR_IF_MATCH, HDR_IF_MODIFIED_SINCE, HDR_IF_NONE_MATCH,
     HDR_IF_RANGE, HDR_MAX_FORWARDS, HDR_PROXY_CONNECTION,
     HDR_PROXY_AUTHORIZATION, HDR_RANGE, HDR_REFERER, HDR_REQUEST_RANGE,
-    HDR_USER_AGENT, HDR_X_FORWARDED_FOR, HDR_TE, HDR_EXPECT
+    HDR_USER_AGENT, HDR_X_FORWARDED_FOR
 };
 
 /* header accounting */

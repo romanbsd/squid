@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6.STABLE8 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.52 2007/01/21 04:02:35 hno Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.52.2.1 2007/01/21 10:26:44 hno Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -498,7 +498,6 @@ ScriptAlias /squid/cgi-bin/ "c:/squid/libexec/"
 	<item>Bug #1872: Date parsing error causing objects to get unexpectedly cached. Problem introduced in 2.6.STABLE6.
 	<item>Bug #1873: authenticateNTLMFixErrorHeader: state 4. NTLM &amp;
 	      Negotiate instability introduced in 2.6.STABLE6.
-	<item>Primitive support for HTTP/1.1 chunked encoding, working around broken servers sending chunked encoding in response to HTTP/1.0 requests.
 	<item>Bug #1783: STALE: Entry's timestamp greater than check time. Clock going backwards?
 	<item>Don't update object timestamps on a failed revalidation.
 	<item>a number of other minor and cosmetic bugfixes. See the list of <url
