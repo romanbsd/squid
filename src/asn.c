@@ -1,6 +1,6 @@
 
 /*
- * $Id: asn.c,v 1.84 2006/06/05 22:47:01 hno Exp $
+ * $Id: asn.c,v 1.85 2007/01/21 12:53:57 adrian Exp $
  *
  * DEBUG: section 53    AS Number handling
  * AUTHOR: Duane Wessels, Kostas Anagnostakis
@@ -203,7 +203,7 @@ asnCacheStart(int as)
     assert(NULL != req);
     asState->request = requestLink(req);
     if ((e = storeGetPublic(asres, METHOD_GET)) == NULL) {
-	e = storeCreateEntry(asres, asres, null_request_flags, METHOD_GET);
+	e = storeCreateEntry(asres, null_request_flags, METHOD_GET);
 	asState->sc = storeClientRegister(e, asState);
 	fwdStart(-1, e, asState->request);
     } else {

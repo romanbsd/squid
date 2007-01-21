@@ -1,6 +1,6 @@
 
 /*
- * $Id: acl.c,v 1.318 2007/01/06 17:22:45 hno Exp $
+ * $Id: acl.c,v 1.319 2007/01/21 12:53:57 adrian Exp $
  *
  * DEBUG: section 28    Access Control
  * AUTHOR: Duane Wessels
@@ -383,7 +383,7 @@ aclParseMethodList(void *curlist)
     for (Tail = curlist; *Tail; Tail = &((*Tail)->next));
     while ((t = strtokFile())) {
 	q = memAllocate(MEM_INTLIST);
-	q->i = (int) urlParseMethod(t);
+	q->i = (int) urlParseMethod(t, strlen(t));
 	if (q->i == METHOD_NONE)
 	    self_destruct();
 	*(Tail) = q;
@@ -2903,7 +2903,7 @@ aclDumpMethodList(intlist * data)
 {
     wordlist *W = NULL;
     while (data != NULL) {
-	wordlistAdd(&W, RequestMethodStr[data->i]);
+	wordlistAdd(&W, RequestMethods[data->i].str);
 	data = data->next;
     }
     return W;

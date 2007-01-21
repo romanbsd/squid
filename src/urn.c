@@ -1,6 +1,6 @@
 
 /*
- * $Id: urn.c,v 1.80 2006/08/25 12:26:07 serassio Exp $
+ * $Id: urn.c,v 1.81 2007/01/21 12:54:00 adrian Exp $
  *
  * DEBUG: section 52    URN Parsing
  * AUTHOR: Kostas Anagnostakis
@@ -137,7 +137,7 @@ urnStart(request_t * r, StoreEntry * e)
     }
     httpHeaderPutStr(&urlres_r->header, HDR_ACCEPT, "text/plain");
     if ((urlres_e = storeGetPublic(urlres, METHOD_GET)) == NULL) {
-	urlres_e = storeCreateEntry(urlres, urlres, null_request_flags, METHOD_GET);
+	urlres_e = storeCreateEntry(urlres, null_request_flags, METHOD_GET);
 	urnState->sc = storeClientRegister(urlres_e, urnState);
 	fwdStart(-1, urlres_e, urlres_r);
     } else {

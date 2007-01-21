@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.382 2007/01/19 22:03:03 hno Exp $
+# $Id: cf.data.pre,v 1.383 2007/01/21 12:53:57 adrian Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -4968,7 +4968,7 @@ DOC_END
 
 NAME: extension_methods
 TYPE: extension_method
-LOC: RequestMethodStr
+LOC: RequestMethods
 DEFAULT: none
 DOC_START
 	Squid only knows about standardized HTTP request methods.

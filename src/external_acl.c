@@ -1,6 +1,6 @@
 
 /*
- * $Id: external_acl.c,v 1.29 2007/01/01 23:32:13 hno Exp $
+ * $Id: external_acl.c,v 1.30 2007/01/21 12:53:59 adrian Exp $
  *
  * DEBUG: section 82    External ACL
  * AUTHOR: Henrik Nordstrom, MARA Systems AB
@@ -666,7 +666,7 @@ makeExternalAclKey(aclCheck_t * ch, external_acl_data * acl_data)
 	    str = strBuf(request->urlpath);
 	    break;
 	case EXT_ACL_METHOD:
-	    str = RequestMethodStr[request->method];
+	    str = RequestMethods[request->method].str;
 	    break;
 	case EXT_ACL_HEADER:
 	    sb = httpHeaderGetByName(&request->header, format->header);

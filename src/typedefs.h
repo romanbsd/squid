@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.151 2006/09/02 14:08:42 hno Exp $
+ * $Id: typedefs.h,v 1.152 2007/01/21 12:54:00 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -404,5 +404,9 @@ typedef void ERRMAPCB(StoreEntry *, int body_offset, squid_off_t content_length,
 
 typedef struct _VaryData VaryData;
 typedef void STLVCB(VaryData * vary, void *cbdata);
+
+typedef struct _HttpMsgBuf HttpMsgBuf;
+
+typedef struct rms rms_t;
 
 #endif /* SQUID_TYPEDEFS_H */

@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_key_md5.c,v 1.29 2006/06/07 19:43:51 hno Exp $
+ * $Id: store_key_md5.c,v 1.30 2007/01/21 12:54:00 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager MD5 Cache Keys
  * AUTHOR: Duane Wessels
@@ -98,7 +98,7 @@ storeKeyPrivate(const char *url, method_t method, int id)
     MD5_CTX M;
     assert(id > 0);
     debug(20, 3) ("storeKeyPrivate: %s %s\n",
-	RequestMethodStr[method], url);
+	RequestMethods[method].str, url);
     MD5Init(&M);
     MD5Update(&M, (unsigned char *) &id, sizeof(id));
     MD5Update(&M, (unsigned char *) &method, sizeof(method));

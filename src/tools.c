@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.250 2006/11/04 17:09:45 hno Exp $
+ * $Id: tools.c,v 1.251 2007/01/21 12:54:00 adrian Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1345,4 +1345,44 @@ keepCapabilities(void)
 	}
     }
 #endif
+}
+
+/* XXX this is ipv4-only aware atm */
+const char *
+xinet_ntoa(const struct in_addr addr)
+{
+    static char buf[32];
+    char *s = buf + 30;
+    unsigned char a;
+
+    s[31] = '\0';
+
+    a = (addr.s_addr >> 24) & 0xff;
+    do {
+	*(s--) = (a % 10) + '0';
+	a /= 10;
+    } while (a > 0);
+    *(s--) = '.';
+
+    a = (addr.s_addr >> 16) & 0xff;
+    do {
+	*(s--) = (a % 10) + '0';
+	a /= 10;
+    } while (a > 0);
+    *(s--) = '.';
+
+    a = (addr.s_addr >> 8) & 0xff;
+    do {
+	*(s--) = (a % 10) + '0';
+	a /= 10;
+    } while (a > 0);
+    *(s--) = '.';
+
+    a = (addr.s_addr) & 0xff;
+    do {
+	*(s--) = (a % 10) + '0';
+	a /= 10;
+    } while (a > 0);
+
+    return s + 1;
 }

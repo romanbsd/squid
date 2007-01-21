@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_ufs.c,v 1.63 2006/11/05 21:32:13 hno Exp $
+ * $Id: store_dir_ufs.c,v 1.64 2007/01/21 12:54:06 adrian Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1007,7 +1007,7 @@ storeUfsDirAddDiskRestore(SwapDir * SD, const cache_key * key,
     debug(47, 5) ("storeUfsAddDiskRestore: %s, fileno=%08X\n", storeKeyText(key), file_number);
     /* if you call this you'd better be sure file_number is not 
      * already in use! */
-    e = new_StoreEntry(STORE_ENTRY_WITHOUT_MEMOBJ, NULL, NULL);
+    e = new_StoreEntry(STORE_ENTRY_WITHOUT_MEMOBJ, NULL);
     e->store_status = STORE_OK;
     storeSetMemStatus(e, NOT_IN_MEMORY);
     e->swap_status = SWAPOUT_DONE;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.c,v 1.131 2006/12/10 05:24:52 hno Exp $
+ * $Id: peer_select.c,v 1.132 2007/01/21 12:54:00 adrian Exp $
  *
  * DEBUG: section 44    Peer Selection Algorithm
  * AUTHOR: Duane Wessels
@@ -141,7 +141,7 @@ peerSelect(request_t * request,
     if (entry)
 	debug(44, 3) ("peerSelect: %s\n", storeUrl(entry));
     else
-	debug(44, 3) ("peerSelect: %s\n", RequestMethodStr[request->method]);
+	debug(44, 3) ("peerSelect: %s\n", RequestMethods[request->method].str);
     psstate = cbdataAlloc(ps_state);
     psstate->request = requestLink(request);
     psstate->entry = entry;
@@ -241,7 +241,7 @@ peerSelectFoo(ps_state * ps)
     StoreEntry *entry = ps->entry;
     request_t *request = ps->request;
     debug(44, 3) ("peerSelectFoo: '%s %s'\n",
-	RequestMethodStr[request->method],
+	RequestMethods[request->method].str,
 	request->host);
     if (ps->direct == DIRECT_UNKNOWN) {
 	if (ps->always_direct == 0 && Config.accessList.AlwaysDirect) {
@@ -464,7 +464,7 @@ peerGetSomeParent(ps_state * ps)
     request_t *request = ps->request;
     hier_code code = HIER_NONE;
     debug(44, 3) ("peerGetSomeParent: %s %s\n",
-	RequestMethodStr[request->method],
+	RequestMethods[request->method].str,
 	request->host);
     if (ps->direct == DIRECT_YES)
 	return;

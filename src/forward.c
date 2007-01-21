@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.120 2007/01/19 00:21:01 hno Exp $
+ * $Id: forward.c,v 1.121 2007/01/21 12:53:59 adrian Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -655,7 +655,7 @@ fwdDispatch(FwdState * fwdState)
     int server_fd = fwdState->server_fd;
     debug(17, 3) ("fwdDispatch: FD %d: Fetching '%s %s'\n",
 	fwdState->client_fd,
-	RequestMethodStr[request->method],
+	RequestMethods[request->method].str,
 	storeUrl(entry));
     /*
      * Assert that server_fd is set.  This is to guarantee that fwdState
@@ -1121,7 +1121,7 @@ fwdLog(FwdState * fwdState)
 	(int) current_time.tv_sec,
 	(int) current_time.tv_usec / 1000,
 	fwdState->last_status,
-	RequestMethodStr[fwdState->request->method],
+	RequestMethods[fwdState->request->method].str,
 	fwdState->request->canonical);
 }
 

@@ -1,6 +1,6 @@
 
 /*
- * $Id: redirect.c,v 1.96 2006/07/08 16:01:12 serassio Exp $
+ * $Id: redirect.c,v 1.97 2007/01/21 12:54:00 adrian Exp $
  *
  * DEBUG: section 61    Redirector
  * AUTHOR: Duane Wessels
@@ -124,7 +124,7 @@ redirectStart(clientHttpRequest * http, RH * handler, void *data)
 #endif
     if (!r->client_ident)
 	r->client_ident = dash_str;
-    r->method_s = RequestMethodStr[http->request->method];
+    r->method_s = RequestMethods[http->request->method].str;
     r->handler = handler;
     r->data = data;
     cbdataLock(r->data);

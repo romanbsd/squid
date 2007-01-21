@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.66 2006/11/05 21:14:32 hno Exp $
+ * $Id: store_dir_coss.c,v 1.67 2007/01/21 12:54:04 adrian Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -1412,7 +1412,7 @@ storeCoss_AddStoreEntry(RebuildState * rb, const cache_key * key, StoreEntry * e
     rb->counts.objcount++;
     /* The Passed-in store entry is temporary; don't bloody use it directly! */
     assert(e->swap_dirn == SD->index);
-    ne = new_StoreEntry(STORE_ENTRY_WITHOUT_MEMOBJ, NULL, NULL);
+    ne = new_StoreEntry(STORE_ENTRY_WITHOUT_MEMOBJ, NULL);
     ne->store_status = STORE_OK;
     storeSetMemStatus(ne, NOT_IN_MEMORY);
     ne->swap_status = SWAPOUT_DONE;

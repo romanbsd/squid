@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_digest.c,v 1.94 2006/06/05 22:47:01 hno Exp $
+ * $Id: peer_digest.c,v 1.95 2007/01/21 12:54:00 adrian Exp $
  *
  * DEBUG: section 72    Peer Digest Routines
  * AUTHOR: Alex Rousskov
@@ -315,10 +315,10 @@ peerDigestRequest(PeerDigest * pd)
     if (old_e) {
 	debug(72, 5) ("peerDigestRequest: found old entry\n");
 	storeLockObject(old_e);
-	storeCreateMemObject(old_e, url, url);
+	storeCreateMemObject(old_e, url);
 	fetch->old_sc = storeClientRegister(old_e, fetch);
     }
-    e = fetch->entry = storeCreateEntry(url, url, req->flags, req->method);
+    e = fetch->entry = storeCreateEntry(url, req->flags, req->method);
     assert(EBIT_TEST(e->flags, KEY_PRIVATE));
     fetch->sc = storeClientRegister(e, fetch);
     /* set lastmod to trigger IMS request if possible */

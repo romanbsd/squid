@@ -1,6 +1,6 @@
 
 /*
- * $Id: errormap.c,v 1.2 2006/06/05 22:47:01 hno Exp $
+ * $Id: errormap.c,v 1.3 2007/01/21 12:53:58 adrian Exp $
  *
  * DEBUG: section ??    Error Beautifier
  * AUTHOR: Henrik Nordstrom
@@ -185,7 +185,7 @@ errorMapStart(const errormap * map, request_t * client_req, HttpReply * reply, c
 
     state = cbdataAlloc(ErrorMapState);
     state->req = requestLink(req);
-    state->e = storeCreateEntry(errorUrl, errorUrl, req->flags, req->method);
+    state->e = storeCreateEntry(errorUrl, req->flags, req->method);
     state->sc = storeClientRegister(state->e, state);
     state->callback = callback;
     state->callback_data = callback_data;
@@ -194,12 +194,12 @@ errorMapStart(const errormap * map, request_t * client_req, HttpReply * reply, c
     hdrpos = HttpHeaderInitPos;
     while ((hdr = httpHeaderGetEntry(&client_req->header, &hdrpos)) != NULL) {
 	if (CBIT_TEST(client_headers, hdr->id))
-	    httpHeaderAddEntry(&req->header, httpHeaderEntryClone(hdr));
+	    httpHeaderAddClone(&req->header, hdr);
     }
     hdrpos = HttpHeaderInitPos;
     while ((hdr = httpHeaderGetEntry(&reply->header, &hdrpos)) != NULL) {
 	if (CBIT_TEST(server_headers, hdr->id))
-	    httpHeaderAddEntry(&req->header, httpHeaderEntryClone(hdr));
+	    httpHeaderAddClone(&req->header, hdr);
     }
     httpHeaderPutInt(&req->header, HDR_X_ERROR_STATUS, (int) reply->sline.status);
     httpHeaderPutStr(&req->header, HDR_X_REQUEST_URI, urlCanonical(client_req));
