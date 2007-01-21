@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.419 2007/01/19 01:10:12 hno Exp $
+ * $Id: http.c,v 1.419.2.1 2007/01/21 10:00:40 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -80,6 +80,7 @@ httpStateFree(int fd, void *data)
     requestUnlink(httpState->orig_request);
     httpState->request = NULL;
     httpState->orig_request = NULL;
+    stringClean(&httpState->chunkhdr);
     cbdataFree(httpState);
 }
 
@@ -652,6 +653,11 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 	    stringAppend(&httpState->chunkhdr, buf, size);
 	    buf += size;
 	    len -= size;
+	    if (strLen(httpState->chunkhdr) > 256) {
+		debug(11, 1) ("Oversized chunk header on port %d, url %s\n", comm_local_port(fd), entry->mem_obj->url);
+		comm_close(fd);
+		return;
+	    }
 	    if (eol) {
 		if (!httpState->flags.trailer) {
 		    /* chunk header */
