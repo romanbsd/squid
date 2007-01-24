@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.1 2007/01/21 10:26:44 hno Exp $
+ * $Id: client_side.c,v 1.693.2.2 2007/01/24 01:38:16 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2217,11 +2217,11 @@ clientCacheHit(void *data, char *buf, ssize_t size)
 	    stringClean(&req_etags);
 	    if (has_etag) {
 		debug(33, 4) ("clientCacheHit: If-None-Match matches\n");
-		is_modified = 0;
+		if (is_modified == -1)
+		    is_modified = 0;
 	    } else {
 		debug(33, 4) ("clientCacheHit: If-None-Match mismatch\n");
-		if (is_modified == -1)
-		    is_modified = 1;
+		is_modified = 1;
 	    }
 	}
     }
@@ -2237,12 +2237,12 @@ clientCacheHit(void *data, char *buf, ssize_t size)
 	    return;
 	}
 	if (modifiedSince(e, http->request)) {
-	    debug(33, 4) ("clientCacheHit: If-Modified-Since not modified\n");
-	    is_modified = 0;
-	} else {
 	    debug(33, 4) ("clientCacheHit: If-Modified-Since modified\n");
+	    is_modified = 1;
+	} else {
+	    debug(33, 4) ("clientCacheHit: If-Modified-Since not modified\n");
 	    if (is_modified == -1)
-		is_modified = 1;
+		is_modified = 0;
 	}
     }
     stale = refreshCheckHTTPStale(e, r);
