@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_diskd.c,v 1.33 2006/11/05 21:14:36 hno Exp $
+ * $Id: store_io_diskd.c,v 1.33.2.1 2007/01/24 01:54:48 hno Exp $
  *
  * DEBUG: section 79    Squid-side DISKD I/O functions.
  * AUTHOR: Duane Wessels
@@ -468,11 +468,11 @@ storeDiskdHandle(diomsg * M)
 static void
 storeDiskdIOCallback(storeIOState * sio, int errflag)
 {
-    int valid = cbdataValid(sio->callback_data);
-    debug(79, 3) ("storeDiskdIOCallback: errflag=%d\n", errflag);
-    cbdataUnlock(sio->callback_data);
-    if (valid)
-	sio->callback(sio->callback_data, errflag, sio);
+    void *p = sio->callback_data;
+    debug(79, 3) ("storeUfsIOCallback: errflag=%d\n", errflag);
+    if (cbdataValid(p))
+	sio->callback(p, errflag, sio);
+    cbdataUnlock(p);
     cbdataFree(sio);
 }
 
