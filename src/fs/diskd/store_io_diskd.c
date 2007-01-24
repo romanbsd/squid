@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_diskd.c,v 1.36 2007/01/24 22:51:43 wessels Exp $
+ * $Id: store_io_diskd.c,v 1.37 2007/01/24 22:56:41 wessels Exp $
  *
  * DEBUG: section 79    Squid-side DISKD I/O functions.
  * AUTHOR: Duane Wessels
@@ -500,6 +500,17 @@ storeDiskdSend(int mtype, SwapDir * sd, int id, storeIOState * sio, int size, of
 	cbdataLock(M.callback_data);
     if (M.seq_no < last_seq_no)
 	debug(79, 1) ("WARNING: sequencing out of order\n");
+#if 0
+    debug(79, 3) ("msgsnd %ld %d %d %p %d %" PRINTF_OFF_T " %d %d\n",
+	M.mtype,
+	M.id,
+	M.seq_no,
+	M.callback_data,
+	M.size,
+	M.offset,
+	M.status,
+	M.shm_offset);
+#endif
     x = msgsnd(diskdinfo->smsgid, &M, msg_snd_rcv_sz, IPC_NOWAIT);
     last_seq_no = M.seq_no;
     if (0 == x) {

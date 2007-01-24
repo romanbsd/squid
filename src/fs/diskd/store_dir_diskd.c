@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_diskd.c,v 1.88 2007/01/21 12:54:05 adrian Exp $
+ * $Id: store_dir_diskd.c,v 1.89 2007/01/24 22:56:41 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -532,6 +532,17 @@ storeDiskdDirCallback(SwapDir * SD)
 		x);
 	    break;
 	}
+#if 0
+	debug(47, 3) ("msgrcv %ld %d %d %p %d %" PRINTF_OFF_T " %d %d\n",
+	    M.mtype,
+	    M.id,
+	    M.seq_no,
+	    M.callback_data,
+	    M.size,
+	    M.offset,
+	    M.status,
+	    M.shm_offset);
+#endif
 	diskd_stats.recv_count++;
 	diskdinfo->away--;
 	storeDiskdHandle(&M);
