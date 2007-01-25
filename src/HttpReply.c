@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpReply.c,v 1.57 2007/01/21 12:53:56 adrian Exp $
+ * $Id: HttpReply.c,v 1.58 2007/01/25 00:12:43 wessels Exp $
  *
  * DEBUG: section 58    HTTP Reply (Response)
  * AUTHOR: Alex Rousskov
@@ -372,11 +372,11 @@ httpReplyParseStep(HttpReply * rep, const char *buf, int len)
 {
     const char *parse_start = buf;
     const char *blk_start, *blk_end;
+    int i;
+    const char *re;
     assert(rep);
     assert(parse_start);
     assert(rep->pstate < psParsed);
-    int i;
-    const char *re;
 
     /* For now we'll assume we need to parse the whole lot */
 
