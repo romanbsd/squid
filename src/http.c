@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.421 2007/01/21 12:54:00 adrian Exp $
+ * $Id: http.c,v 1.422 2007/01/26 01:22:06 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -746,7 +746,6 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
     /*
      * Verified and done with the reply
      */
-    fwdComplete(httpState->fwd);
 
     /*
      * If we didn't send a keep-alive request header, then this
@@ -800,9 +799,11 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 	} else {
 	    pconnPush(fd, request->host, request->port, NULL, client_addr, client_port);
 	}
+	fwdComplete(httpState->fwd);
 	httpState->fd = -1;
 	httpStateFree(fd, httpState);
     } else {
+	fwdComplete(httpState->fwd);
 	comm_close(fd);
     }
 }
