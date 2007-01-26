@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_db.c,v 1.57 2007/01/21 12:53:58 adrian Exp $
+ * $Id: client_db.c,v 1.58 2007/01/26 01:31:22 hno Exp $
  *
  * DEBUG: section 0     Client Database
  * AUTHOR: Duane Wessels
@@ -79,7 +79,7 @@ clientdbInit(void)
 void
 clientdbUpdate(struct in_addr addr, log_type ltype, protocol_t p, squid_off_t size)
 {
-    char *key;
+    const char *key;
     ClientInfo *c;
     if (!Config.onoff.client_db)
 	return;
@@ -115,7 +115,7 @@ clientdbUpdate(struct in_addr addr, log_type ltype, protocol_t p, squid_off_t si
 int
 clientdbEstablished(struct in_addr addr, int delta)
 {
-    char *key;
+    const char *key;
     ClientInfo *c;
     if (!Config.onoff.client_db)
 	return 0;
@@ -133,7 +133,7 @@ clientdbEstablished(struct in_addr addr, int delta)
 int
 clientdbCutoffDenied(struct in_addr addr)
 {
-    char *key;
+    const char *key;
     int NR;
     int ND;
     double p;
@@ -303,7 +303,7 @@ struct in_addr *
 client_entry(struct in_addr *current)
 {
     ClientInfo *c = NULL;
-    char *key;
+    const char *key;
     if (current) {
 	key = xinet_ntoa(*current);
 	hash_first(client_table);
