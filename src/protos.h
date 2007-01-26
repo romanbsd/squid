@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.521 2007/01/21 12:54:00 adrian Exp $
+ * $Id: protos.h,v 1.522 2007/01/26 00:44:01 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -908,9 +908,11 @@ extern void storeComplete(StoreEntry *);
 extern void storeInit(void);
 extern void storeAbort(StoreEntry *);
 extern void storeAppend(StoreEntry *, const char *, int);
-extern void storeLockObject(StoreEntry *);
+extern void storeLockObjectDebug(StoreEntry *, const char *file, const int line);
 extern void storeRelease(StoreEntry *);
-extern int storeUnlockObject(StoreEntry *);
+extern int storeUnlockObjectDebug(StoreEntry *, const char *file, const int line);
+#define	storeLockObject(a) storeLockObjectDebug(a, __FILE__, __LINE__);
+#define	storeUnlockObject(a) storeUnlockObjectDebug(a, __FILE__, __LINE__);
 extern EVH storeMaintainSwapSpace;
 extern void storeExpireNow(StoreEntry *);
 extern void storeReleaseRequest(StoreEntry *);
