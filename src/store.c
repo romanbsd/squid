@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.572 2007/01/26 00:44:01 adrian Exp $
+ * $Id: store.c,v 1.573 2007/01/26 02:33:12 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -124,6 +124,19 @@ new_MemObject(const char *url)
     debug(20, 3) ("new_MemObject: returning %p\n", mem);
     return mem;
 }
+
+int
+memHaveHeaders(const MemObject * mem)
+{
+    if (mem->reply == NULL)
+	return 0;
+    if (mem->reply->sline.status == 0)
+	return 0;
+    if (mem->reply->pstate != psParsed)
+	return 0;
+    return 1;
+}
+
 
 StoreEntry *
 new_StoreEntry(int mem_obj_flag, const char *url)

@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpReply.c,v 1.58 2007/01/25 00:12:43 wessels Exp $
+ * $Id: HttpReply.c,v 1.59 2007/01/26 02:33:12 adrian Exp $
  *
  * DEBUG: section 58    HTTP Reply (Response)
  * AUTHOR: Alex Rousskov
@@ -347,6 +347,41 @@ httpReplyHdrCacheInit(HttpReply * rep)
     rep->keep_alive = httpMsgIsPersistent(rep->sline.version, &rep->header);
     /* be sure to set expires after date and cache-control */
     rep->expires = httpReplyHdrExpirationTime(rep);
+}
+
+HttpReply *
+httpReplyClone(HttpReply * src)
+{
+    HttpReply *dst = httpReplyCreate();
+
+    /* basic variables */
+    dst->hdr_sz = src->hdr_sz;
+    dst->content_length = src->content_length;
+    dst->date = src->date;
+    dst->last_modified = src->last_modified;
+    dst->expires = src->expires;
+
+    /* parser state */
+    dst->pstate = src->pstate;
+    /* status line */
+    dst->sline = src->sline;
+    /* header */
+    httpHeaderAppend(&dst->header, &src->header);
+    /* body, if applicable */
+    if (dst->body.mb.buf != NULL)
+	memBufAppend(&dst->body.mb, dst->body.mb.buf, dst->body.mb.size);
+
+    /*
+     * The next two are a bit .. special. I hate delving into the headers
+     * when we've already -done- that, but I'll worry about doing it
+     * faster later. Besides, there's too much other code to fix up.
+     */
+    /* cache control */
+    dst->cache_control = httpHeaderGetCc(&dst->header);
+    /* content range */
+    dst->content_range = httpHeaderGetContRange(&dst->header);
+
+    return dst;
 }
 
 /* sync this routine when you update HttpReply struct */
