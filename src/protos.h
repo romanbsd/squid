@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.522 2007/01/26 00:44:01 adrian Exp $
+ * $Id: protos.h,v 1.523 2007/01/26 01:51:24 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1142,9 +1142,9 @@ extern int urlCheckRequest(const request_t *);
 extern int urlDefaultPort(protocol_t p);
 extern char *urlCanonicalClean(const request_t *);
 extern char *urlHostname(const char *url);
-extern void parse_extension_method(rms_t * foo[]);
-extern void free_extension_method(rms_t * foo[]);
-extern void dump_extension_method(StoreEntry * entry, const char *name, rms_t * methods[]);
+extern void parse_extension_method(rms_t(*foo)[]);
+extern void free_extension_method(rms_t(*foo)[]);
+extern void dump_extension_method(StoreEntry * entry, const char *name, rms_t * methods);
 
 extern void useragentOpenLog(void);
 extern void useragentRotateLog(void);
