@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.508 2007/01/21 12:54:00 adrian Exp $
+ * $Id: structs.h,v 1.509 2007/01/28 23:53:42 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1166,6 +1166,7 @@ struct _AccessLogEntry {
     struct {
 	struct in_addr caddr;
 	squid_off_t size;
+	size_t rq_size;
 	log_type code;
 	int msec;
 	const char *rfc931;
