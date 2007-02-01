@@ -1,6 +1,6 @@
 
 /*
- * $Id: url.c,v 1.148 2007/01/26 06:50:38 adrian Exp $
+ * $Id: url.c,v 1.149 2007/02/01 08:32:51 serassio Exp $
  *
  * DEBUG: section 23    URL Parsing
  * AUTHOR: Duane Wessels
@@ -265,10 +265,10 @@ urlParse(method_t method, char *url)
     int port;
     protocol_t protocol = PROTO_NONE;
     int l;
-    proto[0] = host[0] = urlpath[0] = login[0] = '\0';
     int i;
     const char *src;
     char *dst;
+    proto[0] = host[0] = urlpath[0] = login[0] = '\0';
 
     if ((l = strlen(url)) + Config.appendDomainLen > (MAX_URL - 1)) {
 	/* terminate so it doesn't overflow other buffers */
