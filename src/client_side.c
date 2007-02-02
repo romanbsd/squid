@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.698 2007/01/28 23:53:42 hno Exp $
+ * $Id: client_side.c,v 1.699 2007/02/02 09:22:50 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2028,7 +2028,7 @@ clientBuildReply(clientHttpRequest * http, const char *buf, size_t size)
     }
     /* try to grab the already-parsed header */
     rep = httpReplyClone(http->sc->entry->mem_obj->reply);
-    if (rep->sline.status == psParsed) {
+    if (rep->pstate == psParsed) {
 	/* enforce 1.0 reply version */
 	httpBuildVersion(&rep->sline.version, 1, 0);
 	/* do header conversions */
