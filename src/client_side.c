@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.700 2007/02/02 17:22:20 adrian Exp $
+ * $Id: client_side.c,v 1.701 2007/02/02 18:34:48 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2622,8 +2622,6 @@ clientSendMoreHeaderData(void *data, char *buf, ssize_t size)
     ConnStateData *conn = http->conn;
     int fd = conn->fd;
     HttpReply *rep = NULL;
-    const char *body_buf = buf;
-    squid_off_t body_size = size;
     debug(33, 5) ("clientSendMoreHeaderData: %s, %d bytes\n", http->uri, (int) size);
     assert(size <= CLIENT_SOCK_SZ);
     assert(http->request != NULL);
@@ -2659,7 +2657,7 @@ clientSendMoreHeaderData(void *data, char *buf, ssize_t size)
 	MemBuf mb;
 	memBufDefInit(&mb);
 	memBufAppend(&mb, buf, size);
-	http->out.offset += body_size;
+	http->out.offset += size;
 	comm_write_mbuf(http->conn->fd, mb, clientWriteComplete, http);
 	return;
     }
