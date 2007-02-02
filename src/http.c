@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.423 2007/02/01 12:53:58 hno Exp $
+ * $Id: http.c,v 1.424 2007/02/02 18:35:23 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -929,6 +929,18 @@ httpReadReply(int fd, void *data)
 		    httpState->fwd->flags.dont_retry = 1;
 		    comm_close(fd);
 		    return;
+		} else if (s == HTTP_INVALID_HEADER) {
+		    MemBuf mb;
+		    HttpReply *reply = entry->mem_obj->reply;
+		    httpReplyReset(reply);
+		    httpBuildVersion(&reply->sline.version, 1, 0);
+		    reply->sline.status = HTTP_OK;
+		    httpHeaderPutTime(&reply->header, HDR_DATE, squid_curtime);
+		    mb = httpReplyPack(reply);
+		    storeAppend(entry, mb.buf, mb.size);
+		    httpReplyReset(reply);
+		    httpReplyParse(reply, mb.buf, mb.size);
+		    memBufClean(&mb);
 		}
 #if WIP_FWD_LOG
 		fwdStatus(httpState->fwd, s);
