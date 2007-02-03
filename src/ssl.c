@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.134 2006/08/25 12:26:07 serassio Exp $
+ * $Id: ssl.c,v 1.134.2.1 2007/02/03 21:53:38 hno Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -414,7 +414,7 @@ sslConnectDone(int fd, int status, void *data)
     ErrorState *err = NULL;
     if (sslState->servers->peer)
 	hierarchyNote(&sslState->request->hier, sslState->servers->code,
-	    sslState->servers->peer->host);
+	    sslState->servers->peer->name);
     else if (Config.onoff.log_ip_on_direct)
 	hierarchyNote(&sslState->request->hier, sslState->servers->code,
 	    fd_table[sslState->server.fd].ipaddr);
@@ -462,7 +462,7 @@ sslConnectTimeout(int fd, void *data)
     ErrorState *err = NULL;
     if (sslState->servers->peer)
 	hierarchyNote(&sslState->request->hier, sslState->servers->code,
-	    sslState->servers->peer->host);
+	    sslState->servers->peer->name);
     else if (Config.onoff.log_ip_on_direct)
 	hierarchyNote(&sslState->request->hier, sslState->servers->code,
 	    fd_table[sslState->server.fd].ipaddr);
