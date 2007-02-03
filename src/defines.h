@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.122 2006/11/29 15:58:52 adrian Exp $
+ * $Id: defines.h,v 1.123 2007/02/03 22:22:51 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -216,11 +216,22 @@
 
 #if HAVE_SOCKETPAIR && defined (AF_UNIX)
 #define IPC_STREAM IPC_UNIX_STREAM
-#define IPC_DGRAM IPC_UNIX_DGRAM
 #else
 #define IPC_STREAM IPC_TCP_SOCKET
+#endif
+
+/*
+ * Do NOT use IPC_UNIX_DGRAM here because you can't
+ * send() more than 4096 bytes on a socketpair() socket
+ * on FreeBSD
+ * XXX There should be a configure test for this
+ */
+#if HAVE_SOCKETPAIR && defined (AF_UNIX) && !defined(_SQUID_FREEBSD_)
+#define IPC_DGRAM IPC_UNIX_DGRAM
+#else
 #define IPC_DGRAM IPC_UDP_SOCKET
 #endif
+
 
 #define STORE_META_KEY STORE_META_KEY_MD5
 
