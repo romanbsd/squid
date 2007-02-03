@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.2 2007/01/24 01:38:16 hno Exp $
+ * $Id: client_side.c,v 1.693.2.3 2007/02/03 21:59:24 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1276,7 +1276,9 @@ httpRequestFree(void *data)
 	http->al.cache.size = http->out.size;
 	http->al.cache.code = http->log_type;
 	http->al.cache.msec = tvSubMsec(http->start, current_time);
+	http->al.cache.rq_size = http->req_sz;
 	if (request) {
+	    http->al.cache.rq_size += request->content_length;
 	    if (Config.onoff.log_mime_hdrs) {
 		Packer p;
 		MemBuf mb;
