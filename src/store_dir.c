@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir.c,v 1.143 2006/09/18 22:54:39 hno Exp $
+ * $Id: store_dir.c,v 1.143.2.1 2007/02/03 21:56:56 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -403,7 +403,6 @@ storeDirCloseSwapLogs(void)
  *  the run. Thanks goes to Eric Stern, since this solution
  *  came out of his COSS code.
  */
-#define CLEAN_BUF_SZ 16384
 int
 storeDirWriteCleanLogs(int reopen)
 {
@@ -472,7 +471,6 @@ storeDirWriteCleanLogs(int reopen)
 	dt, (double) n / (dt > 0.0 ? dt : 1.0));
     return n;
 }
-#undef CLEAN_BUF_SZ
 
 /*
  * sync all avaliable fs'es ..
