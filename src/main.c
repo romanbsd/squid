@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.393 2007/01/13 16:10:14 hno Exp $
+ * $Id: main.c,v 1.393.2.1 2007/02/03 21:55:42 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -1094,13 +1094,13 @@ SquidShutdown(void *unused)
     releaseServerSockets();
     commCloseAllSockets();
     authenticateShutdown();
-#if USE_UNLINKD
-    unlinkdClose();
-#endif
 #if defined(USE_WIN32_SERVICE) && defined(_SQUID_WIN32_)
     WIN32_svcstatusupdate(SERVICE_STOP_PENDING, 10000);
 #endif
     storeDirSync();		/* Flush pending object writes/unlinks */
+#if USE_UNLINKD
+    unlinkdClose();		/* after storeDirSync! */
+#endif
     storeDirWriteCleanLogs(0);
     PrintRusage();
     dumpMallocStats();
