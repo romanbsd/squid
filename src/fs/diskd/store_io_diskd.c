@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_io_diskd.c,v 1.33.2.1 2007/01/24 01:54:48 hno Exp $
+ * $Id: store_io_diskd.c,v 1.33.2.2 2007/02/03 21:49:25 hno Exp $
  *
  * DEBUG: section 79    Squid-side DISKD I/O functions.
  * AUTHOR: Duane Wessels
@@ -443,6 +443,9 @@ storeDiskdHandle(diomsg * M)
 	}
 	return;
     }
+    /* set errno passed from diskd.  makes debugging more meaningful */
+    if (M->status < 0)
+	errno = -M->status;
     switch (M->mtype) {
     case _MQD_OPEN:
 	storeDiskdOpenDone(M);
