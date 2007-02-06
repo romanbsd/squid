@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.3 2007/02/03 21:59:24 hno Exp $
+ * $Id: client_side.c,v 1.693.2.4 2007/02/06 00:29:58 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1971,7 +1971,7 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
     {
 	LOCAL_ARRAY(char, bbuf, MAX_URL + 32);
 	String strVia = httpHeaderGetList(hdr, HDR_VIA);
-	snprintf(bbuf, sizeof(bbuf), "%d.%d %s",
+	snprintf(bbuf, MAX_URL + 32, "%d.%d %s",
 	    rep->sline.version.major,
 	    rep->sline.version.minor, ThisCache);
 	strListAdd(&strVia, bbuf, ',');
