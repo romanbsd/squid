@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.425 2007/02/09 13:24:18 hno Exp $
+ * $Id: http.c,v 1.426 2007/02/24 09:57:06 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -633,6 +633,7 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
     int fd = httpState->fd;
     int complete = httpState->eof;
     int keep_alive = !httpState->eof;
+    storeBuffer(entry);
     while (len > 0) {
 	if (httpState->chunk_size > 0) {
 	    size_t size = len;
@@ -707,6 +708,7 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 	    return;
 	}
     }
+    storeBufferFlush(entry);
     if (!httpState->chunk_size && !httpState->flags.chunked)
 	complete = 1;
     if (!complete && len == 0) {
@@ -912,6 +914,11 @@ httpReadReply(int fd, void *data)
 	return;
     } else {
 	if (httpState->reply_hdr_state < 2) {
+	    /* Temporarily buffer the entry. Main purpose is to ensure it gets flushed to the client side
+	     * when the headers is complete as ENTRY_HDR_WAIT may delay the callback. It's flushed by
+	     * httpAppendBody().
+	     */
+	    storeBuffer(entry);
 	    done = httpProcessReplyHeader(httpState, buf, len);
 	    if (httpState->reply_hdr_state == 2) {
 		http_status s = entry->mem_obj->reply->sline.status;
