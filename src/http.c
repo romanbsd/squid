@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.426 2007/02/24 09:57:06 hno Exp $
+ * $Id: http.c,v 1.427 2007/02/24 10:58:30 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -709,6 +709,14 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 	}
     }
     storeBufferFlush(entry);
+    if (EBIT_TEST(entry->flags, ENTRY_ABORTED)) {
+	/*
+	 * the above storeBufferFlush() call could ABORT this entry,
+	 * in that case, the server FD should already be closed.
+	 * there's nothing for us to do.
+	 */
+	return;
+    }
     if (!httpState->chunk_size && !httpState->flags.chunked)
 	complete = 1;
     if (!complete && len == 0) {
