@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.704 2007/02/09 13:24:18 hno Exp $
+ * $Id: client_side.c,v 1.705 2007/02/25 11:09:19 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1607,8 +1607,6 @@ clientCachable(clientHttpRequest * http)
     if (req->protocol == PROTO_HTTP)
 	return httpCachable(method);
     /* FTP is always cachable */
-    if (req->protocol == PROTO_WAIS)
-	return 0;
     if (method == METHOD_CONNECT)
 	return 0;
     if (method == METHOD_TRACE)
@@ -1653,8 +1651,6 @@ clientHierarchical(clientHttpRequest * http)
 	return httpCachable(method);
     if (request->protocol == PROTO_GOPHER)
 	return gopherCachable(request);
-    if (request->protocol == PROTO_WAIS)
-	return 0;
     if (request->protocol == PROTO_CACHEOBJ)
 	return 0;
     return 1;

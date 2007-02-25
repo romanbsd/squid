@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.524 2007/01/26 02:33:12 adrian Exp $
+ * $Id: protos.h,v 1.525 2007/02/25 11:09:19 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -806,7 +806,6 @@ extern void reconfigure(int);
 
 extern void start_announce(void *unused);
 extern void sslStart(clientHttpRequest *, squid_off_t *, int *);
-extern void waisStart(FwdState *);
 
 /* ident.c */
 #if USE_IDENT

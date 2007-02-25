@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.122 2007/02/02 12:22:16 hno Exp $
+ * $Id: forward.c,v 1.123 2007/02/25 11:09:19 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -692,9 +692,6 @@ fwdDispatch(FwdState * fwdState)
 	case PROTO_FTP:
 	    ftpStart(fwdState);
 	    break;
-	case PROTO_WAIS:
-	    waisStart(fwdState);
-	    break;
 	case PROTO_CACHEOBJ:
 	case PROTO_INTERNAL:
 	case PROTO_URN:
@@ -703,6 +700,7 @@ fwdDispatch(FwdState * fwdState)
 	case PROTO_WHOIS:
 	    whoisStart(fwdState);
 	    break;
+	case PROTO_WAIS:	/* not implemented */
 	default:
 	    debug(17, 1) ("fwdDispatch: Cannot retrieve '%s'\n",
 		storeUrl(entry));
