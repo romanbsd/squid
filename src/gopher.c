@@ -1,6 +1,6 @@
 
 /*
- * $Id: gopher.c,v 1.179 2007/02/26 22:02:45 hno Exp $
+ * $Id: gopher.c,v 1.180 2007/02/26 23:45:49 hno Exp $
  *
  * DEBUG: section 10    Gopher
  * AUTHOR: Harvest Derived
@@ -492,7 +492,7 @@ gopherToHTML(GopherStateData * gopherState, char *inbuf, int len)
 			    } else {
 				/* Standard link */
 				snprintf(tmpbuf, TEMP_BUF_SIZE, "<IMG border=\"0\" SRC=\"%s\"> <A HREF=\"gopher://%s/%c%s\">%s</A>\n",
-				    icon_url, host, gtype, escaped_selector, html_quote(name));
+				    icon_url, host, gtype, rfc1738_escape(selector), html_quote(name));
 			    }
 			}
 			safe_free(escaped_selector);
