@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.463 2007/01/18 23:19:14 hno Exp $
+ * $Id: cache_cf.c,v 1.463.2.1 2007/02/26 22:45:24 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1765,7 +1765,6 @@ parse_peer(peer ** head)
     if (p->weight < 1)
 	p->weight = 1;
     p->icp.version = ICP_VERSION_CURRENT;
-    p->tcp_up = PEER_TCP_MAGIC_COUNT;
     p->test_fd = -1;
 #if USE_CACHE_DIGESTS
     if (!p->options.no_digest) {
