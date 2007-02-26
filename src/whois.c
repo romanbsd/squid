@@ -1,6 +1,6 @@
 
 /*
- * $Id: whois.c,v 1.22 2006/08/25 12:26:07 serassio Exp $
+ * $Id: whois.c,v 1.23 2007/02/26 09:11:11 hno Exp $
  *
  * DEBUG: section 75    WHOIS protocol
  * AUTHOR: Duane Wessels, Kostas Anagnostakis
@@ -99,10 +99,8 @@ whoisReadReply(int fd, void *data)
     if (len > 0) {
 	if (0 == mem->inmem_hi) {
 	    http_reply *reply = mem->reply;
-	    http_version_t version;
 	    storeBuffer(entry);
-	    httpBuildVersion(&version, 1, 0);
-	    httpReplySetHeaders(reply, version, HTTP_OK, "Gatewaying", "text/plain", -1, -1, -2);
+	    httpReplySetHeaders(reply, HTTP_OK, "Gatewaying", "text/plain", -1, -1, -1);
 	    httpReplySwapOut(reply, entry);
 	}
 	fd_bytes(fd, len, FD_READ);

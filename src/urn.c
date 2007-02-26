@@ -1,6 +1,6 @@
 
 /*
- * $Id: urn.c,v 1.81 2007/01/21 12:54:00 adrian Exp $
+ * $Id: urn.c,v 1.82 2007/02/26 09:11:10 hno Exp $
  *
  * DEBUG: section 52    URN Parsing
  * AUTHOR: Kostas Anagnostakis
@@ -186,7 +186,6 @@ urnHandleReply(void *data, char *buf, ssize_t size)
     ErrorState *err;
     int i;
     int urlcnt = 0;
-    http_version_t version;
 
     debug(52, 3) ("urnHandleReply: Called with size=%d.\n", (int) size);
     if (EBIT_TEST(urlres_e->flags, ENTRY_ABORTED)) {
@@ -273,9 +272,7 @@ urnHandleReply(void *data, char *buf, ssize_t size)
 	full_appname_string, getMyHostname());
     rep = e->mem_obj->reply;
     httpReplyReset(rep);
-    httpBuildVersion(&version, 1, 0);
-    httpReplySetHeaders(rep, version, HTTP_MOVED_TEMPORARILY, NULL,
-	"text/html", mb.size, 0, squid_curtime);
+    httpReplySetHeaders(rep, HTTP_MOVED_TEMPORARILY, NULL, "text/html", mb.size, -1, squid_curtime);
     if (urnState->flags.force_menu) {
 	debug(52, 3) ("urnHandleReply: forcing menu\n");
     } else if (min_u) {

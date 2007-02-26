@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.575 2007/02/07 00:37:00 hno Exp $
+ * $Id: store.c,v 1.576 2007/02/26 09:11:10 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -699,7 +699,6 @@ void
 storeAddVary(const char *url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding)
 {
     AddVaryState *state;
-    http_version_t version;
     request_flags flags = null_request_flags;
     CBDATA_INIT_TYPE_FREECB(AddVaryState, free_AddVaryState);
     state = cbdataAlloc(AddVaryState);
@@ -718,8 +717,7 @@ storeAddVary(const char *url, const method_t method, const cache_key * key, cons
 	storeLockObject(state->oe);
     flags.cachable = 1;
     state->e = storeCreateEntry(url, flags, method);
-    httpBuildVersion(&version, 1, 0);
-    httpReplySetHeaders(state->e->mem_obj->reply, version, HTTP_OK, "Internal marker object", "x-squid-internal/vary", -1, -1, squid_curtime + 100000);
+    httpReplySetHeaders(state->e->mem_obj->reply, HTTP_OK, "Internal marker object", "x-squid-internal/vary", -1, -1, squid_curtime + 100000);
     httpHeaderPutStr(&state->e->mem_obj->reply->header, HDR_VARY, vary);
     storeSetPublicKey(state->e);
     storeBuffer(state->e);

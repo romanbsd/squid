@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpReply.c,v 1.59 2007/01/26 02:33:12 adrian Exp $
+ * $Id: HttpReply.c,v 1.60 2007/02/26 09:11:10 hno Exp $
  *
  * DEBUG: section 58    HTTP Reply (Response)
  * AUTHOR: Alex Rousskov
@@ -185,12 +185,12 @@ httpReplySwapOut(HttpReply * rep, StoreEntry * e)
 
 #if UNUSED_CODE
 MemBuf
-httpPackedReply(http_version_t ver, http_status status, const char *ctype,
+httpPackedReply(http_status status, const char *ctype,
     squid_off_t clen, time_t lmt, time_t expires)
 {
     HttpReply *rep = httpReplyCreate();
     MemBuf mb;
-    httpReplySetHeaders(rep, ver, status, ctype, NULL, clen, lmt, expires);
+    httpReplySetHeaders(rep, status, ctype, NULL, clen, lmt, expires);
     mb = httpReplyPack(rep);
     httpReplyDestroy(rep);
     return mb;
@@ -220,11 +220,13 @@ httpPacked304Reply(const HttpReply * rep)
 }
 
 void
-httpReplySetHeaders(HttpReply * reply, http_version_t ver, http_status status, const char *reason,
+httpReplySetHeaders(HttpReply * reply, http_status status, const char *reason,
     const char *ctype, squid_off_t clen, time_t lmt, time_t expires)
 {
     HttpHeader *hdr;
     assert(reply);
+    static const http_version_t ver =
+    {1, 0};
     httpStatusLineSet(&reply->sline, ver, status, reason);
     hdr = &reply->header;
     httpHeaderPutStr(hdr, HDR_SERVER, visible_appname_string);
