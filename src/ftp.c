@@ -1,6 +1,6 @@
 
 /*
- * $Id: ftp.c,v 1.342 2007/01/19 00:52:49 hno Exp $
+ * $Id: ftp.c,v 1.342.2.1 2007/02/26 22:48:48 hno Exp $
  *
  * DEBUG: section 9     File Transfer Protocol (FTP)
  * AUTHOR: Harvest Derived
@@ -393,18 +393,14 @@ ftpListingStart(FtpStateData * ftpState)
     assert(strLen(ftpState->title_url) >= 6);
     k = 6 + strcspn(&title[6], "/");
     for (i = 6, j = 0; title[i]; j = i) {
-	storeAppendPrintf(e, "<A HREF=\"");
 	i += strcspn(&title[i], "/");
 	if (i > j) {
 	    char *url = xstrdup(title);
 	    url[i] = '\0';
-	    storeAppendPrintf(e, "%s", html_quote(url + k));
-	    storeAppendPrintf(e, "/");
-	    storeAppendPrintf(e, "\">");
+	    storeAppendPrintf(e, "<A HREF=\"%s/\">", html_quote(url + k));
 	    rfc1738_unescape(url + j);
-	    storeAppendPrintf(e, "%s", html_quote(url + j));
+	    storeAppendPrintf(e, "%s</A>", html_quote(url + j));
 	    safe_free(url);
-	    storeAppendPrintf(e, "</A>");
 	}
 	storeAppendPrintf(e, "/");
 	if (title[i] == '/')
