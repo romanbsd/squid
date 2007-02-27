@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.67 2007/01/21 12:54:04 adrian Exp $
+ * $Id: store_dir_coss.c,v 1.68 2007/02/27 09:01:53 serassio Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -627,6 +627,8 @@ static void
 storeCossDirShutdown(SwapDir * SD)
 {
     CossInfo *cs = (CossInfo *) SD->fsdata;
+    if (cs->fd == -1)
+	return;
     debug(47, 1) ("COSS: %s: syncing\n", stripePath(SD));
 
     storeCossSync(SD);		/* This'll call a_file_syncqueue() or a aioSync() */
@@ -1066,28 +1068,17 @@ storeCossDirPick(void)
     for (i = 0; i < Config.cacheSwap.n_configured; i++) {
 	SD = &Config.cacheSwap.swapDirs[i];
 	if (strcmp(SD->type, SWAPDIR_COSS) == 0) {
-	    if ((last_coss_pick_index == -1) || (n_coss_dirs == 1)) {
-		last_coss_pick_index = i;
-		return SD;
-	    } else if (choosenext) {
-		last_coss_pick_index = i;
-		return SD;
-	    } else if (last_coss_pick_index == i) {
-		choosenext = 1;
-	    }
-	}
-    }
-    for (i = 0; i < Config.cacheSwap.n_configured; i++) {
-	SD = &Config.cacheSwap.swapDirs[i];
-	if (strcmp(SD->type, SWAPDIR_COSS) == 0) {
-	    if ((last_coss_pick_index == -1) || (n_coss_dirs == 1)) {
-		last_coss_pick_index = i;
-		return SD;
-	    } else if (choosenext) {
-		last_coss_pick_index = i;
-		return SD;
-	    } else if (last_coss_pick_index == i) {
-		choosenext = 1;
+	    CossInfo *cs = (CossInfo *) SD->fsdata;
+	    if (cs->fd != -1) {
+		if ((last_coss_pick_index == -1) || (n_coss_dirs == 1)) {
+		    last_coss_pick_index = i;
+		    return SD;
+		} else if (choosenext) {
+		    last_coss_pick_index = i;
+		    return SD;
+		} else if (last_coss_pick_index == i) {
+		    choosenext = 1;
+		}
 	    }
 	}
     }
