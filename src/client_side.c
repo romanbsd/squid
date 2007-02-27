@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.706 2007/02/26 09:11:10 hno Exp $
+ * $Id: client_side.c,v 1.707 2007/02/27 00:28:22 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3510,6 +3510,8 @@ parseHttpRequest(ConnStateData * conn, HttpMsgBuf * hmsg, method_t * method_p, i
 
     /* Parse the request line */
     ret = httpMsgParseRequestLine(hmsg);
+    if (ret == -1)
+	return parseHttpRequestAbort(conn, "error:invalid-request");
     if (ret == 0) {
 	debug(33, 5) ("Incomplete request, waiting for end of request line\n");
 	*status = 0;
