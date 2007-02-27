@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.507.2.3 2007/02/26 22:41:46 hno Exp $
+ * $Id: structs.h,v 1.507.2.4 2007/02/27 01:20:01 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1837,6 +1837,7 @@ struct _request_flags {
     unsigned int tproxy:1;
 #endif
     unsigned int collapsed:1;	/* This request was collapsed. Don't trust the store entry to be valid */
+    unsigned int cache_validation:1;	/* This request is an internal cache validation */
 };
 
 struct _link_list {
