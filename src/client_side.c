@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.8 2007/02/27 01:20:01 hno Exp $
+ * $Id: client_side.c,v 1.693.2.9 2007/02/27 02:08:10 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1005,7 +1005,6 @@ clientHandleIMSReply(void *data, char *buf, ssize_t size)
 	http->sc = http->old_sc;
 	storeUnlockObject(entry);
 	entry = http->entry = oldentry;
-	entry->timestamp = squid_curtime;
 	if (unlink_request) {
 	    requestUnlink(entry->mem_obj->request);
 	    entry->mem_obj->request = NULL;
