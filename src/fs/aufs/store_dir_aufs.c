@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_aufs.c,v 1.68 2007/01/21 12:54:02 adrian Exp $
+ * $Id: store_dir_aufs.c,v 1.69 2007/03/01 07:21:37 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -598,7 +598,7 @@ storeAufsDirRebuildFromSwapLog(void *data)
 	    (void) 0;
 	} else if (s.op == SWAP_LOG_DEL) {
 	    /* Delete unless we already have a newer copy */
-	    if ((e = storeGet(s.key)) != NULL && s.lastref > e->lastref) {
+	    if ((e = storeGet(s.key)) != NULL && s.lastref >= e->lastref) {
 		/*
 		 * Make sure we don't unlink the file, it might be
 		 * in use by a subsequent entry.  Also note that
@@ -746,7 +746,7 @@ storeAufsDirRebuildFromSwapLogOld(void *data)
 	    (void) 0;
 	} else if (s.op == SWAP_LOG_DEL) {
 	    /* Delete unless we already have a newer copy */
-	    if ((e = storeGet(s.key)) != NULL && s.lastref > e->lastref) {
+	    if ((e = storeGet(s.key)) != NULL && s.lastref >= e->lastref) {
 		/*
 		 * Make sure we don't unlink the file, it might be
 		 * in use by a subsequent entry.  Also note that

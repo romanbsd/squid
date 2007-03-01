@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_diskd.c,v 1.89 2007/01/24 22:56:41 wessels Exp $
+ * $Id: store_dir_diskd.c,v 1.90 2007/03/01 07:21:46 wessels Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -800,7 +800,7 @@ storeDiskdDirRebuildFromSwapLog(void *data)
 	    }
 	} else if (s.op == SWAP_LOG_DEL) {
 	    /* Delete unless we already have a newer copy */
-	    if ((e = storeGet(s.key)) != NULL && s.lastref > e->lastref) {
+	    if ((e = storeGet(s.key)) != NULL && s.lastref >= e->lastref) {
 		/*
 		 * Make sure we don't unlink the file, it might be
 		 * in use by a subsequent entry.  Also note that
@@ -973,7 +973,7 @@ storeDiskdDirRebuildFromSwapLogOld(void *data)
 	    }
 	} else if (s.op == SWAP_LOG_DEL) {
 	    /* Delete unless we already have a newer copy */
-	    if ((e = storeGet(s.key)) != NULL && s.lastref > e->lastref) {
+	    if ((e = storeGet(s.key)) != NULL && s.lastref >= e->lastref) {
 		/*
 		 * Make sure we don't unlink the file, it might be
 		 * in use by a subsequent entry.  Also note that
