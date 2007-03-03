@@ -1,6 +1,6 @@
 
 /*
- * $Id: url.c,v 1.149 2007/02/01 08:32:51 serassio Exp $
+ * $Id: url.c,v 1.150 2007/03/03 18:23:45 hno Exp $
  *
  * DEBUG: section 23    URL Parsing
  * AUTHOR: Duane Wessels
@@ -64,6 +64,9 @@ rms_t RequestMethods[] =
     {(char *) "UNSUBSCRIBE", 11},
     {(char *) "POLL", 4},
     {(char *) "REPORT", 6},
+    {(char *) "MKACTIVITY", 10},
+    {(char *) "CHECKOUT", 8},
+    {(char *) "MERGE", 5},
     {(char *) "%EXT00", 6},
     {(char *) "%EXT01", 6},
     {(char *) "%EXT02", 6},

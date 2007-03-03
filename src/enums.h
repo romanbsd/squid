@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.237 2007/01/19 01:10:12 hno Exp $
+ * $Id: enums.h,v 1.238 2007/03/03 18:23:45 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -418,6 +418,9 @@ enum {
     METHOD_UNSUBSCRIBE,
     METHOD_POLL,
     METHOD_REPORT,
+    METHOD_MKACTIVITY,
+    METHOD_CHECKOUT,
+    METHOD_MERGE,
     /* Extension methods must be last, Add any new methods before this line */
     METHOD_EXT00,
     METHOD_EXT01,
