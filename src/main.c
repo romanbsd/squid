@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.394 2007/01/25 20:24:46 wessels Exp $
+ * $Id: main.c,v 1.395 2007/03/08 00:15:51 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -1013,6 +1013,7 @@ watch_child(char *argv[])
 	    argv[0] = xstrdup("(squid)");
 	    execvp(prog, argv);
 	    syslog(LOG_ALERT, "execvp failed: %s", xstrerror());
+	    exit(1);
 	}
 	/* parent */
 	openlog(appname, LOG_PID | LOG_NDELAY | LOG_CONS, LOG_LOCAL4);
