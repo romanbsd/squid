@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.93 2007/03/11 22:34:22 hno Exp $
+ * $Id: HttpHeader.c,v 1.94 2007/03/11 22:41:16 hno Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -508,7 +508,7 @@ httpHeaderParse(HttpHeader * hdr, const char *header_start, const char *header_e
 		    httpHeaderEntryDestroy(e);
 		    continue;
 		}
-	    } else {
+	    } else if (e2) {
 		debug(55, Config.onoff.relaxed_header_parser <= 0 ? 1 : 2)
 		    ("NOTICE: found double content-length header\n");
 		if (Config.onoff.relaxed_header_parser) {
