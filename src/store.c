@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.576 2007/02/26 09:11:10 hno Exp $
+ * $Id: store.c,v 1.577 2007/03/11 22:58:44 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -129,8 +129,6 @@ int
 memHaveHeaders(const MemObject * mem)
 {
     if (mem->reply == NULL)
-	return 0;
-    if (mem->reply->sline.status == 0)
 	return 0;
     if (mem->reply->pstate != psParsed)
 	return 0;
