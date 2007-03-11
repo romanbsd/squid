@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.712 2007/03/08 03:37:48 hno Exp $
+ * $Id: client_side.c,v 1.713 2007/03/11 01:43:05 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2100,7 +2100,6 @@ clientCacheHit(void *data, char *buf, ssize_t size)
 	/* swap in failure */
 	debug(33, 3) ("clientCacheHit: swapin failure for %s\n", http->uri);
 	http->log_type = LOG_TCP_SWAPFAIL_MISS;
-	storeUnlockObject(e);
 	clientProcessMiss(http);
 	return;
     }
