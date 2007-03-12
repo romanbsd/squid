@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.713 2007/03/11 01:43:05 hno Exp $
+ * $Id: client_side.c,v 1.714 2007/03/12 21:56:55 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3018,7 +3018,10 @@ clientWriteComplete(int fd, char *bufnotused, size_t size, int errflag, void *da
     } else if ((done = clientCheckTransferDone(http)) != 0 || size == 0) {
 	debug(33, 5) ("clientWriteComplete: FD %d transfer is DONE\n", fd);
 	/* We're finished case */
-	if (!done) {
+	if (httpReplyBodySize(http->request->method, entry->mem_obj->reply) < 0) {
+	    debug(33, 5) ("clientWriteComplete: closing, content_length < 0\n");
+	    comm_close(fd);
+	} else if (!done) {
 	    debug(33, 5) ("clientWriteComplete: closing, !done\n");
 	    comm_close(fd);
 	} else if (clientGotNotEnough(http)) {
