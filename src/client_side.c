@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.714 2007/03/12 21:56:55 hno Exp $
+ * $Id: client_side.c,v 1.715 2007/03/14 14:08:26 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3355,7 +3355,7 @@ clientProcessMiss(clientHttpRequest * http)
 	return;
     }
     http->entry = clientCreateStoreEntry(http, r->method, r->flags);
-    if (Config.onoff.collapsed_forwarding && r->flags.cachable && !r->flags.need_validation && (r->method = METHOD_GET || r->method == METHOD_HEAD)) {
+    if (Config.onoff.collapsed_forwarding && r->flags.cachable && !r->flags.need_validation && (r->method == METHOD_GET || r->method == METHOD_HEAD)) {
 	http->entry->mem_obj->refresh_timestamp = squid_curtime;
 	/* Set the vary object state */
 	safe_free(http->entry->mem_obj->vary_headers);
