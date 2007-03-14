@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.379 2007/02/25 11:09:19 hno Exp $
+ * $Id: stat.c,v 1.380 2007/03/14 21:16:06 hno Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -463,7 +463,7 @@ statFiledescriptors(StoreEntry * sentry)
 	    i,
 #endif
 	    fdTypeStr[f->type],
-	    f->timeout_handler ? (int) (f->timeout - squid_curtime) / 60 : 0,
+	    f->timeout_handler ? (int) (f->timeout - squid_curtime) : 0,
 	    f->bytes_read,
 	    f->read_handler ? '*' : ' ',
 	    f->bytes_written,
