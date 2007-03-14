@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.136 2007/02/02 12:22:16 hno Exp $
+ * $Id: ssl.c,v 1.137 2007/03/14 22:43:25 hno Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -486,7 +486,6 @@ sslStart(clientHttpRequest * http, squid_off_t * size_ptr, int *status_ptr)
     SslStateData *sslState = NULL;
     int sock;
     ErrorState *err = NULL;
-    aclCheck_t ch;
     int answer;
     int fd = http->conn->fd;
     request_t *request = http->request;
@@ -500,12 +499,7 @@ sslStart(clientHttpRequest * http, squid_off_t * size_ptr, int *status_ptr)
 	/*
 	 * Check if this host is allowed to fetch MISSES from us (miss_access)
 	 */
-	memset(&ch, '\0', sizeof(aclCheck_t));
-	ch.src_addr = request->client_addr;
-	ch.my_addr = request->my_addr;
-	ch.my_port = request->my_port;
-	ch.request = request;
-	answer = aclCheckFast(Config.accessList.miss, &ch);
+	answer = aclCheckFastRequest(Config.accessList.miss, http->request);
 	if (answer == 0) {
 	    err = errorCon(ERR_FORWARDING_DENIED, HTTP_FORBIDDEN, request);
 	    *status_ptr = HTTP_FORBIDDEN;

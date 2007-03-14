@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.526 2007/02/26 09:11:10 hno Exp $
+ * $Id: protos.h,v 1.527 2007/03/14 22:43:25 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -56,8 +56,10 @@ char *log_quote(const char *header);
 extern aclCheck_t *aclChecklistCreate(const struct _acl_access *,
     request_t *,
     const char *ident);
+void aclChecklistCacheInit(aclCheck_t * checklist);
 extern void aclNBCheck(aclCheck_t *, PF *, void *);
 extern int aclCheckFast(const struct _acl_access *A, aclCheck_t *);
+int aclCheckFastRequest(const acl_access * A, request_t * request);
 extern void aclChecklistFree(aclCheck_t *);
 extern int aclMatchAclList(const acl_list * list, aclCheck_t * checklist);
 extern void aclDestroyAccessList(struct _acl_access **list);

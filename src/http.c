@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.428 2007/03/08 23:24:51 hno Exp $
+ * $Id: http.c,v 1.429 2007/03/14 22:43:25 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -1504,15 +1504,12 @@ static void
 httpSendRequestEntryDone(int fd, void *data)
 {
     HttpStateData *httpState = data;
-    aclCheck_t ch;
     debug(11, 5) ("httpSendRequestEntryDone: FD %d\n",
 	fd);
-    memset(&ch, '\0', sizeof(ch));
-    ch.request = httpState->request;
     if (!Config.accessList.brokenPosts) {
 	debug(11, 5) ("httpSendRequestEntryDone: No brokenPosts list\n");
 	httpSendComplete(fd, NULL, 0, 0, data);
-    } else if (!aclCheckFast(Config.accessList.brokenPosts, &ch)) {
+    } else if (!aclCheckFastRequest(Config.accessList.brokenPosts, httpState->request)) {
 	debug(11, 5) ("httpSendRequestEntryDone: didn't match brokenPosts\n");
 	httpSendComplete(fd, NULL, 0, 0, data);
     } else {

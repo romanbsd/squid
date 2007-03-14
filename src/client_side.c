@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.715 2007/03/14 14:08:26 hno Exp $
+ * $Id: client_side.c,v 1.716 2007/03/14 22:43:25 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2481,7 +2481,7 @@ clientMaxBodySize(request_t * request, clientHttpRequest * http, HttpReply * rep
     while (bs) {
 	checklist = clientAclChecklistCreate(bs->access_list, http);
 	checklist->reply = reply;
-	if (1 != aclCheckFast(bs->access_list, checklist)) {
+	if (aclCheckFast(bs->access_list, checklist)) {
 	    /* deny - skip this entry */
 	    bs = (body_size *) bs->node.next;
 	} else {
