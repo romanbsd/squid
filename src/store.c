@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.577 2007/03/11 22:58:44 hno Exp $
+ * $Id: store.c,v 1.578 2007/03/15 10:05:29 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1717,7 +1717,7 @@ storeRegisterAbort(StoreEntry * e, STABH * cb, void *data)
 }
 
 void
-storeClientUnregisterAbort(StoreEntry * e)
+storeUnregisterAbort(StoreEntry * e)
 {
     MemObject *mem = e->mem_obj;
     assert(mem);
