@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.137 2007/03/14 22:43:25 hno Exp $
+ * $Id: ssl.c,v 1.138 2007/03/19 01:21:18 swilton Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -646,5 +646,6 @@ sslPeerSelectComplete(FwdServer * fs, void *data)
 	sslState->host,
 	sslState->port,
 	sslConnectDone,
-	sslState);
+	sslState,
+	NULL);
 }

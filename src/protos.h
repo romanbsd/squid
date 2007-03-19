@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.528 2007/03/15 10:05:28 hno Exp $
+ * $Id: protos.h,v 1.529 2007/03/19 01:21:18 swilton Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -157,7 +157,7 @@ extern void comm_reset_close(int fd);
 #if LINGERING_CLOSE
 extern void comm_lingering_close(int fd);
 #endif
-extern void commConnectStart(int fd, const char *, u_short, CNCB *, void *);
+extern void commConnectStart(int fd, const char *, u_short, CNCB *, void *, struct in_addr *addr);
 extern int comm_connect_addr(int sock, const struct sockaddr_in *);
 extern void comm_init(void);
 extern int comm_listen(int sock);

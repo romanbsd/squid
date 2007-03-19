@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.511 2007/02/27 01:06:12 hno Exp $
+ * $Id: structs.h,v 1.512 2007/03/19 01:21:18 swilton Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -882,6 +882,7 @@ struct _fde {
 	unsigned int nodelay:1;
 	unsigned int close_on_exec:1;
 	unsigned int backoff:1;	/* keep track of whether the fd is backed off */
+	unsigned int dnsfailed:1;	/* did the dns lookup fail */
     } flags;
     comm_pending read_pending;
     comm_pending write_pending;
