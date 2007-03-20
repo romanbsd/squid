@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.11 2007/03/14 14:11:26 hno Exp $
+ * $Id: client_side.c,v 1.693.2.12 2007/03/20 21:26:34 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3339,7 +3339,6 @@ clientProcessRequest(clientHttpRequest * http)
 	    httpReplySetHeaders(rep, version, HTTP_OK, NULL, "text/plain",
 		httpRequestPrefixLen(r), 0, squid_curtime);
 	    httpReplySwapOut(rep, http->entry);
-	    httpReplyDestroy(rep);
 	    httpRequestSwapOut(r, http->entry);
 	    storeComplete(http->entry);
 	    return;
