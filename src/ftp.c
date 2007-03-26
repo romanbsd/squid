@@ -1,6 +1,6 @@
 
 /*
- * $Id: ftp.c,v 1.342.2.1 2007/02/26 22:48:48 hno Exp $
+ * $Id: ftp.c,v 1.342.2.2 2007/03/26 23:41:43 hno Exp $
  *
  * DEBUG: section 9     File Transfer Protocol (FTP)
  * AUTHOR: Harvest Derived
@@ -282,7 +282,6 @@ ftpStateFreed(void *data)
     if (ftpState == NULL)
 	return;
     debug(9, 3) ("ftpStateFree: %s\n", storeUrl(ftpState->entry));
-    storeClientUnregisterAbort(ftpState->entry);
     storeUnlockObject(ftpState->entry);
     if (ftpState->reply_hdr) {
 	memFree(ftpState->reply_hdr, MEM_8K_BUF);
