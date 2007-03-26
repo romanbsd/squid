@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.520 2007/01/06 17:22:45 hno Exp $
+ * $Id: protos.h,v 1.520.2.1 2007/03/26 23:14:09 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -920,7 +920,7 @@ extern int expiresMoreThan(time_t, time_t);
 extern int storeEntryValidToSend(StoreEntry *);
 extern void storeTimestampsSet(StoreEntry *);
 extern void storeRegisterAbort(StoreEntry * e, STABH * cb, void *);
-extern void storeClientUnregisterAbort(StoreEntry * e);
+extern void storeUnregisterAbort(StoreEntry * e);
 extern void storeMemObjectDump(MemObject * mem);
 extern void storeEntryDump(const StoreEntry * e, int debug_lvl);
 extern const char *storeUrl(const StoreEntry *);
