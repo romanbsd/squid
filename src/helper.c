@@ -1,6 +1,6 @@
 
 /*
- * $Id: helper.c,v 1.65 2007/03/14 12:06:31 hno Exp $
+ * $Id: helper.c,v 1.66 2007/04/01 14:17:50 serassio Exp $
  *
  * DEBUG: section 84    Helper process maintenance
  * AUTHOR: Harvest Derived?
@@ -756,7 +756,7 @@ helperHandleRead(int fd, void *data)
 	    i = strtol(msg, &msg, 10);
 	    if (msg == srv->rbuf || errno)
 		i = -1;
-	    while (*msg && isspace((int) *msg))
+	    while (*msg && xisspace(*msg))
 		msg++;
 	}
 	if ((!hlp->concurrency) || (i >= 0 && i < hlp->concurrency))

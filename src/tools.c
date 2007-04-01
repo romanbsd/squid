@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.251 2007/01/21 12:54:00 adrian Exp $
+ * $Id: tools.c,v 1.252 2007/04/01 14:17:50 serassio Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1211,7 +1211,7 @@ strwordtok(char *buf, char **t)
 	p = (unsigned char *) *t;
     if (!p)
 	goto error;
-    while (*p && isspace(*p))
+    while (*p && xisspace(*p))
 	p++;
     if (!*p)
 	goto error;
@@ -1240,7 +1240,7 @@ strwordtok(char *buf, char **t)
 	    p++;
 	    break;
 	default:
-	    if (!quoted && isspace(*p)) {
+	    if (!quoted && xisspace(*p)) {
 		p++;
 		goto done;
 	    }

@@ -1,6 +1,6 @@
 
 /*
- * $Id: ftp.c,v 1.346 2007/03/19 01:21:18 swilton Exp $
+ * $Id: ftp.c,v 1.347 2007/04/01 14:17:50 serassio Exp $
  *
  * DEBUG: section 9     File Transfer Protocol (FTP)
  * AUTHOR: Harvest Derived
@@ -1033,7 +1033,7 @@ ftpCheckUrlpath(FtpStateData * ftpState)
     const char *t;
     if ((t = strRChr(request->urlpath, ';')) != NULL) {
 	if (strncasecmp(t + 1, "type=", 5) == 0) {
-	    ftpState->typecode = (char) toupper((int) *(t + 6));
+	    ftpState->typecode = (char) xtoupper(*(t + 6));
 	    strCutPtr(request->urlpath, t);
 	}
     }
