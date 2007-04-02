@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.360 2007/03/19 01:21:17 swilton Exp $
+ * $Id: comm.c,v 1.361 2007/04/02 14:06:08 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -563,7 +563,7 @@ comm_accept(int fd, struct sockaddr_in *pn, struct sockaddr_in *me)
     Slen = sizeof(P);
     statCounter.syscalls.sock.accepts++;
     if ((sock = accept(fd, (struct sockaddr *) &P, &Slen)) < 0) {
-	if (ignoreErrno(errno)) {
+	if (ignoreErrno(errno) || errno == ECONNREFUSED) {
 	    debug(5, 5) ("comm_accept: FD %d: %s\n", fd, xstrerror());
 	    return COMM_NOMESSAGE;
 	} else if (ENFILE == errno || EMFILE == errno) {
