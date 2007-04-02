@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.385 2007/02/25 11:09:18 hno Exp $
+# $Id: cf.data.pre,v 1.386 2007/04/02 16:58:45 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -117,6 +117,10 @@ DOC_START
 		tproxy		Support Linux TPROXY for spoofing
 				outgoing connections using the client
 				IP address.
+
+		act-as-origin	Act is if this Squid is the origin server.
+				This currently means generate own Date: and
+				Expires: headers. Implies accel.
 
 	If you run Squid on a dual-homed machine with an internal
 	and an external interface we recommend you to specify the

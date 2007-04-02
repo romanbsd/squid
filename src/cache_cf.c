@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.466 2007/04/01 14:17:50 serassio Exp $
+ * $Id: cache_cf.c,v 1.467 2007/04/02 16:58:45 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2743,6 +2743,9 @@ parse_http_port_option(http_port_list * s, char *token)
 	s->tproxy = 1;
 	need_linux_tproxy = 1;
 #endif
+    } else if (strcmp(token, "act-as-origin") == 0) {
+	s->act_as_origin = 1;
+	s->accel = 1;
     } else {
 	self_destruct();
     }

@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.512 2007/03/19 01:21:18 swilton Exp $
+ * $Id: structs.h,v 1.513 2007/04/02 16:58:45 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -371,6 +371,7 @@ struct _http_port_list {
 #if LINUX_TPROXY
     unsigned int tproxy;
 #endif
+    unsigned int act_as_origin;	/* Fake Date: headers in accelerator mode */
 };
 
 #if USE_SSL
