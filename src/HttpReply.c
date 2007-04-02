@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpReply.c,v 1.61 2007/02/27 19:36:37 serassio Exp $
+ * $Id: HttpReply.c,v 1.62 2007/04/02 21:51:54 hno Exp $
  *
  * DEBUG: section 58    HTTP Reply (Response)
  * AUTHOR: Alex Rousskov
@@ -418,12 +418,13 @@ httpReplyParseStep(HttpReply * rep, const char *buf, int len)
     /* For now we'll assume we need to parse the whole lot */
 
     /* Find end of start line */
-    for (re = buf, i = 0; i < len && *re != '\r' && *re != '\n'; re++, i++);
-    if (i >= len)
+    re = memchr(buf, '\n', len);
+    if (!re)
 	return httpReplyParseError(rep);
 
-    /* s points to first \r or \n - so find the first character after */
-    for (; i < len && (*re == '\r' || *re == '\n'); re++, i++);
+    /* Skip \n */
+    re++;
+    i = re - buf;
     if (i >= len)
 	return httpReplyParseError(rep);
 
