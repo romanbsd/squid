@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.94 2007/03/11 22:41:16 hno Exp $
+ * $Id: HttpHeader.c,v 1.95 2007/04/11 22:02:41 hno Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -502,7 +502,13 @@ httpHeaderParse(HttpHeader * hdr, const char *header_start, const char *header_e
 		if (!Config.onoff.relaxed_header_parser) {
 		    httpHeaderEntryDestroy(e);
 		    return httpHeaderReset(hdr);
-		} else if (l1 > l2) {
+		}
+		if (!httpHeaderParseSize(strBuf(e2->value), &l2)) {
+		    debug(55, 1) ("WARNING: Unparseable content-length '%s'\n", strBuf(e->value));
+		    httpHeaderEntryDestroy(e);
+		    return httpHeaderReset(hdr);
+		}
+		if (l1 > l2) {
 		    httpHeaderDelById(hdr, e2->id);
 		} else {
 		    httpHeaderEntryDestroy(e);
