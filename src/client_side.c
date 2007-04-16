@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.720 2007/04/05 21:03:51 hno Exp $
+ * $Id: client_side.c,v 1.721 2007/04/16 08:50:51 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2834,7 +2834,16 @@ clientCheckHeaderDone(clientHttpRequest * http)
 	    http->flags.done_copying = 1;
     }
     /* write headers and initial body */
-    comm_write_mbuf(http->conn->fd, mb, clientWriteComplete, http);
+    if (mb.size > 0) {
+	comm_write_mbuf(http->conn->fd, mb, clientWriteComplete, http);
+    } else {
+	storeClientCopy(http->sc, http->entry,
+	    http->out.offset,
+	    http->out.offset,
+	    CLIENT_SOCK_SZ, http->readbuf,
+	    clientSendMoreData,
+	    http);
+    }
 }
 
 
