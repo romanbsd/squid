@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.387 2007/04/15 16:10:43 hno Exp $
+# $Id: cf.data.pre,v 1.388 2007/04/16 22:05:04 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1201,7 +1201,7 @@ DOC_START
 
 	Common options:
 
-	read-only, this cache_dir is read only.
+	no-store, no new objects should be stored to this cache_dir
 
 	min-size=n, refers to the min object size this storedir will accept.
 	It's used to restrict a storedir to only store large objects
