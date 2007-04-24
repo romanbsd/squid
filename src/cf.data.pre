@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.382.2.1 2007/02/03 21:59:24 hno Exp $
+# $Id: cf.data.pre,v 1.382.2.2 2007/04/24 21:30:03 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -461,7 +461,7 @@ DOC_START
 		     connect-timeout=nn
 		     digest-url=url
 		     allow-miss
-		     max-conn
+		     max-conn=n
 		     htcp
 		     htcp-oldsquid
 		     carp-load-factor
@@ -567,7 +567,7 @@ DOC_START
 		     requests from peer by denying cache_peer_access if the
 		     source is a peer)
 
-		     use 'max-conn' to limit the amount of connections Squid
+		     use 'max-conn=n' to limit the amount of connections Squid
 		     may open to this peer.
 
 		     use 'htcp' to send HTCP, instead of ICP, queries
