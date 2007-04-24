@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.66.2.1 2007/03/03 13:32:44 hno Exp $
+ * $Id: store_dir_coss.c,v 1.66.2.2 2007/04/24 21:28:50 hno Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -1299,22 +1299,33 @@ storeDirCoss_ParseStripeBuffer(RebuildState * rb)
 		debug(47, 3) ("Size: %" PRINTF_OFF_T " (len %d)\n", *l, t->length);
 		break;
 	    case STORE_META_KEY:
-		assert(t->length == MD5_DIGEST_CHARS);
+		if (t->length != MD5_DIGEST_CHARS) {
+		    debug(47, 1) ("COSS: %s: stripe %d: offset %d has invalid STORE_META_KEY length. Ignoring object.\n", stripePath(SD), cs->rebuild.curstripe, j);
+		    goto nextobject;
+		}
 		xmemcpy(key, t->value, MD5_DIGEST_CHARS);
 		break;
 #if SIZEOF_SQUID_FILE_SZ == SIZEOF_SIZE_T
 	    case STORE_META_STD:
-		assert(t->length == STORE_HDR_METASIZE);
+		if (t->length != STORE_HDR_METASIZE) {
+		    debug(47, 1) ("COSS: %s: stripe %d: offset %d has invalid STORE_META_STD length. Ignoring object.\n", stripePath(SD), cs->rebuild.curstripe, j);
+		    goto nextobject;
+		}
 		xmemcpy(&tmpe.timestamp, t->value, STORE_HDR_METASIZE);
 		break;
 #else
 	    case STORE_META_STD_LFS:
-		assert(t->length == STORE_HDR_METASIZE);
+		if (t->length != STORE_HDR_METASIZE) {
+		    debug(47, 1) ("COSS: %s: stripe %d: offset %d has invalid STORE_META_STD_LFS length. Ignoring object.\n", stripePath(SD), cs->rebuild.curstripe, j);
+		    goto nextobject;
+		}
 		xmemcpy(&tmpe.timestamp, t->value, STORE_HDR_METASIZE);
 		break;
 	    case STORE_META_STD:
-		assert(t->length == STORE_HDR_METASIZE_OLD);
-		{
+		if (t->length != STORE_HDR_METASIZE_OLD) {
+		    debug(47, 1) ("COSS: %s: stripe %d: offset %d has invalid STORE_META_STD length. Ignoring object.\n", stripePath(SD), cs->rebuild.curstripe, j);
+		    goto nextobject;
+		} {
 		    struct {
 			time_t timestamp;
 			time_t lastref;
