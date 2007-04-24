@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.721 2007/04/16 08:50:51 hno Exp $
+ * $Id: client_side.c,v 1.722 2007/04/24 14:59:28 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1267,6 +1267,7 @@ httpRequestFree(void *data)
 	http->al.icp.opcode = ICP_INVALID;
 	http->al.url = http->uri;
 	debug(33, 9) ("httpRequestFree: al.url='%s'\n", http->al.url);
+	http->al.cache.out_ip = request->out_ip;
 	if (http->reply && http->log_type != LOG_TCP_DENIED) {
 	    http->al.http.code = http->reply->sline.status;
 	    http->al.http.content_type = strBuf(http->reply->content_type);

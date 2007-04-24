@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.389 2007/04/18 22:21:59 hno Exp $
+# $Id: cf.data.pre,v 1.390 2007/04/24 14:59:28 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1257,6 +1257,7 @@ DOC_START
 		<A	Server IP address or peer name
 		la	Local IP address (http_port)
 		lp	Local port number (http_port)
+		oa	Our outgoing IP address (tcp_outgoing_address)
 		ts	Seconds since epoch
 		tu	subsecond time (milliseconds)
 		tl	Local time. Optional strftime format argument
