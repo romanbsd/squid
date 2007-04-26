@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.69 2007/04/17 12:01:57 hno Exp $
+ * $Id: store_dir_coss.c,v 1.70 2007/04/26 21:52:17 hno Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -1076,9 +1076,9 @@ storeCossDirPick(void)
 		} else if (choosenext) {
 		    last_coss_pick_index = i;
 		    return SD;
-		} else if (last_coss_pick_index == i) {
-		    choosenext = 1;
 		}
+	    } else if (last_coss_pick_index == i) {
+		choosenext = 1;
 	    }
 	}
     }
