@@ -1,5 +1,5 @@
 /*
- * $Id: squid_mswin.h,v 1.4 2006/12/10 13:36:23 serassio Exp $
+ * $Id: squid_mswin.h,v 1.4.2.1 2007/04/26 23:09:46 hno Exp $
  *
  * AUTHOR: Andrey Shorin <tolsty@tushino.com>
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -262,6 +262,7 @@ typedef char * caddr_t;
 #define EWOULDBLOCK WSAEWOULDBLOCK
 #define EALREADY WSAEALREADY
 #define ETIMEDOUT WSAETIMEDOUT
+#define ECONNABORTED WSAECONNABORTED
 #define ECONNREFUSED WSAECONNREFUSED
 #define ECONNRESET WSAECONNRESET
 #define ERESTART WSATRY_AGAIN
