@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.507.2.4 2007/02/27 01:20:01 hno Exp $
+ * $Id: structs.h,v 1.507.2.5 2007/04/26 23:11:51 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1884,7 +1884,7 @@ struct _request_t {
     int imslen;
     int max_forwards;
     /* these in_addr's could probably be sockaddr_in's */
-    in_port_t client_port;
+    unsigned short client_port;
     struct in_addr client_addr;
 #if FOLLOW_X_FORWARDED_FOR
     struct in_addr indirect_client_addr;	/* after following X-Forwarded-For */
