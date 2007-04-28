@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_coss.c,v 1.70 2007/04/26 21:52:17 hno Exp $
+ * $Id: store_dir_coss.c,v 1.71 2007/04/28 15:48:01 serassio Exp $
  *
  * DEBUG: section 47    Store COSS Directory Routines
  * AUTHOR: Eric Stern
@@ -1260,7 +1260,7 @@ storeDirCoss_ParseStripeBuffer(RebuildState * rb)
     int j = 0;
     int bl = 0;
     int tmp;
-    squid_off_t *l, len;
+    squid_off_t *l, len = 0;
     int blocksize = cs->blksz_mask + 1;
     StoreEntry tmpe;
     cache_key key[MD5_DIGEST_CHARS];
