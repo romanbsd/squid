@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.57 2007/02/25 11:09:17 hno Exp $
+#  $Id: Makefile.am,v 1.58 2007/04/30 08:31:36 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -265,6 +265,12 @@ squid_LDADD = \
 	-lmiscutil \
 	@XTRA_LIBS@ \
 	$(MINGWEXLIB)
+
+squid_DEPENDENCIES = \
+	$(REPL_OBJS) \
+	$(STORE_OBJS) \
+	$(AUTH_OBJS) \
+	$(SNMPLIB)
 
 unlinkd_SOURCES = 
 unlinkd_LDADD = unlinkd-daemon.o
