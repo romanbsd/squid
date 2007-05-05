@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.416.2.8 2007/03/20 21:34:20 hno Exp $
+dnl  $Id: configure.in,v 1.416.2.9 2007/05/05 22:41:19 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.416.2.8 $)dnl
+AC_REVISION($Revision: 1.416.2.9 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -1625,6 +1625,7 @@ AC_CHECK_HEADERS(
 	sys/poll.h \
 	sys/select.h \
 	sys/stat.h \
+	sys/statfs.h \
 	sys/statvfs.h \
 	syscall.h \
 	sys/syscall.h \

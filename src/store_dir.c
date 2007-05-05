@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir.c,v 1.143.2.1 2007/02/03 21:56:56 hno Exp $
+ * $Id: store_dir.c,v 1.143.2.2 2007/05/05 22:41:21 hno Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -43,6 +43,9 @@
 /* Windows uses sys/vfs.h */
 #if HAVE_SYS_VFS_H
 #include <sys/vfs.h>
+#endif
+#if HAVE_SYS_STATFS_H
+#include <sys/statfs.h>
 #endif
 
 static int storeDirValidSwapDirSize(int, squid_off_t);
