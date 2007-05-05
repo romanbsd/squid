@@ -17,7 +17,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.281 2006/11/04 23:20:03 hno Exp $
+#  $Id: Makefile.in,v 1.281.2.1 2007/05/05 22:06:55 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -162,7 +162,6 @@ nodist_squid_OBJECTS = repl_modules.$(OBJEXT) auth_modules.$(OBJEXT) \
 	string_arrays.$(OBJEXT)
 squid_OBJECTS = $(am_squid_OBJECTS) $(nodist_squid_OBJECTS)
 am__DEPENDENCIES_1 =
-squid_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_unlinkd_OBJECTS =
 unlinkd_OBJECTS = $(am_unlinkd_OBJECTS)
 unlinkd_DEPENDENCIES = unlinkd-daemon.o
@@ -564,6 +563,12 @@ squid_LDADD = \
 	-lmiscutil \
 	@XTRA_LIBS@ \
 	$(MINGWEXLIB)
+
+squid_DEPENDENCIES = \
+	$(REPL_OBJS) \
+	$(STORE_OBJS) \
+	$(AUTH_OBJS) \
+	$(SNMPLIB)
 
 unlinkd_SOURCES = 
 unlinkd_LDADD = unlinkd-daemon.o
