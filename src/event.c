@@ -1,6 +1,6 @@
 
 /*
- * $Id: event.c,v 1.37 2006/07/08 11:32:04 hno Exp $
+ * $Id: event.c,v 1.38 2007/05/11 21:21:49 hno Exp $
  *
  * DEBUG: section 41    Event Processing
  * AUTHOR: Henrik Nordstrom
@@ -175,8 +175,8 @@ int
 eventNextTime(void)
 {
     if (!tasks)
-	return (int) 10;
-    return (int) ((tasks->when - current_dtime) * 1000);
+	return 10000;
+    return ceil((tasks->when - current_dtime) * 1000);
 }
 
 void
