@@ -2,6 +2,7 @@
 
 use strict;
 use IO::File;
+use Getopt::Long;
 
 
 # This mess is designed to parse the squid config template file
@@ -9,7 +10,7 @@ use IO::File;
 #
 # Adrian Chadd <adrian@squid-cache.org>
 #
-# $Id: build-cfg-help.pl,v 1.3 2007/05/13 13:49:56 adrian Exp $
+# $Id: build-cfg-help.pl,v 1.4 2007/05/13 14:02:40 hno Exp $
 
 #
 # The template file is reasonably simple to parse. There's a number of
@@ -48,11 +49,15 @@ use IO::File;
 # lines into 'state' variables until the next NAME comes up. We'll then
 # shuffle everything off to a function to generate the page.
 
+
 my ($state) = "";
 my ($path) = "/tmp";
 my ($name, $doc, $nin, @nocomment, $type, $default, $ifdef, $comment, $loc);
 my ($default_if_none);
 my (@names);
+my $verbose = '';
+
+GetOptions('verbose' => \$verbose, 'v' => \$verbose, 'out=s' => \$path);
 
 #
 # Yes yes global variables suck. Rewrite it if you must.
