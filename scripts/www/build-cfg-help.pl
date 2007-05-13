@@ -10,7 +10,7 @@ use Getopt::Long;
 #
 # Adrian Chadd <adrian@squid-cache.org>
 #
-# $Id: build-cfg-help.pl,v 1.7 2007/05/13 14:43:50 adrian Exp $
+# $Id: build-cfg-help.pl,v 1.8 2007/05/13 14:46:32 adrian Exp $
 
 #
 # The template file is reasonably simple to parse. There's a number of
@@ -90,7 +90,8 @@ sub generate_page($$)
 	# add in the local variables
 	$data->{"title"} = $data->{"name"};
 	$data->{"ldoc"} = $data->{"doc"};
-	$data->{"ldoc"} =~ s/\n\n/<\/p>\n<p>\n/;
+	# XXX can't do this and then HTML escape..
+	# $data->{"ldoc"} =~ s/\n\n/<\/p>\n<p>\n/;
 	# XXX and the end-of-line formatting to turn single \n's into <BR>\n's.
 
 	while (<$th>) {
