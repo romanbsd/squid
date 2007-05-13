@@ -10,7 +10,7 @@ use Getopt::Long;
 #
 # Adrian Chadd <adrian@squid-cache.org>
 #
-# $Id: build-cfg-help.pl,v 1.9 2007/05/13 14:51:55 adrian Exp $
+# $Id: build-cfg-help.pl,v 1.10 2007/05/13 14:58:40 adrian Exp $
 
 #
 # The template file is reasonably simple to parse. There's a number of
@@ -90,6 +90,9 @@ sub generate_page($$)
 	# add in the local variables
 	$data->{"title"} = $data->{"name"};
 	$data->{"ldoc"} = $data->{"doc"};
+	if (exists $data->{"aliases"}) {
+		$data->{"aliaslist"} = join(", ", $data->{"aliases"});
+	}
 	# XXX can't do this and then HTML escape..
 	# $data->{"ldoc"} =~ s/\n\n/<\/p>\n<p>\n/;
 	# XXX and the end-of-line formatting to turn single \n's into <BR>\n's.
@@ -178,11 +181,12 @@ EOF
 foreach (@names) {
 	my ($n) = $_->{"name"};
 	print $fh '    <li><a href="' . uriescape($n) . '.html">' . htmlescape($n) . "</a></li>\n";
-	if (defined $_->{"aliases"}) {
-		foreach (@{$_->{"aliases"}}) {
-			print $fh '    <li><a href="' . uriescape($n) . '.html">' . htmlescape($_) . "</a></li>\n";
-		}
-	}
+	# Uncomment these lines if you'd like the aliases to also be generated
+#	if (defined $_->{"aliases"}) {
+#		foreach (@{$_->{"aliases"}}) {
+#			print $fh '    <li>(deprecated) <a href="' . uriescape($n) . '.html">' . htmlescape($_) . "</a></li>\n";
+#		}
+#	}
 }
 
 print $fh <<EOF
