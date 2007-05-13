@@ -4,13 +4,12 @@ use strict;
 use IO::File;
 use Getopt::Long;
 
-
 # This mess is designed to parse the squid config template file
 # cf.data.pre and generate a set of HTML pages to use as documentation.
 #
 # Adrian Chadd <adrian@squid-cache.org>
 #
-# $Id: build-cfg-help.pl,v 1.11 2007/05/13 17:01:45 hno Exp $
+# $Id: build-cfg-help.pl,v 1.12 2007/05/13 21:13:14 hno Exp $
 
 #
 # The template file is reasonably simple to parse. There's a number of
@@ -58,6 +57,9 @@ my ($comment);
 my $version = "2.HEAD";
 my $verbose = '';
 my $path = "/tmp";
+
+my $top = $0;
+$top =~ s%[^/]*$%%;
 
 GetOptions(
 	'verbose' => \$verbose, 'v' => \$verbose,
@@ -239,7 +241,7 @@ undef $index;
 # and now, build the option pages
 my (@names) = keys %option;
 foreach $name (@names) {
-	generate_page("template.html", $option{$name});
+	generate_page("${top}template.html", $option{$name});
 }
 # and now, the alpabetic index file!
 my ($fh) = new IO::File;
