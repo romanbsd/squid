@@ -10,7 +10,7 @@ use Getopt::Long;
 #
 # Adrian Chadd <adrian@squid-cache.org>
 #
-# $Id: build-cfg-help.pl,v 1.8 2007/05/13 14:46:32 adrian Exp $
+# $Id: build-cfg-help.pl,v 1.9 2007/05/13 14:51:55 adrian Exp $
 
 #
 # The template file is reasonably simple to parse. There's a number of
@@ -148,7 +148,7 @@ while (<>) {
 	} elsif ($state eq "doc") {
 		$data{"doc"} .= $_ . "\n";
 	} elsif ($state eq "nocomment") {
-		$data{"nocomment"} .= $_;
+		$data{"nocomment"} .= $_ . "\n";
 	} elsif ($_ ne "") {
 		print "DEBUG: unknown line '$_'\n";
 	}
