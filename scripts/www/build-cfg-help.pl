@@ -9,7 +9,7 @@ use Getopt::Long;
 #
 # Adrian Chadd <adrian@squid-cache.org>
 #
-# $Id: build-cfg-help.pl,v 1.14 2007/05/14 14:34:21 amosjeffries Exp $
+# $Id: build-cfg-help.pl,v 1.15 2007/05/14 14:55:48 adrian Exp $
 
 #
 # The template file is reasonably simple to parse. There's a number of
@@ -168,6 +168,7 @@ print $index <<EOF
     <title>Squid $version configuration file</title>
     <meta name="keywords" content="squid squid.conf config configure" />
     <meta name="description" content="Squid $version" />
+    <link href="/default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div id="header">
@@ -176,6 +177,8 @@ print $index <<EOF
             <h2>Optimising Web Delivery</h2>
 	</div>
     </div>
+<div id="content">
+	<div id="colOne">
 EOF
 ;
 
@@ -340,6 +343,7 @@ $fh->close;
 undef $fh;
 
 print $index <<EOF
+  </div></div>
   </body>
 </html>
 EOF
