@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.394 2007/05/14 00:05:26 adrian Exp $
+# $Id: cf.data.pre,v 1.395 2007/05/17 19:54:17 hno Exp $
 #
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1280,6 +1280,7 @@ DOC_START
 		mt	MIME content type
 		rm	Request method (GET/POST etc)
 		ru	Request URL
+		rp	Request URL-Path excluding hostname
 		rv	Request protocol version
 		ea	Log string returned by external acl
 		<st	Reply size including HTTP headers
