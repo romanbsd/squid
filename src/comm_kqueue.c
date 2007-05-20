@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_kqueue.c,v 1.11 2007/03/07 16:20:32 hno Exp $
+ * $Id: comm_kqueue.c,v 1.12 2007/05/20 13:45:10 adrian Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -86,6 +86,17 @@ void
 comm_select_status(StoreEntry * sentry)
 {
     storeAppendPrintf(sentry, "\tIO loop method:                     kqueue\n");
+}
+
+void
+commOpen(int fd)
+{
+}
+
+void
+commClose(int fd)
+{
+    commSetEvents(fd, 0, 0);
 }
 
 void
