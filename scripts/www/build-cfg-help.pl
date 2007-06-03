@@ -10,7 +10,7 @@ use File::Basename;
 #
 # Adrian Chadd <adrian@squid-cache.org>
 #
-# $Id: build-cfg-help.pl,v 1.17 2007/05/21 23:34:17 hno Exp $
+# $Id: build-cfg-help.pl,v 1.17.2.1 2007/06/03 00:18:03 hno Exp $
 
 #
 # The template file is reasonably simple to parse. There's a number of
