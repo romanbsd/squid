@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.1 2007/05/14 23:36:29 hno Exp $
+#  $Id: Makefile.am,v 1.1.2.1 2007/06/03 00:47:38 hno Exp $
 #
 
 libexec_PROGRAMS = squid_kerb_auth
