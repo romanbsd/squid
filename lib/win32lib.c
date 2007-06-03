@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32lib.c,v 1.3 2006/12/10 13:36:24 serassio Exp $
+ * $Id: win32lib.c,v 1.3.2.1 2007/06/03 00:40:31 hno Exp $
  *
  * Windows support
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -117,7 +117,7 @@ WIN32_strtoll(const char *nptr, char **endptr, int base)
     s = nptr;
     do {
 	c = *s++;
-    } while (isspace(c));
+    } while (xisspace(c));
     if (c == '-') {
 	neg = 1;
 	c = *s++;

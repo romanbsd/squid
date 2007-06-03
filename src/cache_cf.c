@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.463.2.1 2007/02/26 22:45:24 hno Exp $
+ * $Id: cache_cf.c,v 1.463.2.2 2007/06/03 00:40:32 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2280,7 +2280,7 @@ parse_eol(char *volatile *var)
     safe_free(*var);
     if (token == NULL)
 	self_destruct();
-    while (*token && isspace(*token))
+    while (*token && xisspace(*token))
 	token++;
     if (!*token)
 	self_destruct();

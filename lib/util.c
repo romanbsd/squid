@@ -1,6 +1,6 @@
 
 /*
- * $Id: util.c,v 1.94 2006/09/18 22:54:38 hno Exp $
+ * $Id: util.c,v 1.94.2.1 2007/06/03 00:40:31 hno Exp $
  *
  * DEBUG: 
  * AUTHOR: Harvest Derived
@@ -643,7 +643,7 @@ Tolower(char *q)
 {
     char *s = q;
     while (*s) {
-	*s = tolower((unsigned char) *s);
+	*s = xtolower(*s);
 	s++;
     }
 }
