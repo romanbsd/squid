@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_epoll.c,v 1.27 2006/10/23 11:22:21 hno Exp $
+ * $Id: comm_epoll.c,v 1.27.2.1 2007/06/22 12:07:35 adrian Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -96,6 +96,17 @@ void
 comm_select_status(StoreEntry * sentry)
 {
     storeAppendPrintf(sentry, "\tIO loop method:                     epoll\n");
+}
+
+void
+commOpen(int fd)
+{
+}
+
+void
+commClose(int fd)
+{
+    commSetEvents(fd, 0, 0);
 }
 
 void

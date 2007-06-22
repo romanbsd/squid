@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll.c,v 1.23 2006/10/28 00:34:54 hno Exp $
+ * $Id: comm_poll.c,v 1.23.2.1 2007/06/22 12:07:35 adrian Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -73,6 +73,17 @@ void
 comm_select_status(StoreEntry * sentry)
 {
     storeAppendPrintf(sentry, "\tIO loop method:                     poll\n");
+}
+
+void
+commOpen(int fd)
+{
+}
+
+void
+commClose(int fd)
+{
+    commSetEvents(fd, 0, 0);
 }
 
 void

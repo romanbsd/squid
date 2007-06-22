@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.80 2006/12/28 22:11:26 hno Exp $
+ * $Id: comm_select.c,v 1.80.2.1 2007/06/22 12:07:35 adrian Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -91,6 +91,17 @@ void
 comm_select_status(StoreEntry * sentry)
 {
     storeAppendPrintf(sentry, "\tIO loop method:                     select\n");
+}
+
+void
+commClose(int fd)
+{
+}
+
+void
+commClose(int fd)
+{
+    commSetEvents(fd, 0, 0);
 }
 
 void

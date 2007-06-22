@@ -1,6 +1,6 @@
 
 /*
- * $Id: fd.c,v 1.55 2006/10/23 11:25:29 hno Exp $
+ * $Id: fd.c,v 1.55.2.1 2007/06/22 12:07:36 adrian Exp $
  *
  * DEBUG: section 51    Filedescriptor Functions
  * AUTHOR: Duane Wessels
@@ -90,7 +90,7 @@ fd_close(int fd)
 	assert(F->write_handler == NULL);
     }
     debug(51, 3) ("fd_close FD %d %s\n", fd, F->desc);
-    commSetEvents(fd, 0, 0);
+    commClose(fd);
     F->flags.open = 0;
 #if DELAY_POOLS
     if (F->slow_id)
@@ -154,6 +154,7 @@ fd_open(int fd, unsigned int type, const char *desc)
     debug(51, 3) ("fd_open FD %d %s\n", fd, desc);
     F->type = type;
     F->flags.open = 1;
+    commOpen(fd);
 #ifdef _SQUID_MSWIN_
     F->win32.handle = _get_osfhandle(fd);
     switch (type) {
