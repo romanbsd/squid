@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.393.2.2 2007/03/12 22:25:40 hno Exp $
+ * $Id: main.c,v 1.393.2.3 2007/06/23 21:33:24 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -1053,6 +1053,10 @@ watch_child(char *argv[])
 	    case SIGKILL:
 		exit(0);
 		break;
+	    case SIGINT:
+	    case SIGTERM:
+		syslog(LOG_ALERT, "Exiting due to unexpected forced shutdown");
+		exit(1);
 	    default:
 		break;
 	    }
