@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.401 2007/06/25 23:06:19 hno Exp $
+# $Id: cf.data.pre,v 1.402 2007/06/28 23:22:01 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -5091,4 +5091,16 @@ DOC_START
 	or response to be rejected.
 DOC_END
 
+NAME: max_filedescriptors
+TYPE: int
+DEFAULT: 0
+LOC: Config.max_filedescriptors
+DOC_START
+	The maximum number of filedescriptors supported.
+
+	The default "0" means Squid inherits the current ulimit setting.
+
+	Note: Changing this requires a restart of Squid. Also
+	not all comm loops supports values larger than --with-maxfd.
+DOC_END
 EOF
