@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.396 2007/06/17 22:08:46 hno Exp $
+ * $Id: main.c,v 1.397 2007/06/29 00:08:18 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -552,6 +552,7 @@ mainInitialize(void)
 	debug(1, 0) ("Running on %s\n", WIN32_OS_string);
 #endif
     debug(1, 1) ("Process ID %d\n", (int) getpid());
+    setSystemLimits();
     debug(1, 1) ("With %d file descriptors available\n", Squid_MaxFD);
 #ifdef _SQUID_MSWIN_
     debug(1, 1) ("With %d CRT stdio descriptors available\n", _getmaxstdio());

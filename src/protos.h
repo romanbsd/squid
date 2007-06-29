@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.530 2007/05/20 13:45:11 adrian Exp $
+ * $Id: protos.h,v 1.531 2007/06/29 00:08:18 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1108,6 +1108,7 @@ extern void no_suid(void);
 extern void writePidFile(void);
 extern void setSocketShutdownLifetimes(int);
 extern void setMaxFD(void);
+extern void setSystemLimits(void);
 extern time_t getCurrentTime(void);
 extern int percent(int, int);
 extern double dpercent(double, double);
