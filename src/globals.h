@@ -1,6 +1,6 @@
 
 /*
- * $Id: globals.h,v 1.124 2007/01/21 12:53:59 adrian Exp $
+ * $Id: globals.h,v 1.125 2007/07/04 00:12:11 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -87,6 +87,7 @@ extern int opt_dns_tests;	/* 1 */
 extern int opt_foreground_rebuild;	/* 0 */
 extern int opt_forwarded_for;	/* 1 */
 extern int opt_reload_hit_only;	/* 0 */
+extern int opt_stdin_overrides_http_port;	/* 0 */
 #if HAVE_SYSLOG
 extern int opt_syslog_enable;	/* 0 */
 #endif
