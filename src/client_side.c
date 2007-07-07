@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.726 2007/07/04 00:12:11 hno Exp $
+ * $Id: client_side.c,v 1.727 2007/07/07 01:34:10 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4711,6 +4711,11 @@ clientHttpConnectionsOpen(void)
 	}
 	if ((NHttpSockets == 0) && opt_stdin_overrides_http_port) {
 	    fd = 0;
+	    if (reconfiguring) {
+		/* this one did not get closed, just reuse it */
+		HttpSockets[NHttpSockets++] = fd;
+		continue;
+	    }
 	    comm_fdopen(fd,
 		SOCK_STREAM,
 		no_addr,
@@ -4797,8 +4802,10 @@ clientOpenListenSockets(void)
 void
 clientHttpConnectionsClose(void)
 {
-    int i;
-    for (i = 0; i < NHttpSockets; i++) {
+    int i = 0;
+    if (opt_stdin_overrides_http_port && reconfiguring)
+	i++;			/* skip closing & reopening first port because it is overridden */
+    for (; i < NHttpSockets; i++) {
 	if (HttpSockets[i] >= 0) {
 	    debug(1, 1) ("FD %d Closing HTTP connection\n", HttpSockets[i]);
 	    comm_close(HttpSockets[i]);
