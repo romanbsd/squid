@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.363 2007/07/04 00:12:11 hno Exp $
+ * $Id: comm.c,v 1.364 2007/07/09 19:23:28 wessels Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -288,6 +288,18 @@ comm_listen(int sock)
 	    sock, xstrerror());
 	return x;
     }
+#ifdef SO_ACCEPTFILTER
+    if (Config.accept_filter) {
+	struct accept_filter_arg afa;
+	bzero(&afa, sizeof(afa));
+	debug(5, 0) ("Installing accept filter '%s' on FD %d\n",
+	    Config.accept_filter, sock);
+	xstrncpy(afa.af_name, Config.accept_filter, sizeof(afa.af_name));
+	x = setsockopt(sock, SOL_SOCKET, SO_ACCEPTFILTER, &afa, sizeof(afa));
+	if (x < 0)
+	    debug(5, 0) ("SO_ACCEPTFILTER '%s': %s\n", Config.accept_filter, xstrerror());
+    }
+#endif
     return sock;
 }
 
