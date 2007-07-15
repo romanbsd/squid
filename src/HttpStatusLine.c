@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpStatusLine.c,v 1.29 2007/04/01 12:51:01 serassio Exp $
+ * $Id: HttpStatusLine.c,v 1.30 2007/07/15 06:16:42 hno Exp $
  *
  * DEBUG: section 57    HTTP Status-line
  * AUTHOR: Alex Rousskov
@@ -255,8 +255,8 @@ httpStatusString(http_status status)
     case HTTP_REQUEST_ENTITY_TOO_LARGE:
 	p = "Request Entity Too Large";
 	break;
-    case HTTP_REQUEST_URI_TOO_LARGE:
-	p = "Request-URI Too Large";
+    case HTTP_REQUEST_URI_TOO_LONG:
+	p = "Request-URI Too Long";
 	break;
     case HTTP_UNSUPPORTED_MEDIA_TYPE:
 	p = "Unsupported Media Type";

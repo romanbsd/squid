@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.728 2007/07/15 05:41:19 hno Exp $
+ * $Id: client_side.c,v 1.729 2007/07/15 06:16:42 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3870,7 +3870,7 @@ clientTryParseRequest(ConnStateData * conn)
 		(int) conn->in.offset);
 	    debug(33, 1) ("Config 'request_header_max_size'= %ld bytes.\n",
 		(long int) Config.maxRequestHeaderSize);
-	    err = errorCon(ERR_TOO_BIG, HTTP_REQUEST_ENTITY_TOO_LARGE, NULL);
+	    err = errorCon(ERR_TOO_BIG, HTTP_REQUEST_URI_TOO_LONG, NULL);
 	    err->src_addr = conn->peer.sin_addr;
 	    http = parseHttpRequestAbort(conn, "error:request-too-large");
 	    /* add to the client request queue */

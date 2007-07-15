@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.429 2007/03/14 22:43:25 hno Exp $
+ * $Id: http.c,v 1.430 2007/07/15 06:16:42 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -312,7 +312,7 @@ httpCachableReply(HttpStateData * httpState)
     case HTTP_FORBIDDEN:
     case HTTP_NOT_FOUND:
     case HTTP_METHOD_NOT_ALLOWED:
-    case HTTP_REQUEST_URI_TOO_LARGE:
+    case HTTP_REQUEST_URI_TOO_LONG:
     case HTTP_INTERNAL_SERVER_ERROR:
     case HTTP_NOT_IMPLEMENTED:
     case HTTP_BAD_GATEWAY:
