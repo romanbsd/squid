@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_negotiate.c,v 1.7.2.1 2007/02/27 22:43:52 hno Exp $
+ * $Id: auth_negotiate.c,v 1.7.2.2 2007/07/15 13:57:02 hno Exp $
  *
  * DEBUG: section 29    Negotiate Authenticator
  * AUTHOR: Robert Collins
@@ -304,6 +304,8 @@ authenticateNegotiateFixErrorHeader(auth_user_request_t * auth_user_request, Htt
 {
     negotiate_request_t *negotiate_request;
     if (!negotiateConfig->authenticate)
+	return;
+    if (!request->flags.proxy_keepalive && request->flags.must_keepalive)
 	return;
     /* New request, no user details */
     if (auth_user_request == NULL) {
@@ -698,6 +700,12 @@ authenticateNegotiateAuthenticateUser(auth_user_request_t * auth_user_request, r
     if (!conn) {
 	negotiate_request->auth_state = AUTHENTICATE_STATE_FAILED;
 	debug(29, 1) ("authenticateNegotiateAuthenticateUser: attempt to perform authentication without a connection!\n");
+	return;
+    }
+    if (!request->flags.proxy_keepalive) {
+	debug(29, 2) ("authenticateNegotiateAuthenticateUser: attempt to perform authentication without a persistent connection!\n");
+	negotiate_request->auth_state = AUTHENTICATE_STATE_FAILED;
+	request->flags.must_keepalive = 1;
 	return;
     }
     if (negotiate_request->waiting) {
