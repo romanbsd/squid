@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.518 2007/07/09 19:23:28 wessels Exp $
+ * $Id: structs.h,v 1.519 2007/07/15 05:41:20 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1815,6 +1815,7 @@ struct _request_flags {
     unsigned int cachable:1;
     unsigned int hierarchical:1;
     unsigned int loopdetect:1;
+    unsigned int loopdetect_twice:1;
     unsigned int proxy_keepalive:1;
     unsigned int proxying:1;	/* this should be killed, also in httpstateflags */
     unsigned int refresh:1;
