@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_core.c,v 1.63 2006/11/28 23:16:48 hno Exp $
+ * $Id: snmp_core.c,v 1.63.2.1 2007/07/15 09:51:18 hno Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Glenn Chisholm
@@ -792,7 +792,7 @@ time_Inst(oid * name, snint * len, mib_tree_entry * current, oid_ParseFn ** Fn)
 	*len += 1;
     } else {
 	identifier = name[*len - 1];
-	while ((identifier != index[loop]) && (loop < TIME_INDEX_LEN))
+	while ((loop < TIME_INDEX_LEN) && (identifier != index[loop]))
 	    loop++;
 	if (loop < TIME_INDEX_LEN - 1) {
 	    instance = xmalloc(sizeof(name) * (*len));
