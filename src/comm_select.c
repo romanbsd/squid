@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.81 2007/05/20 13:45:11 adrian Exp $
+ * $Id: comm_select.c,v 1.82 2007/07/17 20:34:28 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -94,7 +94,7 @@ comm_select_status(StoreEntry * sentry)
 }
 
 void
-commClose(int fd)
+commOpen(int fd)
 {
 }
 
