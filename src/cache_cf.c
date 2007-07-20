@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.469 2007/04/16 22:05:04 hno Exp $
+ * $Id: cache_cf.c,v 1.470 2007/07/20 21:08:47 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1646,6 +1646,10 @@ parse_peer(peer ** head)
 	    p->options.no_digest = 1;
 	} else if (!strcasecmp(token, "multicast-responder")) {
 	    p->options.mcast_responder = 1;
+#if PEER_MULTICAST_SIBLINGS
+	} else if (!strcasecmp(token, "multicast-siblings")) {
+	    p->options.mcast_siblings = 1;
+#endif
 	} else if (!strncasecmp(token, "weight=", 7)) {
 	    p->weight = xatoi(token + 7);
 	} else if (!strcasecmp(token, "closest-only")) {
