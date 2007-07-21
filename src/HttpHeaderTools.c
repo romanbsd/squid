@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeaderTools.c,v 1.37.2.1 2007/07/15 09:52:17 hno Exp $
+ * $Id: HttpHeaderTools.c,v 1.37.2.2 2007/07/21 21:15:31 hno Exp $
  *
  * DEBUG: section 66    HTTP Header Tools
  * AUTHOR: Alex Rousskov
@@ -194,8 +194,9 @@ strListIsMember(const String * list, const char *m, char del)
 int
 strIsSubstr(const String * list, const char *s)
 {
+    const char *p;
     assert(list && s);
-    const char *p = strStr(*list, s);
+    p = strStr(*list, s);
     if (!p)
 	return 0;
     if (strstr(p + 1, s) != NULL)
