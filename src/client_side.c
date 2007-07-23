@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.729 2007/07/15 06:16:42 hno Exp $
+ * $Id: client_side.c,v 1.730 2007/07/23 14:03:58 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1915,6 +1915,10 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
 		httpHeaderPutExt(hdr, "X-Origin-Expires", strBuf(h->value));
 		httpHeaderDelById(hdr, HDR_EXPIRES);
 		httpHeaderInsertTime(hdr, 1, HDR_EXPIRES, squid_curtime + http->entry->expires - http->entry->timestamp);
+	    } {
+		char age[64];
+		snprintf(age, sizeof(age), "%ld", (long int) squid_curtime - http->entry->timestamp);
+		httpHeaderPutExt(hdr, "X-Cache-Age", age);
 	    }
 	} else if (http->entry->timestamp < squid_curtime) {
 	    httpHeaderPutInt(hdr, HDR_AGE,
