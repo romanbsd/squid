@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.405 2007/07/20 21:08:47 hno Exp $
+# $Id: cf.data.pre,v 1.406 2007/08/06 13:40:46 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -480,7 +480,6 @@ DOC_START
 		     monitorsize=sizespec
 		     monitorinterval=seconds
 		     monitortimeout=seconds
-		     group=name
 		     forceddomain=name
 		     ssl
 		     sslcert=/path/to/ssl/certificate
