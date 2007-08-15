@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.731 2007/08/15 01:15:43 hno Exp $
+ * $Id: client_side.c,v 1.732 2007/08/15 01:54:56 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3793,7 +3793,7 @@ clientTryParseRequest(ConnStateData * conn)
 	if (conn->port->urlgroup)
 	    request->urlgroup = xstrdup(conn->port->urlgroup);
 #if LINUX_TPROXY
-	request->flags.tproxy = conn->port->tproxy;
+	request->flags.tproxy = conn->port->tproxy && need_linux_tproxy;
 #endif
 	request->flags.accelerated = http->flags.accel;
 	request->flags.transparent = http->flags.transparent;
