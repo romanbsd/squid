@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.732 2007/08/15 01:54:56 hno Exp $
+ * $Id: client_side.c,v 1.733 2007/08/17 03:46:10 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1994,7 +1994,7 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
 	request->flags.proxy_keepalive = 0;
     }
     /* Append Via */
-    {
+    if (Config.onoff.via) {
 	LOCAL_ARRAY(char, bbuf, MAX_URL + 32);
 	String strVia = httpHeaderGetList(hdr, HDR_VIA);
 	snprintf(bbuf, MAX_URL + 32, "%d.%d %s",
