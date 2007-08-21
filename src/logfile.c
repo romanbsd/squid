@@ -1,5 +1,5 @@
 /*
- * $Id: logfile.c,v 1.21 2007/08/21 16:40:38 hno Exp $
+ * $Id: logfile.c,v 1.22 2007/08/21 23:53:53 hno Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Duane Wessels
@@ -126,7 +126,10 @@ logfileOpen(const char *path, size_t bufsz, int fatal_flag)
 	lf->fd = -1;
 	if (path[6] != '\0') {
 	    const char *priority = path + 7;
-	    char *facility = (char *) strchr(priority, '|');
+	    char *facility = (char *) strchr(priority, '.');
+	    if (!facility)
+		facility = (char *) strchr(priority, '|');
+
 	    if (facility) {
 		*facility++ = '\0';
 		lf->syslog_priority |= syslog_ntoa(facility);
