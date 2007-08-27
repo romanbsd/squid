@@ -1,6 +1,6 @@
 
 /*
- * $Id: delay_pools.c,v 1.35 2007/03/14 22:43:25 hno Exp $
+ * $Id: delay_pools.c,v 1.36 2007/08/27 12:51:41 hno Exp $
  *
  * DEBUG: section 77    Delay Pools
  * AUTHOR: David Luyer <david@luyer.net>
@@ -605,7 +605,7 @@ delayBytesWanted(delay_id d, int min, int max)
 }
 
 /*
- * this records actual bytes recieved.  always recorded, even if the
+ * this records actual bytes received.  always recorded, even if the
  * class is disabled - it's more efficient to just do it than to do all
  * the checks.
  */
