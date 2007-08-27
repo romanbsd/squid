@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.734 2007/08/24 14:54:05 hno Exp $
+ * $Id: client_side.c,v 1.735 2007/08/27 21:57:17 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2131,6 +2131,11 @@ clientCacheHit(void *data, char *buf, ssize_t size)
     assert(!EBIT_TEST(e->flags, ENTRY_ABORTED));
     if (!memHaveHeaders(mem)) {
 	debug(33, 1) ("clientCacheHit: No reply headers in '%s'?\n", e->mem_obj->url);
+	clientProcessMiss(http);
+	return;
+    }
+    if (strcmp(mem->url, urlCanonical(r)) != 0) {
+	debug(33, 1) ("clientCacheHit: URL mismatch '%s' != '%s'?\n", e->mem_obj->url, urlCanonical(r));
 	clientProcessMiss(http);
 	return;
     }
