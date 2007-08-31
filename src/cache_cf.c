@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.463.2.3 2007/06/23 22:50:18 hno Exp $
+ * $Id: cache_cf.c,v 1.463.2.4 2007/08/31 13:49:54 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1626,6 +1626,7 @@ parse_peer(peer ** head)
     p->stats.logged_state = PEER_ALIVE;
     p->monitor.state = PEER_ALIVE;
     p->monitor.interval = 300;
+    p->tcp_up = PEER_TCP_MAGIC_COUNT;
     if ((token = strtok(NULL, w_space)) == NULL)
 	self_destruct();
     p->host = xstrdup(token);

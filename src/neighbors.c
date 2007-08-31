@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.313.2.1 2007/02/26 22:45:24 hno Exp $
+ * $Id: neighbors.c,v 1.313.2.2 2007/08/31 13:49:54 hno Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -1014,12 +1014,13 @@ peerDNSConfigure(const ipcache_addrs * ia, void *data)
 	debug(0, 0) ("WARNING: No IP address found for '%s'!\n", p->host);
 	return;
     }
-    p->tcp_up = PEER_TCP_MAGIC_COUNT;
     for (j = 0; j < (int) ia->count && j < PEER_MAX_ADDRESSES; j++) {
 	p->addresses[j] = ia->in_addrs[j];
 	debug(15, 2) ("--> IP address #%d: %s\n", j, inet_ntoa(p->addresses[j]));
 	p->n_addresses++;
     }
+    if (!p->tcp_up)
+	peerProbeConnect((peer *) p);
     ap = &p->in_addr;
     memset(ap, '\0', sizeof(struct sockaddr_in));
     ap->sin_family = AF_INET;
