@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.14 2007/08/31 13:42:20 hno Exp $
+ * $Id: client_side.c,v 1.693.2.15 2007/08/31 13:44:00 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3972,7 +3972,7 @@ clientReadRequest(int fd, void *data)
 	    if (conn->port->urlgroup)
 		request->urlgroup = xstrdup(conn->port->urlgroup);
 #if LINUX_TPROXY
-	    request->flags.tproxy = conn->port->tproxy;
+	    request->flags.tproxy = conn->port->tproxy && need_linux_tproxy;
 #endif
 	    request->flags.accelerated = http->flags.accel;
 	    request->flags.transparent = http->flags.transparent;
