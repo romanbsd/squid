@@ -1,16 +1,16 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.416.2.17 2007/07/15 14:11:57 hno Exp $
+dnl  $Id: configure.in,v 1.416.2.18 2007/08/31 14:48:33 hno Exp $
 dnl
 dnl
 dnl
-AC_INIT(Squid Web Proxy, 2.6.STABLE14-CVS, http://www.squid-cache.org/bugs/, squid)
+AC_INIT(Squid Web Proxy, 2.6.STABLE15-CVS, http://www.squid-cache.org/bugs/, squid)
 AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.416.2.17 $)dnl
+AC_REVISION($Revision: 1.416.2.18 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
