@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.17 2007/08/31 13:47:42 hno Exp $
+ * $Id: client_side.c,v 1.693.2.18 2007/08/31 13:48:23 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2128,6 +2128,11 @@ clientCacheHit(void *data, char *buf, ssize_t size)
 		clientCacheHit,
 		http);
 	}
+	return;
+    }
+    if (strcmp(mem->url, urlCanonical(r)) != 0) {
+	debug(33, 1) ("clientCacheHit: URL mismatch '%s' != '%s'?\n", e->mem_obj->url, urlCanonical(r));
+	clientProcessMiss(http);
 	return;
     }
     /*
