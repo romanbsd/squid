@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_rebuild.c,v 1.79 2006/07/04 21:45:24 hno Exp $
+ * $Id: store_rebuild.c,v 1.79.2.1 2007/09/01 23:21:06 hno Exp $
  *
  * DEBUG: section 20    Store Rebuild Routines
  * AUTHOR: Duane Wessels
@@ -102,6 +102,9 @@ storeCleanup(void *datanotused)
 	     * otherwise, set it in the validation procedure
 	     */
 	    storeDirUpdateSwapSize(&Config.cacheSwap.swapDirs[e->swap_dirn], e->swap_file_sz, 1);
+	    /* Get rid of private objects. Not useful */
+	    if (EBIT_TEST(e->flags, KEY_PRIVATE))
+		storeRelease(e);
 	    if ((++validnum & 0x3FFFF) == 0)
 		debug(20, 1) ("  %7d Entries Validated so far.\n", validnum);
 	}
