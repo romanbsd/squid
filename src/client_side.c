@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.19 2007/09/03 00:16:36 hno Exp $
+ * $Id: client_side.c,v 1.693.2.20 2007/09/03 13:13:36 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4172,7 +4172,6 @@ clientProcessBody(ConnStateData * conn)
 	assert(conn->body.size_left > 0);
 	assert(conn->in.offset > 0);
 	assert(callback != NULL);
-	assert(buf != NULL || !conn->body.request);
 	/* How much do we have to process? */
 	size = conn->in.offset;
 	if (size > conn->body.size_left)	/* only process the body part */
@@ -4210,10 +4209,8 @@ clientProcessBody(ConnStateData * conn)
 	/* Invoke callback function */
 	if (valid)
 	    callback(buf, size, cbdata);
-	if (request != NULL) {
+	if (request != NULL)
 	    requestUnlink(request);	/* Linked in clientReadBody */
-	    conn->body.request = NULL;
-	}
 	debug(33, 2) ("clientProcessBody: end fd=%d size=%d body_size=%lu in.offset=%ld cb=%p req=%p\n", conn->fd, size, (unsigned long int) conn->body.size_left, (long int) conn->in.offset, callback, request);
     }
 }
