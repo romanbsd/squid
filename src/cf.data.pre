@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.415 2007/08/27 12:51:41 hno Exp $
+# $Id: cf.data.pre,v 1.416 2007/09/03 04:37:02 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -2634,7 +2634,7 @@ DOC_END
 NAME: persistent_request_timeout
 TYPE: time_t
 LOC: Config.Timeout.persistent_request
-DEFAULT: 1 minute
+DEFAULT: 2 minutes
 DOC_START
 	How long to wait for the next HTTP request on a persistent
 	connection after the previous request completes.
@@ -2680,7 +2680,7 @@ DOC_END
 NAME: pconn_timeout
 TYPE: time_t
 LOC: Config.Timeout.pconn
-DEFAULT: 120 seconds
+DEFAULT: 1 minute
 DOC_START
 	Timeout for idle persistent connections to servers and other
 	proxies.
