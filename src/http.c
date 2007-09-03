@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.431 2007/07/21 21:03:35 hno Exp $
+ * $Id: http.c,v 1.432 2007/09/03 04:41:23 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -806,7 +806,7 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 	    if (httpState->peer->options.originserver)
 		pconnPush(fd, httpState->peer->name, httpState->peer->http_port, httpState->orig_request->host, client_addr, client_port);
 	    else
-		pconnPush(fd, httpState->peer->name, httpState->peer->http_port, NULL, client_addr, client_port);
+		pconnPush(fd, httpState->peer->name, httpState->peer->http_port, "*", client_addr, client_port);
 	} else {
 	    pconnPush(fd, request->host, request->port, NULL, client_addr, client_port);
 	}

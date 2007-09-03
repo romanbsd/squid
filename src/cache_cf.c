@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.471 2007/08/28 23:51:01 hno Exp $
+ * $Id: cache_cf.c,v 1.472 2007/09/03 04:41:23 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1782,6 +1782,8 @@ parse_peer(peer ** head)
 	    p->connection_auth = 1;
 	} else if (strcmp(token, "connection-auth=auto") == 0) {
 	    p->connection_auth = -1;
+	} else if (strncmp(token, "idle=", 5) == 0) {
+	    p->idle = xatoi(token + 5);
 	} else {
 	    debug(3, 0) ("parse_peer: token='%s'\n", token);
 	    self_destruct();
