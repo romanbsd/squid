@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.59 2007/05/20 13:45:10 adrian Exp $
+#  $Id: Makefile.am,v 1.60 2007/09/05 21:25:20 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -309,6 +309,7 @@ LDADD = -L../lib -lmiscutil @XTRA_LIBS@
 EXTRA_DIST = \
 	cf_gen_defines \
 	cf.data.pre \
+	cf.data.depend \
 	mk-globals-c.pl \
 	mk-string-arrays.pl \
 	auth_modules.sh \
@@ -359,10 +360,10 @@ test_cache_digest: test_cache_digest.o CacheDigest.o debug.o globals.o store_key
 cache_cf.o: cf_parser.h
 
 squid.conf.default: cf_parser.h
-	$(SHELL) -c "test -f squid.conf.default || ./cf_gen cf.data"
+	true	# built by cf_gen when making cf_parser.h
 
 cf_parser.h: cf.data cf_gen$(EXEEXT)
-	./cf_gen cf.data 
+	./cf_gen cf.data $(srcdir)/cf.data.depend
 
 cf_gen_defines.h: $(srcdir)/cf_gen_defines $(srcdir)/cf.data.pre
 	awk -f $(srcdir)/cf_gen_defines <$(srcdir)/cf.data.pre >cf_gen_defines.h
