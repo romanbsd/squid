@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_monitor.c,v 1.3 2007/01/09 10:24:41 hno Exp $
+ * $Id: peer_monitor.c,v 1.3.2.1 2007/09/05 21:27:59 hno Exp $
  *
  * DEBUG: section ??    Peer monitoring
  * AUTHOR: Henrik Nordstrom
@@ -50,6 +50,7 @@ struct _PeerMonitor {
 	int hdr_size;
 	int offset;
 	char *buf;
+	int timeout_set;
     } running;
     char name[40];
 };
@@ -123,6 +124,18 @@ peerMonitorFetchReplyHeaders(void *data, char *buf, ssize_t size)
 }
 
 static void
+peerMonitorTimeout(void *data)
+{
+    PeerMonitor *pm = data;
+    store_client *sc = pm->running.sc;
+    pm->running.status = HTTP_REQUEST_TIMEOUT;
+    pm->running.sc = NULL;
+    pm->running.timeout_set = 0;
+    /* This will invoke peerMonitorFetchReplyHeaders which finishes things up */
+    storeClientUnregister(sc, pm->running.e, pm);
+}
+
+static void
 peerMonitorRequest(void *data)
 {
     PeerMonitor *pm = data;
@@ -145,6 +158,8 @@ peerMonitorRequest(void *data)
 	return;
     }
     pm->last_probe = squid_curtime;
+    pm->running.timeout_set = 1;
+    eventAdd(pm->name, peerMonitorTimeout, pm, (double) (pm->peer->monitor.timeout ? pm->peer->monitor.timeout : pm->peer->monitor.interval), 0);
 
     httpHeaderPutStr(&req->header, HDR_ACCEPT, "*/*");
     httpHeaderPutStr(&req->header, HDR_USER_AGENT, full_appname_string);
@@ -168,6 +183,10 @@ peerMonitorCompleted(PeerMonitor * pm)
     storeUnlockObject(pm->running.e);
     requestUnlink(pm->running.req);
     memFree(pm->running.buf, MEM_4K_BUF);
+    if (pm->running.timeout_set) {
+	eventDelete(peerMonitorTimeout, pm);
+	pm->running.timeout_set = 0;
+    }
     if (!cbdataValid(pm->peer)) {
 	cbdataFree(pm);
 	return;
