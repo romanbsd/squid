@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.56.2.2 2007/06/22 12:07:35 adrian Exp $
+#  $Id: Makefile.am,v 1.56.2.3 2007/09/05 21:50:15 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -310,6 +310,7 @@ LDADD = -L../lib -lmiscutil @XTRA_LIBS@
 EXTRA_DIST = \
 	cf_gen_defines \
 	cf.data.pre \
+	cf.data.depend \
 	mk-globals-c.pl \
 	mk-string-arrays.pl \
 	auth_modules.sh \
@@ -359,11 +360,12 @@ test_cache_digest: test_cache_digest.o CacheDigest.o debug.o globals.o store_key
 ## If autodependency works well this is not needed anymore
 cache_cf.o: cf_parser.h
 
+# squid.conf.default is built by cf_gen when making cf_parser.h
 squid.conf.default: cf_parser.h
-	$(SHELL) -c "test -f squid.conf.default || ./cf_gen cf.data"
+	true
 
 cf_parser.h: cf.data cf_gen$(EXEEXT)
-	./cf_gen cf.data 
+	./cf_gen cf.data $(srcdir)/cf.data.depend
 
 cf_gen_defines.h: $(srcdir)/cf_gen_defines $(srcdir)/cf.data.pre
 	awk -f $(srcdir)/cf_gen_defines <$(srcdir)/cf.data.pre >cf_gen_defines.h
