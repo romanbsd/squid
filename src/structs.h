@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.507.2.7 2007/07/15 09:52:18 hno Exp $
+ * $Id: structs.h,v 1.507.2.8 2007/09/05 21:28:34 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2252,6 +2252,7 @@ struct _FwdState {
 #if LINUX_NETFILTER
     struct sockaddr_in src;
 #endif
+    u_short orig_entry_flags;	/* Hack to be able to reset the entry proper */
 };
 
 #if USE_HTCP
