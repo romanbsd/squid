@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.c,v 1.133 2007/02/25 11:09:19 hno Exp $
+ * $Id: peer_select.c,v 1.134 2007/09/10 04:19:49 hno Exp $
  *
  * DEBUG: section 44    Peer Selection Algorithm
  * AUTHOR: Duane Wessels
@@ -266,7 +266,7 @@ peerSelectFoo(ps_state * ps)
 	    return;
 	} else if (ps->never_direct > 0) {
 	    ps->direct = DIRECT_NO;
-	} else if (request->flags.accelerated) {
+	} else if (request->flags.no_direct) {
 	    ps->direct = DIRECT_NO;
 	} else if (request->flags.loopdetect) {
 	    ps->direct = DIRECT_YES;

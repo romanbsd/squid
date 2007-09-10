@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.737 2007/09/03 13:09:47 hno Exp $
+ * $Id: client_side.c,v 1.738 2007/09/10 04:19:49 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3800,6 +3800,7 @@ clientTryParseRequest(ConnStateData * conn)
 	request->flags.tproxy = conn->port->tproxy && need_linux_tproxy;
 #endif
 	request->flags.accelerated = http->flags.accel;
+	request->flags.no_direct = request->flags.accelerated ? !conn->port->allow_direct : 0;
 	request->flags.transparent = http->flags.transparent;
 	/*
 	 * cache the Content-length value in request_t.

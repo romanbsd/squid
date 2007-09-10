@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.419 2007/09/05 21:48:01 hno Exp $
+# $Id: cf.data.pre,v 1.420 2007/09/10 04:19:49 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -1021,6 +1021,10 @@ DOC_START
 
 	   vport=NN	As above, but uses specified port number rather
 			than the http_port number. Implies accel.
+
+	   allow-direct	Allow direct forwarding in accelerator mode. Normally
+	   		accelerated requests is denied direct forwarding as it
+			never_direct was used.
 
 	   urlgroup=	Default urlgroup to mark requests with (see
 			also acl urlgroup and url_rewrite_program)
