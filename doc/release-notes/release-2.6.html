@@ -7,7 +7,7 @@
 <BODY>
 <H1>Squid 2.6.STABLE16 release notes</H1>
 
-<H2>Squid Developers</H2>$Id: release-2.6.html,v 1.44.2.13 2007/09/05 22:25:23 hno Exp $
+<H2>Squid Developers</H2>$Id: release-2.6.html,v 1.44.2.14 2007/09/15 15:36:05 hno Exp $
 <HR>
 <EM>This document contains the release notes for version 2.6 of Squid.
 Squid is a WWW Cache application developed by the Web Caching community.</EM>
@@ -207,6 +207,7 @@ membership check</LI>
 <DT><B>check_hostnames</B><DD><P>Control if Squid should check the sanity of host names before trying to look them up in DNS</P>
 <DT><B>allow_underscores</B><DD><P>Control if _ is to be considered a valid character in hostnames or not</P>
 <DT><B>cache_peer carp-load-factor</B><DD><P>Option removed. CARP now uses the weight parameter instead.</P>
+<DT><B>cache_peer login=</B><DD><P>Controls how Squid forwards login information to peer caches and servers.</P>
 </DL>
 </P>
 
