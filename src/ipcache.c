@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipcache.c,v 1.246 2007/08/17 05:06:15 amosjeffries Exp $
+ * $Id: ipcache.c,v 1.247 2007/09/17 09:38:30 hno Exp $
  *
  * DEBUG: section 14    IP Cache
  * AUTHOR: Harvest Derived
@@ -223,7 +223,7 @@ ipcacheCallback(ipcache_entry * i)
     i->handlerData = NULL;
     if (cbdataValid(handlerData)) {
 	dns_error_message = i->error_message;
-	handler(i->flags.negcached ? NULL : &i->addrs, handlerData);
+	handler(i->addrs.count ? &i->addrs : NULL, handlerData);
     }
     cbdataUnlock(handlerData);
     ipcacheUnlockEntry(i);
