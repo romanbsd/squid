@@ -1,6 +1,6 @@
 
 /*
- * $Id: cf_gen.c,v 1.52 2007/09/06 09:33:36 serassio Exp $
+ * $Id: cf_gen.c,v 1.53 2007/09/17 20:22:36 hno Exp $
  *
  * DEBUG: none          Generate squid.conf.default and cf_parser.h
  * AUTHOR: Max Okumoto
@@ -183,7 +183,7 @@ main(int argc, char *argv[])
 	t = (Type *) xcalloc(1, sizeof(*t));
 	t->name = xstrdup(type);
 	while ((dep = strtok(NULL, WS)) != NULL) {
-	    TypeDep *d = (TypeDep *) xcalloc(1, sizeof(*dep));
+	    TypeDep *d = (TypeDep *) xcalloc(1, sizeof(*d));
 	    d->name = xstrdup(dep);
 	    d->next = t->depend;
 	    t->depend = d;
