@@ -1,8 +1,8 @@
 /*
- * $Id: logfile_mod_daemon.h,v 1.1 2007/09/18 15:03:03 adrian Exp $
+ * $Id: logfile_mod_daemon.h,v 1.2 2007/09/18 15:18:11 adrian Exp $
  *
  * DEBUG: section 50    Log file handling
- * AUTHOR: Duane Wessels
+ * AUTHOR: Adrian Chadd <adrian@squid-cache.org>
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
  * ----------------------------------------------------------
