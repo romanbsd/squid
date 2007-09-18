@@ -1,6 +1,6 @@
 
 /*
- * $Id: net_db.c,v 1.174 2007/02/26 09:11:10 hno Exp $
+ * $Id: net_db.c,v 1.175 2007/09/18 14:43:32 adrian Exp $
  *
  * DEBUG: section 38    Network Measurement Database
  * AUTHOR: Duane Wessels
@@ -387,7 +387,7 @@ netdbSaveState(void *foo)
      * logfileOpen() use O_TRUNC.
      */
     unlink(path);
-    lf = logfileOpen(path, 4096, 0);
+    lf = logfileOpen(path, Config.Log.logtype, 4096, 0);
     if (NULL == lf) {
 	debug(50, 1) ("netdbSaveState: %s: %s\n", path, xstrerror());
 	return;
