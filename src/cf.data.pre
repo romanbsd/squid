@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.423 2007/09/18 14:43:33 adrian Exp $
+# $Id: cf.data.pre,v 1.424 2007/09/19 11:50:39 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -4714,7 +4714,7 @@ DOC_START
 	you understand the algorithms in comm_select.c first!
 DOC_END
 
-NAME: max_filedescriptors
+NAME: max_filedescriptors max_filedesc
 TYPE: int
 DEFAULT: 0
 LOC: Config.max_filedescriptors
