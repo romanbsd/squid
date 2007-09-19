@@ -1,5 +1,5 @@
 /*
- * $Id: logfile_mod_syslog.c,v 1.1 2007/09/18 15:03:03 adrian Exp $
+ * $Id: logfile_mod_syslog.c,v 1.2 2007/09/19 21:14:16 hno Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Duane Wessels
@@ -105,7 +105,7 @@ syslog_ntoa(const char *s)
     syslog_symbol_t *p;
 
     for (p = symbols; p->name != NULL; ++p)
-	if (!strcmp(s, p->name) || !strcmp(s, p->name + 4))
+	if (!strcmp(s, p->name) || !strcasecmp(s, p->name + 4))
 	    return p->value;
     return 0;
 }
@@ -165,7 +165,9 @@ logfile_mod_syslog_open(Logfile * lf, const char *path, size_t bufsz, int fatal_
 
     if (path[6] != '\0') {
 	const char *priority = path + 7;
-	char *facility = (char *) strchr(priority, '|');
+	char *facility = (char *) strchr(priority, '.');
+	if (!facility)
+	    facility = (char *) strchr(priority, '|');
 	if (facility) {
 	    *facility++ = '\0';
 	    ll->syslog_priority |= syslog_ntoa(facility);
