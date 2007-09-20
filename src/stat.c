@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.380 2007/03/14 21:16:06 hno Exp $
+ * $Id: stat.c,v 1.381 2007/09/20 20:22:00 hno Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -589,8 +589,8 @@ info_get(StoreEntry * sentry)
     storeAppendPrintf(sentry, "\tCPU Usage, 60 minute avg:\t%.2f%%\n",
 	statCPUUsage(60));
 #if HAVE_SBRK
-    storeAppendPrintf(sentry, "\tProcess Data Segment Size via sbrk(): %d KB\n",
-	(int) (((char *) sbrk(0) - (char *) sbrk_start) >> 10));
+    storeAppendPrintf(sentry, "\tProcess Data Segment Size via sbrk(): %lu KB\n",
+	(unsigned long) (((char *) sbrk(0) - (char *) sbrk_start) >> 10));
 #endif
     storeAppendPrintf(sentry, "\tMaximum Resident Size: %d KB\n",
 	rusage_maxrss(&rusage));
