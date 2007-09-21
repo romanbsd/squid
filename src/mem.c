@@ -1,6 +1,6 @@
 
 /*
- * $Id: mem.c,v 1.74 2007/09/21 09:35:42 adrian Exp $
+ * $Id: mem.c,v 1.75 2007/09/21 14:17:14 hno Exp $
  *
  * DEBUG: section 13    High Level Memory Pool Management
  * AUTHOR: Harvest Derived
@@ -146,7 +146,7 @@ memDataInit(mem_type type, const char *name, size_t size, int max_pages_notused)
     MemPools[type] = memPoolCreate(name, size);
 }
 
-void
+static void
 memDataNonZero(mem_type type)
 {
     memPoolNonZero(MemPools[type]);
