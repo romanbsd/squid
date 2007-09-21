@@ -1,6 +1,6 @@
 
 /*
- * $Id: mem.c,v 1.73 2006/05/20 21:51:49 hno Exp $
+ * $Id: mem.c,v 1.74 2007/09/21 09:35:42 adrian Exp $
  *
  * DEBUG: section 13    High Level Memory Pool Management
  * AUTHOR: Harvest Derived
@@ -144,6 +144,12 @@ memDataInit(mem_type type, const char *name, size_t size, int max_pages_notused)
 {
     assert(name && size);
     MemPools[type] = memPoolCreate(name, size);
+}
+
+void
+memDataNonZero(mem_type type)
+{
+    memPoolNonZero(MemPools[type]);
 }
 
 
@@ -294,11 +300,17 @@ memInit(void)
      * malloc() for those? @?@
      */
     memDataInit(MEM_2K_BUF, "2K Buffer", 2048, 10);
+    memDataNonZero(MEM_2K_BUF);
     memDataInit(MEM_4K_BUF, "4K Buffer", 4096, 10);
+    memDataNonZero(MEM_4K_BUF);
     memDataInit(MEM_8K_BUF, "8K Buffer", 8192, 10);
+    memDataNonZero(MEM_8K_BUF);
     memDataInit(MEM_16K_BUF, "16K Buffer", 16384, 10);
+    memDataNonZero(MEM_16K_BUF);
     memDataInit(MEM_32K_BUF, "32K Buffer", 32768, 10);
+    memDataNonZero(MEM_32K_BUF);
     memDataInit(MEM_64K_BUF, "64K Buffer", 65536, 10);
+    memDataNonZero(MEM_64K_BUF);
     memDataInit(MEM_CLIENT_SOCK_BUF, "Client Socket Buffer", CLIENT_SOCK_SZ, 0);
     memDataInit(MEM_ACL, "acl", sizeof(acl), 0);
     memDataInit(MEM_ACL_DENY_INFO_LIST, "acl_deny_info_list",
@@ -337,6 +349,7 @@ memInit(void)
     memDataInit(MEM_MEMOBJECT, "MemObject", sizeof(MemObject),
 	Squid_MaxFD >> 3);
     memDataInit(MEM_MEM_NODE, "mem_node", sizeof(mem_node), 0);
+    memDataNonZero(MEM_MEM_NODE);
     memDataInit(MEM_NETDBENTRY, "netdbEntry", sizeof(netdbEntry), 0);
     memDataInit(MEM_NET_DB_NAME, "net_db_name", sizeof(net_db_name), 0);
     memDataInit(MEM_RELIST, "relist", sizeof(relist), 0);
@@ -356,6 +369,7 @@ memInit(void)
     /* init string pools */
     for (i = 0; i < mem_str_pool_count; i++) {
 	StrPools[i].pool = memPoolCreate(StrPoolsAttrs[i].name, StrPoolsAttrs[i].obj_size);
+	memPoolNonZero(StrPools[i].pool);
     }
     cachemgrRegister("mem",
 	"Memory Utilization",

@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.425 2007/09/19 20:48:14 hno Exp $
+# $Id: cf.data.pre,v 1.426 2007/09/21 09:35:41 adrian Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -5282,6 +5282,19 @@ DOC_START
 	until all the child processes have been started.
 	On Windows value less then 1000 (1 milliseconds) are
 	rounded to 1000.
+DOC_END
+
+NAME: zero_buffers
+COMMENT: on|off
+TYPE: onoff
+LOC: Config.onoff.zero_buffers
+DEFAULT: on
+DOC_START
+	Squid by default will zero all buffers before using or reusing them.
+ 	Setting this to 'off' will result in fixed-sized temporary buffers
+	not being zero'ed. This may give a performance boost on certain
+	platforms but it may result in undefined behaviour at the present
+	time.
 DOC_END
 
 EOF

@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.535 2007/09/18 14:43:32 adrian Exp $
+ * $Id: protos.h,v 1.536 2007/09/21 09:35:42 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -879,6 +879,7 @@ extern void memCheckInit(void);
 /* MemPool */
 extern MemPool *memPoolCreate(const char *label, size_t obj_size);
 extern void memPoolDestroy(MemPool * pool);
+extern void memPoolNonZero(MemPool * p);
 extern void *memPoolAlloc(MemPool * pool);
 extern void memPoolFree(MemPool * pool, void *obj);
 extern int memPoolWasUsed(const MemPool * pool);
