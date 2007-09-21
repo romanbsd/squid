@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.427 2007/09/21 14:22:51 hno Exp $
+# $Id: cf.data.pre,v 1.428 2007/09/21 14:41:28 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -864,7 +864,7 @@ DOC_END
 COMMENT_START
  OPTIONS FOR X-Forwarded-For
  -----------------------------------------------------------------------------
-COMMEND_END
+COMMENT_END
 
 NAME: follow_x_forwarded_for
 TYPE: acl_access
