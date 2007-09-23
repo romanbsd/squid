@@ -1,5 +1,5 @@
 /*
- * $Id: logfile_mod_udp.c,v 1.2 2007/09/23 14:24:59 adrian Exp $
+ * $Id: logfile_mod_udp.c,v 1.3 2007/09/23 14:59:28 adrian Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Adrian Chadd
@@ -101,7 +101,6 @@ logfile_mod_udp_linestart(Logfile * lf)
 static void
 logfile_mod_udp_lineend(Logfile * lf)
 {
-    lf->f_flush(lf);
 }
 
 static void
