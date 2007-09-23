@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_log.c,v 1.28 2007/09/18 14:43:32 adrian Exp $
+ * $Id: store_log.c,v 1.29 2007/09/23 14:48:55 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager Logging Functions
  * AUTHOR: Duane Wessels
@@ -120,5 +120,5 @@ storeLogOpen(void)
 	debug(20, 1) ("Store logging disabled\n");
 	return;
     }
-    storelog = logfileOpen(Config.Log.store, Config.Log.logtype, 0, 1);
+    storelog = logfileOpen(Config.Log.store, 0, 1);
 }

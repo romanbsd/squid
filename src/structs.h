@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.527 2007/09/23 13:00:01 adrian Exp $
+ * $Id: structs.h,v 1.528 2007/09/23 14:48:55 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -528,7 +528,6 @@ struct _SquidConfig {
 #endif
 	logformat *logformats;
 	customlog *accesslogs;
-	char *logtype;
 	int rotateNumber;
     } Log;
     char *adminEmail;

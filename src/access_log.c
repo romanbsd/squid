@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.102 2007/09/23 13:00:01 adrian Exp $
+ * $Id: access_log.c,v 1.103 2007/09/23 14:48:55 adrian Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -1247,7 +1247,7 @@ accessLogInit(void)
     for (log = Config.Log.accesslogs; log; log = log->next) {
 	if (log->type == CLF_NONE)
 	    continue;
-	log->logfile = logfileOpen(log->filename, Config.Log.logtype, MAX_URL << 2, 1);
+	log->logfile = logfileOpen(log->filename, MAX_URL << 2, 1);
 	LogfileStatus = LOG_ENABLE;
     }
 #if HEADERS_LOG
