@@ -1,6 +1,6 @@
 
 /*
- * $Id: stmem.c,v 1.72 2005/05/17 16:56:38 hno Exp $
+ * $Id: stmem.c,v 1.73 2007/09/23 07:33:37 adrian Exp $
  *
  * DEBUG: section 19    Store Memory Primitives
  * AUTHOR: Harvest Derived
@@ -116,9 +116,10 @@ stmemAppend(mem_hdr * mem, const char *data, int len)
     }
     while (len > 0) {
 	len_to_copy = XMIN(len, SM_PAGE_SIZE);
-	p = memAllocate(MEM_MEM_NODE);
+	p = memAllocate(MEM_MEM_NODE);	/* This is a non-zero'ed buffer; make sure you fully initialise it */
 	p->next = NULL;
 	p->len = len_to_copy;
+	p->uses = 0;
 	store_mem_size += SM_PAGE_SIZE;
 	xmemcpy(p->data, data, len_to_copy);
 	if (!mem->head) {
