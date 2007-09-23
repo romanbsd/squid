@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.62 2007/09/18 14:43:32 adrian Exp $
+#  $Id: Makefile.am,v 1.63 2007/09/23 13:55:18 adrian Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -204,6 +204,8 @@ squid_SOURCES = \
 	logfile_mod_stdio.h \
 	logfile_mod_syslog.c \
 	logfile_mod_syslog.h \
+	logfile_mod_udp.c \
+	logfile_mod_udp.h \
 	main.c \
 	mem.c \
 	MemPool.c \
