@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.526 2007/09/22 16:01:31 adrian Exp $
+ * $Id: structs.h,v 1.527 2007/09/23 13:00:01 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2470,6 +2470,7 @@ struct _Logfile {
     } flags;
 
     void *data;
+    int sequence_number;
 
     LOGLINESTART *f_linestart;
     LOGWRITE *f_linewrite;
