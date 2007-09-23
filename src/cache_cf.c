@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.474 2007/09/18 14:43:32 adrian Exp $
+ * $Id: cache_cf.c,v 1.475 2007/09/23 14:24:59 adrian Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2646,37 +2646,10 @@ static void
 parse_sockaddr_in_list(sockaddr_in_list ** head)
 {
     char *token;
-    char *t;
-    char *host;
-    char *tmp;
-    const struct hostent *hp;
-    unsigned short port = 0;
     sockaddr_in_list *s;
     while ((token = strtok(NULL, w_space))) {
-	host = NULL;
-	port = 0;
-	if ((t = strchr(token, ':'))) {
-	    /* host:port */
-	    host = token;
-	    *t = '\0';
-	    port = xatos(t + 1);
-	    if (0 == port)
-		self_destruct();
-	} else if ((port = strtol(token, &tmp, 10)), !*tmp) {
-	    /* port */
-	} else {
-	    host = token;
-	    port = 0;
-	}
 	s = xcalloc(1, sizeof(*s));
-	s->s.sin_port = htons(port);
-	if (NULL == host)
-	    s->s.sin_addr = any_addr;
-	else if (1 == safe_inet_addr(host, &s->s.sin_addr))
-	    (void) 0;
-	else if ((hp = gethostbyname(host)))	/* dont use ipcache */
-	    s->s.sin_addr = inaddrFromHostent(hp);
-	else
+	if (!parse_sockaddr(token, &s->s))
 	    self_destruct();
 	while (*head)
 	    head = &(*head)->next;

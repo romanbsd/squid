@@ -1,5 +1,5 @@
 /*
- * $Id: logfile_mod_udp.c,v 1.1 2007/09/23 13:55:18 adrian Exp $
+ * $Id: logfile_mod_udp.c,v 1.2 2007/09/23 14:24:59 adrian Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Adrian Chadd
@@ -182,7 +182,7 @@ logfile_mod_udp_open(Logfile * lf, const char *path, size_t bufsz, int fatal_fla
 	}
     }
     if (comm_connect_addr(ll->fd, &addr)) {
-	if (ll->flags.fatal) {
+	if (lf->flags.fatal) {
 	    fatalf("Unable to connect to %s for UDP log: %s\n", lf->path, xstrerror());
 	} else {
 	    debug(50, 1) ("Unable to connect to %s for UDP log: %s\n", lf->path, xstrerror());

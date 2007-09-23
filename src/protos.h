@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.536 2007/09/21 09:35:42 adrian Exp $
+ * $Id: protos.h,v 1.537 2007/09/23 14:24:59 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1202,6 +1202,7 @@ extern int xrename(const char *from, const char *to);
 extern int isPowTen(int);
 extern void parseEtcHosts(void);
 extern int getMyPort(void);
+extern int parse_sockaddr(char *s, struct sockaddr_in *addr);
 
 char *strwordtok(char *buf, char **t);
 void strwordquote(MemBuf * mb, const char *str);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.259 2007/08/31 21:58:40 hno Exp $
+ * $Id: tools.c,v 1.260 2007/09/23 14:24:59 adrian Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1404,4 +1404,44 @@ const char *
 xinet_ntoa(const struct in_addr addr)
 {
     return inet_ntoa(addr);
+}
+
+/**
+ * Parse a socket address (host:port), fill the given sockaddr_in structure
+ * Returns FALSE on failure, TRUE on success
+ * Destroys s
+ */
+int
+parse_sockaddr(char *s, struct sockaddr_in *addr)
+{
+    char *host, *tmp, *colon;
+    unsigned short port = 0;
+    const struct hostent *hp;
+
+    host = NULL;
+    port = 0;
+    if ((colon = strchr(s, ':'))) {
+	/* host:port */
+	host = s;
+	*colon = '\0';
+	port = xatos(colon + 1);
+	if (0 == port)
+	    return FALSE;
+    } else if ((port = strtol(s, &tmp, 10)), !*tmp) {
+	/* port */
+    } else {
+	host = s;
+	port = 0;
+    }
+    addr->sin_port = htons(port);
+    if (NULL == host)
+	addr->sin_addr = any_addr;
+    else if (1 == safe_inet_addr(host, &addr->sin_addr))
+	(void) 0;
+    else if ((hp = gethostbyname(host)))	/* dont use ipcache */
+	addr->sin_addr = inaddrFromHostent(hp);
+    else
+	return FALSE;
+    addr->sin_family = AF_INET;
+    return TRUE;
 }
