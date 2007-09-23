@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.124 2007/02/03 22:52:11 hno Exp $
+ * $Id: defines.h,v 1.125 2007/09/23 13:06:08 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -363,5 +363,7 @@
 
 #define	DLINK_ISEMPTY(n)	( (n).head == NULL )
 #define	DLINK_HEAD(n)		( (n).head->data )
+
+#define	LOGFILE_SEQNO(n)	( (n)->sequence_number )
 
 #endif /* SQUID_DEFINES_H */
