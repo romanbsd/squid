@@ -1,5 +1,5 @@
 /*
- * $Id: logfile_mod_udp.c,v 1.4 2007/09/23 16:20:37 adrian Exp $
+ * $Id: logfile_mod_udp.c,v 1.5 2007/09/24 12:42:58 hno Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Adrian Chadd
@@ -51,7 +51,7 @@ typedef struct {
 } l_udp_t;
 
 static void
-logfile_mod_udp_write(Logfile * lf, char *buf, size_t len)
+logfile_mod_udp_write(Logfile * lf, const char *buf, size_t len)
 {
     l_udp_t *ll = (l_udp_t *) lf->data;
     ssize_t s;
