@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.125 2007/09/23 13:06:08 adrian Exp $
+ * $Id: defines.h,v 1.126 2007/09/24 13:31:19 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -299,7 +299,7 @@
  */
 #define PEER_TCP_MAGIC_COUNT 10
 
-#define CLIENT_SOCK_SZ 4096
+#define STORE_CLIENT_BUF_SZ 4096
 
 #define URI_WHITESPACE_STRIP 0
 #define URI_WHITESPACE_ALLOW 1
