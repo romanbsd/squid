@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.432 2007/09/03 04:41:23 hno Exp $
+ * $Id: http.c,v 1.433 2007/09/25 00:49:29 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -432,7 +432,7 @@ httpProcessReplyHeader(HttpStateData * httpState, const char *buf, int size)
 	debug(11, 3) ("httpProcessReplyHeader: Non-HTTP-compliant header: '%s'\n", httpState->reply_hdr.buf);
 	httpState->reply_hdr_state += 2;
 	httpState->chunk_size = -1;	/* Terminated by EOF */
-	memBufClean(&httpState->reply_hdr);
+	httpState->reply_hdr.size = old_size;
 	httpBuildVersion(&reply->sline.version, 0, 9);
 	reply->sline.status = HTTP_INVALID_HEADER;
 	ctx_exit(ctx);
@@ -955,6 +955,8 @@ httpReadReply(int fd, void *data)
 		    httpHeaderPutTime(&reply->header, HDR_DATE, squid_curtime);
 		    mb = httpReplyPack(reply);
 		    storeAppend(entry, mb.buf, mb.size);
+		    storeAppend(entry, httpState->reply_hdr.buf, httpState->reply_hdr.size);
+		    memBufClean(&httpState->reply_hdr);
 		    httpReplyReset(reply);
 		    httpReplyParse(reply, mb.buf, mb.size);
 		    memBufClean(&mb);
