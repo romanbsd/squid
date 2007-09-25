@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.433 2007/09/25 00:49:29 hno Exp $
+ * $Id: http.c,v 1.434 2007/09/25 00:50:42 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -506,8 +506,8 @@ httpProcessReplyHeader(HttpStateData * httpState, const char *buf, int size)
 	stringClean(&tr);
 	if (httpState->flags.chunked && reply->content_length >= 0) {
 	    /* Can't have a content-length in chunked encoding */
-	    reply->sline.status = HTTP_INVALID_HEADER;
-	    return done;
+	    reply->content_length = -1;
+	    httpHeaderDelById(&reply->header, HDR_CONTENT_LENGTH);
 	}
     }
     if (!httpState->flags.chunked) {
