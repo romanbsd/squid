@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.528 2007/09/23 14:48:55 adrian Exp $
+ * $Id: structs.h,v 1.529 2007/09/25 00:54:33 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1237,6 +1237,8 @@ struct _clientHttpRequest {
     } redirect;
     dlink_node active;
     squid_off_t maxBodySize;
+    STHCB *header_callback;	/* Temporarily here for storeClientCopyHeaders */
+    StoreEntry *header_entry;	/* Temporarily here for storeClientCopyHeaders */
 };
 
 struct _ConnStateData {

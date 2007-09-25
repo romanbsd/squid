@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.538 2007/09/23 14:48:55 adrian Exp $
+ * $Id: protos.h,v 1.539 2007/09/25 00:54:33 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1083,6 +1083,7 @@ extern squid_off_t storeSwapOutObjectBytesOnDisk(const MemObject * mem);
  */
 extern store_client *storeClientRegister(StoreEntry * e, void *data);
 extern void storeClientCopy(store_client *, StoreEntry *, squid_off_t, squid_off_t, size_t, char *, STCB *, void *);
+extern void storeClientCopyHeaders(store_client *, StoreEntry *, STHCB *, void *);
 extern int storeClientCopyPending(store_client *, StoreEntry * e, void *data);
 extern int storeClientUnregister(store_client * sc, StoreEntry * e, void *data);
 extern squid_off_t storeLowestMemReaderOffset(const StoreEntry * entry);
