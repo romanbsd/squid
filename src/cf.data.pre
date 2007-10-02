@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.382.2.18 2007/10/02 01:05:16 hno Exp $
+# $Id: cf.data.pre,v 1.382.2.19 2007/10/02 01:07:15 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -3366,9 +3366,10 @@ DEFAULT: mail
 LOC: Config.EmailProgram
 DOC_START
 	Email program used to send mail if the cache dies.
-	The default is "mail". The specified program must complain
+	The default is "mail". The specified program must comply
 	with the standard Unix mail syntax:
-	mail_program recipient < mailfile
+	  mail-program recipient < mailfile
+
 	Optional command line options can be specified.
 DOC_END
 
