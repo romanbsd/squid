@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.382.2.17 2007/09/21 14:46:06 hno Exp $
+# $Id: cf.data.pre,v 1.382.2.18 2007/10/02 01:05:16 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -1148,7 +1148,7 @@ DOC_START
 
 	acl normal_service_net src 10.0.0.0/255.255.255.0
 	acl good_service_net src 10.0.1.0/255.255.255.0
-	tcp_outgoing_tos 0x00 normal_service_net 0x00
+	tcp_outgoing_tos 0x00 normal_service_net
 	tcp_outgoing_tos 0x20 good_service_net
 
 	TOS/DSCP values really only have local significance - so you should
