@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.400 2007/09/24 13:28:48 hno Exp $
+ * $Id: main.c,v 1.401 2007/10/08 18:23:23 serassio Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -715,7 +715,9 @@ main(int argc, char **argv)
 #endif
     mainParseOptions(argc, argv);
 
+#if HAVE_SYSLOG && defined(LOG_LOCAL4)
     openlog(appname, LOG_PID | LOG_NDELAY | LOG_CONS, syslog_facility);
+#endif
 
 #if defined(USE_WIN32_SERVICE) && defined(_SQUID_WIN32_)
     if (opt_install_service) {
