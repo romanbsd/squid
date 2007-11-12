@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.475 2007/09/23 14:24:59 adrian Exp $
+ * $Id: cache_cf.c,v 1.476 2007/11/12 23:19:13 amosjeffries Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1610,6 +1610,34 @@ dump_peer(StoreEntry * entry, const char *name, peer * p)
     }
 }
 
+static u_short
+GetService(const char *proto)
+{
+    struct servent *port = NULL;
+    char *token = strtok(NULL, w_space);
+    if (token == NULL) {
+	self_destruct();
+	return -1;		/* NEVER REACHED */
+    }
+    port = getservbyname(token, proto);
+    if (port != NULL) {
+	return ntohs((u_short) port->s_port);
+    }
+    return xatos(token);
+}
+
+static u_short
+GetTcpService(void)
+{
+    return GetService("tcp");
+}
+
+static u_short
+GetUdpService(void)
+{
+    return GetService("udp");
+}
+
 static void
 parse_peer(peer ** head)
 {
@@ -1634,10 +1662,10 @@ parse_peer(peer ** head)
 	p->options.no_digest = 1;
 	p->options.no_netdb_exchange = 1;
     }
-    p->http_port = GetShort();
+    p->http_port = GetTcpService();
     if (!p->http_port)
 	self_destruct();
-    p->icp.port = GetShort();
+    p->icp.port = GetUdpService();
     p->connection_auth = -1;	/* auto */
     while ((token = strtok(NULL, w_space))) {
 	if (!strcasecmp(token, "proxy-only")) {
