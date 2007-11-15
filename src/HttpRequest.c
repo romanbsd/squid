@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpRequest.c,v 1.42 2007/01/21 12:53:56 adrian Exp $
+ * $Id: HttpRequest.c,v 1.43 2007/11/15 04:43:54 adrian Exp $
  *
  * DEBUG: section 73    HTTP Request
  * AUTHOR: Duane Wessels
@@ -59,6 +59,7 @@ requestDestroy(request_t * req)
 	requestAbortBody(req);
     if (req->auth_user_request)
 	authenticateAuthUserRequestUnlock(req->auth_user_request);
+    safe_free(req->store_url);
     safe_free(req->canonical);
     safe_free(req->vary_hdr);
     safe_free(req->vary_headers);

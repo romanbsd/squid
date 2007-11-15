@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.401 2007/10/08 18:23:23 serassio Exp $
+ * $Id: main.c,v 1.402 2007/11/15 04:43:55 adrian Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -396,6 +396,7 @@ mainReconfigure(void)
     idnsShutdown();
 #endif
     redirectShutdown();
+    storeurlShutdown();
     locationRewriteShutdown();
     authenticateShutdown();
     externalAclShutdown();
@@ -425,6 +426,7 @@ mainReconfigure(void)
     idnsInit();
 #endif
     redirectInit();
+    storeurlInit();
     locationRewriteInit();
     authenticateInit(&Config.authConfig);
     externalAclInit();
@@ -478,6 +480,7 @@ mainRotate(void)
     dnsInit();
 #endif
     redirectInit();
+    storeurlInit();
     locationRewriteInit();
     authenticateInit(&Config.authConfig);
     externalAclInit();
@@ -576,6 +579,7 @@ mainInitialize(void)
     idnsInit();
 #endif
     redirectInit();
+    storeurlInit();
     locationRewriteInit();
     errorMapInit();
     authenticateInit(&Config.authConfig);
