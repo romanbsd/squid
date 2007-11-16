@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.530 2007/11/15 04:43:55 adrian Exp $
+ * $Id: structs.h,v 1.531 2007/11/16 11:38:46 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1704,6 +1704,7 @@ struct _RemovalPurgeWalker {
 struct _MemObject {
     method_t method;
     char *url;
+    const char *store_url;
     mem_hdr data_hdr;
     squid_off_t inmem_hi;
     squid_off_t inmem_lo;

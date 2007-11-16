@@ -1,8 +1,8 @@
 
 /*
- * $Id: client_side_storeurl_rewrite.c,v 1.2 2007/11/15 05:37:18 adrian Exp $
+ * $Id: client_side_storeurl_rewrite.c,v 1.3 2007/11/16 11:38:46 adrian Exp $
  *
- * DEBUG: section 33    Client-side Routines - Store URL Rewriter
+ * DEBUG: section 85    Client-side Routines - Store URL Rewriter
  * AUTHOR: Duane Wessels; Adrian Chadd
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -52,7 +52,7 @@ clientStoreURLRewriteAccessCheckDone(int answer, void *data)
 void
 clientStoreURLRewriteStart(clientHttpRequest * http)
 {
-    debug(33, 5) ("clientStoreURLRewriteStart: '%s'\n", http->uri);
+    debug(85, 5) ("clientStoreURLRewriteStart: '%s'\n", http->uri);
     if (Config.Program.store_rewrite.command == NULL) {
 	clientStoreURLRewriteDone(http, NULL);
 	return;
@@ -70,7 +70,7 @@ clientStoreURLRewriteDone(void *data, char *result)
 {
     clientHttpRequest *http = data;
 
-    debug(33, 3) ("clientStoreURLRewriteDone: '%s' result=%s\n", http->uri,
+    debug(85, 3) ("clientStoreURLRewriteDone: '%s' result=%s\n", http->uri,
 	result ? result : "NULL");
 #if 0
     assert(http->redirect_state == REDIRECT_PENDING);
@@ -78,6 +78,10 @@ clientStoreURLRewriteDone(void *data, char *result)
 #endif
 
     if (result) {
+	http->request->store_url = xstrdup(result);
+	debug(85, 3) ("Rewrote to %s\n", http->request->store_url);
+	/* XXX is this actually the right spot to do this? How about revalidation? */
+	//storeEntrySetStoreUrl(http->entry, result);
     }
     /* This is the final part of the rewrite chain - this should be broken out! */
     clientInterpretRequestHeaders(http);

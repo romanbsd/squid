@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.124 2007/01/26 02:33:12 adrian Exp $
+ * $Id: store_client.c,v 1.125 2007/11/16 11:38:46 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -428,6 +428,18 @@ storeClientReadHeader(void *data, const char *buf, ssize_t len)
 	    else {
 		debug(20, 1) ("storeClientReadHeader: URL mismatch\n");
 		debug(20, 1) ("\t{%s} != {%s}\n", (char *) t->value, mem->url);
+		swap_object_ok = 0;
+		break;
+	    }
+	    break;
+	case STORE_META_STOREURL:
+	    if (NULL == mem->store_url)
+		mem->store_url = xstrdup(t->value);
+	    else if (0 == strcasecmp(mem->store_url, t->value))
+		(void) 0;	/* a match! */
+	    else {
+		debug(20, 1) ("storeClientReadHeader: store URL mismatch\n");
+		debug(20, 1) ("\t{%s} != {%s}\n", (char *) t->value, mem->store_url);
 		swap_object_ok = 0;
 		break;
 	    }
