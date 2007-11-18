@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.382 2007/10/15 23:53:17 hno Exp $
+ * $Id: stat.c,v 1.383 2007/11/18 23:15:06 adrian Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -251,6 +251,8 @@ statStoreEntry(MemBuf * mb, StoreEntry * e)
     if (mem)
 	memBufPrintf(mb, "\t%s %s\n",
 	    RequestMethods[mem->method].str, mem->url);
+    if (mem && mem->store_url)
+	memBufPrintf(mb, "\tStore lookup URL: %s\n", mem->store_url);
     memBufPrintf(mb, "\t%s\n", describeStatuses(e));
     memBufPrintf(mb, "\t%s\n", storeEntryFlags(e));
     memBufPrintf(mb, "\t%s\n", describeTimestamps(e));
