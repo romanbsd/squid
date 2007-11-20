@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.96 2007/11/19 12:21:41 adrian Exp $
+ * $Id: HttpHeader.c,v 1.97 2007/11/20 14:22:07 hno Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -140,8 +140,6 @@ static const HttpHeaderFieldAttrs HeadersAttrs[] =
     {"Other:", HDR_OTHER, ftStr}	/* ':' will not allow matches */
 };
 static HttpHeaderFieldInfo *Headers = NULL;
-
-static void httpHeaderPrint(const HttpHeader * hdr);
 
 /*
  * headers with field values defined as #(values) in HTTP/1.1
@@ -1468,17 +1466,4 @@ httpHeaderNameById(int id)
 	Headers = httpHeaderBuildFieldsInfo(HeadersAttrs, HDR_ENUM_END);
     assert(id >= 0 && id < HDR_ENUM_END);
     return strBuf(Headers[id].name);
-}
-
-static void
-httpHeaderPrint(const HttpHeader * hdr)
-{
-    HttpHeaderEntry *he;
-    HttpHeaderPos i = HttpHeaderInitPos;
-
-    debug(1, 1) ("httpHeaderPrint: %p\n", hdr);
-    while ((he = httpHeaderGetEntry(hdr, &i))) {
-	debug(2, 1) ("  (%d): %s: %s\n", i, strBuf(he->name), strBuf(he->value));
-    }
-    debug(1, 1) ("httpHeaderPrint: array size %d\n", hdr->entries.count);
 }
