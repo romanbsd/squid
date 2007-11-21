@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.745 2007/11/16 11:38:46 adrian Exp $
+ * $Id: client_side.c,v 1.746 2007/11/21 13:44:29 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -851,6 +851,7 @@ clientHandleIMSReply(void *data, HttpReply * rep)
 	     * not the body they refer to.  */
 	    httpReplyUpdateOnNotModified(oldentry->mem_obj->reply, rep);
 	    storeTimestampsSet(oldentry);
+	    storeUpdate(oldentry, http->request);
 	}
 	storeClientUnregister(http->sc, entry, http);
 	http->sc = http->old_sc;

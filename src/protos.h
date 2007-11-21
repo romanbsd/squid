@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.542 2007/11/16 11:38:46 adrian Exp $
+ * $Id: protos.h,v 1.543 2007/11/21 13:44:29 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -969,6 +969,7 @@ void storeDeferRead(StoreEntry *, int fd);
 void storeResumeRead(StoreEntry *);
 void storeResetDefer(StoreEntry *);
 extern int memHaveHeaders(const MemObject * mem);
+extern void storeUpdate(StoreEntry * e, request_t *);
 
 
 /* store_modules.c */
