@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.241 2007/11/16 11:38:46 adrian Exp $
+ * $Id: enums.h,v 1.242 2007/11/21 15:06:13 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -52,6 +52,8 @@ typedef enum {
     LOG_TCP_REDIRECT,
 #endif
     LOG_TCP_STALE_HIT,
+    LOG_TCP_ASYNC_HIT,
+    LOG_TCP_ASYNC_MISS,
     LOG_UDP_HIT,
     LOG_UDP_MISS,
     LOG_UDP_DENIED,
@@ -525,7 +527,7 @@ enum {
     ENTRY_REVALIDATE,
     DELAY_SENDING,
     RELEASE_REQUEST,
-    REFRESH_REQUEST,
+    REFRESH_FAILURE,
     ENTRY_CACHABLE,
     ENTRY_DISPATCHED,
     KEY_PRIVATE,

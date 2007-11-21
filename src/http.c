@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.435 2007/11/18 22:01:35 hno Exp $
+ * $Id: http.c,v 1.436 2007/11/21 15:06:13 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -131,6 +131,8 @@ httpCacheNegatively(StoreEntry * entry)
     storeNegativeCache(entry);
     if (EBIT_TEST(entry->flags, ENTRY_CACHABLE))
 	storeSetPublicKey(entry);
+    if (entry->expires <= squid_curtime)
+	storeRelease(entry);
 }
 
 static void
@@ -530,6 +532,8 @@ httpProcessReplyHeader(HttpStateData * httpState, const char *buf, int size)
 	if (strBuf(httpState->orig_request->vary_encoding))
 	    entry->mem_obj->vary_encoding = xstrdup(strBuf(httpState->orig_request->vary_encoding));
     }
+    if (entry->mem_obj->old_entry)
+	EBIT_CLR(entry->mem_obj->old_entry->flags, REFRESH_FAILURE);
     switch (httpCachableReply(httpState)) {
     case 1:
 	httpMakePublic(entry);
@@ -538,10 +542,7 @@ httpProcessReplyHeader(HttpStateData * httpState, const char *buf, int size)
 	httpMakePrivate(entry);
 	break;
     case -1:
-	if (Config.negativeTtl > 0)
-	    httpCacheNegatively(entry);
-	else
-	    httpMakePrivate(entry);
+	httpCacheNegatively(entry);
 	break;
     default:
 	assert(0);

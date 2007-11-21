@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.383 2007/11/18 23:15:06 adrian Exp $
+ * $Id: stat.c,v 1.384 2007/11/21 15:06:13 hno Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -204,8 +204,8 @@ storeEntryFlags(const StoreEntry * entry)
 	strcat(buf, "DELAY_SENDING,");
     if (EBIT_TEST(flags, RELEASE_REQUEST))
 	strcat(buf, "RELEASE_REQUEST,");
-    if (EBIT_TEST(flags, REFRESH_REQUEST))
-	strcat(buf, "REFRESH_REQUEST,");
+    if (EBIT_TEST(flags, REFRESH_FAILURE))
+	strcat(buf, "REFRESH_FAILURE,");
     if (EBIT_TEST(flags, ENTRY_CACHABLE))
 	strcat(buf, "CACHABLE,");
     if (EBIT_TEST(flags, ENTRY_DISPATCHED))

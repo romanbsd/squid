@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.154 2007/09/25 00:54:33 hno Exp $
+ * $Id: typedefs.h,v 1.155 2007/11/21 15:06:13 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -177,6 +177,7 @@ typedef struct _request_t request_t;
 typedef struct _AccessLogEntry AccessLogEntry;
 typedef struct _cachemgr_passwd cachemgr_passwd;
 typedef struct _refresh_t refresh_t;
+typedef struct _refresh_cc refresh_cc;
 typedef struct _CommWriteStateData CommWriteStateData;
 typedef struct _ErrorState ErrorState;
 typedef struct _dlink_node dlink_node;
