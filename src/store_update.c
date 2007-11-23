@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_update.c,v 1.1 2007/11/21 13:44:29 hno Exp $
+ * $Id: store_update.c,v 1.2 2007/11/23 06:59:26 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Henrik Nordstrom <henrik@henriknordstrom.net>
@@ -135,6 +135,9 @@ storeUpdate(StoreEntry * entry, request_t * request)
 
     if (EBIT_TEST(entry->flags, KEY_PRIVATE))
 	return;			/* Nothing to do here... */
+
+    if (!Config.onoff.update_headers)
+	return;			/* Disabled */
 
     CBDATA_INIT_TYPE_FREECB(StoreUpdateState, free_StoreUpdateState);
 

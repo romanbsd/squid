@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.532 2007/11/21 15:06:13 hno Exp $
+ * $Id: structs.h,v 1.533 2007/11/23 06:59:26 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -687,6 +687,7 @@ struct _SquidConfig {
 	int delay_pool_uses_indirect_client;
 	int log_uses_indirect_client;
 #endif
+	int update_headers;
     } onoff;
     acl *aclList;
     struct {
