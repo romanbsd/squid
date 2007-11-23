@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.155 2007/11/21 15:06:13 hno Exp $
+ * $Id: typedefs.h,v 1.156 2007/11/23 11:06:47 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -419,4 +419,6 @@ typedef void LOGFLUSH(Logfile *);
 typedef void LOGROTATE(Logfile *);
 typedef void LOGCLOSE(Logfile *);
 
+typedef void REFRESHCHECK(void *data, int fresh, const char *log);
+typedef struct _refresh_check_helper refresh_check_helper;
 #endif /* SQUID_TYPEDEFS_H */

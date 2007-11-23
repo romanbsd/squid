@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.477 2007/11/21 15:06:13 hno Exp $
+ * $Id: cache_cf.c,v 1.478 2007/11/23 11:06:46 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -479,6 +479,7 @@ configDoConfigure(void)
     requirePathnameExists("Error Directory", Config.errorDirectory);
     authenticateConfigure(&Config.authConfig);
     externalAclConfigure();
+    refreshCheckConfigure();
 #if HTTP_VIOLATIONS
     {
 	const refresh_t *R;

@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.65 2007/11/21 13:44:29 hno Exp $
+#  $Id: Makefile.am,v 1.66 2007/11/23 11:06:46 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -228,6 +228,7 @@ squid_SOURCES = \
 	store_rewrite.c \
 	referer.c \
 	refresh.c \
+	refresh_check.c \
 	send-announce.c \
 	$(SNMPSOURCE) \
 	squid.h \

@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.544 2007/11/21 15:06:13 hno Exp $
+ * $Id: protos.h,v 1.545 2007/11/23 11:06:47 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1416,6 +1416,15 @@ extern int externalAclRequiresAuth(void *acl_data);
 extern char *strtokFile(void);
 const char *externalAclMessage(external_acl_entry * entry);
 
+
+/* refresh_check.c */
+extern void parse_refreshCheckHelper(refresh_check_helper **);
+extern void dump_refreshCheckHelper(StoreEntry * sentry, const char *name, const refresh_check_helper *);
+extern void free_refreshCheckHelper(refresh_check_helper **);
+extern void refreshCheckSubmit(StoreEntry * entry, REFRESHCHECK * callback, void *data);
+extern void refreshCheckInit(void);
+extern void refreshCheckConfigure(void);
+extern void refreshCheckShutdown(void);
 
 #if USE_WCCPv2
 extern void parse_wccp2_service(void *v);

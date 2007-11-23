@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.533 2007/11/23 06:59:26 hno Exp $
+ * $Id: structs.h,v 1.534 2007/11/23 11:06:47 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -556,6 +556,7 @@ struct _SquidConfig {
 	    int children;
 	    int concurrency;
 	} location_rewrite;
+	refresh_check_helper *refresh_check;
 #if USE_ICMP
 	char *pinger;
 #endif
@@ -1199,6 +1200,7 @@ struct _AccessLogEntry {
     HierarchyLogEntry hier;
     HttpReply *reply;
     request_t *request;
+    char *ext_refresh;
 };
 
 struct _clientHttpRequest {
@@ -1248,6 +1250,7 @@ struct _clientHttpRequest {
     squid_off_t maxBodySize;
     STHCB *header_callback;	/* Temporarily here for storeClientCopyHeaders */
     StoreEntry *header_entry;	/* Temporarily here for storeClientCopyHeaders */
+    int is_modified;
 };
 
 struct _ConnStateData {
