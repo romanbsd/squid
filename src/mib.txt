@@ -2,7 +2,7 @@
 
 SQUID-MIB DEFINITIONS ::= BEGIN
 --
--- $Id: mib.txt,v 1.31 2007/08/27 12:51:41 hno Exp $
+-- $Id: mib.txt,v 1.32 2007/11/25 23:32:39 hno Exp $
 --
 
 IMPORTS
@@ -715,7 +715,7 @@ squid MODULE-IDENTITY
 		MAX-ACCESS not-accessible
 		STATUS current
 		DESCRIPTION
-			" An entry in cachePeerTable "
+			" cache_peer indexed by IP address "
 		INDEX 	{ cachePeerAddr }
 	::= { cachePeerTable 1 }
 
@@ -724,7 +724,7 @@ squid MODULE-IDENTITY
 		MAX-ACCESS not-accessible
 		STATUS current
 		DESCRIPTION
-			" An entry in cachePeerTable "
+			" cache_peer indexed by position in squid.conf "
 		INDEX 	{ cachePeerIndex }
 	::= { cachePeerTable 2 }
 
