@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipcache.c,v 1.245.2.2 2007/09/17 20:28:16 hno Exp $
+ * $Id: ipcache.c,v 1.245.2.3 2007/11/26 10:59:09 adrian Exp $
  *
  * DEBUG: section 14    IP Cache
  * AUTHOR: Harvest Derived
@@ -369,7 +369,7 @@ ipcacheParse(ipcache_entry * i, rfc1035_rr * answers, int nr, const char *error_
 	i->addrs.count = (unsigned char) na;
     else
 	i->addrs.count = 255;
-    if (ttl == 0 || ttl > Config.positiveDnsTtl)
+    if (ttl > Config.positiveDnsTtl)
 	ttl = Config.positiveDnsTtl;
     if (ttl < Config.negativeDnsTtl)
 	ttl = Config.negativeDnsTtl;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: fqdncache.c,v 1.156.2.1 2007/09/17 20:28:16 hno Exp $
+ * $Id: fqdncache.c,v 1.156.2.2 2007/11/26 10:59:09 adrian Exp $
  *
  * DEBUG: section 35    FQDN Cache
  * AUTHOR: Harvest Derived
@@ -316,7 +316,7 @@ fqdncacheParse(fqdncache_entry * f, rfc1035_rr * answers, int nr, const char *er
 	f->error_message = xstrdup("No PTR record");
 	return f;
     }
-    if (ttl == 0 || ttl > Config.positiveDnsTtl)
+    if (ttl > Config.positiveDnsTtl)
 	ttl = Config.positiveDnsTtl;
     if (ttl < Config.negativeDnsTtl)
 	ttl = Config.negativeDnsTtl;
