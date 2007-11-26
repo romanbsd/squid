@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_dir_aufs.c,v 1.67.2.1 2007/03/03 13:34:51 hno Exp $
+ * $Id: store_dir_aufs.c,v 1.67.2.2 2007/11/26 10:57:37 adrian Exp $
  *
  * DEBUG: section 47    Store Directory Routines
  * AUTHOR: Duane Wessels
@@ -1551,6 +1551,8 @@ storeAufsDirMaintain(SwapDir * SD)
 	    break;		/* no more objects */
 	removed++;
 	storeRelease(e);
+	if (aioQueueSize() > MAGIC2)
+	    break;
     }
     walker->Done(walker);
     debug(47, (removed ? 2 : 3)) ("storeAufsDirMaintain: %s removed %d/%d f=%.03f max_scan=%d\n",
