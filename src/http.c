@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.419.2.10 2007/11/26 10:37:33 adrian Exp $
+ * $Id: http.c,v 1.419.2.11 2007/11/26 11:04:30 adrian Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -1256,10 +1256,10 @@ httpBuildRequestHeader(request_t * request,
 	    /* Special mode, to pass the username to the upstream cache */
 	    char loginbuf[256];
 	    const char *username = "-";
-	    if (orig_request->auth_user_request)
-		username = authenticateUserRequestUsername(orig_request->auth_user_request);
-	    else if (orig_request->extacl_user)
+	    if (orig_request->extacl_user)
 		username = orig_request->extacl_user;
+	    else if (orig_request->auth_user_request)
+		username = authenticateUserRequestUsername(orig_request->auth_user_request);
 	    snprintf(loginbuf, sizeof(loginbuf), "%s%s", username, orig_request->peer_login + 1);
 	    httpHeaderPutStrf(hdr_out, HDR_PROXY_AUTHORIZATION, "Basic %s",
 		base64_encode(loginbuf));
