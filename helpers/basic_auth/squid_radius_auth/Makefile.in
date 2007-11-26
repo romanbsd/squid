@@ -17,7 +17,7 @@
 #
 #  Makefile for the Squid LDAP authentication helper
 #
-#  $Id: Makefile.in,v 1.6 2007/11/22 01:12:58 hno Exp $
+#  $Id: Makefile.in,v 1.6.2.1 2007/11/26 11:18:47 adrian Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -69,8 +69,12 @@ depcomp = $(SHELL) $(top_srcdir)/cfgaux/depcomp
 am__depfiles_maybe = depfiles
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --tag=CC --mode=compile $(CC) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+LINK = $(LIBTOOL) --tag=CC --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(squid_radius_auth_SOURCES)
 DIST_SOURCES = $(squid_radius_auth_SOURCES)
 man8dir = $(mandir)/man8
@@ -87,6 +91,7 @@ AMTAR = @AMTAR@
 AR = @AR@
 AR_R = @AR_R@
 AUTH_LIBS = @AUTH_LIBS@
+AUTH_LINKOBJS = @AUTH_LINKOBJS@
 AUTH_MODULES = @AUTH_MODULES@
 AUTH_OBJS = @AUTH_OBJS@
 AUTOCONF = @AUTOCONF@
@@ -94,6 +99,7 @@ AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
 BASIC_AUTH_HELPERS = @BASIC_AUTH_HELPERS@
+CACHE_EFFECTIVE_USER = @CACHE_EFFECTIVE_USER@
 CACHE_HTTP_PORT = @CACHE_HTTP_PORT@
 CACHE_ICP_PORT = @CACHE_ICP_PORT@
 CC = @CC@
@@ -102,19 +108,30 @@ CFLAGS = @CFLAGS@
 CGIEXT = @CGIEXT@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
+CPPUNITCONFIG = @CPPUNITCONFIG@
 CRYPTLIB = @CRYPTLIB@
+CXX = @CXX@
+CXXCPP = @CXXCPP@
+CXXDEPMODE = @CXXDEPMODE@
+CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
 DIGEST_AUTH_HELPERS = @DIGEST_AUTH_HELPERS@
+DISK_LIBS = @DISK_LIBS@
+DISK_LINKOBJS = @DISK_LINKOBJS@
+DISK_PROGRAMS = @DISK_PROGRAMS@
+ECHO = @ECHO@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
+ENABLE_ARP_ACL_FALSE = @ENABLE_ARP_ACL_FALSE@
+ENABLE_ARP_ACL_TRUE = @ENABLE_ARP_ACL_TRUE@
 ENABLE_HTCP_FALSE = @ENABLE_HTCP_FALSE@
 ENABLE_HTCP_TRUE = @ENABLE_HTCP_TRUE@
-ENABLE_MINGW32SPECIFIC_FALSE = @ENABLE_MINGW32SPECIFIC_FALSE@
-ENABLE_MINGW32SPECIFIC_TRUE = @ENABLE_MINGW32SPECIFIC_TRUE@
+ENABLE_IDENT_FALSE = @ENABLE_IDENT_FALSE@
+ENABLE_IDENT_TRUE = @ENABLE_IDENT_TRUE@
 ENABLE_PINGER_FALSE = @ENABLE_PINGER_FALSE@
 ENABLE_PINGER_TRUE = @ENABLE_PINGER_TRUE@
 ENABLE_SSL_FALSE = @ENABLE_SSL_FALSE@
@@ -123,27 +140,31 @@ ENABLE_UNLINKD_FALSE = @ENABLE_UNLINKD_FALSE@
 ENABLE_UNLINKD_TRUE = @ENABLE_UNLINKD_TRUE@
 ENABLE_WIN32SPECIFIC_FALSE = @ENABLE_WIN32SPECIFIC_FALSE@
 ENABLE_WIN32SPECIFIC_TRUE = @ENABLE_WIN32SPECIFIC_TRUE@
+ENABLE_XPROF_STATS_FALSE = @ENABLE_XPROF_STATS_FALSE@
+ENABLE_XPROF_STATS_TRUE = @ENABLE_XPROF_STATS_TRUE@
+EPOLL_LIBS = @EPOLL_LIBS@
 ERR_DEFAULT_LANGUAGE = @ERR_DEFAULT_LANGUAGE@
 ERR_LANGUAGES = @ERR_LANGUAGES@
 EXEEXT = @EXEEXT@
 EXTERNAL_ACL_HELPERS = @EXTERNAL_ACL_HELPERS@
+F77 = @F77@
 FALSE = @FALSE@
-GREP = @GREP@
+FFLAGS = @FFLAGS@
+ICAP_LIBS = @ICAP_LIBS@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LDFLAGS = @LDFLAGS@
-LIBDLMALLOC = @LIBDLMALLOC@
+LIBADD_DL = @LIBADD_DL@
 LIBOBJS = @LIBOBJS@
 LIBREGEX = @LIBREGEX@
 LIBS = @LIBS@
 LIBSASL = @LIBSASL@
+LIBTOOL = @LIBTOOL@
 LIB_DB = @LIB_DB@
-LIB_EPOLL = @LIB_EPOLL@
 LIB_LBER = @LIB_LBER@
 LIB_LDAP = @LIB_LDAP@
-LIB_MALLOC = @LIB_MALLOC@
 LN = @LN@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
@@ -153,16 +174,17 @@ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
 MAKE_LEAKFINDER_FALSE = @MAKE_LEAKFINDER_FALSE@
 MAKE_LEAKFINDER_TRUE = @MAKE_LEAKFINDER_TRUE@
+MINGW_LIBS = @MINGW_LIBS@
 MKDIR = @MKDIR@
 MV = @MV@
-NEED_COSSDUMP_FALSE = @NEED_COSSDUMP_FALSE@
-NEED_COSSDUMP_TRUE = @NEED_COSSDUMP_TRUE@
-NEED_DISKD_FALSE = @NEED_DISKD_FALSE@
-NEED_DISKD_TRUE = @NEED_DISKD_TRUE@
+NEED_OWN_MD5_FALSE = @NEED_OWN_MD5_FALSE@
+NEED_OWN_MD5_TRUE = @NEED_OWN_MD5_TRUE@
 NEED_OWN_SNPRINTF_FALSE = @NEED_OWN_SNPRINTF_FALSE@
 NEED_OWN_SNPRINTF_TRUE = @NEED_OWN_SNPRINTF_TRUE@
 NEED_OWN_STRSEP_FALSE = @NEED_OWN_STRSEP_FALSE@
 NEED_OWN_STRSEP_TRUE = @NEED_OWN_STRSEP_TRUE@
+NEED_OWN_STRTOLL_FALSE = @NEED_OWN_STRTOLL_FALSE@
+NEED_OWN_STRTOLL_TRUE = @NEED_OWN_STRTOLL_TRUE@
 NEGOTIATE_AUTH_HELPERS = @NEGOTIATE_AUTH_HELPERS@
 NTLM_AUTH_HELPERS = @NTLM_AUTH_HELPERS@
 OBJEXT = @OBJEXT@
@@ -175,7 +197,6 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PERL = @PERL@
-PKGCONFIG = @PKGCONFIG@
 RANLIB = @RANLIB@
 REGEXLIB = @REGEXLIB@
 REPL_LIBS = @REPL_LIBS@
@@ -186,14 +207,22 @@ SET_MAKE = @SET_MAKE@
 SH = @SH@
 SHELL = @SHELL@
 SNMPLIB = @SNMPLIB@
+SQUID_CFLAGS = @SQUID_CFLAGS@
+SQUID_CPPUNIT_INC = @SQUID_CPPUNIT_INC@
+SQUID_CPPUNIT_LA = @SQUID_CPPUNIT_LA@
+SQUID_CPPUNIT_LIBS = @SQUID_CPPUNIT_LIBS@
+SQUID_CXXFLAGS = @SQUID_CXXFLAGS@
 SSLLIB = @SSLLIB@
 STORE_LIBS = @STORE_LIBS@
-STORE_MODULES = @STORE_MODULES@
+STORE_LINKOBJS = @STORE_LINKOBJS@
 STORE_OBJS = @STORE_OBJS@
+STORE_TESTS = @STORE_TESTS@
 STRIP = @STRIP@
 TRUE = @TRUE@
 USE_AIOPS_WIN32_FALSE = @USE_AIOPS_WIN32_FALSE@
 USE_AIOPS_WIN32_TRUE = @USE_AIOPS_WIN32_TRUE@
+USE_AIO_WIN32_FALSE = @USE_AIO_WIN32_FALSE@
+USE_AIO_WIN32_TRUE = @USE_AIO_WIN32_TRUE@
 USE_DELAY_POOLS_FALSE = @USE_DELAY_POOLS_FALSE@
 USE_DELAY_POOLS_TRUE = @USE_DELAY_POOLS_TRUE@
 USE_DEVPOLL_FALSE = @USE_DEVPOLL_FALSE@
@@ -202,6 +231,12 @@ USE_DNSSERVER_FALSE = @USE_DNSSERVER_FALSE@
 USE_DNSSERVER_TRUE = @USE_DNSSERVER_TRUE@
 USE_EPOLL_FALSE = @USE_EPOLL_FALSE@
 USE_EPOLL_TRUE = @USE_EPOLL_TRUE@
+USE_ESI_FALSE = @USE_ESI_FALSE@
+USE_ESI_TRUE = @USE_ESI_TRUE@
+USE_ICAP_CLIENT_FALSE = @USE_ICAP_CLIENT_FALSE@
+USE_ICAP_CLIENT_TRUE = @USE_ICAP_CLIENT_TRUE@
+USE_IPC_WIN32_FALSE = @USE_IPC_WIN32_FALSE@
+USE_IPC_WIN32_TRUE = @USE_IPC_WIN32_TRUE@
 USE_KQUEUE_FALSE = @USE_KQUEUE_FALSE@
 USE_KQUEUE_TRUE = @USE_KQUEUE_TRUE@
 USE_POLL_FALSE = @USE_POLL_FALSE@
@@ -218,9 +253,16 @@ VERSION = @VERSION@
 WIN32_PSAPI = @WIN32_PSAPI@
 XTRA_LIBS = @XTRA_LIBS@
 XTRA_OBJS = @XTRA_OBJS@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
+ac_ct_CXX = @ac_ct_CXX@
+ac_ct_F77 = @ac_ct_F77@
+ac_ct_RANLIB = @ac_ct_RANLIB@
+ac_ct_STRIP = @ac_ct_STRIP@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
+am__fastdepCXX_TRUE = @am__fastdepCXX_TRUE@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
@@ -233,33 +275,27 @@ build_cpu = @build_cpu@
 build_os = @build_os@
 build_vendor = @build_vendor@
 datadir = @datadir@
-datarootdir = @datarootdir@
-docdir = @docdir@
-dvidir = @dvidir@
 exec_prefix = @exec_prefix@
 host = @host@
 host_alias = @host_alias@
 host_cpu = @host_cpu@
 host_os = @host_os@
 host_vendor = @host_vendor@
-htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
 libdir = @libdir@
 libexecdir = @libexecdir@
-localedir = @localedir@
 localstatedir = @localstatedir@
 makesnmplib = @makesnmplib@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
-pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
-psdir = @psdir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
+subdirs = @subdirs@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 man_MANS = squid_radius_auth.8
@@ -274,7 +310,7 @@ INCLUDES = -I$(top_srcdir)/include
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .o .obj
+.SUFFIXES: .c .lo .o .obj
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -310,10 +346,11 @@ install-libexecPROGRAMS: $(libexec_PROGRAMS)
 	@list='$(libexec_PROGRAMS)'; for p in $$list; do \
 	  p1=`echo $$p|sed 's/$(EXEEXT)$$//'`; \
 	  if test -f $$p \
+	     || test -f $$p1 \
 	  ; then \
 	    f=`echo "$$p1" | sed 's,^.*/,,;$(transform);s/$$/$(EXEEXT)/'`; \
-	   echo " $(INSTALL_PROGRAM_ENV) $(libexecPROGRAMS_INSTALL) '$$p' '$(DESTDIR)$(libexecdir)/$$f'"; \
-	   $(INSTALL_PROGRAM_ENV) $(libexecPROGRAMS_INSTALL) "$$p" "$(DESTDIR)$(libexecdir)/$$f" || exit 1; \
+	   echo " $(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(libexecPROGRAMS_INSTALL) '$$p' '$(DESTDIR)$(libexecdir)/$$f'"; \
+	   $(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(libexecPROGRAMS_INSTALL) "$$p" "$(DESTDIR)$(libexecdir)/$$f" || exit 1; \
 	  else :; fi; \
 	done
 
@@ -326,7 +363,11 @@ uninstall-libexecPROGRAMS:
 	done
 
 clean-libexecPROGRAMS:
-	-test -z "$(libexec_PROGRAMS)" || rm -f $(libexec_PROGRAMS)
+	@list='$(libexec_PROGRAMS)'; for p in $$list; do \
+	  f=`echo $$p|sed 's/$(EXEEXT)$$//'`; \
+	  echo " rm -f $$p $$f"; \
+	  rm -f $$p $$f ; \
+	done
 squid_radius_auth$(EXEEXT): $(squid_radius_auth_OBJECTS) $(squid_radius_auth_DEPENDENCIES) 
 	@rm -f squid_radius_auth$(EXEEXT)
 	$(LINK) $(squid_radius_auth_LDFLAGS) $(squid_radius_auth_OBJECTS) $(squid_radius_auth_LDADD) $(LIBS)
@@ -353,6 +394,22 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `$(CYGPATH_W) '$<'`
+
+.c.lo:
+@am__fastdepCC_TRUE@	if $(LTCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Plo"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $<
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
+
+distclean-libtool:
+	-rm -f libtool
 uninstall-info-am:
 install-man8: $(man8_MANS) $(man_MANS)
 	@$(NORMAL_INSTALL)
@@ -508,13 +565,14 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libexecPROGRAMS mostlyclean-am
+clean-am: clean-generic clean-libexecPROGRAMS clean-libtool \
+	mostlyclean-am
 
 distclean: distclean-am
 	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
-	distclean-tags
+	distclean-libtool distclean-tags
 
 dvi: dvi-am
 
@@ -543,7 +601,8 @@ maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-mostlyclean-am: mostlyclean-compile mostlyclean-generic
+mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool
 
 pdf: pdf-am
 
@@ -559,15 +618,16 @@ uninstall-am: uninstall-info-am uninstall-libexecPROGRAMS \
 uninstall-man: uninstall-man8
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libexecPROGRAMS ctags distclean distclean-compile \
-	distclean-generic distclean-tags distdir dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-exec install-exec-am install-info \
-	install-info-am install-libexecPROGRAMS install-man \
-	install-man8 install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-compile mostlyclean-generic pdf pdf-am \
-	ps ps-am tags uninstall uninstall-am uninstall-info-am \
+	clean-libexecPROGRAMS clean-libtool ctags distclean \
+	distclean-compile distclean-generic distclean-libtool \
+	distclean-tags distdir dvi dvi-am html html-am info info-am \
+	install install-am install-data install-data-am install-exec \
+	install-exec-am install-info install-info-am \
+	install-libexecPROGRAMS install-man install-man8 install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-info-am \
 	uninstall-libexecPROGRAMS uninstall-man uninstall-man8
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
