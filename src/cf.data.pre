@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.382.2.23 2007/11/26 11:00:12 adrian Exp $
+# $Id: cf.data.pre,v 1.382.2.24 2007/11/26 11:01:15 adrian Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -3952,8 +3952,7 @@ LOC: Config.onoff.digest_generation
 DEFAULT: on
 DOC_START
 	This controls whether the server will generate a Cache Digest
-	of its contents. By default, Cache Digest generation is
-	enabled if Squid is compiled with --enable-cache-digests defined.
+	of its contents.
 DOC_END
 
 NAME: digest_bits_per_entry
