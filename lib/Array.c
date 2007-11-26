@@ -1,5 +1,5 @@
 /*
- * $Id: Array.c,v 1.8 2005/10/23 15:20:49 hno Exp $
+ * $Id: Array.c,v 1.8.2.1 2007/11/26 11:06:12 adrian Exp $
  *
  * AUTHOR: Alex Rousskov
  *
@@ -137,4 +137,12 @@ arrayGrow(Array * a, int min_capacity)
          xmalloc(a->capacity * sizeof(void *));
     /* reset, just in case */
     memset(a->items + a->count, 0, (a->capacity - a->count) * sizeof(void *));
+}
+
+void
+arrayShrink(Array *a, int new_count)
+{
+	assert(new_count < a->capacity);
+	assert(new_count >= 0);
+	a->count = new_count;
 }

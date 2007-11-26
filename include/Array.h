@@ -1,5 +1,5 @@
 /*
- * $Id: Array.h,v 1.7 2005/10/23 15:20:49 hno Exp $
+ * $Id: Array.h,v 1.7.2.1 2007/11/26 11:06:12 adrian Exp $
  *
  * AUTHOR: Alex Rousskov
  *
@@ -50,6 +50,8 @@ extern void arrayDestroy(Array * s);
 extern void arrayAppend(Array * s, void *obj);
 extern void arrayInsert(Array * s, void *obj, int position);
 extern void arrayPreAppend(Array * s, int app_count);
+extern void arrayShrink(Array *a, int new_count);
+
 
 
 #endif /* SQUID_ARRAY_H */
