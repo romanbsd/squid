@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.750 2007/11/26 13:12:36 adrian Exp $
+ * $Id: client_side.c,v 1.751 2007/11/29 12:04:33 adrian Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2322,6 +2322,7 @@ clientCacheHit(void *data, HttpReply * rep)
 	}
     }
     stale = refreshCheckHTTPStale(e, r);
+    debug(33, 2) ("clientProcessHit: refreshCheckHTTPStale returned %d\n", stale);
     if (stale == 0) {
 	debug(33, 2) ("clientProcessHit: HIT\n");
     } else if (stale == -1 && Config.refresh_stale_window > 0 && e->mem_obj->refresh_timestamp + Config.refresh_stale_window > squid_curtime) {
