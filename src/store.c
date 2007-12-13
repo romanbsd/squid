@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.582 2007/11/21 15:06:13 hno Exp $
+ * $Id: store.c,v 1.583 2007/12/13 01:25:35 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1653,6 +1653,9 @@ storeNegativeCache(StoreEntry * e)
     if (expires == -1)
 	expires = squid_curtime + cc.negative_ttl;
     if (oe && !EBIT_TEST(oe->flags, KEY_PRIVATE) && !EBIT_TEST(oe->flags, ENTRY_REVALIDATE)) {
+	HttpHdrCc *oldcc = oe->mem_obj->reply->cache_control;
+	if (oldcc && EBIT_TEST(oldcc->mask, CC_STALE_IF_ERROR) && oldcc->stale_if_error >= 0)
+	    cc.max_stale = oldcc->stale_if_error;
 	if (cc.max_stale >= 0) {
 	    time_t max_expires;
 	    storeTimestampsSet(oe);

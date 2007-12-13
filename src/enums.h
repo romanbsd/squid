@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.243 2007/12/13 01:20:49 hno Exp $
+ * $Id: enums.h,v 1.244 2007/12/13 01:25:34 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -279,6 +279,8 @@ typedef enum {
     CC_S_MAXAGE,
     CC_MAX_STALE,
     CC_ONLY_IF_CACHED,
+    CC_STALE_WHILE_REVALIDATE,
+    CC_STALE_IF_ERROR,
     CC_OTHER,
     CC_ENUM_END
 } http_hdr_cc_type;
