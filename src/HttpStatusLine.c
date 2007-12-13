@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpStatusLine.c,v 1.30 2007/07/15 06:16:42 hno Exp $
+ * $Id: HttpStatusLine.c,v 1.31 2007/12/13 01:20:48 hno Exp $
  *
  * DEBUG: section 57    HTTP Status-line
  * AUTHOR: Alex Rousskov
@@ -278,6 +278,9 @@ httpStatusString(http_status status)
 	break;
     case HTTP_HTTP_VERSION_NOT_SUPPORTED:
 	p = "HTTP Version not supported";
+	break;
+    case HTTP_EXPECTATION_FAILED:
+	p = "Expectation failed";
 	break;
     default:
 	p = "Unknown";

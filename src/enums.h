@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.242 2007/11/21 15:06:13 hno Exp $
+ * $Id: enums.h,v 1.243 2007/12/13 01:20:49 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -502,6 +502,7 @@ typedef enum {
     HTTP_REQUEST_ENTITY_TOO_LARGE = 413,
     HTTP_REQUEST_URI_TOO_LONG = 414,
     HTTP_UNSUPPORTED_MEDIA_TYPE = 415,
+    HTTP_EXPECTATION_FAILED = 417,
     HTTP_UNPROCESSABLE_ENTITY = 422,	/* RFC2518 section 10.3 */
     HTTP_LOCKED = 423,		/* RFC2518 section 10.4 */
     HTTP_FAILED_DEPENDENCY = 424,	/* RFC2518 section 10.5 */

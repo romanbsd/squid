@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpRequest.c,v 1.43 2007/11/15 04:43:54 adrian Exp $
+ * $Id: HttpRequest.c,v 1.44 2007/12/13 01:20:48 hno Exp $
  *
  * DEBUG: section 73    HTTP Request
  * AUTHOR: Duane Wessels
@@ -113,8 +113,8 @@ httpRequestPack(const request_t * req, Packer * p)
 {
     assert(req && p);
     /* pack request-line */
-    packerPrintf(p, "%s %s HTTP/1.0\r\n",
-	RequestMethods[req->method].str, strBuf(req->urlpath));
+    packerPrintf(p, "%s %s HTTP/%d.%d\r\n",
+	RequestMethods[req->method].str, strBuf(req->urlpath), req->http_ver.major, req->http_ver.minor);
     /* headers */
     httpHeaderPackInto(&req->header, p);
     /* trailer */

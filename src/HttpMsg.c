@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpMsg.c,v 1.16 2007/04/01 12:51:01 serassio Exp $
+ * $Id: HttpMsg.c,v 1.17 2007/12/13 01:20:48 hno Exp $
  *
  * DEBUG: section 74    HTTP Message
  * AUTHOR: Alex Rousskov
@@ -100,17 +100,13 @@ httpMsgIsPersistent(http_version_t http_ver, const HttpHeader * hdr)
 {
     if (httpHeaderHasConnDir(hdr, "close"))
 	return 0;
-#if WHEN_SQUID_IS_HTTP1_1
-    if ((http_ver.major >= 1) && (http_ver.minor >= 1)) {
+    if ((http_ver.major >= 1 && http_ver.minor >= 1) || http_ver.major > 1) {
 	/*
 	 * for modern versions of HTTP: persistent unless there is
 	 * a "Connection: close" header.
 	 */
 	return 1;
     } else {
-#else
-    {
-#endif
 	/*
 	 * Persistent connections in Netscape 3.x are allegedly broken,
 	 * return false if it is a browser connection.  If there is a

@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.478 2007/11/23 11:06:46 hno Exp $
+ * $Id: cache_cf.c,v 1.479 2007/12/13 01:20:48 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1820,6 +1820,8 @@ parse_peer(peer ** head)
 	    p->connection_auth = -1;
 	} else if (strncmp(token, "idle=", 5) == 0) {
 	    p->idle = xatoi(token + 5);
+	} else if (strcmp(token, "http11") == 0) {
+	    p->options.http11 = 1;
 	} else {
 	    debug(3, 0) ("parse_peer: token='%s'\n", token);
 	    self_destruct();
@@ -2813,6 +2815,8 @@ parse_http_port_option(http_port_list * s, char *token)
 	s->accel = 1;
     } else if (strcmp(token, "allow-direct") == 0) {
 	s->allow_direct = 1;
+    } else if (strcmp(token, "http11") == 0) {
+	s->http11 = 1;
     } else {
 	self_destruct();
     }
@@ -2898,6 +2902,8 @@ dump_generic_http_port(StoreEntry * e, const char *n, const http_port_list * s)
     if (s->tproxy)
 	storeAppendPrintf(e, " tproxy");
 #endif
+    if (s->http11)
+	storeAppendPrintf(e, " http11");
 }
 static void
 dump_http_port_list(StoreEntry * e, const char *n, const http_port_list * s)
