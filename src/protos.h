@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.546 2007/12/13 01:20:49 hno Exp $
+ * $Id: protos.h,v 1.547 2007/12/14 20:05:24 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1457,7 +1457,7 @@ extern int errorMapStart(const errormap * map, request_t * req, HttpReply * repl
 /* ETag support */
 void storeLocateVaryDone(VaryData * data);
 void storeLocateVary(StoreEntry * e, int offset, const char *vary_data, String accept_encoding, STLVCB * callback, void *cbdata);
-void storeAddVary(const char *url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
+vary_id_t storeAddVary(const char *url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
 
 /* New HTTP message parsing support */
 extern void HttpMsgBufInit(HttpMsgBuf * hmsg, const char *buf, size_t size);

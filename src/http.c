@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.438 2007/12/13 01:20:49 hno Exp $
+ * $Id: http.c,v 1.439 2007/12/14 20:05:24 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -229,7 +229,7 @@ httpCachableReply(HttpStateData * httpState)
     const char *v;
 #if HTTP_VIOLATIONS
     const refresh_t *R = NULL;
-    /* This strange looking define first looks up the frefresh pattern
+    /* This strange looking define first looks up the refresh pattern
      * and then checks if the specified flag is set. The main purpose
      * of this is to simplify the refresh pattern lookup
      */
