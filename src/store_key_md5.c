@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_key_md5.c,v 1.31 2007/11/16 11:38:46 adrian Exp $
+ * $Id: store_key_md5.c,v 1.32 2007/12/16 17:34:12 serassio Exp $
  *
  * DEBUG: section 20    Storage Manager MD5 Cache Keys
  * AUTHOR: Duane Wessels
@@ -132,6 +132,7 @@ storeKeyPublicByRequestMethod(request_t * request, const method_t method)
     static cache_key digest[MD5_DIGEST_CHARS];
     unsigned char m = (unsigned char) method;
     const char *url;
+    MD5_CTX M;
 
     if (request->store_url) {
 	url = request->store_url;
@@ -139,7 +140,6 @@ storeKeyPublicByRequestMethod(request_t * request, const method_t method)
 	url = urlCanonical(request);
     }
 
-    MD5_CTX M;
     MD5Init(&M);
     MD5Update(&M, &m, sizeof(m));
     MD5Update(&M, (unsigned char *) url, strlen(url));
