@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.98 2007/11/21 12:59:22 hno Exp $
+ * $Id: HttpHeader.c,v 1.99 2007/12/21 09:50:19 adrian Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -392,7 +392,8 @@ httpHeaderRepack(HttpHeader * hdr)
     pos = 0;
     while (dp < hdr->entries.count) {
 	for (; dp < hdr->entries.count && hdr->entries.items[dp] == NULL; dp++);
-	assert(dp < hdr->entries.count);
+	if (dp >= hdr->entries.count)
+	    break;
 	hdr->entries.items[pos] = hdr->entries.items[dp];
 	if (dp != pos)
 	    hdr->entries.items[dp] = NULL;
