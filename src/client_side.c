@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.755 2007/12/21 13:01:54 adrian Exp $
+ * $Id: client_side.c,v 1.756 2007/12/22 03:45:04 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4006,7 +4006,7 @@ clientTryParseRequest(ConnStateData * conn)
 	    request->body_reader_data = conn;
 	    cbdataLock(conn);
 	    /* Is it too large? */
-	    if (clientRequestBodyTooLarge(request->content_length) || request->method == METHOD_CONNECT) {
+	    if (clientRequestBodyTooLarge(request->content_length)) {
 		err = errorCon(ERR_TOO_BIG, HTTP_REQUEST_ENTITY_TOO_LARGE, request);
 		http->log_type = LOG_TCP_DENIED;
 		http->entry = clientCreateStoreEntry(http,
