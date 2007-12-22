@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_update.c,v 1.3 2007/12/21 13:01:55 adrian Exp $
+ * $Id: store_update.c,v 1.4 2007/12/22 00:48:23 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Henrik Nordstrom <henrik@henriknordstrom.net>
@@ -88,9 +88,9 @@ storeUpdateAbort(void *data)
 static void
 storeUpdateCopy(void *data, mem_node_ref nr, ssize_t size)
 {
-    const char *buf = nr.node->data + nr.offset;
-    assert(size <= nr.node->len - nr.offset);
+    const char *buf = NULL;
     StoreUpdateState *state = data;
+    assert(size <= nr.node->len - nr.offset);
 
     if (EBIT_TEST(state->newentry->flags, ENTRY_ABORTED)) {
 	debug(20, 1) ("storeUpdateCopy: Aborted at %d (%d)\n", (int) state->offset, (int) size);
@@ -108,6 +108,7 @@ storeUpdateCopy(void *data, mem_node_ref nr, ssize_t size)
 	goto finish;
     }
     if (size > 0) {
+	buf = nr.node->data + nr.offset;
 	storeAppend(state->newentry, buf, size);
 	if (EBIT_TEST(state->newentry->flags, ENTRY_ABORTED)) {
 	    debug(20, 1) ("storeUpdateCopy: Aborted on write at %d (%d)\n", (int) state->offset, (int) size);
