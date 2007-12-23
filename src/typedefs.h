@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.158 2007/12/21 13:01:55 adrian Exp $
+ * $Id: typedefs.h,v 1.159 2007/12/23 10:47:10 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
