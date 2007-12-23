@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.585 2007/12/21 13:01:55 adrian Exp $
+ * $Id: store.c,v 1.586 2007/12/23 13:38:27 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -692,7 +692,7 @@ storeAddVaryReadOld(void *data, mem_node_ref nr, ssize_t size)
 	p = e;
 	if (l == 0)
 	    break;
-	assert(p <= (buf + size));
+	assert(p <= (state->buf + size));
     }
     state->buf_offset = l;
     if (l && p != state->buf)
@@ -953,7 +953,7 @@ storeLocateVaryRead(void *data, mem_node_ref nr, ssize_t size)
 	if (l == 0)
 	    break;
 	assert(l > 0);
-	assert(p < (buf + size));
+	assert(p < (state->buf + size));
     }
     state->buf_offset = l;
     if (l)
