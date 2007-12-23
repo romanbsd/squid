@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.159 2007/12/23 10:47:10 adrian Exp $
+ * $Id: typedefs.h,v 1.160 2007/12/23 11:32:11 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -289,7 +289,6 @@ typedef void STRCB(void *their_data, const char *buf, ssize_t len);
 
 typedef void SIH(storeIOState *, void *);	/* swap in */
 typedef int QS(const void *, const void *);	/* qsort */
-typedef void STCB(void *, char *, ssize_t);	/* store callback */
 typedef void STNCB(void *, struct _mem_node_ref r, ssize_t);	/* new store callback */
 typedef void STHCB(void *, HttpReply *);	/* store callback */
 typedef void STABH(void *);

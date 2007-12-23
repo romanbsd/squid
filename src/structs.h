@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.539 2007/12/21 13:01:55 adrian Exp $
+ * $Id: structs.h,v 1.540 2007/12/23 11:32:11 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1663,8 +1663,6 @@ struct _store_client {
     squid_off_t seen_offset;
     size_t copy_size;
     mem_node_ref node_ref;
-    char *copy_buf;
-    STCB *callback;
     STNCB *new_callback;
     void *callback_data;
     StoreEntry *entry;		/* ptr to the parent StoreEntry, argh! */
