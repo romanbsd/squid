@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.403 2007/11/23 11:06:47 hno Exp $
+ * $Id: main.c,v 1.404 2007/12/25 16:39:23 serassio Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -569,6 +569,9 @@ mainInitialize(void)
     debug(1, 1) ("With %d CRT stdio descriptors available\n", _getmaxstdio());
     if (WIN32_Socks_initialized)
 	debug(1, 1) ("Windows sockets initialized\n");
+    if (WIN32_OS_version > _WIN_OS_WINNT) {
+	WIN32_IpAddrChangeMonitorInit();
+    }
 #endif
 
     comm_select_postinit();
