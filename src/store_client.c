@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.132 2007/12/23 11:53:10 adrian Exp $
+ * $Id: store_client.c,v 1.133 2007/12/25 19:34:23 serassio Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -364,10 +364,10 @@ storeClientFileRead(store_client * sc)
 static void
 storeClientReadBody(void *data, const char *buf_unused, ssize_t len)
 {
+    char *cbuf = NULL;
     store_client *sc = data;
     MemObject *mem = sc->entry->mem_obj;
     assert(sc->flags.disk_io_pending);
-    char *cbuf = NULL;
 
     sc->flags.disk_io_pending = 0;
     assert(sc->new_callback);
