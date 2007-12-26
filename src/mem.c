@@ -1,6 +1,6 @@
 
 /*
- * $Id: mem.c,v 1.77 2007/09/24 13:31:19 hno Exp $
+ * $Id: mem.c,v 1.78 2007/12/26 23:35:32 hno Exp $
  *
  * DEBUG: section 13    High Level Memory Pool Management
  * AUTHOR: Harvest Derived
@@ -359,7 +359,7 @@ memInit(void)
     memDataInit(MEM_STOREENTRY, "StoreEntry", sizeof(StoreEntry), 0);
     memDataInit(MEM_WORDLIST, "wordlist", sizeof(wordlist), 0);
     memDataInit(MEM_CLIENT_INFO, "ClientInfo", sizeof(ClientInfo), 0);
-    memDataInit(MEM_MD5_DIGEST, "MD5 digest", MD5_DIGEST_CHARS, 0);
+    memDataInit(MEM_MD5_DIGEST, "MD5 digest", SQUID_MD5_DIGEST_LENGTH, 0);
     memDataInit(MEM_HELPER_REQUEST, "helper_request",
 	sizeof(helper_request), 0);
     memDataInit(MEM_HELPER_STATEFUL_REQUEST, "helper_stateful_request",

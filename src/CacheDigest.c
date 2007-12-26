@@ -1,6 +1,6 @@
 
 /*
- * $Id: CacheDigest.c,v 1.36 2006/07/04 21:45:24 hno Exp $
+ * $Id: CacheDigest.c,v 1.37 2007/12/26 23:35:32 hno Exp $
  *
  * DEBUG: section 70    Cache Digest
  * AUTHOR: Alex Rousskov
@@ -70,7 +70,7 @@ CacheDigest *
 cacheDigestCreate(int capacity, int bpe)
 {
     CacheDigest *cd = memAllocate(MEM_CACHE_DIGEST);
-    assert(MD5_DIGEST_CHARS == 16);	/* our hash functions rely on 16 byte keys */
+    assert(SQUID_MD5_DIGEST_LENGTH == 16);	/* our hash functions rely on 16 byte keys */
     cacheDigestInit(cd, capacity, bpe);
     return cd;
 }

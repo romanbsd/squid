@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.586 2007/12/23 13:38:27 adrian Exp $
+ * $Id: store.c,v 1.587 2007/12/26 23:35:32 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -101,11 +101,11 @@ unsigned int
 url_checksum(const char *url)
 {
     unsigned int ck;
-    MD5_CTX M;
+    SQUID_MD5_CTX M;
     static unsigned char digest[16];
-    MD5Init(&M);
-    MD5Update(&M, (unsigned char *) url, strlen(url));
-    MD5Final(digest, &M);
+    SQUID_MD5Init(&M);
+    SQUID_MD5Update(&M, (unsigned char *) url, strlen(url));
+    SQUID_MD5Final(digest, &M);
     xmemcpy(&ck, digest, sizeof(ck));
     return ck;
 }
