@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.756 2007/12/22 03:45:04 hno Exp $
+ * $Id: client_side.c,v 1.757 2007/12/27 14:25:21 adrian Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3001,7 +3001,7 @@ clientCheckHeaderDone(clientHttpRequest * http)
 static void
 clientSendMoreData(void *data, mem_node_ref ref, ssize_t size)
 {
-    const char *buf = ref.node->data + ref.offset;
+    const char *buf = NULL;
     clientHttpRequest *http = data;
     StoreEntry *entry = http->entry;
     ConnStateData *conn = http->conn;
@@ -3037,6 +3037,8 @@ clientSendMoreData(void *data, mem_node_ref ref, ssize_t size)
 	stmemNodeUnref(&ref);
 	return;
     }
+    assert(ref.node->data);
+    buf = ref.node->data + ref.offset;
     if (!http->request->range && !http->request->flags.chunked_response) {
 	/* Avoid copying to MemBuf for non-range requests */
 	http->out.offset += size;
