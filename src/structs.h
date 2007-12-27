@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.541 2007/12/26 23:35:32 hno Exp $
+ * $Id: structs.h,v 1.542 2007/12/27 14:57:43 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -580,6 +580,7 @@ struct _SquidConfig {
     int appendDomainLen;
     char *debugOptions;
     char *pidFilename;
+    char *netdbFilename;
     char *mimeTablePathname;
     char *etcHostsPath;
     char *visibleHostname;
