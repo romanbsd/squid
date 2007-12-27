@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.431 2007/12/26 23:35:25 hno Exp $
+dnl  $Id: configure.in,v 1.432 2007/12/27 14:44:46 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.431 $)dnl
+AC_REVISION($Revision: 1.432 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -719,7 +719,7 @@ AC_ARG_WITH(system-md5,
 [
   case "$enableval" in
   no)
-	AC_DEFINE(USE_SQUID_MD5, 1, [Define this to force use of the internal MD5 implementation]);
+	AC_DEFINE(USE_SQUID_MD5, 1, [Define this to force use of the internal MD5 implementation])
 	;;
 ])
 
