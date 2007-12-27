@@ -1,6 +1,6 @@
 
 /*
- * $Id: stmem.c,v 1.74 2007/12/21 13:01:55 adrian Exp $
+ * $Id: stmem.c,v 1.75 2007/12/27 13:13:06 adrian Exp $
  *
  * DEBUG: section 19    Store Memory Primitives
  * AUTHOR: Harvest Derived
@@ -170,7 +170,9 @@ stmemRef(const mem_hdr * mem, squid_off_t offset, mem_node_ref * r)
 	assert(p->next);
 	p = p->next;
     }
-    r->node = (mem_node *) stmemNodeGet(p);
+    /* XXX this should really be a "reference" function! [ahc] */
+    r->node = p;
+    p->uses++;
 
     r->offset = offset - t_off;
     assert(r->offset >= 0);
