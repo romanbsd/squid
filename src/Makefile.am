@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.67 2007/12/27 14:57:43 hno Exp $
+#  $Id: Makefile.am,v 1.68 2007/12/27 15:36:30 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -345,7 +345,7 @@ DEFAULT_CACHE_LOG       = $(DEFAULT_LOG_PREFIX)/cache.log
 DEFAULT_ACCESS_LOG      = $(DEFAULT_LOG_PREFIX)/access.log
 DEFAULT_STORE_LOG       = $(DEFAULT_LOG_PREFIX)/store.log
 DEFAULT_PID_FILE        = $(DEFAULT_LOG_PREFIX)/squid.pid
-DEFAULT_NETDB_FILE      = $(DEFAULT_LOG_PREFIX)/squid.pid
+DEFAULT_NETDB_FILE      = $(DEFAULT_LOG_PREFIX)/netdb.state
 DEFAULT_SWAP_DIR        = $(localstatedir)/cache
 DEFAULT_PINGER		= $(libexecdir)/`echo pinger | sed '$(transform);s/$$/$(EXEEXT)/'`
 DEFAULT_UNLINKD		= $(libexecdir)/`echo unlinkd | sed '$(transform);s/$$/$(EXEEXT)/'`
