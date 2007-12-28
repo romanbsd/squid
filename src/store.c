@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.587 2007/12/26 23:35:32 hno Exp $
+ * $Id: store.c,v 1.588 2007/12/28 04:02:13 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -878,7 +878,6 @@ storeLocateVaryRead(void *data, mem_node_ref nr, ssize_t size)
     char *e;
     char *p = state->buf;
     size_t l = size + state->buf_offset;
-    const char *buf = nr.node->data;
     debug(11, 3) ("storeLocateVaryRead: %s %p seen_offset=%" PRINTF_OFF_T " buf_offset=%d size=%d\n", state->vary_data, data, state->seen_offset, (int) state->buf_offset, (int) size);
     if (size <= 0) {
 	storeLocateVaryCallback(state);
@@ -888,7 +887,8 @@ storeLocateVaryRead(void *data, mem_node_ref nr, ssize_t size)
     /* size should never exceed what we asked for; just make sure first */
     assert(size + state->buf_offset <= state->buf_size);
     /* Copy in the data before we do anything else */
-    memcpy(state->buf + state->buf_offset, nr.node->data + nr.offset, size);
+    if (size > 0)
+	memcpy(state->buf + state->buf_offset, nr.node->data + nr.offset, size);
 
     state->seen_offset = state->seen_offset + size;
     while ((e = memchr(p, '\n', l)) != NULL) {
@@ -979,7 +979,6 @@ storeLocateVaryRead(void *data, mem_node_ref nr, ssize_t size)
 	state);
   finish:
     stmemNodeUnref(&nr);
-    buf = 0;
 }
 
 void
