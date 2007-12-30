@@ -1,6 +1,6 @@
 
 /*
- * $Id: net_db.c,v 1.178 2007/12/27 14:57:43 hno Exp $
+ * $Id: net_db.c,v 1.179 2007/12/30 02:03:02 hno Exp $
  *
  * DEBUG: section 38    Network Measurement Database
  * AUTHOR: Duane Wessels
@@ -387,7 +387,7 @@ netdbSaveState(void *foo)
     unlink(Config.netdbFilename);
     lf = logfileOpen(Config.netdbFilename, 4096, 0);
     if (NULL == lf) {
-	debug(50, 1) ("netdbSaveState: %s: %s\n", path, xstrerror());
+	debug(50, 1) ("netdbSaveState: %s: %s\n", Config.netdbFilename, xstrerror());
 	return;
     }
     hash_first(addr_table);
