@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.260 2007/09/23 14:24:59 adrian Exp $
+ * $Id: tools.c,v 1.261 2007/12/30 02:18:36 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -996,7 +996,7 @@ kb_incr(kb_t * k, squid_off_t v)
 	 * 2 until it becomes positive again.
 	 */
 	kb_t x;
-	x.kb = 1 << 31;
+	x.kb = 1L << 31;
 	while (x.kb && ((k->kb + x.kb) < 0)) {
 	    x.kb <<= 1;
 	}
@@ -1315,7 +1315,7 @@ getMyPort(void)
 void
 setUmask(mode_t mask)
 {
-    static mode_t orig_umask = ~0;
+    static mode_t orig_umask = (mode_t) ~ 0;
     if (orig_umask == (mode_t) ~ 0) {
 	/* Unfortunately, there is no way to get the current
 	 * umask value without setting it.
