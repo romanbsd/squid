@@ -1,10 +1,10 @@
 /*
- * $Id: md5-test.c,v 1.4 2008/01/02 13:42:00 hno Exp $
+ * $Id: md5-test.c,v 1.5 2008/01/02 20:24:47 hno Exp $
  */
 
 /*
  * COMPILE WITH:
- *      gcc -Wall squid_md5-test.c -I../include squid_md5.o
+ *      gcc -Wall md5-test.c -I../include md5.o
  */
 
 #include "config.h"
