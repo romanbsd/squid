@@ -1,14 +1,14 @@
 /*
- * $Id: md5-test.c,v 1.3 2007/12/26 23:35:31 hno Exp $
+ * $Id: md5-test.c,v 1.4 2008/01/02 13:42:00 hno Exp $
  */
 
 /*
  * COMPILE WITH:
- *      gcc -Wall md5-test.c -I../include md5.o
+ *      gcc -Wall squid_md5-test.c -I../include squid_md5.o
  */
 
 #include "config.h"
-#include "md5.h"
+#include "squid_md5.h"
 #include "stdio.h"
 
 static void MDPrint(unsigned char digest[16]);
