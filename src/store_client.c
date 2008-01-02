@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.127 2007/12/14 20:05:24 hno Exp $
+ * $Id: store_client.c,v 1.127.2.1 2008/01/02 15:49:31 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -410,9 +410,9 @@ storeClientReadHeader(void *data, const char *buf, ssize_t len)
     for (t = tlv_list; t && swap_object_ok; t = t->next) {
 	switch (t->type) {
 	case STORE_META_KEY:
-	    assert(t->length == MD5_DIGEST_CHARS);
+	    assert(t->length == SQUID_MD5_DIGEST_LENGTH);
 	    if (!EBIT_TEST(e->flags, KEY_PRIVATE) &&
-		memcmp(t->value, e->hash.key, MD5_DIGEST_CHARS)) {
+		memcmp(t->value, e->hash.key, SQUID_MD5_DIGEST_LENGTH)) {
 		debug(20, 2) ("storeClientReadHeader: swapin MD5 mismatch\n");
 		debug(20, 2) ("\t%s\n", storeKeyText(t->value));
 		debug(20, 2) ("\t%s\n", storeKeyText(e->hash.key));

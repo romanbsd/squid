@@ -1,6 +1,6 @@
 
 /*
- * $Id: squid.h,v 1.244 2006/09/08 19:41:24 serassio Exp $
+ * $Id: squid.h,v 1.244.6.1 2008/01/02 15:49:31 hno Exp $
  *
  * AUTHOR: Duane Wessels
  *
@@ -390,7 +390,7 @@ struct rusage {
 #include <regex.h>
 #endif
 
-#include "md5.h"
+#include "squid_md5.h"
 
 #if USE_SSL
 #include "ssl_support.h"

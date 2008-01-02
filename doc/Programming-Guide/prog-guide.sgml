@@ -2,7 +2,7 @@
 <article>
 <title>Squid Programmers Guide</title>
 <author>Squid Developers</author>
-<date>$Id: prog-guide.sgml,v 1.55 2006/05/20 13:05:58 hno Exp $</date>
+<date>$Id: prog-guide.sgml,v 1.55.6.1 2008/01/02 15:49:25 hno Exp $</date>
 
 <abstract>
 Squid is a WWW Cache application developed by the National Laboratory
@@ -2853,7 +2853,7 @@ struct _storeSwapLogData {
     size_t swap_file_sz;
     u_short refcount;
     u_short flags;
-    unsigned char key[MD5_DIGEST_CHARS];
+    unsigned char key[SQUID_MD5_DIGEST_LENGTH];
 };
 </verb>
 

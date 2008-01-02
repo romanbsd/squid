@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.538 2007/12/14 20:05:24 hno Exp $
+ * $Id: structs.h,v 1.538.2.1 2008/01/02 15:49:31 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2192,7 +2192,7 @@ struct _storeSwapLogData {
     squid_file_sz swap_file_sz;
     u_short refcount;
     u_short flags;
-    unsigned char key[MD5_DIGEST_CHARS];
+    unsigned char key[SQUID_MD5_DIGEST_LENGTH];
 };
 
 struct _storeSwapLogHeader {
@@ -2212,7 +2212,7 @@ struct _storeSwapLogDataOld {
     size_t swap_file_sz;
     u_short refcount;
     u_short flags;
-    unsigned char key[MD5_DIGEST_CHARS];
+    unsigned char key[SQUID_MD5_DIGEST_LENGTH];
 };
 
 #endif

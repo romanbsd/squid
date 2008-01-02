@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.55 2007/01/21 12:54:00 adrian Exp $
+ * $Id: htcp.c,v 1.55.2.1 2008/01/02 15:49:31 hno Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -178,7 +178,7 @@ static int htcpInSocket = -1;
 static int htcpOutSocket = -1;
 #define N_QUERIED_KEYS 8192
 static u_num32 queried_id[N_QUERIED_KEYS];
-static cache_key queried_keys[N_QUERIED_KEYS][MD5_DIGEST_CHARS];
+static cache_key queried_keys[N_QUERIED_KEYS][SQUID_MD5_DIGEST_LENGTH];
 static struct sockaddr_in queried_addr[N_QUERIED_KEYS];
 static MemPool *htcpSpecifierPool = NULL;
 static MemPool *htcpDetailPool = NULL;
