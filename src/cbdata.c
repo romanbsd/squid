@@ -1,6 +1,6 @@
 
 /*
- * $Id: cbdata.c,v 1.46 2006/05/12 22:04:59 hno Exp $
+ * $Id: cbdata.c,v 1.46.2.1 2008/01/02 17:06:50 hno Exp $
  *
  * DEBUG: section 45    Callback Data Registry
  * ORIGINAL AUTHOR: Duane Wessels
@@ -122,7 +122,7 @@ cbdata_hash(const void *p, unsigned int mod)
 }
 
 #else
-#define OFFSET_OF(type, member) ((int)(char *)&((type *)0L)->member)
+#define OFFSET_OF(type, member) ((size_t)(char *)&((type *)0L)->member)
 #endif
 
 void
