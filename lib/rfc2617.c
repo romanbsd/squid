@@ -13,7 +13,7 @@
 
 
 /*
- * $Id: rfc2617.c,v 1.8.6.2 2008/01/02 15:54:26 hno Exp $
+ * $Id: rfc2617.c,v 1.8.6.3 2008/01/02 20:28:48 hno Exp $
  *
  * DEBUG:
  * AUTHOR: RFC 2617 & Robert Collins
@@ -124,7 +124,7 @@ DigestCalcHA1(
 	SQUID_MD5Update(&Md5Ctx, pszPassword, strlen(pszPassword));
 	SQUID_MD5Final((unsigned char *)HA1, &Md5Ctx);
     }
-    if (strcasecmp(pszAlg, "squid_md5-sess") == 0) {
+    if (strcasecmp(pszAlg, "md5-sess") == 0) {
 	SQUID_MD5Init(&Md5Ctx);
 	SQUID_MD5Update(&Md5Ctx, HA1, HASHLEN);
 	SQUID_MD5Update(&Md5Ctx, ":", 1);
