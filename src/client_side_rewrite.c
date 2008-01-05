@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side_rewrite.c,v 1.2 2007/11/15 05:37:18 adrian Exp $
+ * $Id: client_side_rewrite.c,v 1.3 2008/01/05 07:31:59 adrian Exp $
  *
  * DEBUG: section 33    Client-side Routines - URL Rewriter
  * AUTHOR: Duane Wessels; Adrian Chadd
@@ -146,9 +146,6 @@ clientRedirectDone(void *data, char *result)
     safe_free(http->request->urlgroup);		/* only paranoia. should not happen */
     if (urlgroup && *urlgroup)
 	http->request->urlgroup = xstrdup(urlgroup);
-    clientInterpretRequestHeaders(http);
-    /* XXX This really should become a ref-counted string type pointer, not a copy! */
-    fd_note(http->conn->fd, http->uri);
 
     clientStoreURLRewriteStart(http);
 }
