@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.547.2.1 2008/01/03 02:30:06 hno Exp $
+ * $Id: protos.h,v 1.547.2.2 2008/01/05 07:33:18 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1475,6 +1475,8 @@ extern const char *xinet_ntoa(const struct in_addr addr);
 extern aclCheck_t *clientAclChecklistCreate(const acl_access * acl, const clientHttpRequest * http);
 extern void clientInterpretRequestHeaders(clientHttpRequest * http);
 extern void clientAccessCheck2(void *data);
+extern void clientFinishRewriteStuff(clientHttpRequest * http);
+
 
 /* client_side_redirect.c */
 extern void clientRedirectAccessCheckDone(int answer, void *data);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side_storeurl_rewrite.c,v 1.3 2007/11/16 11:38:46 adrian Exp $
+ * $Id: client_side_storeurl_rewrite.c,v 1.3.2.1 2008/01/05 07:33:18 adrian Exp $
  *
  * DEBUG: section 85    Client-side Routines - Store URL Rewriter
  * AUTHOR: Duane Wessels; Adrian Chadd
@@ -83,10 +83,6 @@ clientStoreURLRewriteDone(void *data, char *result)
 	/* XXX is this actually the right spot to do this? How about revalidation? */
 	//storeEntrySetStoreUrl(http->entry, result);
     }
-    /* This is the final part of the rewrite chain - this should be broken out! */
-    clientInterpretRequestHeaders(http);
-#if HEADERS_LOG
-    headersLog(0, 1, request->method, request);
-#endif
-    clientAccessCheck2(http);
+    /* Since we're the last module in the chain .. */
+    clientFinishRewriteStuff(http);
 }
