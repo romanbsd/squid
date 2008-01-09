@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.482 2008/01/09 02:11:16 amosjeffries Exp $
+ * $Id: cache_cf.c,v 1.483 2008/01/09 13:49:07 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -324,7 +324,7 @@ update_maxobjsize(void)
     store_maxobjsize = ms;
 }
 
-int
+static int
 parseOneConfigFile(const char *file_name, int depth)
 {
     FILE *fp = NULL;
