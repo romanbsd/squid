@@ -1,5 +1,5 @@
 /*
- * $Id: Array.c,v 1.9 2007/11/19 12:11:50 adrian Exp $
+ * $Id: Array.c,v 1.10 2008/01/09 13:01:01 adrian Exp $
  *
  * AUTHOR: Alex Rousskov
  *
@@ -142,7 +142,7 @@ arrayGrow(Array * a, int min_capacity)
 void
 arrayShrink(Array *a, int new_count)
 {
-	assert(new_count < a->capacity);
+	assert(new_count <= a->capacity);
 	assert(new_count >= 0);
 	a->count = new_count;
 }
