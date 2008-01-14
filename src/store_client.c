@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.134 2007/12/26 23:35:32 hno Exp $
+ * $Id: store_client.c,v 1.135 2008/01/14 03:26:02 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -443,8 +443,10 @@ storeClientReadHeader(void *data, const char *buf_unused, ssize_t len)
 	    break;
 	case STORE_META_URL:
 	    new_url = xstrdup(t->value);
+	    break;
 	case STORE_META_STOREURL:
 	    new_store_url = xstrdup(t->value);
+	    break;
 	case STORE_META_OBJSIZE:
 	    break;
 	case STORE_META_STD:
