@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.542 2007/12/27 14:57:43 hno Exp $
+ * $Id: structs.h,v 1.543 2008/01/15 21:01:53 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -576,6 +576,7 @@ struct _SquidConfig {
     time_t authenticateGCInterval;
     time_t authenticateTTL;
     time_t authenticateIpTTL;
+    time_t authenticateIpShortcircuitTTL;
     char *appendDomain;
     int appendDomainLen;
     char *debugOptions;
