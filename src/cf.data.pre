@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.450.2.2 2008/01/20 07:31:19 adrian Exp $
+# $Id: cf.data.pre,v 1.450.2.3 2008/01/22 14:34:31 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -1217,11 +1217,11 @@ DOC_START
 	source address 10.1.0.2 and the rest will be forwarded with
 	source address 10.1.0.3.
 
-	acl normal_service_net src 10.0.0.0/255.255.255.0
-	acl good_service_net src 10.0.1.0/255.255.255.0
-	tcp_outgoing_address 10.0.0.1 normal_service_net
-	tcp_outgoing_address 10.0.0.2 good_service_net
-	tcp_outgoing_address 10.0.0.3
+	acl normal_service_net src 10.0.0.0/24
+	acl good_service_net src 10.0.1.0/24 10.0.2.0/24
+	tcp_outgoing_address 10.1.0.1 normal_service_net
+	tcp_outgoing_address 10.1.0.2 good_service_net
+	tcp_outgoing_address 10.1.0.3
 
 	Processing proceeds in the order specified, and stops at first fully
 	matching line.
