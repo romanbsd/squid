@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.480 2007/12/13 01:25:34 hno Exp $
+ * $Id: cache_cf.c,v 1.480.2.1 2008/01/22 14:36:46 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2758,6 +2758,7 @@ parse_http_port_specification(http_port_list * s, char *token)
     const struct hostent *hp;
     unsigned short port = 0;
     char *t;
+    s->name = xstrdup(token);
     if ((t = strchr(token, ':'))) {
 	/* host:port */
 	host = token;
