@@ -1,6 +1,6 @@
 
 /*
- * $Id: pconn.c,v 1.36 2007/09/03 04:41:23 hno Exp $
+ * $Id: pconn.c,v 1.36.2.1 2008/01/22 14:37:17 hno Exp $
  *
  * DEBUG: section 48    Persistent Connections
  * AUTHOR: Duane Wessels
@@ -245,11 +245,11 @@ pconnPop(const char *host, u_short port, const char *domain, struct in_addr *cli
 	p = (struct _pconn *) hptr;
 	assert(p->nfds > 0);
 	fd = p->fds[p->nfds - 1];
+	if (idle)
+	    *idle = p->nfds - 1;
 	pconnRemoveFD(p, fd);
 	commSetSelect(fd, COMM_SELECT_READ, NULL, NULL, 0);
 	commSetTimeout(fd, -1, NULL, NULL);
-	if (idle)
-	    *idle = p->nfds;
     }
     return fd;
 }
