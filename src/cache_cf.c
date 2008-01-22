@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.485 2008/01/22 15:05:29 adrian Exp $
+ * $Id: cache_cf.c,v 1.486 2008/01/22 15:15:17 adrian Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -331,10 +331,10 @@ parseManyConfigFiles(char *files, int depth)
 {
     int error_count = 0;
     char *saveptr = NULL;
-    char *file = strtok_r(files, w_space, &saveptr);
+    char *file = strwordtok(files, &saveptr);
     while (file != NULL) {
 	error_count += parseOneConfigFile(file, depth);
-	file = strtok_r(NULL, w_space, &saveptr);
+	file = strwordtok(NULL, &saveptr);
     }
     return error_count;
 }
@@ -350,7 +350,6 @@ parseOneConfigFile(const char *file_name, int depth)
     int tmp_line_len = 0;
     size_t config_input_line_len;
     int err_count = 0;
-    int i;
 
     debug(3, 1) ("Including Configuration File: %s (depth %d)\n", file_name, depth);
     if (depth > 16) {
