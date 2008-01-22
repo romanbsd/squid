@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_update.c,v 1.2 2007/11/23 06:59:26 hno Exp $
+ * $Id: store_update.c,v 1.2.2.1 2008/01/22 14:35:10 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Henrik Nordstrom <henrik@henriknordstrom.net>
@@ -164,7 +164,7 @@ storeUpdate(StoreEntry * entry, request_t * request)
 	if (vary) {
 	    state->newentry->mem_obj->vary_headers = xstrdup(vary);
 	    if (strBuf(request->vary_encoding))
-		entry->mem_obj->vary_encoding = xstrdup(strBuf(request->vary_encoding));
+		state->newentry->mem_obj->vary_encoding = xstrdup(strBuf(request->vary_encoding));
 	}
     } else {
 	if (entry->mem_obj->vary_headers)
