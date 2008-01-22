@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.261 2007/12/30 02:18:36 hno Exp $
+ * $Id: tools.c,v 1.262 2008/01/22 15:20:38 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -547,10 +547,11 @@ getMyHostname(void)
 	    return host;
     }
     if (opt_send_signal == -1)
-	fatal("Could not determine fully qualified hostname.  Please set 'visible_hostname'\n");
+	debug(50, 1) ("Could not determine fully qualified hostname.  Please set 'visible_hostname'\n");
+    if (host[0])
+	return host;
     else
-	return ("localhost");
-    return NULL;		/* keep compiler happy */
+	return "localhost";
 }
 
 const char *
