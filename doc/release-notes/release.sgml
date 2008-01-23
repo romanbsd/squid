@@ -1,17 +1,17 @@
 <!doctype linuxdoc system>
 <article>
-<title>Squid 2.8.DEVEL0 release notes</title>
+<title>Squid 2.7.STABLE1 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release.sgml,v 1.1 2008/01/23 11:59:17 hno Exp $</date>
+<date>$Id: release.sgml,v 1.1.2.1 2008/01/23 12:08:33 hno Exp $</date>
 
 <abstract>
-This document contains the release notes for version 2.8 of Squid.
+This document contains the release notes for version 2.7 of Squid.
 Squid is a WWW Cache application developed by the Web Caching community.
 </abstract>
 
 <toc>
 
-<sect>Key changes from squid 2.7
+<sect>Key changes from squid 2.6
 <p>
 <itemize>
 <item>TO BE WRITTEN
