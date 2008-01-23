@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_monitor.c,v 1.3.2.1 2007/09/05 21:27:59 hno Exp $
+ * $Id: peer_monitor.c,v 1.3.2.2 2008/01/23 10:26:18 hno Exp $
  *
  * DEBUG: section ??    Peer monitoring
  * AUTHOR: Henrik Nordstrom
@@ -74,7 +74,7 @@ peerMonitorFetchReply(void *data, char *buf, ssize_t size)
 {
     PeerMonitor *pm = data;
 
-    if (size == 0 || !cbdataValid(pm->peer)) {
+    if (size <= 0 || !cbdataValid(pm->peer)) {
 	peerMonitorCompleted(pm);
     } else {
 	pm->running.size += size;
