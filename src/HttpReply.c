@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpReply.c,v 1.65 2007/12/13 01:20:48 hno Exp $
+ * $Id: HttpReply.c,v 1.65.2.1 2008/01/23 15:31:51 hno Exp $
  *
  * DEBUG: section 58    HTTP Reply (Response)
  * AUTHOR: Alex Rousskov
@@ -172,6 +172,10 @@ httpReplySwapOut(HttpReply * rep, StoreEntry * e)
     Packer p;
     assert(rep && e);
 
+    /* storeBuffer should have been done by the caller, but do it here just in case as things
+     * break badly if not
+     */
+    storeBuffer(e);
     if (rep != e->mem_obj->reply) {
 	httpReplyAbsorb(e->mem_obj->reply, rep);
 	rep = e->mem_obj->reply;
