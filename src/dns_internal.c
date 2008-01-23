@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.63 2007/06/23 21:06:58 hno Exp $
+ * $Id: dns_internal.c,v 1.63.2.1 2008/01/23 11:00:46 hno Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -742,8 +742,7 @@ idnsRetryTcp(idns_query * q)
 	inet_ntoa(nameservers[ns].S.sin_addr),
 	ntohs(nameservers[ns].S.sin_port),
 	idnsSendTcpQuery,
-	q,
-	NULL
+	q
 	);
 }
 

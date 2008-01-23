@@ -1,6 +1,6 @@
 
 /*
- * $Id: ident.c,v 1.64 2007/03/19 01:21:18 swilton Exp $
+ * $Id: ident.c,v 1.64.2.1 2008/01/23 11:00:46 hno Exp $
  *
  * DEBUG: section 30    Ident (RFC 931)
  * AUTHOR: Duane Wessels
@@ -232,8 +232,7 @@ identStart(struct sockaddr_in *me, struct sockaddr_in *my_peer, IDCB * callback,
 	inet_ntoa(state->my_peer.sin_addr),
 	IDENT_PORT,
 	identConnectDone,
-	state,
-	NULL);
+	state);
 }
 
 void

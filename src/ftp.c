@@ -1,6 +1,6 @@
 
 /*
- * $Id: ftp.c,v 1.348 2007/08/13 02:39:27 hno Exp $
+ * $Id: ftp.c,v 1.348.2.1 2008/01/23 11:00:46 hno Exp $
  *
  * DEBUG: section 9     File Transfer Protocol (FTP)
  * AUTHOR: Harvest Derived
@@ -1849,7 +1849,7 @@ ftpReadPasv(FtpStateData * ftpState)
     safe_free(ftpState->ctrl.last_reply);
     ftpState->ctrl.last_command = xstrdup("Connect to server data port");
     debug(9, 5) ("ftpReadPasv: connecting to %s, port %d\n", ftpState->data.host, ftpState->data.port);
-    commConnectStart(fd, ipaddr, port, ftpPasvCallback, ftpState, NULL);
+    commConnectStart(fd, ipaddr, port, ftpPasvCallback, ftpState);
 }
 
 static void

@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.754.2.2 2008/01/05 07:33:18 adrian Exp $
+ * $Id: client_side.c,v 1.754.2.3 2008/01/23 11:00:46 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3737,7 +3737,7 @@ parseHttpRequest(ConnStateData * conn, HttpMsgBuf * hmsg, method_t * method_p, i
 	    }
 #endif
 	}
-	if (conn->port->transparent && clientNatLookup(conn) == 0)
+	if (!host && !conn->transparent && clientNatLookup(conn) == 0)
 	    conn->transparent = 1;
 	if (!host && conn->transparent) {
 	    port = ntohs(conn->me.sin_port);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.319 2007/08/28 23:51:01 hno Exp $
+ * $Id: neighbors.c,v 1.319.2.1 2008/01/23 11:00:46 hno Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -1119,8 +1119,7 @@ peerProbeConnect(peer * p)
 	p->host,
 	p->http_port,
 	peerProbeConnectDone,
-	p,
-	NULL);
+	p);
     return ret;
 }
 
