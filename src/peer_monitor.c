@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_monitor.c,v 1.6 2007/12/21 13:01:54 adrian Exp $
+ * $Id: peer_monitor.c,v 1.7 2008/01/23 10:21:39 hno Exp $
  *
  * DEBUG: section ??    Peer monitoring
  * AUTHOR: Henrik Nordstrom
@@ -80,7 +80,7 @@ peerMonitorFetchReply(void *data, mem_node_ref nr, ssize_t size)
 	pm->running.offset += size;
 	storeClientRef(pm->running.sc, pm->running.e, pm->running.offset, pm->running.offset, SM_PAGE_SIZE, peerMonitorFetchReply, pm);
     }
-    stmemNodeFree(&nr);
+    stmemNodeUnref(&nr);
 }
 
 static void
