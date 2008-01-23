@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.457 2008/01/23 10:09:33 hno Exp $
+# $Id: cf.data.pre,v 1.458 2008/01/23 10:31:48 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -49,8 +49,7 @@ COMMENT_END
 
 COMMENT_START
   Configuration options can be included using the "include" directive.
-  Include takes one parameter, an unquoted pathname to a configuration
-  file including the full path.
+  Include takes a list of files to include. Quoting is supported.
 
   For example,
 
