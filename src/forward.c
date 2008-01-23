@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.131.2.1 2008/01/23 11:00:46 hno Exp $
+ * $Id: forward.c,v 1.131.2.2 2008/01/23 11:39:16 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -461,7 +461,7 @@ openIdleConn(peer * peer, const char *domain, struct in_addr outgoing, unsigned 
 	ctimeout,
 	fwdConnectIdleTimeout,
 	idle);
-    commConnectStart(fd, peer->host, peer->http_port, fwdConnectIdleDone, idle, NULL);
+    commConnectStart(fd, peer->host, peer->http_port, fwdConnectIdleDone, idle);
 }
 
 static struct in_addr
