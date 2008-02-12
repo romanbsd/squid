@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.131 2007/09/05 20:03:08 hno Exp $
+ * $Id: forward.c,v 1.132 2008/02/12 13:11:46 swilton Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -712,7 +712,7 @@ fwdConnectStart(void *data)
      * peer, then don't cache, and use the IP that the client's DNS lookup
      * returned
      */
-    if (fwdState->request->flags.transparent && fwdState->n_tries && (NULL == fs->peer)) {
+    if (fwdState->request->flags.transparent && (fwdState->n_tries > 1) && (NULL == fs->peer)) {
 	storeRelease(fwdState->entry);
 	commConnectStart(fd, host, port, fwdConnectDone, fwdState, &fwdState->request->my_addr);
     } else {
