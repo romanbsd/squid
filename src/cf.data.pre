@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.460 2008/02/08 11:21:10 hno Exp $
+# $Id: cf.data.pre,v 1.461 2008/02/22 21:16:12 wessels Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -1224,7 +1224,7 @@ DOC_START
 	tcp_outgoing_tos ds-field [!]aclname ...
 
 	Example where normal_service_net uses the TOS value 0x00
-	and normal_service_net uses 0x20
+	and good_service_net uses 0x20
 
 	acl normal_service_net src 10.0.0.0/255.255.255.0
 	acl good_service_net src 10.0.1.0/255.255.255.0
