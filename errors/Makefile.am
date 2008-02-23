@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 #
-# $Id: Makefile.am,v 1.12.2.1 2007/08/22 00:20:52 hno Exp $
+# $Id: Makefile.am,v 1.12.2.2 2008/02/23 02:42:22 hno Exp $
 #
 
 errordir = $(datadir)/errors
@@ -42,7 +42,10 @@ LANGUAGES	= \
 		Spanish \
 		Swedish \
 		Traditional_Chinese \
-		Turkish
+		Turkish \
+		Ukrainian-1251 \
+		Ukrainian-koi8-u \
+		Ukrainian-utf8
 
 install-data-local:
 	@for l in $(INSTALL_LANGUAGES); do \
