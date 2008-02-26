@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.160 2007/12/23 11:32:11 adrian Exp $
+ * $Id: typedefs.h,v 1.161 2008/02/26 04:03:42 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -230,6 +230,8 @@ typedef struct _Logfile Logfile;
 typedef struct _logformat_token logformat_token;
 typedef struct _logformat logformat;
 typedef struct _customlog customlog;
+typedef struct _rewrite rewrite;
+typedef struct _rewritetoken rewritetoken;
 typedef struct _RemovalPolicy RemovalPolicy;
 typedef struct _RemovalPolicyWalker RemovalPolicyWalker;
 typedef struct _RemovalPurgeWalker RemovalPurgeWalker;
