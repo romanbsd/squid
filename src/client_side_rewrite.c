@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side_rewrite.c,v 1.4 2008/02/26 04:03:41 adrian Exp $
+ * $Id: client_side_rewrite.c,v 1.5 2008/03/04 01:16:20 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines - URL Rewriter
  * AUTHOR: Duane Wessels; Adrian Chadd
@@ -37,8 +37,9 @@
 
 
 /* Local functions */
+static void clientRedirectDone(void *data, char *result);
 
-void
+static void
 clientInternalRedirectAccessCheckDone(int answer, void *data)
 {
     clientHttpRequest *http = data;
@@ -56,7 +57,7 @@ clientInternalRedirectAccessCheckDone(int answer, void *data)
 	xfree(rurl);
 }
 
-void
+static void
 clientRedirectAccessCheckDone(int answer, void *data)
 {
     clientHttpRequest *http = data;
@@ -89,7 +90,7 @@ clientRedirectStart(clientHttpRequest * http)
     }
 }
 
-void
+static void
 clientRedirectDone(void *data, char *result)
 {
     clientHttpRequest *http = data;
