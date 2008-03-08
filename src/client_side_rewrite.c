@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side_rewrite.c,v 1.5 2008/03/04 01:16:20 hno Exp $
+ * $Id: client_side_rewrite.c,v 1.6 2008/03/08 22:58:09 serassio Exp $
  *
  * DEBUG: section 33    Client-side Routines - URL Rewriter
  * AUTHOR: Duane Wessels; Adrian Chadd
@@ -44,11 +44,11 @@ clientInternalRedirectAccessCheckDone(int answer, void *data)
 {
     clientHttpRequest *http = data;
     rewrite *rew = NULL;
+    char *rurl = NULL;
     if (answer == ACCESS_ALLOWED)
 	for (rew = Config.rewrites; rew != NULL; rew = rew->next)
 	    if (aclMatchAclList(rew->aclList, http->acl_checklist))
 		break;
-    char *rurl = NULL;
     if (rew)
 	rurl = internalRedirectProcessURL(http, rew->tokens);
     clientRedirectDone(http, rurl);
