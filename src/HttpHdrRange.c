@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHdrRange.c,v 1.28 2006/04/28 10:17:18 hno Exp $
+ * $Id: HttpHdrRange.c,v 1.28.2.1 2008/03/17 23:34:41 hno Exp $
  *
  * DEBUG: section 64    HTTP Range Header
  * AUTHOR: Alex Rousskov
@@ -482,8 +482,11 @@ httpHdrRangeOffsetLimit(HttpHdrRange * range)
     if (NULL == range)
 	/* not a range request */
 	return 0;
-    if (-1 == Config.rangeOffsetLimit)
+    if (!Config.rangeOffsetLimit)
 	/* disabled */
+	return 1;
+    if (-1 == Config.rangeOffsetLimit)
+	/* forced */
 	return 0;
     if (Config.rangeOffsetLimit >= httpHdrRangeFirstOffset(range))
 	/* below the limit */
