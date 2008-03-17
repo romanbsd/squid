@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.450.2.8 2008/02/23 01:21:27 hno Exp $
+# $Id: cf.data.pre,v 1.450.2.9 2008/03/17 23:23:54 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -3179,7 +3179,8 @@ TYPE: onoff
 DEFAULT: on
 LOC: Config.onoff.cache_vary
 DOC_START
-	Set to off to disable caching of Vary:in objects.
+	When 'cache_vary' is set to off, response that have a
+	Vary header will not be stored in the cache.
 DOC_END
 
 NAME: broken_vary_encoding
