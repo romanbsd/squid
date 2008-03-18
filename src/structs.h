@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.538.2.4 2008/01/23 11:00:47 hno Exp $
+ * $Id: structs.h,v 1.538.2.5 2008/03/18 02:49:30 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -830,6 +830,7 @@ struct _SquidConfig {
     int umask;
     int max_filedescriptors;
     char *accept_filter;
+    int incoming_rate;
 };
 
 struct _SquidConfig2 {

@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.450.2.9 2008/03/17 23:23:54 hno Exp $
+# $Id: cf.data.pre,v 1.450.2.10 2008/03/18 02:49:30 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -1271,6 +1271,17 @@ DOC_START
 	incompatible with the use of server side persistent connections. To
 	ensure correct results it is best to set server_persistent_connections
 	to off when using this directive in such configurations.
+DOC_END
+
+NAME: incoming_rate
+TYPE: int
+DEFAULT: 30
+LOC: Config.incoming_rate
+DOC_START
+	This directive controls how aggressive Squid should accept new
+	connections compared to processing existing connections. 
+	The lower number the more frequent Squid will look for new
+	incoming requests.
 DOC_END
 
 COMMENT_START
