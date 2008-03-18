@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.547 2008/03/18 02:36:05 hno Exp $
+ * $Id: structs.h,v 1.548 2008/03/18 03:10:13 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -772,14 +772,6 @@ struct _SquidConfig {
 #if DELAY_POOLS
     delayConfig Delay;
 #endif
-    struct {
-	int icp_average;
-	int dns_average;
-	int http_average;
-	int icp_min_poll;
-	int dns_min_poll;
-	int http_min_poll;
-    } comm_incoming;
     int max_open_disk_fds;
     int uri_whitespace;
     squid_off_t rangeOffsetLimit;
