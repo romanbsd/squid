@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.759 2008/02/08 02:00:30 hno Exp $
+ * $Id: client_side.c,v 1.760 2008/03/18 02:08:15 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2417,7 +2417,7 @@ clientCacheHit(void *data, HttpReply * rep)
 	debug(33, 2) ("clientProcessHit: offline HIT\n");
 	http->log_type = LOG_TCP_OFFLINE_HIT;
 	stale = 0;
-    } else if (stale == -2) {
+    } else if (stale == -2 && !clientOnlyIfCached(http)) {
 	debug(33, 2) ("clientProcessHit: stale-while-revalidate needs revalidation\n");
 	clientAsyncRefresh(http);
 	http->log_type = LOG_TCP_STALE_HIT;
