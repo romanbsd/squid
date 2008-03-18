@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.95.2.2 2007/06/03 00:40:32 hno Exp $
+ * $Id: access_log.c,v 1.95.2.3 2008/03/18 02:58:47 hno Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -442,7 +442,7 @@ accessLogCustom(AccessLogEntry * al, customlog * log)
     for (fmt = lf->format; fmt != NULL; fmt = fmt->next) {	/* for each token */
 	const char *out = NULL;
 	int quote = 0;
-	long int outint = 0;
+	squid_off_t outint = 0;
 	int doint = 0;
 	int dofree = 0;
 	switch (fmt->type) {
@@ -674,7 +674,7 @@ accessLogCustom(AccessLogEntry * al, customlog * log)
 	}
 
 	if (doint) {
-	    snprintf(tmp, sizeof(tmp), "%0*ld", fmt->zero ? (int) fmt->width : 0, outint);
+	    snprintf(tmp, sizeof(tmp), "%0*" PRINTF_OFF_T, fmt->zero ? (int) fmt->width : 0, outint);
 	    out = tmp;
 	}
 	if (out && *out) {
