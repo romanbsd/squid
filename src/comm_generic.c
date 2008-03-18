@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_generic.c,v 1.10 2007/12/14 20:05:24 hno Exp $
+ * $Id: comm_generic.c,v 1.11 2008/03/18 02:36:05 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -171,7 +171,7 @@ static inline void
 check_incoming(void)
 {
     comm_select_handled++;
-    if (comm_select_handled > 30 && comm_select_handled > NHttpSockets << 2) {
+    if (comm_select_handled > Config.incoming_rate) {
 	comm_select_handled = 0;
 	do_check_incoming();
     }
