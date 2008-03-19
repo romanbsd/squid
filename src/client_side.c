@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.760 2008/03/18 02:08:15 hno Exp $
+ * $Id: client_side.c,v 1.761 2008/03/19 10:25:55 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1939,7 +1939,7 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
     /* Signal keep-alive if needed */
     if (!request->flags.proxy_keepalive)
 	httpHeaderPutStr(hdr, HDR_CONNECTION, "close");
-    else if (request->http_ver.major == 1 && request->http_ver.minor == 0) {
+    else if ((request->http_ver.major == 1 && request->http_ver.minor == 0) || !http->conn->port->http11) {
 	httpHeaderPutStr(hdr, HDR_CONNECTION, "keep-alive");
 	if (!(http->flags.accel || http->flags.transparent))
 	    httpHeaderPutStr(hdr, HDR_PROXY_CONNECTION, "keep-alive");
