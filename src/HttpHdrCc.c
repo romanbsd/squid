@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHdrCc.c,v 1.24 2006/12/31 14:52:51 hno Exp $
+ * $Id: HttpHdrCc.c,v 1.24.2.1 2008/03/21 23:00:57 hno Exp $
  *
  * DEBUG: section 65    HTTP Cache Control Header
  * AUTHOR: Alex Rousskov
@@ -208,7 +208,7 @@ httpHdrCcPackInto(const HttpHdrCc * cc, Packer * p)
 	    if (flag == CC_S_MAXAGE)
 		packerPrintf(p, "=%d", (int) cc->s_maxage);
 
-	    if (flag == CC_MAX_STALE && cc->max_stale > 0)
+	    if (flag == CC_MAX_STALE && cc->max_stale >= 0)
 		packerPrintf(p, "=%d", (int) cc->max_stale);
 
 	    pcount++;
