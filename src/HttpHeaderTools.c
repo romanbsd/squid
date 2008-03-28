@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeaderTools.c,v 1.41 2007/07/20 21:20:49 hno Exp $
+ * $Id: HttpHeaderTools.c,v 1.42 2008/03/28 20:50:34 hno Exp $
  *
  * DEBUG: section 66    HTTP Header Tools
  * AUTHOR: Alex Rousskov
@@ -259,6 +259,10 @@ strListGetItem(const String * str, char del, const char **item, int *ilen, const
 
     /* skip leading ws (ltrim) */
     *pos += xcountws(*pos);
+
+    /* skip leading delimiters */
+    *pos += strspn(*pos, delim[0]);
+
     *item = *pos;		/* remember item's start */
     /* find next delimiter */
     do {
