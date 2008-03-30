@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.19 2007/12/25 16:39:23 serassio Exp $
+ * $Id: win32.c,v 1.20 2008/03/30 11:55:26 serassio Exp $
  *
  * Windows support
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -277,7 +277,7 @@ GetOSVersion()
 	    if (osvi.wProductType == VER_NT_WORKSTATION)
 		WIN32_OS_string = xstrdup("Windows Vista");
 	    else
-		WIN32_OS_string = xstrdup("Windows Server \"Longhorn\"");
+		WIN32_OS_string = xstrdup("Windows Server 2008");
 	    return _WIN_OS_WINLON;
 	}
 	break;
