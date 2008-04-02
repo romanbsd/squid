@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.439 2007/12/14 20:05:24 hno Exp $
+ * $Id: http.c,v 1.439.2.1 2008/04/02 00:58:28 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -683,7 +683,7 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 			badchunk = 1;
 		    while (end && (*end == '\r' || *end == ' ' || *end == '\t'))
 			end++;
-		    if (httpState->chunk_size < 0 || !end || (*end != '\n' && *end == ';')) {
+		    if (httpState->chunk_size < 0 || !end || (*end != '\n' && *end != ';')) {
 			debug(11, 0) ("Invalid chunk header '%s'\n", strBuf(httpState->chunkhdr));
 			comm_close(fd);
 			return;
