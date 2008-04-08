@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.491 2008/04/02 03:25:38 adrian Exp $
+ * $Id: cache_cf.c,v 1.492 2008/04/08 22:17:19 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2622,15 +2622,6 @@ check_null_body_size_t(dlink_list bodylist)
 {
     return bodylist.head == NULL;
 }
-
-#if DELAY_POOLS
-static int
-check_null_delay_body_size_t(dlink_list bodylist)
-{
-    return bodylist.head == NULL;
-}
-#endif
-
 
 static void
 parse_kb_size_t(squid_off_t * var)
