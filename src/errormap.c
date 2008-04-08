@@ -1,6 +1,6 @@
 
 /*
- * $Id: errormap.c,v 1.4 2007/12/21 13:01:54 adrian Exp $
+ * $Id: errormap.c,v 1.5 2008/04/08 22:52:04 hno Exp $
  *
  * DEBUG: section ??    Error Beautifier
  * AUTHOR: Henrik Nordstrom
@@ -111,8 +111,9 @@ static void
 errorMapFetchHeaders(void *data, mem_node_ref nr, ssize_t size)
 {
     ErrorMapState *state = data;
-    size_t hdr_size;
     const char *buf = NULL;
+    HttpReply *reply;
+    http_status status;
 
     if (EBIT_TEST(state->e->flags, ENTRY_ABORTED))
 	goto abort;
@@ -123,28 +124,17 @@ errorMapFetchHeaders(void *data, mem_node_ref nr, ssize_t size)
 
     buf = nr.node->data + nr.offset;
 
-    if ((hdr_size = headersEnd(buf, size))) {
-	http_status status;
-	/* httpReplyParse(reply, buf, hdr_size); */
-	HttpReply *reply = state->e->mem_obj->reply;
-	assert(reply);
-	status = reply->sline.status;
-	if (status != HTTP_OK)
-	    goto abort;
-	/* Send object to caller (cbdataValid verified above) */
-	state->callback(state->e, hdr_size, httpHeaderGetSize(&reply->header, HDR_CONTENT_LENGTH), state->callback_data);
-	errorMapFetchComplete(state);
-	goto done;
-    }
-    if (size >= 4096) {
-	/* Not enought space for reply headers */
+    reply = state->e->mem_obj->reply;
+
+    status = reply->sline.status;
+    if (status != HTTP_OK)
 	goto abort;
-    }
-    /* Need more data */
-    storeClientRef(state->sc, state->e, size, 0, SM_PAGE_SIZE, errorMapFetchHeaders, state);
-  done:
+    /* Send object to caller (cbdataValid verified above) */
+    state->callback(state->e, reply->hdr_sz, httpHeaderGetSize(&reply->header, HDR_CONTENT_LENGTH), state->callback_data);
+    errorMapFetchComplete(state);
     stmemNodeUnref(&nr);
     return;
+
   abort:
     errorMapFetchAbort(state);
     stmemNodeUnref(&nr);
