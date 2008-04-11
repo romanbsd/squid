@@ -1,6 +1,6 @@
 
 /*
- * $Id: delay_pools.c,v 1.38 2008/04/06 13:55:38 adrian Exp $
+ * $Id: delay_pools.c,v 1.39 2008/04/11 08:33:50 adrian Exp $
  *
  * DEBUG: section 77    Delay Pools
  * AUTHOR: David Luyer <david@luyer.net>
@@ -328,7 +328,7 @@ delayClient(clientHttpRequest * http)
 	return delayId(0, 0);
     }
     for (pool = 0; pool < Config.Delay.pools; pool++) {
-	if (aclCheckFast(Config.Delay.access[pool], &ch))
+	if (Config.Delay.access[pool] && aclCheckFast(Config.Delay.access[pool], &ch))
 	    break;
     }
     if (pool == Config.Delay.pools)
