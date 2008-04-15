@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.550 2008/04/07 07:50:37 adrian Exp $
+ * $Id: structs.h,v 1.551 2008/04/15 19:45:51 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -373,11 +373,11 @@ struct _http_port_list {
     char *name;			/* visible name */
     char *defaultsite;		/* default web site */
     char *urlgroup;		/* default urlgroup */
-    unsigned int transparent;	/* transparent proxy */
-    unsigned int accel;		/* HTTP accelerator */
-    unsigned int vhost;		/* uses host header */
-    unsigned int vport;		/* virtual port support */
-    unsigned int no_connection_auth;	/* Don't support connection oriented auth */
+    int transparent;		/* transparent proxy */
+    int accel;			/* HTTP accelerator */
+    int vhost;			/* uses host header */
+    int vport;			/* virtual port support */
+    int no_connection_auth;	/* Don't support connection oriented auth */
     unsigned int http11;	/* HTTP/1.1 support */
 #if LINUX_TPROXY
     unsigned int tproxy;
