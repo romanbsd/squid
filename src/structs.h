@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.551 2008/04/15 19:45:51 hno Exp $
+ * $Id: structs.h,v 1.552 2008/04/16 08:46:34 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -475,6 +475,7 @@ struct _SquidConfig {
 	time_t deadPeer;
 	int icp_query;		/* msec */
 	int icp_query_max;	/* msec */
+	int icp_query_min;	/* msec */
 	int mcast_icp_query;	/* msec */
 #if USE_IDENT
 	time_t ident;
