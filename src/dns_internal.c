@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.63.2.1 2008/01/23 11:00:46 hno Exp $
+ * $Id: dns_internal.c,v 1.63.2.2 2008/04/21 02:43:16 hno Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -248,7 +248,7 @@ idnsParseResolvConf(void)
 {
     FILE *fp;
     char buf[RESOLV_BUFSZ];
-    char *t;
+    const char *t;
     fp = fopen(_PATH_RESCONF, "r");
     if (fp == NULL) {
 	debug(78, 1) ("%s: %s\n", _PATH_RESCONF, xstrerror());
@@ -267,7 +267,15 @@ idnsParseResolvConf(void)
 		continue;
 	    debug(78, 1) ("Adding nameserver %s from %s\n", t, _PATH_RESCONF);
 	    idnsAddNameserver(t);
+	} else if (strcasecmp(t, "domain") == 0) {
+	    idnsFreeSearchpath();
+	    t = strtok(NULL, w_space);
+	    if (NULL == t)
+		continue;
+	    debug(78, 1) ("Adding domain %s from %s\n", t, _PATH_RESCONF);
+	    idnsAddPathComponent(t);
 	} else if (strcasecmp(t, "search") == 0) {
+	    idnsFreeSearchpath();
 	    while (NULL != t) {
 		t = strtok(NULL, w_space);
 		if (NULL == t)
@@ -292,6 +300,12 @@ idnsParseResolvConf(void)
 	}
     }
     fclose(fp);
+
+    if (npc == 0 && (t = getMyHostname())) {
+	t = strchr(t, '.');
+	if (t)
+	    idnsAddPathComponent(t + 1);
+    }
 }
 #endif
 
