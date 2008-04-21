@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.319.2.1 2008/01/23 11:00:46 hno Exp $
+ * $Id: neighbors.c,v 1.319.2.2 2008/04/21 02:44:00 hno Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -573,6 +573,9 @@ neighborsUdpPing(request_t * request,
 	if (Config.Timeout.icp_query_max)
 	    if (*timeout > Config.Timeout.icp_query_max)
 		*timeout = Config.Timeout.icp_query_max;
+
+	if (*timeout < Config.Timeout.icp_query_min)
+	    *timeout = Config.Timeout.icp_query_min;
     }
     return peers_pinged;
 }
