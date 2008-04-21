@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.450.2.14 2008/04/21 02:44:00 hno Exp $
+# $Id: cf.data.pre,v 1.450.2.15 2008/04/21 02:48:15 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -49,7 +49,8 @@ COMMENT_END
 
 COMMENT_START
   Configuration options can be included using the "include" directive.
-  Include takes a list of files to include. Quoting is supported.
+  Include takes a list of files to include. Quoting and wildcards is
+  supported.
 
   For example,
 
@@ -1090,6 +1091,12 @@ DOC_START
 
 	   name=	Specifies a internal name for the port. Defaults to
 			the port specification (port or addr:port)
+
+	   keepalive[=idle,interval,timeout]
+			Enable TCP keepalive probes of idle connections
+			idle is the initial time before TCP starts probing
+			the connection, interval how often to probe, and
+			timeout the time before giving up.
 
 	If you run Squid on a dual-homed machine with an internal
 	and an external interface we recommend you to specify the
