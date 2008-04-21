@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.547.2.4 2008/04/21 02:48:15 hno Exp $
+ * $Id: protos.h,v 1.547.2.5 2008/04/21 02:49:44 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -152,6 +152,9 @@ extern int commSetNonBlocking(int fd);
 extern int commUnsetNonBlocking(int fd);
 extern void commSetCloseOnExec(int fd);
 extern void commSetTcpKeepalive(int fd, int idle, int interval, int timeout);
+extern int commSetTos(int fd, int tos);
+extern int commSetSocketPriority(int fd, int prio);
+extern int commSetIPOption(int fd, uint8_t option, void *value, size_t size);
 extern int comm_accept(int fd, struct sockaddr_in *, struct sockaddr_in *);
 extern void comm_close(int fd);
 extern void comm_reset_close(int fd);
