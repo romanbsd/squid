@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.480.2.3 2008/02/23 01:18:10 hno Exp $
+ * $Id: cache_cf.c,v 1.480.2.4 2008/04/21 02:42:03 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -2900,10 +2900,6 @@ verify_http_port_options(http_port_list * s)
 	debug(28, 0) ("Can't be both a transparent proxy and web server accelerator on the same port\n");
 	self_destruct();
     }
-    if (s->accel && !s->vhost && !s->defaultsite && !s->vport) {
-	debug(28, 0) ("Accelerator mode requires at least one of vhost/vport/defaultsite\n");
-	self_destruct();
-    }
 }
 
 static void
@@ -2959,7 +2955,7 @@ dump_generic_http_port(StoreEntry * e, const char *n, const http_port_list * s)
 	storeAppendPrintf(e, " defaultsite=%s", s->defaultsite);
     if (s->vhost)
 	storeAppendPrintf(e, " vhost");
-    if (s->vport == ntohs(s->s.sin_port))
+    if (s->vport == -1)
 	storeAppendPrintf(e, " vport");
     else if (s->vport)
 	storeAppendPrintf(e, " vport=%d", s->vport);
