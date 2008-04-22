@@ -1,6 +1,6 @@
 
 /*
- * $Id: net_db.c,v 1.180 2008/04/08 22:52:04 hno Exp $
+ * $Id: net_db.c,v 1.181 2008/04/22 18:58:07 serassio Exp $
  *
  * DEBUG: section 38    Network Measurement Database
  * AUTHOR: Duane Wessels
@@ -562,7 +562,7 @@ netdbExchangeHandleReply(void *data, mem_node_ref nr, ssize_t size)
     if (0 == ex->used) {
 	/* skip reply headers */
 	rep = ex->e->mem_obj->reply;
-	hdrs_sz = rep->hdr_sz;
+	hdr_sz = rep->hdr_sz;
 	debug(38, 5) ("netdbExchangeHandleReply: hdr_sz = %ld\n", (long int) hdr_sz);
 	debug(38, 3) ("netdbExchangeHandleReply: reply status %d\n",
 	    rep->sline.status);
