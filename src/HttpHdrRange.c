@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHdrRange.c,v 1.29 2008/03/17 23:17:58 hno Exp $
+ * $Id: HttpHdrRange.c,v 1.30 2008/04/25 08:41:04 amosjeffries Exp $
  *
  * DEBUG: section 64    HTTP Range Header
  * AUTHOR: Alex Rousskov
@@ -242,7 +242,7 @@ httpHdrRangeParseInit(HttpHdrRange * range, const String * str)
     if (strNCaseCmp(*str, "bytes=", 6))
 	return 0;
     /* skip "bytes="; hack! */
-    pos = strBuf(*str) + 5;
+    pos = strBuf(*str) + 6;
     /* iterate through comma separated list */
     while (strListGetItem(str, ',', &item, &ilen, &pos)) {
 	HttpHdrRangeSpec *spec = httpHdrRangeSpecParseCreate(item, ilen);
