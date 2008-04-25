@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.766 2008/04/25 20:29:25 wessels Exp $
+ * $Id: client_side.c,v 1.767 2008/04/25 20:39:36 wessels Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2538,7 +2538,7 @@ clientPackRange(clientHttpRequest * http,
     /*
      * append content
      */
-    debug(33, 3) ("clientPackRangeHdr: appending %ld bytes\n", (long int) copy_sz);
+    debug(33, 3) ("clientPackRange: appending %ld bytes\n", (long int) copy_sz);
     memBufAppend(mb, *buf, copy_sz);
     /*
      * update offsets

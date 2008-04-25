@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.321 2008/04/25 20:29:25 wessels Exp $
+ * $Id: neighbors.c,v 1.322 2008/04/25 20:39:36 wessels Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -1448,7 +1448,7 @@ neighborsHtcpReply(const cache_key * key, htcpReplyData * htcp, const struct soc
 	return;
     }
     if (e->lock_count == 0) {
-	debug(12, 1) ("neighborsUdpAck: '%s' has no locks\n",
+	debug(12, 1) ("neighborsHtcpReply: '%s' has no locks\n",
 	    storeKeyText(key));
 	neighborCountIgnored(p);
 	return;

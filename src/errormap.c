@@ -1,6 +1,6 @@
 
 /*
- * $Id: errormap.c,v 1.5 2008/04/08 22:52:04 hno Exp $
+ * $Id: errormap.c,v 1.6 2008/04/25 20:39:36 wessels Exp $
  *
  * DEBUG: section ??    Error Beautifier
  * AUTHOR: Henrik Nordstrom
@@ -171,7 +171,7 @@ errorMapStart(const errormap * map, request_t * client_req, HttpReply * reply, c
 	return 0;
     req = urlParse(METHOD_GET, (char *) errorUrl);
     if (!req) {
-	debug(0, 0) ("error_map: Invalid error URL '%s'\n", errorUrl);
+	debug(0, 0) ("errorMapStart: Invalid error URL '%s'\n", errorUrl);
 	return 0;
     }
     req->urlgroup = xstrdup("error");

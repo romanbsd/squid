@@ -1,6 +1,6 @@
 
 /*
- * $Id: gopher.c,v 1.181 2007/07/15 06:16:42 hno Exp $
+ * $Id: gopher.c,v 1.182 2008/04/25 20:39:36 wessels Exp $
  *
  * DEBUG: section 10    Gopher
  * AUTHOR: Harvest Derived
@@ -331,7 +331,7 @@ gopherToHTML(GopherStateData * gopherState, char *inbuf, int len)
 	    /* there is something left from last tx. */
 	    xstrncpy(line, gopherState->buf, gopherState->len + 1);
 	    if (gopherState->len + len > TEMP_BUF_SIZE) {
-		debug(10, 1) ("GopherHTML: Buffer overflow. Lost some data on URL: %s\n",
+		debug(10, 1) ("gopherToHTML: Buffer overflow. Lost some data on URL: %s\n",
 		    storeUrl(entry));
 		len = TEMP_BUF_SIZE - gopherState->len;
 	    }
@@ -342,7 +342,7 @@ gopherToHTML(GopherStateData * gopherState, char *inbuf, int len)
 		/* there is no complete line in inbuf */
 		/* copy it to temp buffer */
 		if (gopherState->len + len > TEMP_BUF_SIZE) {
-		    debug(10, 1) ("GopherHTML: Buffer overflow. Lost some data on URL: %s\n",
+		    debug(10, 1) ("gopherToHTML: Buffer overflow. Lost some data on URL: %s\n",
 			storeUrl(entry));
 		    len = TEMP_BUF_SIZE - gopherState->len;
 		}
@@ -368,7 +368,7 @@ gopherToHTML(GopherStateData * gopherState, char *inbuf, int len)
 		/* there is no complete line in inbuf */
 		/* copy it to temp buffer */
 		if ((len - (pos - inbuf)) > TEMP_BUF_SIZE) {
-		    debug(10, 1) ("GopherHTML: Buffer overflow. Lost some data on URL: %s\n",
+		    debug(10, 1) ("gopherToHTML: Buffer overflow. Lost some data on URL: %s\n",
 			storeUrl(entry));
 		    len = TEMP_BUF_SIZE;
 		}

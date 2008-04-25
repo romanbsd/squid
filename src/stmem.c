@@ -1,6 +1,6 @@
 
 /*
- * $Id: stmem.c,v 1.76 2008/04/25 20:29:25 wessels Exp $
+ * $Id: stmem.c,v 1.77 2008/04/25 20:39:36 wessels Exp $
  *
  * DEBUG: section 19    Store Memory Primitives
  * AUTHOR: Harvest Derived
@@ -164,7 +164,7 @@ stmemRef(const mem_hdr * mem, squid_off_t offset, mem_node_ref * r)
     while ((t_off + p->len) <= offset) {
 	t_off += p->len;
 	if (!p->next) {
-	    debug(19, 1) ("memRef: p->next == NULL\n");
+	    debug(19, 1) ("stmemRef: p->next == NULL\n");
 	    return 0;
 	}
 	assert(p->next);
@@ -229,7 +229,7 @@ stmemCopy(const mem_hdr * mem, squid_off_t offset, char *buf, size_t size)
     while ((t_off + p->len) < offset) {
 	t_off += p->len;
 	if (!p->next) {
-	    debug(19, 1) ("memCopy: p->next == NULL\n");
+	    debug(19, 1) ("stmemCopy: p->next == NULL\n");
 	    return 0;
 	}
 	assert(p->next);

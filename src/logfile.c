@@ -1,5 +1,5 @@
 /*
- * $Id: logfile.c,v 1.27 2007/09/23 14:48:55 adrian Exp $
+ * $Id: logfile.c,v 1.28 2008/04/25 20:39:36 wessels Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Duane Wessels
@@ -49,7 +49,7 @@ logfileOpen(const char *path, size_t bufsz, int fatal_flag)
     const char *patharg;
     int ret;
 
-    debug(50, 1) ("Logfile: opening log %s\n", path);
+    debug(50, 1) ("logfileOpen: opening log %s\n", path);
 
     CBDATA_INIT_TYPE(Logfile);
     lf = cbdataAlloc(Logfile);
@@ -89,7 +89,7 @@ logfileOpen(const char *path, size_t bufsz, int fatal_flag)
 void
 logfileClose(Logfile * lf)
 {
-    debug(50, 1) ("Logfile: closing log %s\n", lf->path);
+    debug(50, 1) ("logfileClose: closing log %s\n", lf->path);
     lf->f_flush(lf);
     lf->f_close(lf);
     cbdataUnlock(lf);

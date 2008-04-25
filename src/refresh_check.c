@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh_check.c,v 1.3 2008/04/25 20:29:25 wessels Exp $
+ * $Id: refresh_check.c,v 1.4 2008/04/25 20:39:36 wessels Exp $
  *
  * DEBUG: section 84    Refresh Check Helper
  * AUTHOR: Henrik Nordstrom
@@ -483,7 +483,7 @@ refreshCheckSubmit(StoreEntry * entry, REFRESHCHECK * callback, void *callback_d
 	/* No pending lookup found. Sumbit to helper */
 	/* Check for queue overload */
 	if (refreshCheckOverload(def)) {
-	    debug(84, 1) ("refreshCheckLookup: queue overload\n");
+	    debug(84, 1) ("refreshCheckSubmit: queue overload\n");
 	    cbdataFree(state);
 	    callback(callback_data, 0, "Overload");
 	    return;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.385 2008/04/11 09:02:33 adrian Exp $
+ * $Id: stat.c,v 1.386 2008/04/25 20:39:36 wessels Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -1362,7 +1362,7 @@ statMedianSvc(int interval, int which)
 	x = statHistDeltaMedian(&l->dns.svc_time, &f->dns.svc_time);
 	break;
     default:
-	debug(49, 5) ("get_median_val: unknown type.\n");
+	debug(49, 5) ("statMedianSvc: unknown type.\n");
 	x = 0;
     }
     return x;
