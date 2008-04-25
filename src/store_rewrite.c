@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_rewrite.c,v 1.1 2007/11/15 04:43:55 adrian Exp $
+ * $Id: store_rewrite.c,v 1.2 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 61    Redirector
  * AUTHOR: Duane Wessels
@@ -57,7 +57,7 @@ storeurlHandleReply(void *data, char *reply)
     storeurlStateData *r = data;
     int valid;
     char *t;
-    debug(61, 5) ("storeurlHandleRead: {%s}\n", reply ? reply : "<NULL>");
+    debug(61, 5) ("storeurlHandleReply: {%s}\n", reply ? reply : "<NULL>");
     if (reply) {
 	if ((t = strchr(reply, ' ')))
 	    *t = '\0';

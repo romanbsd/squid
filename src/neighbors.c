@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.320 2008/04/16 08:46:34 hno Exp $
+ * $Id: neighbors.c,v 1.321 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -1423,14 +1423,14 @@ neighborsHtcpReply(const cache_key * key, htcpReplyData * htcp, const struct soc
 	neighborAliveHtcp(p, mem, htcp);
     /* Does the entry exist? */
     if (NULL == e) {
-	debug(12, 3) ("neighyborsHtcpReply: Cache key '%s' not found\n",
+	debug(12, 3) ("neighborsHtcpReply: Cache key '%s' not found\n",
 	    storeKeyText(key));
 	neighborCountIgnored(p);
 	return;
     }
     /* check if someone is already fetching it */
     if (EBIT_TEST(e->flags, ENTRY_DISPATCHED)) {
-	debug(15, 3) ("neighborsUdpAck: '%s' already being fetched.\n",
+	debug(15, 3) ("neighborsHtcpReply: '%s' already being fetched.\n",
 	    storeKeyText(key));
 	neighborCountIgnored(p);
 	return;
@@ -1442,7 +1442,7 @@ neighborsHtcpReply(const cache_key * key, htcpReplyData * htcp, const struct soc
 	return;
     }
     if (e->ping_status != PING_WAITING) {
-	debug(15, 2) ("neighborsUdpAck: Entry %s is not PING_WAITING\n",
+	debug(15, 2) ("neighborsHtcpReply: Entry %s is not PING_WAITING\n",
 	    storeKeyText(key));
 	neighborCountIgnored(p);
 	return;

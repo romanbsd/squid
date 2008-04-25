@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh_check.c,v 1.2 2007/11/24 14:45:29 hno Exp $
+ * $Id: refresh_check.c,v 1.3 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 84    Refresh Check Helper
  * AUTHOR: Henrik Nordstrom
@@ -456,7 +456,7 @@ refreshCheckSubmit(StoreEntry * entry, REFRESHCHECK * callback, void *callback_d
 	callback(callback_data, 0, NULL);
 	return;
     }
-    debug(84, 2) ("refreshCheckLookup: for '%s'\n", key);
+    debug(84, 2) ("refreshCheckSubmit: for '%s'\n", key);
 
     /* Check for a pending lookup to hook into */
     for (node = def->queue.head; node; node = node->next) {

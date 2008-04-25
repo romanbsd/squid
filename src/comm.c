@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.368 2008/04/21 01:54:48 hno Exp $
+ * $Id: comm.c,v 1.369 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -209,7 +209,7 @@ comm_openex(int sock_type,
 #endif
     }
     /* update fdstat */
-    debug(5, 5) ("comm_open: FD %d is a new socket\n", new_socket);
+    debug(5, 5) ("comm_openex: FD %d is a new socket\n", new_socket);
     return comm_fdopenex(new_socket, sock_type, addr, port, flags, tos, note);
 }
 
@@ -1278,7 +1278,7 @@ void
 comm_write_header(int fd, const char *buf, int size, const char *header, size_t header_size, CWCB * handler, void *handler_data, FREE * free_func)
 {
     CommWriteStateData *state = &fd_table[fd].rwstate;
-    debug(5, 5) ("comm_write: FD %d: sz %d: hndl %p: data %p.\n",
+    debug(5, 5) ("comm_write_header: FD %d: sz %d: hndl %p: data %p.\n",
 	fd, size, handler, handler_data);
     if (state->valid) {
 	debug(5, 1) ("comm_write: fd_table[%d].rwstate.valid == true!\n", fd);

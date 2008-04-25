@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_swapout.c,v 1.96 2006/09/22 03:15:20 hno Exp $
+ * $Id: store_swapout.c,v 1.97 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 20    Storage Manager Swapout Functions
  * AUTHOR: Duane Wessels
@@ -124,7 +124,7 @@ storeSwapOutMaintainMemObject(StoreEntry * e)
      * still writing to disk or not
      */
     lowest_offset = storeLowestMemReaderOffset(e);
-    debug(20, 7) ("storeSwapOut: lowest_offset = %" PRINTF_OFF_T "\n",
+    debug(20, 7) ("storeSwapOutMaintainMemObject: lowest_offset = %" PRINTF_OFF_T "\n",
 	lowest_offset);
     if (!swapout_able)
 	new_mem_lo = lowest_offset;

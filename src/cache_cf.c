@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.494 2008/04/21 01:54:48 hno Exp $
+ * $Id: cache_cf.c,v 1.495 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -412,7 +412,7 @@ parseOneConfigFile(const char *file_name, int depth)
 	tmp_line_len += config_input_line_len;
 
 	if (tmp_line[tmp_line_len - 1] == '\\') {
-	    debug(3, 5) ("parseConfigFile: tmp_line='%s'\n", tmp_line);
+	    debug(3, 5) ("parseOneConfigFile: tmp_line='%s'\n", tmp_line);
 	    tmp_line[--tmp_line_len] = '\0';
 	    continue;
 	}

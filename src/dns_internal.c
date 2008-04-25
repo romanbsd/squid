@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.65 2008/04/22 17:32:57 serassio Exp $
+ * $Id: dns_internal.c,v 1.66 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -1163,7 +1163,7 @@ snmp_netIdnsFn(variable_list * Var, snint * ErrP)
 {
     int i, n = 0;
     variable_list *Answer = NULL;
-    debug(49, 5) ("snmp_netDnsFn: Processing request: \n");
+    debug(49, 5) ("snmp_netIdnsFn: Processing request: \n");
     snmpDebugOid(5, Var->name, Var->name_length);
     *ErrP = SNMP_ERR_NOERROR;
     switch (Var->name[LEN_SQ_NET + 1]) {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: asn.c,v 1.86 2007/12/21 13:01:54 adrian Exp $
+ * $Id: asn.c,v 1.87 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 53    AS Number handling
  * AUTHOR: Duane Wessels, Kostas Anagnostakis
@@ -306,7 +306,7 @@ static void
 asStateFree(void *data)
 {
     ASState *asState = data;
-    debug(53, 3) ("asnStateFree: %s\n", storeUrl(asState->entry));
+    debug(53, 3) ("asStateFree: %s\n", storeUrl(asState->entry));
     storeClientUnregister(asState->sc, asState->entry, asState);
     storeUnlockObject(asState->entry);
     requestUnlink(asState->request);

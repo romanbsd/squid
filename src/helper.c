@@ -1,6 +1,6 @@
 
 /*
- * $Id: helper.c,v 1.67 2007/11/20 14:16:27 hno Exp $
+ * $Id: helper.c,v 1.68 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 84    Helper process maintenance
  * AUTHOR: Harvest Derived?
@@ -1001,15 +1001,15 @@ helperDispatch_done(int fd, char *buf, size_t size, int status, void *data)
 	srv->flags.writing = 0;	/* done */
 	if (srv->flags.shutdown) {
 	    int wfd;
-	    debug(84, 3) ("helperDispatch: %s #%d is shutting down.\n",
+	    debug(84, 3) ("helperDispatch_done: %s #%d is shutting down.\n",
 		hlp->id_name, srv->index + 1);
 	    if (srv->flags.closing) {
-		debug(84, 3) ("helperDispatch: %s #%d is CLOSING.\n",
+		debug(84, 3) ("helperDispatch_done: %s #%d is CLOSING.\n",
 		    hlp->id_name, srv->index + 1);
 		return;
 	    }
 	    if (srv->stats.pending) {
-		debug(84, 3) ("helperDispatch: %s #%d is BUSY.\n",
+		debug(84, 3) ("helperDispatch_done: %s #%d is BUSY.\n",
 		    hlp->id_name, srv->index + 1);
 		return;
 	    }

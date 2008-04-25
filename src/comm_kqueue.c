@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_kqueue.c,v 1.12 2007/05/20 13:45:10 adrian Exp $
+ * $Id: comm_kqueue.c,v 1.13 2008/04/25 20:29:25 wessels Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -166,7 +166,7 @@ do_comm_select(int msec)
 	int fd = (int) ke[i].ident;
 	if (ke[i].flags & EV_ERROR) {
 	    errno = ke[i].data;
-	    debug(5, 3) ("comm_select: kqueue event error: %s\n",
+	    debug(5, 3) ("do_comm_select: kqueue event error: %s\n",
 		xstrerror());
 	    continue;		/* XXX! */
 	}
