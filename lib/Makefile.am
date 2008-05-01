@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 #
-#  $Id: Makefile.am,v 1.10 2007/11/11 01:35:11 amosjeffries Exp $
+#  $Id: Makefile.am,v 1.11 2008/05/01 18:50:29 serassio Exp $
 #
 
 if NEED_OWN_SNPRINTF
@@ -36,6 +36,7 @@ noinst_LIBRARIES = \
 	@LIBREGEX@ \
 	$(LIBSSPWIN32)
 EXTRA_libmiscutil_a_SOURCES = \
+	dirent.c \
 	snprintf.c \
 	strsep.c \
 	win32lib.c
