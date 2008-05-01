@@ -1,5 +1,5 @@
 /*
- * $Id: squid_mswin.h,v 1.5 2007/04/25 07:55:32 serassio Exp $
+ * $Id: squid_mswin.h,v 1.6 2008/05/01 19:00:02 serassio Exp $
  *
  * AUTHOR: Andrey Shorin <tolsty@tushino.com>
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -66,7 +66,6 @@ typedef unsigned long ino_t;
 #include "default_config_file.h"
 /* Some tricks for MS Compilers */
 #define __STDC__ 1
-#pragma include_alias(<dirent.h>, <direct.h>)
 #define THREADLOCAL __declspec(thread)
 
 #elif defined(__GNUC__) /* gcc environment */
@@ -244,12 +243,9 @@ struct timezone
 #include <ws2spi.h>
 #if defined(_MSC_VER) /* Microsoft C Compiler ONLY */
 #pragma warning (pop)
-#include "readdir.h"
-#else
+#endif
 #include <io.h>
 #include <stdlib.h>
-#include <sys/types.h> 
-#endif
 
 typedef char * caddr_t;
 
