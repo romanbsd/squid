@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.67 2008/05/01 17:15:23 serassio Exp $
+ * $Id: dns_internal.c,v 1.68 2008/05/03 08:49:36 serassio Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -340,10 +340,10 @@ idnsParseWIN32SearchList(const char *Separator)
 	    &Size);
 
 	if (Result == ERROR_SUCCESS && Size) {
-	    t = (unsigned char *) xmalloc(Size);
+	    t = (char *) xmalloc(Size);
 	    RegQueryValueEx(hndKey, "SearchList", NULL, &Type, (LPBYTE) t,
 		&Size);
-	    token = strtok((char *) t, Separator);
+	    token = strtok(t, Separator);
 	    idnsFreeSearchpath();
 
 	    while (token) {
