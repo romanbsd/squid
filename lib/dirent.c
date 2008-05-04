@@ -1,5 +1,5 @@
 /*
- * $Id: dirent.c,v 1.1 2008/05/01 18:50:29 serassio Exp $
+ * $Id: dirent.c,v 1.1.2.1 2008/05/04 23:26:34 hno Exp $
  *
  * Implement dirent-style opendir(), readdir(), closedir(), rewinddir(),
  * seekdir() and telldir on Windows - Based on mingw-runtime package sources.

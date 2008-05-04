@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32lib.c,v 1.4.2.1 2008/04/25 19:40:35 hno Exp $
+ * $Id: win32lib.c,v 1.4.2.2 2008/05/04 23:26:34 hno Exp $
  *
  * Windows support
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -36,8 +36,7 @@
 
 #include "util.h"
 
-/* The following code section is part of an EXPERIMENTAL native */
-/* Windows NT/2000 Squid port - Compiles only on MS Visual C++  */
+/* The following code section is part of the native Windows Squid port */
 #if defined(_SQUID_MSWIN_)
 
 #undef strerror
@@ -791,4 +790,4 @@ WIN32_maperror(unsigned long WIN32_oserrno)
     else
 	errno = EINVAL;
 }
-#endif
+#endif /* _SQUID_MSWIN_ */
