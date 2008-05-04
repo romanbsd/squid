@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_update.c,v 1.6 2008/01/09 13:49:51 hno Exp $
+ * $Id: store_update.c,v 1.7 2008/05/04 23:02:23 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Henrik Nordstrom <henrik@henriknordstrom.net>
@@ -64,6 +64,7 @@ free_StoreUpdateState(void *data)
     if (state->newentry) {
 	/* Set to NULL on completion, so we only get here in abnormal situations */
 	storeRelease(state->newentry);
+	storeComplete(state->newentry);
 	storeUnlockObject(state->newentry);
     }
 }
