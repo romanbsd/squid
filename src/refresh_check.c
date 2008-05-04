@@ -1,6 +1,6 @@
 
 /*
- * $Id: refresh_check.c,v 1.2 2007/11/24 14:45:29 hno Exp $
+ * $Id: refresh_check.c,v 1.2.2.1 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 84    Refresh Check Helper
  * AUTHOR: Henrik Nordstrom
@@ -456,7 +456,7 @@ refreshCheckSubmit(StoreEntry * entry, REFRESHCHECK * callback, void *callback_d
 	callback(callback_data, 0, NULL);
 	return;
     }
-    debug(84, 2) ("refreshCheckLookup: for '%s'\n", key);
+    debug(84, 2) ("refreshCheckSubmit: for '%s'\n", key);
 
     /* Check for a pending lookup to hook into */
     for (node = def->queue.head; node; node = node->next) {
@@ -483,7 +483,7 @@ refreshCheckSubmit(StoreEntry * entry, REFRESHCHECK * callback, void *callback_d
 	/* No pending lookup found. Sumbit to helper */
 	/* Check for queue overload */
 	if (refreshCheckOverload(def)) {
-	    debug(84, 1) ("refreshCheckLookup: queue overload\n");
+	    debug(84, 1) ("refreshCheckSubmit: queue overload\n");
 	    cbdataFree(state);
 	    callback(callback_data, 0, "Overload");
 	    return;

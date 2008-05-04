@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_core.c,v 1.64 2007/07/06 18:51:23 hno Exp $
+ * $Id: snmp_core.c,v 1.64.2.1 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 49    SNMP support
  * AUTHOR: Glenn Chisholm
@@ -559,7 +559,7 @@ snmpDecodePacket(snmp_request_t * rq)
     if ((snmp_coexist_V2toV1(PDU)) && (Community) && (allow)) {
 	rq->community = Community;
 	rq->PDU = PDU;
-	debug(49, 5) ("snmpAgentParse: reqid=[%d]\n", PDU->reqid);
+	debug(49, 5) ("snmpDecodePacket: reqid=[%d]\n", PDU->reqid);
 	snmpConstructReponse(rq);
     } else {
 	debug(49, 1) ("Failed SNMP agent query from : %s.\n",

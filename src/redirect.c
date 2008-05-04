@@ -1,6 +1,6 @@
 
 /*
- * $Id: redirect.c,v 1.100 2007/11/15 04:43:55 adrian Exp $
+ * $Id: redirect.c,v 1.100.2.1 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 85   Store URL Redirector
  * AUTHOR: Adrian Chadd; based on redirect.c by Duane Wessels
@@ -57,7 +57,7 @@ redirectHandleReply(void *data, char *reply)
     redirectStateData *r = data;
     int valid;
     char *t;
-    debug(61, 5) ("redirectHandleRead: {%s}\n", reply ? reply : "<NULL>");
+    debug(61, 5) ("redirectHandleReply: {%s}\n", reply ? reply : "<NULL>");
     if (reply) {
 	if ((t = strchr(reply, ' ')))
 	    *t = '\0';

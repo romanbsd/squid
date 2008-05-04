@@ -1,6 +1,6 @@
 
 /*
- * $Id: locrewrite.c,v 1.4 2006/05/16 04:43:30 hno Exp $
+ * $Id: locrewrite.c,v 1.4.6.1 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 29    Redirector
  * AUTHOR: Henrik Nordstrom
@@ -55,7 +55,7 @@ locationRewriteHandleReply(void *data, char *reply)
     rewriteStateData *r = data;
     int valid;
     char *t;
-    debug(29, 5) ("rewriteHandleRead: {%s}\n", reply ? reply : "<NULL>");
+    debug(29, 5) ("locationRewriteHandleReply: {%s}\n", reply ? reply : "<NULL>");
     if (reply) {
 	if ((t = strchr(reply, ' ')))
 	    *t = '\0';

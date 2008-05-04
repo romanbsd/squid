@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.55.2.1 2008/01/02 15:49:31 hno Exp $
+ * $Id: htcp.c,v 1.55.2.2 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -886,7 +886,7 @@ htcpHandleTstRequest(htcpDataHeader * dhdr, char *buf, int sz, struct sockaddr_i
     htcpSpecifier *s;
     StoreEntry *e;
     if (sz == 0) {
-	debug(31, 3) ("htcpHandleTst: nothing to do\n");
+	debug(31, 3) ("htcpHandleTstRequest: nothing to do\n");
 	return;
     }
     if (dhdr->F1 == 0)

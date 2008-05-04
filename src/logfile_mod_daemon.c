@@ -1,5 +1,5 @@
 /*
- * $Id: logfile_mod_daemon.c,v 1.2 2007/09/18 15:18:11 adrian Exp $
+ * $Id: logfile_mod_daemon.c,v 1.2.2.1 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Adrian Chadd <adrian@squid-cache.org>
@@ -279,7 +279,7 @@ static void
 logfile_mod_daemon_rotate(Logfile * lf)
 {
     char tb[3];
-    debug(50, 1) ("logfileRotate: %s\n", lf->path);
+    debug(50, 1) ("logfile_mod_daemon_rotate: %s\n", lf->path);
     tb[0] = 'R';
     tb[1] = '\n';
     tb[2] = '\0';
@@ -300,7 +300,7 @@ logfile_mod_daemon_writeline(Logfile * lf, const char *buf, size_t len)
     if (ll->nbufs > LOGFILE_MAXBUFS) {
 	if (ll->last_warned < squid_curtime - LOGFILE_WARN_TIME) {
 	    ll->last_warned = squid_curtime;
-	    debug(50, 1) ("Logfile: %s: queue is too large; some log messages have been lost.\n", lf->path);
+	    debug(50, 1) ("logfile_mod_daemon_writeline: %s: queue is too large; some log messages have been lost.\n", lf->path);
 	}
 	return;
     }

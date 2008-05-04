@@ -1,6 +1,6 @@
 
 /*
- * $Id: disk.c,v 1.164 2006/05/27 14:47:02 hno Exp $
+ * $Id: disk.c,v 1.164.6.1 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 6     Disk I/O Routines
  * AUTHOR: Harvest Derived
@@ -238,7 +238,7 @@ diskHandleWrite(int fd, void *notused)
 	/* q might become NULL from write failure above */
 	q->buf_offset += len;
 	if (q->buf_offset > q->len)
-	    debug(50, 1) ("diskHandleWriteComplete: q->buf_offset > q->len (%p,%d, %d, %d FD %d)\n",
+	    debug(50, 1) ("diskHandleWrite: q->buf_offset > q->len (%p,%d, %d, %d FD %d)\n",
 		q, (int) q->buf_offset, (int) q->len, len, fd);
 	assert(q->buf_offset <= q->len);
 	if (q->buf_offset == q->len) {

@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_manager.c,v 1.31 2007/02/26 09:11:10 hno Exp $
+ * $Id: cache_manager.c,v 1.31.2.1 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 16    Cache Manager Objects
  * AUTHOR: Duane Wessels
@@ -199,7 +199,7 @@ cachemgrStart(int fd, request_t * request, StoreEntry * entry)
     cachemgrStateData *mgr = NULL;
     ErrorState *err = NULL;
     action_table *a;
-    debug(16, 3) ("objectcacheStart: '%s'\n", storeUrl(entry));
+    debug(16, 3) ("cachemgrStart: '%s'\n", storeUrl(entry));
     if ((mgr = cachemgrParseUrl(storeUrl(entry))) == NULL) {
 	err = errorCon(ERR_INVALID_URL, HTTP_NOT_FOUND, request);
 	err->url = xstrdup(storeUrl(entry));

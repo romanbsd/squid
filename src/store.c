@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.584.2.1 2008/01/02 15:49:31 hno Exp $
+ * $Id: store.c,v 1.584.2.2 2008/05/04 23:23:13 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -859,7 +859,7 @@ storeLocateVaryCallback(LocateVaryState * state)
 	state->buf = NULL;
     }
     cbdataFree(state);
-    debug(11, 2) ("storeLocateVary: DONE\n");
+    debug(11, 2) ("storeLocateVaryCallback: DONE\n");
 }
 
 static void
