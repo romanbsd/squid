@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.137 2008/04/07 07:50:37 adrian Exp $
+ * $Id: store_client.c,v 1.138 2008/05/05 11:52:45 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -146,7 +146,7 @@ storeClientCallback(store_client * sc, ssize_t sz)
     /* This code "transfers" its ownership (and reference) of the node_ref to the caller. Ugly, but works. */
     sc->node_ref.node = NULL;
     sc->node_ref.offset = -1;
-    new_callback(cbdata, nr, sz);
+    new_callback(cbdata, nr, XMIN(sc->copy_size, sz));
     cbdataUnlock(cbdata);
 }
 
