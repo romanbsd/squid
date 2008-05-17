@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.139 2008/05/17 04:47:55 adrian Exp $
+ * $Id: store_client.c,v 1.140 2008/05/17 06:05:59 adrian Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -150,7 +150,7 @@ storeClientCallback(store_client * sc, ssize_t sz)
     if (sz < 0)
 	new_callback(cbdata, nr, -1);
     else
-	new_callback(cbdata, nr, sc->copy_size);
+	new_callback(cbdata, nr, XMIN(sz, sc->copy_size));
     cbdataUnlock(cbdata);
 }
 
