@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.768 2008/05/02 20:09:59 hno Exp $
+ * $Id: client_side.c,v 1.769 2008/05/17 21:23:06 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3870,7 +3870,7 @@ parseHttpRequest(ConnStateData * conn, HttpMsgBuf * hmsg, method_t * method_p, i
 	    http->uri = xcalloc(url_sz, 1);
 	    if (strchr(host, ':'))
 		snprintf(http->uri, url_sz, "%s://%s%s",
-		    conn->port->protocol, t, url);
+		    conn->port->protocol, host, url);
 	    else
 		snprintf(http->uri, url_sz, "%s://%s:%d%s",
 		    conn->port->protocol, host, port, url);
