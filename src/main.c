@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.403.2.1 2008/01/03 02:30:06 hno Exp $
+ * $Id: main.c,v 1.403.2.2 2008/05/26 23:14:30 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -437,6 +437,9 @@ mainReconfigure(void)
 #endif
 #if USE_WCCPv2
     wccp2Init();
+#endif
+#if DELAY_POOLS
+    clientReassignDelaypools();
 #endif
     serverConnectionsOpen();
     neighbors_init();
