@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.260.2.2 2008/01/22 15:24:11 hno Exp $
+ * $Id: tools.c,v 1.260.2.3 2008/05/26 22:48:11 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1358,8 +1358,8 @@ static void
 restoreCapabilities(int keep)
 {
 #if defined(_SQUID_LINUX_) && HAVE_SYS_CAPABILITY_H
-    cap_user_header_t head = (cap_user_header_t) xcalloc(1, sizeof(cap_user_header_t));
-    cap_user_data_t cap = (cap_user_data_t) xcalloc(1, sizeof(cap_user_data_t));
+    cap_user_header_t head = xcalloc(1, sizeof(*head));
+    cap_user_data_t cap = xcalloc(1, sizeof(*cap));
 
     head->version = _LINUX_CAPABILITY_VERSION;
     if (capget(head, cap) != 0) {
