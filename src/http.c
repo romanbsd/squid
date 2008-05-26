@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.439.2.2 2008/05/04 23:23:13 hno Exp $
+ * $Id: http.c,v 1.439.2.3 2008/05/26 22:47:40 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -962,7 +962,7 @@ httpReadReply(int fd, void *data)
 		    MemBuf mb;
 		    HttpReply *reply = entry->mem_obj->reply;
 		    httpReplyReset(reply);
-		    httpBuildVersion(&reply->sline.version, 1, 0);
+		    httpBuildVersion(&reply->sline.version, 0, 9);
 		    reply->sline.status = HTTP_OK;
 		    httpHeaderPutTime(&reply->header, HDR_DATE, squid_curtime);
 		    mb = httpReplyPack(reply);

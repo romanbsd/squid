@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.754.2.10 2008/05/26 22:47:01 hno Exp $
+ * $Id: client_side.c,v 1.754.2.11 2008/05/26 22:47:40 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1924,12 +1924,12 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
 	httpHeaderPutStr(hdr, HDR_TRANSFER_ENCODING, "chunked");
     }
     /* Append Via */
-    if (Config.onoff.via) {
+    if (Config.onoff.via && http->entry) {
 	LOCAL_ARRAY(char, bbuf, MAX_URL + 32);
 	String strVia = httpHeaderGetList(hdr, HDR_VIA);
 	snprintf(bbuf, MAX_URL + 32, "%d.%d %s",
-	    rep->sline.version.major,
-	    rep->sline.version.minor, ThisCache);
+	    http->entry->mem_obj->reply->sline.version.major,
+	    http->entry->mem_obj->reply->sline.version.minor, ThisCache);
 	strListAdd(&strVia, bbuf, ',');
 	httpHeaderDelById(hdr, HDR_VIA);
 	httpHeaderPutStr(hdr, HDR_VIA, strBuf(strVia));
