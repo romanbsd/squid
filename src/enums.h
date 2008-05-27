@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.247 2008/02/26 04:03:41 adrian Exp $
+ * $Id: enums.h,v 1.248 2008/05/27 00:00:33 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -822,5 +822,13 @@ typedef enum {
     RFT_EXTERNALACL_TAG,
     RFT_EXTERNALACL_LOGSTR
 } rewrite_token_type;
+
+typedef enum {
+    FORWARDED_FOR_ON,
+    FORWARDED_FOR_OFF,
+    FORWARDED_FOR_TRANSPARENT,
+    FORWARDED_FOR_DELETE,
+    FORWARDED_FOR_TRUNCATE
+} forwarded_for_mode;
 
 #endif /* SQUID_ENUMS_H */

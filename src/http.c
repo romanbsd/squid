@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.442 2008/05/17 21:25:14 hno Exp $
+ * $Id: http.c,v 1.443 2008/05/27 00:00:33 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -1177,7 +1177,7 @@ httpBuildRequestHeader(request_t * request,
 	    }
 	    break;
 	case HDR_X_FORWARDED_FOR:
-	    if (!opt_forwarded_for)
+	    if (opt_forwarded_for == FORWARDED_FOR_TRANSPARENT)
 		httpHeaderAddClone(hdr_out, e);
 	    break;
 	case HDR_RANGE:
@@ -1228,11 +1228,23 @@ httpBuildRequestHeader(request_t * request,
 	stringClean(&strVia);
     }
     /* append X-Forwarded-For */
-    if (opt_forwarded_for) {
+    strFwd = StringNull;
+    switch (opt_forwarded_for) {
+    case FORWARDED_FOR_ON:
+    case FORWARDED_FOR_OFF:
 	strFwd = httpHeaderGetList(hdr_in, HDR_X_FORWARDED_FOR);
-	strListAdd(&strFwd,
-	    (((orig_request->client_addr.s_addr != no_addr.s_addr) && opt_forwarded_for) ?
+    case FORWARDED_FOR_TRUNCATE:
+	strListAdd(&strFwd, (((orig_request->client_addr.s_addr != no_addr.s_addr) && opt_forwarded_for != FORWARDED_FOR_OFF) ?
 		inet_ntoa(orig_request->client_addr) : "unknown"), ',');
+	break;
+    case FORWARDED_FOR_TRANSPARENT:
+	/* Handled above */
+	break;
+    case FORWARDED_FOR_DELETE:
+	/* Nothing to do */
+	break;
+    }
+    if (strLen(strFwd)) {
 	httpHeaderPutStr(hdr_out, HDR_X_FORWARDED_FOR, strBuf(strFwd));
 	stringClean(&strFwd);
     }
