@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.754.2.12 2008/05/26 23:14:30 hno Exp $
+ * $Id: client_side.c,v 1.754.2.13 2008/05/27 11:41:59 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -5183,10 +5183,6 @@ clientReassignDelaypools(void)
 	assert(http);
 	if (http->sc && http->log_type != LOG_TCP_DENIED && http->log_type != LOG_TAG_NONE)
 	    delaySetStoreClient(http->sc, delayClient(http));
-	if (http->reply)
-	    http->delayMaxBodySize = 0;
-	http->delayAssignedPool = 0;
-	clientDelayMaxBodySize(http->request, http, http->reply);
     }
 }
 #endif
