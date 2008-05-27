@@ -7,7 +7,7 @@
 <BODY>
 <H1>Squid 2.7.STABLE1 release notes</H1>
 
-<H2>Squid Developers</H2>$Id: release.html,v 1.1.2.2 2008/04/22 15:19:05 hno Exp $
+<H2>Squid Developers</H2>$Id: release.html,v 1.1.2.3 2008/05/27 00:10:23 hno Exp $
 <HR>
 <EM>This document contains the release notes for version 2.7 of Squid.
 Squid is a WWW Cache application developed by the Web Caching community.</EM>
@@ -188,6 +188,8 @@ outside Squid and needing to separate cache hits from misses.</LI>
 <DT><B>refresh_pattern</B><DD><P>Several new options: stale-while-revalidate, ignore-stale-while-revalidate, max-stale, negative-ttl</P>
 <P>Suggested defaults adjusted to match the changes in the cache directive.</P>
 <DT><B>url_rewrite_program</B><DD><P>Future protocol change adding key=value pairs after the requests</P>
+<DT><B>forwarded_for</B><DD><P>Has several new modes, allowing one to finetune how/if the requesting
+client IP should be forwarded in X-Forwarded-For</P>
 </DL>
 </P>
 
