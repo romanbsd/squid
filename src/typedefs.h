@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.157 2007/12/14 20:05:24 hno Exp $
+ * $Id: typedefs.h,v 1.157.2.1 2008/05/27 12:49:39 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -226,7 +226,6 @@ typedef struct _RemovalPolicyNode RemovalPolicyNode;
 typedef struct _RemovalPolicySettings RemovalPolicySettings;
 typedef struct _errormap errormap;
 typedef struct _PeerMonitor PeerMonitor;
-typedef struct _vary_id_t vary_id_t;
 
 typedef struct _http_version_t http_version_t;
 

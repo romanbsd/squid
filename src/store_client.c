@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.127.2.2 2008/01/14 03:26:41 adrian Exp $
+ * $Id: store_client.c,v 1.127.2.3 2008/05/27 12:49:39 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -441,9 +441,6 @@ storeClientReadHeader(void *data, const char *buf, ssize_t len)
 		/* Assume the object is OK.. remember the vary request headers */
 		mem->vary_headers = xstrdup(t->value);
 	    }
-	    break;
-	case STORE_META_VARY_ID:
-	    memcpy(&mem->vary_id, t->value, sizeof(vary_id_t));
 	    break;
 	default:
 	    debug(20, 2) ("WARNING: got unused STORE_META type %d\n", t->type);
