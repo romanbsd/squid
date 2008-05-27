@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.7.STABLE1 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.7.sgml,v 1.5 2008/04/22 15:13:47 hno Exp $
+<date>$Id: release-2.7.sgml,v 1.6 2008/05/27 01:16:42 hno Exp $
 
 <abstract>
 This document contains the release notes for version 2.7 of Squid.
@@ -223,6 +223,9 @@ Squid is a WWW Cache application developed by the Web Caching community.
     <p>Suggested defaults adjusted to match the changes in the cache directive.
     <tag>url_rewrite_program</tag>
     <p>Future protocol change adding key=value pairs after the requests
+    <tag>forwarded_for</tag>
+    <p>Has several new modes, allowing one to finetune how/if the requesting
+    client IP should be forwarded in X-Forwarded-For
 </descrip>
 
 <sect1>Removed directives
