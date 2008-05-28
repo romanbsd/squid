@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.263 2008/05/20 20:08:19 hno Exp $
+ * $Id: tools.c,v 1.264 2008/05/28 21:45:14 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -1361,7 +1361,7 @@ restoreCapabilities(int keep)
     cap_user_header_t head = xcalloc(1, sizeof(*head));
     cap_user_data_t cap = xcalloc(1, sizeof(*cap));
 
-    head->version = _LINUX_CAPABILITY_VERSION;
+    head->version = _LINUX_CAPABILITY_VERSION_1;
     if (capget(head, cap) != 0) {
 	debug(50, 1) ("Can't get current capabilities\n");
 	goto nocap;
