@@ -1,5 +1,5 @@
 /*
- * $Id: squid_mswin.h,v 1.5.2.1 2008/05/04 23:26:32 hno Exp $
+ * $Id: squid_mswin.h,v 1.5.2.2 2008/05/31 20:38:22 hno Exp $
  *
  * AUTHOR: Andrey Shorin <tolsty@tushino.com>
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -167,6 +167,7 @@ typedef unsigned long ino_t;
 
 typedef unsigned short in_port_t;
 typedef unsigned short int ushort;
+typedef unsigned int in_addr_t;
 typedef int uid_t;
 typedef int gid_t;
 
