@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 #
-#  $Id: Makefile.am,v 1.12 2008/05/01 19:00:04 serassio Exp $
+#  $Id: Makefile.am,v 1.13 2008/05/31 10:27:17 serassio Exp $
 #
 
 if NEED_OWN_SNPRINTF
@@ -35,8 +35,12 @@ noinst_LIBRARIES = \
 	libntlmauth.a \
 	@LIBREGEX@ \
 	$(LIBSSPWIN32)
+#
+# dirent.c, ecnrypt.c and getopt.c are needed for native Windows support.
+#
 EXTRA_libmiscutil_a_SOURCES = \
 	dirent.c \
+	encrypt.c \
 	getopt.c \
 	snprintf.c \
 	strsep.c \
