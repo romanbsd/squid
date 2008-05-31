@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.132 2008/02/12 13:11:46 swilton Exp $
+ * $Id: forward.c,v 1.133 2008/05/31 17:38:58 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -100,15 +100,7 @@ fwdStateFree(FwdState * fwdState)
     fwdLog(fwdState);
 #endif
     if (e->store_status == STORE_PENDING) {
-	if (e->mem_obj->inmem_hi == 0) {
-	    assert(fwdState->err);
-	    errorAppendEntry(e, fwdState->err);
-	    fwdState->err = NULL;
-	} else {
-	    EBIT_CLR(e->flags, ENTRY_FWD_HDR_WAIT);
-	    storeReleaseRequest(e);
-	    storeComplete(e);
-	}
+	storeRequestFailed(e, fwdState->err);
     }
     if (EBIT_TEST(e->flags, ENTRY_DEFER_READ))
 	storeResetDefer(e);
