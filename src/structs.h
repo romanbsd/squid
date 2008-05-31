@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.554 2008/04/21 02:28:14 hno Exp $
+ * $Id: structs.h,v 1.555 2008/05/31 08:20:46 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -486,8 +486,8 @@ struct _SquidConfig {
 #endif
     } Timeout;
     squid_off_t maxRequestHeaderSize;
-    squid_off_t maxRequestBodySize;
     squid_off_t maxReplyHeaderSize;
+    dlink_list RequestBodySize;
     dlink_list ReplyBodySize;
     dlink_list DelayBodySize;
     struct {
@@ -1280,6 +1280,7 @@ struct _clientHttpRequest {
 	char *location;
     } redirect;
     dlink_node active;
+    squid_off_t maxRequestBodySize;
     squid_off_t maxBodySize;
     squid_off_t delayMaxBodySize;
     ushort delayAssignedPool;
