@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.7.STABLE1 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.7.sgml,v 1.6 2008/05/27 01:16:42 hno Exp $
+<date>$Id: release-2.7.sgml,v 1.7 2008/05/31 10:44:54 serassio Exp $
 
 <abstract>
 This document contains the release notes for version 2.7 of Squid.
@@ -348,6 +348,7 @@ are supported.
 <p><itemize>
 <item>It's recommended to use '/' char in Squid paths instead of '\'
 <item>Paths with spaces (like 'C:\Programs Files\Squid) are NOT supported by Squid
+<item>Include wildcard patterns in squid.conf are NOT supported on Windows
 <item>When using ACL like 'acl aclname acltype "file"' the file must be in DOS text
 format (CR+LF) and the full Windows path must be specified, for example:
 
