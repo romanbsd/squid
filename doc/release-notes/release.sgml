@@ -1,8 +1,8 @@
 <!doctype linuxdoc system>
 <article>
-<title>Squid 2.7.STABLE1 release notes</title>
+<title>Squid 2.7.STABLE2 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release.sgml,v 1.1.2.7 2008/05/31 20:34:13 hno Exp $
+<date>$Id: release.sgml,v 1.1.2.8 2008/05/31 21:23:33 hno Exp $
 
 <abstract>
 This document contains the release notes for version 2.7 of Squid.
@@ -406,6 +406,19 @@ ScriptAlias /squid/cgi-bin/ "c:/squid/libexec/"
     Allow from workstation.example.com
 &lt;/Location&gt;
 </verb>
+
+<sect>Key changes in squid-2.7.STABLE2
+
+<p>
+<itemize>
+	<item>Compile error if --enable-delaypools used
+	<item>Bug #1893: Variant invalidation support removed again, caused a lot content to not get cached.
+        <item>Bug #2350: Linux Capabilities version mismatch causing startup crash on newer kernels
+	<item>See also the list of <url
+		url="http://www.squid-cache.org/Versions/v2/2.7/changesets/SQUID_2_7_STABLE2.html"
+			name="squid-2.7.STABLE2 changes"> and the <url url="ChangeLog"
+				name="ChangeLog"> file for details.
+</itemize>
 
 </article>
 
