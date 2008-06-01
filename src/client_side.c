@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.771 2008/05/31 08:20:46 adrian Exp $
+ * $Id: client_side.c,v 1.772 2008/06/01 18:55:11 adrian Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
