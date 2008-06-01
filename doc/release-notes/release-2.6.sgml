@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6.STABLE19 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.74 2008/04/25 19:47:32 hno Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.75 2008/06/01 08:56:57 serassio Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -282,7 +282,7 @@ redirect_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd</verb>
 </descrip>
 
 <descrip>
-<tag>Known Limitations:</tag>
+<tag>Known Limitations</tag>
 <itemize>
 <item>Squid features not operational:<newline>
 <itemize>
@@ -297,7 +297,7 @@ redirect_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd</verb>
 </descrip>
 
 <descrip>
-<tag>Building Squid on Windows:</tag>
+<tag>Building Squid on Windows</tag>
 A reasonably recent release of <url url="http://www.cygwin.com/" name="Cygwin"> or <url url="http://www.mingw.org/" name="MinGW"> is needed.<newline>
 The usage of the Cygwin environment is very similar to other Unix/Linux environments, and -devel version of libraries must be installed.<newline>
 For the MinGW environment, the packages MSYS, MinGW and msysDTK must be installed. Some additional libraries and tools must be downloaded separately:<newline><newline>

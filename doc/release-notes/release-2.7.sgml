@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.7.STABLE2 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.7.sgml,v 1.8 2008/05/31 21:21:53 hno Exp $
+<date>$Id: release-2.7.sgml,v 1.9 2008/06/01 08:56:57 serassio Exp $
 
 <abstract>
 This document contains the release notes for version 2.7 of Squid.
@@ -365,7 +365,7 @@ redirect_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd</verb>
 <item>Building with MinGW, when the configure option --enable-truncate is used, Squid cannot run on Windows NT, only Windows 2000 and later are supported
 </itemize>
 
-<sect1>Known Limitations:
+<sect1>Known Limitations
 
 <p><itemize>
 <item>DISKD: still needs to be ported
@@ -376,7 +376,7 @@ redirect_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd</verb>
 <item>File Descriptors number hard-limited to 2048 when building with MinGW.
 </itemize>
 
-<sect1>Using cache manager on Windows:
+<sect1>Using cache manager on Windows
 
 <p>On Windows, cache manager (cachemgr.cgi) can be used with Microsoft IIS or Apache.
 Some specific configuration could be needed:
