@@ -1,6 +1,6 @@
 
 /*
- * $Id: pinger.c,v 1.52 2008/04/25 20:39:36 wessels Exp $
+ * $Id: pinger.c,v 1.53 2008/06/02 11:49:12 serassio Exp $
  *
  * DEBUG: section 42    ICMP Pinger program
  * AUTHOR: Duane Wessels
@@ -58,7 +58,9 @@ static int socket_to_squid = 1;
 
 #ifdef _SQUID_MSWIN_
 
+#if HAVE_WINSOCK2_H
 #include <winsock2.h>
+#endif
 #include <process.h>
 
 #define PINGER_TIMEOUT 5
