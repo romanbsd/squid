@@ -1,6 +1,6 @@
 
 /*
- * $Id: squidclient.c,v 1.9 2007/12/13 01:20:50 hno Exp $
+ * $Id: squidclient.c,v 1.10 2008/06/02 15:56:33 serassio Exp $
  *
  * DEBUG: section 0     WWW Client
  * AUTHOR: Harvest Derived
@@ -127,6 +127,15 @@ static char *put_file = NULL;
 static struct stat sb;
 int total_bytes = 0;
 int io_timeout = 120;
+
+#ifdef _SQUID_MSWIN_
+void
+Win32SockCleanup(void)
+{
+    WSACleanup();
+    return;
+}
+#endif /* ifdef _SQUID_MSWIN_ */
 
 static void
 usage(const char *progname)
@@ -295,6 +304,7 @@ main(int argc, char *argv[])
     {
 	WSADATA wsaData;
 	WSAStartup(2, &wsaData);
+	atexit(Win32SockCleanup);
     }
 #endif
     /* Build the HTTP request */

@@ -1,6 +1,6 @@
 
 /*
- * $Id: pinger.c,v 1.53 2008/06/02 11:49:12 serassio Exp $
+ * $Id: pinger.c,v 1.54 2008/06/02 15:56:31 serassio Exp $
  *
  * DEBUG: section 42    ICMP Pinger program
  * AUTHOR: Duane Wessels
@@ -190,6 +190,15 @@ static void pingerSendtoSquid(pingerReplyData * preply);
 static void pingerOpen(void);
 static void pingerClose(void);
 
+#ifdef _SQUID_MSWIN_
+void
+Win32SockCleanup(void)
+{
+    WSACleanup();
+    return;
+}
+#endif /* ifdef _SQUID_MSWIN_ */
+
 void
 pingerOpen(void)
 {
@@ -202,6 +211,7 @@ pingerOpen(void)
     struct sockaddr_in PS;
 
     WSAStartup(2, &wsaData);
+    atexit(Win32SockCleanup);
 
     getCurrentTime();
     _db_init(NULL, "ALL,1");
