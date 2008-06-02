@@ -1,5 +1,5 @@
 /*
- * $Id: logfile_mod_daemon.c,v 1.2.2.2 2008/06/02 07:05:56 adrian Exp $
+ * $Id: logfile_mod_daemon.c,v 1.2.2.3 2008/06/02 07:07:37 adrian Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Adrian Chadd <adrian@squid-cache.org>
@@ -268,16 +268,15 @@ logfile_mod_daemon_close(Logfile * lf)
     logfileFlush(lf);
     if (ll->rfd == ll->wfd)
 	comm_close(ll->rfd);
-}
-else {
-    comm_close(ll->rfd);
-    comm_close(ll->wfd);
-}
-kill(ll->pid, SIGTERM);
-eventDelete(logfileFlushEvent, lf);
-xfree(ll);
-lf->data = NULL;
-cbdataUnlock(lf);
+    else {
+	comm_close(ll->rfd);
+	comm_close(ll->wfd);
+    }
+    kill(ll->pid, SIGTERM);
+    eventDelete(logfileFlushEvent, lf);
+    xfree(ll);
+    lf->data = NULL;
+    cbdataUnlock(lf);
 }
 
 static void
