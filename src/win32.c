@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.20 2008/03/30 11:55:26 serassio Exp $
+ * $Id: win32.c,v 1.21 2008/06/02 10:36:04 serassio Exp $
  *
  * Windows support
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -362,6 +362,7 @@ WIN32_Abort(int sig)
     WIN32_Exit();
 }
 
+#ifdef _SQUID_MSWIN_
 void
 WIN32_IpAddrChangeMonitorExit()
 {
@@ -372,6 +373,7 @@ WIN32_IpAddrChangeMonitorExit()
 	CloseHandle(NotifyAddrChange_thread);
     }
 }
+#endif
 
 void
 WIN32_Exit()
