@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.538.2.12 2008/05/27 12:49:39 hno Exp $
+ * $Id: structs.h,v 1.538.2.13 2008/06/04 20:35:37 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -702,6 +702,7 @@ struct _SquidConfig {
 #endif
 	int update_headers;
 	int ignore_expect_100;
+	int WIN32_IpAddrChangeMonitor;
     } onoff;
     acl *aclList;
     struct {
