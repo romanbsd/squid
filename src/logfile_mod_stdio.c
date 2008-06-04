@@ -1,5 +1,5 @@
 /*
- * $Id: logfile_mod_stdio.c,v 1.1 2007/09/18 15:03:03 adrian Exp $
+ * $Id: logfile_mod_stdio.c,v 1.2 2008/06/04 20:12:58 hno Exp $
  *
  * DEBUG: section 50    Log file handling
  * AUTHOR: Duane Wessels
@@ -188,6 +188,13 @@ logfile_mod_stdio_open(Logfile * lf, const char *path, size_t bufsz, int fatal_f
 {
     l_stdio_t *ll;
 
+    lf->f_close = logfile_mod_stdio_close;
+    lf->f_linewrite = logfile_mod_stdio_writeline;
+    lf->f_linestart = logfile_mod_stdio_linestart;
+    lf->f_lineend = logfile_mod_stdio_lineend;
+    lf->f_flush = logfile_mod_stdio_flush;
+    lf->f_rotate = logfile_mod_stdio_rotate;
+
     ll = xcalloc(1, sizeof(*ll));
     lf->data = ll;
 
@@ -212,12 +219,5 @@ logfile_mod_stdio_open(Logfile * lf, const char *path, size_t bufsz, int fatal_f
 	ll->buf = (char *) xmalloc(bufsz);
 	ll->bufsz = bufsz;
     }
-    lf->f_close = logfile_mod_stdio_close;
-    lf->f_linewrite = logfile_mod_stdio_writeline;
-    lf->f_linestart = logfile_mod_stdio_linestart;
-    lf->f_lineend = logfile_mod_stdio_lineend;
-    lf->f_flush = logfile_mod_stdio_flush;
-    lf->f_rotate = logfile_mod_stdio_rotate;
-
     return 1;
 }
