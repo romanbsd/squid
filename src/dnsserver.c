@@ -1,6 +1,6 @@
 
 /*
- * $Id: dnsserver.c,v 1.62 2006/05/22 21:19:48 serassio Exp $
+ * $Id: dnsserver.c,v 1.62.6.1 2008/06/04 20:32:48 hno Exp $
  *
  * DEBUG: section 0     DNS Resolver
  * AUTHOR: Harvest Derived
@@ -346,8 +346,12 @@ main(int argc, char *argv[])
 #endif
     for (;;) {
 	memset(request, '\0', REQ_SZ);
-	if (fgets(request, REQ_SZ, stdin) == NULL)
+	if (fgets(request, REQ_SZ, stdin) == NULL) {
+#ifdef _SQUID_MSWIN_
+	    WSACleanup();
+#endif
 	    exit(1);
+	}
 	t = strrchr(request, '\n');
 	if (t == NULL)		/* Ignore if no newline */
 	    continue;
