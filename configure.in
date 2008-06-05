@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.439 2008/06/04 22:06:45 serassio Exp $
+dnl  $Id: configure.in,v 1.440 2008/06/05 19:27:33 serassio Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.439 $)dnl
+AC_REVISION($Revision: 1.440 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -1095,14 +1095,15 @@ if test -n "$buildmodel" && test "$buildmodel" != "default"; then
 dnl
 dnl On Solaris getconf returns for CFLAGS -xarch=generic64, -Xa and -Usun options, and
 dnl for LDFLAGS -xarch=generic64, but:
-dnl   -Xa and -xarch=generic64 are supported only by Sun cc, so we need to remove them when using gcc
-dnl   The 'sun' define is needed by ipfilter includes, so we must remove -Usun
+dnl   "-Xa" is supported only by Sun cc, so we need to remove it when using gcc
+dnl   For gcc "-xarch=generic64" must be replaced with "-m64"
+dnl   The 'sun' define is needed by ipfilter includes, so we must remove "-Usun"
 	    *-solaris*)
 		if test "$GCC" = "yes"; then
 		    echo "Removing -Xa for gcc on $host"
 		    CFLAGS="`echo $CFLAGS | sed -e 's/-Xa//'`"
-		    echo "Removing -xarch=generic64 for gcc on $host"
-		    CFLAGS="`echo $CFLAGS | sed -e 's/-xarch=generic64//'`"
+		    echo "Replacing -xarch=generic64 with -m64 for gcc on $host"
+		    CFLAGS="`echo $CFLAGS | sed -e 's/-xarch=generic64/-m64/'`"
 		    LDFLAGS="`echo $LDFLAGS | sed -e 's/-xarch=generic64//'`"
 		fi
 		echo "Removing -Usun on $host"
