@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.557 2008/06/04 19:30:04 serassio Exp $
+ * $Id: structs.h,v 1.558 2008/06/06 19:18:14 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1542,6 +1542,7 @@ struct _peer {
     } sourcehash;
     char *login;		/* Proxy authorization */
     time_t connect_timeout;
+    int connect_fail_limit;
     int max_conn;
     struct {
 	char *url;

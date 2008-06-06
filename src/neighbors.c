@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.322 2008/04/25 20:39:36 wessels Exp $
+ * $Id: neighbors.c,v 1.323 2008/06/06 19:18:14 hno Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -1085,7 +1085,7 @@ peerConnectSucceded(peer * p)
 	if (!p->n_addresses)
 	    ipcache_nbgethostbyname(p->host, peerDNSConfigure, p);
     }
-    p->tcp_up = PEER_TCP_MAGIC_COUNT;
+    p->tcp_up = p->connect_fail_limit;
 }
 
 static void
