@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.324 2008/06/06 22:00:58 hno Exp $
+ * $Id: neighbors.c,v 1.325 2008/06/12 01:44:07 hno Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -261,11 +261,16 @@ getRoundRobinParent(request_t * request)
 	    continue;
 	if (!peerHTTPOkay(p, request))
 	    continue;
-	if (p->weight == 1) {
-	    if (q && q->rr_count < p->rr_count)
-		continue;
-	} else if (p->weight == 0 || (q && q->rr_count < (p->rr_count / p->weight))) {
+	if (p->weight == 0)
 	    continue;
+
+	if (q) {
+	    if (p->weight == q->weight) {
+		if (q->rr_count < p->rr_count)
+		    continue;
+	    } else if ((double) q->rr_count / q->weight < (double) p->rr_count / p->weight) {
+		continue;
+	    }
 	}
 	q = p;
     }
