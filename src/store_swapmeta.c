@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_swapmeta.c,v 1.24 2007/12/26 23:35:32 hno Exp $
+ * $Id: store_swapmeta.c,v 1.25 2008/06/13 00:58:33 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Swapfile Metadata
  * AUTHOR: Kostas Anagnostakis
@@ -88,7 +88,6 @@ storeSwapMetaBuild(StoreEntry * e)
 	T = storeSwapTLVAdd(STORE_META_VARY_HEADERS, vary, strlen(vary) + 1, T);
     if (e->mem_obj->store_url)
 	T = storeSwapTLVAdd(STORE_META_STOREURL, e->mem_obj->store_url, strlen(e->mem_obj->store_url) + 1, T);
-    storeSwapTLVAdd(STORE_META_VARY_ID, &e->mem_obj->vary_id, sizeof(vary_id_t), T);
     return TLV;
 }
 

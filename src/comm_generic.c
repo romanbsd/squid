@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_generic.c,v 1.11 2008/03/18 02:36:05 hno Exp $
+ * $Id: comm_generic.c,v 1.12 2008/06/13 00:58:31 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -360,7 +360,7 @@ comm_select(int msec)
     int rc;
     double start = current_dtime;
 
-    debug(5, 5) ("comm_select: timeout %d\n", msec);
+    debug(5, 3) ("comm_select: timeout %d\n", msec);
 
     if (msec > MAX_POLL_TIME)
 	msec = MAX_POLL_TIME;
