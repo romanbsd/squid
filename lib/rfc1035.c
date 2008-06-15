@@ -1,6 +1,6 @@
 
 /*
- * $Id: rfc1035.c,v 1.29 2005/05/17 16:56:36 hno Exp $
+ * $Id: rfc1035.c,v 1.30 2008/06/15 03:49:55 hno Exp $
  *
  * Low level DNS protocol routines
  * AUTHOR: Duane Wessels
@@ -298,7 +298,7 @@ rfc1035NameUnpack(const char *buf, size_t sz, int *off, unsigned short *rdlength
 	    s = ntohs(s);
 	    (*off) += sizeof(s);
 	    /* Sanity check */
-	    if ((*off) >= sz)
+	    if ((*off) > sz)
 		return 1;
 	    ptr = s & 0x3FFF;
 	    /* Make sure the pointer is inside this message */
