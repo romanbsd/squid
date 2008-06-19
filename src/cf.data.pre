@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.480 2008/06/17 10:34:17 amosjeffries Exp $
+# $Id: cf.data.pre,v 1.481 2008/06/19 12:20:53 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -4322,7 +4322,7 @@ DOC_START
 
 	The relevant WCCPv2 flags:
 	+ src_ip_hash, dst_ip_hash
-	+ source_port_hash, dest_port_hash
+	+ source_port_hash, dst_port_hash
 	+ src_ip_alt_hash, dst_ip_alt_hash
 	+ src_port_alt_hash, dst_port_alt_hash
 	+ ports_source
