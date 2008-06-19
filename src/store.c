@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.584.2.3 2008/05/27 12:49:39 hno Exp $
+ * $Id: store.c,v 1.584.2.4 2008/06/19 01:08:30 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1343,6 +1343,33 @@ storeComplete(StoreEntry * e)
      */
     storeSwapOut(e);
     InvokeHandlers(e);
+}
+
+/* Aborted transfer into the local cache. */
+void
+storeRequestFailed(StoreEntry * e, ErrorState * err)
+{
+    MemObject *mem = e->mem_obj;
+    assert(e->store_status == STORE_PENDING);
+    assert(mem != NULL);
+    debug(20, 6) ("storeAbort: %s\n", storeKeyText(e->hash.key));
+    storeLockObject(e);		/* lock while aborting */
+    storeExpireNow(e);
+    storeReleaseRequest(e);
+    storeSetMemStatus(e, NOT_IN_MEMORY);
+    if (e->mem_obj->inmem_hi == 0) {
+	assert(err);
+	errorAppendEntry(e, err);
+    } else {
+	EBIT_SET(e->flags, ENTRY_ABORTED);
+    }
+    e->store_status = STORE_OK;
+    mem->object_sz = mem->inmem_hi;
+    /* Notify the client side */
+    InvokeHandlers(e);
+    /* Close any swapout file */
+    storeSwapOutFileClose(e);
+    storeUnlockObject(e);	/* unlock */
 }
 
 /*
