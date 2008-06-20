@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.499 2008/06/11 14:49:23 hno Exp $
+ * $Id: cache_cf.c,v 1.500 2008/06/20 20:34:25 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -3163,6 +3163,15 @@ cbdataFree_https_port(void *data)
     free_generic_http_port_data(&s->http);
     safe_free(s->cert);
     safe_free(s->key);
+    safe_free(s->cipher);
+    safe_free(s->options);
+    safe_free(s->clientca);
+    safe_free(s->cafile);
+    safe_free(s->capath);
+    safe_free(s->crlfile);
+    safe_free(s->dhfile);
+    safe_free(s->sslflags);
+    safe_free(s->sslcontext);
     if (s->sslContext)
 	SSL_CTX_free(s->sslContext);
     s->sslContext = NULL;
