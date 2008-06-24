@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.7.STABLE3 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.7.sgml,v 1.11 2008/06/19 20:24:26 hno Exp $
+<date>$Id: release-2.7.sgml,v 1.12 2008/06/24 23:16:13 hno Exp $
 
 <abstract>
 This document contains the release notes for version 2.7 of Squid.
@@ -421,6 +421,9 @@ ScriptAlias /squid/cgi-bin/ "c:/squid/libexec/"
 
 <p>
 <itemize>
+	<item>Byg #2376: Round-Robin peer selection becomes unbalanced when a peer dies and comes back
+	<item>Bug #2122: Private information leakage in collapsed_forwarding
+	<item>Bug #1993: Memory leak in http_reply_access deny processing
 	<item>Fix SNMP reporting of counters with a value > 0xFF80000
 	<item>Reject ridiculously large ASN.1 lengths
 	<item>Off by one error in DNS label decompression could cause valid DNS messages to be rejected
