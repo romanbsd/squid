@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.538.2.13 2008/06/04 20:35:37 hno Exp $
+ * $Id: structs.h,v 1.538.2.14 2008/06/24 23:14:18 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1506,7 +1506,6 @@ struct _peer {
     struct in_addr addresses[10];
     int n_addresses;
     int rr_count;
-    int rr_lastcount;
     peer *next;
     int test_fd;
 #if USE_CARP
