@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.319.2.4 2008/06/19 01:11:03 hno Exp $
+ * $Id: neighbors.c,v 1.319.2.5 2008/06/24 22:44:26 hno Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -976,11 +976,33 @@ peerDestroy(void *data)
     safe_free(p->host);
     safe_free(p->name);
     safe_free(p->domain);
+    safe_free(p->login);
 #if USE_CACHE_DIGESTS
     if (p->digest) {
 	PeerDigest *pd = p->digest;
 	p->digest = NULL;
 	cbdataUnlock(pd);
+    }
+    safe_free(p->digest_url);
+#endif
+    safe_free(p->monitor.url)
+#if USE_SSL
+	safe_free(p->sslcert);
+    safe_free(p->sslkey);
+    safe_free(p->ssloptions);
+    safe_free(p->sslcipher);
+    safe_free(p->sslcafile);
+    safe_free(p->sslcapath);
+    safe_free(p->sslcrlfile);
+    safe_free(p->sslflags);
+    safe_free(p->ssldomain);
+    if (p->sslContext) {
+	SSL_CTX_free(p->sslContext);
+	p->sslContext = NULL;
+    }
+    if (p->sslSession) {
+	SSL_SESSION_free(p->sslSession);
+	p->sslSession = NULL;
     }
 #endif
 }
