@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.774 2008/06/20 21:11:58 hno Exp $
+ * $Id: client_side.c,v 1.775 2008/06/24 22:13:15 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -714,6 +714,7 @@ clientProcessExpired(clientHttpRequest * http)
 	    entry = NULL;
 	}
 	if (entry) {
+	    http->request->flags.collapsed = 1;		/* Don't trust the store entry */
 	    storeLockObject(entry);
 	    hit = 1;
 	} else {
@@ -919,6 +920,11 @@ clientHandleIMSReply(void *data, HttpReply * rep)
     }
     http->old_entry = NULL;	/* done with old_entry */
     http->old_sc = NULL;
+    if (http->request->flags.collapsed && !http->flags.hit && EBIT_TEST(entry->flags, RELEASE_REQUEST)) {
+	/* Collapsed request, but the entry is not good to be sent */
+	clientProcessMiss(http);
+	return;
+    }
     assert(!EBIT_TEST(entry->flags, ENTRY_ABORTED));
     if (recopy) {
 	storeClientCopyHeaders(http->sc, entry,
@@ -2237,6 +2243,13 @@ clientCacheHit(void *data, HttpReply * rep)
 	    clientProcessMiss(http);
 	    return;
 	}
+    }
+    if (r->flags.collapsed && EBIT_TEST(e->flags, RELEASE_REQUEST)) {
+	/* collapsed_forwarding, but the joined request is not good
+	 * to be cached..
+	 */
+	clientProcessMiss(http);
+	return;
     }
     /*
      * Got the headers, now grok them
@@ -3609,6 +3622,7 @@ clientProcessMiss(clientHttpRequest * http)
     debug(33, 4) ("clientProcessMiss: '%s %s'\n",
 	RequestMethods[r->method].str, url);
     http->flags.hit = 0;
+    r->flags.collapsed = 0;
     /*
      * We might have a left-over StoreEntry from a failed cache hit
      * or IMS request.
