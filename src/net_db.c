@@ -1,6 +1,6 @@
 
 /*
- * $Id: net_db.c,v 1.176.2.2 2008/04/08 22:52:59 hno Exp $
+ * $Id: net_db.c,v 1.176.2.3 2008/06/24 22:53:49 hno Exp $
  *
  * DEBUG: section 38    Network Measurement Database
  * AUTHOR: Duane Wessels
@@ -556,7 +556,7 @@ netdbExchangeHandleReply(void *data, char *buf, ssize_t size)
 	netdbExchangeDone(ex);
 	return;
     }
-    debug(38, 3) ("netdbExchangeHandleReply: for '%s:%d'\n", ex->p->host, ex->p->http_port);
+    debug(38, 3) ("netdbExchangeHandleReply: for %s'\n", ex->p->name);
     p = buf;
     if (0 == ex->used) {
 	/* skip reply headers */
