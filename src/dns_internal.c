@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.68 2008/05/03 08:49:36 serassio Exp $
+ * $Id: dns_internal.c,v 1.69 2008/06/25 23:24:55 hno Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -522,14 +522,16 @@ idnsStats(StoreEntry * sentry)
     storeAppendPrintf(sentry, "Internal DNS Statistics:\n");
     storeAppendPrintf(sentry, "\nThe Queue:\n");
     storeAppendPrintf(sentry, "                       DELAY SINCE\n");
-    storeAppendPrintf(sentry, "  ID   SIZE SENDS FIRST SEND LAST SEND\n");
-    storeAppendPrintf(sentry, "------ ---- ----- ---------- ---------\n");
+    storeAppendPrintf(sentry, "  ID   SIZE SENDS FIRST SEND LAST SEND PRO NAME\n");
+    storeAppendPrintf(sentry, "------ ---- ----- ---------- --------- --- ------------------\n");
     for (n = lru_list.head; n; n = n->next) {
 	q = n->data;
-	storeAppendPrintf(sentry, "%#06x %4d %5d %10.3f %9.3f\n",
+	storeAppendPrintf(sentry, "%#06x %4d %5d %10.3f %9.3f %3s %s\n",
 	    (int) q->id, (int) q->sz, q->nsends,
 	    tvSubDsec(q->start_t, current_time),
-	    tvSubDsec(q->sent_t, current_time));
+	    tvSubDsec(q->sent_t, current_time),
+	    q->tcp_socket != -1 ? "TCP" : "UDP",
+	    q->name);
     }
     storeAppendPrintf(sentry, "\nNameservers:\n");
     storeAppendPrintf(sentry, "IP ADDRESS      # QUERIES # REPLIES\n");
