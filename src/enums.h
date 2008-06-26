@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.249 2008/06/13 00:58:31 hno Exp $
+ * $Id: enums.h,v 1.250 2008/06/26 00:08:28 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -152,6 +152,7 @@ typedef enum {
     ACL_URLGROUP,
     ACL_EXTUSER,
     ACL_EXTUSER_REGEX,
+    ACL_HIER_CODE,
     ACL_ENUM_MAX
 } squid_acl;
 
