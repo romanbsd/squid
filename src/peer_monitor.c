@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_monitor.c,v 1.3.2.2 2008/01/23 10:26:18 hno Exp $
+ * $Id: peer_monitor.c,v 1.3.2.3 2008/06/27 21:07:15 hno Exp $
  *
  * DEBUG: section ??    Peer monitoring
  * AUTHOR: Henrik Nordstrom
@@ -213,6 +213,7 @@ peerMonitorCompleted(PeerMonitor * pm)
 	case PEER_ALIVE:
 	    debug(DBG, 1) ("Detected REVIVED %s: %s\n",
 		neighborTypeStr(p), p->name);
+	    peerClearRR();
 	    break;
 	case PEER_DEAD:
 	    debug(DBG, 1) ("Detected DEAD %s: %s\n",
