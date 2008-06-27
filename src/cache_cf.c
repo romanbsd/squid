@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.480.2.11 2008/06/24 23:14:18 hno Exp $
+ * $Id: cache_cf.c,v 1.480.2.12 2008/06/27 21:52:56 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1716,7 +1716,6 @@ static void
 parse_peer(peer ** head)
 {
     char *token = NULL;
-    void *arg = NULL;		/* throwaway arg to make eventAdd happy */
     peer *p;
     p = cbdataAlloc(peer);
     p->http_port = CACHE_HTTP_PORT;
@@ -1916,9 +1915,7 @@ parse_peer(peer ** head)
 	head = &(*head)->next;
     *head = p;
     Config.npeers++;
-    if (!reconfiguring && Config.npeers == 1) {
-	peerClearRRLoop(arg);
-    }
+    peerClearRRStart();
 }
 
 static void
