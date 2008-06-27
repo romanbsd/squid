@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm.c,v 1.370 2008/04/25 20:39:36 wessels Exp $
+ * $Id: comm.c,v 1.371 2008/06/27 16:25:37 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  * AUTHOR: Harvest Derived
@@ -401,7 +401,6 @@ commResetFD(ConnectStateData * cs)
 	return 0;
     statCounter.syscalls.sock.sockets++;
     fd2 = socket(AF_INET, SOCK_STREAM, 0);
-    statCounter.syscalls.sock.sockets++;
     if (fd2 < 0) {
 	debug(5, 0) ("commResetFD: socket: %s\n", xstrerror());
 	if (ENFILE == errno || EMFILE == errno)
