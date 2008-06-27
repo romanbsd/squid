@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.313.2.6 2008/06/27 21:07:15 hno Exp $
+ * $Id: neighbors.c,v 1.313.2.7 2008/06/27 21:53:17 hno Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -285,11 +285,20 @@ getRoundRobinParent(request_t * request)
 }
 
 /* This gets called every 5 minutes to clear the round-robin counter. */
-void
+static void
 peerClearRRLoop(void *data)
 {
     peerClearRR();
     eventAdd("peerClearRR", peerClearRRLoop, data, 5 * 60.0, 0);
+}
+
+void
+peerClearRRStart(void)
+{
+    static int event_added = 0;
+    if (!event_added) {
+	peerClearRRLoop(NULL);
+    }
 }
 
 /* Actually clear the round-robin counter. */

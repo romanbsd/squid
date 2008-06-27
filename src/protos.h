@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.520.2.4 2008/06/27 21:07:15 hno Exp $
+ * $Id: protos.h,v 1.520.2.5 2008/06/27 21:53:17 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -668,7 +668,7 @@ extern peer *peerFindByName(const char *);
 extern peer *peerFindByNameAndPort(const char *, unsigned short);
 extern peer *getDefaultParent(request_t * request);
 extern peer *getRoundRobinParent(request_t * request);
-EVH peerClearRRLoop;
+extern void peerClearRRStart(void);
 extern void peerClearRR(void);
 extern peer *getAnyParent(request_t * request);
 extern lookup_t peerDigestLookup(peer * p, request_t * request);
