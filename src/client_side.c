@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.20 2007/09/03 13:13:36 hno Exp $
+ * $Id: client_side.c,v 1.693.2.21 2008/06/27 21:06:05 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2812,6 +2812,9 @@ clientHttpReplyAccessCheckDone(int answer, void *data)
 	err = errorCon(page_id, HTTP_FORBIDDEN, http->orig_request);
 	storeClientUnregister(http->sc, http->entry, http);
 	http->sc = NULL;
+	if (http->reply)
+	    httpReplyDestroy(http->reply);
+	http->reply = NULL;
 	storeUnlockObject(http->entry);
 	http->log_type = LOG_TCP_DENIED;
 	http->entry = clientCreateStoreEntry(http, http->request->method,
