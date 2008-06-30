@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.18.2.4 2008/06/04 20:35:37 hno Exp $
+ * $Id: win32.c,v 1.18.2.5 2008/06/30 16:20:06 serassio Exp $
  *
  * Windows support
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -368,7 +368,7 @@ WIN32_IpAddrChangeMonitorExit()
 {
     DWORD status = ERROR_SUCCESS;
 
-    if (NotifyAddrChange_thread = !INVALID_HANDLE_VALUE) {
+    if (NotifyAddrChange_thread != INVALID_HANDLE_VALUE) {
 	TerminateThread(NotifyAddrChange_thread, status);
 	CloseHandle(NotifyAddrChange_thread);
     }
