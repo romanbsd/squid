@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.483 2008/06/26 00:08:27 hno Exp $
+# $Id: cf.data.pre,v 1.484 2008/07/01 18:14:09 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -1397,9 +1397,11 @@ DOC_START
 	This option enables packet level marking of HIT/MISS responses,
 	either using IP TOS or socket priority.
 	    off		Feature disabled
-	    tos		Set the IP TOS field
+	    tos		Set the IP TOS/Diffserv field
 	    priority	Set the socket priority (may get mapped to TOS by OS,
 			otherwise only usable in local rulesets)
+	    option	Embed the mark in an IP option field. See also
+	    		zph_option.
 
 	See also tcp_outgoing_tos for details/requirements about TOS usage.
 DOC_END
