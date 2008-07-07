@@ -1,6 +1,6 @@
 
 /*
- * $Id: auth_digest.c,v 1.26 2008/07/07 11:04:51 hno Exp $
+ * $Id: auth_digest.c,v 1.27 2008/07/07 11:45:14 hno Exp $
  *
  * DEBUG: section 29    Authenticator
  * AUTHOR: Robert Collins
@@ -1431,9 +1431,9 @@ authenticateDigestStart(auth_user_request_t * auth_user_request, RH * handler, v
     if (digestConfig->utf8) {
 	char username[1024];
 	latin1_to_utf8(username, sizeof(username), digest_user->username);
-	snprintf(buf, 8192, "\"%s\":\"%s\"\n", rfc1738_escape(username), digest_request->realm);
+	snprintf(buf, 8192, "\"%s\":\"%s\"\n", username, digest_request->realm);
     } else {
-	snprintf(buf, 8192, "\"%s\":\"%s\"\n", rfc1738_escape(digest_user->username), digest_request->realm);
+	snprintf(buf, 8192, "\"%s\":\"%s\"\n", digest_user->username, digest_request->realm);
     }
     helperSubmit(digestauthenticators, buf, authenticateDigestHandleReply, r);
 }
