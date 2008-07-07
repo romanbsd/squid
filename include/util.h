@@ -1,5 +1,5 @@
 /*
- * $Id: util.h,v 1.69 2006/12/10 13:36:23 serassio Exp $
+ * $Id: util.h,v 1.70 2008/07/07 11:04:46 hno Exp $
  *
  * AUTHOR: Harvest Derived
  *
@@ -81,6 +81,9 @@ extern char *rfc1738_escape(const char *);
 extern char *rfc1738_escape_unescaped(const char *);
 extern char *rfc1738_escape_part(const char *);
 extern void rfc1738_unescape(char *);
+
+/* charset.c */
+extern char *latin1_to_utf8(char *out, size_t size, const char *in);
 
 /* html.c */
 extern char *html_quote(const char *);

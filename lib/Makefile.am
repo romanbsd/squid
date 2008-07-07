@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 #
-#  $Id: Makefile.am,v 1.13 2008/05/31 10:27:17 serassio Exp $
+#  $Id: Makefile.am,v 1.14 2008/07/07 11:04:47 hno Exp $
 #
 
 if NEED_OWN_SNPRINTF
@@ -48,6 +48,7 @@ EXTRA_libmiscutil_a_SOURCES = \
 libmiscutil_a_SOURCES = \
 	Array.c \
 	base64.c \
+	charset.c \
 	getfullhostname.c \
 	hash.c \
 	heap.c \
