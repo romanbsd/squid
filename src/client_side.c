@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.775 2008/06/24 22:13:15 hno Exp $
+ * $Id: client_side.c,v 1.776 2008/07/07 05:01:49 amosjeffries Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -4596,7 +4596,7 @@ clientNatLookup(ConnStateData * conn)
     static int pffd = -1;
     static time_t last_reported = 0;
     if (pffd < 0) {
-	pffd = open("/dev/pf", O_RDWR);
+	pffd = open("/dev/pf", O_RDONLY);
 	if (pffd >= 0)
 	    commSetCloseOnExec(pffd);
     }
