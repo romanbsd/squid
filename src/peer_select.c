@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.c,v 1.134.2.3 2008/06/24 22:53:49 hno Exp $
+ * $Id: peer_select.c,v 1.134.2.4 2008/07/10 09:48:41 hno Exp $
  *
  * DEBUG: section 44    Peer Selection Algorithm
  * AUTHOR: Duane Wessels
@@ -685,7 +685,7 @@ peerAddFwdServer(FwdServer ** FS, peer * p, hier_code code)
 	p ? p->name : "DIRECT",
 	hier_strings[code]);
     while (*FS) {
-	if ((*FS)->peer == p) {
+	if ((*FS)->peer == p && (*FS)->code != PINNED) {
 	    debug(44, 5) ("peerAddFwdServer: Skipping duplicate registration of %s\n", p ? p->name : "DIRECT");
 	    return;
 	}
