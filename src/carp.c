@@ -1,6 +1,6 @@
 
 /*
- * $Id: carp.c,v 1.22 2008/01/14 12:12:13 hno Exp $
+ * $Id: carp.c,v 1.23 2008/07/11 18:51:27 hno Exp $
  *
  * DEBUG: section 39    Cache Array Routing Protocol
  * AUTHOR: Henrik Nordstrom
@@ -35,8 +35,6 @@
  */
 
 #include "squid.h"
-
-#if USE_CARP
 
 #define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32-(n))))
 
@@ -189,5 +187,3 @@ carpCachemgr(StoreEntry * sentry)
 	    sumfetches ? (double) p->stats.fetches / sumfetches : -1.0);
     }
 }
-
-#endif

@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.250 2008/06/26 00:08:28 hno Exp $
+ * $Id: enums.h,v 1.251 2008/07/11 18:51:27 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -330,9 +330,7 @@ typedef enum {
     CD_PARENT_HIT,
     CD_SIBLING_HIT,
 #endif
-#if USE_CARP
     CARP,
-#endif
     ANY_OLD_PARENT,
     USERHASH_PARENT,
     SOURCEHASH_PARENT,

@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_select.c,v 1.138 2008/07/10 09:07:36 hno Exp $
+ * $Id: peer_select.c,v 1.139 2008/07/11 18:51:27 hno Exp $
  *
  * DEBUG: section 44    Peer Selection Algorithm
  * AUTHOR: Duane Wessels
@@ -55,9 +55,7 @@ const char *hier_strings[] =
     "CD_PARENT_HIT",
     "CD_SIBLING_HIT",
 #endif
-#if USE_CARP
     "CARP",
-#endif
     "ANY_PARENT",
     "USERHASH_PARENT",
     "SOURCEHASH_PARENT",
@@ -472,10 +470,8 @@ peerGetSomeParent(ps_state * ps)
 	code = USERHASH_PARENT;
     } else if ((p = peerSourceHashSelectParent(request))) {
 	code = SOURCEHASH_PARENT;
-#if USE_CARP
     } else if ((p = carpSelectParent(request))) {
 	code = CARP;
-#endif
     } else if ((p = getRoundRobinParent(request))) {
 	code = ROUNDROBIN_PARENT;
     } else if ((p = getFirstUpParent(request))) {

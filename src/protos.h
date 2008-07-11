@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.562 2008/06/27 21:50:37 hno Exp $
+ * $Id: protos.h,v 1.563 2008/07/11 18:51:27 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1310,10 +1310,8 @@ extern char *internalRemoteUri(const char *, u_short, const char *, const char *
 extern const char *internalHostname(void);
 extern int internalHostnameIs(const char *);
 
-#if USE_CARP
 extern void carpInit(void);
 extern peer *carpSelectParent(request_t *);
-#endif
 
 extern void peerUserHashInit(void);
 extern peer *peerUserHashSelectParent(request_t *);
