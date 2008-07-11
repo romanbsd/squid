@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.135 2008/07/10 09:09:50 hno Exp $
+ * $Id: forward.c,v 1.136 2008/07/11 19:23:19 hno Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -37,6 +37,7 @@
 #include "squid.h"
 
 #if LINUX_NETFILTER
+#include <linux/types.h>
 #include <linux/netfilter_ipv4.h>
 #endif
 #if LINUX_TPROXY
