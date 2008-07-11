@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_sourcehash.c,v 1.4 2008/07/11 19:22:01 hno Exp $
+ * $Id: peer_sourcehash.c,v 1.5 2008/07/11 20:31:20 hno Exp $
  *
  * DEBUG: section 39    Peer source hash based selection
  * AUTHOR: Henrik Nordstrom
@@ -122,7 +122,7 @@ peerSourceHashInit(void)
 	X_last = p->sourcehash.load_multiplier;
 	P_last = p->sourcehash.load_factor;
     }
-    cachemgrRegister("sourcehash", "CARP information", peerSourceHashCachemgr, 0, 1);
+    cachemgrRegister("sourcehash", "peer sourcehash information", peerSourceHashCachemgr, 0, 1);
 }
 
 peer *

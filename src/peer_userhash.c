@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_userhash.c,v 1.4 2008/07/11 19:22:01 hno Exp $
+ * $Id: peer_userhash.c,v 1.5 2008/07/11 20:31:21 hno Exp $
  *
  * DEBUG: section 39    Peer user hash based selection
  * AUTHOR: Henrik Nordstrom
@@ -122,7 +122,7 @@ peerUserHashInit(void)
 	X_last = p->userhash.load_multiplier;
 	P_last = p->userhash.load_factor;
     }
-    cachemgrRegister("userhash", "CARP information", peerUserHashCachemgr, 0, 1);
+    cachemgrRegister("userhash", "peer userhash information", peerUserHashCachemgr, 0, 1);
 }
 
 peer *
