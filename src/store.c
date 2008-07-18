@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.584.2.5 2008/06/27 20:55:16 hno Exp $
+ * $Id: store.c,v 1.584.2.6 2008/07/18 00:44:02 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1362,6 +1362,7 @@ storeRequestFailed(StoreEntry * e, ErrorState * err)
 	errorAppendEntry(e, err);
     } else {
 	EBIT_SET(e->flags, ENTRY_ABORTED);
+	EBIT_CLR(e->flags, ENTRY_FWD_HDR_WAIT);
     }
     e->store_status = STORE_OK;
     mem->object_sz = mem->inmem_hi;
