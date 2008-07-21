@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.561 2008/07/11 18:51:28 hno Exp $
+ * $Id: structs.h,v 1.562 2008/07/21 20:11:35 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1245,6 +1245,7 @@ struct _clientHttpRequest {
     store_client *sc;		/* The store_client we're using */
     store_client *old_sc;	/* ... for entry to be validated */
     char *uri;
+    char *log_uri;
     struct {
 	squid_off_t offset;
 	squid_off_t size;

@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side_rewrite.c,v 1.6 2008/03/08 22:58:09 serassio Exp $
+ * $Id: client_side_rewrite.c,v 1.7 2008/07/21 20:11:35 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines - URL Rewriter
  * AUTHOR: Duane Wessels; Adrian Chadd
@@ -133,6 +133,7 @@ clientRedirectDone(void *data, char *result)
     if (new_request) {
 	safe_free(http->uri);
 	http->uri = xstrdup(urlCanonical(new_request));
+	http->log_uri = xstrdup(urlCanonicalClean(old_request));
 	new_request->http_ver = old_request->http_ver;
 	httpHeaderAppend(&new_request->header, &old_request->header);
 	new_request->client_addr = old_request->client_addr;
