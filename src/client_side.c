@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.781 2008/07/21 20:11:35 hno Exp $
+ * $Id: client_side.c,v 1.782 2008/07/21 20:38:15 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -3326,6 +3326,9 @@ clientWriteComplete(int fd, char *bufnotused, size_t size, int errflag, void *da
 	    comm_close(fd);
 	} else if (clientGotNotEnough(http)) {
 	    debug(33, 5) ("clientWriteComplete: client didn't get all it expected\n");
+	    comm_close(fd);
+	} else if (EBIT_TEST(http->entry->flags, ENTRY_ABORTED)) {
+	    debug(33, 5) ("clientWriteComplete: aborted object\n");
 	    comm_close(fd);
 	} else if (http->request->flags.chunked_response) {
 	    /* Finish chunked transfer encoding */
