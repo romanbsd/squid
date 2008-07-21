@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.693.2.23 2008/07/21 20:47:38 hno Exp $
+ * $Id: client_side.c,v 1.693.2.24 2008/07/21 20:48:45 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -92,6 +92,7 @@
 #endif
 
 #if LINUX_NETFILTER
+#include <linux/types.h>
 #include <linux/netfilter_ipv4.h>
 #endif
 
