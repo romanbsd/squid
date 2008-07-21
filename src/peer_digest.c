@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_digest.c,v 1.99 2008/04/25 20:29:25 wessels Exp $
+ * $Id: peer_digest.c,v 1.100 2008/07/21 09:17:25 hno Exp $
  *
  * DEBUG: section 72    Peer Digest Routines
  * AUTHOR: Alex Rousskov
@@ -433,7 +433,6 @@ peerDigestSwapInCBlock(void *data, mem_node_ref nr, ssize_t size)
 {
     const char *buf = nr.node->data + nr.offset;
     DigestFetchState *fetch = data;
-    assert(size <= nr.node->len - nr.offset);
 
     if (peerDigestFetchedEnough(fetch, size, "peerDigestSwapInCBlock"))
 	goto finish;
