@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_client.c,v 1.127.2.3 2008/05/27 12:49:39 hno Exp $
+ * $Id: store_client.c,v 1.127.2.4 2008/07/21 20:43:27 hno Exp $
  *
  * DEBUG: section 20    Storage Manager Client-Side Interface
  * AUTHOR: Duane Wessels
@@ -169,7 +169,6 @@ storeClientCopy(store_client * sc,
     STCB * callback,
     void *data)
 {
-    assert(!EBIT_TEST(e->flags, ENTRY_ABORTED));
     debug(20, 3) ("storeClientCopy: %s, seen %" PRINTF_OFF_T ", want %" PRINTF_OFF_T ", size %d, cb %p, cbdata %p\n",
 	storeKeyText(e->hash.key),
 	seen_offset,
