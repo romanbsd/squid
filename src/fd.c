@@ -1,6 +1,6 @@
 
 /*
- * $Id: fd.c,v 1.58 2007/06/25 14:38:00 hno Exp $
+ * $Id: fd.c,v 1.59 2008/08/02 11:40:15 adrian Exp $
  *
  * DEBUG: section 51    Filedescriptor Functions
  * AUTHOR: Duane Wessels
@@ -95,6 +95,7 @@ fd_close(int fd)
 #if DELAY_POOLS
     if (F->slow_id)
 	commRemoveSlow(fd);
+    delayCloseFd(fd);
 #endif
     fdUpdateBiggest(fd, 0);
     Number_FD--;

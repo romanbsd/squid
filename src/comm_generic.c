@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_generic.c,v 1.12 2008/06/13 00:58:31 hno Exp $
+ * $Id: comm_generic.c,v 1.13 2008/08/02 11:40:15 adrian Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -314,9 +314,6 @@ checkTimeouts(void)
     int fd;
     fde *F = NULL;
     PF *callback;
-#if DELAY_POOLS
-    delayPoolsUpdate(NULL);
-#endif
     for (fd = 0; fd <= Biggest_FD; fd++) {
 	F = &fd_table[fd];
 	if (!F->flags.open)

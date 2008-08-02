@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.406 2008/07/11 18:51:27 hno Exp $
+ * $Id: main.c,v 1.407 2008/08/02 11:40:15 adrian Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -578,6 +578,10 @@ mainInitialize(void)
     comm_select_postinit();
     if (!configured_once)
 	disk_init();		/* disk_init must go before ipcache_init() */
+#if DELAY_POOLS
+    if (!configured_once)
+	delayPoolsInit();
+#endif
     ipcache_init();
     fqdncache_init();
     parseEtcHosts();
@@ -623,9 +627,6 @@ mainInitialize(void)
 	mimeInit(Config.mimeTablePathname);
 	pconnInit();
 	refreshInit();
-#if DELAY_POOLS
-	delayPoolsInit();
-#endif
 	fwdInit();
     }
 #if USE_WCCP

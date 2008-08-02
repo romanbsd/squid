@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.142 2008/04/25 20:29:25 wessels Exp $
+ * $Id: ssl.c,v 1.143 2008/08/02 11:40:16 adrian Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -541,7 +541,7 @@ sslStart(clientHttpRequest * http, squid_off_t * size_ptr, int *status_ptr)
     CBDATA_INIT_TYPE(SslStateData);
     sslState = cbdataAlloc(SslStateData);
 #if DELAY_POOLS
-    sslState->delay_id = delayClient(http);
+    sslState->delay_id = delayClientRequest(http, Config.Delay.access);
     delayRegisterDelayIdPtr(&sslState->delay_id);
 #endif
     sslState->url = xstrdup(url);

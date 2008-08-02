@@ -1,6 +1,6 @@
 
 /*
- * $Id: stat.c,v 1.387 2008/05/02 20:06:25 hno Exp $
+ * $Id: stat.c,v 1.388 2008/08/02 11:40:16 adrian Exp $
  *
  * DEBUG: section 18    Cache Manager Statistics
  * AUTHOR: Harvest Derived
@@ -1524,12 +1524,13 @@ statClientRequests(StoreEntry * s)
 #if DELAY_POOLS
 	if (http->sc) {
 	    int pool = (http->sc->delay_id >> 16);
-	    storeAppendPrintf(s, "active delay_pool %d\n", pool);
+	    storeAppendPrintf(s, "active delay_pool %d (id %d)\n", pool, http->sc->delay_id);
 	    if (http->delayMaxBodySize > 0)
 		storeAppendPrintf(s, "delayed delay_pool %d; transfer threshold %" PRINTF_OFF_T " bytes\n",
 		    http->delayAssignedPool,
 		    http->delayMaxBodySize);
 	}
+	storeAppendPrintf(s, "active write-side delay pool %d (delay id %d)\n", http->delayid >> 16, http->delayid);
 #endif
 	storeAppendPrintf(s, "\n");
     }
