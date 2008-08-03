@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.7.STABLE3 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release.sgml,v 1.1.2.12 2008/06/24 23:17:19 hno Exp $
+<date>$Id: release.sgml,v 1.1.2.13 2008/08/03 22:27:01 hno Exp $
 
 <abstract>
 This document contains the release notes for version 2.7 of Squid.
@@ -435,6 +435,19 @@ ScriptAlias /squid/cgi-bin/ "c:/squid/libexec/"
 		url="http://www.squid-cache.org/Versions/v2/2.7/changesets/SQUID_2_7_STABLE3.html"
 			name="squid-2.7.STABLE3 changes"> and the <url url="ChangeLog"
 				name="ChangeLog"> file for details.
+</itemize>
+
+<sect>Key changes in squid-2.7.STABLE4
+
+<p>
+<itemize>
+	<item>Bug #2393: DNS retransmit queue could get hold up
+	<item>Bug #2408: assertion failed: forward.c:529: "fs"
+	<item>Bug #2414: assertion failed: forward.c:110: "!EBIT_TEST(e->flags, ENTRY_FWD_HDR_WAIT)"
+	<item>Workaround for Linux-2.6.24 & 2.6.25 netfiler_ipv4.h include header __u32 problem
+	<item>Make dns_nameserver work when using --disable-internal-dns on glibc based systems
+	<item>Handle aborted objects properly. The change in 2.7.STABLE3 triggered a number of issues.
+	<item>Bug #2406: access.log logs rewritten URL and strip_query_terms ineffective
 </itemize>
 
 </article>
