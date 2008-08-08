@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.564 2008/08/02 11:40:16 adrian Exp $
+ * $Id: protos.h,v 1.565 2008/08/08 04:33:34 adrian Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -179,7 +179,9 @@ extern void commRemoveSlow(int fd);
 extern void comm_add_close_handler(int fd, PF *, void *);
 extern void comm_remove_close_handler(int fd, PF *, void *);
 extern int comm_udp_sendto(int, const struct sockaddr_in *, int, const void *, int);
+#if DELAY_POOLS
 extern void comm_write_set_delaypool(int fd, delay_id poolid);
+#endif
 extern void comm_write(int fd,
     const char *buf,
     int size,
