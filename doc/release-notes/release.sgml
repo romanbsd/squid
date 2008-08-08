@@ -1,8 +1,8 @@
 <!doctype linuxdoc system>
 <article>
-<title>Squid 2.7.STABLE3 release notes</title>
+<title>Squid 2.7.STABLE4 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release.sgml,v 1.1.2.13 2008/08/03 22:27:01 hno Exp $
+<date>$Id: release.sgml,v 1.1.2.14 2008/08/08 19:19:32 hno Exp $
 
 <abstract>
 This document contains the release notes for version 2.7 of Squid.
