@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.488 2008/08/02 11:40:15 adrian Exp $
+# $Id: cf.data.pre,v 1.489 2008/08/14 20:08:39 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -3349,6 +3349,20 @@ DOC_START
 Example:
  acl buggy_server url_regex ^http://....
  broken_posts allow buggy_server
+DOC_END
+
+NAME: upgrade_http0.9
+COMMENT: on|off
+TYPE: onoff
+DEFAULT: on
+LOC: Config.onoff.upgrade_http09
+DOC_START
+	If enabled (default), Squid will upgrade HTTP/0.9 responses
+	received to it's supported HTTP version by adding a simple HTTP
+	header to the response.
+
+	If disabled the response will be forwarded without any header,
+	which may cause problems if you are in a cache hierarchy.
 DOC_END
 
 NAME: via
