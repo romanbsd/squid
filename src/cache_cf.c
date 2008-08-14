@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.505 2008/08/02 11:40:15 adrian Exp $
+ * $Id: cache_cf.c,v 1.506 2008/08/14 19:59:14 hno Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1178,7 +1178,7 @@ parse_delay_pool_access(acl_access *** aa)
     aclParseAccessLine(&(a[pool - 1]));
 }
 
-void
+static void
 dump_delay_pool_access(StoreEntry * entry, const char *name, acl_access ** a)
 {
     LOCAL_ARRAY(char, nom, 32);
@@ -1189,7 +1189,7 @@ dump_delay_pool_access(StoreEntry * entry, const char *name, acl_access ** a)
     }
 }
 
-void
+static void
 free_delay_pool_access(acl_access *** aa)
 {
     int i = 0;
