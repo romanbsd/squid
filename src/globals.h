@@ -1,6 +1,6 @@
 
 /*
- * $Id: globals.h,v 1.128 2008/05/27 00:00:33 hno Exp $
+ * $Id: globals.h,v 1.129 2008/08/15 04:56:00 benno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -48,8 +48,6 @@ extern char ThisCache2[SQUIDHOSTNAMELEN << 1];
 extern char config_input_line[BUFSIZ];
 extern const char *AclMatchedName;	/* NULL */
 extern const char *DefaultConfigFile;	/* DEFAULT_CONFIG_FILE */
-extern rms_t RequestMethods[];
-extern const char *RequestMethodStr[];
 extern const char *ProtocolStr[];
 extern const char *cfg_filename;	/* NULL */
 extern const char *const appname;	/* "squid" */

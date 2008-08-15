@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_digest.c,v 1.57 2008/04/25 20:39:36 wessels Exp $
+ * $Id: store_digest.c,v 1.58 2008/08/15 04:56:01 benno Exp $
  *
  * DEBUG: section 71    Store Digest Manager
  * AUTHOR: Alex Rousskov
@@ -338,8 +338,10 @@ storeDigestRewriteStart(void *datanotused)
     request_flags flags;
     char *url;
     StoreEntry *e;
+    method_t *method_get;
 
     assert(store_digest);
+    method_get = urlMethodGetKnownByCode(METHOD_GET);
     /* prevent overlapping if rewrite schedule is too tight */
     if (sd_state.rewrite_lock) {
 	debug(71, 1) ("storeDigestRewriteStart: overlap detected, consider increasing rewrite period\n");
@@ -350,12 +352,12 @@ storeDigestRewriteStart(void *datanotused)
     url = internalStoreUri("/squid-internal-periodic/", StoreDigestFileName);
     flags = null_request_flags;
     flags.cachable = 1;
-    e = storeCreateEntry(url, flags, METHOD_GET);
+    e = storeCreateEntry(url, flags, method_get);
     assert(e);
     sd_state.rewrite_lock = cbdataAlloc(generic_cbdata);
     sd_state.rewrite_lock->data = e;
     debug(71, 3) ("storeDigestRewriteStart: url: %s key: %s\n", url, storeKeyText(e->hash.key));
-    e->mem_obj->request = requestLink(urlParse(METHOD_GET, url));
+    e->mem_obj->request = requestLink(urlParse(method_get, url));
     /* wait for rebuild (if any) to finish */
     if (sd_state.rebuild_lock) {
 	debug(71, 2) ("storeDigestRewriteStart: waiting for rebuild to finish.\n");

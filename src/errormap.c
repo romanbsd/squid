@@ -1,6 +1,6 @@
 
 /*
- * $Id: errormap.c,v 1.6 2008/04/25 20:39:36 wessels Exp $
+ * $Id: errormap.c,v 1.7 2008/08/15 04:56:00 benno Exp $
  *
  * DEBUG: section ??    Error Beautifier
  * AUTHOR: Henrik Nordstrom
@@ -169,7 +169,7 @@ errorMapStart(const errormap * map, request_t * client_req, HttpReply * reply, c
     errorUrl = getErrorMap(map, status, squid_error, aclname);
     if (!errorUrl)
 	return 0;
-    req = urlParse(METHOD_GET, (char *) errorUrl);
+    req = urlParse(urlMethodGetKnownByCode(METHOD_GET), (char *) errorUrl);
     if (!req) {
 	debug(0, 0) ("errorMapStart: Invalid error URL '%s'\n", errorUrl);
 	return 0;

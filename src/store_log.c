@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_log.c,v 1.29 2007/09/23 14:48:55 adrian Exp $
+ * $Id: store_log.c,v 1.30 2008/08/15 04:56:01 benno Exp $
  *
  * DEBUG: section 20    Storage Manager Logging Functions
  * AUTHOR: Duane Wessels
@@ -79,7 +79,7 @@ storeLog(int tag, const StoreEntry * e)
 	    strLen(reply->content_type) ? strBuf(reply->content_type) : "unknown",
 	    reply->content_length,
 	    mem->inmem_hi - mem->reply->hdr_sz,
-	    RequestMethods[mem->method].str,
+	    mem->method->string,
 	    rfc1738_escape_unescaped(mem->url));
 	logfileLineEnd(storelog);
     } else {

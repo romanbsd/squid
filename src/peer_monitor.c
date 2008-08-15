@@ -1,6 +1,6 @@
 
 /*
- * $Id: peer_monitor.c,v 1.10 2008/06/24 23:09:22 hno Exp $
+ * $Id: peer_monitor.c,v 1.11 2008/08/15 04:56:00 benno Exp $
  *
  * DEBUG: section ??    Peer monitoring
  * AUTHOR: Henrik Nordstrom
@@ -151,7 +151,7 @@ peerMonitorRequest(void *data)
 	cbdataFree(pm);
 	return;
     }
-    req = urlParse(METHOD_GET, url);
+    req = urlParse(urlMethodGetKnownByCode(METHOD_GET), url);
     if (!req) {
 	debug(DBG, 1) ("peerMonitorRequest: Failed to parse URL '%s' for cache_peer %s\n", url, pm->peer->name);
 	cbdataFree(pm);

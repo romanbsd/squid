@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.c,v 1.193 2007/11/21 15:06:13 hno Exp $
+ * $Id: errorpage.c,v 1.194 2008/08/15 04:56:00 benno Exp $
  *
  * DEBUG: section 4     Error Generation
  * AUTHOR: Duane Wessels
@@ -526,7 +526,7 @@ errorConvert(char token, ErrorState * err)
 	p = authenticateAuthUserRequestMessage(err->auth_user_request) ? authenticateAuthUserRequestMessage(err->auth_user_request) : "[not available]";
 	break;
     case 'M':
-	p = r ? RequestMethods[r->method].str : "[unknown method]";
+	p = r ? r->method->string : "[unknown method]";
 	break;
     case 'o':
 	p = external_acl_message;
@@ -547,7 +547,7 @@ errorConvert(char token, ErrorState * err)
 	if (NULL != r) {
 	    Packer p;
 	    memBufPrintf(&mb, "%s %s HTTP/%d.%d\n",
-		RequestMethods[r->method].str,
+		r->method->string,
 		strLen(r->urlpath) ? strBuf(r->urlpath) : "/",
 		r->http_ver.major, r->http_ver.minor);
 	    packerToMemInit(&p, &mb);

@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.143 2008/08/02 11:40:16 adrian Exp $
+ * $Id: ssl.c,v 1.144 2008/08/15 04:56:01 benno Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -516,8 +516,7 @@ sslStart(clientHttpRequest * http, squid_off_t * size_ptr, int *status_ptr)
 	    return;
 	}
     }
-    debug(26, 3) ("sslStart: '%s %s'\n",
-	RequestMethods[request->method].str, url);
+    debug(26, 3) ("sslStart: '%s %s'\n", request->method->string, url);
     statCounter.server.all.requests++;
     statCounter.server.other.requests++;
     outgoing = getOutgoingAddr(request);

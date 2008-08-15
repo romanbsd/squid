@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_rewrite.c,v 1.2 2008/04/25 20:29:25 wessels Exp $
+ * $Id: store_rewrite.c,v 1.3 2008/08/15 04:56:01 benno Exp $
  *
  * DEBUG: section 61    Redirector
  * AUTHOR: Duane Wessels
@@ -126,7 +126,7 @@ storeurlStart(clientHttpRequest * http, RH * handler, void *data)
 #endif
     if (!r->client_ident)
 	r->client_ident = dash_str;
-    r->method_s = RequestMethods[http->request->method].str;
+    r->method_s = http->request->method->string;
     r->handler = handler;
     r->data = data;
     cbdataLock(r->data);
