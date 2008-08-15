@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.595 2008/08/15 04:56:01 benno Exp $
+ * $Id: store.c,v 1.596 2008/08/15 05:08:00 benno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -404,6 +404,34 @@ storeGetPublicByRequest(request_t * req)
 	/* We can generate a HEAD reply from a cached GET object */
 	e = storeGetPublicByRequestMethodCode(req, METHOD_GET);
     return e;
+}
+
+void
+storePurgeEntriesByUrl(request_t * req, const char *url)
+{
+    int m, get_or_head_sent;
+    method_t *method;
+    StoreEntry *e;
+
+    debug(20, 5) ("storePurgeEntriesByUrl: purging %s\n", url);
+    get_or_head_sent = 0;
+
+    for (m = METHOD_NONE; m < METHOD_OTHER; m++) {
+	method = urlMethodGetKnownByCode(m);
+	if (!method->flags.cachable) {
+	    continue;
+	}
+	if ((m == METHOD_HEAD || m == METHOD_GET) && get_or_head_sent) {
+	    continue;
+	}
+	e = storeGetPublic(url, method);
+	if (e == NULL) {
+	    continue;
+	}
+	debug(20, 5) ("storePurgeEntriesByUrl: purging %s %s\n",
+	    method->string, url);
+	storeRelease(e);
+    }
 }
 
 static int

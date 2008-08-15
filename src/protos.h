@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.566 2008/08/15 04:56:00 benno Exp $
+ * $Id: protos.h,v 1.567 2008/08/15 05:08:00 benno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -953,6 +953,7 @@ extern void storeAbort(StoreEntry *);
 extern void storeAppend(StoreEntry *, const char *, int);
 extern void storeLockObjectDebug(StoreEntry *, const char *file, const int line);
 extern void storeRelease(StoreEntry *);
+extern void storePurgeEntriesByUrl(request_t * req, const char *url);
 extern int storeUnlockObjectDebug(StoreEntry *, const char *file, const int line);
 extern const char *storeLookupUrl(const StoreEntry * e);
 #define	storeLockObject(a) storeLockObjectDebug(a, __FILE__, __LINE__);
@@ -1188,6 +1189,7 @@ extern void urlMethodFree(method_t *);
 extern void urlInitialize(void);
 extern request_t *urlParse(method_t *, char *);
 extern const char *urlCanonical(request_t *);
+extern char *urlAbsolute(request_t *, const char *);
 extern char *urlRInternal(const char *host, u_short port, const char *dir, const char *name);
 extern char *urlInternal(const char *dir, const char *name);
 extern int matchDomainName(const char *host, const char *domain);
