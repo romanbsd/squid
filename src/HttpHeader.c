@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeader.c,v 1.99 2007/12/21 09:50:19 adrian Exp $
+ * $Id: HttpHeader.c,v 1.100 2008/08/17 22:02:00 hno Exp $
  *
  * DEBUG: section 55    HTTP Header
  * AUTHOR: Alex Rousskov
@@ -129,6 +129,7 @@ static const HttpHeaderFieldAttrs HeadersAttrs[] =
     {"X-Forwarded-For", HDR_X_FORWARDED_FOR, ftStr},
     {"X-Request-URI", HDR_X_REQUEST_URI, ftStr},
     {"X-Squid-Error", HDR_X_SQUID_ERROR, ftStr},
+    {"X-HTTP09-First-Line", HDR_X_HTTP09_FIRST_LINE, ftStr},
     {"Negotiate", HDR_NEGOTIATE, ftStr},
 #if X_ACCELERATOR_VARY
     {"X-Accelerator-Vary", HDR_X_ACCELERATOR_VARY, ftStr},
