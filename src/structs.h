@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.565 2008/08/15 04:56:01 benno Exp $
+ * $Id: structs.h,v 1.566 2008/08/17 20:25:20 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1209,7 +1209,7 @@ struct _HierarchyLogEntry {
 
 struct _method_t {
     method_code_t code;
-    char *string;
+    const char *string;
     struct {
 	unsigned int cachable:1;
 	unsigned int purges_all:1;
