@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.407 2008/08/02 11:40:15 adrian Exp $
+ * $Id: main.c,v 1.408 2008/08/27 00:35:53 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -465,6 +465,7 @@ mainRotate(void)
     dnsShutdown();
 #endif
     redirectShutdown();
+    storeurlShutdown();
     locationRewriteShutdown();
     authenticateShutdown();
     externalAclShutdown();
@@ -1104,6 +1105,7 @@ SquidShutdown(void *unused)
     redirectShutdown();
     externalAclShutdown();
     refreshCheckShutdown();
+    storeurlShutdown();
     locationRewriteShutdown();
     icpConnectionClose();
 #if USE_HTCP
