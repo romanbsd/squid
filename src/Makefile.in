@@ -17,7 +17,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.297 2007/12/28 01:16:07 hno Exp $
+#  $Id: Makefile.in,v 1.298 2008/08/27 00:31:29 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -1269,7 +1269,7 @@ squid.conf.default: cf_parser.h
 	true
 
 cf_parser.h: cf.data cf_gen$(EXEEXT)
-	./cf_gen cf.data $(srcdir)/cf.data.depend
+	./cf_gen -v cf.data $(srcdir)/cf.data.depend
 
 cf_gen_defines.h: $(srcdir)/cf_gen_defines $(srcdir)/cf.data.pre
 	awk -f $(srcdir)/cf_gen_defines <$(srcdir)/cf.data.pre >cf_gen_defines.h
