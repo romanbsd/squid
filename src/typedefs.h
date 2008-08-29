@@ -1,6 +1,6 @@
 
 /*
- * $Id: typedefs.h,v 1.164 2008/08/15 04:56:01 benno Exp $
+ * $Id: typedefs.h,v 1.165 2008/08/29 00:21:41 benno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -434,4 +434,11 @@ typedef void LOGCLOSE(Logfile *);
 
 typedef void REFRESHCHECK(void *data, int fresh, const char *log);
 typedef struct _refresh_check_helper refresh_check_helper;
+
+#if USE_HTCP
+
+typedef enum htcp_clr_reason htcp_clr_reason;
+
+#endif
+
 #endif /* SQUID_TYPEDEFS_H */

@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.596 2008/08/15 05:08:00 benno Exp $
+ * $Id: store.c,v 1.597 2008/08/29 00:21:40 benno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -426,10 +426,28 @@ storePurgeEntriesByUrl(request_t * req, const char *url)
 	}
 	e = storeGetPublic(url, method);
 	if (e == NULL) {
+#if USE_HTCP
+	    if (m == METHOD_HEAD) {
+		method = urlMethodGetKnownByCode(METHOD_GET);
+	    }
+	    neighborsHtcpClear(NULL, url, req, method, HTCP_CLR_INVALIDATION);
+	    if (m == METHOD_GET || m == METHOD_HEAD) {
+		get_or_head_sent = 1;
+	    }
+#endif
 	    continue;
 	}
 	debug(20, 5) ("storePurgeEntriesByUrl: purging %s %s\n",
 	    method->string, url);
+#if USE_HTCP
+	if (m == METHOD_HEAD) {
+	    method = urlMethodGetKnownByCode(METHOD_GET);
+	}
+	neighborsHtcpClear(e, url, req, method, HTCP_CLR_INVALIDATION);
+	if (m == METHOD_GET || m == METHOD_HEAD) {
+	    get_or_head_sent = 1;
+	}
+#endif
 	storeRelease(e);
     }
 }

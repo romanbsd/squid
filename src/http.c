@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.449 2008/08/17 22:02:00 hno Exp $
+ * $Id: http.c,v 1.450 2008/08/29 00:21:39 benno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -238,6 +238,9 @@ httpMaybeRemovePublic(StoreEntry * e, HttpReply * reply)
     else
 	pe = storeGetPublicByCode(e->mem_obj->url, METHOD_HEAD);
     if (pe != NULL && e != pe) {
+#if USE_HTCP
+	neighborsHtcpClear(e, NULL, e->mem_obj->request, urlMethodGetKnownByCode(METHOD_HEAD), HTCP_CLR_INVALIDATION);
+#endif
 	storeRelease(pe);
     }
     if (forbidden)

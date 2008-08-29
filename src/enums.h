@@ -1,6 +1,6 @@
 
 /*
- * $Id: enums.h,v 1.253 2008/08/17 22:02:00 hno Exp $
+ * $Id: enums.h,v 1.254 2008/08/29 00:21:39 benno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -806,5 +806,14 @@ typedef enum {
     FORWARDED_FOR_DELETE,
     FORWARDED_FOR_TRUNCATE
 } forwarded_for_mode;
+
+#if USE_HTCP
+
+enum htcp_clr_reason {
+    HTCP_CLR_PURGE,
+    HTCP_CLR_INVALIDATION,
+};
+
+#endif
 
 #endif /* SQUID_ENUMS_H */
