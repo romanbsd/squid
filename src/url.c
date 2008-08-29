@@ -1,6 +1,6 @@
 
 /*
- * $Id: url.c,v 1.154 2008/08/27 01:34:42 benno Exp $
+ * $Id: url.c,v 1.155 2008/08/29 00:26:20 benno Exp $
  *
  * DEBUG: section 23    URL Parsing
  * AUTHOR: Duane Wessels
@@ -255,15 +255,8 @@ urlMethodGet(const char *s, int len)
 	return (method);
     }
     method = xmalloc(sizeof(method_t));
-    if (method == NULL) {
-	return (NULL);
-    }
     method->code = METHOD_OTHER;
     method->string = xstrndup(s, len + 1);
-    if (method->string == NULL) {
-	xfree(method);
-	return (NULL);
-    }
     method->flags.cachable = 0;
     method->flags.purges_all = 1;
 
@@ -291,15 +284,8 @@ urlMethodDup(method_t * orig)
 	return (orig);
     }
     method = xmalloc(sizeof(method_t));
-    if (method == NULL) {
-	return (NULL);
-    }
     method->code = orig->code;
     method->string = xstrdup(orig->string);
-    if (method->string == NULL) {
-	xfree(method);
-	return (NULL);
-    }
     method->flags.cachable = orig->flags.cachable;
     method->flags.purges_all = orig->flags.purges_all;
 
