@@ -1,6 +1,6 @@
 
 /*
- * $Id: store_rebuild.c,v 1.80 2007/09/01 23:09:32 hno Exp $
+ * $Id: store_rebuild.c,v 1.81 2008/09/13 04:31:41 adrian Exp $
  *
  * DEBUG: section 20    Store Rebuild Routines
  * AUTHOR: Duane Wessels
@@ -68,7 +68,9 @@ storeCleanup(void *datanotused)
     hash_link *link_ptr = NULL;
     hash_link *link_next = NULL;
     validnum_start = validnum;
-    while (validnum - validnum_start < 500) {
+    int limit = opt_foreground_rebuild ? 1 << 30 : 500;
+
+    while (validnum - validnum_start < limit) {
 	if (++bucketnum >= store_hash_buckets) {
 	    debug(20, 1) ("  Completed Validation Procedure\n");
 	    debug(20, 1) ("  Validated %d Entries\n", validnum);
