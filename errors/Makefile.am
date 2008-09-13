@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 #
-# $Id: Makefile.am,v 1.14 2008/02/23 02:17:38 hno Exp $
+# $Id: Makefile.am,v 1.15 2008/09/13 04:10:21 amosjeffries Exp $
 #
 
 errordir = $(datadir)/errors
@@ -10,7 +10,7 @@ errordir = $(datadir)/errors
 
 DEFAULT_ERROR_DIR	= $(errordir)
 
-INSTALL_LANGUAGES	= @ERR_LANGUAGES@
+INSTALL_LANGUAGES	= templates @ERR_LANGUAGES@
 LANGUAGES	= \
 		Armenian \
 		Azerbaijani \
@@ -85,7 +85,7 @@ addlang: all
 	fi
 
 dist-hook:
-	@ for lang in $(LANGUAGES); do \
+	@ for lang in $(LANGUAGES) templates; do \
 	  if test "$$lang" = .; then :; else \
 	    test -d $(distdir)/$$lang \
 	    || mkdir $(distdir)/$$lang \
