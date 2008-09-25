@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.754.2.21 2008/07/21 20:43:27 hno Exp $
+ * $Id: client_side.c,v 1.754.2.22 2008/09/25 02:28:57 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -953,6 +953,7 @@ clientHandleIMSReply(void *data, HttpReply * rep)
     if (EBIT_TEST(entry->flags, ENTRY_ABORTED)) {
 	/* Old object got aborted, not good */
 	clientProcessMiss(http);
+	return;
     }
     if (recopy) {
 	storeClientCopyHeaders(http->sc, entry,
