@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.538.2.15 2008/07/21 20:18:50 hno Exp $
+ * $Id: structs.h,v 1.538.2.16 2008/09/25 02:33:37 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -737,6 +737,7 @@ struct _SquidConfig {
 #endif
 	acl_access *vary_encoding;
 	acl_access *auth_ip_shortcircuit;
+	acl_access *upgrade_http09;
     } accessList;
     acl_deny_info_list *denyInfoList;
     struct _authConfig {
