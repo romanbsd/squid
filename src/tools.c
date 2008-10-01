@@ -1,6 +1,6 @@
 
 /*
- * $Id: tools.c,v 1.265 2008/05/30 15:30:29 hno Exp $
+ * $Id: tools.c,v 1.266 2008/10/01 10:44:51 hno Exp $
  *
  * DEBUG: section 21    Misc Functions
  * AUTHOR: Harvest Derived
@@ -396,6 +396,7 @@ fatal_common(const char *message)
 void
 fatal(const char *message)
 {
+    leave_suid();
     releaseServerSockets();
     /* check for store_dirs_rebuilding because fatal() is often
      * used in early initialization phases, long before we ever
@@ -444,6 +445,7 @@ fatalvf(const char *fmt, va_list args)
 void
 fatal_dump(const char *message)
 {
+    leave_suid();
     failure_notify = NULL;
     releaseServerSockets();
     if (message)
