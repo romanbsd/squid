@@ -1,6 +1,6 @@
 
 /*
- * $Id: sspwin32.h,v 1.2 2006/09/09 15:41:45 serassio Exp $
+ * $Id: sspwin32.h,v 1.3 2008/10/12 18:56:40 serassio Exp $
  *
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
  * Based on previous work of Francesco Chemolli, Robert Collins and Andrew Doran
@@ -46,6 +46,7 @@
 #include <tchar.h>
 #endif
 #include <windows.h>
+#include <ntsecapi.h>
 #include <security.h>
 #include <sspi.h>
 
