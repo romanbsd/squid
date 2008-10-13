@@ -1,6 +1,6 @@
 
 /*
- * $Id: errorpage.c,v 1.193 2007/11/21 15:06:13 hno Exp $
+ * $Id: errorpage.c,v 1.193.2.1 2008/10/13 16:32:35 hno Exp $
  *
  * DEBUG: section 4     Error Generation
  * AUTHOR: Duane Wessels
@@ -628,7 +628,7 @@ errorBuildReply(ErrorState * err)
     /* no LMT for error pages; error pages expire immediately */
     if (strchr(name, ':')) {
 	/* Redirection */
-	httpReplySetHeaders(rep, HTTP_MOVED_TEMPORARILY, NULL, "text/html", 0, -1, squid_curtime);
+	httpReplySetHeaders(rep, HTTP_MOVED_TEMPORARILY, NULL, "text/html", 0, -1, -1);
 	if (err->request) {
 	    char *quoted_url = rfc1738_escape_part(urlCanonical(err->request));
 	    httpHeaderPutStrf(&rep->header, HDR_LOCATION, name, quoted_url);
@@ -636,7 +636,7 @@ errorBuildReply(ErrorState * err)
 	httpHeaderPutStrf(&rep->header, HDR_X_SQUID_ERROR, "%d %s", err->http_status, "Access Denied");
     } else {
 	MemBuf content = errorBuildContent(err);
-	httpReplySetHeaders(rep, err->http_status, NULL, "text/html", content.size, -1, squid_curtime);
+	httpReplySetHeaders(rep, err->http_status, NULL, "text/html", content.size, -1, -1);
 	/*
 	 * include some information for downstream caches. Implicit
 	 * replaceable content. This isn't quite sufficient. xerrno is not
