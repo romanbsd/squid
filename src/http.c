@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.451 2008/09/04 07:00:25 benno Exp $
+ * $Id: http.c,v 1.452 2008/10/14 19:04:37 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -218,11 +218,13 @@ httpMaybeRemovePublic(StoreEntry * e, HttpReply * reply)
 	break;
 #endif
     default:
+#if QUESTIONABLE
 	/*
-	 * Any "success" response should eject previously cached entities...
+	 * Any 2xx response should eject previously cached entities...
 	 */
-	if (status >= 200 && status < 400)
+	if (status >= 200 && status < 300)
 	    remove = 1;
+#endif
 	break;
     }
     if (!remove && !forbidden)
