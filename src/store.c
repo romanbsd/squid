@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.598 2008/09/28 22:50:36 hno Exp $
+ * $Id: store.c,v 1.599 2008/10/29 23:37:56 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -1832,7 +1832,7 @@ storeEntryValidToSend(StoreEntry * e)
 	return 0;
     /* Entries which seem to have got stuck is not valid to send to new clients */
     if (e->store_status == STORE_PENDING) {
-	if (!e->mem_obj || e->mem_obj->refresh_timestamp + 30 < squid_curtime)
+	if (!e->mem_obj || e->mem_obj->refresh_timestamp + Config.collapsed_forwarding_timeout < squid_curtime)
 	    return 0;
 	else
 	    return -1;

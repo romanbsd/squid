@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.496 2008/10/16 23:50:59 adrian Exp $
+# $Id: cf.data.pre,v 1.497 2008/10/29 23:37:56 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -3477,6 +3477,18 @@ DOC_START
 	latency on dynamic content, but there can be benefit from enabling
 	this in accelerator setups where the web servers are the bottleneck
 	and reliable and returns mostly cacheable information.
+DOC_END
+
+NAME: collapsed_forwarding_timeout
+COMMENT: (seconds)
+TYPE: int
+LOC: Config.collapsed_forwarding_timeout
+DEFAULT: 30
+DOC_START
+    When collapsed_forwarding is enabled, subsequent requests for a
+    given URI will queued after the first one, subject to a timeout.
+    If the first request does not return before this timeout, the 
+    subsequent requests will be released and go forward.
 DOC_END
 
 NAME: refresh_stale_hit
