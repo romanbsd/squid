@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.499 2008/12/01 01:11:29 hno Exp $
+# $Id: cf.data.pre,v 1.500 2009/01/31 06:26:52 adrian Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -3074,6 +3074,11 @@ DOC_START
 		Expires: header or Cache-Control: max-age). Doing this
 		VIOLATES the HTTP standard.  Enabling this feature
 		could make you liable for problems which it causes.
+
+		Note: this does not enforce staleness - it only extends
+		freshness / min. If the server returns a Expires time which
+		is longer than your max time, Squid will still consider
+		the object fresh for that period of time.
 
 		override-lastmod enforces min age even on objects
 		that were modified recently.
