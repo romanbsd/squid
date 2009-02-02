@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.450.2.28 2008/09/25 02:33:37 hno Exp $
+# $Id: cf.data.pre,v 1.450.2.29 2009/02/02 11:12:36 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -3271,7 +3271,7 @@ DOC_START
 
 NOCOMMENT_START
 # Don't upgrade ShoutCast responses to HTTP
-acl shoutcast rep_header X-HTTP09-First-Line ^ICY\s[0-9]
+acl shoutcast rep_header X-HTTP09-First-Line ^ICY.[0-9]
 upgrade_http0.9 deny shoutcast
 NOCOMMENT_END
 DOC_END
