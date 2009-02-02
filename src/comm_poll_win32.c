@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_poll_win32.c,v 1.1 2006/10/28 00:35:12 hno Exp $
+ * $Id: comm_poll_win32.c,v 1.1.6.1 2009/02/02 11:10:53 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -112,7 +112,7 @@ commSetEvents(int fd, int need_read, int need_write)
 static int
 do_comm_select(int msec)
 {
-    int num;
+    int num, saved_errno;
     int i;
 
     if (nfds == 0) {
@@ -121,9 +121,11 @@ do_comm_select(int msec)
     }
     statCounter.syscalls.selects++;
     num = WSAPoll(pfds, nfds, msec);
+    saved_errno = errno;
+    getCurrentTime();
+    debug(5, 5) ("do_comm_select: %d fds ready\n", num);
     if (num < 0) {
-	getCurrentTime();
-	if (ignoreErrno(errno))
+	if (ignoreErrno(saved_errno))
 	    return COMM_OK;
 
 	debug(5, 1) ("comm_select: poll failure: %s\n", xstrerror());

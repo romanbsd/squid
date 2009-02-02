@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_select.c,v 1.82 2007/07/17 20:34:28 hno Exp $
+ * $Id: comm_select.c,v 1.82.2.1 2009/02/02 11:10:53 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -126,7 +126,7 @@ commSetEvents(int fd, int need_read, int need_write)
 static int
 do_comm_select(int msec)
 {
-    int num;
+    int num, saved_errno;
     struct timeval tv;
     fd_mask *rfdsp = (fd_mask *) current_readfds;
     fd_mask *wfdsp = (fd_mask *) current_writefds;
@@ -146,10 +146,11 @@ do_comm_select(int msec)
     tv.tv_usec = (msec % 1000) * 1000;
     statCounter.syscalls.selects++;
     num = select(Biggest_FD + 1, current_readfds, current_writefds, current_errfds, &tv);
-
+    saved_errno = errno;
+    getCurrentTime();
+    debug(5, 5) ("do_comm_select: %d fds ready\n", num);
     if (num < 0) {
-	getCurrentTime();
-	if (ignoreErrno(errno))
+	if (ignoreErrno(saved_errno))
 	    return COMM_OK;
 
 	debug(5, 1) ("comm_select: select failure: %s\n", xstrerror());
