@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpMsg.c,v 1.18 2009/02/02 10:10:23 hno Exp $
+ * $Id: HttpMsg.c,v 1.19 2009/02/02 12:40:59 hno Exp $
  *
  * DEBUG: section 74    HTTP Message
  * AUTHOR: Alex Rousskov
@@ -280,7 +280,7 @@ httpMsgParseRequestLine(HttpMsgBuf * hmsg)
 		min = min * 10;
 		min = min + (hmsg->buf[i]) - '0';
 	    }
-	    if (maj >= 65536) {
+	    if (min >= 65536) {
 		retcode = -1;
 		goto finish;
 	    }
