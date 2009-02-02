@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_kqueue.c,v 1.12.2.2 2009/02/02 11:10:53 hno Exp $
+ * $Id: comm_kqueue.c,v 1.12.2.3 2009/02/02 11:11:48 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -154,7 +154,7 @@ do_comm_select(int msec)
     debug(5, 5) ("do_comm_select: %d fds ready\n", num);
     kqoff = 0;
     if (num < 0) {
-	if (ignoreErrno(saved_errnoerrno))
+	if (ignoreErrno(saved_errno))
 	    return COMM_OK;
 
 	debug(5, 1) ("comm_select: kevent failure: %s\n", xstrerror());
