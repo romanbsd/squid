@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpMsg.c,v 1.17 2007/12/13 01:20:48 hno Exp $
+ * $Id: HttpMsg.c,v 1.17.2.1 2009/02/02 11:13:24 hno Exp $
  *
  * DEBUG: section 74    HTTP Message
  * AUTHOR: Alex Rousskov
@@ -256,11 +256,11 @@ httpMsgParseRequestLine(HttpMsgBuf * hmsg)
 
 	    /* next should be 1 or more digits */
 	    maj = 0;
-	    for (; i < hmsg->req_end && (xisdigit(hmsg->buf[i])); i++) {
+	    for (; i < hmsg->req_end && (xisdigit(hmsg->buf[i])) && maj < 65536; i++) {
 		maj = maj * 10;
 		maj = maj + (hmsg->buf[i]) - '0';
 	    }
-	    if (i >= hmsg->req_end) {
+	    if (i >= hmsg->req_end || maj >= 65536) {
 		retcode = -1;
 		goto finish;
 	    }
@@ -276,11 +276,14 @@ httpMsgParseRequestLine(HttpMsgBuf * hmsg)
 	    /* next should be one or more digits */
 	    i++;
 	    min = 0;
-	    for (; i < hmsg->req_end && (xisdigit(hmsg->buf[i])); i++) {
+	    for (; i < hmsg->req_end && (xisdigit(hmsg->buf[i])) && min < 65536; i++) {
 		min = min * 10;
 		min = min + (hmsg->buf[i]) - '0';
 	    }
-
+	    if (maj >= 65536) {
+		retcode = -1;
+		goto finish;
+	    }
 	    /* Find whitespace, end of version */
 	    hmsg->v_end = i;
 	    hmsg->v_len = hmsg->v_end - hmsg->v_start + 1;
