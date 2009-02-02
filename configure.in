@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.416.2.30 2008/10/19 17:43:14 hno Exp $
+dnl  $Id: configure.in,v 1.416.2.31 2009/02/02 11:37:28 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.416.2.30 $)dnl
+AC_REVISION($Revision: 1.416.2.31 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -2709,9 +2709,9 @@ if test "$LINUX_TPROXY" ; then
     AC_MSG_RESULT($LINUX_TPROXY)
 fi
 if test "$LINUX_TPROXY" = "no" && test "$LINUX_NETFILTER" = "yes"; then
-    echo "WARNING: Cannot find TPROXY headers, you need to install the"
+    echo "WARNING: Cannot find TPROXY headers, you need to patch your kernel with the"
     echo "tproxy package from:"
-    echo " - lynx http://www.balabit.com/downloads/tproxy/"
+    echo " - lynx http://www.balabit.com/downloads/files/tproxy/"
     sleep 10
 fi
 
