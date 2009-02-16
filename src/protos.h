@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.569 2008/09/04 07:00:26 benno Exp $
+ * $Id: protos.h,v 1.570 2009/02/16 14:31:27 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -542,6 +542,8 @@ extern void httpRequestPackDebug(request_t * req, Packer * p);
 extern int httpRequestPrefixLen(const request_t * req);
 extern int httpRequestHdrAllowed(const HttpHeaderEntry * e, String * strConnection);
 extern int httpRequestHdrAllowedByName(http_hdr_type id);
+extern void requestRegisterBody(request_t * request, BODY_HANDLER * reader, void *cbdata);
+extern void requestUnregisterBody(request_t * request, BODY_HANDLER * reader, void *cbdata);
 extern void requestReadBody(request_t * request, char *buf, size_t size, CBCB * callback, void *cbdata);
 extern void requestAbortBody(request_t * request);
 
