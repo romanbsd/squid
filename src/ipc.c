@@ -1,6 +1,6 @@
 
 /*
- * $Id: ipc.c,v 1.39 2006/09/08 19:41:24 serassio Exp $
+ * $Id: ipc.c,v 1.40 2009/03/19 08:59:43 hno Exp $
  *
  * DEBUG: section 54    Interprocess Communication
  * AUTHOR: Duane Wessels
@@ -307,7 +307,8 @@ ipcCreate(int type, const char *prog, const char *const args[], const char *name
 	close(x);
 #endif
 #if HAVE_SETSID
-    setsid();
+    if (opt_no_daemon)
+	setsid();
 #endif
     execvp(prog, (char *const *) args);
     debug_log = fdopen(2, "a+");
