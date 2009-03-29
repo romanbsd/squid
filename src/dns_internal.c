@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.71 2008/06/27 16:05:42 hno Exp $
+ * $Id: dns_internal.c,v 1.72 2009/03/29 10:19:40 serassio Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -417,6 +417,7 @@ idnsParseWIN32Registry(void)
     case _WIN_OS_WINXP:
     case _WIN_OS_WINNET:
     case _WIN_OS_WINLON:
+    case _WIN_OS_WIN7:
 	/* get nameservers from the Windows 2000 registry */
 	/* search all interfaces for DNS server addresses */
 	if (RegOpenKey(HKEY_LOCAL_MACHINE,
