@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.23 2008/06/30 12:40:51 serassio Exp $
+ * $Id: win32.c,v 1.24 2009/03/29 09:32:35 serassio Exp $
  *
  * Windows support
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -894,9 +894,8 @@ int
 WIN32_getrusage(int who, struct rusage *usage)
 {
 #if HAVE_WIN32_PSAPI
-    if ((WIN32_OS_version == _WIN_OS_WINNT) || (WIN32_OS_version == _WIN_OS_WIN2K)
-	|| (WIN32_OS_version == _WIN_OS_WINXP) || (WIN32_OS_version == _WIN_OS_WINNET)) {
-	/* On Windows NT/2000 call PSAPI.DLL for process Memory */
+    if (WIN32_OS_version >= _WIN_OS_WINNT) {
+	/* On Windows NT an later call PSAPI.DLL for process Memory */
 	/* informations -- Guido Serassio                       */
 	HANDLE hProcess;
 	PROCESS_MEMORY_COUNTERS pmc;
