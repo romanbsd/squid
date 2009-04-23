@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.409 2009/04/02 04:50:00 mnot Exp $
+ * $Id: main.c,v 1.410 2009/04/23 00:59:53 mnot Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -454,7 +454,6 @@ mainReconfigure(void)
     writePidFile();		/* write PID file */
     debug(1, 1) ("Ready to serve requests.\n");
     reconfiguring = 0;
-    peerMonitorInit();
 }
 
 static void
