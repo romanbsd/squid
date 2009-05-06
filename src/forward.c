@@ -1,6 +1,6 @@
 
 /*
- * $Id: forward.c,v 1.137 2008/08/15 04:56:00 benno Exp $
+ * $Id: forward.c,v 1.138 2009/05/06 05:25:45 mnot Exp $
  *
  * DEBUG: section 17    Request Forwarding
  * AUTHOR: Duane Wessels
@@ -851,7 +851,7 @@ fwdReforward(FwdState * fwdState)
 	debug(17, 3) ("fwdReforward: No, Connection oriented authentication is used\n");
 	return 0;
     }
-    if (fwdState->n_tries > 9)
+    if (fwdState->n_tries >= Config.forward_max_tries)
 	return 0;
     if (fwdState->origin_tries > 1)
 	return 0;

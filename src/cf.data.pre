@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.501 2009/02/04 20:24:56 hno Exp $
+# $Id: cf.data.pre,v 1.502 2009/05/06 05:25:45 mnot Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -1877,6 +1877,16 @@ DOC_START
 	will see a lot of requests sent DIRECT to origin servers
 	instead of to your parents.
 DOC_END
+
+NAME: forward_max_tries
+DEFAULT: 10
+TYPE: int
+LOC: Config.forward_max_tries
+DOC_START
+	Controls how many different forward paths Squid will try
+	before giving up. See also forward_timeout.
+DOC_END
+
 
 NAME: hierarchy_stoplist
 TYPE: wordlist
