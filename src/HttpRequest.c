@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpRequest.c,v 1.46 2009/02/16 14:31:26 hno Exp $
+ * $Id: HttpRequest.c,v 1.47 2009/05/12 03:28:22 mnot Exp $
  *
  * DEBUG: section 73    HTTP Request
  * AUTHOR: Duane Wessels
@@ -39,7 +39,10 @@ request_t *
 requestCreate(method_t * method, protocol_t protocol, const char *urlpath)
 {
     request_t *req = memAllocate(MEM_REQUEST_T);
-    req->method = method;
+    if (method)
+	req->method = method;
+    else
+	req->method = urlMethodGetKnownByCode(METHOD_NONE);
     req->protocol = protocol;
     if (urlpath)
 	stringReset(&req->urlpath, urlpath);
