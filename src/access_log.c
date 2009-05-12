@@ -1,6 +1,6 @@
 
 /*
- * $Id: access_log.c,v 1.107 2008/08/15 04:55:59 benno Exp $
+ * $Id: access_log.c,v 1.108 2009/05/12 02:49:06 mnot Exp $
  *
  * DEBUG: section 46    Access Log
  * AUTHOR: Duane Wessels
@@ -1155,6 +1155,8 @@ accessLogLog(AccessLogEntry * al, aclCheck_t * checklist)
 	al->http.content_type = dash_str;
     if (al->icp.opcode)
 	al->private.method_str = icp_opcode_str[al->icp.opcode];
+    else if (al->htcp.opcode)
+	al->private.method_str = al->htcp.opcode;
     else
 	al->private.method_str = al->http.method->string;
     if (al->hier.host[0] == '\0')

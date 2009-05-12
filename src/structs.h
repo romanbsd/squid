@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.572 2009/05/12 02:40:47 mnot Exp $
+ * $Id: structs.h,v 1.573 2009/05/12 02:49:06 mnot Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1230,6 +1230,9 @@ struct _AccessLogEntry {
     struct {
 	icp_opcode opcode;
     } icp;
+    struct {
+	u_char *opcode;
+    } htcp;
     struct {
 	struct in_addr caddr;
 	struct in_addr out_ip;
