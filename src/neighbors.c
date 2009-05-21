@@ -1,6 +1,6 @@
 
 /*
- * $Id: neighbors.c,v 1.331 2008/08/29 00:21:40 benno Exp $
+ * $Id: neighbors.c,v 1.332 2009/05/21 03:03:42 mnot Exp $
  *
  * DEBUG: section 15    Neighbor Routines
  * AUTHOR: Harvest Derived
@@ -1371,6 +1371,8 @@ dump_peer_options(StoreEntry * sentry, peer * p)
 	else
 	    storeAppendPrintf(sentry, " monitorsize=%d", p->monitor.min);
     }
+    if (p->options.monitor_direct)
+	storeAppendPrintf(sentry, " monitor-direct");
     if (p->domain)
 	storeAppendPrintf(sentry, " forceddomain=%s", p->domain);
     if (p->connect_fail_limit != PEER_TCP_MAGIC_COUNT)

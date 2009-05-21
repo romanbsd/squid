@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.573 2009/05/12 02:49:06 mnot Exp $
+ * $Id: structs.h,v 1.574 2009/05/21 03:03:42 mnot Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1528,6 +1528,7 @@ struct _peer {
 	unsigned int originserver:1;
 	unsigned int userhash:1;
 	unsigned int sourcehash:1;
+	unsigned int monitor_direct:1;
 	unsigned int carp:1;
 	unsigned int http11:1;	/* HTTP/1.1 support */
     } options;

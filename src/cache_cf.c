@@ -1,6 +1,6 @@
 
 /*
- * $Id: cache_cf.c,v 1.508 2009/05/12 02:40:47 mnot Exp $
+ * $Id: cache_cf.c,v 1.509 2009/05/21 03:03:42 mnot Exp $
  *
  * DEBUG: section 3     Configuration File Parsing
  * AUTHOR: Harvest Derived
@@ -1829,6 +1829,8 @@ parse_peer(peer ** head)
 	    p->options.no_query = 1;
 	} else if (!strcasecmp(token, "no-digest")) {
 	    p->options.no_digest = 1;
+	} else if (!strcasecmp(token, "monitor-direct")) {
+	    p->options.monitor_direct = 1;
 	} else if (!strcasecmp(token, "multicast-responder")) {
 	    p->options.mcast_responder = 1;
 #if PEER_MULTICAST_SIBLINGS
