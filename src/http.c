@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.453 2009/04/23 01:08:23 mnot Exp $
+ * $Id: http.c,v 1.454 2009/05/21 03:08:57 mnot Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -328,7 +328,7 @@ httpCachableReply(HttpStateData * httpState)
 	 * Don't cache objects that need to be refreshed on next request,
 	 * unless we know how to refresh it.
 	 */
-	if (!refreshIsCachable(httpState->entry))
+	if (!refreshIsCachable(httpState->entry) && !REFRESH_OVERRIDE(store_stale))
 	    return 0;
 	/* don't cache objects from peers w/o LMT, Date, or Expires */
 	/* check that is it enough to check headers @?@ */

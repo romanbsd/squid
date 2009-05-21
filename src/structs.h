@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.574 2009/05/21 03:03:42 mnot Exp $
+ * $Id: structs.h,v 1.575 2009/05/21 03:08:57 mnot Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -2050,6 +2050,7 @@ struct _refresh_t {
 	unsigned int ignore_auth:1;
 #endif
 	unsigned int ignore_stale_while_revalidate:1;
+	unsigned int store_stale:1;
     } flags;
     int max_stale;
     int stale_while_revalidate;
