@@ -1,6 +1,6 @@
 
 /*
- * $Id: defines.h,v 1.126 2007/09/24 13:31:19 hno Exp $
+ * $Id: defines.h,v 1.126.2.1 2009/06/25 22:49:28 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -181,7 +181,7 @@
 
 #define MAX_FILES_PER_DIR (1<<20)
 
-#define MAX_URL  4096
+#define MAX_URL  8192
 #define MAX_LOGIN_SZ  128
 
 #define PEER_MAX_ADDRESSES 10
