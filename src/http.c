@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.439.2.7 2008/09/25 02:33:37 hno Exp $
+ * $Id: http.c,v 1.439.2.8 2009/06/25 22:54:13 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -699,10 +699,10 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 		    debug(11, 3) ("Chunk header '%s'\n", strBuf(httpState->chunkhdr));
 		    errno = 0;
 		    httpState->chunk_size = strto_off_t(strBuf(httpState->chunkhdr), &end, 16);
-		    if (errno)
-			badchunk = 1;
-		    else if (end == strBuf(httpState->chunkhdr))
+		    if (end == strBuf(httpState->chunkhdr))
 			emptychunk = 1;
+		    else if (errno)
+			badchunk = 1;
 		    while (end && (*end == '\r' || *end == ' ' || *end == '\t'))
 			end++;
 		    if (httpState->chunk_size < 0 || badchunk || !end || (*end != '\n' && *end != ';')) {
