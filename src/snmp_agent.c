@@ -1,6 +1,6 @@
 
 /*
- * $Id: snmp_agent.c,v 1.89 2006/11/09 16:35:07 hno Exp $
+ * $Id: snmp_agent.c,v 1.89.6.1 2009/06/25 22:58:10 hno Exp $
  *
  * DEBUG: section 49     SNMP Interface
  * AUTHOR: Kostas Anagnostakis
@@ -103,7 +103,7 @@ snmp_confFn(variable_list * Var, snint * ErrP)
 	switch (Var->name[LEN_SQ_CONF + 1]) {
 	case CONF_ST_MMAXSZ:
 	    Answer = snmp_var_new_integer(Var->name, Var->name_length,
-		(snint) Config.memMaxSize >> 20,
+		(snint) (Config.memMaxSize >> 20),
 		ASN_INTEGER);
 	    break;
 	case CONF_ST_SWMAXSZ:
