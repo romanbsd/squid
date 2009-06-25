@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.754.2.24 2008/10/06 21:27:44 hno Exp $
+ * $Id: client_side.c,v 1.754.2.25 2009/06/25 22:45:10 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -2169,8 +2169,6 @@ clientAsyncRefresh(clientHttpRequest * http)
     async->entry = storeCreateEntry(url,
 	request->flags,
 	request->method);
-    async->entry->mem_obj->old_entry = async->old_entry;
-    storeLockObject(async->entry->mem_obj->old_entry);
     async->sc = storeClientRegister(async->entry, async);
     request->etags = NULL;	/* Should always be null as this was a cache hit, but just in case.. */
     httpHeaderDelById(&request->header, HDR_RANGE);
