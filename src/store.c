@@ -1,6 +1,6 @@
 
 /*
- * $Id: store.c,v 1.584.2.7 2008/10/06 21:26:42 hno Exp $
+ * $Id: store.c,v 1.584.2.8 2009/06/25 22:58:37 hno Exp $
  *
  * DEBUG: section 20    Storage Manager
  * AUTHOR: Harvest Derived
@@ -196,6 +196,7 @@ destroy_MemObject(StoreEntry * e)
     mem->request = NULL;
     ctx_exit(ctx);		/* must exit before we free mem->url */
     safe_free(mem->url);
+    safe_free(mem->store_url);
     safe_free(mem->vary_headers);
     safe_free(mem->vary_encoding);
     memFree(mem, MEM_MEMOBJECT);
