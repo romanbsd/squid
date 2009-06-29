@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.754.2.25 2009/06/25 22:45:10 hno Exp $
+ * $Id: client_side.c,v 1.754.2.26 2009/06/29 07:24:08 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -1522,10 +1522,6 @@ static int
 clientCheckContentLength(request_t * r)
 {
     switch (r->method) {
-    case METHOD_PUT:
-    case METHOD_POST:
-	/* PUT/POST requires a request entity */
-	return (r->content_length >= 0);
     case METHOD_GET:
     case METHOD_HEAD:
 	/* We do not want to see a request entity on GET/HEAD requests */
