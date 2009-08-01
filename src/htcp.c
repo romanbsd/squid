@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.60 2009/05/12 02:49:06 mnot Exp $
+ * $Id: htcp.c,v 1.61 2009/08/01 23:33:24 hno Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -1146,7 +1146,7 @@ htcpLogHtcp(struct in_addr caddr, int opcode, log_type logcode, int len, const c
     if (!Config.onoff.log_udp)
 	return;
     memset(&al, '\0', sizeof(al));
-    al.htcp.opcode = (u_char *) htcpOpcodeStr[opcode];
+    al.htcp.opcode = htcpOpcodeStr[opcode];
     al.url = url;
     al.cache.caddr = caddr;
     al.cache.size = len;
