@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.454 2009/05/21 03:08:57 mnot Exp $
+ * $Id: http.c,v 1.455 2009/08/02 02:00:16 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -1365,6 +1365,14 @@ httpBuildRequestHeader(request_t * request,
 	    }
 	} else if (strcmp(orig_request->peer_login, "PROXYPASS") == 0) {
 	    /* Nothing to do */
+#if HAVE_KRB5 && HAVE_GSSAPI
+	} else if (strcmp(orig_request->peer_login, "NEGOTIATE") == 0) {
+	    char *Token;
+	    Token = peer_proxy_negotiate_auth(NULL, request->peer_host);
+	    if (Token) {
+		httpHeaderPutStrf(hdr_out, HDR_PROXY_AUTHORIZATION, "Negotiate %s", Token);
+	    }
+#endif /* HAVE_KRB5 && HAVE_GSSAPI */
 	} else {
 	    httpHeaderPutStrf(hdr_out, HDR_PROXY_AUTHORIZATION, "Basic %s",
 		base64_encode(orig_request->peer_login));
@@ -1528,6 +1536,7 @@ httpSendRequest(HttpStateData * httpState)
 	httpState->flags.http11 = httpState->peer->options.http11;
     else
 	httpState->flags.http11 = Config.onoff.server_http11;
+    req->peer_host = httpState->peer ? httpState->peer->host : NULL;
     memBufDefInit(&mb);
     httpBuildRequestPrefix(req,
 	httpState->orig_request,

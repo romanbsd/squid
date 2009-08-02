@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.68 2007/12/27 15:36:30 hno Exp $
+#  $Id: Makefile.am,v 1.69 2009/08/02 02:00:15 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -97,6 +97,7 @@ endif
 SUBDIRS		= fs repl auth
 
 INCLUDES        = -I. -I$(srcdir) -I$(top_builddir)/include -I$(top_srcdir)/include
+INCLUDES       += @KRB5INCS@
 
 EXTRA_PROGRAMS = \
 	unlinkd \
@@ -220,6 +221,7 @@ squid_SOURCES = \
 	pconn.c \
 	peer_digest.c \
 	peer_monitor.c \
+        peer_proxy_negotiate_auth.c \
 	peer_select.c \
 	peer_sourcehash.c \
 	peer_userhash.c \
@@ -284,8 +286,8 @@ squid_LDADD = \
 	@LIB_EPOLL@ \
 	-lmiscutil \
 	@XTRA_LIBS@ \
-	$(MINGWEXLIB)
-
+	$(MINGWEXLIB) \
+        @KRB5LIBS@
 squid_DEPENDENCIES = \
 	$(REPL_OBJS) \
 	$(STORE_OBJS) \

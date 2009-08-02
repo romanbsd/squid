@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.576 2009/08/01 23:33:24 hno Exp $
+ * $Id: structs.h,v 1.577 2009/08/02 02:00:16 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1995,6 +1995,7 @@ struct _request_t {
     HierarchyLogEntry hier;
     err_type err_type;
     char *peer_login;		/* Configured peer login:password */
+    char *peer_host;		/* Selected peer host */
     time_t lastmod;		/* Used on refreshes */
     char *vary_hdr;		/* Used when varying entities are detected. Changes how the store key is calculated */
     char *vary_headers;		/* Used when varying entities are detected. Changes how the store key is calculated */

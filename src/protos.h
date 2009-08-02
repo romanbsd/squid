@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.570 2009/02/16 14:31:27 hno Exp $
+ * $Id: protos.h,v 1.571 2009/08/02 02:00:16 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -1521,5 +1521,5 @@ extern void clientStoreURLRewriteAccessCheckDone(int answer, void *data);
 extern void clientStoreURLRewriteStart(clientHttpRequest * http);
 extern void clientStoreURLRewriteDone(void *data, char *result);
 
-
+extern char *peer_proxy_negotiate_auth(char *principal_name, char *proxy);
 #endif /* SQUID_PROTOS_H */

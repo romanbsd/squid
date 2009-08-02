@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl.c,v 1.144 2008/08/15 04:56:01 benno Exp $
+ * $Id: ssl.c,v 1.145 2009/08/02 02:00:16 hno Exp $
  *
  * DEBUG: section 26    Secure Sockets Layer Proxy
  * AUTHOR: Duane Wessels
@@ -627,6 +627,7 @@ sslPeerSelectComplete(FwdServer * fs, void *data)
     }
     sslState->servers = fs;
     sslState->host = fs->peer ? fs->peer->host : request->host;
+    request->peer_host = fs->peer ? fs->peer->host : NULL;
     if (fs->peer == NULL) {
 	sslState->port = request->port;
     } else if (fs->peer->http_port != 0) {
