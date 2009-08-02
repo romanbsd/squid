@@ -17,7 +17,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.in,v 1.17 2009/05/01 01:22:44 squidadm Exp $
+#  $Id: Makefile.in,v 1.18 2009/08/02 02:13:44 squidadm Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -140,6 +140,8 @@ INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+KRB5INCS = @KRB5INCS@
+KRB5LIBS = @KRB5LIBS@
 LDFLAGS = @LDFLAGS@
 LIBDLMALLOC = @LIBDLMALLOC@
 LIBOBJS = @LIBOBJS@
@@ -197,6 +199,7 @@ abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_CC = @ac_ct_CC@
+ac_krb5_config = @ac_krb5_config@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@

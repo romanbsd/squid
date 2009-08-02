@@ -15,7 +15,7 @@
 @SET_MAKE@
 
 #
-# $Id: Makefile.in,v 1.56 2009/05/01 01:21:35 squidadm Exp $
+# $Id: Makefile.in,v 1.57 2009/08/02 02:11:53 squidadm Exp $
 #
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
@@ -89,6 +89,8 @@ INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+KRB5INCS = @KRB5INCS@
+KRB5LIBS = @KRB5LIBS@
 LDFLAGS = @LDFLAGS@
 LIBDLMALLOC = @LIBDLMALLOC@
 LIBOBJS = @LIBOBJS@
@@ -146,6 +148,7 @@ abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_CC = @ac_ct_CC@
+ac_krb5_config = @ac_krb5_config@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
