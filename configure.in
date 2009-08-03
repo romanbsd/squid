@@ -1,7 +1,7 @@
 dnl
 dnl  Configuration input file for Squid
 dnl
-dnl  $Id: configure.in,v 1.446 2009/08/02 02:10:00 hno Exp $
+dnl  $Id: configure.in,v 1.447 2009/08/03 20:11:22 hno Exp $
 dnl
 dnl
 dnl
@@ -10,7 +10,7 @@ AC_PREREQ(2.52)
 AM_CONFIG_HEADER(include/autoconf.h)
 AC_CONFIG_AUX_DIR(cfgaux)
 AM_INIT_AUTOMAKE
-AC_REVISION($Revision: 1.446 $)dnl
+AC_REVISION($Revision: 1.447 $)dnl
 AC_PREFIX_DEFAULT(/usr/local/squid)
 AM_MAINTAINER_MODE
 
@@ -1588,6 +1588,7 @@ main(void)
     AC_SUBST(KRB5INCS)
     AC_SUBST(KRB5LIBS)
 fi
+AM_CONDITIONAL(HAVE_SPNEGO, test x"$ac_cv_have_spnego" = x"yes" )
 
 dnl Enable "NTLM fail open"
 AC_ARG_ENABLE(ntlm-fail-open,
