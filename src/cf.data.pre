@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.505 2009/05/21 03:08:57 mnot Exp $
+# $Id: cf.data.pre,v 1.506 2009/08/15 12:59:55 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -680,7 +680,7 @@ NOCOMMENT_START
 acl all src all
 acl manager proto cache_object
 acl localhost src 127.0.0.1/32
-acl to_localhost dst 127.0.0.0/8
+acl to_localhost dst 127.0.0.0/8 0.0.0.0/32
 #
 # Example rule allowing access from your local networks.
 # Adapt to list your (internal) IP networks from where browsing
