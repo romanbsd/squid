@@ -1,6 +1,6 @@
 
 /*
- * $Id: cf_gen.c,v 1.54 2008/08/27 00:31:32 hno Exp $
+ * $Id: cf_gen.c,v 1.55 2009/08/19 01:36:39 hno Exp $
  *
  * DEBUG: none          Generate squid.conf.default and cf_parser.h
  * AUTHOR: Max Okumoto
@@ -53,8 +53,8 @@
 
 #define MAX_LINE	1024	/* longest configuration line */
 #define _PATH_PARSER		"cf_parser.h"
-#define _PATH_SQUID_CONF	"squid.conf.default"
-#define _PATH_SQUID_CONF_SHORT	"squid.conf.clean"
+#define _PATH_SQUID_CONF	"squid.conf.documented"
+#define _PATH_SQUID_CONF_SHORT	"squid.conf.default"
 #define _PATH_CF_DEPEND		"cf.data.depend"
 
 enum State {

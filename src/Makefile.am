@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.70 2009/08/19 01:25:43 hno Exp $
+#  $Id: Makefile.am,v 1.71 2009/08/19 01:36:39 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -317,6 +317,7 @@ BUILT_SOURCES = \
 
 sysconf_DATA = \
 	squid.conf.default \
+	squid.conf.documented \
 	mime.conf.default
 
 data_DATA = \
@@ -380,7 +381,7 @@ test_cache_digest: test_cache_digest.o CacheDigest.o debug.o globals.o store_key
 cache_cf.o: cf_parser.h
 
 # squid.conf.default is built by cf_gen when making cf_parser.h
-squid.conf.default: cf_parser.h
+squid.conf.default squid.conf.documented: cf_parser.h
 	true
 
 cf_parser.h: cf.data cf_gen$(EXEEXT)
@@ -452,8 +453,9 @@ uninstall-local:
 #		$(RM) -f $(DESTDIR)$(DEFAULT_CONFIG_FILE); \
 #	fi
 
-DISTCLEANFILES = cf_gen_defines.h cf.data cf_parser.h squid.conf.default squid.conf.clean \
-	globals.c string_arrays.c repl_modules.c auth_modules.c store_modules.c
+DISTCLEANFILES = cf_gen_defines.h cf.data cf_parser.h squid.conf.default \
+	globals.c string_arrays.c repl_modules.c auth_modules.c \
+	store_modules.c squid.conf.documented
 
 ##install-pinger:
 ##	@f=$(PINGER_EXE); \
