@@ -1,7 +1,7 @@
 #
 #  Makefile for the Squid Object Cache server
 #
-#  $Id: Makefile.am,v 1.69 2009/08/02 02:00:15 hno Exp $
+#  $Id: Makefile.am,v 1.70 2009/08/19 01:25:43 hno Exp $
 #
 #  Uncomment and customize the following to suit your needs:
 #
@@ -452,7 +452,7 @@ uninstall-local:
 #		$(RM) -f $(DESTDIR)$(DEFAULT_CONFIG_FILE); \
 #	fi
 
-DISTCLEANFILES = cf_gen_defines.h cf.data cf_parser.h squid.conf.default \
+DISTCLEANFILES = cf_gen_defines.h cf.data cf_parser.h squid.conf.default squid.conf.clean \
 	globals.c string_arrays.c repl_modules.c auth_modules.c store_modules.c
 
 ##install-pinger:
