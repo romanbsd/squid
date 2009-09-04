@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.410 2009/04/23 00:59:53 mnot Exp $
+ * $Id: main.c,v 1.411 2009/09/04 09:08:17 amosjeffries Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -636,6 +636,8 @@ mainInitialize(void)
     wccp2Init();
 #endif
     serverConnectionsOpen();
+    if (!opt_foreground_rebuild)
+	serverConnectionsOpen();
     neighbors_init();
     if (Config.chroot_dir)
 	no_suid();
@@ -852,6 +854,11 @@ main(int argc, char **argv)
 #endif
 	    serverConnectionsClose();
 	    eventAdd("SquidShutdown", SquidShutdown, NULL, (double) (wait + 1), 1);
+	} else if (opt_foreground_rebuild && !store_dirs_rebuilding) {
+	    opt_foreground_rebuild = 0;
+	    enter_suid();
+	    serverConnectionsOpen();
+	    leave_suid();
 	}
 	eventRun();
 	if ((loop_delay = eventNextTime()) < 0)
