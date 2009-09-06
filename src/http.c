@@ -1,6 +1,6 @@
 
 /*
- * $Id: http.c,v 1.457 2009/08/27 09:36:01 hno Exp $
+ * $Id: http.c,v 1.458 2009/09/06 08:29:05 hno Exp $
  *
  * DEBUG: section 11    Hypertext Transfer Protocol (HTTP)
  * AUTHOR: Harvest Derived
@@ -289,7 +289,7 @@ httpCachableReply(HttpStateData * httpState)
 	return 0;
     if (EBIT_TEST(cc_mask, CC_NO_CACHE) && !REFRESH_OVERRIDE(ignore_no_cache))
 	return 0;
-    if (EBIT_TEST(cc_mask, CC_NO_STORE))
+    if (EBIT_TEST(cc_mask, CC_NO_STORE) && !REFRESH_OVERRIDE(ignore_no_store))
 	return 0;
     if (httpState->request->flags.auth_sent) {
 	/*

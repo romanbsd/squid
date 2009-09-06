@@ -1,6 +1,6 @@
 
 #
-# $Id: cf.data.pre,v 1.507 2009/08/27 09:28:33 hno Exp $
+# $Id: cf.data.pre,v 1.508 2009/09/06 08:29:05 hno Exp $
 #
 # SQUID Web Proxy Cache          http://www.squid-cache.org/
 # ----------------------------------------------------------
@@ -3079,6 +3079,7 @@ DOC_START
 		 reload-into-ims
 		 ignore-reload
 		 ignore-no-cache
+		 ignore-no-store
 		 ignore-must-revalidate
 		 ignore-private
 		 ignore-auth
