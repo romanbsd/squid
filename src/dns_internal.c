@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.61.2.6 2009/09/16 21:09:05 hno Exp $
+ * $Id: dns_internal.c,v 1.61.2.7 2009/09/16 21:18:14 hno Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -289,7 +289,7 @@ idnsParseResolvConf(void)
 		t = strtok(NULL, w_space);
 		if (NULL == t)
 		    continue;
-		if (strncmp(t, "ndots:", 6) != 0) {
+		if (strncmp(t, "ndots:", 6) == 0) {
 		    ndots = atoi(t + 6);
 		    if (ndots < 1)
 			ndots = 1;
