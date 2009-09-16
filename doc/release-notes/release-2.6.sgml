@@ -2,7 +2,7 @@
 <article>
 <title>Squid 2.6.STABLE22 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release-2.6.sgml,v 1.52.2.24 2008/10/19 17:43:15 hno Exp $</date>
+<date>$Id: release-2.6.sgml,v 1.52.2.25 2009/09/16 21:11:49 hno Exp $</date>
 
 <abstract>
 This document contains the release notes for version 2.6 of Squid.
@@ -278,6 +278,7 @@ redirect_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd</verb>
 <item>When Squid runs in command line mode, the launching user account must have administrative privilege on the system
 <item>"Start parameters" in the Windows 2000/XP/2003 Service applet cannot be used
 <item>Building with MinGW, when the configure option --enable-truncate is used, Squid cannot run on Windows NT, only Windows 2000 and later are supported
+<item>On Windows Vista and later, User Account Control (UAC) must be disabled before running service installation
 </itemize>
 </descrip>
 
