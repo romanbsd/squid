@@ -1,6 +1,6 @@
 
 /*
- * $Id: win32.c,v 1.17.2.3 2009/09/16 21:08:30 hno Exp $
+ * $Id: win32.c,v 1.17.2.4 2009/09/16 21:09:05 hno Exp $
  *
  * Windows support
  * AUTHOR: Guido Serassio <serassio@squid-cache.org>
@@ -275,6 +275,20 @@ GetOSVersion()
 	    else
 		WIN32_OS_string = xstrdup("Windows Server 2008");
 	    return _WIN_OS_WINLON;
+	}
+	if ((osvi.dwMajorVersion == 6) && (osvi.dwMinorVersion == 1)) {
+	    if (osvi.wProductType == VER_NT_WORKSTATION)
+		WIN32_OS_string = xstrdup("Windows 7");
+	    else
+		WIN32_OS_string = xstrdup("Windows Server 2008 R2");
+	    return _WIN_OS_WIN7;
+	}
+	if (((osvi.dwMajorVersion > 6)) || ((osvi.dwMajorVersion == 6) && (osvi.dwMinorVersion > 1))) {
+	    if (osvi.wProductType == VER_NT_WORKSTATION)
+		WIN32_OS_string = xstrdup("Unknown Windows version, assuming Windows 7 capabilities");
+	    else
+		WIN32_OS_string = xstrdup("Unknown Windows version, assuming Windows Server 2008 R2 capabilities");
+	    return _WIN_OS_WIN7;
 	}
 	break;
     case VER_PLATFORM_WIN32_WINDOWS:
