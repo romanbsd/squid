@@ -1,6 +1,6 @@
 
 /*
- * $Id: comm_devpoll.c,v 1.3.2.2 2007/06/23 21:26:22 hno Exp $
+ * $Id: comm_devpoll.c,v 1.3.2.3 2009/09/16 21:06:46 hno Exp $
  *
  * DEBUG: section 5     Socket Functions
  *
@@ -37,8 +37,8 @@
 
 #include <sys/devpoll.h>
 
-#define	DEVPOLL_UPDATESIZE	1024
-#define	DEVPOLL_QUERYSIZE	1024
+#define	DEVPOLL_UPDATESIZE	OPEN_MAX
+#define	DEVPOLL_QUERYSIZE	OPEN_MAX
 
 static int devpoll_fd;
 static struct timespec zero_timespec;
