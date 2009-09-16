@@ -1,6 +1,6 @@
 
 /*
- * $Id: HttpHeaderTools.c,v 1.37.2.3 2008/04/02 01:04:20 hno Exp $
+ * $Id: HttpHeaderTools.c,v 1.37.2.4 2009/09/16 21:18:45 hno Exp $
  *
  * DEBUG: section 66    HTTP Header Tools
  * AUTHOR: Alex Rousskov
@@ -239,6 +239,10 @@ int
 strListGetItem(const String * str, char del, const char **item, int *ilen, const char **pos)
 {
     size_t len;
+    /* ',' is always enabled as field delimiter as this is required for
+     * processing merged header values properly, even if Cookie normally
+     * uses ';' as delimiter.
+     */
     static char delim[3][8] =
     {
 	"\"?,",
@@ -261,16 +265,15 @@ strListGetItem(const String * str, char del, const char **item, int *ilen, const
     /* find next delimiter */
     do {
 	*pos += strcspn(*pos, delim[quoted]);
-	if (**pos == del)
-	    break;
 	if (**pos == '"') {
 	    quoted = !quoted;
 	    *pos += 1;
-	}
-	if (quoted && **pos == '\\') {
+	} else if (quoted && **pos == '\\') {
 	    *pos += 1;
 	    if (**pos)
 		*pos += 1;
+	} else {
+	    break;		/* Delimiter found, marking the end of this value */
 	}
     } while (**pos);
     len = *pos - *item;		/* *pos points to del or '\0' */
