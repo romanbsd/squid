@@ -13,7 +13,7 @@
 
 
 /*
- * $Id: rfc2617.c,v 1.12 2008/01/02 20:24:47 hno Exp $
+ * $Id: rfc2617.c,v 1.13 2009/09/25 01:32:37 hno Exp $
  *
  * DEBUG:
  * AUTHOR: RFC 2617 & Robert Collins
@@ -161,7 +161,7 @@ DigestCalcResponse(
     SQUID_MD5Update(&Md5Ctx, pszMethod, strlen(pszMethod));
     SQUID_MD5Update(&Md5Ctx, ":", 1);
     SQUID_MD5Update(&Md5Ctx, pszDigestUri, strlen(pszDigestUri));
-    if (strcasecmp(pszQop, "auth-int") == 0) {
+    if (pszQop && strcasecmp(pszQop, "auth-int") == 0) {
 	SQUID_MD5Update(&Md5Ctx, ":", 1);
 	SQUID_MD5Update(&Md5Ctx, HEntity, HASHHEXLEN);
     }
@@ -175,7 +175,7 @@ DigestCalcResponse(
     SQUID_MD5Update(&Md5Ctx, ":", 1);
     SQUID_MD5Update(&Md5Ctx, pszNonce, strlen(pszNonce));
     SQUID_MD5Update(&Md5Ctx, ":", 1);
-    if (*pszQop) {
+    if (pszQop && *pszQop) {
 	SQUID_MD5Update(&Md5Ctx, pszNonceCount, strlen(pszNonceCount));
 	SQUID_MD5Update(&Md5Ctx, ":", 1);
 	SQUID_MD5Update(&Md5Ctx, pszCNonce, strlen(pszCNonce));
