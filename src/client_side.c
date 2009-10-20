@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.796 2009/04/02 04:30:24 mnot Exp $
+ * $Id: client_side.c,v 1.797 2009/10/20 10:39:41 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -977,7 +977,7 @@ modifiedSince(StoreEntry * entry, request_t * request)
 static void
 clientPurgeRequest(clientHttpRequest * http)
 {
-    StoreEntry *entry;
+    StoreEntry *entry = NULL;
     ErrorState *err = NULL;
     HttpReply *r;
     http_status status = HTTP_NOT_FOUND;
