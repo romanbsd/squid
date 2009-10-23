@@ -1,6 +1,6 @@
 
 /*
- * $Id: squidclient.c,v 1.10 2008/06/02 15:56:33 serassio Exp $
+ * $Id: squidclient.c,v 1.11 2009/10/23 01:14:43 hno Exp $
  *
  * DEBUG: section 0     WWW Client
  * AUTHOR: Harvest Derived
@@ -351,7 +351,7 @@ main(int argc, char *argv[])
 	strcat(msg, buf);
     }
     if (put_fd > 0) {
-	snprintf(buf, BUFSIZ, "Content-length: %d\r\n", (int) sb.st_size);
+	snprintf(buf, BUFSIZ, "Content-length: %" PRINTF_OFF_T "\r\n", (squid_off_t) sb.st_size);
 	strcat(msg, buf);
     }
     if (opt_noaccept == 0) {
