@@ -1,6 +1,6 @@
 
 /*
- * $Id: wccp2.c,v 1.34 2008/04/25 20:39:36 wessels Exp $
+ * $Id: wccp2.c,v 1.35 2009/11/04 01:45:15 hno Exp $
  *
  * DEBUG: section 80    WCCP Support
  * AUTHOR: Steven WIlton
@@ -1137,6 +1137,7 @@ wccp2HandleUdp(int sock, void *not_used)
 		break;
 	    default:
 		fatalf("Unknown Wccp2 assignment method\n");
+		return;		/* Keep GCC happy, thinks cache_address may be used uninitialized otherwise */
 	    }
 
 	    /* Update the cache list */
