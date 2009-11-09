@@ -1,6 +1,6 @@
 
 /*
- * $Id: structs.h,v 1.578 2009/09/06 08:29:05 hno Exp $
+ * $Id: structs.h,v 1.579 2009/11/09 21:48:46 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -238,13 +238,13 @@ struct _header_mangler {
 
 struct _body_size {
     dlink_node node;
-    acl_access *access_list;
+    acl_list *acl_list;
     squid_off_t maxsize;
 };
 
 struct _delay_body_size {
     dlink_node node;
-    acl_access *access_list;
+    acl_list *acl_list;
     squid_off_t maxsize;
     ushort pool;
 };
