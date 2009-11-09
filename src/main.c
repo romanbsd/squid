@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.411 2009/09/04 09:08:17 amosjeffries Exp $
+ * $Id: main.c,v 1.412 2009/11/09 21:42:22 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -549,7 +549,8 @@ mainInitialize(void)
 	Config.Port.icp = (u_short) icpPortNumOverride;
 
     _db_init(Config.Log.log, Config.debugOptions);
-    fd_open(fileno(debug_log), FD_LOG, Config.Log.log);
+    if (debug_log != stderr)
+	fd_open(fileno(debug_log), FD_LOG, Config.Log.log);
 #if MEM_GEN_TRACE
     log_trace_init("/tmp/squid.alloc");
 #endif
