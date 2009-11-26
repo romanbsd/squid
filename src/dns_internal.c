@@ -1,6 +1,6 @@
 
 /*
- * $Id: dns_internal.c,v 1.74 2009/08/08 22:47:13 hno Exp $
+ * $Id: dns_internal.c,v 1.75 2009/11/26 03:17:16 hno Exp $
  *
  * DEBUG: section 78    DNS lookups; interacts with lib/rfc1035.c
  * AUTHOR: Duane Wessels
@@ -318,7 +318,7 @@ static void
 idnsParseWIN32SearchList(const char *Separator)
 {
     char *t;
-    char *token;
+    const char *token;
     HKEY hndKey;
 
     if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, REG_TCPIP_PARA, 0, KEY_QUERY_VALUE, &hndKey) == ERROR_SUCCESS) {
@@ -351,9 +351,9 @@ idnsParseWIN32SearchList(const char *Separator)
 	}
 	RegCloseKey(hndKey);
     }
-    if (npc == 0 && ((const char *) t = getMyHostname())) {
-	t = strchr(t, '.');
-	if (t)
+    if (npc == 0 && (token = getMyHostname())) {
+	token = strchr(token, '.');
+	if (token)
 	    idnsAddPathComponent(t + 1);
     }
 }
