@@ -43,7 +43,7 @@ static HttpHeaderMask Denied304HeadersMask;
 static http_hdr_type Denied304HeadersArr[] =
 {
     HDR_CONTENT_ENCODING, HDR_CONTENT_LANGUAGE, HDR_CONTENT_LENGTH,
-    HDR_CONTENT_LOCATION, HDR_CONTENT_RANGE
+    HDR_CONTENT_LOCATION, HDR_CONTENT_RANGE, HDR_CONTENT_TYPE
 };
 
 /* local routines */
