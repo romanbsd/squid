@@ -720,6 +720,7 @@ struct _SquidConfig {
 	int update_headers;
 	int ignore_expect_100;
 	int WIN32_IpAddrChangeMonitor;
+	int xcache;
     } onoff;
     acl *aclList;
     struct {

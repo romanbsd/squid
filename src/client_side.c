@@ -1919,14 +1919,16 @@ clientBuildReplyHeader(clientHttpRequest * http, HttpReply * rep)
     if (request->auth_user_request)
 	authenticateFixHeader(rep, request->auth_user_request, request, http->flags.accel, 0);
     /* Append X-Cache */
-    httpHeaderPutStrf(hdr, HDR_X_CACHE, "%s from %s",
-	http->flags.hit ? "HIT" : "MISS", getMyHostname());
+    if ( Config.onoff.xcache ) {
+        httpHeaderPutStrf(hdr, HDR_X_CACHE, "%s from %s",
+	    http->flags.hit ? "HIT" : "MISS", getMyHostname());
 #if USE_CACHE_DIGESTS
-    /* Append X-Cache-Lookup: -- temporary hack, to be removed @?@ @?@ */
-    httpHeaderPutStrf(hdr, HDR_X_CACHE_LOOKUP, "%s from %s:%d",
-	http->lookup_type ? http->lookup_type : "NONE",
-	getMyHostname(), getMyPort());
+        /* Append X-Cache-Lookup: -- temporary hack, to be removed @?@ @?@ */
+        httpHeaderPutStrf(hdr, HDR_X_CACHE_LOOKUP, "%s from %s:%d",
+	    http->lookup_type ? http->lookup_type : "NONE",
+	    getMyHostname(), getMyPort());
 #endif
+    }
     if (httpReplyBodySize(request->method, rep) < 0) {
 	if (http->conn->port->http11 && (request->http_ver.major > 1 || (request->http_ver.major == 1 && request->http_ver.minor >= 1))) {
 	    debug(33, 2) ("clientBuildReplyHeader: send chunked response, unknown body size\n");

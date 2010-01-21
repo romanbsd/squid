@@ -3284,6 +3284,15 @@ upgrade_http0.9 deny shoutcast
 NOCOMMENT_END
 DOC_END
 
+NAME: xcache
+COMMENT: on|off
+TYPE: onoff
+DEFAULT: on
+LOC: Config.onoff.xcache
+DOC_START
+	If set (default), Squid will include an X-Cache header in replies.
+DOC_END
+
 NAME: via
 IFDEF: HTTP_VIOLATIONS
 COMMENT: on|off
