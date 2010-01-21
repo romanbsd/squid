@@ -323,6 +323,8 @@ extern void whoisStart(FwdState *);
 /* http.c */
 extern int httpCachable(method_t);
 extern void httpStart(FwdState *);
+extern void httpParseReplyHeaders(const char *, http_reply *);
+extern size_t httpProcessReplyHeader(HttpStateData *, const char *, int);
 extern int httpBuildRequestPrefix(request_t * request,
     request_t * orig_request,
     StoreEntry * entry,
@@ -648,6 +650,7 @@ extern void memBufVPrintf(MemBuf * mb, const char *fmt, va_list ap);
 extern FREE *memBufFreeFunc(MemBuf * mb);
 /* puts report on MemBuf _module_ usage into mb */
 extern void memBufReport(MemBuf * mb);
+extern int memBufRead(int fd, MemBuf * mb);
 
 extern char *mime_get_header(const char *mime, const char *header);
 extern char *mime_get_header_field(const char *mime, const char *name, const char *prefix);
@@ -1498,5 +1501,56 @@ extern void clientStoreURLRewriteAccessCheckDone(int answer, void *data);
 extern void clientStoreURLRewriteStart(clientHttpRequest * http);
 extern void clientStoreURLRewriteDone(void *data, char *result);
 
+
+#ifdef HS_FEAT_ICAP
+/*
+ * icap_common.c
+ */
+void icapInit(void);
+void icapClose(void);
+void icapParseEncapsulated(IcapStateData *, const char *, const char *);
+icap_service *icapService(icap_service_t, request_t *);
+int icapConnect(IcapStateData *, CNCB *);
+IcapStateData *icapAllocate(void);
+PF icapStateFree;
+PF icapConnectTimeout;
+PF icapReadTimeout;
+icap_service_t icapServiceToType(const char *);
+const char *icapServiceToStr(const icap_service_t);
+int icapCheckAcl(clientHttpRequest *);
+size_t icapLineLength(const char *, int);
+int icapReadHeader(int, IcapStateData *, int *);
+int icapFindHeader(const char *, const char *, const char **, const char **);
+int icapParseKeepAlive(const IcapStateData *, const char *, const char *);
+void icapSetKeepAlive(IcapStateData * icap, const char *hdrs);
+size_t icapParseChunkedBody(IcapStateData *, STRCB *, void *);
+void icapAddAuthUserHeader(MemBuf *, auth_user_request_t *);
+int icapParseStatusLine(const char *, int, int *, int *, const char **);
+
+/*
+ * icap_respmod.c
+ */
+IcapStateData *icapRespModStart(icap_service_t, request_t *, StoreEntry *, http_state_flags);
+void icapSendRespMod(IcapStateData *, int);
+void icapRespModAddResponceHeaders(IcapStateData *, char *, int);
+void icapRespModAddBodyData(IcapStateData *, char *, int);
+CNCB icapConnectOver;
+
+/*
+ * icap_reqmod.c
+ */
+IcapStateData *icapReqModStart(icap_service*, const char *, request_t *, int, struct timeval, struct in_addr, void *);
+
+/* icap_opt.c */
+void icapOptInit(void);
+void icapOptShutdown(void);
+void icapOptSetUnreachable(icap_service * s);
+
+/* X-Server-IP support */
+void icapAddOriginIP(MemBuf *, const char *);
+
+/* for debugging purposes only */
+void dump_icap_config(IcapConfig * cfg);
+#endif
 
 #endif /* SQUID_PROTOS_H */

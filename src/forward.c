@@ -1028,6 +1028,8 @@ fwdCheckDeferRead(int fd, void *data)
 void
 fwdFail(FwdState * fwdState, ErrorState * errorState)
 {
+    if (NULL == fwdState)
+	return;
     debug(17, 3) ("fwdFail: %s \"%s\"\n\t%s\n",
 	err_type_str[errorState->type],
 	httpStatusString(errorState->http_status),
@@ -1066,6 +1068,8 @@ fwdPeerClosed(int fd, void *data)
 void
 fwdUnregister(int fd, FwdState * fwdState)
 {
+    if (NULL == fwdState)
+	return;
     debug(17, 3) ("fwdUnregister: %s\n", storeUrl(fwdState->entry));
     assert(fd == fwdState->server_fd);
     assert(fd > -1);
@@ -1085,7 +1089,10 @@ fwdUnregister(int fd, FwdState * fwdState)
 void
 fwdComplete(FwdState * fwdState)
 {
-    StoreEntry *e = fwdState->entry;
+    StoreEntry *e;
+    if (NULL == fwdState)
+	return;
+    e = fwdState->entry;
     assert(e->store_status == STORE_PENDING);
     debug(17, 3) ("fwdComplete: %s\n\tstatus %d\n", storeUrl(e),
 	e->mem_obj->reply->sline.status);

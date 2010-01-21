@@ -157,4 +157,12 @@ extern void WIN32_maperror(unsigned long);
 extern int WIN32_Close_FD_Socket(int);
 #endif
 
+#ifndef HAVE_STRNSTR
+extern char *strnstr(const char *haystack, const char *needle, size_t haystacklen);
+#endif
+
+#ifndef HAVE_STRCASESTR
+extern char *strcasestr(const char *haystack, const char *needle);
+#endif
+
 #endif /* SQUID_UTIL_H */

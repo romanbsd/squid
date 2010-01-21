@@ -434,6 +434,23 @@ struct _RemovalPolicySettings {
     wordlist *args;
 };
 
+#if HS_FEAT_ICAP
+struct _IcapConfig {
+    int onoff;
+    int preview_enable;
+    icap_service *service_head;
+    icap_class *class_head;
+    icap_access *access_head;
+    int preview_size;
+    int check_interval;
+    int send_client_ip;
+    int send_server_ip;
+    int send_auth_user;
+    char *auth_scheme;
+};
+
+#endif /* HS_FEAT_ICAP */
+
 struct _SquidConfig {
     struct {
 	squid_off_t maxSize;
@@ -842,6 +859,9 @@ struct _SquidConfig {
     int max_filedescriptors;
     char *accept_filter;
     int incoming_rate;
+#ifdef HS_FEAT_ICAP
+	IcapConfig icapcfg;
+#endif
 };
 
 struct _SquidConfig2 {
@@ -926,6 +946,10 @@ struct _fde {
     comm_pending write_pending;
     squid_off_t bytes_read;
     squid_off_t bytes_written;
+    struct {
+	int uses;
+	int type;
+    } pconn;
     int uses;			/* ie # req's over persistent conn */
     struct _fde_disk {
 	DWCB *wrt_handle;
@@ -1136,6 +1160,131 @@ struct _http_state_flags {
     unsigned int http11:1;
 };
 
+#ifdef HS_FEAT_ICAP
+struct _IcapStateData {
+    request_t *request;
+    http_state_flags http_flags;
+    HttpStateData *httpState;	/* needed to parse HTTP headers only */
+    int icap_fd;
+    int sc;
+    icap_service *current_service;
+    MemBuf icap_hdr;
+    struct {
+	int res_hdr;
+	int res_body;
+	int req_hdr;
+	int req_body;
+	int opt_body;
+	int null_body;
+    } enc;
+    int bytes_to_gobble;
+    int chunk_size;
+    MemBuf chunk_buf;
+    int preview_size;
+    squid_off_t fake_content_length;
+    int http_header_bytes_read_so_far;
+    struct {
+	const char *uri;	/* URI for REQMODs */
+	int client_fd;
+	struct timeval start;	/* for logging */
+	struct in_addr log_addr;	/* for logging */
+	int hdr_state;
+	MemBuf hdr_buf;
+	void *client_cookie;
+	struct {
+	    MemBuf buf;
+	    CBCB *callback;
+	    void *callback_data;
+	    char *callback_buf;
+	    size_t callback_bufsize;
+	    squid_off_t bytes_read;
+	} http_entity;
+    } reqmod;
+    struct {
+	StoreEntry *entry;
+	MemBuf buffer;
+	MemBuf req_hdr_copy;	/* XXX barf */
+	MemBuf resp_copy;	/* XXX barf^max */
+	squid_off_t res_body_sz;
+    } respmod;
+    struct {
+	unsigned int connect_requested:1;
+	unsigned int connect_pending:1;
+	unsigned int write_pending:1;
+	unsigned int keep_alive:1;
+	unsigned int http_server_eof:1;
+	unsigned int send_zero_chunk:1;
+	unsigned int got_reply:1;
+	unsigned int wait_for_reply:1;
+	unsigned int wait_for_preview_reply:1;
+	unsigned int preview_done:1;
+	unsigned int copy_response:1;
+	unsigned int no_content:1;
+	unsigned int reqmod_http_entity_eof:1;
+    } flags;
+};
+
+struct _icap_service {
+    icap_service *next;
+    char *name;			/* name to be used when referencing ths service */
+    char *uri;			/* uri of server/service to use */
+    char *type_name;		/* {req|resp}mod_{pre|post}cache */
+
+    char *hostname;
+    unsigned short int port;
+    char *resource;
+    icap_service_t type;	/* parsed type */
+    icap_method_t method;
+    ushort bypass;		/* flag: bypass allowed */
+    ushort unreachable;		/* flag: set to 1 if options request fails */
+    IcapOptData *opt;		/* temp data needed during opt request */
+    struct {
+	unsigned int allow_204:1;
+	unsigned int need_x_client_ip:1;
+	unsigned int need_x_server_ip:1;
+	unsigned int need_x_authenticated_user:1;
+    } flags;
+    int preview;
+    String istag;
+    String transfer_preview;
+    String transfer_ignore;
+    String transfer_complete;
+    int max_connections;
+    int options_ttl;
+    int keep_alive;
+};
+
+struct _icap_service_list {
+    icap_service_list *next;
+    icap_service *services[16];
+    int nservices;		/* Number of services already used */
+    int last_service_used;	/* Last services used, use to do a round robin */
+};
+
+struct _icap_class {
+    icap_class *next;
+    char *name;
+    wordlist *services;
+    icap_service_list *isl;
+    ushort hidden;		/* for unnamed classes */
+};
+
+struct _icap_access {
+    icap_access *next;
+    char *service_name;
+    icap_class *class;
+    acl_access *access;
+};
+
+struct _IcapOptData {
+    char *buf;
+    off_t offset;
+    size_t size;
+    off_t headlen;
+};
+
+#endif
+
 struct _HttpStateData {
     StoreEntry *entry;
     request_t *request;
@@ -1147,11 +1296,15 @@ struct _HttpStateData {
     int fd;
     http_state_flags flags;
     FwdState *fwd;
+#ifdef HS_FEAT_ICAP
+    struct _IcapStateData *icap_writer;
+#endif
     char *body_buf;
     int body_buf_sz;
     squid_off_t chunk_size;
     String chunkhdr;
 };
+
 
 struct _icpUdpData {
     struct sockaddr_in address;
@@ -1264,6 +1417,7 @@ struct _clientHttpRequest {
 	unsigned int internal:1;
 	unsigned int done_copying:1;
 	unsigned int purging:1;
+	unsigned int did_icap_reqmod:1;
 	unsigned int hit:1;
     } flags;
     struct {
@@ -1275,6 +1429,9 @@ struct _clientHttpRequest {
     STHCB *header_callback;	/* Temporarily here for storeClientCopyHeaders */
     StoreEntry *header_entry;	/* Temporarily here for storeClientCopyHeaders */
     int is_modified;
+#if HS_FEAT_ICAP
+	IcapStateData *icap_reqmod;
+#endif
 };
 
 struct _ConnStateData {
@@ -1959,6 +2116,9 @@ struct _request_t {
     unsigned int done_etag:1;	/* We have done clientProcessETag on this, don't attempt it again */
     char *urlgroup;		/* urlgroup, returned by redirectors */
     char *peer_domain;		/* Configured peer forceddomain */
+#if HS_FEAT_ICAP
+    icap_class *class;
+#endif
     BODY_HANDLER *body_reader;
     void *body_reader_data;
     struct in_addr out_ip;
@@ -2076,7 +2236,11 @@ struct _StatCounters {
 	    kb_t kbytes_in;
 	    kb_t kbytes_out;
 	} all , http, ftp, other;
-    } server;
+    }
+#if HS_FEAT_ICAP
+	icap,
+#endif
+	server;
     struct {
 	int pkts_sent;
 	int queries_sent;

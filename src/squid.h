@@ -38,6 +38,14 @@
 #include "config.h"
 
 /*
+ * experimental defines for ICAP
+ */
+#ifdef HS_FEAT_ICAP
+#define ICAP_PREVIEW 1
+#define SUPPORT_ICAP_204 0
+#endif
+
+/*
  * On some systems, FD_SETSIZE is set to something lower than the
  * actual number of files which can be opened.  IRIX is one case,
  * NetBSD is another.  So here we increase FD_SETSIZE to our

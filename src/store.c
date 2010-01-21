@@ -1128,8 +1128,17 @@ storeAppend(StoreEntry * e, const char *buf, int len)
     MemObject *mem = e->mem_obj;
     assert(mem != NULL);
     assert(len >= 0);
-    assert(e->store_status == STORE_PENDING);
     mem->refresh_timestamp = squid_curtime;
+    debug(20, 3) ("storeAppend: '%s'\n", storeKeyText(e->hash.key));
+    if (e->store_status != STORE_PENDING) {
+	/*
+	 * if we're not STORE_PENDING, then probably we got aborted
+	 * and there should be NO clients on this entry
+	 */
+	assert(EBIT_TEST(e->flags, ENTRY_ABORTED));
+	assert(e->mem_obj->nclients == 0);
+	return;
+    }
     if (len) {
 	debug(20, 5) ("storeAppend: appending %d bytes for '%s'\n",
 	    len,

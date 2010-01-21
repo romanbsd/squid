@@ -136,6 +136,15 @@ typedef struct _HttpHeaderStat HttpHeaderStat;
 typedef struct _HttpBody HttpBody;
 typedef struct _HttpReply HttpReply;
 typedef struct _HttpStateData HttpStateData;
+#ifdef HS_FEAT_ICAP
+typedef struct _IcapStateData IcapStateData;
+typedef struct _IcapConfig IcapConfig;
+typedef struct _icap_service icap_service;
+typedef struct _icap_service_list icap_service_list;
+typedef struct _icap_class icap_class;
+typedef struct _icap_access icap_access;
+typedef struct _IcapOptData IcapOptData;
+#endif
 typedef struct _icpUdpData icpUdpData;
 typedef struct _clientHttpRequest clientHttpRequest;
 typedef struct _ConnStateData ConnStateData;

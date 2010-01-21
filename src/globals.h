@@ -172,6 +172,9 @@ extern const char *external_acl_message;	/* NULL */
 #if HAVE_SBRK
 extern void *sbrk_start;	/* 0 */
 #endif
+#if HS_FEAT_ICAP
+extern const char *icap_service_type_str[];
+#endif
 extern int opt_send_signal;	/* -1 */
 extern int opt_no_daemon;	/* 0 */
 #if LINUX_TPROXY

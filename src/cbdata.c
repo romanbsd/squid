@@ -179,6 +179,10 @@ cbdataInit(void)
     CREATE_CBDATA(statefulhelper);
     CREATE_CBDATA(helper_stateful_server);
     CREATE_CBDATA(HttpStateData);
+#ifdef HS_FEAT_ICAP
+    CREATE_CBDATA(IcapStateData);
+    CREATE_CBDATA(icap_service);
+#endif
     CREATE_CBDATA_FREE(peer, peerDestroy);
     CREATE_CBDATA(ps_state);
     CREATE_CBDATA(RemovalPolicy);

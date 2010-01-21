@@ -395,6 +395,9 @@ mainReconfigure(void)
 #else
     idnsShutdown();
 #endif
+#ifdef HS_FEAT_ICAP
+    icapClose();
+#endif
     redirectShutdown();
     storeurlShutdown();
     locationRewriteShutdown();
@@ -429,6 +432,9 @@ mainReconfigure(void)
     redirectInit();
     storeurlInit();
     locationRewriteInit();
+#ifdef HS_FEAT_ICAP
+    icapInit();
+#endif
     authenticateInit(&Config.authConfig);
     externalAclInit();
     refreshCheckInit();
@@ -592,6 +598,9 @@ mainInitialize(void)
     storeurlInit();
     locationRewriteInit();
     errorMapInit();
+#ifdef HS_FEAT_ICAP
+    icapInit();
+#endif
     authenticateInit(&Config.authConfig);
     externalAclInit();
     refreshCheckInit();

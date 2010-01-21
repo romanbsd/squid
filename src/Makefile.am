@@ -6,6 +6,12 @@
 #  Uncomment and customize the following to suit your needs:
 #
 
+if USE_ICAP
+ICAPSOURCE = icap_common.c icap_reqmod.c icap_respmod.c icap_opt.c
+else
+ICAPSOURCE = 
+endif
+
 if USE_DNSSERVER
 DNSSOURCE = dns.c
 DNSSERVER = dnsserver
@@ -190,6 +196,7 @@ squid_SOURCES = \
 	HttpMsg.c \
 	HttpReply.c \
 	HttpRequest.c \
+	$(ICAPSOURCE) \
 	icmp.c \
 	icp_v2.c \
 	icp_v3.c \

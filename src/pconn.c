@@ -46,6 +46,9 @@ struct _pconn {
 #define PCONN_HIST_SZ (1<<16)
 int client_pconn_hist[PCONN_HIST_SZ];
 int server_pconn_hist[PCONN_HIST_SZ];
+#ifdef HS_FEAT_ICAP
+int icap_server_pconn_hist[PCONN_HIST_SZ];
+#endif
 
 static PF pconnRead;
 static PF pconnTimeout;
@@ -170,6 +173,20 @@ pconnHistDump(StoreEntry * e)
 	    continue;
 	storeAppendPrintf(e, "\t%4d  %9d\n", i, server_pconn_hist[i]);
     }
+#ifdef HS_FEAT_ICAP
+    storeAppendPrintf(e,
+	"\n"
+	"ICAP-server persistent connection counts:\n"
+	"\n"
+	"\treq/\n"
+	"\tconn      count\n"
+	"\t----  ---------\n");
+    for (i = 0; i < PCONN_HIST_SZ; i++) {
+	if (icap_server_pconn_hist[i] == 0)
+	    continue;
+	storeAppendPrintf(e, "\t%4d  %9d\n", i, icap_server_pconn_hist[i]);
+    }
+#endif
 }
 
 /* ========== PUBLIC FUNCTIONS ============================================ */
@@ -184,6 +201,9 @@ pconnInit(void)
     for (i = 0; i < PCONN_HIST_SZ; i++) {
 	client_pconn_hist[i] = 0;
 	server_pconn_hist[i] = 0;
+#ifdef HS_FEAT_ICAP
+	icap_server_pconn_hist[i] = 0;
+#endif
     }
     pconn_data_pool = memPoolCreate("pconn_data", sizeof(struct _pconn));
     pconn_fds_pool = memPoolCreate("pconn_fds", PCONN_FDS_SZ * sizeof(int));
@@ -268,11 +288,15 @@ pconnHistCount(int what, int i)
 {
     if (i >= PCONN_HIST_SZ)
 	i = PCONN_HIST_SZ - 1;
-    /* what == 0 for client, 1 for server */
+    /* what == 0 for client, 1 for server, 2 for ICAP server */
     if (what == 0)
 	client_pconn_hist[i]++;
     else if (what == 1)
 	server_pconn_hist[i]++;
+#ifdef HS_FEAT_ICAP
+    else if (what == 2)
+	icap_server_pconn_hist[i]++;
+#endif
     else
 	assert(0);
 }

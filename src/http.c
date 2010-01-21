@@ -47,7 +47,7 @@ static CWCB httpSendRequestEntry;
 
 static PF httpReadReply;
 static void httpSendRequest(HttpStateData *);
-static PF httpStateFree;
+PF httpStateFree;
 static PF httpTimeout;
 static void httpCacheNegatively(StoreEntry *);
 static void httpMakePrivate(StoreEntry *);
@@ -56,12 +56,13 @@ static int httpCachableReply(HttpStateData *);
 static void httpMaybeRemovePublic(StoreEntry *, http_status);
 static int peer_supports_connection_pinning(HttpStateData * httpState);
 
-static void
+void
 httpStateFree(int fd, void *data)
 {
     HttpStateData *httpState = data;
 #if DELAY_POOLS
-    delayClearNoDelay(fd);
+    if (fd >= 0)
+	delayClearNoDelay(fd);
 #endif
     if (httpState == NULL)
 	return;
@@ -81,6 +82,9 @@ httpStateFree(int fd, void *data)
     httpState->request = NULL;
     httpState->orig_request = NULL;
     stringClean(&httpState->chunkhdr);
+#if HS_FEAT_ICAP
+    cbdataUnlock(httpState->icap_writer);
+#endif
     cbdataFree(httpState);
 }
 
@@ -412,7 +416,7 @@ httpMakeVaryMark(request_t * request, HttpReply * reply)
 }
 
 /* rewrite this later using new interfaces @?@ */
-static size_t
+size_t
 httpProcessReplyHeader(HttpStateData * httpState, const char *buf, int size)
 {
     StoreEntry *entry = httpState->entry;
@@ -669,11 +673,25 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 	    if (size > httpState->chunk_size)
 		size = httpState->chunk_size;
 	    httpState->chunk_size -= size;
+#ifdef HS_FEAT_ICAP
+	    if (httpState->icap_writer) {
+		debug(81, 5) ("calling icapRespModAddBodyData from %s:%d\n", __FILE__, __LINE__);
+		icapRespModAddBodyData(httpState->icap_writer, buf, size);
+		httpState->icap_writer->fake_content_length += size;
+	    } else
+#endif
 	    storeAppend(httpState->entry, buf, size);
 	    buf += size;
 	    len -= size;
 	} else if (httpState->chunk_size < 0) {
 	    /* non-chunked without content-length */
+#ifdef HS_FEAT_ICAP
+	     if (httpState->icap_writer) {
+		 debug(81, 5) ("calling icapRespModAddBodyData from %s:%d\n", __FILE__, __LINE__);
+		 icapRespModAddBodyData(httpState->icap_writer, buf, len);
+		 httpState->icap_writer->fake_content_length += len;
+	     } else
+#endif	     
 	    storeAppend(httpState->entry, buf, len);
 	    len = 0;
 	} else if (httpState->flags.chunked) {
@@ -734,6 +752,15 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
 	    /* Don't know what to do with this data. Bail out */
 	    break;
 	}
+#if HS_FEAT_ICAP
+	if (httpState->icap_writer) {
+	    if (!httpState->icap_writer->respmod.entry) {
+		debug(11, 3) ("httpReadReply: FD: %d: icap respmod aborded!\n", fd);
+		comm_close(fd);
+		return;
+	    }
+	} else
+#endif
 	if (EBIT_TEST(entry->flags, ENTRY_ABORTED)) {
 	    /*
 	     * the above storeAppend() call could ABORT this entry,
@@ -755,6 +782,10 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
     if (!httpState->chunk_size && !httpState->flags.chunked)
 	complete = 1;
     if (!complete && len == 0) {
+#ifdef HS_FEAT_ICAP
+    if (httpState->icap_writer)
+	icapSendRespMod(httpState->icap_writer, 0);
+#endif
 	/* Wait for more data or EOF condition */
 	if (httpState->flags.keepalive_broken) {
 	    commSetTimeout(fd, 10, NULL, NULL);
@@ -814,6 +845,10 @@ httpAppendBody(HttpStateData * httpState, const char *buf, ssize_t len, int buff
      */
     if (!entry->mem_obj->reply->keep_alive)
 	keep_alive = 0;
+#ifdef HS_FEAT_ICAP
+    if (httpState->icap_writer)
+	icapSendRespMod(httpState->icap_writer, 1);
+#endif
     if (keep_alive) {
 	int pinned = 0;
 #if LINUX_TPROXY
@@ -873,6 +908,17 @@ httpReadReply(int fd, void *data)
 #endif
     int buffer_filled;
 
+#if HS_FEAT_ICAP
+    if (httpState->icap_writer) {
+	if (!httpState->icap_writer->respmod.entry) {
+	    debug(11, 3) ("httpReadReply: FD: %d: icap respmod aborded!\n", fd);
+	    comm_close(fd);
+	    return;
+	}
+	/*The folowing entry can not be marked as aborted.  
+	 * The StoreEntry icap_writer->respmod.entry used when the icap_write used...... */
+    } else
+#endif
     if (EBIT_TEST(entry->flags, ENTRY_ABORTED)) {
 	comm_close(fd);
 	return;
@@ -884,7 +930,35 @@ httpReadReply(int fd, void *data)
     else
 	delay_id = delayMostBytesAllowed(entry->mem_obj, &read_sz);
 #endif
+#if HS_FEAT_ICAP
+    if (httpState->icap_writer) {
+	IcapStateData *icap = httpState->icap_writer;
+	/*
+	 * Ok we have a received a response from the web server, so try to 
+	 * connect the icap server if it's the first attemps. If we try
+	 * to connect to the icap server, defer this request (do not read
+	 * the buffer), and defer until icapConnectOver() is not called.
+	 */
+	if (icap->flags.connect_requested == 0) {
+	    debug(81, 2) ("icapSendRespMod: Create a new connection to icap server\n");
+	    if (!icapConnect(icap, icapConnectOver)) {
+		debug(81, 2) ("icapSendRespMod: Something strange while creating a socket to icap server\n");
+		commSetSelect(fd, COMM_SELECT_READ, httpReadReply, httpState, 0);
+		return;
+	    }
+	    debug(81, 2) ("icapSendRespMod: new connection to icap server (using FD=%d)\n", icap->icap_fd);
+	    icap->flags.connect_requested = 1;
+	    /* Wait for more data or EOF condition */
+	    commSetTimeout(fd, httpState->flags.keepalive_broken ? 10 : Config.Timeout.read, NULL, NULL);
+	    commSetSelect(fd, COMM_SELECT_READ, httpReadReply, httpState, 0);
+	    return;
+	}
 
+       if(icap->flags.no_content == 1) {
+	 commSetDefer(fd, fwdCheckDeferRead, icap->respmod.entry);
+       }
+    }
+#endif
     errno = 0;
     statCounter.syscalls.sock.reads++;
     len = FD_READ_METHOD(fd, buf, read_sz);
@@ -903,7 +977,13 @@ httpReadReply(int fd, void *data)
 	IOStats.Http.read_hist[bin]++;
 	buf[len] = '\0';
     }
-    if (!httpState->reply_hdr.size && len > 0 && fd_table[fd].uses > 1) {
+#ifdef HS_FEAT_ICAP
+    if (httpState->icap_writer)
+	(void) 0;
+    else
+#endif
+
+    if (!httpState->reply_hdr.size && len > 0 && fd_table[fd].pconn.uses > 1) {
 	/* Skip whitespace */
 	while (len > 0 && xisspace(*buf))
 	    xmemmove(buf, buf + 1, len--);
@@ -1009,11 +1089,48 @@ httpReadReply(int fd, void *data)
 		commSetSelect(fd, COMM_SELECT_READ, httpReadReply, httpState, 0);
 		return;
 	    }
+#ifdef HS_FEAT_ICAP
+	    if (httpState->icap_writer) {
+		debug(81, 5) ("calling icapSendRespMod from %s:%d\n", __FILE__, __LINE__);
+		if (cbdataValid(httpState->icap_writer)) {
+		    icapRespModAddResponceHeaders(httpState->icap_writer, buf, done);
+		    httpState->icap_writer->fake_content_length += done;
+		}
+	    }
+#endif
 	}
 	httpAppendBody(httpState, buf + done, len - done, buffer_filled);
 	return;
     }
 }
+
+#ifdef HS_FEAT_ICAP
+static int
+httpReadReplyWaitForIcap(int fd, void *data)
+{
+    HttpStateData *httpState = data;
+    if (NULL == httpState->icap_writer)
+	return 0;
+    /* 
+     * Do not defer when we are not connected to the icap server.
+     * Defer when the icap server connection is not established but pending
+     * Defer when the icap server is busy (writing on the socket)
+     */
+    debug(11, 5) ("httpReadReplyWaitForIcap: FD %d, connect_requested=%d\n",
+	fd, httpState->icap_writer->flags.connect_requested);
+    if (!httpState->icap_writer->flags.connect_requested)
+	return 0;
+    debug(11, 5) ("httpReadReplyWaitForIcap: FD %d, connect_pending=%d\n",
+	fd, httpState->icap_writer->flags.connect_pending);
+    if (httpState->icap_writer->flags.connect_pending)
+	return 1;
+    debug(11, 5) ("httpReadReplyWaitForIcap: FD %d, write_pending=%d\n",
+	fd, httpState->icap_writer->flags.write_pending);
+    if (httpState->icap_writer->flags.write_pending)
+	return 1;
+    return 0;
+}
+#endif
 
 /* This will be called when request write is complete. Schedule read of
  * reply. */
@@ -1042,6 +1159,63 @@ httpSendComplete(int fd, char *bufnotused, size_t size, int errflag, void *data)
 	comm_close(fd);
 	return;
     } else {
+	/* Schedule read reply. */
+#ifdef HS_FEAT_ICAP
+	if (icapService(ICAP_SERVICE_RESPMOD_PRECACHE, httpState->orig_request)) {
+	    httpState->icap_writer = icapRespModStart(
+		ICAP_SERVICE_RESPMOD_PRECACHE,
+		httpState->orig_request, httpState->entry, httpState->flags);
+	    if (-1 == (int) httpState->icap_writer) {
+		/* TODO: send error here and exit */
+		ErrorState *err;
+		httpState->icap_writer = 0;
+		err = errorCon(ERR_ICAP_FAILURE, HTTP_INTERNAL_SERVER_ERROR, httpState->fwd->request);
+		err->xerrno = errno;
+		err->request = requestLink(httpState->orig_request);
+		errorAppendEntry(entry, err);
+		comm_close(fd);
+		return;
+	    } else if (httpState->icap_writer) {
+		request_flags fake_flags = httpState->orig_request->flags;
+		method_t fake_method = entry->mem_obj->method;
+		const char *fake_msg = "this is a fake entry for "
+		" response sent to an ICAP RESPMOD server";
+		cbdataLock(httpState->icap_writer);
+		/*
+		 * this httpState will give the data it reads to
+		 * the icap server, rather than put it into
+		 * a StoreEntry
+		 */
+		storeUnregisterAbort(httpState->entry);
+		storeUnlockObject(httpState->entry);
+		/*
+		 * create a bogus entry because the code assumes one is
+		 * always there.
+		 */
+		fake_flags.cachable = 0;
+		fake_flags.hierarchical = 0;	/* force private key */
+		httpState->entry = storeCreateEntry("fake", fake_flags, fake_method);
+		storeAppend(httpState->entry, fake_msg, strlen(fake_msg));
+		/*
+		 * pull a switcheroo on fwdState->entry.
+		 */
+		storeUnlockObject(httpState->fwd->entry);
+		httpState->fwd->entry = httpState->entry;
+		storeLockObject(httpState->fwd->entry);
+		/*
+		 * Note that we leave fwdState connected to httpState,
+		 * but we changed the entry.  So when fwdComplete
+		 * or whatever is called it does no harm -- its
+		 * just the fake entry.
+		 */
+	    } else {
+		/*
+		 * failed to open connection to ICAP server. 
+		 * But bypass request, so just continue here.
+		 */
+	    }
+	}
+#endif
 	/*
 	 * Set the read timeout here because it hasn't been set yet.
 	 * We only set the read timeout after the request has been
@@ -1050,8 +1224,18 @@ httpSendComplete(int fd, char *bufnotused, size_t size, int errflag, void *data)
 	 * the timeout for POST/PUT requests that have very large
 	 * request bodies.
 	 */
+
+	/* removed in stable5:
+	 * commSetSelect(fd, COMM_SELECT_READ, httpReadReply, httpState, 0);
+	 */
 	commSetTimeout(fd, Config.Timeout.read, httpTimeout, httpState);
-	commSetDefer(fd, fwdCheckDeferRead, entry);
+#ifdef HS_FEAT_ICAP
+	if (httpState->icap_writer) {
+	    debug(11, 5) ("FD %d, setting httpReadReplyWaitForIcap\n", httpState->fd);
+	    commSetDefer(httpState->fd, httpReadReplyWaitForIcap, httpState);
+	} else
+#endif
+	    commSetDefer(httpState->fd, fwdCheckDeferRead, entry);
     }
     httpState->flags.request_sent = 1;
 }
@@ -1357,8 +1541,11 @@ httpBuildRequestHeader(request_t * request,
 	if (!EBIT_TEST(cc->mask, CC_MAX_AGE)) {
 	    const char *url = entry ? storeUrl(entry) : urlCanonical(orig_request);
 	    httpHdrCcSetMaxAge(cc, getMaxAge(url));
+#ifndef HS_FEAT_ICAP
+	    /* Don;t bother - if  the url you want to cache is redirected? */
 	    if (strLen(request->urlpath))
 		assert(strstr(url, strBuf(request->urlpath)));
+#endif
 	}
 	/* Set no-cache if determined needed but not found */
 	if (orig_request->flags.nocache && !httpHeaderHas(hdr_in, HDR_PRAGMA))
@@ -1489,6 +1676,7 @@ httpStart(FwdState * fwd)
     int fd = fwd->server_fd;
     HttpStateData *httpState;
     request_t *proxy_req;
+    /* ErrorState *err; */
     request_t *orig_req = fwd->request;
     debug(11, 3) ("httpStart: \"%s %s\"\n",
 	RequestMethods[orig_req->method].str,
@@ -1531,12 +1719,22 @@ httpStart(FwdState * fwd)
 	httpState->request = requestLink(orig_req);
 	httpState->orig_request = requestLink(orig_req);
     }
+#ifdef HS_FEAT_ICAP
+    if (icapService(ICAP_SERVICE_REQMOD_POSTCACHE, httpState->orig_request)) {
+	httpState->icap_writer = icapRespModStart(ICAP_SERVICE_REQMOD_POSTCACHE,
+	    httpState->orig_request, httpState->entry, httpState->flags);
+	if (httpState->icap_writer) {
+	    return;
+	}
+    }
+#endif
     /*
      * register the handler to free HTTP state data when the FD closes
      */
     comm_add_close_handler(fd, httpStateFree, httpState);
     statCounter.server.all.requests++;
     statCounter.server.http.requests++;
+
     httpSendRequest(httpState);
     /*
      * We used to set the read timeout here, but not any more.

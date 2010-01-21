@@ -786,8 +786,8 @@ comm_close(int fd)
     F->flags.closing = 1;
     CommWriteStateCallbackAndFree(fd, COMM_ERR_CLOSING);
     commCallCloseHandlers(fd);
-    if (F->uses)		/* assume persistent connect count */
-	pconnHistCount(1, F->uses);
+    if (F->pconn.uses)
+	pconnHistCount(F->pconn.type, F->pconn.uses);
 #if USE_SSL
     if (F->ssl) {
 	if (!F->flags.close_request) {

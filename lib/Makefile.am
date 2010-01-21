@@ -8,6 +8,19 @@ SNPRINTFSOURCE=snprintf.c
 else
 SNPRINTFSOURCE=
 endif
+
+if NEED_OWN_STRNSTR
+STRNSTRSOURCE=strnstr.c
+else
+STRNSTRSOURCE=
+endif
+
+if NEED_OWN_STRCASESTR
+STRCASESTRSOURCE=strcasestr.c
+else
+STRCASESTRSOURCE=
+endif
+
 if NEED_OWN_STRSEP
 STRSEPSOURCE=strsep.c
 else
@@ -63,6 +76,8 @@ libmiscutil_a_SOURCES = \
 	$(SNPRINTFSOURCE) \
 	splay.c \
 	Stack.c \
+	$(STRNSTRSOURCE) \
+	$(STRCASESTRSOURCE) \
 	$(STRSEPSOURCE) \
 	stub_memaccount.c \
 	util.c \

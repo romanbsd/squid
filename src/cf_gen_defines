@@ -22,11 +22,12 @@ BEGIN {
 	define["USE_WCCP"]="--enable-wccp"
 	define["USE_WCCPv2"]="--enable-wccpv2"
 	define["WIP_FWD_LOG"]="--enable-forward-log"
+	define["HS_FEAT_ICAP"]="--enable-icap-support"
 }
 /^IFDEF:/ {
 	if (define[$2] != "")
 	    DEFINE=define[$2]
-	else  
+	else
 	    DEFINE="-D" $2
 	print "{\"" $2 "\", \"" DEFINE "\", "
 	print "#if " $2

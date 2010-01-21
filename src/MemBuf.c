@@ -341,3 +341,15 @@ memBufReport(MemBuf * mb)
     assert(mb);
     memBufPrintf(mb, "memBufReport is not yet implemented @?@\n");
 }
+
+int
+memBufRead(int fd, MemBuf * mb)
+{
+    int len;
+    if (mb->capacity == mb->size)
+	memBufGrow(mb, SQUID_TCP_SO_RCVBUF);
+    len = FD_READ_METHOD(fd, mb->buf + mb->size, mb->capacity - mb->size);
+    if (len > 0)
+	mb->size += len;
+    return len;
+}

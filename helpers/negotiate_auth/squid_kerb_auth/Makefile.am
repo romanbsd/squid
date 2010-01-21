@@ -12,7 +12,7 @@ EXTRA_DIST = readme.txt do.sh
 
 squid_kerb_auth_SOURCES = $(SOURCE) $(SPNEGO)
 
-CPPFLAGS = $(KERBINC) -I$(srcdir)/spnegohelp -I.
+AM_CPPFLAGS = $(KERBINC) -I$(srcdir)/spnegohelp -I.
 #-I$(top_srcdir)/include -I$(top_srcdir)/src
 LDADD = $(KERBLIBS)
 #-L$(top_builddir)/lib -lmiscutil $(XTRA_LIBS)
