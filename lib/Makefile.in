@@ -15,7 +15,7 @@
 @SET_MAKE@
 
 #
-#  $Id: Makefile.in,v 1.92.2.3 2009/05/01 01:24:40 squidadm Exp $
+#  $Id: Makefile.in,v 1.92.2.5 2010/03/14 20:27:25 squidadm Exp $
 #
 
 VPATH = @srcdir@
@@ -40,8 +40,8 @@ subdir = lib
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in drand48.c \
 	inet_ntoa.c initgroups.c strerror.c tempnam.c
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/m4/ax_lib_socket_nsl.m4 \
+	$(top_srcdir)/acinclude.m4 $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -150,7 +150,6 @@ LIBS = @LIBS@
 LIBSASL = @LIBSASL@
 LIB_DB = @LIB_DB@
 LIB_EPOLL = @LIB_EPOLL@
-LIB_LBER = @LIB_LBER@
 LIB_LDAP = @LIB_LDAP@
 LIB_MALLOC = @LIB_MALLOC@
 LN = @LN@
@@ -162,6 +161,7 @@ MKDIR = @MKDIR@
 MKDIR_P = @MKDIR_P@
 MV = @MV@
 NEGOTIATE_AUTH_HELPERS = @NEGOTIATE_AUTH_HELPERS@
+NIS_LIBS = @NIS_LIBS@
 NTLM_AUTH_HELPERS = @NTLM_AUTH_HELPERS@
 OBJEXT = @OBJEXT@
 OPT_DEFAULT_HOSTS = @OPT_DEFAULT_HOSTS@
