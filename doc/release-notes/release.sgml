@@ -1,8 +1,8 @@
 <!doctype linuxdoc system>
 <article>
-<title>Squid 2.7.STABLE7 release notes</title>
+<title>Squid 2.7.STABLE9 release notes</title>
 <author>Squid Developers</author>
-<date>$Id: release.sgml,v 1.1.2.18 2009/09/16 22:29:48 hno Exp $
+<date>$Id: release.sgml,v 1.1.2.21 2010/03/14 21:40:46 hno Exp $
 
 <abstract>
 This document contains the release notes for version 2.7 of Squid.
@@ -503,6 +503,39 @@ ScriptAlias /squid/cgi-bin/ "c:/squid/libexec/"
 				name="ChangeLog"> file for details.
 </itemize>
 
+<sect>Key changes in squid-2.7.STABLE8
+
+<p>
+<itemize>
+	<item>Bug #2858: Segment violation in HTCP
+	<item>Bug #2773: Segfault in RFC2069 Digest authantication
+	<item>Bug #2845: Crashes on malformed Digest authentication
+	<item>Bug #2367: Incorrect stale=true/false indications in Digest auth
+	      causing random auth popups.
+	<item>Improve %nn parser to better deal with certain odd %nn sequences
+	<item>Handle DNS header-only packets as invalid. (CVE-2010-0308)
+	<item>Bug #2678 - storeurl_rewrite does not play nicely with vary
+	<item>And many other minor bugfixes
+	<item>See also the list of <url
+		url="http://www.squid-cache.org/Versions/v2/2.7/changesets/SQUID_2_7_STABLE8.html"
+			name="squid-2.7.STABLE8 changes"> and the <url url="ChangeLog"
+				name="ChangeLog"> file for details.
+</itemize>
+
+<sect>Key changes in squid-2.7.STABLE9
+
+<p>This release has portability fixes only. No change in functionality.
+
+<itemize>
+	<item>OpenSSL related compilation issue on some systems introduced
+	      in 2.7.STABLE8.
+	<item>configure failed to detect certain system libraries on some
+	systems, resulting in compilation failures either in Squid or helpers.
+	<item>See also the list of <url
+		url="http://www.squid-cache.org/Versions/v2/2.7/changesets/SQUID_2_7_STABLE9.html"
+			name="squid-2.7.STABLE9 changes"> and the <url url="ChangeLog"
+				name="ChangeLog"> file for details.
+</itemize>
 
 </article>
 

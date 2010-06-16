@@ -1,9 +1,10 @@
 ## Process this file with automake to produce Makefile.in
 #
-# $Id: Makefile.am,v 1.20.6.1 2008/01/25 23:23:22 hno Exp $
+# $Id: Makefile.am,v 1.20.6.2 2010/03/14 18:01:54 hno Exp $
 #
 
 AUTOMAKE_OPTIONS = dist-bzip2 subdir-objects 1.5
+ACLOCAL_AMFLAGS	= -I m4
 DIST_SUBDIRS	= lib snmplib scripts src icons errors contrib doc helpers tools
 SUBDIRS		= lib @makesnmplib@ scripts src icons errors doc helpers tools
 

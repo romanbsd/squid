@@ -1,6 +1,6 @@
 
 /*
- * $Id: protos.h,v 1.547.2.11 2009/08/16 21:43:51 hno Exp $
+ * $Id: protos.h,v 1.547.2.13 2010/03/07 16:00:07 hno Exp $
  *
  *
  * SQUID Web Proxy Cache          http://www.squid-cache.org/
@@ -428,6 +428,7 @@ extern int strListGetItem(const String * str, char del, const char **item, int *
 extern const char *getStringPrefix(const char *str, const char *end);
 extern int httpHeaderParseInt(const char *start, int *val);
 extern int httpHeaderParseSize(const char *start, squid_off_t * sz);
+extern int httpHeaderParseQuotedString(const char *start, String * val);
 extern int httpHeaderReset(HttpHeader * hdr);
 extern void httpHeaderAddClone(HttpHeader * hdr, const HttpHeaderEntry * e);
 #if STDC_HEADERS
@@ -1473,7 +1474,7 @@ extern int errorMapStart(const errormap * map, request_t * req, HttpReply * repl
 /* ETag support */
 void storeLocateVaryDone(VaryData * data);
 void storeLocateVary(StoreEntry * e, int offset, const char *vary_data, String accept_encoding, STLVCB * callback, void *cbdata);
-void storeAddVary(const char *url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
+void storeAddVary(const char *store_url, const char *url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
 
 /* New HTTP message parsing support */
 extern void HttpMsgBufInit(HttpMsgBuf * hmsg, const char *buf, size_t size);

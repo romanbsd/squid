@@ -1,6 +1,6 @@
 
 /*
- * $Id: ssl_support.c,v 1.11 2006/07/04 21:55:55 hno Exp $
+ * $Id: ssl_support.c,v 1.11.6.2 2010/03/14 17:20:45 hno Exp $
  *
  * AUTHOR: Benno Rice
  * DEBUG: section 83    SSL accelerator support
@@ -426,7 +426,11 @@ SSL_CTX *
 sslCreateServerContext(const char *certfile, const char *keyfile, int version, const char *cipher, const char *options, const char *flags, const char *clientCA, const char *CAfile, const char *CApath, const char *CRLfile, const char *dhfile, const char *context)
 {
     int ssl_error;
+#if OPENSSL_VERSION_NUMBER < 0x00909000L
     SSL_METHOD *method;
+#else
+    const SSL_METHOD *method;
+#endif
     SSL_CTX *sslContext;
     long fl = ssl_parse_flags(flags);
 
@@ -587,7 +591,11 @@ SSL_CTX *
 sslCreateClientContext(const char *certfile, const char *keyfile, int version, const char *cipher, const char *options, const char *flags, const char *CAfile, const char *CApath, const char *CRLfile)
 {
     int ssl_error;
+#if OPENSSL_VERSION_NUMBER < 0x00909000L
     SSL_METHOD *method;
+#else
+    const SSL_METHOD *method;
+#endif
     SSL_CTX *sslContext;
     long fl = ssl_parse_flags(flags);
 

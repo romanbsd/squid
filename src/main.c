@@ -1,6 +1,6 @@
 
 /*
- * $Id: main.c,v 1.403.2.4 2009/06/25 22:53:15 hno Exp $
+ * $Id: main.c,v 1.403.2.6 2010/03/07 15:58:56 hno Exp $
  *
  * DEBUG: section 1     Startup and Main Loop
  * AUTHOR: Harvest Derived
@@ -404,6 +404,7 @@ mainReconfigure(void)
     authenticateShutdown();
     externalAclShutdown();
     refreshCheckShutdown();
+    storeDirSync();		/* Flush pending I/O ops */
     storeDirCloseSwapLogs();
     storeLogClose();
     accessLogClose();
@@ -479,7 +480,6 @@ mainRotate(void)
     refreshCheckShutdown();
     _db_rotate_log();		/* cache.log */
     storeDirWriteCleanLogs(1);
-    storeDirSync();		/* Flush pending I/O ops */
     storeLogRotate();		/* store.log */
     accessLogRotate();		/* access.log */
     useragentRotateLog();	/* useragent.log */
@@ -557,7 +557,8 @@ mainInitialize(void)
 	Config.Port.icp = (u_short) icpPortNumOverride;
 
     _db_init(Config.Log.log, Config.debugOptions);
-    fd_open(fileno(debug_log), FD_LOG, Config.Log.log);
+    if (debug_log != stderr)
+	fd_open(fileno(debug_log), FD_LOG, Config.Log.log);
 #if MEM_GEN_TRACE
     log_trace_init("/tmp/squid.alloc");
 #endif
