@@ -1,6 +1,6 @@
 
 /*
- * $Id: htcp.c,v 1.55.2.2 2008/05/04 23:23:13 hno Exp $
+ * $Id: htcp.c,v 1.55.2.3 2010/02/11 10:05:01 amosjeffries Exp $
  *
  * DEBUG: section 31    Hypertext Caching Protocol
  * AUTHOR: Duane Wesssels
@@ -948,6 +948,11 @@ htcpHandleClr(htcpDataHeader * hdr, char *buf, int sz, struct sockaddr_in *from)
     s = htcpUnpackSpecifier(buf, sz);
     if (NULL == s) {
 	debug(31, 3) ("htcpHandleClr: htcpUnpackSpecifier failed\n");
+	return;
+    }
+    if (!s->request) {
+	debug(31, 2) ("htcpHandleTstRequest: failed to parse request\n");
+	htcpFreeSpecifier(s);
 	return;
     }
     if (!htcpAccessCheck(Config.accessList.htcp_clr, s, from)) {

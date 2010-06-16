@@ -1,6 +1,6 @@
 
 /*
- * $Id: client_side.c,v 1.754.2.27 2009/08/16 21:43:51 hno Exp $
+ * $Id: client_side.c,v 1.754.2.29 2010/02/14 00:46:25 hno Exp $
  *
  * DEBUG: section 33    Client-side Routines
  * AUTHOR: Duane Wessels
@@ -651,7 +651,7 @@ clientHandleETagReply(void *data, HttpReply * rep)
 		vary = httpMakeVaryMark(request, rep);
 
 	    if (etag && vary) {
-		storeAddVary(url, entry->mem_obj->method, NULL, httpHeaderGetStr(&rep->header, HDR_ETAG), request->vary_hdr, request->vary_headers, strBuf(request->vary_encoding));
+		storeAddVary(entry->mem_obj->store_url, entry->mem_obj->url, entry->mem_obj->method, NULL, httpHeaderGetStr(&rep->header, HDR_ETAG), request->vary_hdr, request->vary_headers, strBuf(request->vary_encoding));
 	    }
 	}
 	clientHandleETagMiss(http);
@@ -3437,6 +3437,11 @@ clientProcessRequest2(clientHttpRequest * http)
 	return LOG_TCP_MISS;
     }
     if (EBIT_TEST(e->flags, KEY_EARLY_PUBLIC)) {
+	if (clientOnlyIfCached(http)) {
+	    debug(33, 3) ("clientProcessRequest2: collapsed only-if-cached MISS\n");
+	    http->entry = NULL;
+	    return LOG_TCP_MISS;
+	}
 	r->flags.collapsed = 1;	/* Don't trust the store entry */
     }
     if (EBIT_TEST(e->flags, ENTRY_SPECIAL)) {
