@@ -139,7 +139,7 @@ fwdCheckRetry(FwdState * fwdState)
 	return 0;
     if (fwdState->n_tries > 10)
 	return 0;
-    if (fwdState->origin_tries > 2)
+    if (fwdState->origin_tries >= Config.retry.max_retries_on_error /*3*/)
 	return 0;
     if (squid_curtime - fwdState->start >= Config.Timeout.forward)
 	return 0;

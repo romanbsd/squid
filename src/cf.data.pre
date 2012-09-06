@@ -5705,6 +5705,15 @@ DOC_START
 	takes place if Squid fails to get a satisfying response.
 DOC_END
 
+NAME: max_retries_on_error
+TYPE: int
+LOC: Config.retry.max_retries_on_error
+DEFAULT: 3
+DOC_START
+	This sets the maximum number of retries the Squid will
+	attempt if the original request has failed.
+DOC_END
+
 NAME: retry_on_error
 TYPE: onoff
 LOC: Config.retry.onerror

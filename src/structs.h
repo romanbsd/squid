@@ -785,6 +785,7 @@ struct _SquidConfig {
     struct {
 	int maxtries;
 	int onerror;
+	int max_retries_on_error;
     } retry;
     struct {
 	squid_off_t limit;
